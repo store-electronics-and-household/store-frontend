@@ -20,7 +20,7 @@ export default {
 export const Primary = {
   args: {
     primary: true,
-    label: 'Button',
+    label: 'Кнопочка',
   },
 };
 
@@ -41,5 +41,13 @@ export const Small = {
   args: {
     size: 'small',
     label: 'Button',
+  },
+};
+
+export const Warning = {
+  args: {
+    primary: true,
+    label: 'Delete now',
+    backgroundColor: 'green',
   },
 };
