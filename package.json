@@ -10,7 +10,7 @@
     "@types/node": "^16.18.60",
     "@types/react": "^18.2.36",
     "@types/react-dom": "^18.2.14",
-    "commitizen": "^4.3.0",
+    "bulma": "^0.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -26,7 +26,12 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,md}'",
+    "scss:compile": "sass src/index.scss dist/index.css",
+    "prepare": "husky install",
+    "commit": "cz",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -46,6 +51,22 @@
       "last 1 safari version"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.5.3",
     "@storybook/addon-interactions": "^7.5.3",
@@ -58,6 +79,8 @@
     "@storybook/testing-library": "^0.2.2",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard-with-typescript": "^39.1.1",
@@ -67,9 +90,12 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-storybook": "^0.6.15",
+    "gh-pages": "^6.0.0",
     "husky": "^8.0.3",
+    "lint-staged": "^15.0.2",
     "prettier": "^3.0.3",
     "prop-types": "^15.8.1",
+    "sass": "^1.69.5",
     "typescript": "4.9.5",
     "webpack": "^5.89.0"
   }
