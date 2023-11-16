@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { type FaqItem } from '../../types';
+import { type FaqItem } from '../../utils/types';
 import arrow from '../../image/arr-down.svg';
 
 const AccordionItem: React.FC<{ faqItem: FaqItem, isQuestionOpen: boolean, btnOnClick: () => void }> = ({
@@ -16,10 +16,10 @@ const AccordionItem: React.FC<{ faqItem: FaqItem, isQuestionOpen: boolean, btnOn
 
   useEffect(() => {
     if (isQuestionOpen) {
-      const contentEl = contentRef.current as HTMLParagraphElement
-      setHeight(contentEl?.scrollHeight)
+      const contentEl = contentRef.current as HTMLParagraphElement;
+      setHeight(contentEl?.scrollHeight);
     } else {
-      setHeight(0)
+      setHeight(0);
     }
   }, [isQuestionOpen]);
 
@@ -33,7 +33,7 @@ const AccordionItem: React.FC<{ faqItem: FaqItem, isQuestionOpen: boolean, btnOn
         <p ref={contentRef} className='accordion__answer'>{faqItem.a}</p>
       </div>
     </li>
-  )
+  );
 };
 
 export default AccordionItem;

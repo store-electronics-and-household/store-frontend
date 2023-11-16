@@ -22,15 +22,15 @@ const Footer: React.FC = () => {
         <NavLink className='footer__nav-link' to='/faq'>
           Часто задаваемые вопросы
         </NavLink>
-        <NavLink className='footer__nav-link' to={require('../../static/user-agreement.pdf')} target='_blank'>
+        <NavLink className='footer__nav-link' to={require('../../utils/user-agreement.pdf')} target='_blank'>
           Пользовательское соглашение
         </NavLink>
-        <NavLink className='footer__nav-link' to={require('../../static/privacy-policy.pdf')} target='_blank'>
+        <NavLink className='footer__nav-link' to={require('../../utils/privacy-policy.pdf')} target='_blank'>
           Политика конфиденциальности
         </NavLink>
       </nav>
     </div>
-  </footer>
-}
+  </footer>;
+};
 
 export default Footer;

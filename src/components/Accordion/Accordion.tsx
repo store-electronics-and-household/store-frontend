@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { type FaqItem } from '../../types';
+import { type FaqItem } from '../../utils/types';
 import AccordionItem from './AccordionItem';
 import './Accordion.css';
 
@@ -18,12 +18,12 @@ const Accordion: React.FC<{ faqList: FaqItem[], headText: string }> = ({ faqList
             faqItem={faqItem}
             key={faqId}
             isQuestionOpen={faqId === currentFaqId}
-            btnOnClick={() => { btnOnClick(faqId) }}
-            />
+            btnOnClick={() => { btnOnClick(faqId); }}
+            />;
         })}
       </ul>
     </div>
-  )
+  );
 };
 
 export default Accordion;

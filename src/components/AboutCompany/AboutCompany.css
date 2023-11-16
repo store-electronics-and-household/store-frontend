@@ -52,8 +52,10 @@
   grid-area: b;
 }
 
-.about-company__feature-logo {
+.about-company__feature-icon {
   grid-area: a;
+  width: 38px;
+  height: 38px;
 }
 
 .about-company__feature-text {

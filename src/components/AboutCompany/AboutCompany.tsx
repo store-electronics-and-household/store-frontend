@@ -9,7 +9,7 @@ const AboutCompany: React.FC = () => {
     <h1 className='about-company__header'>О нас</h1>
     <ul className='about-company__feature-list'>
       <li className='about-company__feature'>
-        <img className='about-company__feature-logo' src={smileGoal} alt='смайл, улыбка, цель компании'/>
+        <img className='about-company__feature-icon' src={smileGoal} alt='смайл, улыбка, цель компании'/>
         <h2 className='about-company__feature-name'>Наша цель</h2>
         <div className='about-company__feature-content'>
           <p className='about-company__feature-text'>У нас есть офлайновая торговая точка и&nbsp;интернет&#8209;магазин. Продаем смартфоны, компьютеры, «умные» часы и браслеты, кофемашины и др.</p>
@@ -17,7 +17,7 @@ const AboutCompany: React.FC = () => {
         </div>
       </li>
       <li className='about-company__feature'>
-      <img className='about-company__feature-logo' src={delivery} alt='Супер быстрая доставка, логотип, транспорт'/>
+      <img className='about-company__feature-icon' src={delivery} alt='Супер быстрая доставка, brjyrfтранспорт'/>
         <h2 className='about-company__feature-name'>Супер-доставка</h2>
         <div className='about-company__feature-content'>
           <p className='about-company__feature-text'>У нас работает доставка до двери и самовывоз. Большинство заказов доставляем в день оформления либо на следующий день. Возможна оплата на сайте или при получении.</p>
@@ -26,14 +26,14 @@ const AboutCompany: React.FC = () => {
         </div>
       </li>
       <li className='about-company__feature'>
-      <img className='about-company__feature-logo' src={originalMedal} alt='знак медали, оригинальная техника, новинки'/>
+      <img className='about-company__feature-icon' src={originalMedal} alt='знак медали, оригинальная техника, новинки'/>
         <h2 className='about-company__feature-name'>Только оригинальная техника и новинки</h2>
         <div className='about-company__feature-content'>
           <p className='about-company__feature-text'>У нас вы не встретите подделок и устаревших моделей товаров. Продаем только оригинальную технику. Выбираем проверенные бренды и новинки.</p>
         </div>
       </li>
     </ul>
-  </section>
+  </section>;
 };
 
 export default AboutCompany;

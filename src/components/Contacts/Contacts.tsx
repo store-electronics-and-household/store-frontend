@@ -1,7 +1,7 @@
 import React from 'react';
 import './Contacts.css';
 import mapImg from '../../image/map.png';
-import contactsData from '../../static/contacts-data';
+import { contactsData } from '../../utils/constants';
 
 const Contacts: React.FC = () => {
   return <section className='contacts'>
@@ -20,7 +20,7 @@ const Contacts: React.FC = () => {
       <img className='contacts__map' src={ mapImg } alt='карта проезда, адрес' />
     </div>
 
-  </section>
+  </section>;
 };
 
 export default Contacts;
