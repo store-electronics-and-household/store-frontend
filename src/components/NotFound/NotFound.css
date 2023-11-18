@@ -1,0 +1,65 @@
+.not-found {
+margin: auto;
+display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.not-found__logo {
+  width: 159px;
+}
+
+.not-found__title {
+  color: #000;
+text-align: center;
+
+/* H2 */
+font-family: Helvetica Neue,
+Arial,
+Helvetica,
+sans-serif;
+font-size: 56px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+margin: 88px 0 24px;
+}
+
+.not-found__info {
+  color: #000;
+
+  /* Body */
+  font-family: Helvetica Neue,
+  Arial,
+  Helvetica,
+  sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0 0 64px;
+}
+
+.not-found__btn {
+text-decoration: none;
+color: #FFF;
+/* Button */
+font-family: Helvetica Neue,
+Arial,
+Helvetica,
+sans-serif;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+border-radius: 40px;
+background: rgba(13%, 13%, 13%, 1);
+padding: 16px 40px;
+transition: opacity 0.3s ease;
+}
+
+.not-found__btn:hover {
+  background: rgba(13%, 13%, 13%, .8);
+}
