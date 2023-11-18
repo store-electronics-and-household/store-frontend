@@ -49,7 +49,7 @@
   height: 35px;
   padding: 8px;
   border-radius: 40px;
-  background: #FFF;
+  background: #fff;
   position: absolute;
   top: 12px;
   left: 12px;
@@ -58,7 +58,7 @@
 .card-medium__image {
   padding: 114px 40px 115px;
   border-radius: 25px;
-  background: var(--Gray, #EDEDED);
+  background: var(--Gray, #ededed);
 }
 
 .card-medium__buy {
@@ -77,43 +77,43 @@
 }
 
 .card-medium__buy:hover {
-  background-color: var(--Pink, #F0C7EC);
+  background-color: var(--Pink, #f0c7ec);
 }
 
 .card-medium__title {
   overflow: visible;
-color: #1B1B1B;
-text-overflow: ellipsis;
-white-space: pre-wrap;
-font-family: Arial, Helvetica, sans-serif;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-hyphens: auto;
-word-wrap: break-word;
-margin-bottom: 8px;
-margin-top: 5px;
-margin-bottom: 10px;
+  color: #1b1b1b;
+  text-overflow: ellipsis;
+  white-space: pre-wrap;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  hyphens: auto;
+  word-wrap: break-word;
+  margin-bottom: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .card-medium__price {
-  color: #1B1B1B;
-font-family: Arial, Helvetica, sans-serif;
-font-size: 24px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
+  color: #1b1b1b;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
 .card-medium__oldprice {
-color: #BCBCBC;
-font-family: Arial, Helvetica, sans-serif;
-font-size: 20px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-text-decoration-line: line-through;
+  color: #bcbcbc;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-decoration-line: line-through;
 }
 
 .card-medium__price-container {
@@ -133,14 +133,14 @@ text-decoration-line: line-through;
 
 .card-medium__counter {
   color: var(--Black, #222);
-font-family: Arial, Helvetica, sans-serif;
-font-size: 20px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-position: absolute;
-top: 321px;
-left: 244px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  position: absolute;
+  top: 321px;
+  left: 244px;
 }
 
 .card-medium__buy_big {

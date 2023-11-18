@@ -1,5 +1,5 @@
 import React from 'react';
-import './CategoriesTile.css';
+import './CategoriesTile.scss';
 
 const CategoriesTile: React.FC<{
   catTitle: string;
