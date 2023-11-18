@@ -1,12 +1,17 @@
 import React from 'react';
+import './Main.css';
+import Slider from '../Slider/Slider';
 import CategoriesMain from '../CategoriesMain/CategoriesMain';
 
-export const Main: React.FC = () => {
+const Main: React.FC = () => {
   return (
     <>
-      <main className='main'>
+      <section className='main'>
+        <Slider />
         <CategoriesMain />
-      </main>
+      </section>
     </>
   );
 };
+
+export default Main;
