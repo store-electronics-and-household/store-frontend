@@ -27,6 +27,6 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
-    '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/semi': ['error', 'always'],
   },
 };

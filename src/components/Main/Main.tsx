@@ -1,11 +1,11 @@
 import React from 'react';
-import CategoriesTile from '../СategoriesTile/CategoriesTile';
+import CategoriesMain from '../CategoriesMain/CategoriesMain';
 
 export const Main: React.FC = () => {
   return (
     <>
       <main className='main'>
-        <CategoriesTile />
+        <CategoriesMain />
       </main>
     </>
   );
