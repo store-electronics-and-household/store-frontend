@@ -5,7 +5,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 @import url('./vendor/normalize.css');
-@import url('../src//vendor/fonts.css');
+@import url('../src/vendor/fonts.css');
+
+@import '../src/utils/_variables.scss';
+@import '../src/utils/_mixins.scss';
+
+@import '../src/components/Discount/Discount';
 

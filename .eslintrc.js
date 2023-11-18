@@ -27,6 +27,6 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
-    semi: 0,
+    '@typescript-eslint/semi': ['error', 'always'],
   },
 };
