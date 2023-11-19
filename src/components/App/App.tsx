@@ -1,8 +1,6 @@
 import React from 'react';
 import './App.css';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import AboutCompany from '../AboutCompany/AboutCompany';
 import Contacts from '../Contacts/Contacts';
@@ -20,7 +18,6 @@ import NotFound from '../NotFound/NotFound';
 const App: React.FC = () => {
   return (
     <div className='App'>
-      <Header />
       <Routes>
         <Route path='/main' element={<Main />} />
         <Route path='/about-company' element={<AboutCompany />} />
@@ -36,7 +33,6 @@ const App: React.FC = () => {
         <Route path='/' element={<Navigate to='/main' replace />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
-      <Footer />
     </div>
   );
 };
