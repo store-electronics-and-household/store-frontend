@@ -2,14 +2,18 @@ import React, { useEffect, useRef, useState } from 'react';
 import { type FaqItem } from '../../utils/types';
 import arrow from '../../image/arr-down.svg';
 
-const AccordionItem: React.FC<{ faqItem: FaqItem, isQuestionOpen: boolean, btnOnClick: () => void }> = ({
+const AccordionItem: React.FC<{
+  faqItem: FaqItem;
+  isQuestionOpen: boolean;
+  btnOnClick: () => void;
+}> = ({
   faqItem,
   isQuestionOpen,
-  btnOnClick
+  btnOnClick,
 }: {
-  faqItem: FaqItem
-  isQuestionOpen: boolean
-  btnOnClick: () => void
+  faqItem: FaqItem;
+  isQuestionOpen: boolean;
+  btnOnClick: () => void;
 }) => {
   const contentRef = useRef<HTMLParagraphElement>(null);
   const [height, setHeight] = useState(0);
@@ -27,10 +31,18 @@ const AccordionItem: React.FC<{ faqItem: FaqItem, isQuestionOpen: boolean, btnOn
     <li className='accordion__item'>
       <button className='accordion__btn' onClick={btnOnClick}>
         <p className='accordion__question'>{faqItem.q}</p>
-        <img className={`accordion__arrow ${isQuestionOpen ? 'accordion__arrow_opened' : ''}`} src={arrow} alt='Стрелка' />
+        <img
+          className={`accordion__arrow ${
+            isQuestionOpen ? 'accordion__arrow_opened' : ''
+          }`}
+          src={arrow}
+          alt='Стрелка'
+        />
       </button>
       <div className='accordion__answer-wrap' style={{ height }}>
-        <p ref={contentRef} className='accordion__answer'>{faqItem.a}</p>
+        <p ref={contentRef} className='accordion__answer'>
+          {faqItem.a}
+        </p>
       </div>
     </li>
   );

@@ -1,4 +1,4 @@
 export interface FaqItem {
-  q: string
-  a: string
-};
+  q: string;
+  a: string;
+}
