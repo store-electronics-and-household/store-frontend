@@ -44,3 +44,7 @@
 3. JavaScript (ES6+) 
 
 4. TypeScript v3.8.3 
+
+5. React v17.0.2 
+
+6. Webpack v5.28.0
