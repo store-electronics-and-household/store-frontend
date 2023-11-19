@@ -1,14 +1,21 @@
 .not-found {
+  position: relative;
   margin: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
 }
 
 .not-found__logo {
   width: 159px;
+}
+
+.not-found__container-text {
+  margin-top: 255px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
 }
 
 .not-found__title {
@@ -23,7 +30,8 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin: 88px 0 24px;
+  margin: 80px 0 25px;
+  letter-spacing: 2px;
 }
 
 .not-found__info {
@@ -37,7 +45,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin: 0 0 64px;
+  margin: 0 0 65px;
+  letter-spacing: 0.5px;
 }
 
 .not-found__btn {
@@ -60,4 +69,22 @@
 
 .not-found__btn:hover {
   background: rgba(13%, 13%, 13%, 0.8);
+}
+
+.not-found__img-l {
+  position: absolute;
+  transform: rotate(55.461deg);
+  width: 369.637px;
+  height: 225.751px;
+  top: 493px;
+  left: 392px;
+}
+
+.not-found__img-r {
+  transform: rotate(304.539deg) scale(-1,1);
+  width: 377.962px;
+  height: 230.836px;
+  position: absolute;
+  top: 489px;
+  left: 1145px;
 }
