@@ -10,6 +10,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 44px;
+  letter-spacing: 3px;
 }
 
 .tile-main__title {
@@ -30,7 +31,7 @@
 .tile-main__list {
   max-width:  1360px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 322px);
   gap: 24px;
   list-style: none;
   padding: 0;

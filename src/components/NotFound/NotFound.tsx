@@ -12,21 +12,21 @@ const NotFound: React.FC = () => {
         <p className='not-found__info'>
           В адресе есть ошибка или страница была удалена
         </p>
+        <div className='not-found__container'>
+          <img
+            className='not-found__img_l'
+            src={vector}
+            alt='красивая загагулина'
+          />
+          <img
+            className='not-found__img_r'
+            src={vector}
+            alt='красивая загагулина'
+          />
+        </div>
         <a className='not-found__btn' href='/main'>
           Вернуться на главную
         </a>
-      </div>
-      <div className='not-found__container'>
-        <img
-          className='not-found__img-l'
-          src={vector}
-          alt='красивая загагулина'
-        />
-        <img
-          className='not-found__img-r'
-          src={vector}
-          alt='красивая загагулина'
-        />
       </div>
     </section>
   );

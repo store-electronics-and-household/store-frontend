@@ -9,7 +9,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 24px;
-  padding: 40px 40px 88px;
+  padding: 47px 40px 88px;
 }
 
 .footer__logo-link {
@@ -17,13 +17,13 @@
   font-size: 32px;
   font-weight: 700;
   text-decoration: none;
-  margin-bottom: 12px;
   padding-left: 8px;
 }
 
 .footer__copyright {
   display: block;
   font-size: 16px;
+  margin-top: 12px;
 }
 
 .footer__nav {

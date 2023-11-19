@@ -1,5 +1,4 @@
 .not-found {
-  position: relative;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -11,6 +10,7 @@
 }
 
 .not-found__container-text {
+  position: relative;
   margin-top: 255px;
   display: flex;
   flex-direction: column;
@@ -71,20 +71,23 @@
   background: rgba(13%, 13%, 13%, 0.8);
 }
 
-.not-found__img-l {
-  position: absolute;
+.not-found__img_l {
   transform: rotate(55.461deg);
   width: 369.637px;
   height: 225.751px;
-  top: 493px;
-  left: 392px;
 }
 
-.not-found__img-r {
+.not-found__img_r {
   transform: rotate(304.539deg) scale(-1,1);
   width: 377.962px;
   height: 230.836px;
+}
+
+.not-found__container {
   position: absolute;
-  top: 489px;
-  left: 1145px;
+  display: flex;
+  width: 1138px;
+  justify-content: space-between;
+  position: absolute;
+  top: 235px;
 }
