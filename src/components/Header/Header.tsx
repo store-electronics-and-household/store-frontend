@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { FC } from 'react';
 
 import headerLogo from '../../image/icons/logo.svg';
@@ -7,11 +7,20 @@ import deliveryIcon from '../../image/icons/delivery_icon.svg';
 import busketIcon from '../../image/icons/busket_icon.svg';
 import favouriteIcon from '../../image/icons/favourite_icon.svg';
 
+import CatalogMenu from '../CatalogMenu/CatalogMenu';
+
 import './Header.css';
 import { Link } from 'react-router-dom';
 
-const Header: FC = () => (
-  <header className='header'>
+const Header: FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleClick = (): void => {
+    setIsVisible(current => !current);
+  };
+
+  return (
+    <header className='header'>
     <div className='header__container'>
       <Link to='/'>
         <img
@@ -21,7 +30,9 @@ const Header: FC = () => (
         />
       </Link>
 
-      <button className='header__catalog-button'>Каталог</button>
+      {isVisible && <CatalogMenu />}
+
+      <button onClick={handleClick} className='header__catalog-button'>Каталог</button>
 
       <div className='header__searchbar-container'>
         <div className='header__searchbar-wrapper'>
@@ -70,6 +81,7 @@ const Header: FC = () => (
       </nav>
     </div>
   </header>
-);
+  );
+};
 
 export default Header;
