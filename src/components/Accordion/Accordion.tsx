@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { type FaqItem } from '../../utils/types';
 import AccordionItem from './AccordionItem';
-import './Accordion.css';
 
 const Accordion: React.FC<{ faqList: FaqItem[], headText: string }> = ({ faqList, headText }: { faqList: FaqItem[], headText: string }) => {
   const [currentFaqId, setCurrentFaqId] = useState(-1);

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { type FaqItem } from '../../utils/types';
-import arrow from '../../image/arr-down.svg';
+import arrow from '../../image/icons/arr-down.svg';
 
 const AccordionItem: React.FC<{ faqItem: FaqItem, isQuestionOpen: boolean, btnOnClick: () => void }> = ({
   faqItem,
