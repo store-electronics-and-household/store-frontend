@@ -1,16 +1,17 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import './Footer.css';
+import { NavLink } from 'react-router-dom';
+import logo from '../../image/icons/logo.svg';
 
 const Footer: React.FC = () => {
   return (
     <footer className='footer'>
       <div className='footer__content'>
         <div className='footer__logo-area'>
-          <Link className='footer__logo-link' to='/'>
-            ЛОГОТИП
-            {/* <img src='#' alt='Логотип, магазин электроники' /> */}
-          </Link>
+          <img
+            className='footer__logo'
+            src={logo}
+            alt='Логотип, магазин электроники'
+          />
           <span className='footer__copyright'>
             © 2023 «Магазин электроники»
           </span>

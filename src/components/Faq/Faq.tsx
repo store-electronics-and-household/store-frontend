@@ -1,15 +1,13 @@
 import React from 'react';
-import './Faq.css';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import Accordion from '../Accordion/Accordion';
 import { faqList } from '../../utils/constants';
+import Breadcrumb from '../Breadcrumb/Breadcrumb';
 
 const Faq: React.FC = () => {
   return (
-    <>
-      <Header />
-      <section className='faq'>
+    <section className='faq'>
+      <Breadcrumb currentPlace='Часто задаваемые вопросы' />
+      <div className='faq__container'>
         <h1 className='faq__header'>Частые вопросы</h1>
         <Accordion faqList={faqList.deliveryFaq} headText='Доставка:' />
         <Accordion
@@ -20,9 +18,8 @@ const Faq: React.FC = () => {
           faqList={faqList.returnsFaq}
           headText='Обмен и возврат товара:'
         />
-      </section>
-      <Footer />
-    </>
+      </div>
+    </section>
   );
 };
 

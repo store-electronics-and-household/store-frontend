@@ -1,8 +1,8 @@
-.about-company {
-  box-sizing: border-box;
-  max-width: 1440px;
-  margin: auto;
-  padding: 44px 271px 140px 155px;
+.about-company__container {
+    box-sizing: border-box;
+    max-width: 1440px;
+    margin: auto;
+    padding: 44px 271px 140px 155px;
 }
 
 .about-company__header {
@@ -19,14 +19,14 @@
   margin: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-areas: "goal delivery" "new delivery";
+  grid-template-areas: 'goal delivery' 'new delivery';
   column-gap: 139px;
   row-gap: 64px;
 }
 
 .about-company__feature {
   display: grid;
-  grid-template-areas: "a b" "a c";
+  grid-template-areas: 'a b' 'a c';
   column-gap: 9px;
   height: fit-content;
 }

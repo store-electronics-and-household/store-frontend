@@ -1,16 +1,14 @@
 import React from 'react';
-import './AboutCompany.css';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import smileGoal from '../../image/mdi_smiley-excited.svg';
-import delivery from '../../image/carbon_delivery.svg';
-import originalMedal from '../../image/solar_medal-ribbons-star-outline.svg';
+import smileGoal from '../../image/icons/smile_icon.svg';
+import delivery from '../../image/icons/delivery_icon.svg';
+import originalMedal from '../../image/icons/medal-original_icon.svg';
+import Breadcrumb from '../Breadcrumb/Breadcrumb';
 
 const AboutCompany: React.FC = () => {
   return (
-    <>
-      <Header />
-      <section className='about-company'>
+    <section className='about-company'>
+      <Breadcrumb currentPlace='О нас' />
+      <div className='about-company__container'>
         <h1 className='about-company__header'>О нас</h1>
         <ul className='about-company__feature-list'>
           <li className='about-company__feature'>
@@ -77,9 +75,8 @@ const AboutCompany: React.FC = () => {
             </div>
           </li>
         </ul>
-      </section>
-      <Footer />
-    </>
+      </div>
+    </section>
   );
 };
 
