@@ -45,20 +45,23 @@
   font-weight: 700;
   line-height: normal;
   color: var(--Black, #222);
-  width: 64px;
-  height: 35px;
+  width: 48px;
+  height: 19px;
   padding: 8px;
   border-radius: 40px;
   background: #fff;
   position: absolute;
   top: 12px;
   left: 12px;
+  margin: 0;
 }
 
 .card-medium__image {
   padding: 114px 40px 115px;
   border-radius: 25px;
   background: var(--Gray, #ededed);
+  width: 241px;
+  height: 147px;
 }
 
 .card-medium__buy {
@@ -104,6 +107,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  margin: 0;
 }
 
 .card-medium__oldprice {
@@ -114,6 +118,7 @@
   font-weight: 600;
   line-height: normal;
   text-decoration-line: line-through;
+  margin: 0;
 }
 
 .card-medium__price-container {
@@ -129,6 +134,7 @@
 .card-medium__link {
   hyphens: auto;
   word-wrap: break-word;
+  text-decoration: none;
 }
 
 .card-medium__counter {
