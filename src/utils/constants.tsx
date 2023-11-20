@@ -159,7 +159,7 @@ export const productPhotoArray = [
   'https://swiperjs.com/demos/images/nature-4.jpg',
   'https://swiperjs.com/demos/images/nature-5.jpg',
   'https://swiperjs.com/demos/images/nature-6.jpg',
-  'https://swiperjs.com/demos/images/nature-7.jpg'
+  'https://swiperjs.com/demos/images/nature-7.jpg',
 ];
 
 export const productSpecifyName = {
@@ -171,7 +171,7 @@ export const productSpecifyName = {
   display: 'Тип дисплея:',
   builtInMemory: 'Встроенная память, в ГБ:',
   ram: 'Оперативная память, в ГБ:',
-  batteryCapacity: 'Емкость аккумулятора, в мА-ч:'
+  batteryCapacity: 'Емкость аккумулятора, в мА-ч:',
 };
 
 export const productSpecifyValue = {
@@ -187,5 +187,5 @@ export const productSpecifyValue = {
   display: 'OLED',
   builtInMemory: 128,
   ram: 8,
-  batteryCapacity: 4912
+  batteryCapacity: 4912,
 };
