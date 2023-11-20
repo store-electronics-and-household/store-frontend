@@ -28,5 +28,11 @@ module.exports = {
   plugins: ['react'],
   rules: {
     '@typescript-eslint/semi': ['error', 'always'],
+    'comma-dangle': 'off',
+    '@typescript-eslint/comma-dangle': ['error', 'only-multiline'],
+    '@typescript-eslint/member-delimiter-style': [
+      'warn',
+      { multiline: { delimiter: 'none' } },
+    ],
   },
 };
