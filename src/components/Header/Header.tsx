@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import type { FC } from 'react';
 
+import { NavLink, Outlet, Link } from 'react-router-dom';
+
 import headerLogo from '../../image/icons/logo.svg';
 import searchIcon from '../../image/icons/search_icon.svg';
 import deliveryIcon from '../../image/icons/delivery_icon.svg';
@@ -10,7 +12,6 @@ import favouriteIcon from '../../image/icons/favourite_icon.svg';
 import CatalogMenu from '../CatalogMenu/CatalogMenu';
 
 import './Header.css';
-import { Link } from 'react-router-dom';
 
 const Header: FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -20,6 +21,7 @@ const Header: FC = () => {
   };
 
   return (
+    <>
     <header className='header'>
     <div className='header__container'>
       <Link to='/'>
@@ -55,32 +57,34 @@ const Header: FC = () => {
       </div>
 
       <nav className='header__navbar'>
-        <Link className='header__navbar-link' to='/'>
+        <NavLink className='header__navbar-link' to='/'>
           <img
             className='header__navbar-icon'
             src={deliveryIcon}
             alt="Перейти в раздел 'Доставка'"
           />
-        </Link>
+        </NavLink>
 
-        <Link className='header__navbar-link' to='/'>
+        <NavLink className='header__navbar-link' to='/'>
           <img
             className='header__navbar-icon'
             src={favouriteIcon}
             alt="Перейти в раздел 'Избранное'"
           />
-        </Link>
+        </NavLink>
 
-        <Link className='header__navbar-link' to='/'>
+        <NavLink className='header__navbar-link' to='/cart'>
           <img
             className='header__navbar-icon'
             src={busketIcon}
             alt="Перейти в раздел 'Корзина'"
           />
-        </Link>
+        </NavLink>
       </nav>
     </div>
   </header>
+  <Outlet />
+  </>
   );
 };
 
