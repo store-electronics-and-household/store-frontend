@@ -3,6 +3,7 @@ import './Main.css';
 import Slider from '../Slider/Slider';
 import Discount from '../Discount/Discount';
 import CategoriesMain from '../CategoriesMain/CategoriesMain';
+import WarningPopup from '../WarningPopup/WarningPopup';
 
 const Main: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const Main: React.FC = () => {
         <Slider />
         <Discount />
         <CategoriesMain />
+        <WarningPopup />
       </section>
     </>
   );

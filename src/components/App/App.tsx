@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Header from '../Header/Header';
@@ -17,6 +17,13 @@ import NotFound from '../NotFound/NotFound';
 import Footer from '../Footer/Footer';
 
 const App: React.FC = () => {
+  // const [isLogged, setIsLogged] = useState<boolean>(false);
+  const [isWarningPopupOpen, setWarningPopupOpen] = useState<boolean>(true);
+
+  const toggleWarningPopup = (): void => {
+    setWarningPopupOpen(!isWarningPopupOpen);
+  };
+
   return (
     <div className='App'>
       <Routes>
@@ -24,7 +31,7 @@ const App: React.FC = () => {
           path='/'
           element={
             <>
-              <Header />
+              <Header toggleWarningPopup={toggleWarningPopup} />
               <Footer />
             </>
           }
