@@ -34,5 +34,7 @@ module.exports = {
       'warn',
       { multiline: { delimiter: 'none' } },
     ],
+    '@typescript-eslint/space-before-function-paren': ['error', 'always'],
+    '@typescript-eslint/no-confusing-void-expression': 'error',
   },
 };

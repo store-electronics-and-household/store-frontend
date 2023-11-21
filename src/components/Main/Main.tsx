@@ -1,6 +1,5 @@
 import React from 'react';
 import './Main.css';
-import Footer from '../Footer/Footer';
 import Slider from '../Slider/Slider';
 import Discount from '../Discount/Discount';
 import CategoriesMain from '../CategoriesMain/CategoriesMain';
@@ -13,7 +12,6 @@ const Main: React.FC = () => {
         <Discount />
         <CategoriesMain />
       </section>
-      <Footer />
     </>
   );
 };

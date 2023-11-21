@@ -85,12 +85,92 @@ export const categoriesList = [
     catUrl: '/',
   },
 ];
-export const product = {
-  name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
-  originPrice: '140 990',
-  salesPrice: '150 540',
-  discount: '- 30%',
-};
+export const product = [
+  {
+    id: 1,
+    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
+    originPrice: 140990,
+    salesPrice: 150540,
+    discount: 30,
+  },
+  {
+    id: 2,
+    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
+    originPrice: 140990,
+    salesPrice: 150540,
+    discount: 30,
+  },
+  {
+    id: 3,
+    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
+    originPrice: 140990,
+    salesPrice: 150540,
+    discount: 30,
+  },
+  {
+    id: 4,
+    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
+    originPrice: 140990,
+    salesPrice: 150540,
+    discount: 30,
+  },
+  {
+    id: 5,
+    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
+    originPrice: 140990,
+    salesPrice: 150540,
+    discount: 30,
+  },
+  {
+    id: 6,
+    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
+    originPrice: 140990,
+    salesPrice: 150540,
+    discount: 30,
+  },
+  {
+    id: 7,
+    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
+    originPrice: 140990,
+    salesPrice: 150540,
+    discount: 30,
+  },
+  {
+    id: 8,
+    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
+    originPrice: 140990,
+    salesPrice: 150540,
+    discount: 30,
+  },
+  {
+    id: 9,
+    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
+    originPrice: 140990,
+    salesPrice: 150540,
+    discount: 30,
+  },
+  {
+    id: 10,
+    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
+    originPrice: 140990,
+    salesPrice: 150540,
+    discount: 30,
+  },
+  {
+    id: 11,
+    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
+    originPrice: 140990,
+    salesPrice: 150540,
+    discount: 30,
+  },
+  {
+    id: 12,
+    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
+    originPrice: 140990,
+    salesPrice: 150540,
+    discount: 30,
+  },
+];
 /* ------------------------------------------- */
 export const contactsData = {
   phoneNumber: '8 800 555-35-35',

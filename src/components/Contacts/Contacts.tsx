@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from '../Footer/Footer';
 import mapImg from '../../image/map.png';
 import { contactsData } from '../../utils/constants';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
@@ -35,7 +34,6 @@ const Contacts: React.FC = () => {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 };
