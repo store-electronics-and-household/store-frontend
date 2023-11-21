@@ -19,10 +19,6 @@
   height: 292px;
 }
 
-.tile__image_small {
-  height: 211px;
-}
-
 .tile__content {
   text-decoration: none;
   color: var(--Black, #222);
@@ -48,6 +44,10 @@
   aspect-ratio: 274/235;
   max-width: 274px;
   height: 235px;
+}
+
+.tile__image_small {
+  height: 211px;
 }
 
 .tile__image:after {

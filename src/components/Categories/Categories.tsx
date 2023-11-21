@@ -30,6 +30,11 @@ const Categories: React.FC<{
               </a>
             </li>
             <li className='catalog__model'>
+              <a className='catalog__model-link' href='/catalog'>
+                Samsung Galaxy
+              </a>
+            </li>
+            <li className='catalog__model'>
               <a className='catalog__model-link' href=''>
                 Xiaomi
               </a>

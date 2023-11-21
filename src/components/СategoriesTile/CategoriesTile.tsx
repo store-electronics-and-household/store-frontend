@@ -20,7 +20,7 @@ const CategoriesTile: React.FC<{
         <span className='tile__category-name'>{tile.catTitle}</span>
         <img
           className={
-            location.pathname === '/'
+            location.pathname === '/main'
               ? 'tile__image'
               : 'tile__image tile__image_small'
           }
