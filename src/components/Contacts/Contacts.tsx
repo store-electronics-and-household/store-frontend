@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import mapImg from '../../image/map.png';
 import { contactsData } from '../../utils/constants';
@@ -8,7 +7,6 @@ import Breadcrumb from '../Breadcrumb/Breadcrumb';
 const Contacts: React.FC = () => {
   return (
     <>
-      <Header />
       <section className='contacts'>
         <Breadcrumb currentPlace='Контакты' />
         <div className='contacts__container'>
