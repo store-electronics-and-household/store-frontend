@@ -1,6 +1,6 @@
 import React from 'react';
+import './CategoriesTile.css';
 import { useLocation } from 'react-router-dom';
-import './CategoriesTile.scss';
 
 const CategoriesTile: React.FC<{
   catTitle: string;

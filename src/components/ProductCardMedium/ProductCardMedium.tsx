@@ -1,5 +1,5 @@
 import React from 'react';
-import './ProductCardMedium.scss';
+import './ProductCardMedium.css';
 import vector from '../../images/Vector.png';
 
 const ProductCardMedium: React.FC<{
