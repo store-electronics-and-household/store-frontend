@@ -3,10 +3,10 @@ import './ProductCardMedium.scss';
 import vector from '../../images/Vector.png';
 
 const ProductCardMedium: React.FC<{
-  originPrice?: number;
-  salesPrice?: number;
-  name?: string;
-  discount?: number;
+  originPrice: number;
+  salesPrice: number;
+  name: string;
+  discount: number;
 }> = (product) => {
   const [isLiked, setIsLiked] = React.useState(false);
   function handleLike(): void {
@@ -18,6 +18,7 @@ const ProductCardMedium: React.FC<{
       return prev + 1;
     });
   }
+
   const cardLikeButtonClassName = `card-medium__like ${
     isLiked && 'card-medium__like_active'
   }`;
@@ -55,8 +56,21 @@ const ProductCardMedium: React.FC<{
           <a className='card-medium__link' href='/'>
             <h3 className='card-medium__title'>{product.name}</h3>
             <div className='card-medium__price-container'>
-              <p className='card-medium__price'> {product.originPrice} ₽</p>
-              <p className='card-medium__oldprice'>{product.salesPrice} ₽</p>
+              <p className='card-medium__price'>
+                {' '}
+                {product.originPrice.toLocaleString('ru-RU', {
+                  style: 'currency',
+                  currency: 'RUB',
+                  maximumFractionDigits: 0,
+                })}{' '}
+              </p>
+              <p className='card-medium__oldprice'>
+                {product.salesPrice.toLocaleString('ru-RU', {
+                  style: 'currency',
+                  currency: 'RUB',
+                  maximumFractionDigits: 0,
+                })}
+              </p>
             </div>
           </a>
         </div>

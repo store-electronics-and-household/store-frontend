@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from '../Footer/Footer';
 import smileGoal from '../../image/icons/smile_icon.svg';
 import delivery from '../../image/icons/delivery_icon.svg';
 import originalMedal from '../../image/icons/medal-original_icon.svg';
@@ -80,7 +79,6 @@ const AboutCompany: React.FC = () => {
           </ul>
         </div>
       </section>
-      <Footer />
     </>
   );
 };

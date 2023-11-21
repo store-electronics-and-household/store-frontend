@@ -13,14 +13,22 @@ import Favourites from '../Favourites/Favourites';
 import ProductPage from '../ProductPage/ProductPage';
 import Cart from '../Cart/Cart';
 import PaymentsPage from '../PaymentsPage/PaymentsPage';
-
 import NotFound from '../NotFound/NotFound';
+import Footer from '../Footer/Footer';
 
 const App: React.FC = () => {
   return (
     <div className='App'>
       <Routes>
-        <Route path="/" element={<Header />}>
+        <Route
+          path='/'
+          element={
+            <>
+              <Header />
+              <Footer />
+            </>
+          }
+        >
           <Route path='/main' element={<Main />} />
           <Route path='/about-company' element={<AboutCompany />} />
           <Route path='/contacts' element={<Contacts />} />
