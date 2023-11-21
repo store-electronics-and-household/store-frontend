@@ -33,8 +33,8 @@ const App: React.FC = () => {
           <Route path='/cart' element={<Cart />} />
           <Route path='/payment' element={<PaymentsPage />} />
           <Route path='/' element={<Navigate to='/main' replace />} />
-          <Route path='*' element={<NotFound />} />
         </Route>
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
   );
