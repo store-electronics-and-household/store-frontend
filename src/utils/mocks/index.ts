@@ -1,0 +1,1 @@
+export { mockedCartProducts } from './cartMockedData';

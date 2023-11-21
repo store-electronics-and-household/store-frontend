@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Accordion from '../Accordion/Accordion';
 import { faqList } from '../../utils/constants';
@@ -8,7 +7,6 @@ import Breadcrumb from '../Breadcrumb/Breadcrumb';
 const Faq: React.FC = () => {
   return (
     <>
-      <Header />
       <section className='faq'>
         <Breadcrumb currentPlace='Часто задаваемые вопросы' />
         <div className='faq__container'>

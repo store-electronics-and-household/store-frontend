@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import smileGoal from '../../image/icons/smile_icon.svg';
 import delivery from '../../image/icons/delivery_icon.svg';
@@ -9,7 +8,6 @@ import Breadcrumb from '../Breadcrumb/Breadcrumb';
 const AboutCompany: React.FC = () => {
   return (
     <>
-      <Header />
       <section className='about-company'>
         <Breadcrumb currentPlace='О нас' />
         <div className='about-company__container'>
