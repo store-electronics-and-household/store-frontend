@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import './CategoriesTile.scss';
 
 const CategoriesTile: React.FC<{
@@ -6,11 +7,26 @@ const CategoriesTile: React.FC<{
   catImg: string;
   catUrl?: string;
 }> = (tile) => {
+  const location = useLocation();
   return (
-    <li className='tile__item'>
+    <li
+      className={
+        location.pathname === '/main'
+          ? 'tile__item'
+          : 'tile__item tile__item_small'
+      }
+    >
       <a className='tile__content' href={tile.catUrl}>
         <span className='tile__category-name'>{tile.catTitle}</span>
-        <img className='tile__image' alt='' src={tile.catImg} />
+        <img
+          className={
+            location.pathname === '/'
+              ? 'tile__image'
+              : 'tile__image tile__image_small'
+          }
+          alt=''
+          src={tile.catImg}
+        />
       </a>
     </li>
   );

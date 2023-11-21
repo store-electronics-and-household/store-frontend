@@ -16,7 +16,7 @@ const Catalog: React.FC<{
       <section className='catalog'>
         <Breadcrumb currentPlace='Apple IPhone' />
         <div className='catalog__container-big'>
-          <h1 className='catalog__title'>Смартфоны</h1>
+          <h1 className='catalog__title'>Apple IPhone</h1>
           <div className='catalog__container'>
             <ul className='catalog__collection'>
               <li className='catalog__model'>
@@ -66,7 +66,7 @@ const Catalog: React.FC<{
               </li>
             </ul>
             <ul className='catalog__rendered-list'>
-              {product.map((product) => (
+              {product.slice(0, 12).map((product) => (
                 <ProductCardMedium
                   key={product.id}
                   name={product.name}
