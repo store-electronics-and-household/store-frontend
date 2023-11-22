@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
-import { useFormWithValidation } from '../../hooks/validation';
 import './Signin.css';
 
 interface SignInProps {
@@ -15,23 +17,26 @@ const SignIn: React.FC<SignInProps> = ({
   isOpenSignIn,
   onOpenReg,
 }) => {
-  // const [isFallingAuth, setFallingAuth] = useState<boolean>(false); - если авторизация провалена,будем использовать,чтобы отобразить ссылку на форму восстоновления
-
-  const { values, handleChange, errors, isValid, resetForm } =
-    useFormWithValidation();
-
-  const handleResetForm = (): void => {
-    resetForm();
-  };
-
-  const handleSignIn = (event: React.FormEvent): void => {
-    event.preventDefault();
-    if (isValid) {
-      handleResetForm();
-      // тут будет отправка данных на сервак,если данные валидны
+  const formik = useFormik({
+    initialValues: {
+      loginAuth: '',
+      passwordAuth: '',
+    },
+    validationSchema: Yup.object({
+      loginAuth: Yup.string()
+        .email('Введите корректный email')
+        .required('Введите email'),
+      passwordAuth: Yup.string()
+        .min(6, 'Пароль должен содержать не менее 6 символов')
+        .max(8, 'Пароль не должен превышать 8 символов')
+        .required('Введите Ваш пароль'),
+    }),
+    onSubmit: (values) => {
+      // Обработка отправки данных
       onOpenSignIn();
-    }
-  };
+      formik.resetForm();
+    },
+  });
 
   const handleOpenReg = (): void => {
     onOpenSignIn();
@@ -47,7 +52,11 @@ const SignIn: React.FC<SignInProps> = ({
     >
       <div className='signin__container'>
         <button className='signin__button_cls' onClick={onOpenSignIn} />
-        <form className='signin__form' onSubmit={handleSignIn} noValidate>
+        <form
+          className='signin__form'
+          onSubmit={formik.handleSubmit}
+          noValidate
+        >
           <div className='signin__title-container'>
             <div className='signin__title'>Введите логин и пароль</div>
             <p className='signin__subtitle'>
@@ -56,28 +65,46 @@ const SignIn: React.FC<SignInProps> = ({
           </div>
           <div className='signin__inputs'>
             <input
-              className='signin__input'
+              className={`signin__input ${
+                formik.dirty && !formik.errors.loginAuth
+                  ? 'signin__input_valid'
+                  : 'signin__input_invalid'
+              }`}
               placeholder='E-mail'
               type='email'
               name='loginAuth'
-              value={values.loginAuth}
-              onChange={handleChange}
+              value={formik.values.loginAuth}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               minLength={6}
               required
             />
-            <span className='signin__error-text'>{errors.loginAuth}</span>
+            {formik.touched.loginAuth && formik.errors.loginAuth && (
+              <span className='signin__error-text'>
+                {formik.errors.loginAuth}
+              </span>
+            )}
             <input
-              className='signin__input'
+              className={`signin__input ${
+                formik.dirty && !formik.errors.passwordAuth
+                  ? 'signin__input_valid'
+                  : 'signin__input_invalid'
+              }`}
               placeholder='Пароль'
               type='password'
               minLength={6}
               maxLength={10}
               name='passwordAuth'
-              value={values.passwordAuth}
-              onChange={handleChange}
+              value={formik.values.passwordAuth}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               required
             />
-            <span className='signin__error-text'>{errors.passwordAuth}</span>
+            {formik.touched.passwordAuth && formik.errors.passwordAuth && (
+              <span className='signin__error-text'>
+                {formik.errors.passwordAuth}
+              </span>
+            )}
             <Link className='signin__link' to='/'>
               Не помню пароль
             </Link>
@@ -85,7 +112,7 @@ const SignIn: React.FC<SignInProps> = ({
           <div className='signin__buttons'>
             <button
               className='signin__button signin__button_enter'
-              disabled={!isValid}
+              disabled={!(formik.dirty && formik.isValid)}
               type='submit'
             >
               Войти

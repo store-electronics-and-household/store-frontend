@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import React from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
-import { useFormWithValidation } from '../../hooks/validation';
 import './Signup.css';
 
 interface SignUpProps {
@@ -9,23 +11,31 @@ interface SignUpProps {
 }
 
 const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
-  // const [isFallingAuth, setFallingAuth] = useState<boolean>(false); - если авторизация провалена,будем использовать,чтобы отобразить ссылку на форму восстоновления
-
-  const { values, handleChange, errors, isValid, resetForm } =
-    useFormWithValidation();
-
-  const handleResetForm = (): void => {
-    resetForm();
-  };
-
-  const handleSignUp = (event: React.FormEvent): void => {
-    event.preventDefault();
-    if (isValid) {
-      handleResetForm();
-      // тут будет отправка данных на сервак,если данные валидны
+  const formik = useFormik({
+    initialValues: {
+      loginReg: '',
+      passwordReg: '',
+      ConfirmPass: '',
+      RegCheckbox: false,
+    },
+    validationSchema: Yup.object({
+      loginReg: Yup.string()
+        .email('Введите корректный email')
+        .required('Введите email'),
+      passwordReg: Yup.string()
+        .min(6, 'Пароль должен содержать не менее 6 символов')
+        .max(8, 'Пароль не должен превышать 8 символов')
+        .required('Введите Ваш пароль'),
+      ConfirmPass: Yup.string()
+        .oneOf([Yup.ref('passwordReg')], 'Пароль не совпадает')
+        .required('Подтвердите пароль'),
+      RegCheckbox: Yup.boolean().oneOf([true], '').required(),
+    }),
+    onSubmit: (values) => {
+      // Обработка отправки данных
       onOpenSignUp();
-    }
-  };
+    },
+  });
 
   return (
     <PopupTemplate
@@ -36,52 +46,83 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
     >
       <div className='signup__container'>
         <button className='signup__button_cls' onClick={onOpenSignUp} />
-        <form className='signup__form' onSubmit={handleSignUp} noValidate>
+        <form
+          className='signup__form'
+          onSubmit={formik.handleSubmit}
+          noValidate
+        >
           <div className='signup__title-container'>
-            <div className='signup__title'>Зарегистируйтесь</div>
+            <div className='signup__title'>Зарегистрируйтесь</div>
             <p className='signup__subtitle'>Придумайте логин и пароль</p>
           </div>
           <div className='signup__inputs'>
             <input
-              className='signup__input'
-              placeholder='Логин'
+              className={`signup__input ${
+                formik.dirty && !formik.errors.loginReg
+                  ? 'signup__input_valid'
+                  : 'signup__input_invalid'
+              }`}
+              placeholder='E-mail'
               type='text'
               name='loginReg'
-              value={values.loginReg}
-              onChange={handleChange}
+              value={formik.values.loginReg}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               minLength={6}
               required
             />
-            <span className='signup__error-text'>{errors.loginReg}</span>
+            {formik.touched.loginReg && formik.errors.loginReg && (
+              <span className='signup__error-text'>
+                {formik.errors.loginReg}
+              </span>
+            )}
             <input
-              className='signup__input'
+              className={`signup__input ${
+                formik.dirty && !formik.errors.passwordReg
+                  ? 'signup__input_valid'
+                  : 'signup__input_invalid'
+              }`}
               placeholder='Пароль'
               type='password'
               minLength={6}
               maxLength={8}
               name='passwordReg'
-              value={values.passwordReg}
-              onChange={handleChange}
+              value={formik.values.passwordReg}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               required
             />
-            <span className='signup__error-text'>{errors.passwordReg}</span>
+            {formik.touched.passwordReg && formik.errors.passwordReg && (
+              <span className='signup__error-text'>
+                {formik.errors.passwordReg}
+              </span>
+            )}
             <input
-              className='signup__input'
+              className={`signup__input ${
+                formik.dirty && !formik.errors.ConfirmPass
+                  ? 'signup__input_valid'
+                  : 'signup__input_invalid'
+              }`}
               placeholder='Повторите пароль'
               type='password'
               minLength={6}
               maxLength={8}
               name='ConfirmPass'
-              value={values.ConfirmPass}
-              onChange={handleChange}
+              value={formik.values.ConfirmPass}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               required
             />
-            <span className='signup__error-text'>{}</span>
+            {formik.touched.ConfirmPass && formik.errors.ConfirmPass && (
+              <span className='signup__error-text'>
+                {formik.errors.ConfirmPass}
+              </span>
+            )}
           </div>
           <div className='signup__buttons'>
             <button
               className='signup__button signup__button_enter'
-              disabled={!isValid}
+              disabled={!(formik.dirty && formik.isValid)}
               type='submit'
             >
               Зарегистрироваться
@@ -93,7 +134,9 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
               type='checkbox'
               id='RegCheckbox'
               name='RegCheckbox'
-              required
+              checked={formik.values.RegCheckbox}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
             />
             <label className='signup__checkbox-label' htmlFor='RegCheckbox'>
               <span className='signup__checkbox-text'>
@@ -103,6 +146,11 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
                 </span>
               </span>
             </label>
+            {formik.touched.RegCheckbox && formik.errors.RegCheckbox && (
+              <span className='signup__error-text'>
+                {formik.errors.RegCheckbox}
+              </span>
+            )}
           </div>
         </form>
       </div>
