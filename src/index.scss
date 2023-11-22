@@ -1,4 +1,4 @@
-@import '~bulma';
+// @import '~bulma';
 
 body {
   margin: 0;
@@ -20,12 +20,9 @@ body {
 @import '../src/components/Contacts/Contacts';
 @import '../src/components/Faq/Faq';
 @import '../src/components/Footer/Footer';
+@import '../src/components/Cart/Cart';
+@import '../src/components/ProductCardMedium/ProductCardMedium';
 @import '../src/components/PopupTemplate/PopupTemplate';
 @import '../src/components/SignIn/Signin';
 @import '../src/components/signup/Signup';
 @import '../src/components/WarningPopup/WarningPopup';
-
-
-
-@import '../src/components/Cart/Cart';
-@import '../src/components/ProductCardMedium/ProductCardMedium';
