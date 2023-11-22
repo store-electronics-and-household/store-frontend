@@ -39,15 +39,17 @@
   background-size: cover;
   width: 100%;
   z-index: 0;
-  padding: 81px 24px 0;
+  padding: 110px 24px 0;
   object-fit: contain;
   aspect-ratio: 274/235;
   max-width: 274px;
-  height: 235px;
+  height: 206px;
+  object-fit: cover;
+  z-index: 0;
 }
 
 .tile__image_small {
-  height: 211px;
+  height: 182px;
 }
 
 .tile__image:after {
