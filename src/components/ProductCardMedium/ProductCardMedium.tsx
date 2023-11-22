@@ -1,5 +1,5 @@
 import React from 'react';
-import './ProductCardMedium.css';
+// import './ProductCardMedium.css';
 import vector from '../../images/Vector.png';
 
 const ProductCardMedium: React.FC<{
@@ -9,11 +9,11 @@ const ProductCardMedium: React.FC<{
   discount: number;
 }> = (product) => {
   const [isLiked, setIsLiked] = React.useState(false);
-  function handleLike(): void {
+  function handleLike (): void {
     setIsLiked(!isLiked);
   }
   const [isCounter, setIsCounter] = React.useState(0);
-  function handleAddToBasket(): void {
+  function handleAddToBasket (): void {
     setIsCounter((prev) => {
       return prev + 1;
     });

@@ -6,7 +6,8 @@
 }
 
 .card-medium__like {
-  background-image: url('../../images/1.svg');
+  // background-image: url('../../images/1.svg');
+  background-image: url('#{$images-dir}1.svg');
   background-repeat: no-repeat;
   width: 32px;
   height: 32px;
@@ -20,11 +21,13 @@
 }
 
 .card-medium__like:hover {
-  background-image: url('../../images/hover-like.svg');
+  // background-image: url('../../images/hover-like.svg');
+  background-image: url('#{$images-dir}hover-like.svg');
 }
 
 .card-medium__like_active {
-  background-image: url('../../images/liked.svg');
+  // background-image: url('../../images/liked.svg');
+  background-image: url('#{$images-dir}liked.svg');
   background-repeat: no-repeat;
   width: 32px;
   height: 32px;
@@ -64,7 +67,8 @@
 }
 
 .card-medium__buy {
-  background-image: url('../../images/shopping.svg');
+  // background-image: url('../../images/shopping.svg');
+  background-image: url('#{$images-dir}shopping.svg');
   width: 64px;
   height: 56px;
   background-position: center;
@@ -150,7 +154,8 @@
 
 .card-medium__buy_big {
   width: 82px;
-  background-image: url('../../images/shopping1.svg');
+  // background-image: url('../../images/shopping1.svg');
+  background-image: url('#{$images-dir}shopping1.svg');
   height: 56px;
   background-position: 38px;
   border-radius: 40px;
