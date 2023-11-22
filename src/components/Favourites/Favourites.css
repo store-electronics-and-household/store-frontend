@@ -11,7 +11,7 @@
 .favourites__container {
   display: flex;
   flex-direction: column;
-  margin-top: 64px;
+  margin: 64px auto 140px;
   padding-right: 40px;
   padding-left: 40px;
   width: 1360px;
@@ -34,4 +34,5 @@
   margin-top: 44px;
   grid-template-columns: repeat(4, 1fr);
   max-width: 1360px;
+  list-style: none;
 }
