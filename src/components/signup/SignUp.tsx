@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
 import { useFormWithValidation } from '../../hooks/validation';
+import './Signup.css';
 
-const SignUp: React.FC = () => {
-  const [isSignUpPopupOpen, setSignUpPopupOpen] = useState<boolean>(false);
+interface SignUpProps {
+  onOpenSignUp: () => void;
+  isOpenSignUp: boolean;
+}
+
+const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
   // const [isFallingAuth, setFallingAuth] = useState<boolean>(false); - если авторизация провалена,будем использовать,чтобы отобразить ссылку на форму восстоновления
 
   const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation();
-
-  const toggleSignUpPopup = (): void => {
-    setSignUpPopupOpen(!isSignUpPopupOpen);
-  };
 
   const handleResetForm = (): void => {
     resetForm();
@@ -22,19 +23,19 @@ const SignUp: React.FC = () => {
     if (isValid) {
       handleResetForm();
       // тут будет отправка данных на сервак,если данные валидны
-      toggleSignUpPopup();
+      onOpenSignUp();
     }
   };
 
   return (
     <PopupTemplate
-      isOpen={isSignUpPopupOpen}
-      OnClose={toggleSignUpPopup}
+      isOpen={isOpenSignUp}
+      OnClose={onOpenSignUp}
       popupClass='popup'
       popupClassOverlay='popup_overlay'
     >
       <div className='signup__container'>
-        <button className='signup__button_cls' onClick={toggleSignUpPopup} />
+        <button className='signup__button_cls' onClick={onOpenSignUp} />
         <form className='signup__form' onSubmit={handleSignUp} noValidate>
           <div className='signup__title-container'>
             <div className='signup__title'>Зарегистируйтесь</div>
@@ -63,7 +64,7 @@ const SignUp: React.FC = () => {
               onChange={handleChange}
               required
             />
-            <span className='signup__info-for-input'>Не менее 6 символов</span>
+            <span className='signup__error-text'>{errors.passwordReg}</span>
             <input
               className='signup__input'
               placeholder='Повторите пароль'
@@ -75,7 +76,7 @@ const SignUp: React.FC = () => {
               onChange={handleChange}
               required
             />
-            <span className='signup__success-error'>Пароли не совпадают</span>
+            <span className='signup__error-text'>{}</span>
           </div>
           <div className='signup__buttons'>
             <button

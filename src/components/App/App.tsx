@@ -15,13 +15,26 @@ import Cart from '../Cart/Cart';
 import PaymentsPage from '../PaymentsPage/PaymentsPage';
 import NotFound from '../NotFound/NotFound';
 import Footer from '../Footer/Footer';
+import WarningPopup from '../WarningPopup/WarningPopup';
+import SignIn from '../SignIn/SignIn';
+import SignUp from '../signup/SignUp';
 
 const App: React.FC = () => {
   // const [isLogged, setIsLogged] = useState<boolean>(false);
-  const [isWarningPopupOpen, setWarningPopupOpen] = useState<boolean>(true);
+  const [isWarningPopupOpen, setWarningPopupOpen] = useState<boolean>(false);
+  const [isSignInPopupOpen, setSignInPopupOpen] = useState<boolean>(false);
+  const [isSignUpPopupOpen, setSignUpPopupOpen] = useState<boolean>(false);
 
   const toggleWarningPopup = (): void => {
     setWarningPopupOpen(!isWarningPopupOpen);
+  };
+
+  const toggleSignInPopup = (): void => {
+    setSignInPopupOpen(!isSignInPopupOpen);
+  };
+
+  const toggleSignUpPopup = (): void => {
+    setSignUpPopupOpen(!isSignUpPopupOpen);
   };
 
   return (
@@ -32,6 +45,20 @@ const App: React.FC = () => {
           element={
             <>
               <Header toggleWarningPopup={toggleWarningPopup} />
+              <WarningPopup
+                isOpen={isWarningPopupOpen}
+                onOpenWarningPopup={toggleWarningPopup}
+                onOpenAuth={toggleSignInPopup}
+              />
+              <SignIn
+                onOpenSignIn={toggleSignInPopup}
+                isOpenSignIn={isSignInPopupOpen}
+                onOpenReg={toggleSignUpPopup}
+              />
+              <SignUp
+                onOpenSignUp={toggleSignUpPopup}
+                isOpenSignUp={isSignUpPopupOpen}
+              />
               <Footer />
             </>
           }

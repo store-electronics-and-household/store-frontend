@@ -70,7 +70,11 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
           </div>
 
           <nav className='header__navbar'>
-            <NavLink className='header__navbar-link' to='/'>
+            <NavLink
+              className='header__navbar-link'
+              to='/'
+              onClick={handleNavLinkClick}
+            >
               <img
                 className='header__navbar-icon'
                 src={deliveryIcon}
@@ -90,12 +94,15 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
               />
             </NavLink>
 
-            <NavLink className='header__navbar-link' to='/cart'>
+            <NavLink
+              className='header__navbar-link'
+              to='/cart'
+              onClick={handleNavLinkClick}
+            >
               <img
                 className='header__navbar-icon'
                 src={busketIcon}
                 alt="Перейти в раздел 'Корзина'"
-                onClick={toggleWarningPopup}
               />
             </NavLink>
           </nav>

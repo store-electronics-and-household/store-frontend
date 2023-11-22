@@ -1,17 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
 import { useFormWithValidation } from '../../hooks/validation';
+import './Signin.css';
 
-const SignIn: React.FC = () => {
-  const [isSignInPopupOpen, setSignInPopupOpen] = useState<boolean>(true);
+interface SignInProps {
+  onOpenSignIn: () => void;
+  isOpenSignIn: boolean;
+  onOpenReg: () => void;
+}
+
+const SignIn: React.FC<SignInProps> = ({
+  onOpenSignIn,
+  isOpenSignIn,
+  onOpenReg,
+}) => {
   // const [isFallingAuth, setFallingAuth] = useState<boolean>(false); - если авторизация провалена,будем использовать,чтобы отобразить ссылку на форму восстоновления
 
   const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation();
-
-  const toggleSignInPopup = (): void => {
-    setSignInPopupOpen(!isSignInPopupOpen);
-  };
 
   const handleResetForm = (): void => {
     resetForm();
@@ -22,19 +29,24 @@ const SignIn: React.FC = () => {
     if (isValid) {
       handleResetForm();
       // тут будет отправка данных на сервак,если данные валидны
-      toggleSignInPopup();
+      onOpenSignIn();
     }
+  };
+
+  const handleOpenReg = (): void => {
+    onOpenSignIn();
+    onOpenReg();
   };
 
   return (
     <PopupTemplate
-      isOpen={isSignInPopupOpen}
-      OnClose={toggleSignInPopup}
+      isOpen={isOpenSignIn}
+      OnClose={onOpenSignIn}
       popupClass='popup'
       popupClassOverlay='popup_overlay'
     >
       <div className='signin__container'>
-        <button className='signin__button_cls' onClick={toggleSignInPopup} />
+        <button className='signin__button_cls' onClick={onOpenSignIn} />
         <form className='signin__form' onSubmit={handleSignIn} noValidate>
           <div className='signin__title-container'>
             <div className='signin__title'>Введите логин и пароль</div>
@@ -45,8 +57,8 @@ const SignIn: React.FC = () => {
           <div className='signin__inputs'>
             <input
               className='signin__input'
-              placeholder='Логин'
-              type='text'
+              placeholder='E-mail'
+              type='email'
               name='loginAuth'
               value={values.loginAuth}
               onChange={handleChange}
@@ -66,6 +78,9 @@ const SignIn: React.FC = () => {
               required
             />
             <span className='signin__error-text'>{errors.passwordAuth}</span>
+            <Link className='signin__link' to='/'>
+              Не помню пароль
+            </Link>
           </div>
           <div className='signin__buttons'>
             <button
@@ -75,7 +90,10 @@ const SignIn: React.FC = () => {
             >
               Войти
             </button>
-            <button className='signin__button signin__button_registr'>
+            <button
+              className='signin__button signin__button_registr'
+              onClick={handleOpenReg}
+            >
               Регистрация
             </button>
           </div>

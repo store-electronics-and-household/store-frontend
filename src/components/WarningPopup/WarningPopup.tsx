@@ -1,37 +1,32 @@
-import React, { useState } from 'react';
-import PopupTemplate from '../PopupTemplate/PopupTemplate';
+import React from 'react';
 import './WarningPopup.css';
 
-const WarningPopup: React.FC = () => {
-  const [isWarningPopupOpen, setWarningPopupOpen] = useState(true);
+interface WarningPopupProps {
+  isOpen: boolean;
+  onOpenAuth: () => void;
+  onOpenWarningPopup: () => void;
+}
 
-  // const openIWarningPopupOpen = () => {
-  //   setWarningPopupOpen(true);
-  // };
-
-  const closeWarningPopupOpen = (): void => {
-    setWarningPopupOpen(false);
+const WarningPopup: React.FC<WarningPopupProps> = ({
+  isOpen,
+  onOpenAuth,
+  onOpenWarningPopup,
+}) => {
+  const handleOpenAuth = (): void => {
+    onOpenAuth();
+    onOpenWarningPopup();
   };
-
   return (
-    <PopupTemplate
-      isOpen={isWarningPopupOpen}
-      OnClose={closeWarningPopupOpen}
-      popupClass='popup'
-      popupClassOverlay='popup_overlay-transperent'
-    >
+    <div className={`warningPopup ${isOpen ? '' : 'warningPopup_none'}`}>
       <div className='warning-popup__container'>
         <p className='warning-popup__text'>
           Для добавления товара в корзину необходимо авторизоваться
         </p>
-        <button
-          className='warning-popup__cls-btn'
-          onClick={closeWarningPopupOpen}
-        >
+        <button className='warning-popup__cls-btn' onClick={handleOpenAuth}>
           Войти
         </button>
       </div>
-    </PopupTemplate>
+    </div>
   );
 };
 

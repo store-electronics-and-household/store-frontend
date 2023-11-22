@@ -11,4 +11,5 @@ export interface PopupProps {
   popupClass: string;
   popupClassOverlay: string;
   children: ReactNode;
+  style?: React.CSSProperties;
 }

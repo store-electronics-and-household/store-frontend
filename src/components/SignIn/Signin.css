@@ -34,7 +34,7 @@
 }
 
 .signin__subtitle {
-  max-width: 313px;
+  max-width: 400px;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -150,4 +150,16 @@
 
 .signin__button_cls:active {
   transform: scale(0.95);
+}
+
+.signin__link {
+  text-decoration: none;
+  margin-top: 20px;
+  align-self: center;
+  color: #0500FF;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: center;
 }
