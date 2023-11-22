@@ -12,7 +12,7 @@ export const categoriesList = [
     catTitle: 'Телефоны и аксессуары',
     catImg:
       'https://images.unsplash.com/photo-1585060544812-6b45742d762f?q=80&w=1762&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/',
+    catUrl: '/categories',
   },
   {
     catId: 3,
@@ -269,3 +269,55 @@ export const productSpecifyValue = {
   ram: 8,
   batteryCapacity: 4912,
 };
+
+/* это нужно будет удалить после--------------- */
+export const subCategoriesList = [
+  {
+    id: 1,
+    catTitle: 'Apple IPhone',
+    catImg: '',
+    catUrl: '/catalog',
+  },
+  {
+    id: 2,
+    catTitle: 'Samsung Galaxy',
+    catImg: '',
+    catUrl: '/',
+  },
+  {
+    id: 3,
+    catTitle: 'Xiaomi',
+    catImg: '',
+    catUrl: '/',
+  },
+  {
+    id: 4,
+    catTitle: 'Google',
+    catImg: '',
+    catUrl: '/',
+  },
+  {
+    id: 5,
+    catTitle: 'Honor',
+    catImg: '',
+    catUrl: '/',
+  },
+  {
+    id: 6,
+    catTitle: 'Realme',
+    catImg: '',
+    catUrl: '/',
+  },
+  {
+    id: 7,
+    catTitle: 'HUAWEI',
+    catImg: '',
+    catUrl: '/',
+  },
+  {
+    id: 8,
+    catTitle: 'OnePlus',
+    catImg: '',
+    catUrl: '/',
+  },
+];

@@ -15,6 +15,10 @@
   height: 316px;
 }
 
+.tile__item_small {
+  height: 292px;
+}
+
 .tile__content {
   text-decoration: none;
   color: var(--Black, #222);
@@ -34,12 +38,16 @@
   border-radius: 25px;
   background-size: cover;
   width: 100%;
-  position: relative;
   z-index: 0;
   padding: 81px 24px 0;
   object-fit: contain;
   aspect-ratio: 274/235;
   max-width: 274px;
+  height: 235px;
+}
+
+.tile__image_small {
+  height: 211px;
 }
 
 .tile__image:after {
@@ -47,8 +55,9 @@
   position: absolute;
   font-size: 16px;
   content: 'Не удалось загрузить изображение';
-  top: 150px;
-  left: 70px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: var(--Black, #222);
   text-align: center;
 }
