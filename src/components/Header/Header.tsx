@@ -13,78 +13,95 @@ import CatalogMenu from '../CatalogMenu/CatalogMenu';
 
 import './Header.css';
 
-const Header: FC = () => {
+interface HeaderProps {
+  toggleWarningPopup: () => void;
+}
+
+const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleClick = (): void => {
-    setIsVisible(current => !current);
+    setIsVisible((current) => !current);
+  };
+
+  const handleNavLinkClick = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ): void => {
+    event.preventDefault();
+    toggleWarningPopup();
   };
 
   return (
     <>
-    <header className='header'>
-    <div className='header__container'>
-      <Link to='/'>
-        <img
-          className='header__logo'
-          src={headerLogo}
-          alt='Перейти на главную'
-        />
-      </Link>
-
-      {isVisible && <CatalogMenu />}
-
-      <button onClick={handleClick} className='header__catalog-button'>Каталог</button>
-
-      <div className='header__searchbar-container'>
-        <div className='header__searchbar-wrapper'>
-          <button className='header__searchbar-button'>
+      <header className='header'>
+        <div className='header__container'>
+          <Link to='/'>
             <img
-              className='header__searchbar-button-icon'
-              src={searchIcon}
-              alt='Строка поиска'
+              className='header__logo'
+              src={headerLogo}
+              alt='Перейти на главную'
             />
+          </Link>
+
+          {isVisible && <CatalogMenu />}
+
+          <button onClick={handleClick} className='header__catalog-button'>
+            Каталог
           </button>
 
-          <input
-            className='header__searchbar-input'
-            placeholder='Поиск'
-            autoComplete='off'
-            onChange={() => null}
-            value=''
-          />
+          <div className='header__searchbar-container'>
+            <div className='header__searchbar-wrapper'>
+              <button className='header__searchbar-button'>
+                <img
+                  className='header__searchbar-button-icon'
+                  src={searchIcon}
+                  alt='Строка поиска'
+                />
+              </button>
+
+              <input
+                className='header__searchbar-input'
+                placeholder='Поиск'
+                autoComplete='off'
+                onChange={() => null}
+                value=''
+              />
+            </div>
+          </div>
+
+          <nav className='header__navbar'>
+            <NavLink
+              className='header__navbar-link'
+              to='/'
+              onClick={handleNavLinkClick}
+            >
+              <img
+                className='header__navbar-icon'
+                src={deliveryIcon}
+                alt="Перейти в раздел 'Доставка'"
+              />
+            </NavLink>
+
+            <NavLink className='header__navbar-link' to='/favourites'>
+              <img
+                className='header__navbar-icon'
+                src={favouriteIcon}
+                alt="Перейти в раздел 'Избранное'"
+              />
+            </NavLink>
+
+            <NavLink className='header__navbar-link' to='/cart'>
+              <img
+                className='header__navbar-icon'
+                src={busketIcon}
+                alt="Перейти в раздел 'Корзина'"
+              />
+            </NavLink>
+          </nav>
         </div>
-      </div>
-
-      <nav className='header__navbar'>
-        <NavLink className='header__navbar-link' to='/'>
-          <img
-            className='header__navbar-icon'
-            src={deliveryIcon}
-            alt="Перейти в раздел 'Доставка'"
-          />
-        </NavLink>
-
-        <NavLink className='header__navbar-link' to='/favourites'>
-          <img
-            className='header__navbar-icon'
-            src={favouriteIcon}
-            alt="Перейти в раздел 'Избранное'"
-          />
-        </NavLink>
-
-        <NavLink className='header__navbar-link' to='/cart'>
-          <img
-            className='header__navbar-icon'
-            src={busketIcon}
-            alt="Перейти в раздел 'Корзина'"
-          />
-        </NavLink>
-      </nav>
-    </div>
-  </header>
-  <Outlet />
-  </>
+      </header>
+      <Outlet />
+    </> 
   );
 };
 

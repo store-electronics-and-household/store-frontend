@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Header from '../Header/Header';
@@ -15,8 +15,28 @@ import Cart from '../Cart/Cart';
 import PaymentsPage from '../PaymentsPage/PaymentsPage';
 import NotFound from '../NotFound/NotFound';
 import Footer from '../Footer/Footer';
+import WarningPopup from '../WarningPopup/WarningPopup';
+import SignIn from '../SignIn/SignIn';
+import SignUp from '../signup/SignUp';
 
 const App: React.FC = () => {
+  // const [isLogged, setIsLogged] = useState<boolean>(false);
+  const [isWarningPopupOpen, setWarningPopupOpen] = useState<boolean>(false);
+  const [isSignInPopupOpen, setSignInPopupOpen] = useState<boolean>(false);
+  const [isSignUpPopupOpen, setSignUpPopupOpen] = useState<boolean>(false);
+
+  const toggleWarningPopup = (): void => {
+    setWarningPopupOpen(!isWarningPopupOpen);
+  };
+
+  const toggleSignInPopup = (): void => {
+    setSignInPopupOpen(!isSignInPopupOpen);
+  };
+
+  const toggleSignUpPopup = (): void => {
+    setSignUpPopupOpen(!isSignUpPopupOpen);
+  };
+
   return (
     <div className='App'>
       <Routes>
@@ -24,7 +44,21 @@ const App: React.FC = () => {
           path='/'
           element={
             <>
-              <Header />
+              <Header toggleWarningPopup={toggleWarningPopup} />
+              <WarningPopup
+                isOpen={isWarningPopupOpen}
+                onOpenWarningPopup={toggleWarningPopup}
+                onOpenAuth={toggleSignInPopup}
+              />
+              <SignIn
+                onOpenSignIn={toggleSignInPopup}
+                isOpenSignIn={isSignInPopupOpen}
+                onOpenReg={toggleSignUpPopup}
+              />
+              <SignUp
+                onOpenSignUp={toggleSignUpPopup}
+                isOpenSignUp={isSignUpPopupOpen}
+              />
               <Footer />
             </>
           }
