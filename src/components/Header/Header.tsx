@@ -82,7 +82,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
               />
             </NavLink>
 
-            <NavLink className='header__navbar-link' to='/'>
+            <NavLink className='header__navbar-link' to='/favourites'>
               <img
                 className='header__navbar-icon'
                 src={favouriteIcon}
