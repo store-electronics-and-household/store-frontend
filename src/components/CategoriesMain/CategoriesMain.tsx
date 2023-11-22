@@ -1,5 +1,5 @@
 import React from 'react';
-import './CategoriesMain.scss';
+import './CategoriesMain.css';
 import { categoriesList } from '../../utils/constants';
 import CategoriesTile from '../СategoriesTile/CategoriesTile';
 
@@ -8,7 +8,7 @@ const CategoriesMain: React.FC<{
   catTitle?: string;
   catImg?: string;
   catUrl?: string;
-}> = () => {
+}> = (tile) => {
   return (
     <section className='tile-main'>
       <div className='tile-main__text'>
