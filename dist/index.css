@@ -1,10 +1,22 @@
 @import url("./vendor/normalize.css");
 @import url("../src/vendor/fonts.css");
+@import url("https://fonts.cdnfonts.com/css/wix-madefor-text");
 body {
   margin: 0;
   font-family: "Inter", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.payments-page__summary-final, .payments-page__summary-row, .payments-page__good-numbers, .payments-page__delivery-type, .payments-page__form-title, .payments-page__title {
+  margin: 0;
+  color: #222;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .discount {
@@ -659,15 +671,159 @@ body {
   color: white;
 }
 
+.payments-page {
+  margin: 0 0 auto;
+}
+
+.payments-page__title {
+  margin: 44px 0 44px 40px;
+  font-size: 56px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.payments-page__container {
+  width: 1360px;
+  margin: 0 auto 140px;
+  display: flex;
+}
+
+.payments-page__input-containers {
+  width: 899px;
+  height: 635px;
+}
+
+.payments-page__client-name {
+  width: 100%;
+  height: 220px;
+  margin-bottom: 24px;
+  background-color: #EDEDED;
+  border-radius: 24px;
+}
+
+.payments-page__client-address {
+  width: 100%;
+  height: 391px;
+  background-color: #EDEDED;
+  border-radius: 24px;
+}
+
+.payments-page__title-container {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 40px;
+}
+
+.payments-page__form-title {
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 40px 0 24px 40px;
+}
+
+.payments-page__line {
+  border-bottom: 1px #B6B6B6 solid;
+  margin: 0 40px;
+}
+
+.payments-page__delivery-type {
+  background: var(--main-white, #FFF);
+  width: 126px;
+  height: 35px;
+  border-radius: 24px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  margin: auto 0;
+  border: none;
+}
+
+.payments-page__delivery-type:first-of-type {
+  width: 92px;
+  margin: auto 24px auto auto;
+}
+
+.payments-page__delivery-type:last-of-type {
+  width: 126px;
+}
+
+.payments-page__summary {
+  background-color: #EDEDED;
+  border-radius: 24px;
+  width: 437px;
+  margin-left: 24px;
+}
+
+.payments-page__cart-container {
+  margin: 24px 40px 24px 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 16px;
+}
+
+.payments-page__good {
+  background: var(--main-white, #FFF);
+  width: 100px;
+  height: 100px;
+  border-radius: 13.333px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.payments-page__good-photo {
+  margin: auto;
+  height: 72px;
+  max-width: 59px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.payments-page__good-numbers {
+  position: absolute;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  bottom: 6px;
+  right: 6px;
+  line-height: 14px;
+  font-family: "Wix Madefor Display";
+}
+
+.payments-page__summary-data {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 40px 24px 40px;
+}
+
+.payments-page__summary-row {
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.payments-page__summary-row_discount {
+  color: var(--Dark-gray, #B6B6B6);
+}
+
+.payments-page__summary-final {
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  margin: 24px 0 40px;
+}
+
 .card-medium {
   max-width: 322px;
   height: 459px;
   margin: auto;
   position: relative;
+  list-style: none;
 }
 
 .card-medium__like {
-  background-image: url("./images/1.svg");
+  background-image: url("./image/1.svg");
   background-repeat: no-repeat;
   width: 32px;
   height: 32px;
@@ -681,11 +837,11 @@ body {
 }
 
 .card-medium__like:hover {
-  background-image: url("./images/hover-like.svg");
+  background-image: url("./image/hover-like.svg");
 }
 
 .card-medium__like_active {
-  background-image: url("./images/liked.svg");
+  background-image: url("./image/liked.svg");
   background-repeat: no-repeat;
   width: 32px;
   height: 32px;
@@ -725,7 +881,7 @@ body {
 }
 
 .card-medium__buy {
-  background-image: url("./images/shopping.svg");
+  background-image: url("./image/shopping.svg");
   width: 64px;
   height: 56px;
   background-position: center;
@@ -758,6 +914,7 @@ body {
   margin-bottom: 8px;
   margin-top: 5px;
   margin-bottom: 10px;
+  margin: 0;
 }
 
 .card-medium__price {
@@ -811,7 +968,7 @@ body {
 
 .card-medium__buy_big {
   width: 82px;
-  background-image: url("./images/shopping1.svg");
+  background-image: url("./image/shopping1.svg");
   height: 56px;
   background-position: 38px;
   border-radius: 40px;
@@ -824,32 +981,435 @@ body {
   background-repeat: no-repeat;
 }
 
-.favourites {
-  display: flex;
-  width: 1440px;
-  box-sizing: border-box;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }
 
-.favourites__container {
+.popup_overlay {
+  background-color: rgba(34, 34, 34, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+}
+
+.signin__container {
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin-top: 64px;
-  padding-right: 40px;
-  padding-left: 40px;
-  width: 1360px;
+  align-items: center;
+  max-width: 593px;
+  min-height: 570px;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 80px;
+  background-color: #fff;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.07);
+  border-radius: 25px;
 }
 
-.favourites__header {
+.signin__title-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.signin__title {
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 146%;
   margin: 0;
-  align-self: flex-start;
-  font-family: Helvetica Neue;
+  font-family: "Wix Madefor Display";
+}
+
+.signin__subtitle {
+  max-width: 400px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  margin: 4px 0;
+  font-family: "Wix Madefor Display";
+}
+
+.signin__inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.signin__input {
+  padding: 10px 12px 10px;
+  border-radius: 12px;
+  border: 1px solid #B6B6B6;
+  width: 355px;
+  height: 43px;
+  margin-top: 12px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.signin__input:first-of-type {
+  margin-top: 0px;
+}
+
+.signin__input:focus {
+  border-color: black;
+}
+
+.signin__input_valid {
+  border: 1px solid #60FF23;
+}
+
+.signin__input_invalid {
+  border: 1px solid #FF014E;
+}
+
+.signin__error-text {
+  color: #FF014E;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  max-width: 355px;
+  margin: 8px 0 0;
+}
+
+.signin__buttons {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.signin__button {
+  border-radius: 40px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  width: 384px;
+  height: 56px;
+  cursor: pointer;
+  margin-bottom: 12px;
+  font-family: "Wix Madefor Display";
+}
+
+.signin__button:active {
+  transform: scale(0.95);
+}
+
+.signin__button:last-child {
+  margin-bottom: 12px;
+}
+
+.signin__button_enter {
+  background: #222;
+  color: #fff;
+  border: none;
+}
+
+.signin__button_enter:disabled {
+  background: #B6B6B6;
+}
+
+.signin__button_registr {
+  background: #fff;
+  color: black;
+}
+
+.signin__button_cls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-image: url("./image/icons/popup__button-close.svg");
+  box-sizing: border-box;
+  border-radius: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+}
+
+.signin__button_cls:active {
+  transform: scale(0.95);
+}
+
+.signin__link {
+  text-decoration: none;
+  margin-top: 20px;
+  align-self: center;
+  color: #0500FF;
+  font-size: 16px;
+  font-style: normal;
   font-weight: 500;
-  font-size: 56px;
-  line-height: 68.38px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.signup__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 593px;
+  min-height: 570px;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 80px;
+  background-color: #fff;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.07);
+  border-radius: 25px;
+}
+
+.signup__title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.signup__title {
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 146%;
+  margin: 0;
+  font-family: "Wix Madefor Display";
+}
+
+.signup__subtitle {
+  max-width: 313px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  margin: 4px 0;
+  font-family: "Wix Madefor Display";
+}
+
+.signup__inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.signup__input {
+  padding: 10px 12px 10px;
+  border-radius: 12px;
+  border: 1px solid #B6B6B6;
+  width: 355px;
+  height: 43px;
+  margin-top: 12px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.signup__input:first-of-type {
+  margin-top: 0px;
+}
+
+.signup__input:focus {
+  border-color: black;
+}
+
+.signup__input_valid {
+  border: 1px solid #60FF23;
+}
+
+.signup__input_invalid {
+  border: 1px solid #FF014E;
+}
+
+.signup__error-text {
+  color: #FF014E;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  max-width: 380px;
+  margin: 8px 0 0;
+}
+
+.signup__info-for-input {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #B6B6B6;
+  align-self: flex-start;
+}
+
+.signup__buttons {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup__button {
+  border-radius: 40px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  width: 384px;
+  height: 56px;
+  cursor: pointer;
+  margin-bottom: 12px;
+  font-family: "Wix Madefor Display";
+}
+
+.signup__button:active {
+  transform: scale(0.95);
+}
+
+.signup__button:last-child {
+  margin-bottom: 12px;
+}
+
+.signup__button_enter {
+  background: #222;
+  color: #fff;
+  border: none;
+}
+
+.signup__button_enter:disabled {
+  background: #B6B6B6;
+}
+
+.signup__button_registr {
+  background: #fff;
+  color: black;
+}
+
+.signup__button_cls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-image: url("./image/icons/popup__button-close.svg");
+  box-sizing: border-box;
+  border-radius: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+}
+
+.signup__button_cls:active {
+  transform: scale(0.95);
+}
+
+.signup__checkbox-container {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: row;
+}
+
+.signup__checkbox {
+  width: 17px;
+  height: 19px;
+  border-radius: 5px;
+  border: 1px solid #222;
+  margin-right: 12px;
+}
+
+.signup__checkbox-text {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.signup__personal-data {
+  color: #0500FF;
+}
+
+.warningPopup {
+  position: absolute;
+  margin: 0 auto;
+  top: 106px;
+  left: 60%;
+  right: 10%;
+  z-index: 11;
+  transform: translateX(25%);
+}
+
+.warningPopup_none {
+  display: none;
+}
+
+.warning-popup__text {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  margin: 0;
+  text-overflow: ellipsis;
+}
+
+.warning-popup__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 436px;
+  min-height: 109px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.07);
+  border-radius: 25px;
+  z-index: 11;
+}
+
+.warning-popup__cls-btn {
+  margin-top: 20px;
+  border-radius: 40px;
+  background: var(--Black, #222);
+  width: 242px;
+  height: 51px;
+  color: white;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.warning-popup__cls-btn:active {
+  transform: scale(0.95);
 }
 
 /*# sourceMappingURL=index.css.map */
