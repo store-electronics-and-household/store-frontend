@@ -3,12 +3,12 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
+// import './Signup.css';
 
 interface SignUpProps {
   onOpenSignUp: () => void;
   isOpenSignUp: boolean;
 }
-
 const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
   const formik = useFormik({
     initialValues: {
@@ -16,6 +16,11 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
       passwordReg: '',
       ConfirmPass: '',
       RegCheckbox: false,
+      enableReinitialize: true,
+      isValid: true,
+      isDirty: false,
+      isInitialValid: true,
+      initialErrors: false,
     },
     validationSchema: Yup.object({
       loginReg: Yup.string()
@@ -58,6 +63,7 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
           className='signup__form'
           onSubmit={formik.handleSubmit}
           noValidate
+          onReset={formik.handleReset}
         >
           <div className='signup__title-container'>
             <div className='signup__title'>Зарегистрируйтесь</div>
@@ -66,10 +72,10 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
           <div className='signup__inputs'>
             <input
               className={`signup__input ${
-                formik.dirty && !formik.errors.loginReg
-                  ? 'signup__input_valid'
-                  : formik.touched.loginReg
+                formik.touched.loginReg && formik.errors.loginReg
                   ? 'signup__input_invalid'
+                  : formik.touched.loginReg
+                  ? 'signup__input_valid'
                   : ''
               }`}
               placeholder='E-mail'
@@ -88,10 +94,10 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
             )}
             <input
               className={`signup__input ${
-                formik.dirty && !formik.errors.passwordReg
-                  ? 'signup__input_valid'
-                  : formik.touched.passwordReg
+                formik.touched.passwordReg && formik.errors.passwordReg
                   ? 'signup__input_invalid'
+                  : formik.touched.passwordReg
+                  ? 'signup__input_valid'
                   : ''
               }`}
               placeholder='Пароль'
@@ -111,10 +117,10 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
             )}
             <input
               className={`signup__input ${
-                formik.dirty && !formik.errors.ConfirmPass
-                  ? 'signup__input_valid'
-                  : formik.touched.ConfirmPass
+                formik.touched.ConfirmPass && formik.errors.ConfirmPass
                   ? 'signup__input_invalid'
+                  : formik.touched.ConfirmPass
+                  ? 'signup__input_valid'
                   : ''
               }`}
               placeholder='Повторите пароль'

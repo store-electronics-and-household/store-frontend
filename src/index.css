@@ -300,12 +300,13 @@ body {
   grid-template-columns: 1fr 1fr;
   -moz-column-gap: 24px;
        column-gap: 24px;
-  padding: 47px 40px 88px;
+  padding: 59px 40px 88px;
 }
 
 .footer__logo {
-  width: 159px;
-  height: 39px;
+  width: 162px;
+  height: 25px;
+  margin-left: 4px;
 }
 
 .footer__copyright {
@@ -364,6 +365,7 @@ body {
   display: flex;
   justify-content: space-between;
   gap: 24px;
+  margin-bottom: 140px;
 }
 
 .cart__list {
@@ -823,11 +825,15 @@ body {
 }
 
 .card-medium {
-  max-width: 322px;
-  height: 459px;
   margin: auto;
   position: relative;
   list-style: none;
+  padding-left: 0;
+}
+
+.card-medium__container {
+  width: 322px;
+  height: 459px;
 }
 
 .card-medium__like {
@@ -920,9 +926,6 @@ body {
   -webkit-hyphens: auto;
           hyphens: auto;
   word-wrap: break-word;
-  margin-bottom: 8px;
-  margin-top: 5px;
-  margin-bottom: 10px;
   margin: 0;
 }
 
@@ -955,6 +958,7 @@ body {
 
 .card-medium__footer {
   overflow: hidden;
+  height: 77px;
 }
 
 .card-medium__link {
@@ -962,6 +966,9 @@ body {
           hyphens: auto;
   word-wrap: break-word;
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card-medium__counter {
@@ -989,6 +996,19 @@ body {
   top: 304px;
   right: 16px;
   background-repeat: no-repeat;
+}
+
+.card-medium__container-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 77px;
+}
+
+.card-medium__container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .popup {
@@ -1040,6 +1060,7 @@ body {
   font-weight: 700;
   line-height: 146%;
   margin: 0;
+  font-family: "Wix Madefor Display";
 }
 
 .signin__subtitle {
@@ -1049,7 +1070,8 @@ body {
   font-weight: 400;
   line-height: normal;
   text-align: center;
-  margin: 0;
+  margin: 4px 0 0;
+  font-family: "Wix Madefor Display";
 }
 
 .signin__inputs {
@@ -1204,6 +1226,7 @@ body {
   font-weight: 700;
   line-height: 146%;
   margin: 0;
+  font-family: "Wix Madefor Display";
 }
 
 .signup__subtitle {
@@ -1213,7 +1236,8 @@ body {
   font-weight: 400;
   line-height: normal;
   text-align: center;
-  margin: 0;
+  margin: 4px 0 0;
+  font-family: "Wix Madefor Display";
 }
 
 .signup__inputs {

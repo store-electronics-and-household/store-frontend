@@ -1,9 +1,14 @@
 .card-medium {
-  max-width: 322px;
-  height: 459px;
   margin: auto;
   position: relative;
   list-style: none;
+  padding-left: 0;
+}
+
+.card-medium__container {
+  width: 322px;
+  height: 459px;
+
 }
 
 .card-medium__like {
@@ -95,9 +100,6 @@
   line-height: normal;
   hyphens: auto;
   word-wrap: break-word;
-  margin-bottom: 8px;
-  margin-top: 5px;
-  margin-bottom: 10px;
   margin: 0;
 }
 
@@ -130,12 +132,16 @@
 
 .card-medium__footer {
   overflow: hidden;
+  height: 77px;
 }
 
 .card-medium__link {
   hyphens: auto;
   word-wrap: break-word;
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card-medium__counter {
@@ -163,4 +169,17 @@
   top: 304px;
   right: 16px;
   background-repeat: no-repeat;
+}
+
+.card-medium__container-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 77px;
+}
+
+.card-medium__container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
