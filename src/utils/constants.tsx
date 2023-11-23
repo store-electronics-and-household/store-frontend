@@ -5,7 +5,7 @@ export const categoriesList = [
     catTitle: 'Игровые приставки',
     catImg:
       'https://images.unsplash.com/photo-1621259182978-fbf93132d53d?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/',
+    catUrl: '/categories',
   },
   {
     catId: 2,
@@ -19,63 +19,63 @@ export const categoriesList = [
     catTitle: 'Планшеты',
     catImg:
       'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/',
+    catUrl: '/categories',
   },
   {
     catId: 4,
     catTitle: 'Ноутбуки',
     catImg:
       'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/',
+    catUrl: '/categories',
   },
   {
     catId: 5,
     catTitle: 'Аксессуары',
     catImg:
       'https://images.unsplash.com/photo-1573739022854-abceaeb585dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGhvbmUlMjBhY2Nlc3Nvcmllc3xlbnwwfHwwfHx8MA%3D%3D',
-    catUrl: '/',
+    catUrl: '/categories',
   },
   {
     catId: 6,
     catTitle: 'Умные часы и браслеты',
     catImg:
       'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/',
+    catUrl: '/categories',
   },
   {
     catId: 7,
     catTitle: 'Наушники и аксессуары',
     catImg:
       'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/',
+    catUrl: '/categories',
   },
   {
     catId: 8,
     catTitle: 'Квадрокоптеры',
     catImg:
       'https://images.unsplash.com/photo-1617109224926-b69d0862ef1b?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/',
+    catUrl: '/categories',
   },
   {
     catId: 9,
     catTitle: 'Компьютеры и комплектующие',
     catImg:
       'https://images.unsplash.com/photo-1547082299-de196ea013d6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGNvbXB1dGVyfGVufDB8fDB8fHww',
-    catUrl: '/',
+    catUrl: '/categories',
   },
   {
     catId: 10,
     catTitle: 'Портативная акустика',
     catImg:
       'https://images.unsplash.com/photo-1511499271651-073325718d90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHx8',
-    catUrl: '/',
+    catUrl: '/categories',
   },
   {
     catId: 11,
     catTitle: 'Техника для дома',
     catImg:
       'https://images.unsplash.com/photo-1570222094114-d054a817e56b?q=80&w=1805&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/',
+    catUrl: '/categories',
   },
   {
     catId: 12,
@@ -277,6 +277,7 @@ export const subCategoriesList = [
     catTitle: 'Apple IPhone',
     catImg:
       'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/catalog',
   },
   {
@@ -284,6 +285,7 @@ export const subCategoriesList = [
     catTitle: 'Samsung Galaxy',
     catImg:
       'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
@@ -291,6 +293,7 @@ export const subCategoriesList = [
     catTitle: 'Xiaomi',
     catImg:
       'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
@@ -298,6 +301,7 @@ export const subCategoriesList = [
     catTitle: 'Google',
     catImg:
       'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
@@ -305,6 +309,7 @@ export const subCategoriesList = [
     catTitle: 'Honor',
     catImg:
       'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
@@ -312,6 +317,7 @@ export const subCategoriesList = [
     catTitle: 'Realme',
     catImg:
       'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
@@ -319,6 +325,7 @@ export const subCategoriesList = [
     catTitle: 'HUAWEI',
     catImg:
       'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
@@ -326,6 +333,7 @@ export const subCategoriesList = [
     catTitle: 'OnePlus',
     catImg:
       'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
 ];

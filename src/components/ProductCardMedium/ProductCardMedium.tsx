@@ -1,6 +1,6 @@
 import React from 'react';
 // import './ProductCardMedium.css';
-import vector from '../../images/Vector.png';
+import vector from '../../image/Vector.png';
 
 const ProductCardMedium: React.FC<{
   originPrice: number;
