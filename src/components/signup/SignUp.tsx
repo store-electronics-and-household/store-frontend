@@ -9,7 +9,6 @@ interface SignUpProps {
   onOpenSignUp: () => void;
   isOpenSignUp: boolean;
 }
-
 const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
   const formik = useFormik({
     initialValues: {
@@ -17,6 +16,11 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
       passwordReg: '',
       ConfirmPass: '',
       RegCheckbox: false,
+      enableReinitialize: true,
+      isValid: true,
+      isDirty: false,
+      isInitialValid: true,
+      initialErrors: false,
     },
     validationSchema: Yup.object({
       loginReg: Yup.string()
@@ -50,6 +54,7 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
           className='signup__form'
           onSubmit={formik.handleSubmit}
           noValidate
+          onReset={formik.handleReset}
         >
           <div className='signup__title-container'>
             <div className='signup__title'>Зарегистрируйтесь</div>

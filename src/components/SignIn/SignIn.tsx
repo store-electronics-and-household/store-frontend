@@ -19,6 +19,7 @@ const SignIn: React.FC<SignInProps> = ({
 }) => {
   const formik = useFormik({
     initialValues: {
+      enableReinitialize: true,
       loginAuth: '',
       passwordAuth: '',
     },
