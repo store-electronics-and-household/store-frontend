@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
-import './Signin.css';
 
 interface SignInProps {
   onOpenSignIn: () => void;
