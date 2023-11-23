@@ -115,6 +115,7 @@
   height: 56px;
   cursor: pointer;
   margin-bottom: 12px;
+  font-family: 'Wix Madefor Display';
 }
 
 .signup__button:active {
@@ -180,17 +181,9 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-
 }
 
 .signup__personal-data {
   color: #0500FF;
 }
 
-.hidden-text {
-  display: none;
-}
-
-.signup__success-text {
-  color: green;
-}
