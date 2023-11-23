@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
 // import './Signup.css';
 
+
 interface SignUpProps {
   onOpenSignUp: () => void;
   isOpenSignUp: boolean;
@@ -65,7 +66,9 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
               className={`signup__input ${
                 formik.dirty && !formik.errors.loginReg
                   ? 'signup__input_valid'
-                  : 'signup__input_invalid'
+                  : formik.touched.loginReg
+                  ? 'signup__input_invalid'
+                  : ''
               }`}
               placeholder='E-mail'
               type='text'
@@ -85,7 +88,9 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
               className={`signup__input ${
                 formik.dirty && !formik.errors.passwordReg
                   ? 'signup__input_valid'
-                  : 'signup__input_invalid'
+                  : formik.touched.passwordReg
+                  ? 'signup__input_invalid'
+                  : ''
               }`}
               placeholder='Пароль'
               type='password'
@@ -106,7 +111,9 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
               className={`signup__input ${
                 formik.dirty && !formik.errors.ConfirmPass
                   ? 'signup__input_valid'
-                  : 'signup__input_invalid'
+                  : formik.touched.ConfirmPass
+                  ? 'signup__input_invalid'
+                  : ''
               }`}
               placeholder='Повторите пароль'
               type='password'
@@ -144,6 +151,7 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
               onBlur={formik.handleBlur}
             />
             <label className='signup__checkbox-label' htmlFor='RegCheckbox'>
+              <div className='signup__checkbox-checkmark'></div>
               <span className='signup__checkbox-text'>
                 Я соглашаюсь на{' '}
                 <span className='signup__checkbox-text signup__personal-data'>
