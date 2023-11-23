@@ -18,7 +18,6 @@ const ProductCardMedium: React.FC<{
       return prev + 1;
     });
   }
-
   const cardLikeButtonClassName = `card-medium__like ${
     isLiked && 'card-medium__like_active'
   }`;

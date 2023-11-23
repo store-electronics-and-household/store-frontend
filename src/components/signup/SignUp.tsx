@@ -25,6 +25,10 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
     validationSchema: Yup.object({
       loginReg: Yup.string()
         .email('Введите корректный email')
+        .matches(
+          /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
+          'Некорректный формат email'
+        )
         .required('Введите email'),
       passwordReg: Yup.string()
         .min(6, 'Пароль должен содержать не менее 6 символов')
@@ -38,18 +42,27 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
     onSubmit: (values) => {
       // Обработка отправки данных
       onOpenSignUp();
+      formik.resetForm();
     },
   });
+
+  const handleCloseSignUpPopup = (): void => {
+    onOpenSignUp();
+    formik.resetForm();
+  };
 
   return (
     <PopupTemplate
       isOpen={isOpenSignUp}
-      OnClose={onOpenSignUp}
+      OnClose={handleCloseSignUpPopup}
       popupClass='popup'
       popupClassOverlay='popup_overlay'
     >
       <div className='signup__container'>
-        <button className='signup__button_cls' onClick={onOpenSignUp} />
+        <button
+          className='signup__button_cls'
+          onClick={handleCloseSignUpPopup}
+        />
         <form
           className='signup__form'
           onSubmit={formik.handleSubmit}
