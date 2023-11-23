@@ -6,6 +6,7 @@ const ProductCardMedium: React.FC<{
   salesPrice: number;
   name: string;
   discount: number;
+  url: string;
 }> = (product) => {
   const [isLiked, setIsLiked] = React.useState(false);
   function handleLike(): void {
@@ -24,7 +25,7 @@ const ProductCardMedium: React.FC<{
     <li className='card-medium'>
       <div className='card-medium__container'>
         <div className='card-medium__container-image'>
-          <a className='card-medium__link' href='/'>
+          <a className='card-medium__link' href={product.url}>
             <img
               className='card-medium__image'
               src={vector}
@@ -53,7 +54,7 @@ const ProductCardMedium: React.FC<{
           </div>
         </div>
         <div className='card-medium__footer'>
-          <a className='card-medium__link' href='/'>
+          <a className='card-medium__link' href={product.url}>
             <div className='card-medium__container-footer'>
               <h3 className='card-medium__title'>{product.name}</h3>
               <div className='card-medium__price-container'>

@@ -10,6 +10,7 @@ const Catalog: React.FC<{
   originPrice?: number;
   salesPrice?: number;
   discount?: number;
+  url?: string;
 }> = () => {
   return (
     <>
@@ -84,6 +85,7 @@ const Catalog: React.FC<{
                   originPrice={product.originPrice}
                   salesPrice={product.salesPrice}
                   discount={product.discount}
+                  url={product.url}
                 />
               ))}
             </ul>
