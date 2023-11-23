@@ -1,7 +1,7 @@
 import React from 'react';
 import './CategoriesMain.css';
 import { categoriesList } from '../../utils/constants';
-import CategoriesTile from '../СategoriesTile/CategoriesTile';
+import CategoriesTile from '../CategoriesTile/CategoriesTile';
 
 const CategoriesMain: React.FC<{
   catId?: number;
