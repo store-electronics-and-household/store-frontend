@@ -26,6 +26,10 @@ const SignIn: React.FC<SignInProps> = ({
     validationSchema: Yup.object({
       loginAuth: Yup.string()
         .email('Введите корректный email')
+        .matches(
+          /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
+          'Некорректный формат email'
+        )
         .required('Введите email'),
       passwordAuth: Yup.string()
         .min(6, 'Пароль должен содержать не менее 6 символов')
