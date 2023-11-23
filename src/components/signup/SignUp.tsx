@@ -38,18 +38,27 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
     onSubmit: (values) => {
       // Обработка отправки данных
       onOpenSignUp();
+      formik.resetForm();
     },
   });
+
+  const handleCloseSignUpPopup = (): void => {
+    onOpenSignUp();
+    formik.resetForm();
+  };
 
   return (
     <PopupTemplate
       isOpen={isOpenSignUp}
-      OnClose={onOpenSignUp}
+      OnClose={handleCloseSignUpPopup}
       popupClass='popup'
       popupClassOverlay='popup_overlay'
     >
       <div className='signup__container'>
-        <button className='signup__button_cls' onClick={onOpenSignUp} />
+        <button
+          className='signup__button_cls'
+          onClick={handleCloseSignUpPopup}
+        />
         <form
           className='signup__form'
           onSubmit={formik.handleSubmit}
