@@ -18,6 +18,7 @@ import WarningPopup from '../WarningPopup/WarningPopup';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../signup/SignUp';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
+import SearchResults from '../SearchResults/SearchResults';
 
 const App: React.FC = () => {
   // const [isLogged, setIsLogged] = useState<boolean>(false);
@@ -40,45 +41,46 @@ const App: React.FC = () => {
   return (
     <div className='App'>
       <ScrollToTop>
-      <Routes>
-        <Route
-          path='/'
-          element={
-            <>
-              <Header toggleWarningPopup={toggleWarningPopup} />
-              <WarningPopup
-                isOpen={isWarningPopupOpen}
-                onOpenWarningPopup={toggleWarningPopup}
-                onOpenAuth={toggleSignInPopup}
-              />
-              <SignIn
-                onOpenSignIn={toggleSignInPopup}
-                isOpenSignIn={isSignInPopupOpen}
-                onOpenReg={toggleSignUpPopup}
-              />
-              <SignUp
-                onOpenSignUp={toggleSignUpPopup}
-                isOpenSignUp={isSignUpPopupOpen}
-              />
-              <Footer />
-            </>
-          }
-        >
-          <Route path='/main' element={<Main />} />
-          <Route path='/about-company' element={<AboutCompany />} />
-          <Route path='/contacts' element={<Contacts />} />
-          <Route path='/delivery' element={<Delivery />} />
-          <Route path='/faq' element={<Faq />} />
-          <Route path='/categories' element={<Categories />} />
-          <Route path='/catalog' element={<Catalog />} />
-          <Route path='/favourites' element={<Favourites />} />
-          <Route path='/product' element={<ProductPage />} />
-          <Route path='/cart' element={<Cart />} />
-          <Route path='/payment' element={<PaymentsPage />} />
-          <Route path='/' element={<Navigate to='/main' replace />} />
-        </Route>
-        <Route path='*' element={<NotFound />} />
-      </Routes>
+        <Routes>
+          <Route
+            path='/'
+            element={
+              <>
+                <Header toggleWarningPopup={toggleWarningPopup} />
+                <WarningPopup
+                  isOpen={isWarningPopupOpen}
+                  onOpenWarningPopup={toggleWarningPopup}
+                  onOpenAuth={toggleSignInPopup}
+                />
+                <SignIn
+                  onOpenSignIn={toggleSignInPopup}
+                  isOpenSignIn={isSignInPopupOpen}
+                  onOpenReg={toggleSignUpPopup}
+                />
+                <SignUp
+                  onOpenSignUp={toggleSignUpPopup}
+                  isOpenSignUp={isSignUpPopupOpen}
+                />
+                <Footer />
+              </>
+            }
+          >
+            <Route path='/main' element={<Main />} />
+            <Route path='/about-company' element={<AboutCompany />} />
+            <Route path='/contacts' element={<Contacts />} />
+            <Route path='/delivery' element={<Delivery />} />
+            <Route path='/faq' element={<Faq />} />
+            <Route path='/categories' element={<Categories />} />
+            <Route path='/catalog' element={<Catalog />} />
+            <Route path='/favourites' element={<Favourites />} />
+            <Route path='/product' element={<ProductPage />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/payment' element={<PaymentsPage />} />
+            <Route path='/search-results' element={<SearchResults />} />
+            <Route path='/' element={<Navigate to='/main' replace />} />
+          </Route>
+          <Route path='*' element={<NotFound />} />
+        </Routes>
       </ScrollToTop>
     </div>
   );

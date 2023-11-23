@@ -15,11 +15,7 @@ const Categories: React.FC<{
 }> = () => {
   return (
     <section className='catalog'>
-      <Breadcrumb
-        currentPlace='Смартфоны'
-        previousPlace='Главная'
-        previousPath='/'
-      />
+      <Breadcrumb currentPlace='Смартфоны' />
       <div className='catalog__container-big'>
         <h1 className='catalog__title'>Смартфоны</h1>
         <div className='catalog__container'>

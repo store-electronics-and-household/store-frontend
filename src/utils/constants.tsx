@@ -245,16 +245,18 @@ export const faqList = {
 };
 
 export const productPhotoArray = [
-  'https://swiperjs.com/demos/images/nature-1.jpg',
-  'https://swiperjs.com/demos/images/nature-2.jpg',
-  'https://swiperjs.com/demos/images/nature-3.jpg',
-  'https://swiperjs.com/demos/images/nature-4.jpg',
-  'https://swiperjs.com/demos/images/nature-5.jpg',
-  'https://swiperjs.com/demos/images/nature-6.jpg',
-  'https://swiperjs.com/demos/images/nature-7.jpg',
+  'https://images.unsplash.com/photo-1505156868547-9b49f4df4e04?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aXBob25lfGVufDB8fDB8fHww',
+  'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+  'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+  'https://images.unsplash.com/photo-1611472173362-3f53dbd65d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+  'https://images.unsplash.com/photo-1695639526461-7244f263119c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFwcGxlJTIwaXBob25lJTIwMTUlMjBwcm98ZW58MHx8MHx8fDA%3D',
+  'https://images.unsplash.com/photo-1620049185596-1f16f414c448?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA0fHxpcGhvbmV8ZW58MHx8MHx8fDA%3D',
+  'https://images.unsplash.com/photo-1695822822491-d92cee704368?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBwbGUlMjBpcGhvbmUlMjAxNSUyMHByb3xlbnwwfHwwfHx8MA%3D%3D',
 ];
 
 export const productSpecifyName = {
+  productName: 'name',
+  article: 0,
   color: 'Цвет:',
   diagonal: 'Диагональ экрана, в дюймах:',
   brend: 'Бренд:',
@@ -264,6 +266,15 @@ export const productSpecifyName = {
   builtInMemory: 'Встроенная память, в ГБ:',
   ram: 'Оперативная память, в ГБ:',
   batteryCapacity: 'Емкость аккумулятора, в мА-ч:',
+  color1: 'Цвет:',
+  diagonal1: 'Диагональ экрана, в дюймах:',
+  brend1: 'Бренд:',
+  country1: 'Страна-производитель:',
+  year1: 'Год выхода модели:',
+  display1: 'Тип дисплея:',
+  builtInMemory1: 'Встроенная память, в ГБ:',
+  ram1: 'Оперативная память, в ГБ:',
+  batteryCapacity1: 'Емкость аккумулятора, в мА-ч:',
 };
 
 export const productSpecifyValue = {
@@ -280,6 +291,15 @@ export const productSpecifyValue = {
   builtInMemory: 128,
   ram: 8,
   batteryCapacity: 4912,
+  color1: 'титановый черный',
+  diagonal1: 6.1,
+  brend1: 'Apple',
+  country1: 'Китай',
+  year1: 2023,
+  display1: 'OLED',
+  builtInMemory1: 128,
+  ram1: 8,
+  batteryCapacity1: 4912,
 };
 
 /* это нужно будет удалить после--------------- */

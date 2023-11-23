@@ -4,14 +4,13 @@ import type { FC } from 'react';
 import { NavLink, Outlet, Link } from 'react-router-dom';
 
 import headerLogo from '../../image/icons/logo.svg';
-import searchIcon from '../../image/icons/search_icon.svg';
 import deliveryIcon from '../../image/icons/delivery_icon.svg';
 import busketIcon from '../../image/icons/busket_icon.svg';
 import favouriteIcon from '../../image/icons/favourite_icon.svg';
 
 import CatalogMenu from '../CatalogMenu/CatalogMenu';
 
-import './Header.css';
+import SearchBar from '../SearchBar/SearchBar';
 
 interface HeaderProps {
   toggleWarningPopup: () => void;
@@ -49,25 +48,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
             Каталог
           </button>
 
-          <div className='header__searchbar-container'>
-            <div className='header__searchbar-wrapper'>
-              <button className='header__searchbar-button'>
-                <img
-                  className='header__searchbar-button-icon'
-                  src={searchIcon}
-                  alt='Строка поиска'
-                />
-              </button>
-
-              <input
-                className='header__searchbar-input'
-                placeholder='Поиск'
-                autoComplete='off'
-                onChange={() => null}
-                value=''
-              />
-            </div>
-          </div>
+          <SearchBar />
 
           <nav className='header__navbar'>
             <NavLink
