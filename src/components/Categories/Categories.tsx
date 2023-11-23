@@ -18,7 +18,7 @@ const Categories: React.FC<{
         currentPlace='Смартфоны'
         previousPlace='Главная'
         previousPath='/'
-        />
+      />
       <div className='catalog__container-big'>
         <h1 className='catalog__title'>Смартфоны</h1>
         <div className='catalog__container'>
@@ -71,11 +71,9 @@ const Categories: React.FC<{
               </ul>
             </li>
             <ul className='catalog__models'>
-              <li className='catalog__models'>
-                <a className='catalog__model-link' href=''>
-                  Кнопочные телефоны
-                </a>
-              </li>
+              <a className='catalog__model-link' href=''>
+                Кнопочные телефоны
+              </a>
             </ul>
             <ul className='catalog__models'>
               <li className='catalog__models'>
