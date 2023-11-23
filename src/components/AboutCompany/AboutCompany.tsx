@@ -8,7 +8,11 @@ const AboutCompany: React.FC = () => {
   return (
     <>
       <section className='about-company'>
-        <Breadcrumb currentPlace='О нас' />
+        <Breadcrumb
+          currentPlace='О нас'
+          previousPlace='Главная'
+          previousPath='/'
+        />
         <div className='about-company__container'>
           <h1 className='about-company__header'>О нас</h1>
           <ul className='about-company__feature-list'>

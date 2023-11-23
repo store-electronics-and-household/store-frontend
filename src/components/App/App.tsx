@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './App.css';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -18,6 +17,7 @@ import Footer from '../Footer/Footer';
 import WarningPopup from '../WarningPopup/WarningPopup';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../signup/SignUp';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 const App: React.FC = () => {
   // const [isLogged, setIsLogged] = useState<boolean>(false);
@@ -39,6 +39,7 @@ const App: React.FC = () => {
 
   return (
     <div className='App'>
+      <ScrollToTop>
       <Routes>
         <Route
           path='/'
@@ -78,6 +79,7 @@ const App: React.FC = () => {
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
+      </ScrollToTop>
     </div>
   );
 };
