@@ -7,7 +7,11 @@ const Contacts: React.FC = () => {
   return (
     <>
       <section className='contacts'>
-        <Breadcrumb currentPlace='Контакты' />
+        <Breadcrumb
+          currentPlace='Контакты'
+          previousPlace='Главная'
+          previousPath='/'
+          />
         <div className='contacts__container'>
           <h1 className='contacts__header'>Контакты</h1>
           <div className='contacts__wrap'>

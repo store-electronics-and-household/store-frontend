@@ -14,7 +14,11 @@ const Catalog: React.FC<{
   return (
     <>
       <section className='catalog'>
-        <Breadcrumb currentPlace='Apple IPhone' />
+        <Breadcrumb
+          currentPlace='Apple IPhone'
+          previousPlace='Главная'
+          previousPath='/'
+        />
         <div className='catalog__container-big'>
           <h1 className='catalog__title'>Apple IPhone</h1>
           <div className='catalog__container'>

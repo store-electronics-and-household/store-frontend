@@ -7,7 +7,11 @@ const Faq: React.FC = () => {
   return (
     <>
       <section className='faq'>
-        <Breadcrumb currentPlace='Часто задаваемые вопросы' />
+        <Breadcrumb
+          currentPlace='Часто задаваемые вопросы'
+          previousPlace='Главная'
+          previousPath='/'
+          />
         <div className='faq__container'>
           <h1 className='faq__header'>Частые вопросы</h1>
           <Accordion faqList={faqList.deliveryFaq} headText='Доставка:' />
