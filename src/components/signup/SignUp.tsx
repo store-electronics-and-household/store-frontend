@@ -3,7 +3,7 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
-import './Signup.css';
+// import './Signup.css';
 
 interface SignUpProps {
   onOpenSignUp: () => void;
