@@ -103,6 +103,7 @@
   margin-top: 40px;
   display: flex;
   flex-direction: column;
+
 }
 
 .signup__button {
@@ -115,6 +116,7 @@
   height: 56px;
   cursor: pointer;
   margin-bottom: 12px;
+  font-family: 'Wix Madefor Display';
 }
 
 .signup__button:active {
@@ -183,12 +185,4 @@
 
 .signup__personal-data {
   color: #0500FF;
-}
-
-.hidden-text {
-  display: none;
-}
-
-.signup__success-text {
-  color: green;
 }
