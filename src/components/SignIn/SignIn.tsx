@@ -6,7 +6,6 @@ import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
 // import './Signin.css';
 
-
 interface SignInProps {
   onOpenSignIn: () => void;
   isOpenSignIn: boolean;
