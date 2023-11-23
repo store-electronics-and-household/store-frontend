@@ -1,5 +1,5 @@
 import React from 'react';
-import './NotFound.css';
+// import './NotFound.css';
 import logo from '../../image/logo.svg';
 import vector from '../../image/vector1.svg';
 

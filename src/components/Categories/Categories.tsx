@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Catalog/Catalog.css';
+// import '../Catalog/Catalog.css';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';

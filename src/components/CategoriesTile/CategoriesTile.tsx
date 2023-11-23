@@ -1,5 +1,5 @@
 import React from 'react';
-import './CategoriesTile.css';
+// import './CategoriesTile.css';
 import { useLocation } from 'react-router-dom';
 
 const CategoriesTile: React.FC<{
