@@ -101,7 +101,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
         </div>
       </header>
       <Outlet />
-    </> 
+    </>
   );
 };
 

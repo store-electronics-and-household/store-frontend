@@ -68,7 +68,9 @@ const SignIn: React.FC<SignInProps> = ({
               className={`signin__input ${
                 formik.dirty && !formik.errors.loginAuth
                   ? 'signin__input_valid'
-                  : 'signin__input_invalid'
+                  : formik.touched.loginAuth
+                  ? 'signin__input_invalid'
+                  : ''
               }`}
               placeholder='E-mail'
               type='email'
@@ -88,7 +90,9 @@ const SignIn: React.FC<SignInProps> = ({
               className={`signin__input ${
                 formik.dirty && !formik.errors.passwordAuth
                   ? 'signin__input_valid'
-                  : 'signin__input_invalid'
+                  : formik.touched.passwordAuth
+                  ? 'signin__input_invalid'
+                  : ''
               }`}
               placeholder='Пароль'
               type='password'
