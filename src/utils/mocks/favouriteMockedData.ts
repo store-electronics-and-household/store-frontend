@@ -1,10 +1,11 @@
 export const mockedFavouritesProducts = [
   {
     id: 1,
-    name: 'Холодильник Haier C2F637CXRG Silver',
-    originPrice: 80990,
-    salesPrice: 76990,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
     discount: 30,
+    url: '/product',
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ export const mockedFavouritesProducts = [
     originPrice: 38990,
     salesPrice: 0,
     discount: 30,
+    url: '/',
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ export const mockedFavouritesProducts = [
     originPrice: 21990,
     salesPrice: 0,
     discount: 30,
+    url: '/',
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ export const mockedFavouritesProducts = [
     originPrice: 45990,
     salesPrice: 33990,
     discount: 30,
+    url: '/',
   },
   {
     id: 5,
@@ -33,6 +37,7 @@ export const mockedFavouritesProducts = [
     originPrice: 60990,
     salesPrice: 53660,
     discount: 30,
+    url: '/',
   },
   {
     id: 6,
@@ -40,5 +45,6 @@ export const mockedFavouritesProducts = [
     originPrice: 60990,
     salesPrice: 53660,
     discount: 30,
-  }
+    url: '/',
+  },
 ];

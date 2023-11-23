@@ -11,6 +11,7 @@ const Categories: React.FC<{
   originPrice?: number;
   salesPrice?: number;
   discount?: number;
+  url?: string;
 }> = () => {
   return (
     <section className='catalog'>
@@ -128,6 +129,7 @@ const Categories: React.FC<{
                   originPrice={product.originPrice}
                   salesPrice={product.salesPrice}
                   discount={product.discount}
+                  url={product.url}
                 />
               ))}
             </div>
