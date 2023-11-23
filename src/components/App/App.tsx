@@ -18,6 +18,7 @@ import WarningPopup from '../WarningPopup/WarningPopup';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../signup/SignUp';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
+import SearchResults from '../SearchResults/SearchResults';
 
 const App: React.FC = () => {
   // const [isLogged, setIsLogged] = useState<boolean>(false);
@@ -75,6 +76,7 @@ const App: React.FC = () => {
           <Route path='/product' element={<ProductPage />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/payment' element={<PaymentsPage />} />
+          <Route path='/search-results' element={<SearchResults />} />
           <Route path='/' element={<Navigate to='/main' replace />} />
         </Route>
         <Route path='*' element={<NotFound />} />
