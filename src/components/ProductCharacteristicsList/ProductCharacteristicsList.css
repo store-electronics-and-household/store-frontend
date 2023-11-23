@@ -1,0 +1,27 @@
+.characteristics-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 16px;
+}
+
+.characteristics-list_full {
+  display: block;
+  column-count: 2;
+}
+
+.characteristics-list__item:not(:last-of-type) {
+  margin-bottom: 20px;
+}
+
+.characteristics-list__item-key {
+  color: #B6B6B6;
+  margin-right: 12px;
+}
+
+.characteristics-list__item-value {
+  color: #222;
+}

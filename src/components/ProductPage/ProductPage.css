@@ -1,0 +1,203 @@
+.product-page {
+  max-width: 1360px;
+  padding: 44px 40px 187px;
+  margin: auto;
+  position: relative;
+}
+
+.product-page__head-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.product-page__header {
+  margin: 0;
+  color: #000;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 146%;
+  max-width: 1130px;
+}
+
+.product-page__item-number {
+  text-align: right;
+  margin-left: 24px;
+  color: #000;
+  font-size: 14px;
+}
+
+.product-page__info-container {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  margin-bottom: 64px;
+}
+
+.product-page__slider {
+  width: 553px;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 24px;
+}
+
+.product-page__characteristics {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.product-page__characteristic-head {
+  color: #000;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+}
+
+.product-page__all-characteristics {
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.product-page__price-block {
+  padding: 40px 24px;
+  height: fit-content;
+  background-color: #EDEDED;
+  border-radius: 15px;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.07);;
+  margin-left: auto;
+}
+
+.product-page__current-price {
+  color: #000;
+  font-size: 24px;
+  font-weight: 500;
+  margin-right: 16px;
+}
+
+.product-page__old-price {
+  color: #B6B6B6;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: line-through;
+}
+
+.product-page__buttons {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: space-between;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+.product-page__button-basket {
+  padding: 16px 20px;
+  border-radius: 40px;
+  border: none;
+  background-color: #222;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  min-width: 206px;
+  min-height: 56px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.product-page__button-faivorite {
+  border: none;
+  padding: 12px 6px;
+  cursor: pointer;
+}
+
+.product-page__faivorite-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.product-page__benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-page__benefit {
+  display: flex;
+}
+
+.product-page__benefit-text {
+  color: #000;
+  font-size: 16px;
+  margin: 0;
+}
+
+.product-page__benefit-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 16px;
+}
+
+.product-page__about-product {
+  max-width: 1124px;
+  margin: auto;
+}
+
+.product-page__about-header {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 44px;
+}
+
+.product-page__description-title {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+  padding: 8px;
+  width: 206px;
+  text-align: center;
+  color: #B6B6B6;
+  border-bottom: 1px solid #B6B6B6;
+  cursor: pointer;
+}
+
+.product-page__description-title_active {
+  color: #000;
+  border-color: #000;
+  cursor: default;
+}
+
+.product-page__about {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.product-page__about-description {
+  color: #000;
+  font-size: 16px;
+  margin: 0;
+}
+
+.product-page__about-description:nth-of-type(2) {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.product-page__about-description:nth-of-type(3),
+.product-page__about-description:nth-of-type(4) {
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
