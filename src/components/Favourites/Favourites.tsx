@@ -1,7 +1,6 @@
 import React from 'react';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import { mockedFavouritesProducts } from '../../utils/mocks';
-import './Favourites.css';
 
 const Favourites: React.FC<{
   name?: string;
