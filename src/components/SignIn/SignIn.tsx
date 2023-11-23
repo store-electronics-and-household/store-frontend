@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
-//import './Signin.css';
+// import './Signin.css';
 
 interface SignInProps {
   onOpenSignIn: () => void;
@@ -19,12 +19,17 @@ const SignIn: React.FC<SignInProps> = ({
 }) => {
   const formik = useFormik({
     initialValues: {
+      enableReinitialize: true,
       loginAuth: '',
       passwordAuth: '',
     },
     validationSchema: Yup.object({
       loginAuth: Yup.string()
         .email('Введите корректный email')
+        .matches(
+          /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
+          'Некорректный формат email'
+        )
         .required('Введите email'),
       passwordAuth: Yup.string()
         .min(6, 'Пароль должен содержать не менее 6 символов')
@@ -41,17 +46,26 @@ const SignIn: React.FC<SignInProps> = ({
   const handleOpenReg = (): void => {
     onOpenSignIn();
     onOpenReg();
+    formik.resetForm();
+  };
+
+  const handleCloseSignInPopup = (): void => {
+    onOpenSignIn();
+    formik.resetForm();
   };
 
   return (
     <PopupTemplate
       isOpen={isOpenSignIn}
-      OnClose={onOpenSignIn}
+      OnClose={handleCloseSignInPopup}
       popupClass='popup'
       popupClassOverlay='popup_overlay'
     >
       <div className='signin__container'>
-        <button className='signin__button_cls' onClick={onOpenSignIn} />
+        <button
+          className='signin__button_cls'
+          onClick={handleCloseSignInPopup}
+        />
         <form
           className='signin__form'
           onSubmit={formik.handleSubmit}

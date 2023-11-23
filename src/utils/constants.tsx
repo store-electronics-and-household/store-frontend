@@ -81,94 +81,106 @@ export const categoriesList = [
     catId: 12,
     catTitle: 'Гаджеты',
     catImg:
-      'https://images.unsplash.com/photo-1591337676887-a217a6970a8a?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1620213391117-0d169a917221?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     catUrl: '/categories',
   },
 ];
 export const product = [
   {
     id: 1,
-    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
-    originPrice: 140990,
-    salesPrice: 150540,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
     discount: 30,
+    url: '/product',
   },
   {
     id: 2,
-    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
-    originPrice: 140990,
-    salesPrice: 150540,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
     discount: 30,
+    url: '/product',
   },
   {
     id: 3,
-    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
-    originPrice: 140990,
-    salesPrice: 150540,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
     discount: 30,
+    url: '/product',
   },
   {
     id: 4,
-    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
-    originPrice: 140990,
-    salesPrice: 150540,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
     discount: 30,
+    url: '/product',
   },
   {
     id: 5,
-    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
-    originPrice: 140990,
-    salesPrice: 150540,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
     discount: 30,
+    url: '/product',
   },
   {
     id: 6,
-    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
-    originPrice: 140990,
-    salesPrice: 150540,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
     discount: 30,
+    url: '/product',
   },
   {
     id: 7,
-    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
-    originPrice: 140990,
-    salesPrice: 150540,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
     discount: 30,
+    url: '/product',
   },
   {
     id: 8,
-    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
-    originPrice: 140990,
-    salesPrice: 150540,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
     discount: 30,
+    url: '/product',
   },
   {
     id: 9,
-    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
-    originPrice: 140990,
-    salesPrice: 150540,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
     discount: 30,
+    url: '/product',
   },
   {
     id: 10,
-    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
-    originPrice: 140990,
-    salesPrice: 150540,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
     discount: 30,
+    url: '/product',
   },
   {
     id: 11,
-    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
-    originPrice: 140990,
-    salesPrice: 150540,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
     discount: 30,
+    url: '/product',
   },
   {
     id: 12,
-    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
-    originPrice: 140990,
-    salesPrice: 150540,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
     discount: 30,
+    url: '/product',
   },
 ];
 /* ------------------------------------------- */
@@ -233,16 +245,18 @@ export const faqList = {
 };
 
 export const productPhotoArray = [
-  'https://swiperjs.com/demos/images/nature-1.jpg',
-  'https://swiperjs.com/demos/images/nature-2.jpg',
-  'https://swiperjs.com/demos/images/nature-3.jpg',
-  'https://swiperjs.com/demos/images/nature-4.jpg',
-  'https://swiperjs.com/demos/images/nature-5.jpg',
-  'https://swiperjs.com/demos/images/nature-6.jpg',
-  'https://swiperjs.com/demos/images/nature-7.jpg',
+  'https://images.unsplash.com/photo-1505156868547-9b49f4df4e04?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aXBob25lfGVufDB8fDB8fHww',
+  'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+  'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+  'https://images.unsplash.com/photo-1611472173362-3f53dbd65d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+  'https://images.unsplash.com/photo-1695639526461-7244f263119c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFwcGxlJTIwaXBob25lJTIwMTUlMjBwcm98ZW58MHx8MHx8fDA%3D',
+  'https://images.unsplash.com/photo-1620049185596-1f16f414c448?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA0fHxpcGhvbmV8ZW58MHx8MHx8fDA%3D',
+  'https://images.unsplash.com/photo-1695822822491-d92cee704368?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBwbGUlMjBpcGhvbmUlMjAxNSUyMHByb3xlbnwwfHwwfHx8MA%3D%3D'
 ];
 
 export const productSpecifyName = {
+  productName: 'name',
+  article: 0,
   color: 'Цвет:',
   diagonal: 'Диагональ экрана, в дюймах:',
   brend: 'Бренд:',
@@ -252,6 +266,15 @@ export const productSpecifyName = {
   builtInMemory: 'Встроенная память, в ГБ:',
   ram: 'Оперативная память, в ГБ:',
   batteryCapacity: 'Емкость аккумулятора, в мА-ч:',
+  color1: 'Цвет:',
+  diagonal1: 'Диагональ экрана, в дюймах:',
+  brend1: 'Бренд:',
+  country1: 'Страна-производитель:',
+  year1: 'Год выхода модели:',
+  display1: 'Тип дисплея:',
+  builtInMemory1: 'Встроенная память, в ГБ:',
+  ram1: 'Оперативная память, в ГБ:',
+  batteryCapacity1: 'Емкость аккумулятора, в мА-ч:'
 };
 
 export const productSpecifyValue = {
@@ -268,6 +291,15 @@ export const productSpecifyValue = {
   builtInMemory: 128,
   ram: 8,
   batteryCapacity: 4912,
+  color1: 'титановый черный',
+  diagonal1: 6.1,
+  brend1: 'Apple',
+  country1: 'Китай',
+  year1: 2023,
+  display1: 'OLED',
+  builtInMemory1: 128,
+  ram1: 8,
+  batteryCapacity1: 4912
 };
 
 /* это нужно будет удалить после--------------- */
@@ -275,49 +307,65 @@ export const subCategoriesList = [
   {
     id: 1,
     catTitle: 'Apple IPhone',
-    catImg: 'https://images.unsplash.com/photo-1570222094114-d054a817e56b?q=80&w=1805&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    catImg:
+      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/catalog',
   },
   {
     id: 2,
     catTitle: 'Samsung Galaxy',
-    catImg: 'https://images.unsplash.com/photo-1570222094114-d054a817e56b?q=80&w=1805&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    catImg:
+      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
     id: 3,
     catTitle: 'Xiaomi',
-    catImg: 'https://images.unsplash.com/photo-1511499271651-073325718d90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHx8',
+    catImg:
+      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
     id: 4,
     catTitle: 'Google',
-    catImg: 'https://images.unsplash.com/photo-1547082299-de196ea013d6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGNvbXB1dGVyfGVufDB8fDB8fHww',
+    catImg:
+      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
     id: 5,
     catTitle: 'Honor',
-    catImg: 'https://images.unsplash.com/photo-1617109224926-b69d0862ef1b?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    catImg:
+      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
     id: 6,
     catTitle: 'Realme',
-    catImg: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    catImg:
+      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
     id: 7,
     catTitle: 'HUAWEI',
-    catImg: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    catImg:
+      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
     id: 8,
     catTitle: 'OnePlus',
-    catImg: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    catImg:
+      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
 ];
@@ -327,21 +375,24 @@ export const paymentPageData = [
     id: 100,
     quantity: 1,
     salesPrice: 100000,
-    imgUrl: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imgUrl:
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     discount: 5000,
   },
   {
     id: 101,
     quantity: 2,
     salesPrice: 200000,
-    imgUrl: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imgUrl:
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     discount: 7000,
   },
   {
     id: 103,
     quantity: 3,
     salesPrice: 100000,
-    imgUrl: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imgUrl:
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     // imgUrl: '../../image/good_2.svg',
     discount: 7000,
   },
@@ -349,14 +400,16 @@ export const paymentPageData = [
     id: 104,
     quantity: 2,
     salesPrice: 200000,
-    imgUrl: 'https://images.unsplash.com/photo-1511499271651-073325718d90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHx8',
+    imgUrl:
+      'https://images.unsplash.com/photo-1511499271651-073325718d90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHx8',
     discount: 7000,
   },
   {
     id: 105,
     quantity: 1,
     salesPrice: 200000,
-    imgUrl: 'https://images.unsplash.com/photo-1573739022854-abceaeb585dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGhvbmUlMjBhY2Nlc3Nvcmllc3xlbnwwfHwwfHx8MA%3D%3D',
+    imgUrl:
+      'https://images.unsplash.com/photo-1573739022854-abceaeb585dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGhvbmUlMjBhY2Nlc3Nvcmllc3xlbnwwfHwwfHx8MA%3D%3D',
     discount: 4000,
   },
 ];

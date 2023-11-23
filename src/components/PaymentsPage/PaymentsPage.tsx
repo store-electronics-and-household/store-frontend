@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
+import BreadcrumbItem from '../Breadcrumb/BreadcrumbItem';
 import { paymentPageData } from '../../utils/constants';
 import PaymentsPageItem from './PaymentsPageItem';
 
@@ -26,11 +27,9 @@ const PaymentsPage: React.FC = () => {
 
   return (
     <section className='payments-page'>
-      <Breadcrumb
-        currentPlace='Оформление заказа'
-        previousPlace='Корзина'
-        previousPath='/cart'
-      />
+      <Breadcrumb currentPlace='Оформление заказа'>
+        <BreadcrumbItem breadcrumbText='Корзина' breadcrumbPath='/cart'/>
+      </Breadcrumb>
       <h2 className='payments-page__title'>Оформление заказа</h2>
       <div className='payments-page__container'>
         <div className='payments-page__input-containers'>
