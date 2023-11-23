@@ -40,17 +40,26 @@ const SignIn: React.FC<SignInProps> = ({
   const handleOpenReg = (): void => {
     onOpenSignIn();
     onOpenReg();
+    formik.resetForm();
+  };
+
+  const handleCloseSignInPopup = (): void => {
+    onOpenSignIn();
+    formik.resetForm();
   };
 
   return (
     <PopupTemplate
       isOpen={isOpenSignIn}
-      OnClose={onOpenSignIn}
+      OnClose={handleCloseSignInPopup}
       popupClass='popup'
       popupClassOverlay='popup_overlay'
     >
       <div className='signin__container'>
-        <button className='signin__button_cls' onClick={onOpenSignIn} />
+        <button
+          className='signin__button_cls'
+          onClick={handleCloseSignInPopup}
+        />
         <form
           className='signin__form'
           onSubmit={formik.handleSubmit}

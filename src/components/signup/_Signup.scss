@@ -12,7 +12,7 @@
   padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 80px;
+  padding-bottom: 40px;
   background-color: #fff;
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.07);
   border-radius: 25px;
@@ -22,28 +22,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 80px;
+  margin-top: 28px;
 }
 
 .signup__title {
-  font-size: 32px;
+  font-size: 24px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 146%;
+  font-weight: 600;
+  line-height: normal;
   margin: 0;
   font-family: 'Wix Madefor Display';
-
+  max-width: 400px;
 }
 
 .signup__subtitle {
-  max-width: 313px;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   text-align: center;
   margin: 4px 0 0;
-  font-family: 'Wix Madefor Display';
+  max-width: 400px;
 }
 
 .signup__inputs {
@@ -58,10 +57,10 @@
   padding: 10px 12px 10px;
   border-radius: 12px;
   border: 1px solid #B6B6B6;
-  width: 355px;
-  height: 43px;
-  margin-top: 12px;
-  font-size: 16px;
+  width: 324px;
+  height: 48px;
+  margin-top: 20px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -85,20 +84,12 @@
 
 .signup__error-text {
   color: #FF014E;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  max-width: 380px;
+  max-width: 324px;
   margin: 8px 0 0;
-}
-
-.signup__info-for-input {
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  color: #B6B6B6;
   align-self: flex-start;
 }
 
@@ -114,7 +105,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  width: 384px;
+  width: 324px;
   height: 56px;
   cursor: pointer;
   margin-bottom: 12px;
@@ -148,9 +139,8 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  width: 40px;
-  height: 40px;
-  // background-image: url('../../image/icons/popup__button-close.svg');
+  width: 24px;
+  height: 24px;
   background-image: url('#{$images-dir2}icons/popup__button-close.svg');
   box-sizing: border-box;
   border-radius: 24px;
@@ -169,6 +159,7 @@
   margin-top: 12px;
   display: flex;
   flex-direction: row;
+  max-width: 324px;
 }
 
 .signup__checkbox {
@@ -180,7 +171,7 @@
 }
 
 .signup__checkbox-text {
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -189,4 +180,3 @@
 .signup__personal-data {
   color: #0500FF;
 }
-
