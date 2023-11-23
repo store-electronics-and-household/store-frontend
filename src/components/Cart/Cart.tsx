@@ -1,5 +1,6 @@
 import React from 'react';
 import type { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { mockedCartProducts } from '../../utils/mocks';
 
 // import './Cart.css';
@@ -31,7 +32,7 @@ const Cart: FC = () => {
         <>
         <div className='cart__item' key={id}>
           <div className='cart__item-info'>
-           <div className='cart__item-image-wrapper'></div>
+            <div className='cart__item-image-wrapper'></div>
               <div className='cart__item-textdata'>
                 <h3 className='cart__item-name'>{name}</h3>
                 <p className='cart__item-description'>{description}</p>
@@ -123,9 +124,11 @@ const Cart: FC = () => {
       </div>
 
         <div className='cart__order-button-wrapper'>
-          <button className='cart__order-button'>
-          <span className='cart__order-button-title'>Оформить заказ</span>
-          </button>
+          <Link to='/'>
+            <button className='cart__order-button'>
+            <span className='cart__order-button-title'>Оформить заказ</span>
+            </button>
+          </Link>
         </div>
       </div>
     </div>
