@@ -58,7 +58,7 @@
   border-radius: 12px;
   border: 1px solid #B6B6B6;
   width: 324px;
-  height: 48px;
+  min-height: 24px;
   margin-top: 20px;
   font-size: 20px;
   font-style: normal;
@@ -91,12 +91,14 @@
   max-width: 324px;
   margin: 8px 0 0;
   align-self: flex-start;
+  padding-left: 25px;
 }
 
 .signin__buttons {
   margin-top: 40px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .signin__button {
@@ -149,6 +151,7 @@
   background-size: contain;
   cursor: pointer;
   border: none;
+  background-color: transparent;
 }
 
 .signin__button_cls:active {
