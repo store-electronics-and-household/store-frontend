@@ -58,9 +58,11 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
           <div className='signup__inputs'>
             <input
               className={`signup__input ${
-                formik.dirty && !formik.errors.loginReg
+                formik.touched.loginReg && formik.errors.loginReg
+                  ? 'signup__input_invalid'
+                  : formik.touched.loginReg
                   ? 'signup__input_valid'
-                  : 'signup__input_invalid'
+                  : ''
               }`}
               placeholder='E-mail'
               type='text'
@@ -78,9 +80,11 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
             )}
             <input
               className={`signup__input ${
-                formik.dirty && !formik.errors.passwordReg
-                  ? 'signup__input_valid'
-                  : 'signup__input_invalid'
+                formik.touched.passwordReg && formik.errors.passwordReg
+                ? 'signup__input_invalid'
+                : formik.touched.passwordReg
+                ? 'signup__input_valid'
+                : ''
               }`}
               placeholder='Пароль'
               type='password'
@@ -99,9 +103,11 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
             )}
             <input
               className={`signup__input ${
-                formik.dirty && !formik.errors.ConfirmPass
-                  ? 'signup__input_valid'
-                  : 'signup__input_invalid'
+                formik.touched.ConfirmPass && formik.errors.ConfirmPass
+                ? 'signup__input_invalid'
+                : formik.touched.ConfirmPass
+                ? 'signup__input_valid'
+                : ''
               }`}
               placeholder='Повторите пароль'
               type='password'
