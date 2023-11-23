@@ -15,14 +15,16 @@ const CategoriesMain: React.FC<{
         <h2 className='tile-main__title'>Категории</h2>
       </div>
       <ul className='tile-main__list'>
-        {categoriesList.map((tile) => (
-          <CategoriesTile
-            key={tile.catId}
-            catTitle={tile.catTitle}
-            catImg={tile.catImg}
-            catUrl={tile.catUrl}
-          />
-        ))}
+        {categoriesList
+          .sort((a, b) => a.catTitle.localeCompare(b.catTitle))
+          .map((tile) => (
+            <CategoriesTile
+              key={tile.catId}
+              catTitle={tile.catTitle}
+              catImg={tile.catImg}
+              catUrl={tile.catUrl}
+            />
+          ))}
       </ul>{' '}
     </section>
   );

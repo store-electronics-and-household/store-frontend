@@ -81,30 +81,30 @@ export const categoriesList = [
     catId: 12,
     catTitle: 'Гаджеты',
     catImg:
-      'https://images.unsplash.com/photo-1591337676887-a217a6970a8a?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/categories',
+      'https://images.unsplash.com/photo-1620213391117-0d169a917221?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    catUrl: '/',
   },
 ];
 export const product = [
   {
     id: 1,
-    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
+    name: 'Смартфон Apple iPhone 15 Pro 128Gb 2 nano-sim Blue Titanium ',
     originPrice: 140990,
     salesPrice: 150540,
     discount: 30,
   },
   {
     id: 2,
-    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
+    name: 'Смартфон Apple iPhone 15 256Gb 2 nano',
     originPrice: 140990,
     salesPrice: 150540,
     discount: 30,
   },
   {
     id: 3,
-    name: 'Смартфон Apple iPhone 15 256Gb 2 nano-sim Black',
-    originPrice: 140990,
-    salesPrice: 150540,
+    name: 'Смартфон Apple iPhone XR 64GB RED (MRY62RU/A)',
+    originPrice: 51660,
+    salesPrice: 60990,
     discount: 30,
   },
   {
@@ -275,49 +275,65 @@ export const subCategoriesList = [
   {
     id: 1,
     catTitle: 'Apple IPhone',
-    catImg: 'https://images.unsplash.com/photo-1570222094114-d054a817e56b?q=80&w=1805&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    catImg:
+      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/catalog',
   },
   {
     id: 2,
     catTitle: 'Samsung Galaxy',
-    catImg: 'https://images.unsplash.com/photo-1570222094114-d054a817e56b?q=80&w=1805&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    catImg:
+      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
     id: 3,
     catTitle: 'Xiaomi',
-    catImg: 'https://images.unsplash.com/photo-1511499271651-073325718d90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHx8',
+    catImg:
+      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
     id: 4,
     catTitle: 'Google',
-    catImg: 'https://images.unsplash.com/photo-1547082299-de196ea013d6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGNvbXB1dGVyfGVufDB8fDB8fHww',
+    catImg:
+      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
     id: 5,
     catTitle: 'Honor',
-    catImg: 'https://images.unsplash.com/photo-1617109224926-b69d0862ef1b?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    catImg:
+      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
     id: 6,
     catTitle: 'Realme',
-    catImg: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    catImg:
+      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
     id: 7,
     catTitle: 'HUAWEI',
-    catImg: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    catImg:
+      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
   {
     id: 8,
     catTitle: 'OnePlus',
-    catImg: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    catImg:
+      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+
     catUrl: '/',
   },
 ];
@@ -327,21 +343,24 @@ export const paymentPageData = [
     id: 100,
     quantity: 1,
     salesPrice: 100000,
-    imgUrl: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imgUrl:
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     discount: 5000,
   },
   {
     id: 101,
     quantity: 2,
     salesPrice: 200000,
-    imgUrl: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imgUrl:
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     discount: 7000,
   },
   {
     id: 103,
     quantity: 3,
     salesPrice: 100000,
-    imgUrl: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imgUrl:
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     // imgUrl: '../../image/good_2.svg',
     discount: 7000,
   },
@@ -349,14 +368,16 @@ export const paymentPageData = [
     id: 104,
     quantity: 2,
     salesPrice: 200000,
-    imgUrl: 'https://images.unsplash.com/photo-1511499271651-073325718d90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHx8',
+    imgUrl:
+      'https://images.unsplash.com/photo-1511499271651-073325718d90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHx8',
     discount: 7000,
   },
   {
     id: 105,
     quantity: 1,
     salesPrice: 200000,
-    imgUrl: 'https://images.unsplash.com/photo-1573739022854-abceaeb585dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGhvbmUlMjBhY2Nlc3Nvcmllc3xlbnwwfHwwfHx8MA%3D%3D',
+    imgUrl:
+      'https://images.unsplash.com/photo-1573739022854-abceaeb585dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGhvbmUlMjBhY2Nlc3Nvcmllc3xlbnwwfHwwfHx8MA%3D%3D',
     discount: 4000,
   },
 ];

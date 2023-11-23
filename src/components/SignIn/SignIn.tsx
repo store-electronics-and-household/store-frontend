@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
-//import './Signin.css';
+// import './Signin.css';
 
 interface SignInProps {
   onOpenSignIn: () => void;
@@ -19,6 +19,7 @@ const SignIn: React.FC<SignInProps> = ({
 }) => {
   const formik = useFormik({
     initialValues: {
+      enableReinitialize: true,
       loginAuth: '',
       passwordAuth: '',
     },

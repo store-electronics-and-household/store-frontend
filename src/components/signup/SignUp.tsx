@@ -5,12 +5,10 @@ import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
 // import './Signup.css';
 
-
 interface SignUpProps {
   onOpenSignUp: () => void;
   isOpenSignUp: boolean;
 }
-
 const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
   const formik = useFormik({
     initialValues: {
@@ -18,6 +16,11 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
       passwordReg: '',
       ConfirmPass: '',
       RegCheckbox: false,
+      enableReinitialize: true,
+      isValid: true,
+      isDirty: false,
+      isInitialValid: true,
+      initialErrors: false,
     },
     validationSchema: Yup.object({
       loginReg: Yup.string()
@@ -51,6 +54,7 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
           className='signup__form'
           onSubmit={formik.handleSubmit}
           noValidate
+          onReset={formik.handleReset}
         >
           <div className='signup__title-container'>
             <div className='signup__title'>Зарегистрируйтесь</div>
@@ -82,10 +86,10 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
             <input
               className={`signup__input ${
                 formik.touched.passwordReg && formik.errors.passwordReg
-                ? 'signup__input_invalid'
-                : formik.touched.passwordReg
-                ? 'signup__input_valid'
-                : ''
+                  ? 'signup__input_invalid'
+                  : formik.touched.passwordReg
+                  ? 'signup__input_valid'
+                  : ''
               }`}
               placeholder='Пароль'
               type='password'
@@ -105,10 +109,10 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
             <input
               className={`signup__input ${
                 formik.touched.ConfirmPass && formik.errors.ConfirmPass
-                ? 'signup__input_invalid'
-                : formik.touched.ConfirmPass
-                ? 'signup__input_valid'
-                : ''
+                  ? 'signup__input_invalid'
+                  : formik.touched.ConfirmPass
+                  ? 'signup__input_valid'
+                  : ''
               }`}
               placeholder='Повторите пароль'
               type='password'

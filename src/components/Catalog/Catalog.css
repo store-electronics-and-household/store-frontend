@@ -23,6 +23,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 64px 24px;
   max-width: 1014px;
+  margin: 0;
 }
 
 .catalog__container {
@@ -36,12 +37,12 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 24px;
   margin: 0;
 }
 
 .catalog__model {
   font-weight: 400;
+  margin-top: 24px;
 }
 
 .catalog__model-link {
@@ -66,10 +67,15 @@ line-height: normal;
 
 .catalog__models {
   font-weight: 500;
-  margin: 0;
+  margin: 32px 0;
   padding: 0;
   list-style: none;
 }
+
+.catalog__models:first-of-type{
+ margin-top: 0;
+}
+
 
 .catalog__rendered-categories {
   display: grid;
@@ -78,6 +84,7 @@ line-height: normal;
   display: grid;
   grid-template-columns: repeat(1, 1014px);
   max-width: 1014px;
+  margin: 0;
 }
 
 .catalog__render-cat {
