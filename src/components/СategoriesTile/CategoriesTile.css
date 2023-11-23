@@ -13,6 +13,8 @@
   position: relative;
   background-color: var(--Gray, #ededed);
   height: 316px;
+  padding-left: 0;
+  list-style: none;
 }
 
 .tile__item_small {
