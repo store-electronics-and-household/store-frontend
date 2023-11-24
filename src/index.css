@@ -872,7 +872,6 @@ body {
 }
 
 .card-medium__sticker {
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -921,7 +920,6 @@ body {
   color: #1b1b1b;
   text-overflow: ellipsis;
   white-space: pre-wrap;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -934,7 +932,6 @@ body {
 
 .card-medium__price {
   color: #1b1b1b;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
@@ -944,7 +941,6 @@ body {
 
 .card-medium__oldprice {
   color: #bcbcbc;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -976,7 +972,6 @@ body {
 
 .card-medium__counter {
   color: var(--Black, #222);
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -1504,7 +1499,6 @@ body {
 
 .catalog__title {
   color: #000;
-  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
   font-size: 56px;
   font-style: normal;
   font-weight: 500;
@@ -1592,8 +1586,6 @@ body {
 }
 
 .catalog__popular {
-  color: #000;
-  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
   font-size: 56px;
   font-style: normal;
   font-weight: 500;
@@ -1623,7 +1615,6 @@ body {
 }
 
 .tile-main__title {
-  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
   font-size: 56px;
   font-style: normal;
   font-weight: 500;
@@ -1644,7 +1635,6 @@ body {
 }
 
 .tile__item {
-  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
   border-radius: 25px;
   font-size: 24px;
   font-style: normal;
@@ -1665,7 +1655,6 @@ body {
 .tile__content {
   text-decoration: none;
   color: var(--Black, #222);
-  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -1744,7 +1733,6 @@ body {
 .not-found__title {
   color: #000;
   text-align: center;
-  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
   font-size: 56px;
   font-style: normal;
   font-weight: 500;
@@ -1755,7 +1743,6 @@ body {
 
 .not-found__info {
   color: #000;
-  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -1767,7 +1754,6 @@ body {
 .not-found__btn {
   text-decoration: none;
   color: #fff;
-  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
