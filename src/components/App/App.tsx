@@ -19,6 +19,7 @@ import SignIn from '../SignIn/SignIn';
 import SignUp from '../signup/SignUp';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import { authorize, register } from '../../utils/api/api';
+import TestPage from '../TestPage/TestPage';
 
 const App: React.FC = () => {
   // const [isLogged, setIsLogged] = useState<boolean>(false);
@@ -53,8 +54,9 @@ const App: React.FC = () => {
   const handleLogin = (email: string, password: string): void => {
     authorize(email, password)
       .then((data) => {
+        localStorage.setItem('token', data.token);
         console.log(data);
-        navigate('/cart', { replace: true });
+        navigate('/test-page', { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -100,6 +102,7 @@ const App: React.FC = () => {
             <Route path='/favourites' element={<Favourites />} />
             <Route path='/product' element={<ProductPage />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/test-page' element={<TestPage />} />
             <Route path='/payment' element={<PaymentsPage />} />
             <Route path='/' element={<Navigate to='/main' replace />} />
           </Route>

@@ -18,7 +18,7 @@ const request = async (
   endpoint: string,
   options: RequestInit
 ): Promise<any> => {
-  const url = `http://localhost:8080/${endpoint}`;
+  const url = `http://localhost:8080${endpoint}`;
   return await fetch(url, options).then(checkResponse);
 };
 
@@ -26,7 +26,7 @@ export const register = async (
   email: string,
   password: string
 ): Promise<any> => {
-  return await request('/signup', {
+  return await request('/regist', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -49,5 +49,16 @@ export const authorize = async (
       // Authorization: `Basic ${base64Credentials}`
     },
     body: JSON.stringify({ email, password }),
+  });
+};
+
+export const sayHello = async (jwt: string): Promise<any> => {
+  return await request('/hello', {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${jwt}`,
+    },
   });
 };
