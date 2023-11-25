@@ -4,18 +4,19 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
-// import './Signin.css';
 
 interface SignInProps {
   onOpenSignIn: () => void;
   isOpenSignIn: boolean;
   onOpenReg: () => void;
+  onLogin: (email: string, password: string) => void;
 }
 
 const SignIn: React.FC<SignInProps> = ({
   onOpenSignIn,
   isOpenSignIn,
   onOpenReg,
+  onLogin,
 }) => {
   const formik = useFormik({
     initialValues: {
@@ -37,7 +38,7 @@ const SignIn: React.FC<SignInProps> = ({
         .required('Введите Ваш пароль'),
     }),
     onSubmit: (values) => {
-      // Обработка отправки данных
+      onLogin(values.loginAuth, values.passwordAuth);
       onOpenSignIn();
       formik.resetForm();
     },

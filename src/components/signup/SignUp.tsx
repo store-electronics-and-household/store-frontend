@@ -3,13 +3,17 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
-// import './Signup.css';
 
 interface SignUpProps {
   onOpenSignUp: () => void;
   isOpenSignUp: boolean;
+  onRegistr: (email: string, password: string) => void;
 }
-const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
+const SignUp: React.FC<SignUpProps> = ({
+  onOpenSignUp,
+  isOpenSignUp,
+  onRegistr,
+}) => {
   const formik = useFormik({
     initialValues: {
       loginReg: '',
@@ -40,7 +44,9 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
       RegCheckbox: Yup.boolean().oneOf([true], '').required(),
     }),
     onSubmit: (values) => {
-      // Обработка отправки данных
+      console.log(values.loginReg);
+      console.log(values.passwordReg);
+      onRegistr(values.loginReg, values.passwordReg);
       onOpenSignUp();
       formik.resetForm();
     },
