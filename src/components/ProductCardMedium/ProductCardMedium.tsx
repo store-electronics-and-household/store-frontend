@@ -31,7 +31,7 @@ const ProductCardMedium: React.FC<{
               src={vector}
               alt='прекрасная фотография товара'
             />
-            <p className='card-medium__sticker'>- {product.discount} %</p>
+            <p className='card-medium__sticker'>- {product.discount}%</p>
           </a>
           <button
             type='button'
