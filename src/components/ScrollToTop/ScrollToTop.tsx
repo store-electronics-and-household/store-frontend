@@ -2,7 +2,7 @@ import React, { type ReactNode, useEffect } from 'react';
 import { useLocation } from 'react-router';
 
 interface ScrollToTopProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 const ScrollToTop: React.FC<ScrollToTopProps> = ({ children }) => {
