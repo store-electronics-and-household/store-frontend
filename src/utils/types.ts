@@ -38,4 +38,3 @@ export interface SpecifyType {
   batteryCapacity1?: string | number
   aboutProduct?: string
 }
-

@@ -5,7 +5,6 @@ import favoriteIcon from '../../image/icons/favourite_icon.svg';
 import ThumbsSlider from '../ThumbsSlider/ThumbsSlider';
 import { productPhotoArray, productSpecifyName, productSpecifyValue } from '../../utils/constants';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
-import './ProductPage.css';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import BreadcrumbItem from '../Breadcrumb/BreadcrumbItem';
 import ProductCharacteristicsList from '../ProductCharacteristicsList/ProductCharacteristicsList';
