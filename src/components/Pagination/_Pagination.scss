@@ -7,7 +7,6 @@
   padding-left: 0;
   list-style: none;
   cursor: pointer;
-  gap: 24px;
   grid-column-start: 2;
   }
 
@@ -31,6 +30,7 @@ font-size: 20px;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
+margin: 0 27px;
 }
 
 .pagination__next-item {
@@ -39,4 +39,8 @@ line-height: normal;
 
 .pagination__previous-item {
   width: 40px;
+}
+
+.pagination__previous-link_hidden {
+  display: none;
 }

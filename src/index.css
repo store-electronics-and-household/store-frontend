@@ -1981,7 +1981,6 @@ body {
   padding-left: 0;
   list-style: none;
   cursor: pointer;
-  gap: 24px;
   grid-column-start: 2;
 }
 
@@ -2005,6 +2004,7 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  margin: 0 27px;
 }
 
 .pagination__next-item {
@@ -2013,4 +2013,8 @@ body {
 
 .pagination__previous-item {
   width: 40px;
+}
+
+.pagination__previous-link_hidden {
+  display: none;
 }/*# sourceMappingURL=index.css.map */
