@@ -23,7 +23,7 @@ const Catalog: React.FC<{
           />
         </Breadcrumb>
         <div className='catalog__container-big'>
-          <h1 className='catalog__title'>Apple IPhone</h1>
+          <h1 className='catalog__title'>Apple IPhone Test</h1>
           <div className='catalog__container'>
             <ul className='catalog__collection'>
               <li className='catalog__models'>
