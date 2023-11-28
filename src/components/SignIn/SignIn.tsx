@@ -7,9 +7,9 @@ import PopupTemplate from '../PopupTemplate/PopupTemplate';
 // import './Signin.css';
 
 interface SignInProps {
-  onOpenSignIn: () => void;
-  isOpenSignIn: boolean;
-  onOpenReg: () => void;
+  onOpenSignIn: () => void
+  isOpenSignIn: boolean
+  onOpenReg: () => void
 }
 
 const SignIn: React.FC<SignInProps> = ({
