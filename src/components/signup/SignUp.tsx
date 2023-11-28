@@ -6,8 +6,8 @@ import PopupTemplate from '../PopupTemplate/PopupTemplate';
 // import './Signup.css';
 
 interface SignUpProps {
-  onOpenSignUp: () => void;
-  isOpenSignUp: boolean;
+  onOpenSignUp: () => void
+  isOpenSignUp: boolean
 }
 const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
   const formik = useFormik({

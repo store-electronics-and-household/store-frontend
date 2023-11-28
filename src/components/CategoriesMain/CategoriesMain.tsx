@@ -4,10 +4,10 @@ import { categoriesList } from '../../utils/constants';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
 
 const CategoriesMain: React.FC<{
-  catId?: number;
-  catTitle?: string;
-  catImg?: string;
-  catUrl?: string;
+  catId?: number
+  catTitle?: string
+  catImg?: string
+  catUrl?: string
 }> = (tile) => {
   return (
     <section className='tile-main'>

@@ -6,12 +6,12 @@ import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import { product, subCategoriesList } from '../../utils/constants';
 
 const Categories: React.FC<{
-  id?: number;
-  name?: string;
-  originPrice?: number;
-  salesPrice?: number;
-  discount?: number;
-  url?: string;
+  id?: number
+  name?: string
+  originPrice?: number
+  salesPrice?: number
+  discount?: number
+  url?: string
 }> = () => {
   return (
     <>
