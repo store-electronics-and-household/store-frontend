@@ -6,7 +6,7 @@ interface PaginationProps {
   items: string[] | JSX.Element[] | string;
 }
 
-function Items({ currentItems }: { currentItems: any }): any {
+const Items = ({ currentItems }: { currentItems: any }): any => {
   return currentItems.map((item: string | any[], index: any) => {
     if (item.length === 0) {
       return null;
@@ -14,7 +14,7 @@ function Items({ currentItems }: { currentItems: any }): any {
     const key = index;
     return <div key={key}>{item}</div>;
   });
-}
+};
 export const PaginatedItems: React.FC<PaginationProps> = ({
   itemsPerPage,
   items,
@@ -26,10 +26,10 @@ export const PaginatedItems: React.FC<PaginationProps> = ({
   const pageCount = Math.ceil(items.length / itemsPerPage);
 
   // Invoke when user click to request another page.
-  function handlePageClick(event: { selected: number }): void {
+  const handlePageClick = (event: { selected: number }): void => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
     setItemOffset(newOffset);
-  }
+  };
 
   return (
     <>
