@@ -9,15 +9,15 @@ const ProductCardMedium: React.FC<{
   url: string;
 }> = (product) => {
   const [isLiked, setIsLiked] = React.useState(false);
-  function handleLike(): void {
+  const handleLike = (): void => {
     setIsLiked(!isLiked);
-  }
+  };
   const [isCounter, setIsCounter] = React.useState(0);
-  function handleAddToBasket(): void {
+  const handleAddToBasket = (): void => {
     setIsCounter((prev) => {
       return prev + 1;
     });
-  }
+  };
   const cardLikeButtonClassName = `card-medium__like ${
     isLiked && 'card-medium__like_active'
   }`;
