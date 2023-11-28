@@ -28,6 +28,7 @@ const Categories: React.FC<{
                   <a className='catalog__model-link' href='/catalog'>
                     Apple IPhone
                   </a>
+                  В
                 </li>
                 <li className='catalog__model'>
                   <a className='catalog__model-link' href='/catalog'>
