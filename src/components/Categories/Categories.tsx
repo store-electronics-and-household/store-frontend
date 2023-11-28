@@ -16,7 +16,7 @@ const Categories: React.FC<{
     <section className='catalog'>
       <Breadcrumb currentPlace='Смартфоны' />
       <div className='catalog__container-big'>
-        <h1 className='catalog__title'>Смартфоны</h1>
+        <h1 className='catalog__title'>Смартфоны TEST!!!</h1>
         <div className='catalog__container'>
           <ul className='catalog__collection'>
             <li className='catalog__models'>
