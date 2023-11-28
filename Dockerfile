@@ -1,4 +1,4 @@
-FROM node:16 as builder
+FROM node:18 as builder
 WORKDIR /app
 RUN npm install -g typescript @typescript-eslint/parser@4.33.0
 COPY package.json /app/package.json
