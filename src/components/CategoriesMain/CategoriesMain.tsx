@@ -1,5 +1,4 @@
 import React from 'react';
-// import './CategoriesMain.css';
 import { categoriesList } from '../../utils/constants';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
 
