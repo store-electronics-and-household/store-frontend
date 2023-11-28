@@ -35,6 +35,11 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
     },
   });
 
+  const handleCloseRecoveryPasswordPopup = (): void => {
+    onOpenRecoveryPopup();
+    formik.resetForm();
+  };
+
   return (
     <PopupTemplate
       isOpen={isOpenPasswordRecovery}
@@ -45,7 +50,7 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
       <div className='pass-recovery__container'>
         <button
           className='pass-recovery__button_cls'
-          onClick={onOpenRecoveryPopup}
+          onClick={handleCloseRecoveryPasswordPopup}
         />
         <form
           className='pass-recovery__form'
