@@ -1,25 +1,21 @@
 import React from 'react';
 import BreadcrumbItem from './BreadcrumbItem';
+import { useLocation } from 'react-router-dom';
 
 interface BreadcrumbProps {
   children?: React.ReactNode
   currentPlace: string
-  previousPlace: string
-  previousPath: string
 }
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({
   children,
-  currentPlace,
-  previousPlace = '',
-  previousPath = ''
+  currentPlace
 }: BreadcrumbProps) => {
+  const location = useLocation();
+
   return (
     <ul className='breadcrumb'>
-      <BreadcrumbItem
-        breadcrumbPath = {previousPath}
-        breadcrumbText = {previousPlace}
-      />
+      <BreadcrumbItem breadcrumbPath='/' breadcrumbText={`${location.pathname === '/payment' ? 'Корзина' : 'Главная'}`} />
       {children}
       <li className='breadcrumb__item breadcrumb__item_current'>
         {currentPlace}
@@ -29,5 +25,3 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
 };
 
 export default Breadcrumb;
-
-// <BreadcrumbItem breadcrumbPath='/' breadcrumbText='Главная' />

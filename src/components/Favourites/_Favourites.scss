@@ -11,7 +11,7 @@
 .favourites__container {
   display: flex;
   flex-direction: column;
-  margin-top: 64px;
+  margin: 64px auto 140px;
   padding-right: 40px;
   padding-left: 40px;
   width: 1360px;
@@ -21,7 +21,7 @@
   display: flex;
   margin: 0;
   align-self: flex-start;
-  font-family: Helvetica Neue;
+  font-family: "Inter", Arial, sans-serif;
   font-weight: 500;
   font-size: 56px;
   line-height: 68.38px;
@@ -34,4 +34,5 @@
   margin-top: 44px;
   grid-template-columns: repeat(4, 1fr);
   max-width: 1360px;
+  list-style: none;
 }

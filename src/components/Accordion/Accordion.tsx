@@ -6,8 +6,8 @@ const Accordion: React.FC<{ faqList: FaqItem[]; headText: string }> = ({
   faqList,
   headText,
 }: {
-  faqList: FaqItem[];
-  headText: string;
+  faqList: FaqItem[]
+  headText: string
 }) => {
   const [currentFaqId, setCurrentFaqId] = useState(-1);
   const btnOnClick = (faqId: number): void => {

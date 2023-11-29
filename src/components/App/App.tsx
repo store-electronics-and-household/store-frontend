@@ -17,12 +17,18 @@ import Footer from '../Footer/Footer';
 import WarningPopup from '../WarningPopup/WarningPopup';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../signup/SignUp';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
+import SearchResults from '../SearchResults/SearchResults';
+// import { paymentPageData } from '../../utils/constants';
+import { type GoodsListProps } from '../../utils/types';
 
 const App: React.FC = () => {
   // const [isLogged, setIsLogged] = useState<boolean>(false);
   const [isWarningPopupOpen, setWarningPopupOpen] = useState<boolean>(false);
   const [isSignInPopupOpen, setSignInPopupOpen] = useState<boolean>(false);
   const [isSignUpPopupOpen, setSignUpPopupOpen] = useState<boolean>(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [goodsList, setGoodsList] = React.useState <GoodsListProps[]>();
 
   const toggleWarningPopup = (): void => {
     setWarningPopupOpen(!isWarningPopupOpen);
@@ -36,8 +42,13 @@ const App: React.FC = () => {
     setSignUpPopupOpen(!isSignUpPopupOpen);
   };
 
+  function setGoodsForPayment (data: GoodsListProps[]): void {
+    setGoodsList(data);
+  }
+
   return (
     <div className='App'>
+      <ScrollToTop>
       <Routes>
         <Route
           path='/'
@@ -71,12 +82,14 @@ const App: React.FC = () => {
           <Route path='/catalog' element={<Catalog />} />
           <Route path='/favourites' element={<Favourites />} />
           <Route path='/product' element={<ProductPage />} />
-          <Route path='/cart' element={<Cart />} />
-          <Route path='/payment' element={<PaymentsPage />} />
+          <Route path='/cart' element={<Cart onCheckoutClick = {setGoodsForPayment} />} />
+          <Route path='/payment' element={<PaymentsPage GoodsList = {goodsList ?? []}/>} />
+          <Route path='/search-results' element={<SearchResults />} />
           <Route path='/' element={<Navigate to='/main' replace />} />
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
+      </ScrollToTop>
     </div>
   );
 };

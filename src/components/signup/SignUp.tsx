@@ -3,13 +3,12 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
-import './Signup.css';
+// import './Signup.css';
 
 interface SignUpProps {
-  onOpenSignUp: () => void;
-  isOpenSignUp: boolean;
+  onOpenSignUp: () => void
+  isOpenSignUp: boolean
 }
-
 const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
   const formik = useFormik({
     initialValues: {
@@ -17,10 +16,19 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
       passwordReg: '',
       ConfirmPass: '',
       RegCheckbox: false,
+      enableReinitialize: true,
+      isValid: true,
+      isDirty: false,
+      isInitialValid: true,
+      initialErrors: false,
     },
     validationSchema: Yup.object({
       loginReg: Yup.string()
         .email('Введите корректный email')
+        .matches(
+          /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
+          'Некорректный формат email'
+        )
         .required('Введите email'),
       passwordReg: Yup.string()
         .min(6, 'Пароль должен содержать не менее 6 символов')
@@ -34,22 +42,32 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
     onSubmit: (values) => {
       // Обработка отправки данных
       onOpenSignUp();
+      formik.resetForm();
     },
   });
+
+  const handleCloseSignUpPopup = (): void => {
+    onOpenSignUp();
+    formik.resetForm();
+  };
 
   return (
     <PopupTemplate
       isOpen={isOpenSignUp}
-      OnClose={onOpenSignUp}
+      OnClose={handleCloseSignUpPopup}
       popupClass='popup'
       popupClassOverlay='popup_overlay'
     >
       <div className='signup__container'>
-        <button className='signup__button_cls' onClick={onOpenSignUp} />
+        <button
+          className='signup__button_cls'
+          onClick={handleCloseSignUpPopup}
+        />
         <form
           className='signup__form'
           onSubmit={formik.handleSubmit}
           noValidate
+          onReset={formik.handleReset}
         >
           <div className='signup__title-container'>
             <div className='signup__title'>Зарегистрируйтесь</div>
@@ -58,9 +76,11 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
           <div className='signup__inputs'>
             <input
               className={`signup__input ${
-                formik.dirty && !formik.errors.loginReg
+                formik.touched.loginReg && formik.errors.loginReg
+                  ? 'signup__input_invalid'
+                  : formik.touched.loginReg
                   ? 'signup__input_valid'
-                  : 'signup__input_invalid'
+                  : ''
               }`}
               placeholder='E-mail'
               type='text'
@@ -78,9 +98,11 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
             )}
             <input
               className={`signup__input ${
-                formik.dirty && !formik.errors.passwordReg
+                formik.touched.passwordReg && formik.errors.passwordReg
+                  ? 'signup__input_invalid'
+                  : formik.touched.passwordReg
                   ? 'signup__input_valid'
-                  : 'signup__input_invalid'
+                  : ''
               }`}
               placeholder='Пароль'
               type='password'
@@ -99,9 +121,11 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
             )}
             <input
               className={`signup__input ${
-                formik.dirty && !formik.errors.ConfirmPass
+                formik.touched.ConfirmPass && formik.errors.ConfirmPass
+                  ? 'signup__input_invalid'
+                  : formik.touched.ConfirmPass
                   ? 'signup__input_valid'
-                  : 'signup__input_invalid'
+                  : ''
               }`}
               placeholder='Повторите пароль'
               type='password'
@@ -139,6 +163,7 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
               onBlur={formik.handleBlur}
             />
             <label className='signup__checkbox-label' htmlFor='RegCheckbox'>
+              <div className='signup__checkbox-checkmark'></div>
               <span className='signup__checkbox-text'>
                 Я соглашаюсь на{' '}
                 <span className='signup__checkbox-text signup__personal-data'>

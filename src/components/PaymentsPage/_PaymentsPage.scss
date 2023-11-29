@@ -4,7 +4,8 @@
 }
 
 .payments-page__title {
-  margin: 44px 0 44px 40px;
+  max-width: 1360px;
+  margin: 44px auto 44px auto;
   @include fontStyle($fontSH2, $fontWH2)
 }
 
