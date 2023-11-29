@@ -53,7 +53,7 @@
   height: 19px;
   padding: 8px;
   border-radius: 40px;
-  background: #fff;
+  background: #afc0ff;;
   position: absolute;
   top: 12px;
   left: 12px;
@@ -61,11 +61,10 @@
 }
 
 .card-medium__image {
-  padding: 114px 40px 115px;
   border-radius: 25px;
   background: var(--Gray, #ededed);
-  width: 241px;
-  height: 147px;
+  width: 322px;
+  height: 376px;
 }
 
 .card-medium__buy {
@@ -74,7 +73,7 @@
   height: 56px;
   background-position: center;
   border-radius: 40px;
-  background-color: var(--Black, #222);
+  background-color: #272A31;
   border: none;
   padding: 16px 20px;
   position: absolute;
@@ -89,33 +88,36 @@
 
 .card-medium__title {
   overflow: visible;
-  color: #1b1b1b;
+  color: #272A31;
   text-overflow: ellipsis;
+  font-family: Inter;
   white-space: pre-wrap;
-  font-size: 14px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 24px;
   hyphens: auto;
   word-wrap: break-word;
   margin: 0;
 }
 
 .card-medium__price {
-  color: #1b1b1b;
+  font-family: Wix Madefor Display;
+  color: #272A31;
   font-size: 24px;
   font-style: normal;
-  font-weight: 600;
-  line-height: normal;
+  font-weight: 700;
+  line-height: 30px;
   margin: 0;
 }
 
 .card-medium__oldprice {
-  color: #bcbcbc;
-  font-size: 20px;
+  color: #AFB4C0;
+  font-family: Wix Madefor Display;
+  font-size: 24px;
   font-style: normal;
-  font-weight: 600;
-  line-height: normal;
+  font-weight: 700;
+  line-height: 30px;
   text-decoration-line: line-through;
   margin: 0;
 }

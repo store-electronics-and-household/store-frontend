@@ -1,12 +1,12 @@
 .tile__item {
-  border-radius: 25px;
+  border-radius: 20px;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  color: var(--Black, #222);
+  color: #222;
   position: relative;
-  background-color: var(--Gray, #ededed);
+  background-color: #fff;
   height: 316px;
   padding-left: 0;
   list-style: none;
@@ -18,7 +18,7 @@
 
 .tile__content {
   text-decoration: none;
-  color: var(--Black, #222);
+  color: #222;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -52,13 +52,13 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: var(--Black, #222);
+  color:  #222;
   text-align: center;
 }
 
 .tile__category-name {
   margin: 0;
-  color: var(--Black, #222);
+  color: #222;
   font-family:
     Helvetica Neue,
     Arial,
