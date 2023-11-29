@@ -38,5 +38,6 @@ module.exports = {
     '@typescript-eslint/no-confusing-void-expression': 'error',
     indent: 'off',
     '@typescript-eslint/indent': 'error',
+    '@typescript-eslint/multiline-ternary': ['error', 'ignore'],
   },
 };
