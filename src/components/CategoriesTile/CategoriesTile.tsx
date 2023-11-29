@@ -3,9 +3,9 @@ import './CategoriesTile.css';
 import { useLocation } from 'react-router-dom';
 
 const CategoriesTile: React.FC<{
-  catTitle: string;
-  catImg: string;
-  catUrl?: string;
+  catTitle: string
+  catImg: string
+  catUrl?: string
 }> = (tile) => {
   const location = useLocation();
   return (

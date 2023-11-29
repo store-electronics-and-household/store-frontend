@@ -161,7 +161,7 @@ body {
 .accordion__btn {
   width: 100%;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   border: none;
   background-color: transparent;
   padding: 16px 0 15px;

@@ -5,6 +5,7 @@ import DISCOUNTBANNER_1 from '../../image/discountBanner_1.svg';
 import DISCOUNTBANNER_2 from '../../image/discountBanner_2.svg';
 import DISCOUNTBANNER_3 from '../../image/discountBanner_3.svg';
 import DISCOUNTBANNER_4 from '../../image/discountBanner_4.svg';
+//
 
 const Discount: React.FC = () => {
   return (
