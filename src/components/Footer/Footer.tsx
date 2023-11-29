@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../image/logo.svg';
+import { contactsData } from '../../utils/constants';
 
 const Footer: React.FC = () => {
   return (
@@ -16,12 +17,14 @@ const Footer: React.FC = () => {
             © 2023 «Магазин электроники»
           </span>
         </div>
+        <ul className='footer__contacts-list'>
+          <li className='footer__contacts-item'>{ contactsData.phoneNumber }</li>
+          <li className='footer__contacts-item'>{ contactsData.email }</li>
+          <li className='footer__contacts-item'>{ contactsData.adress }</li>
+        </ul>
         <nav className='footer__nav'>
           <NavLink className='footer__nav-link' to='/about-company'>
             О нас
-          </NavLink>
-          <NavLink className='footer__nav-link' to='/contacts'>
-            Контакты
           </NavLink>
           <NavLink className='footer__nav-link' to='/faq'>
             Часто задаваемые вопросы

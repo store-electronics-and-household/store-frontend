@@ -3,7 +3,7 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import AboutCompany from '../AboutCompany/AboutCompany';
-import Contacts from '../Contacts/Contacts';
+// import Contacts from '../Contacts/Contacts';
 import Faq from '../Faq/Faq';
 import Categories from '../Categories/Categories';
 import Catalog from '../Catalog/Catalog';
@@ -67,7 +67,7 @@ const App: React.FC = () => {
         >
           <Route path='/main' element={<Main />} />
           <Route path='/about-company' element={<AboutCompany />} />
-          <Route path='/contacts' element={<Contacts />} />
+          {/* <Route path='/contacts' element={<Contacts />} /> */}
           <Route path='/delivery' element={<Delivery />} />
           <Route path='/faq' element={<Faq />} />
           <Route path='/categories' element={<Categories />} />
