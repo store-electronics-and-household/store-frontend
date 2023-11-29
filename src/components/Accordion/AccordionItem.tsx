@@ -3,17 +3,17 @@ import { type FaqItem } from '../../utils/types';
 import arrow from '../../image/icons/arr-down.svg';
 
 const AccordionItem: React.FC<{
-  faqItem: FaqItem;
-  isQuestionOpen: boolean;
-  btnOnClick: () => void;
+  faqItem: FaqItem
+  isQuestionOpen: boolean
+  btnOnClick: () => void
 }> = ({
   faqItem,
   isQuestionOpen,
   btnOnClick,
 }: {
-  faqItem: FaqItem;
-  isQuestionOpen: boolean;
-  btnOnClick: () => void;
+  faqItem: FaqItem
+  isQuestionOpen: boolean
+  btnOnClick: () => void
 }) => {
   const contentRef = useRef<HTMLParagraphElement>(null);
   const [height, setHeight] = useState(0);

@@ -1,19 +1,18 @@
 import { type ReactNode } from 'react';
 
 export interface FaqItem {
-  q: string;
-  a: string;
+  q: string
+  a: string
 }
 
 export interface PopupProps {
-  isOpen: boolean;
-  OnClose: () => void;
-  popupClass: string;
-  popupClassOverlay: string;
-  children: ReactNode;
-  style?: React.CSSProperties;
+  isOpen: boolean
+  OnClose: () => void
+  popupClass: string
+  popupClassOverlay: string
+  children: ReactNode
+  style?: React.CSSProperties
 }
-
 
 export interface SpecifyType {
   productName: string
@@ -37,4 +36,12 @@ export interface SpecifyType {
   ram1?: string | number
   batteryCapacity1?: string | number
   aboutProduct?: string
+}
+
+export interface GoodsListProps {
+  id: number
+  quantity: number
+  salesPrice: number
+  imgUrl: string
+  discount: number
 }
