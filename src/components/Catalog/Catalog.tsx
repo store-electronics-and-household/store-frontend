@@ -15,10 +15,10 @@ const Catalog: React.FC<{
 }> = () => {
   return (
     <>
+      <Breadcrumb currentPlace='Apple IPhone'>
+        <BreadcrumbItem breadcrumbText='Смартфоны' breadcrumbPath='/categories'/>
+      </Breadcrumb>
       <section className='catalog'>
-        <Breadcrumb currentPlace='Apple IPhone'>
-          <BreadcrumbItem breadcrumbText='Смартфоны' breadcrumbPath='/categories'/>
-        </Breadcrumb>
         <div className='catalog__container-big'>
           <h1 className='catalog__title'>Apple IPhone</h1>
           <div className='catalog__container'>

@@ -1,15 +1,18 @@
+.accordion__container {
+  max-width: 950px;
+}
+
 .accordion__container:not(:last-of-type) {
-  margin-bottom: 88px;
+  margin-bottom: 44px;
 }
 
 .accordion__container-head {
-  padding: 12px 20px;
+  padding: 12px 0;
   margin-top: 0;
   margin-bottom: 16px;
   font-size: 32px;
-  font-weight: 700;
-  line-height: 146%;
-  background-color: #ededed;
+  font-weight: 500;
+  line-height: 40px;
 }
 
 .accordion__list {
@@ -19,14 +22,13 @@
 }
 
 .accordion__item {
-  border-bottom: 1px solid #B6B6B6;
   margin-bottom: 16px;
 }
 
 .accordion__btn {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   border: none;
   background-color: transparent;
   padding: 16px 0 15px;
@@ -37,7 +39,7 @@
 .accordion__question {
   text-align: start;
   margin: 0;
-  padding-right: 38px;
+  margin-right: 10px;
   font-size: 24px;
   font-weight: 500;
 }
@@ -53,9 +55,9 @@
 .accordion__answer {
   margin: 0;
   padding-bottom: 16px;
-  width: 784px;
-  max-width: 85%;
-  font-size: 16px;
+  max-width: 720px;
+  font-size: 20px;
+  line-height: 24px;
   color: #000;
 }
 

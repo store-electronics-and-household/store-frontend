@@ -1,6 +1,5 @@
 import React from 'react';
 import { type SpecifyType } from '../../utils/types';
-import './ProductCharacteristicsList.css';
 
 interface ProductCharacteristicListProps {
   productSpecifyName: SpecifyType
