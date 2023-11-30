@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface BreadcrumbItemProps {
-  breadcrumbText: string
-  breadcrumbPath: string
+  breadcrumbText: string;
+  breadcrumbPath: string;
 }
 
 const BreadcrumbItem: React.FC<BreadcrumbItemProps> = ({

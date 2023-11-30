@@ -40,7 +40,7 @@ module.exports = {
       'error',
       {
         multiline: {
-          delimiter: 'none',
+          delimiter: 'semi',
           requireLast: true,
         },
         singleline: {
@@ -50,8 +50,8 @@ module.exports = {
         overrides: {
           interface: {
             multiline: {
-              delimiter: 'none',
-              requireLast: false,
+              delimiter: 'semi',
+              requireLast: true,
             },
           },
         },
@@ -59,7 +59,7 @@ module.exports = {
     ],
     //'@stylistic/js/indent': ['error', 2],
     '@typescript-eslint/semi': ['error', 'always'],
-    '@stylistic/js/multiline-ternary': ['error', 'never'],
+    '@stylistic/js/multiline-ternary': ['warn', 'always-multiline'],
     '@stylistic/js/no-mixed-spaces-and-tabs': 'error',
     'multiline-ternary': ['error', 'never'],
   },
