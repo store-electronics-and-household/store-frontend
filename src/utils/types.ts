@@ -37,3 +37,11 @@ export interface SpecifyType {
   batteryCapacity1?: string | number;
   aboutProduct?: string;
 }
+
+export interface GoodsListProps {
+  id: number;
+  quantity: number;
+  salesPrice: number;
+  imgUrl: string;
+  discount: number;
+}

@@ -313,7 +313,7 @@ export const contactsData = {
 export const faqList = {
   deliveryFaq: [
     {
-      q: 'Заказ оформляю я, но получать его будет другой человек. Что мне нужно сделать?',
+      q: 'Мой заказ заберет другой человек. Что мне нужно сделать?',
       a: 'Получатель должен предъявить шестизначный код на каждый заказ. Мы отправили их посредством СМС на номер мобильного телефона, указанного Покупателем при создании заказа.',
     },
     {
@@ -493,7 +493,7 @@ export const paymentPageData = [
   {
     id: 100,
     quantity: 1,
-    salesPrice: 100000,
+    salesPrice: 10000,
     imgUrl:
       'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     discount: 5000,
@@ -501,7 +501,7 @@ export const paymentPageData = [
   {
     id: 101,
     quantity: 2,
-    salesPrice: 200000,
+    salesPrice: 10000,
     imgUrl:
       'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     discount: 7000,
@@ -509,26 +509,26 @@ export const paymentPageData = [
   {
     id: 103,
     quantity: 3,
-    salesPrice: 100000,
+    salesPrice: 10000,
     imgUrl:
       'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     // imgUrl: '../../image/good_2.svg',
-    discount: 7000,
+    discount: 2000,
   },
   {
     id: 104,
     quantity: 2,
-    salesPrice: 200000,
+    salesPrice: 10000,
     imgUrl:
       'https://images.unsplash.com/photo-1511499271651-073325718d90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHx8',
-    discount: 7000,
+    discount: 3000,
   },
   {
     id: 105,
     quantity: 1,
-    salesPrice: 200000,
+    salesPrice: 10000,
     imgUrl:
       'https://images.unsplash.com/photo-1573739022854-abceaeb585dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGhvbmUlMjBhY2Nlc3Nvcmllc3xlbnwwfHwwfHx8MA%3D%3D',
-    discount: 4000,
+    discount: 500,
   },
 ];

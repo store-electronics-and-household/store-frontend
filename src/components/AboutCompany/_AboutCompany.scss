@@ -1,7 +1,7 @@
-.about-company__container {
+.about-company {
     box-sizing: border-box;
     max-width: 1440px;
-    margin: auto;
+    margin: 0 auto;
     padding: 44px 271px 140px 155px;
 }
 
@@ -60,6 +60,7 @@
 
 .about-company__feature-text {
   font-size: 16px;
+  line-height: 1.19;
   margin-top: 0;
   margin-bottom: 16px;
   max-width: 386px;
