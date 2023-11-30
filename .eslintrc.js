@@ -61,6 +61,6 @@ module.exports = {
     '@typescript-eslint/semi': ['error', 'always'],
     '@stylistic/js/multiline-ternary': ['warn', 'always-multiline'],
     '@stylistic/js/no-mixed-spaces-and-tabs': 'error',
-    'multiline-ternary': ['error', 'never'],
+    'multiline-ternary': ['warn', 'always-multiline'],
   },
 };
