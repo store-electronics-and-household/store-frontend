@@ -49,7 +49,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
       <SearchBar />
 
       <nav className='header__navbar'>
-        <NavLink className='header__navbar-link' to='/' onClick={handleNavLinkClick}>
+        <NavLink className='header__navbar-link' to='/delivery' onClick={handleNavLinkClick}>
           <img
             className='header__navbar-icon'
             src={deliveryIcon}
