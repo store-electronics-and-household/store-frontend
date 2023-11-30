@@ -17,7 +17,10 @@ const Catalog: React.FC<{
     <>
       <section className='catalog'>
         <Breadcrumb currentPlace='Apple IPhone'>
-          <BreadcrumbItem breadcrumbText='Смартфоны' breadcrumbPath='/categories'/>
+          <BreadcrumbItem
+            breadcrumbText='Смартфоны'
+            breadcrumbPath='/categories'
+          />
         </Breadcrumb>
         <div className='catalog__container-big'>
           <h1 className='catalog__title'>Apple IPhone</h1>

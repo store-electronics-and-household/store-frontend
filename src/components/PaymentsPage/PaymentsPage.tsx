@@ -13,13 +13,13 @@ const PaymentsPage: React.FC = () => {
   // const [clientData, setClientData] = React.useState<ClientDataProps | null>(null);
 
   interface GoodsListProps {
-    id: number
-    quantity: number
-    salesPrice: number
-    imgUrl: string
-    discount: number
+    id: number;
+    quantity: number;
+    salesPrice: number;
+    imgUrl: string;
+    discount: number;
   }
-  const [goodsList, setGoodsList] = React.useState <GoodsListProps[]>([]);
+  const [goodsList, setGoodsList] = React.useState<GoodsListProps[]>([]);
 
   useEffect(() => {
     setGoodsList(paymentPageData);
@@ -28,7 +28,7 @@ const PaymentsPage: React.FC = () => {
   return (
     <section className='payments-page'>
       <Breadcrumb currentPlace='Оформление заказа'>
-        <BreadcrumbItem breadcrumbText='Корзина' breadcrumbPath='/cart'/>
+        <BreadcrumbItem breadcrumbText='Корзина' breadcrumbPath='/cart' />
       </Breadcrumb>
       <h2 className='payments-page__title'>Оформление заказа</h2>
       <div className='payments-page__container'>

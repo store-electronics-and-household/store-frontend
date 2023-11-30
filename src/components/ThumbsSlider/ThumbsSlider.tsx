@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import React, { useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -24,14 +25,22 @@ const ThumbsSlider: React.FC = () => {
         spaceBetween={10}
         navigation={true}
         // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-        thumbs={ { swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null } }
+        thumbs={{
+          swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+        }}
         modules={[FreeMode, Navigation, Thumbs]}
         className='swiper-second'
       >
         {productPhotoArray.map((photo, photoId) => {
-          return <SwiperSlide key={photoId}>
-            <img className='swiper-second__img' src={photo} alt="фото товара" />
-          </SwiperSlide>;
+          return (
+            <SwiperSlide key={photoId}>
+              <img
+                className='swiper-second__img'
+                src={photo}
+                alt='фото товара'
+              />
+            </SwiperSlide>
+          );
         })}
       </Swiper>
       <Swiper
@@ -45,9 +54,15 @@ const ThumbsSlider: React.FC = () => {
         direction='vertical'
       >
         {productPhotoArray.map((photo, photoId) => {
-          return <SwiperSlide key={photoId}>
-            <img className='swiper-first__img' src={photo} alt="фото товара" />
-          </SwiperSlide>;
+          return (
+            <SwiperSlide key={photoId}>
+              <img
+                className='swiper-first__img'
+                src={photo}
+                alt='фото товара'
+              />
+            </SwiperSlide>
+          );
         })}
       </Swiper>
     </>

@@ -2,17 +2,19 @@ import React from 'react';
 import vector from '../../image/Vector.png';
 
 const ProductCardMedium: React.FC<{
-  originPrice: number
-  salesPrice: number
-  name: string
-  discount: number
-  url: string
+  originPrice: number;
+  salesPrice: number;
+  name: string;
+  discount: number;
+  url: string;
 }> = (product) => {
   const [isLiked, setIsLiked] = React.useState(false);
+  // prettier-ignore
   function handleLike (): void {
     setIsLiked(!isLiked);
   }
   const [isCounter, setIsCounter] = React.useState(0);
+  // prettier-ignore
   function handleAddToBasket (): void {
     setIsCounter((prev) => {
       return prev + 1;

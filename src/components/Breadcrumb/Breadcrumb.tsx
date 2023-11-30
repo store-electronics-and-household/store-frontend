@@ -2,13 +2,13 @@ import React from 'react';
 import BreadcrumbItem from './BreadcrumbItem';
 
 interface BreadcrumbProps {
-  children?: React.ReactNode
-  currentPlace: string
+  children?: React.ReactNode;
+  currentPlace: string;
 }
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({
   children,
-  currentPlace
+  currentPlace,
 }: BreadcrumbProps) => {
   return (
     <ul className='breadcrumb'>

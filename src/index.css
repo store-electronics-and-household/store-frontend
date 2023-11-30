@@ -1778,6 +1778,11 @@ body {
 
 .header {
   display: flex;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
 }
 
 .header__container {
@@ -1793,6 +1798,7 @@ body {
 
 .header__logo {
   display: flex;
+  margin-left: 20px;
 }
 
 .header__catalog-button {
