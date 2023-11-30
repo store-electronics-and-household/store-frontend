@@ -25,19 +25,42 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: ['react', '@stylistic/js'],
   rules: {
-    '@typescript-eslint/semi': ['error', 'always'],
     'comma-dangle': 'off',
     '@typescript-eslint/comma-dangle': ['error', 'only-multiline'],
-    '@typescript-eslint/member-delimiter-style': [
-      'warn',
-      { multiline: { delimiter: 'none' } },
-    ],
+    // '@typescript-eslint/member-delimiter-style': [
+    //    'warn',
+    //    { multiline: { delimiter: 'none' } },
+    //  ],
     '@typescript-eslint/space-before-function-paren': ['error', 'always'],
     '@typescript-eslint/no-confusing-void-expression': 'error',
-    indent: 'off',
     '@typescript-eslint/indent': 'error',
-    '@typescript-eslint/multiline-ternary': ['error', 'ignore'],
+    '@typescript-eslint/member-delimiter-style': [
+      'error',
+      {
+        multiline: {
+          delimiter: 'none',
+          requireLast: true,
+        },
+        singleline: {
+          delimiter: 'semi',
+          requireLast: false,
+        },
+        overrides: {
+          interface: {
+            multiline: {
+              delimiter: 'none',
+              requireLast: false,
+            },
+          },
+        },
+      },
+    ],
+    //'@stylistic/js/indent': ['error', 2],
+    '@typescript-eslint/semi': ['error', 'always'],
+    '@stylistic/js/multiline-ternary': ['error', 'never'],
+    '@stylistic/js/no-mixed-spaces-and-tabs': 'error',
+    'multiline-ternary': ['error', 'never'],
   },
 };
