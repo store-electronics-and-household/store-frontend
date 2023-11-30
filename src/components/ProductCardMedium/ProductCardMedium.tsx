@@ -1,5 +1,6 @@
 import React from 'react';
 import vector from '../../image/Vector.png';
+import map from '../../image/map.png';
 
 const ProductCardMedium: React.FC<{
   originPrice: number;
@@ -8,7 +9,14 @@ const ProductCardMedium: React.FC<{
   discount: number;
   url: string;
 }> = (product) => {
+  const [isMainImage, setIsMainImage] = React.useState(true);
   const [isLiked, setIsLiked] = React.useState(false);
+  const handleMouseOver = (): void => {
+    setIsMainImage(false);
+  };
+  const handleMouseOut = (): void => {
+    setIsMainImage(true);
+  };
   const handleLike = (): void => {
     setIsLiked(!isLiked);
   };
@@ -28,10 +36,12 @@ const ProductCardMedium: React.FC<{
           <a className='card-medium__link' href={product.url}>
             <img
               className='card-medium__image'
-              src={vector}
+              src={isMainImage ? vector : map}
               alt='прекрасная фотография товара'
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
             />
-            <p className='card-medium__sticker'>- {product.discount}%</p>
+            <p className='card-medium__sticker'>-{product.discount}%</p>
           </a>
           <button
             type='button'

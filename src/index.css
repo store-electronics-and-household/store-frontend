@@ -872,20 +872,22 @@ body {
 }
 
 .card-medium__sticker {
-  font-size: 16px;
+  font-family: Wix Madefor Display;
+  font-size: 20px;
   font-style: normal;
   font-weight: 700;
-  line-height: normal;
-  color: var(--Black, #222);
-  width: 48px;
-  height: 19px;
-  padding: 8px;
+  line-height: 24px;
+  color: var(--Black, #272A31);
+  width: 56px;
+  height: 24px;
+  padding: 6px 8px 2px;
   border-radius: 40px;
   background: #afc0ff;
   position: absolute;
   top: 12px;
   left: 12px;
   margin: 0;
+  text-align: center;
 }
 
 .card-medium__image {
@@ -957,11 +959,6 @@ body {
   align-items: baseline;
 }
 
-.card-medium__footer {
-  overflow: hidden;
-  height: 77px;
-}
-
 .card-medium__link {
   -webkit-hyphens: auto;
           hyphens: auto;
@@ -1001,8 +998,7 @@ body {
 .card-medium__container-footer {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 77px;
+  gap: 12px;
 }
 
 .card-medium__container {

@@ -1,17 +1,17 @@
-import React from 'react'
-import ProductCardMedium from '../ProductCardMedium/ProductCardMedium'
-import Breadcrumb from '../Breadcrumb/Breadcrumb'
-import BreadcrumbItem from '../Breadcrumb/BreadcrumbItem'
-import { PaginatedItems } from '../Pagination/Pagination'
-import { product } from '../../utils/constants'
+import React from 'react';
+import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
+import Breadcrumb from '../Breadcrumb/Breadcrumb';
+import BreadcrumbItem from '../Breadcrumb/BreadcrumbItem';
+import { PaginatedItems } from '../Pagination/Pagination';
+import { product } from '../../utils/constants';
 
 const Catalog: React.FC<{
-  id?: number
-  name?: string
-  originPrice?: number
-  salesPrice?: number
-  discount?: number
-  url?: string
+  id?: number;
+  name?: string;
+  originPrice?: number;
+  salesPrice?: number;
+  discount?: number;
+  url?: string;
 }> = () => {
   return (
     <>
@@ -99,7 +99,7 @@ const Catalog: React.FC<{
       </section>
       ;
     </>
-  )
-}
+  );
+};
 
-export default Catalog
+export default Catalog;
