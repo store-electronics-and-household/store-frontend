@@ -15,7 +15,12 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
 
   return (
     <ul className='breadcrumb'>
-      <BreadcrumbItem breadcrumbPath='/' breadcrumbText={`${location.pathname === '/payment' ? 'Корзина' : 'Главная'}`} />
+      <BreadcrumbItem
+        breadcrumbPath='/'
+        breadcrumbText={`${
+          location.pathname === '/payment' ? 'Корзина' : 'Главная'
+        }`}
+      />
       {children}
       <li className='breadcrumb__item breadcrumb__item_current'>
         {currentPlace}

@@ -51,7 +51,7 @@ const Slider: React.FC = () => {
         </SwiperSlide>
         <div
           className={`swiper-button-next ${
-            !isLight
+            isLight
               ? 'swiper-button-next_black'
               : 'swiper-button-next_lightgrey'
           }`}
