@@ -5,19 +5,22 @@ import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import PaymentsPageItem from './PaymentsPageItem';
 import { type GoodsListProps } from '../../utils/types';
 import { formatSumm } from '../../utils/formatSumm';
+import { useForm } from 'react-hook-form';
 
 interface PaymentsPageProps {
-  GoodsList: GoodsListProps[]
+  GoodsList: GoodsListProps[];
 }
 
 const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
   interface ClientDataProps {
-    name: string
-    phone: string
-    address: string
+    name: string;
+    phone: string;
+    address: string;
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [clientData, setClientData] = React.useState<ClientDataProps | null>(null);
+  const [clientData, setClientData] = React.useState<ClientDataProps | null>(
+    null
+  );
 
   const [deliveryPrice, setDeliveryPrice] = React.useState<number>();
 
@@ -35,23 +38,42 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
   // };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const fullQuantity: number = GoodsList.reduce(function (acc, item) {
     return acc + item.quantity;
   }, 0);
 
-  const formatedDeliveryPrice: string = (deliveryPrice != null) ? formatSumm(deliveryPrice) : '';
+  const formatedDeliveryPrice: string =
+    deliveryPrice != null ? formatSumm(deliveryPrice) : '';
 
-  const fullPrice: string = formatSumm(GoodsList.reduce(function (acc, item) {
-    return acc + item.quantity * item.salesPrice;
-  }, 0));
+  const fullPrice: string = formatSumm(
+    GoodsList.reduce(function (acc, item) {
+      return acc + item.quantity * item.salesPrice;
+    }, 0)
+  );
 
-  const summaryDiscount: string = formatSumm(GoodsList.reduce(function (acc, item) {
-    return acc + item.quantity * item.discount;
-  }, 0));
+  const summaryDiscount: string = formatSumm(
+    GoodsList.reduce(function (acc, item) {
+      return acc + item.quantity * item.discount;
+    }, 0)
+  );
 
-  const finalPrice: string = formatSumm(GoodsList.reduce(function (acc, item) {
-    return acc + item.quantity * (item.salesPrice - item.discount);
-  }, 0) - (deliveryPrice ?? 0));
+  const finalPrice: string = formatSumm(
+    GoodsList.reduce(function (acc, item) {
+      return acc + item.quantity * (item.salesPrice - item.discount);
+    }, 0) - (deliveryPrice ?? 0)
+  );
+
+
+
+  const {
+    register,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    formState: { errors, isValid },
+  } = useForm({
+    // mode: 'all', // "onChange"
+    mode: 'onChange'
+  });
 
   return (
     <>
@@ -60,10 +82,71 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
         <h2 className='payments-page__title'>Оформление заказа</h2>
         <div className='payments-page__container'>
           <div className='payments-page__input-containers'>
-            <form className='payments-page__client-name' action=''>
+            <form
+              id='clientDataForm'
+              name='clientDataForm'
+              className='payments-page__client-name'
+              action=''
+            >
               <p className='payments-page__form-title'>Ваши данные</p>
               <div className='payments-page__line'></div>
+              <div className='payments-page__input-container'>
+
+                <label
+                  className='payments-page__input-label'
+                >
+                  <p className='payments-page__input-title'>Имя <sup className=''>*</sup></p>
+                  <input
+                    {...register('name', {
+                      required: {
+                        value: true,
+                        message: 'Поле имя обязательно к заполнению',
+                      },
+                    })}
+                    type='text'
+                    placeholder="Иванов Иван"
+                    className='payments-page__client-data-input'
+                    name='name'
+                    required
+                    onChange={handlePhoneChange}
+                  />
+                  {(errors.name != null) && typeof errors.name === 'object' && 'message' in errors.name && (
+                    <span className='payments-page__input-error'>
+                      {(errors.name as { message: string }).message}
+                    </span>
+                  )}
+                </label>
+
+                <label
+                  className='payments-page__input-label'
+                >
+                  <p className='payments-page__input-title'>Номер телефона <sup className=''>*</sup></p>
+                  <input
+                    {...register('phone', {
+                      required: {
+                        value: true,
+                        message: 'Поле телефон обязательно к заполнению',
+                      },
+                      pattern: {
+                        value: /^\+\d{1,3} \(\d{3}\) \d{3}-\d{4}$/,
+                        message: 'Введите корректный номер телефона',
+                      },
+                    })}
+                    type='text'
+                    placeholder="+7 (900) 100 00 00"
+                    className='payments-page__client-data-input'
+                    name='phone'
+                    required
+                  />
+                  {(errors.phone != null) && typeof errors.phone === 'object' && 'message' in errors.phone && (
+                    <span className='payments-page__input-error'>
+                      {(errors.phone as { message: string }).message}
+                    </span>
+                  )}
+                </label>
+                </div>
             </form>
+
             <form className='payments-page__client-address' action=''>
               <div className='payments-page__title-container'>
                 <p className='payments-page__form-title'>Адрес доставки</p>
@@ -89,7 +172,10 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                 ))}
               </div>
               <div className='payments-page__summary-data'>
-                <p className='payments-page__summary-row'>{fullQuantity} {fullQuantity % 2 === 0 ? 'товара' : 'товаров'} на сумму</p>
+                <p className='payments-page__summary-row'>
+                  {fullQuantity} {fullQuantity % 2 === 0 ? 'товара' : 'товаров'}{' '}
+                  на сумму
+                </p>
                 <p className='payments-page__summary-row'>{fullPrice}</p>
               </div>
               <div className='payments-page__summary-data'>
@@ -100,7 +186,9 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
               </div>
               <div className='payments-page__summary-data'>
                 <p className='payments-page__summary-row'>Доставка</p>
-                <p className='payments-page__summary-row '>{(deliveryPrice != null) ? formatedDeliveryPrice : 'Не выбрано'}</p>
+                <p className='payments-page__summary-row '>
+                  {deliveryPrice != null ? formatedDeliveryPrice : 'Не выбрано'}
+                </p>
               </div>
               <div className='payments-page__line'></div>
               <div className='payments-page__summary-data'>
@@ -116,3 +204,29 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
 };
 
 export default PaymentsPage;
+
+/*
+                <label className='form__inputLabel'>
+                  E-mail
+                  <input
+                    {...register('email', {
+                      required: {
+                        value: true,
+                        message: 'Поле Email обязательно к заполнению',
+                      },
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: 'Некорректный адрес электронной почты',
+                      },
+                    })}
+                    type='email'
+                    className='form__input'
+                    required
+                  />
+                  {errors.email && (
+                    <span className='form__inputError'>
+                      {errors.email.message}
+                    </span>
+                  )}
+                </label>
+*/
