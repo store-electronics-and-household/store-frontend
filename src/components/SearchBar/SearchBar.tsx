@@ -15,26 +15,26 @@ const SearchBar: React.FC = (setResults) => {
 
   return (
     <div className='header__searchbar-container'>
-    <div className='header__searchbar-wrapper'>
-      <Link to='/search-results'>
-      <button className='header__searchbar-button'>
-        <img
-          className='header__searchbar-button-icon'
-          src={searchIcon}
-          alt='Строка поиска'
-        />
-      </button>
-      </Link>
+      <div className='header__searchbar-wrapper'>
+        <Link to='/search-results'>
+          <button className='header__searchbar-button'>
+            <img
+              className='header__searchbar-button-icon'
+              src={searchIcon}
+              alt='Строка поиска'
+            />
+          </button>
+        </Link>
 
-      <input
-        className='header__searchbar-input'
-        placeholder='Поиск'
-        autoComplete='off'
-        onChange={handleChange}
-        value={input}
-      />
+        <input
+          className='header__searchbar-input'
+          placeholder='Поиск'
+          autoComplete='off'
+          onChange={handleChange}
+          value={input}
+        />
+      </div>
     </div>
-  </div>
   );
 };
 

@@ -251,7 +251,7 @@ export const productPhotoArray = [
   'https://images.unsplash.com/photo-1611472173362-3f53dbd65d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
   'https://images.unsplash.com/photo-1695639526461-7244f263119c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFwcGxlJTIwaXBob25lJTIwMTUlMjBwcm98ZW58MHx8MHx8fDA%3D',
   'https://images.unsplash.com/photo-1620049185596-1f16f414c448?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA0fHxpcGhvbmV8ZW58MHx8MHx8fDA%3D',
-  'https://images.unsplash.com/photo-1695822822491-d92cee704368?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBwbGUlMjBpcGhvbmUlMjAxNSUyMHByb3xlbnwwfHwwfHx8MA%3D%3D'
+  'https://images.unsplash.com/photo-1695822822491-d92cee704368?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBwbGUlMjBpcGhvbmUlMjAxNSUyMHByb3xlbnwwfHwwfHx8MA%3D%3D',
 ];
 
 export const productSpecifyName = {
@@ -274,7 +274,7 @@ export const productSpecifyName = {
   display1: 'Тип дисплея:',
   builtInMemory1: 'Встроенная память, в ГБ:',
   ram1: 'Оперативная память, в ГБ:',
-  batteryCapacity1: 'Емкость аккумулятора, в мА-ч:'
+  batteryCapacity1: 'Емкость аккумулятора, в мА-ч:',
 };
 
 export const productSpecifyValue = {
@@ -299,7 +299,7 @@ export const productSpecifyValue = {
   display1: 'OLED',
   builtInMemory1: 128,
   ram1: 8,
-  batteryCapacity1: 4912
+  batteryCapacity1: 4912,
 };
 
 /* это нужно будет удалить после--------------- */

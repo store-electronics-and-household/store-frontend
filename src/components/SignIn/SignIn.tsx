@@ -7,15 +7,17 @@ import PopupTemplate from '../PopupTemplate/PopupTemplate';
 // import './Signin.css';
 
 interface SignInProps {
-  onOpenSignIn: () => void
-  isOpenSignIn: boolean
-  onOpenReg: () => void
+  onOpenSignIn: () => void;
+  isOpenSignIn: boolean;
+  onOpenReg: () => void;
+  onOpenRecovery: () => void;
 }
 
 const SignIn: React.FC<SignInProps> = ({
   onOpenSignIn,
   isOpenSignIn,
   onOpenReg,
+  onOpenRecovery,
 }) => {
   const formik = useFormik({
     initialValues: {
@@ -51,6 +53,12 @@ const SignIn: React.FC<SignInProps> = ({
 
   const handleCloseSignInPopup = (): void => {
     onOpenSignIn();
+    formik.resetForm();
+  };
+
+  const handleOpenRecoveryPass = (): void => {
+    onOpenSignIn();
+    onOpenRecovery();
     formik.resetForm();
   };
 
@@ -123,7 +131,11 @@ const SignIn: React.FC<SignInProps> = ({
                 {formik.errors.passwordAuth}
               </span>
             )}
-            <Link className='signin__link' to='/'>
+            <Link
+              className='signin__link'
+              onClick={handleOpenRecoveryPass}
+              to={''}
+            >
               Не помню пароль
             </Link>
           </div>

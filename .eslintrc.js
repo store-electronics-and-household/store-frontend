@@ -22,7 +22,7 @@ module.exports = {
     },
   ],
   parserOptions: {
-    ecmaVersion: 'latest',
+    ecmaVersion: '5',
     sourceType: 'module',
   },
   plugins: ['react'],

@@ -3,13 +3,13 @@ import BreadcrumbItem from './BreadcrumbItem';
 import { useLocation } from 'react-router-dom';
 
 interface BreadcrumbProps {
-  children?: React.ReactNode
-  currentPlace: string
+  children?: React.ReactNode;
+  currentPlace: string;
 }
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({
   children,
-  currentPlace
+  currentPlace,
 }: BreadcrumbProps) => {
   const location = useLocation();
 
