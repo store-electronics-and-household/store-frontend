@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import type { FC } from 'react';
 
-import { NavLink, Outlet, Link } from 'react-router-dom';
+import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
 
 import headerLogo from '../../image/icons/logo_black.svg';
 import deliveryIcon from '../../image/icons/delivery_icon.svg';
@@ -39,10 +39,32 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
     toggleWarningPopup();
   };
 
-  const logoSrc = isLight ? headerLogo : headerLogoWhite;
-  const busketSrc = isLight ? busketIcon : busketIconWhite;
-  const deliverySrc = isLight ? deliveryIcon : deliveryIconWhite;
-  const favouriteSrc = isLight ? favouriteIcon : favouriteIconWhite;
+  const location = useLocation();
+
+  const logoSrc =
+    location.pathname === '/main'
+      ? !isLight
+        ? headerLogo
+        : headerLogoWhite
+      : headerLogo;
+  const busketSrc =
+    location.pathname === '/main'
+      ? !isLight
+        ? busketIcon
+        : busketIconWhite
+      : busketIcon;
+  const deliverySrc =
+    location.pathname === '/main'
+      ? !isLight
+        ? deliveryIcon
+        : deliveryIconWhite
+      : deliveryIcon;
+  const favouriteSrc =
+    location.pathname === '/main'
+      ? !isLight
+        ? favouriteIcon
+        : favouriteIconWhite
+      : favouriteIcon;
 
   return (
     <>
@@ -63,7 +85,11 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
           <button
             onClick={handleClick}
             className={`header__catalog-button ${
-              isLight ? '' : 'header__catalog-button_white'
+              location.pathname === '/main'
+                ? !isLight
+                  ? ''
+                  : 'header__catalog-button_white'
+                : ''
             }`}
           >
             Каталог
@@ -100,7 +126,11 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
           </nav>
           <button
             className={`header__auth-button ${
-              isLight ? '' : 'header__auth-button_white'
+              location.pathname === '/main'
+                ? !isLight
+                  ? ''
+                  : 'header__auth-button_white'
+                : ''
             }`}
           >
             Войти
