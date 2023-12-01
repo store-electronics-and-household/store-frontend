@@ -9,6 +9,8 @@ import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import BreadcrumbItem from '../Breadcrumb/BreadcrumbItem';
 import ProductCharacteristicsList from '../ProductCharacteristicsList/ProductCharacteristicsList';
 import { type SpecifyType } from '../../utils/types';
+import { formatSumm } from '../../utils/formatSumm';
+import PopupProductPhoto from '../PopupProductPhoto/PopupProductPhoto';
 
 const objectKeys = (object: SpecifyType): Array<keyof SpecifyType> => {
   return Object.keys(object) as Array<keyof SpecifyType>;
@@ -18,6 +20,7 @@ const ProductPage: React.FC = () => {
   // const refSetTimeout = useRef<NodeJS.Timeout>();
   const [isActive, setIsActive] = useState(true);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isPopupFullPhotoOpen, setIsPopupFullPhotoOpen] = useState(false);
 
   const handleOnAllcharacteristics = (): void => {
     setIsActive(false);
@@ -25,6 +28,14 @@ const ProductPage: React.FC = () => {
 
   const handleOnAboutProduct = (): void => {
     setIsActive(true);
+  };
+
+  const handleOpenPopupPhoto = (): void => {
+    setIsPopupFullPhotoOpen(true);
+  };
+
+  const handleClosePopupFullPhoto = (): void => {
+    setIsPopupFullPhotoOpen(false);
   };
 
   const handleAddToCart = (): void => {
@@ -47,21 +58,21 @@ const ProductPage: React.FC = () => {
       </div>
       <div className='product-page__info-container'>
         <div className='product-page__slider'>
-          <ThumbsSlider />
+          <ThumbsSlider onPopupFullPhoto={ handleOpenPopupPhoto }/>
         </div>
         <div className='product-page__characteristics'>
           <h2 className='product-page__characteristic-head'>Характеристики:</h2>
           <ProductCharacteristicsList
             productSpecifyName={ productSpecifyName }
             productSpecifyValue={ productSpecifyValue }
-            keysList={ objectKeys(productSpecifyValue).filter((n) => { return n !== 'productName' && n !== 'article' && n !== 'aboutProduct'; }).splice(0, 10) }
+            keysList={ objectKeys(productSpecifyValue).filter((n) => { return n !== 'productName' && n !== 'price' && n !== 'oldPrice' && n !== 'article' && n !== 'aboutProduct'; }).splice(0, 10) }
           />
           <a href='#characteristics-anchor' onClick={handleOnAllcharacteristics} className='product-page__all-characteristics'>Все характеристики</a>
         </div>
         <div className='product-page__price-block'>
           <div className='product-page__price'>
-            <span className='product-page__current-price'>119 700 ₽</span>
-            <span className='product-page__old-price'>430 800 ₽</span>
+            <span className='product-page__current-price'>{ formatSumm(productSpecifyValue.price) }</span>
+            <span className='product-page__old-price'>{ formatSumm(productSpecifyValue.oldPrice) }</span>
           </div>
           <div className='product-page__buttons'>
             <button onClick={ handleAddToCart } className='product-page__button-basket'>
@@ -109,6 +120,10 @@ const ProductPage: React.FC = () => {
           />
         }
       </div>
+      <PopupProductPhoto
+        isOpen={isPopupFullPhotoOpen}
+        closePopup={handleClosePopupFullPhoto}
+      />
       <PopupAddToCart isOpen={isPopupOpen} productName={ productSpecifyValue.productName } photoUrl={productPhotoArray[0]} />
     </section>;
   </>;

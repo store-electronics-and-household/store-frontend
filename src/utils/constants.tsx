@@ -280,8 +280,8 @@ export const productSpecifyName = {
 export const productSpecifyValue = {
   productName: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
   article: 68898484,
-  // price: 119 700 ₽,
-  // oldPrice: 430 800 ₽,
+  price: 119700,
+  oldPrice: 430800,
   color: 'титановый черный',
   diagonal: 6.1,
   brend: 'Apple',

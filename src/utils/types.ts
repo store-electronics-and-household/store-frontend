@@ -8,15 +8,17 @@ export interface FaqItem {
 export interface PopupProps {
   isOpen: boolean
   OnClose: () => void
-  popupClass: string
-  popupClassOverlay: string
-  children: ReactNode
+  popupClass?: string
+  popupClassOverlay?: string
+  children?: ReactNode
   style?: React.CSSProperties
 }
 
 export interface SpecifyType {
   productName: string
   article: number
+  price?: number
+  oldPrice?: number
   color?: string
   diagonal?: string | number
   brend?: string
