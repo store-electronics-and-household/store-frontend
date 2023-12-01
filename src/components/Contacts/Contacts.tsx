@@ -6,32 +6,30 @@ import Breadcrumb from '../Breadcrumb/Breadcrumb';
 const Contacts: React.FC = () => {
   return (
     <>
+      <Breadcrumb currentPlace='Контакты' />
       <section className='contacts'>
-        <Breadcrumb currentPlace='Контакты' />
-        <div className='contacts__container'>
-          <h1 className='contacts__header'>Контакты</h1>
-          <div className='contacts__wrap'>
-            <p className='contacts__info'>{contactsData.phoneNumber}</p>
-            <p className='contacts__phone-time'>
-              для заказов с доставкой по территории РФ принимаем звонки с 9:00
-              до 22:00 по Мск
-            </p>
-          </div>
-          <div className='contacts__wrap'>
-            <p className='contacts__info'>{contactsData.email}</p>
-            <p className='contacts__phone-time'>
-              для заказов с доставкой по территории РФ принимаем звонки с 9:00
-              до 22:00 по Мск
-            </p>
-          </div>
-          <div className='contacts__map-block'>
-            <p className='contacts__adress'>{contactsData.adress}</p>
-            <img
-              className='contacts__map'
-              src={mapImg}
-              alt='карта проезда, адрес'
-            />
-          </div>
+        <h1 className='contacts__header'>Контакты</h1>
+        <div className='contacts__wrap'>
+          <p className='contacts__info'>{contactsData.phoneNumber}</p>
+          <p className='contacts__phone-time'>
+            для заказов с доставкой по территории РФ принимаем звонки с 9:00 до
+            22:00 по Мск
+          </p>
+        </div>
+        <div className='contacts__wrap'>
+          <p className='contacts__info'>{contactsData.email}</p>
+          <p className='contacts__phone-time'>
+            для заказов с доставкой по территории РФ принимаем звонки с 9:00 до
+            22:00 по Мск
+          </p>
+        </div>
+        <div className='contacts__map-block'>
+          <p className='contacts__adress'>{contactsData.adress}</p>
+          <img
+            className='contacts__map'
+            src={mapImg}
+            alt='карта проезда, адрес'
+          />
         </div>
       </section>
     </>

@@ -2,14 +2,23 @@ import React from 'react';
 import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { mockedCartProducts } from '../../utils/mocks';
-
 // import './Cart.css';
 import crossIcon from '../../image/icons/cart_cross_icon.svg';
 import minusIconDefault from '../../image/icons/cart_minus_icon_default.svg';
 import minusIconActive from '../../image/icons/cart_minus_icon_active.svg';
 import plusIconActive from '../../image/icons/cart_plus_icon_active.svg';
+import { type GoodsListProps } from '../../utils/types';
 
-const Cart: FC = () => {
+import { paymentPageData } from '../../utils/constants';
+interface CartProps {
+  onCheckoutClick: (data: GoodsListProps[]) => void;
+}
+
+const Cart: FC<CartProps> = ({ onCheckoutClick }) => {
+  const handleCheckout = (): void => {
+    onCheckoutClick(paymentPageData);
+  };
+
   return (
     <section className='cart'>
       <div className='cart__container'>
@@ -179,8 +188,8 @@ const Cart: FC = () => {
             </div>
 
             <div className='cart__order-button-wrapper'>
-              <Link to='/'>
-                <button className='cart__order-button'>
+              <Link to='/payment'>
+                <button className='cart__order-button' onClick={handleCheckout}>
                   <span className='cart__order-button-title'>
                     Оформить заказ
                   </span>
