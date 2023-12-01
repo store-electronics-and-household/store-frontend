@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -7,12 +8,15 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import LIGHTGRAYNANNER from '../../image/swiper-main_lightgrey-banner.png';
 import BLACKNANNER from '../../image/swiper-main_black-banner.png';
+import { useSlideContext } from '../../context/SlideContext';
 
 const Slider: React.FC = () => {
-  const [isLight, setisLight] = React.useState<boolean>(false);
+  const slideContext: any | undefined = useSlideContext();
+  const { isLight, setLight } = slideContext;
 
   const handleSlideChange = (): void => {
-    setisLight(!isLight);
+    const newIsLight = !isLight;
+    setLight(newIsLight);
   };
 
   return (

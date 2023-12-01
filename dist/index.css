@@ -1798,20 +1798,25 @@ body {
 
 .header__logo {
   display: flex;
-  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .header__catalog-button {
-  width: 161px;
-  height: 56px;
+  width: 113px;
+  height: 40px;
   color: white;
   background-color: black;
   border-radius: 40px;
   font-weight: bold;
   font-size: 17px;
-  margin-right: 20px;
+  margin-left: 20px;
   border: none;
   cursor: pointer;
+}
+
+.header__catalog-button {
+  color: black;
+  background-color: white;
 }
 
 .header__navbar-link {
@@ -1826,6 +1831,24 @@ body {
   height: 32px;
   width: 32px;
   margin: 12px 20px;
+}
+
+.header__auth-button {
+  width: 96px;
+  height: 40px;
+  color: black;
+  background-color: transparent;
+  border-radius: 40px;
+  font-size: 16px;
+  margin-left: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #272A31;
+}
+
+.header__auth-button_white {
+  color: white;
+  border: 1px solid white;
 }
 
 /*# sourceMappingURL=index.css.map */

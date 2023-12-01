@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import React, { useState } from 'react';
 import type { FC } from 'react';
 
@@ -7,10 +8,16 @@ import headerLogo from '../../image/icons/logo_black.svg';
 import deliveryIcon from '../../image/icons/delivery_icon.svg';
 import busketIcon from '../../image/icons/busket_icon.svg';
 import favouriteIcon from '../../image/icons/favourite_icon.svg';
+import headerLogoWhite from '../../image/icons/logo_white.svg';
+import deliveryIconWhite from '../../image/icons/delivery_icon-white.svg';
+import busketIconWhite from '../../image/icons/cart_icon-white.svg';
+import favouriteIconWhite from '../../image/icons/favourite_icon-white.svg';
 
 import CatalogMenu from '../CatalogMenu/CatalogMenu';
 
 import SearchBar from '../SearchBar/SearchBar';
+
+import { useSlideContext } from '../../context/SlideContext';
 
 interface HeaderProps {
   toggleWarningPopup: () => void;
@@ -18,6 +25,8 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const context = useSlideContext();
+  const { isLight } = context ?? { isLight: false };
 
   const handleClick = (): void => {
     setIsVisible((current) => !current);
@@ -30,6 +39,11 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
     toggleWarningPopup();
   };
 
+  const logoSrc = isLight ? headerLogo : headerLogoWhite;
+  const busketSrc = isLight ? busketIcon : busketIconWhite;
+  const deliverySrc = isLight ? deliveryIcon : deliveryIconWhite;
+  const favouriteSrc = isLight ? favouriteIcon : favouriteIconWhite;
+
   return (
     <>
       <header className='header'>
@@ -37,7 +51,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
           <Link to='/'>
             <img
               className='header__logo'
-              src={headerLogo}
+              src={logoSrc}
               alt='Перейти на главную'
             />
           </Link>
@@ -46,7 +60,12 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
 
           <SearchBar />
 
-          <button onClick={handleClick} className='header__catalog-button'>
+          <button
+            onClick={handleClick}
+            className={`header__catalog-button ${
+              isLight ? '' : 'header__catalog-button_white'
+            }`}
+          >
             Каталог
           </button>
 
@@ -58,7 +77,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
             >
               <img
                 className='header__navbar-icon'
-                src={deliveryIcon}
+                src={deliverySrc}
                 alt="Перейти в раздел 'Доставка'"
               />
             </NavLink>
@@ -66,7 +85,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
             <NavLink className='header__navbar-link' to='/favourites'>
               <img
                 className='header__navbar-icon'
-                src={favouriteIcon}
+                src={favouriteSrc}
                 alt="Перейти в раздел 'Избранное'"
               />
             </NavLink>
@@ -74,11 +93,18 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
             <NavLink className='header__navbar-link' to='/cart'>
               <img
                 className='header__navbar-icon'
-                src={busketIcon}
+                src={busketSrc}
                 alt="Перейти в раздел 'Корзина'"
               />
             </NavLink>
           </nav>
+          <button
+            className={`header__auth-button ${
+              isLight ? '' : 'header__auth-button_white'
+            }`}
+          >
+            Войти
+          </button>
         </div>
       </header>
       <Outlet />
