@@ -43,25 +43,25 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
 
   const logoSrc =
     location.pathname === '/main'
-      ? !isLight
+      ? isLight
         ? headerLogo
         : headerLogoWhite
       : headerLogo;
   const busketSrc =
     location.pathname === '/main'
-      ? !isLight
+      ? isLight
         ? busketIcon
         : busketIconWhite
       : busketIcon;
   const deliverySrc =
     location.pathname === '/main'
-      ? !isLight
+      ? isLight
         ? deliveryIcon
         : deliveryIconWhite
       : deliveryIcon;
   const favouriteSrc =
     location.pathname === '/main'
-      ? !isLight
+      ? isLight
         ? favouriteIcon
         : favouriteIconWhite
       : favouriteIcon;
@@ -86,7 +86,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
             onClick={handleClick}
             className={`header__catalog-button ${
               location.pathname === '/main'
-                ? !isLight
+                ? isLight
                   ? ''
                   : 'header__catalog-button_white'
                 : ''
@@ -127,7 +127,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
           <button
             className={`header__auth-button ${
               location.pathname === '/main'
-                ? !isLight
+                ? isLight
                   ? ''
                   : 'header__auth-button_white'
                 : ''

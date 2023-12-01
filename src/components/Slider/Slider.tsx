@@ -29,6 +29,7 @@ const Slider: React.FC = () => {
         slidesPerView={1}
         className='swiper-container'
         loop={true}
+        allowTouchMove={false}
         onSlideChange={handleSlideChange}
       >
         <SwiperSlide>
@@ -51,7 +52,7 @@ const Slider: React.FC = () => {
         </SwiperSlide>
         <div
           className={`swiper-button-next ${
-            isLight
+            !isLight
               ? 'swiper-button-next_black'
               : 'swiper-button-next_lightgrey'
           }`}
