@@ -31,7 +31,7 @@ const App: React.FC = () => {
   const [isPasswordRecoveryPopupOpen, setPasswordRecoveryPopupOpen] =
     useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [goodsList, setGoodsList] = React.useState <GoodsListProps[]>();
+  const [goodsList, setGoodsList] = React.useState<GoodsListProps[]>();
 
   const toggleWarningPopup = (): void => {
     setWarningPopupOpen(!isWarningPopupOpen);
@@ -48,8 +48,8 @@ const App: React.FC = () => {
   const PasswordRecoveryPopup = (): void => {
     setPasswordRecoveryPopupOpen(!isPasswordRecoveryPopupOpen);
   };
-    
-  function setGoodsForPayment (data: GoodsListProps[]): void {
+
+  function setGoodsForPayment(data: GoodsListProps[]): void {
     setGoodsList(data);
   }
 
@@ -94,8 +94,14 @@ const App: React.FC = () => {
             <Route path='/catalog' element={<Catalog />} />
             <Route path='/favourites' element={<Favourites />} />
             <Route path='/product' element={<ProductPage />} />
-            <Route path='/cart' element={<Cart onCheckoutClick = {setGoodsForPayment} />} />
-            <Route path='/payment' element={<PaymentsPage GoodsList = {goodsList ?? []}/>} />
+            <Route
+              path='/cart'
+              element={<Cart onCheckoutClick={setGoodsForPayment} />}
+            />
+            <Route
+              path='/payment'
+              element={<PaymentsPage GoodsList={goodsList ?? []} />}
+            />
             <Route path='/search-results' element={<SearchResults />} />
             <Route path='/' element={<Navigate to='/main' replace />} />
           </Route>
