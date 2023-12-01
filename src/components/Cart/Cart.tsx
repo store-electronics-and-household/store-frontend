@@ -11,7 +11,7 @@ import { type GoodsListProps } from '../../utils/types';
 
 import { paymentPageData } from '../../utils/constants';
 interface CartProps {
-  onCheckoutClick: (data: GoodsListProps[]) => void;
+  onCheckoutClick: (data: GoodsListProps[]) => void
 }
 
 const Cart: FC<CartProps> = ({ onCheckoutClick }) => {
@@ -186,17 +186,14 @@ const Cart: FC<CartProps> = ({ onCheckoutClick }) => {
                 {/* price * quantity */}
               </div>
             </div>
-
-            <div className='cart__order-button-wrapper'>
-              <Link to='/payment'>
-                <button className='cart__order-button' onClick={handleCheckout}>
-                  <span className='cart__order-button-title'>
-                    Оформить заказ
-                  </span>
-                </button>
-              </Link>
-            </div>
-          </div>
+            
+        <div className='cart__order-button-wrapper'>
+          <Link to='/payment'>
+            <button className='cart__order-button' onClick = {handleCheckout}>
+            <span className='cart__order-button-title'>Оформить заказ</span>
+            </button>
+          </Link>
+          
         </div>
       </div>
     </section>

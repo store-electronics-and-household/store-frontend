@@ -7,7 +7,7 @@ import Breadcrumb from '../Breadcrumb/Breadcrumb';
 const AboutCompany: React.FC = () => {
   return (
     <>
-      <Breadcrumb currentPlace='О нас' />
+      <Breadcrumb currentPlace='О нас'/>
       <section className='about-company'>
         <h1 className='about-company__header'>О нас</h1>
         <ul className='about-company__feature-list'>
@@ -27,8 +27,9 @@ const AboutCompany: React.FC = () => {
               <p className='about-company__feature-text'>
                 Цель, к которой мы стремимся — сделать так, чтобы люди
                 пользовались классными гаджетами&nbsp;и&nbsp;электроникой за
-                приемлемую стоимость. Потому что крутая техника облегчает жизнь
-                и доставляет удовольствие — пусть ее у всех будет больше.
+                приемлемую стоимость. Потому что крутая техника облегчает
+                жизнь и доставляет удовольствие — пусть ее у всех будет
+                больше.
               </p>
             </div>
           </li>
@@ -69,8 +70,8 @@ const AboutCompany: React.FC = () => {
             <div className='about-company__feature-content'>
               <p className='about-company__feature-text'>
                 У нас вы не встретите подделок и устаревших моделей товаров.
-                Продаем только оригинальную технику. Выбираем проверенные бренды
-                и новинки.
+                Продаем только оригинальную технику. Выбираем проверенные
+                бренды и новинки.
               </p>
             </div>
           </li>

@@ -6,20 +6,17 @@ import BreadcrumbItem from '../Breadcrumb/BreadcrumbItem';
 import { product } from '../../utils/constants';
 
 const Catalog: React.FC<{
-  id?: number;
-  name?: string;
-  originPrice?: number;
-  salesPrice?: number;
-  discount?: number;
-  url?: string;
+  id?: number
+  name?: string
+  originPrice?: number
+  salesPrice?: number
+  discount?: number
+  url?: string
 }> = () => {
   return (
     <>
       <Breadcrumb currentPlace='Apple IPhone'>
-        <BreadcrumbItem
-          breadcrumbText='Смартфоны'
-          breadcrumbPath='/categories'
-        />
+        <BreadcrumbItem breadcrumbText='Смартфоны' breadcrumbPath='/categories'/>
       </Breadcrumb>
       <section className='catalog'>
         <div className='catalog__container-big'>

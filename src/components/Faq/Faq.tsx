@@ -6,7 +6,7 @@ import Breadcrumb from '../Breadcrumb/Breadcrumb';
 const Faq: React.FC = () => {
   return (
     <>
-      <Breadcrumb currentPlace='Часто задаваемые вопросы' />
+      <Breadcrumb currentPlace='Часто задаваемые вопросы'/>
       <section className='faq'>
         <h1 className='faq__header'>Часто задаваемые вопросы</h1>
         <Accordion faqList={faqList.deliveryFaq} headText='Доставка' />

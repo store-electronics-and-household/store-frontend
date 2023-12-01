@@ -6,16 +6,16 @@ import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import { product, subCategoriesList } from '../../utils/constants';
 
 const Categories: React.FC<{
-  id?: number;
-  name?: string;
-  originPrice?: number;
-  salesPrice?: number;
-  discount?: number;
-  url?: string;
+  id?: number
+  name?: string
+  originPrice?: number
+  salesPrice?: number
+  discount?: number
+  url?: string
 }> = () => {
   return (
     <>
-      <Breadcrumb currentPlace='Смартфоны' />
+      <Breadcrumb currentPlace='Смартфоны'/>
       <section className='catalog'>
         <div className='catalog__container-big'>
           <h1 className='catalog__title'>Смартфоны</h1>
