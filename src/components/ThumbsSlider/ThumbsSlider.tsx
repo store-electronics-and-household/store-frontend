@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import React, { useState } from 'react';
+import React, { type ReactElement, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { type Swiper as SwiperType } from 'swiper';
@@ -16,7 +16,7 @@ import { productPhotoArray } from '../../utils/constants';
 // import required modules
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 
-const ThumbsSlider: React.FC = () => {
+const ThumbsSlider = (): ReactElement => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
   return (
