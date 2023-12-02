@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { type ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../image/logo.svg';
 
-const Footer: React.FC = () => {
+const Footer = (): ReactElement => {
   return (
     <footer className='footer'>
       <div className='footer__content'>
@@ -19,9 +19,6 @@ const Footer: React.FC = () => {
         <nav className='footer__nav'>
           <NavLink className='footer__nav-link' to='/about-company'>
             О нас
-          </NavLink>
-          <NavLink className='footer__nav-link' to='/contacts'>
-            Контакты
           </NavLink>
           <NavLink className='footer__nav-link' to='/faq'>
             Часто задаваемые вопросы
