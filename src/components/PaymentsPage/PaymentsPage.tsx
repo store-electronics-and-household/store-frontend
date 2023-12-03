@@ -7,17 +7,19 @@ import { type GoodsListProps } from '../../utils/types';
 import { formatSumm } from '../../utils/formatSumm';
 
 interface PaymentsPageProps {
-  GoodsList: GoodsListProps[]
+  GoodsList: GoodsListProps[];
 }
 
 const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
   interface ClientDataProps {
-    name: string
-    phone: string
-    address: string
+    name: string;
+    phone: string;
+    address: string;
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [clientData, setClientData] = React.useState<ClientDataProps | null>(null);
+  const [clientData, setClientData] = React.useState<ClientDataProps | null>(
+    null
+  );
 
   const [deliveryPrice, setDeliveryPrice] = React.useState<number>();
 
@@ -39,19 +41,26 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
     return acc + item.quantity;
   }, 0);
 
-  const formatedDeliveryPrice: string = (deliveryPrice != null) ? formatSumm(deliveryPrice) : '';
+  const formatedDeliveryPrice: string =
+    deliveryPrice != null ? formatSumm(deliveryPrice) : '';
 
-  const fullPrice: string = formatSumm(GoodsList.reduce(function (acc, item) {
-    return acc + item.quantity * item.salesPrice;
-  }, 0));
+  const fullPrice: string = formatSumm(
+    GoodsList.reduce(function (acc, item) {
+      return acc + item.quantity * item.salesPrice;
+    }, 0)
+  );
 
-  const summaryDiscount: string = formatSumm(GoodsList.reduce(function (acc, item) {
-    return acc + item.quantity * item.discount;
-  }, 0));
+  const summaryDiscount: string = formatSumm(
+    GoodsList.reduce(function (acc, item) {
+      return acc + item.quantity * item.discount;
+    }, 0)
+  );
 
-  const finalPrice: string = formatSumm(GoodsList.reduce(function (acc, item) {
-    return acc + item.quantity * (item.salesPrice - item.discount);
-  }, 0) - (deliveryPrice ?? 0));
+  const finalPrice: string = formatSumm(
+    GoodsList.reduce(function (acc, item) {
+      return acc + item.quantity * (item.salesPrice - item.discount);
+    }, 0) - (deliveryPrice ?? 0)
+  );
 
   return (
     <>
@@ -89,7 +98,10 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                 ))}
               </div>
               <div className='payments-page__summary-data'>
-                <p className='payments-page__summary-row'>{fullQuantity} {fullQuantity % 2 === 0 ? 'товара' : 'товаров'} на сумму</p>
+                <p className='payments-page__summary-row'>
+                  {fullQuantity} {fullQuantity % 2 === 0 ? 'товара' : 'товаров'}{' '}
+                  на сумму
+                </p>
                 <p className='payments-page__summary-row'>{fullPrice}</p>
               </div>
               <div className='payments-page__summary-data'>
@@ -100,7 +112,9 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
               </div>
               <div className='payments-page__summary-data'>
                 <p className='payments-page__summary-row'>Доставка</p>
-                <p className='payments-page__summary-row '>{(deliveryPrice != null) ? formatedDeliveryPrice : 'Не выбрано'}</p>
+                <p className='payments-page__summary-row '>
+                  {deliveryPrice != null ? formatedDeliveryPrice : 'Не выбрано'}
+                </p>
               </div>
               <div className='payments-page__line'></div>
               <div className='payments-page__summary-data'>

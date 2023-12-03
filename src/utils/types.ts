@@ -55,4 +55,4 @@ export interface AccordionItemProps {
   faqItem: FaqItem;
   isQuestionOpen: boolean | null;
   btnOnClick: () => void;
-};
+}

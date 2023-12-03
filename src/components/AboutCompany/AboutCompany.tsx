@@ -6,7 +6,7 @@ import { aboutCompanyInfo } from '../../utils/constants';
 const AboutCompany = (): ReactElement => {
   return (
     <>
-      <Breadcrumb currentPlace='О нас'/>
+      <Breadcrumb currentPlace='О нас' />
       <section className='about-company'>
         <h1 className='about-company__header'>О нас</h1>
         <ul className='about-company__feature-list'>

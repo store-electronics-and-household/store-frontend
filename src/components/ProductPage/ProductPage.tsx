@@ -173,8 +173,7 @@ const ProductPage: React.FC = () => {
               Характеристики
             </h2>
           </div>
-          {isActive
-            ? (
+          {isActive ? (
             <div className='product-page__about'>
               <p className='product-page__about-description'>
                 Данная модель могла быть активирована до продажи без привязки к
@@ -211,8 +210,7 @@ const ProductPage: React.FC = () => {
                 смартфон может без вреда для себя погружаться на глубину до 6 м.
               </p>
             </div>
-              )
-            : (
+          ) : (
             <ProductCharacteristicsList
               productSpecifyName={productSpecifyName}
               productSpecifyValue={productSpecifyValue}
@@ -223,7 +221,7 @@ const ProductPage: React.FC = () => {
               })}
               modifyClass={'characteristics-list_full'}
             />
-              )}
+          )}
         </div>
         <PopupAddToCart
           isOpen={isPopupOpen}

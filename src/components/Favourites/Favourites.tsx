@@ -3,11 +3,11 @@ import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import { mockedFavouritesProducts } from '../../utils/mocks';
 
 const Favourites: React.FC<{
-  name?: string
-  originPrice?: number
-  salesPrice?: number
-  discount?: number
-  url?: string
+  name?: string;
+  originPrice?: number;
+  salesPrice?: number;
+  discount?: number;
+  url?: string;
 }> = () => {
   return (
     <section className='favourites'>

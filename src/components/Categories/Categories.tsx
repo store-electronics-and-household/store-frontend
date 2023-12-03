@@ -1,21 +1,20 @@
 import React from 'react';
-import '../Catalog/Catalog.css';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import { product, subCategoriesList } from '../../utils/constants';
 
 const Categories: React.FC<{
-  id?: number
-  name?: string
-  originPrice?: number
-  salesPrice?: number
-  discount?: number
-  url?: string
+  id?: number;
+  name?: string;
+  originPrice?: number;
+  salesPrice?: number;
+  discount?: number;
+  url?: string;
 }> = () => {
   return (
     <>
-      <Breadcrumb currentPlace='Смартфоны'/>
+      <Breadcrumb currentPlace='Смартфоны' />
       <section className='catalog'>
         <div className='catalog__container-big'>
           <h1 className='catalog__title'>Смартфоны</h1>
@@ -111,9 +110,9 @@ const Categories: React.FC<{
                 {subCategoriesList.slice(0, 9).map((tile) => (
                   <CategoriesTile
                     key={tile.id}
-                    catTitle={tile.catTitle}
-                    catImg={tile.catImg}
-                    catUrl={tile.catUrl}
+                    title={tile.catTitle}
+                    img={tile.catImg}
+                    url={tile.catUrl}
                   />
                 ))}
               </div>

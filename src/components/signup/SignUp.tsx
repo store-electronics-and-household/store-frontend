@@ -6,8 +6,8 @@ import PopupTemplate from '../PopupTemplate/PopupTemplate';
 // import './Signup.css';
 
 interface SignUpProps {
-  onOpenSignUp: () => void
-  isOpenSignUp: boolean
+  onOpenSignUp: () => void;
+  isOpenSignUp: boolean;
 }
 const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
   const formik = useFormik({
@@ -79,8 +79,8 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
                 formik.touched.loginReg && formik.errors.loginReg
                   ? 'signup__input_invalid'
                   : formik.touched.loginReg
-                  ? 'signup__input_valid'
-                  : ''
+                    ? 'signup__input_valid'
+                    : ''
               }`}
               placeholder='E-mail'
               type='text'
@@ -101,8 +101,8 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
                 formik.touched.passwordReg && formik.errors.passwordReg
                   ? 'signup__input_invalid'
                   : formik.touched.passwordReg
-                  ? 'signup__input_valid'
-                  : ''
+                    ? 'signup__input_valid'
+                    : ''
               }`}
               placeholder='Пароль'
               type='password'
@@ -124,8 +124,8 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
                 formik.touched.ConfirmPass && formik.errors.ConfirmPass
                   ? 'signup__input_invalid'
                   : formik.touched.ConfirmPass
-                  ? 'signup__input_valid'
-                  : ''
+                    ? 'signup__input_valid'
+                    : ''
               }`}
               placeholder='Повторите пароль'
               type='password'
