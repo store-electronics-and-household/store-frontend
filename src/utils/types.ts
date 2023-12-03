@@ -45,3 +45,14 @@ export interface GoodsListProps {
   imgUrl: string;
   discount: number;
 }
+
+export interface AccordionProps {
+  faqList: FaqItem[];
+  headText: string;
+}
+
+export interface AccordionItemProps {
+  faqItem: FaqItem;
+  isQuestionOpen: boolean | null;
+  btnOnClick: () => void;
+}

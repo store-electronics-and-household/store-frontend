@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { type ReactElement } from 'react';
 import Accordion from '../Accordion/Accordion';
 import { faqList } from '../../utils/constants';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 
-const Faq: React.FC = () => {
+const Faq = (): ReactElement => {
   return (
     <>
       <Breadcrumb currentPlace='Часто задаваемые вопросы' />

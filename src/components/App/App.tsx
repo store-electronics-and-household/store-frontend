@@ -3,7 +3,6 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import AboutCompany from '../AboutCompany/AboutCompany';
-import Contacts from '../Contacts/Contacts';
 import Faq from '../Faq/Faq';
 import Categories from '../Categories/Categories';
 import Catalog from '../Catalog/Catalog';
@@ -17,6 +16,7 @@ import Footer from '../Footer/Footer';
 import WarningPopup from '../WarningPopup/WarningPopup';
 import SignIn from '../SignIn/SignIn';
 import SignUp from '../signup/SignUp';
+import PasswordRecovery from '../PasswordRecovery/PasswordRecovery';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import SearchResults from '../SearchResults/SearchResults';
 // import { paymentPageData } from '../../utils/constants';
@@ -27,6 +27,8 @@ const App: React.FC = () => {
   const [isWarningPopupOpen, setWarningPopupOpen] = useState<boolean>(false);
   const [isSignInPopupOpen, setSignInPopupOpen] = useState<boolean>(false);
   const [isSignUpPopupOpen, setSignUpPopupOpen] = useState<boolean>(false);
+  const [isPasswordRecoveryPopupOpen, setPasswordRecoveryPopupOpen] =
+    useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [goodsList, setGoodsList] = React.useState<GoodsListProps[]>();
 
@@ -40,6 +42,10 @@ const App: React.FC = () => {
 
   const toggleSignUpPopup = (): void => {
     setSignUpPopupOpen(!isSignUpPopupOpen);
+  };
+
+  const PasswordRecoveryPopup = (): void => {
+    setPasswordRecoveryPopupOpen(!isPasswordRecoveryPopupOpen);
   };
 
   const setGoodsForPayment = (data: GoodsListProps[]): void => {
@@ -64,10 +70,15 @@ const App: React.FC = () => {
                   onOpenSignIn={toggleSignInPopup}
                   isOpenSignIn={isSignInPopupOpen}
                   onOpenReg={toggleSignUpPopup}
+                  onOpenRecovery={PasswordRecoveryPopup}
                 />
                 <SignUp
                   onOpenSignUp={toggleSignUpPopup}
                   isOpenSignUp={isSignUpPopupOpen}
+                />
+                <PasswordRecovery
+                  isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
+                  onOpenRecoveryPopup={PasswordRecoveryPopup}
                 />
                 <Footer />
               </>
@@ -75,7 +86,6 @@ const App: React.FC = () => {
           >
             <Route path='/main' element={<Main />} />
             <Route path='/about-company' element={<AboutCompany />} />
-            <Route path='/contacts' element={<Contacts />} />
             <Route path='/delivery' element={<Delivery />} />
             <Route path='/faq' element={<Faq />} />
             <Route path='/categories' element={<Categories />} />
