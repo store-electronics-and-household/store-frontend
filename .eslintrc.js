@@ -35,7 +35,7 @@ module.exports = {
     //  ],
     '@typescript-eslint/space-before-function-paren': ['error', 'always'],
     '@typescript-eslint/no-confusing-void-expression': 'error',
-    '@typescript-eslint/indent': 'error',
+    '@typescript-eslint/indent': 'warn',
     '@typescript-eslint/member-delimiter-style': [
       'error',
       {
