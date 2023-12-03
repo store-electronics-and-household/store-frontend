@@ -110,9 +110,9 @@ const Categories: React.FC<{
                 {subCategoriesList.slice(0, 9).map((tile) => (
                   <CategoriesTile
                     key={tile.id}
-                    catTitle={tile.catTitle}
-                    catImg={tile.catImg}
-                    catUrl={tile.catUrl}
+                    title={tile.catTitle}
+                    img={tile.catImg}
+                    url={tile.catUrl}
                   />
                 ))}
               </div>

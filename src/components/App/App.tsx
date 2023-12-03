@@ -42,9 +42,9 @@ const App: React.FC = () => {
     setSignUpPopupOpen(!isSignUpPopupOpen);
   };
 
-  function setGoodsForPayment(data: GoodsListProps[]): void {
+  const setGoodsForPayment = (data: GoodsListProps[]): void => {
     setGoodsList(data);
-  }
+  };
 
   return (
     <div className='App'>

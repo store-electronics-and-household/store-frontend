@@ -24,8 +24,6 @@ export const PaginatedItems: React.FC<PaginationProps> = ({
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = items.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(items.length / itemsPerPage);
-
-  // Invoke when user click to request another page.
   const handlePageClick = (event: { selected: number }): void => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
     setItemOffset(newOffset);
