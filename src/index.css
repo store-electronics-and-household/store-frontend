@@ -1844,11 +1844,6 @@ body {
   cursor: pointer;
 }
 
-.header__catalog-button {
-  color: black;
-  background-color: white;
-}
-
 .header__navbar-link {
   cursor: pointer;
 }
@@ -2245,4 +2240,9 @@ body {
   font-weight: 700;
   line-height: normal;
   margin-top: 16px;
+}
+
+.header__catalog-button_white {
+  color: black;
+  background-color: white;
 }
