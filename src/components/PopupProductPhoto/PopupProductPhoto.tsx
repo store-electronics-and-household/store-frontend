@@ -15,7 +15,6 @@ const PopupProductPhoto: React.FC<PopupProductPhotoProps> = ({
   isOpen,
   closePopup,
 }) => {
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const overlayClickClose = (event: MouseEvent) => {
     event.preventDefault();
     if (!(event.target as HTMLElement).classList.contains('swiper-full-photo__img') && !(event.target as HTMLElement).classList.contains('swiper-button-next') && !(event.target as HTMLElement).classList.contains('swiper-button-prev')) {

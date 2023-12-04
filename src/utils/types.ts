@@ -1,16 +1,16 @@
 import { type ReactNode } from 'react';
 
 export interface FaqItem {
-  q: string
-  a: string
+  q: string;
+  a: string;
 }
 
 export interface PopupProps {
   isOpen: boolean
   OnClose: () => void
-  popupClass?: string
-  popupClassOverlay?: string
-  children?: ReactNode
+  popupClass: string
+  popupClassOverlay: string
+  children: ReactNode
   style?: React.CSSProperties
 }
 
@@ -41,9 +41,20 @@ export interface SpecifyType {
 }
 
 export interface GoodsListProps {
-  id: number
-  quantity: number
-  salesPrice: number
-  imgUrl: string
-  discount: number
+  id: number;
+  quantity: number;
+  salesPrice: number;
+  imgUrl: string;
+  discount: number;
+}
+
+export interface AccordionProps {
+  faqList: FaqItem[];
+  headText: string;
+}
+
+export interface AccordionItemProps {
+  faqItem: FaqItem;
+  isQuestionOpen: boolean | null;
+  btnOnClick: () => void;
 }

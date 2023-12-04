@@ -12,6 +12,7 @@
   visibility: hidden;
   opacity: 0;
   transition: opacity .4s linear;
+  z-index: 10001;
 }
 
 .popup-product-photo_opened {
@@ -22,6 +23,7 @@
 .popup-product-photo__container {
   margin: auto;
   position: relative;
+  max-width: 1360px;
 }
 
 .swiper.swiper-full-photo {
@@ -54,7 +56,6 @@
   border-radius: 50%;
   width: 35px;
   height: 35px;
-  // z-index: 1;
 }
 
 .popup-product-photo__btn-close::after,
@@ -75,3 +76,8 @@
 .popup-product-photo__btn-close::before {
   transform: rotate(-45deg);
 }
+
+// .swiper-full-photo .swiper-button-next,
+// .swiper-full-photo .swiper-button-prev {
+//   color: #fff;
+// }

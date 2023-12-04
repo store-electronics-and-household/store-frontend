@@ -10,7 +10,7 @@ const Main: React.FC = () => {
       <section className='main'>
         <Slider />
         <Discount />
-        <CategoriesMain />
+        <CategoriesMain id={0} title={''} img={''} url={''} />
       </section>
     </>
   );

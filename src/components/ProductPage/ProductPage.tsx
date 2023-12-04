@@ -3,7 +3,11 @@ import cart from '../../image/icons/busket_icon-white.svg';
 import deliveryIcon from '../../image/icons/delivery_icon.svg';
 import favoriteIcon from '../../image/icons/favourite_icon.svg';
 import ThumbsSlider from '../ThumbsSlider/ThumbsSlider';
-import { productPhotoArray, productSpecifyName, productSpecifyValue } from '../../utils/constants';
+import {
+  productPhotoArray,
+  productSpecifyName,
+  productSpecifyValue,
+} from '../../utils/constants';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import BreadcrumbItem from '../Breadcrumb/BreadcrumbItem';
@@ -75,34 +79,80 @@ const ProductPage: React.FC = () => {
             <span className='product-page__old-price'>{ formatSumm(productSpecifyValue.oldPrice) }</span>
           </div>
           <div className='product-page__buttons'>
-            <button onClick={ handleAddToCart } className='product-page__button-basket'>
+            <button
+              onClick={handleAddToCart}
+              className='product-page__button-basket'
+            >
               В корзину
-              <img className='product-page__cart-icon' src={ cart } alt='корзина покупок, магазин' />
+              <img
+                className='product-page__cart-icon'
+                src={cart}
+                alt='корзина покупок, магазин'
+              />
             </button>
             <button className='product-page__button-faivorite'>
-              <img className='product-page__faivorite-icon' src={ favoriteIcon } alt='сердце, лайк, кнопка нравится' />
+              <img
+                className='product-page__faivorite-icon'
+                src={favoriteIcon}
+                alt='сердце, лайк, кнопка нравится'
+              />
             </button>
           </div>
           <ul className='product-page__benefits-list'>
             <li className='product-page__benefit'>
-              <img className='product-page__benefit-icon' src={ deliveryIcon } alt='преимущество доставки, быстрая доставка' />
-              <p className='product-page__benefit-text'>Оригинальная продукция</p>
+              <img
+                className='product-page__benefit-icon'
+                src={deliveryIcon}
+                alt='преимущество доставки, быстрая доставка'
+              />
+              <p className='product-page__benefit-text'>
+                Оригинальная продукция
+              </p>
             </li>
             <li className='product-page__benefit'>
-              <img className='product-page__benefit-icon' src={ deliveryIcon } alt='преимущество доставки, быстрая доставка' />
-              <p className='product-page__benefit-text'>Доставка сегодня – 300 ₽</p>
+              <img
+                className='product-page__benefit-icon'
+                src={deliveryIcon}
+                alt='преимущество доставки, быстрая доставка'
+              />
+              <p className='product-page__benefit-text'>
+                Доставка сегодня – 300 ₽
+              </p>
             </li>
             <li className='product-page__benefit'>
-              <img className='product-page__benefit-icon' src={ deliveryIcon } alt='преимущество доставки, быстрая доставка' />
-              <p className='product-page__benefit-text'>Самовывоз – бесплатно</p>
+              <img
+                className='product-page__benefit-icon'
+                src={deliveryIcon}
+                alt='преимущество доставки, быстрая доставка'
+              />
+              <p className='product-page__benefit-text'>
+                Самовывоз – бесплатно
+              </p>
             </li>
           </ul>
         </div>
       </div>
-      <div id='characteristics-anchor' className='product-page__about-product'>
+      <div
+        id='characteristics-anchor'
+        className='product-page__about-product'
+      >
         <div className='product-page__about-header'>
-          <h2 onClick={handleOnAboutProduct} className={`product-page__description-title ${!isActive ? '' : 'product-page__description-title_active'}`}>О товаре</h2>
-          <h2 onClick={handleOnAllcharacteristics} className={`product-page__description-title ${isActive ? '' : 'product-page__description-title_active'}`}>Характеристики</h2>
+          <h2
+            onClick={handleOnAboutProduct}
+            className={`product-page__description-title ${
+              !isActive ? '' : 'product-page__description-title_active'
+            }`}
+          >
+            О товаре
+          </h2>
+          <h2
+            onClick={handleOnAllcharacteristics}
+            className={`product-page__description-title ${
+              isActive ? '' : 'product-page__description-title_active'
+            }`}
+          >
+            Характеристики
+          </h2>
         </div>
         {
         isActive
@@ -124,7 +174,11 @@ const ProductPage: React.FC = () => {
         isOpen={isPopupFullPhotoOpen}
         closePopup={handleClosePopupFullPhoto}
       />
-      <PopupAddToCart isOpen={isPopupOpen} productName={ productSpecifyValue.productName } photoUrl={productPhotoArray[0]} />
+      <PopupAddToCart
+        isOpen={isPopupOpen}
+        productName={ productSpecifyValue.productName }
+        photoUrl={productPhotoArray[0]}
+      />
     </section>;
   </>;
 };

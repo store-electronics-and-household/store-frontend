@@ -1,25 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { type FaqItem } from '../../utils/types';
 import arrow from '../../image/icons/arr-down.svg';
+import { type AccordionItemProps } from '../../utils/types';
 
-const AccordionItem: React.FC<{
-  faqItem: FaqItem
-  isQuestionOpen: boolean
-  btnOnClick: () => void
-}> = ({
+const AccordionItem: React.FC<AccordionItemProps> = ({
   faqItem,
   isQuestionOpen,
   btnOnClick,
-}: {
-  faqItem: FaqItem
-  isQuestionOpen: boolean
-  btnOnClick: () => void
-}) => {
+}: AccordionItemProps) => {
   const contentRef = useRef<HTMLParagraphElement>(null);
   const [height, setHeight] = useState(0);
 
   useEffect(() => {
-    if (isQuestionOpen) {
+    if (isQuestionOpen === true) {
       const contentEl = contentRef.current as HTMLParagraphElement;
       setHeight(contentEl?.scrollHeight);
     } else {
@@ -33,7 +25,7 @@ const AccordionItem: React.FC<{
         <p className='accordion__question'>{faqItem.q}</p>
         <img
           className={`accordion__arrow ${
-            isQuestionOpen ? 'accordion__arrow_opened' : ''
+            isQuestionOpen === true ? 'accordion__arrow_opened' : ''
           }`}
           src={arrow}
           alt='Стрелка'
