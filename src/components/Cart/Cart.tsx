@@ -2,7 +2,7 @@ import React from 'react';
 import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { mockedCartProducts } from '../../utils/mocks';
-// import './Cart.css';
+
 import crossIcon from '../../image/icons/cart_cross_icon.svg';
 import minusIconDefault from '../../image/icons/cart_minus_icon_default.svg';
 import minusIconActive from '../../image/icons/cart_minus_icon_active.svg';
