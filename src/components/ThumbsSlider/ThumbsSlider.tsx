@@ -12,11 +12,14 @@ import 'swiper/css/thumbs';
 
 import './ThumbsSlider.css';
 import { productPhotoArray } from '../../utils/constants';
-
 // import required modules
-import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import { FreeMode, Mousewheel, Navigation, Thumbs } from 'swiper/modules';
 
-const ThumbsSlider = (): ReactElement => {
+interface ThumbsSliderProps {
+  onPopupFullPhoto: () => void
+}
+
+const ThumbsSlider: React.FC<ThumbsSliderProps> = ({ onPopupFullPhoto }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
   return (
@@ -32,15 +35,14 @@ const ThumbsSlider = (): ReactElement => {
         className='swiper-second'
       >
         {productPhotoArray.map((photo, photoId) => {
-          return (
-            <SwiperSlide key={photoId}>
-              <img
-                className='swiper-second__img'
-                src={photo}
-                alt='фото товара'
-              />
-            </SwiperSlide>
-          );
+          return <SwiperSlide key={photoId}>
+            <img
+              onClick={onPopupFullPhoto}
+              className='swiper-second__img'
+              src={photo}
+              alt="фото товара"
+            />
+          </SwiperSlide>;
         })}
       </Swiper>
       <Swiper
@@ -48,8 +50,9 @@ const ThumbsSlider = (): ReactElement => {
         spaceBetween={8}
         slidesPerView={5}
         freeMode={true}
+        mousewheel={true}
         watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
+        modules={[FreeMode, Mousewheel, Navigation, Thumbs]}
         className='swiper-first'
         direction='vertical'
       >
