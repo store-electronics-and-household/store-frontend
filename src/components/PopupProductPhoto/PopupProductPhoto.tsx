@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type MouseEvent } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { productPhotoArray } from '../../utils/constants';
@@ -15,12 +15,12 @@ const PopupProductPhoto: React.FC<PopupProductPhotoProps> = ({
   isOpen,
   closePopup,
 }) => {
-  const overlayClickClose = (e: MouseEvent): void => {
-    if (!(e.target as HTMLElement).classList.contains('swiper-full-photo__img') && !(e.target as HTMLElement).classList.contains('swiper-button-next') && !(e.target as HTMLElement).classList.contains('swiper-button-prev')) {
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  const overlayClickClose = (event: MouseEvent) => {
+    event.preventDefault();
+    if (!(event.target as HTMLElement).classList.contains('swiper-full-photo__img') && !(event.target as HTMLElement).classList.contains('swiper-button-next') && !(event.target as HTMLElement).classList.contains('swiper-button-prev')) {
       closePopup();
-      console.log(e.target);
     }
-    console.log(e.target);
   };
 
   return <section className={`popup-product-photo ${isOpen ? 'popup-product-photo_opened' : ''}`} onMouseDown={overlayClickClose}>
