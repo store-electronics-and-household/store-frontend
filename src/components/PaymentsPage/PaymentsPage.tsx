@@ -1,6 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useEffect } from 'react';
-import Breadcrumb from '../Breadcrumb/Breadcrumb';
 // import { paymentPageData } from '../../utils/constants';
 import PaymentsPageItem from './PaymentsPageItem';
 import { type GoodsListProps } from '../../utils/types';
@@ -55,7 +54,6 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
 
   return (
     <>
-      <Breadcrumb currentPlace='Оформление заказа' />
       <section className='payments-page'>
         <h2 className='payments-page__title'>Оформление заказа</h2>
         <div className='payments-page__container'>

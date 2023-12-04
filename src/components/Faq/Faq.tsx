@@ -1,12 +1,12 @@
 import React, { type ReactElement } from 'react';
 import Accordion from '../Accordion/Accordion';
 import { faqList } from '../../utils/constants';
-import Breadcrumb from '../Breadcrumb/Breadcrumb';
+import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 
 const Faq = (): ReactElement => {
   return (
     <>
-      <Breadcrumb currentPlace='Часто задаваемые вопросы'/>
+      <Breadcrumbs />
       <section className='faq'>
         <h1 className='faq__header'>Часто задаваемые вопросы</h1>
         <Accordion faqList={faqList.deliveryFaq} headText='Доставка' />

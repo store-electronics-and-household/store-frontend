@@ -1,12 +1,12 @@
 import React, { type ReactElement } from 'react';
-import Breadcrumb from '../Breadcrumb/Breadcrumb';
+import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import AboutCompanyContent from './AboutCompanyContent';
 import { aboutCompanyInfo } from '../../utils/constants';
 
 const AboutCompany = (): ReactElement => {
   return (
     <>
-      <Breadcrumb currentPlace='О нас'/>
+      <Breadcrumbs />
       <section className='about-company'>
         <h1 className='about-company__header'>О нас</h1>
         <ul className='about-company__feature-list'>

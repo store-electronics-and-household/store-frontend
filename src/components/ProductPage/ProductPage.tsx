@@ -9,8 +9,7 @@ import {
   productSpecifyValue,
 } from '../../utils/constants';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
-import Breadcrumb from '../Breadcrumb/Breadcrumb';
-import BreadcrumbItem from '../Breadcrumb/BreadcrumbItem';
+// import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import ProductCharacteristicsList from '../ProductCharacteristicsList/ProductCharacteristicsList';
 import { type SpecifyType } from '../../utils/types';
 
@@ -40,20 +39,7 @@ const ProductPage: React.FC = () => {
 
   return (
     <>
-      <Breadcrumb currentPlace={productSpecifyValue.productName}>
-        <BreadcrumbItem
-          breadcrumbText='Смартфоны'
-          breadcrumbPath='/categories'
-        />
-        <BreadcrumbItem
-          breadcrumbText='Apple iPhone'
-          breadcrumbPath='/catalog'
-        />
-        <BreadcrumbItem
-          breadcrumbText='iPhone 15 Pro'
-          breadcrumbPath='/catalog'
-        />
-      </Breadcrumb>
+      {/* <Breadcrumbs /> */}
       <section className='product-page'>
         <div className='product-page__head-container'>
           <h1 className='product-page__header'>

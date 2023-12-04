@@ -2,7 +2,7 @@ import React from 'react';
 import '../Catalog/Catalog.css';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
-import Breadcrumb from '../Breadcrumb/Breadcrumb';
+// import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import { product, subCategoriesList } from '../../utils/constants';
 
 const Categories: React.FC<{
@@ -15,7 +15,7 @@ const Categories: React.FC<{
 }> = () => {
   return (
     <>
-      <Breadcrumb currentPlace='Смартфоны'/>
+      {/* <Breadcrumbs /> */}
       <section className='catalog'>
         <div className='catalog__container-big'>
           <h1 className='catalog__title'>Смартфоны</h1>

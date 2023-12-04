@@ -1,8 +1,7 @@
 import React from 'react';
 import './Catalog.css';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
-import Breadcrumb from '../Breadcrumb/Breadcrumb';
-import BreadcrumbItem from '../Breadcrumb/BreadcrumbItem';
+// import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import { product } from '../../utils/constants';
 
 const Catalog: React.FC<{
@@ -15,9 +14,7 @@ const Catalog: React.FC<{
 }> = () => {
   return (
     <>
-      <Breadcrumb currentPlace='Apple IPhone'>
-        <BreadcrumbItem breadcrumbText='Смартфоны' breadcrumbPath='/categories'/>
-      </Breadcrumb>
+      {/* <Breadcrumbs /> */}
       <section className='catalog'>
         <div className='catalog__container-big'>
           <h1 className='catalog__title'>Apple IPhone</h1>
