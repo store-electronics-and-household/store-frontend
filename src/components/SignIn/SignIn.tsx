@@ -5,6 +5,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
 // import './Signin.css';
+import OPENEDEYE from '../../image/icons/open-eye.svg';
+import CLOSEDEYE from '../../image/icons/eye-closed.svg';
 
 interface SignInProps {
   onOpenSignIn: () => void;
@@ -19,7 +21,7 @@ const SignIn: React.FC<SignInProps> = ({
   onOpenReg,
   onOpenRecovery,
 }) => {
-  const [isAuth, setisAuth] = React.useState<boolean>(false);
+  const [showPassword, setShowPassword] = React.useState<boolean>(false);
   const formik = useFormik({
     initialValues: {
       enableReinitialize: true,
@@ -44,7 +46,6 @@ const SignIn: React.FC<SignInProps> = ({
         // Обработка отправки данных
         onOpenSignIn();
         formik.resetForm();
-        setisAuth(true);
       }
     },
   });
@@ -60,10 +61,17 @@ const SignIn: React.FC<SignInProps> = ({
     formik.resetForm();
   };
 
-  const handleOpenRecoveryPass = (): void => {
+  const OpenRecoveryPass = (): void => {
     onOpenSignIn();
     onOpenRecovery();
     formik.resetForm();
+  };
+
+  const handleOpenRecoveryPass = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ): void => {
+    event.preventDefault();
+    OpenRecoveryPass();
   };
 
   return (
@@ -90,25 +98,27 @@ const SignIn: React.FC<SignInProps> = ({
             </p>
           </div>
           <div className='signin__inputs'>
-            <input
-              className={`signin__input ${
-                formik.submitCount > 0 &&
-                formik.touched.loginAuth &&
-                formik.errors.loginAuth
-                  ? 'signin__input_invalid'
-                  : formik.touched.loginAuth
-                  ? 'signin__input_valid'
-                  : ''
-              }`}
-              placeholder='E-mail'
-              type='email'
-              name='loginAuth'
-              value={formik.values.loginAuth}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              minLength={6}
-              required
-            />
+            <div className='signin__input-wrapper'>
+              <label className='signin__label'>Почта</label>
+              <input
+                className={`signin__input ${
+                  formik.submitCount > 0 &&
+                  formik.touched.loginAuth &&
+                  formik.errors.loginAuth
+                    ? 'signin__input_invalid'
+                    : formik.touched.loginAuth && formik.submitCount > 0
+                    ? 'signin__input_valid'
+                    : ''
+                }`}
+                type='email'
+                name='loginAuth'
+                value={formik.values.loginAuth}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                minLength={6}
+                required
+              />
+            </div>
             {formik.submitCount > 0 &&
               formik.touched.loginAuth &&
               formik.errors.loginAuth && (
@@ -116,26 +126,40 @@ const SignIn: React.FC<SignInProps> = ({
                   {formik.errors.loginAuth}
                 </span>
               )}
-            <input
-              className={`signin__input ${
-                formik.submitCount > 0 &&
-                formik.touched.loginAuth &&
-                formik.errors.loginAuth
-                  ? 'signin__input_invalid'
-                  : formik.touched.loginAuth
-                  ? 'signin__input_valid'
-                  : ''
-              }`}
-              placeholder='Пароль'
-              type='password'
-              minLength={6}
-              maxLength={10}
-              name='passwordAuth'
-              value={formik.values.passwordAuth}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              required
-            />
+            <div className='signin__input-wrapper'>
+              <label className='signin__label'>Пароль</label>
+              <input
+                className={`signin__input ${
+                  formik.submitCount > 0 &&
+                  formik.touched.passwordAuth &&
+                  formik.errors.passwordAuth
+                    ? 'signin__input_invalid'
+                    : formik.touched.passwordAuth && formik.submitCount > 0
+                    ? 'signin__input_valid'
+                    : ''
+                }`}
+                type={showPassword ? 'text' : 'password'}
+                minLength={6}
+                maxLength={10}
+                name='passwordAuth'
+                value={formik.values.passwordAuth}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                required
+              />
+              <span
+                className='signin__toggle-password'
+                onClick={() => {
+                  setShowPassword(!showPassword);
+                }}
+              >
+                <img
+                  className='signin__toggle-password-icon'
+                  src={showPassword ? OPENEDEYE : CLOSEDEYE}
+                  alt='показать/скрыть пароль'
+                />
+              </span>
+            </div>
             {formik.submitCount > 0 &&
               formik.touched.passwordAuth &&
               formik.errors.passwordAuth && (
@@ -143,7 +167,7 @@ const SignIn: React.FC<SignInProps> = ({
                   {formik.errors.passwordAuth}
                 </span>
               )}
-            {isAuth ? (
+            {!formik.isValid && formik.submitCount > 0 && (
               <Link
                 className='signin__link'
                 onClick={handleOpenRecoveryPass}
@@ -151,8 +175,6 @@ const SignIn: React.FC<SignInProps> = ({
               >
                 Не помню пароль
               </Link>
-            ) : (
-              ''
             )}
           </div>
           <div className='signin__buttons'>
