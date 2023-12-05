@@ -40,7 +40,7 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
         .max(8, 'Пароль не должен превышать 8 символов')
         .required('Введите Ваш пароль'),
       ConfirmPass: Yup.string()
-        .oneOf([Yup.ref('passwordReg')], 'Пароль не совпадает')
+        .oneOf([Yup.ref('passwordReg')], 'Пароли не совпадают')
         .required('Подтвердите пароль'),
       RegCheckbox: Yup.boolean().oneOf([true], '').required(),
     }),
