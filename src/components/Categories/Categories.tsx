@@ -50,38 +50,40 @@ const Categories: React.FC<{
                       Нетбуки
                     </a>
                   </li>
-                </ul>
+                </ul>{' '}
               </li>
               <ul className='catalog__models'>
                 <li className='catalog__models'>
                   <a className='catalog__model-link' href=''>
                     Аксессуары
                   </a>
-                </li>
-                <li className='catalog__model'>
-                  <a className='catalog__model-link' href=''>
-                    Клавиатуры и комплекты
-                  </a>
-                </li>
-                <li className='catalog__model'>
-                  <a className='catalog__model-link' href=''>
-                    Подставки для ноутбука
-                  </a>
-                </li>
-                <li className='catalog__model'>
-                  <a className='catalog__model-link' href=''>
-                    Внешние жесткие диски
-                  </a>
-                </li>
-                <li className='catalog__model'>
-                  <a className='catalog__model-link' href=''>
-                    Мыши компьютерные
-                  </a>
-                </li>
-                <li className='catalog__model'>
-                  <a className='catalog__model-link' href=''>
-                    USB флешки
-                  </a>
+                  <ul className='catalog__models'>
+                    <li className='catalog__model'>
+                      <a className='catalog__model-link' href=''>
+                        Клавиатуры и комплекты
+                      </a>
+                    </li>
+                    <li className='catalog__model'>
+                      <a className='catalog__model-link' href=''>
+                        Подставки для ноутбука
+                      </a>
+                    </li>
+                    <li className='catalog__model'>
+                      <a className='catalog__model-link' href=''>
+                        Внешние жесткие диски
+                      </a>
+                    </li>
+                    <li className='catalog__model'>
+                      <a className='catalog__model-link' href=''>
+                        Мыши компьютерные
+                      </a>
+                    </li>
+                    <li className='catalog__model'>
+                      <a className='catalog__model-link' href=''>
+                        USB флешки
+                      </a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </ul>

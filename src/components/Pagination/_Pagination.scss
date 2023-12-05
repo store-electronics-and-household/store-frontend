@@ -11,26 +11,26 @@
   }
 
 .pagination__active {
-  color: #000;
+  color: #272A31;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 600;
-  line-height: normal;
+  line-height: 18px;
   border-radius: 24px;
-  background: var(--Gray, #EDEDED);
-  padding: 8px 15px;
+  padding: 7px 12px;
+  border: 1px solid #000;
   cursor: default;
 }
 
 .pagination__page-item {
-  color: #000;
-font-family: Inter;
-font-size: 20px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-margin: 0 27px;
+  color: #272A31;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  margin: 0 24px;
 }
 
 .pagination__next-item {

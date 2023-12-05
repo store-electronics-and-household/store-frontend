@@ -75,7 +75,8 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: "goal delivery" "new delivery";
-  column-gap: 139px;
+  -moz-column-gap: 139px;
+       column-gap: 139px;
   row-gap: 64px;
 }
 
@@ -228,54 +229,6 @@ body {
 .breadcrumb__item-link {
   text-decoration: none;
   color: #272A31;
-}
-
-.contacts {
-  max-width: 1130px;
-  margin: 0 auto;
-  padding: 44px 20px 140px;
-  display: flex;
-  flex-direction: column;
-  gap: 64px;
-}
-
-.contacts__header {
-  margin: 0;
-  font-size: 68px;
-  font-weight: 700;
-  line-height: 100%;
-}
-
-.contacts__info {
-  font-size: 56px;
-  font-weight: 500;
-  line-height: normal;
-  margin-top: 0;
-  margin-bottom: 12px;
-}
-
-.contacts__phone-time {
-  font-size: 16px;
-  font-weight: 700;
-  line-height: normal;
-  max-width: 400px;
-  margin: 0;
-}
-
-.contacts__adress {
-  font-size: 24px;
-  font-weight: 500;
-  line-height: normal;
-  margin-top: 0;
-  margin-bottom: 32px;
-  max-width: 899px;
-}
-
-.contacts__map {
-  width: 100%;
-  max-height: 721px;
-  object-fit: cover;
-  border-radius: 25px;
 }
 
 .faq {
@@ -525,6 +478,7 @@ body {
   align-items: flex-end;
   position: absolute;
   top: calc(100% + 8px);
+  width: -moz-max-content;
   width: max-content;
 }
 
@@ -692,6 +646,7 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  width: -moz-max-content;
   width: max-content;
   color: white;
 }
@@ -802,7 +757,8 @@ body {
   margin: auto;
   height: 72px;
   max-width: 59px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 6px;
 }
 
@@ -984,7 +940,8 @@ body {
 }
 
 .card-medium__link {
-  hyphens: auto;
+  -webkit-hyphens: auto;
+          hyphens: auto;
   word-wrap: break-word;
   text-decoration: none;
   display: flex;
@@ -1075,7 +1032,7 @@ body {
 }
 
 .signin__title {
-  font-size: 24px;
+  font-size: 27px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -1091,7 +1048,7 @@ body {
   line-height: normal;
   text-align: center;
   margin: 4px 0 0;
-  max-width: 400px;
+  max-width: 324px;
 }
 
 .signin__inputs {
@@ -1099,10 +1056,6 @@ body {
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
-}
-
-.signin__input-container {
-  position: relative;
 }
 
 .signin__input-wrapper {
@@ -1438,7 +1391,9 @@ body {
 
 .signup__checkbox + label {
   display: inline-flex;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .signup__checkbox + label::before {
@@ -1586,12 +1541,16 @@ body {
   margin: 0;
 }
 
+.catalog__title-catalog {
+  font-size: 32px;
+}
+
 .catalog__rendered-list {
   padding: 0;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 64px 24px;
+  gap: 60px 24px;
   max-width: 1014px;
   margin: 0;
 }
@@ -1613,16 +1572,12 @@ body {
 
 .catalog__model {
   font-weight: 400;
-  margin-top: 16px;
+  margin-top: 17px;
   color: var(--Black, #222);
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-}
-
-.catalog__model:first-of-type {
-  margin-top: 24px;
 }
 
 .catalog__model-link {
@@ -1635,19 +1590,19 @@ body {
   flex-direction: column;
   margin-top: 48px;
   gap: 44px;
-  margin-bottom: 63px;
+  margin-bottom: 154px;
+  padding-left: 5px;
 }
 
 .catalog__models {
   font-weight: 600;
-  margin: 32px 0;
+  margin: 35px 0;
   padding: 0;
   list-style: none;
   text-decoration: none;
   color: var(--Black, #222);
   font-size: 24px;
   font-style: normal;
-  font-weight: 600;
   line-height: 30px;
 }
 
@@ -1674,21 +1629,29 @@ body {
 .catalog__render-popular {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 64px 24px;
+  gap: 58px 24px;
 }
 
 .catalog__popular {
-  font-size: 56px;
+  font-size: 32px;
   font-style: normal;
   font-weight: 500;
-  line-height: normal;
-  margin: 55px 0 44px;
+  line-height: 40зч;
+  margin: 66px 0 33px;
 }
 
 .catalog__text {
   display: flex;
   flex-direction: column;
   gap: 64px;
+}
+
+.catalog__model-catalog {
+  margin-top: 16px;
+}
+
+.catalog__model-catalog:first-child {
+  margin-top: 0;
 }
 
 .tile {
@@ -1921,6 +1884,13 @@ body {
   margin-top: 40px;
 }
 
+.pass-recovery__input-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
 .pass-recovery__input {
   padding: 10px 12px 10px;
   border-radius: 12px;
@@ -2044,6 +2014,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: auto;
+  min-height: -moz-max-content;
   min-height: max-content;
 }
 
@@ -2069,7 +2040,8 @@ body {
 .favourites__content {
   display: grid;
   row-gap: 64px;
-  column-gap: 24px;
+  -moz-column-gap: 24px;
+       column-gap: 24px;
   margin-top: 44px;
   grid-template-columns: repeat(4, 1fr);
   max-width: 1360px;
@@ -2117,6 +2089,15 @@ body {
   outline: transparent;
 }
 
+.header__searchbar-input::-moz-placeholder {
+  display: flex;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: black;
+}
+
 .header__searchbar-input::placeholder {
   display: flex;
   font-size: 20px;
@@ -2124,6 +2105,10 @@ body {
   font-weight: 600;
   line-height: normal;
   color: black;
+}
+
+.header__searchbar-input:focus::-moz-placeholder {
+  color: transparent;
 }
 
 .header__searchbar-input:focus::placeholder {
@@ -2251,7 +2236,8 @@ body {
 .popup-add-to-cart__product-photo {
   width: 138px;
   height: 138px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 10px;
   margin-right: 16px;
 }
@@ -2299,7 +2285,8 @@ body {
 
 .characteristics-list_full {
   display: block;
-  column-count: 2;
+  -moz-column-count: 2;
+       column-count: 2;
 }
 
 .characteristics-list__item:not(:last-of-type) {
@@ -2384,6 +2371,7 @@ body {
 
 .product-page__price-block {
   padding: 40px 24px;
+  height: -moz-fit-content;
   height: fit-content;
   background-color: #EDEDED;
   border-radius: 15px;
@@ -2688,26 +2676,26 @@ body {
 }
 
 .pagination__active {
-  color: #000;
+  color: #272A31;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 600;
-  line-height: normal;
+  line-height: 18px;
   border-radius: 24px;
-  background: var(--Gray, #EDEDED);
-  padding: 8px 15px;
+  padding: 7px 12px;
+  border: 1px solid #000;
   cursor: default;
 }
 
 .pagination__page-item {
-  color: #000;
+  color: #272A31;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 600;
-  line-height: normal;
-  margin: 0 27px;
+  line-height: 18px;
+  margin: 0 24px;
 }
 
 .pagination__next-item {
@@ -2726,4 +2714,3 @@ body {
   display: flex;
   flex-direction: column;
 }/*# sourceMappingURL=index.css.map */
-
