@@ -18,9 +18,9 @@ const Footer = (): ReactElement => {
           </span>
         </div>
         <ul className='footer__contacts-list'>
-          <li className='footer__contacts-item'>{ contactsData.phoneNumber }</li>
-          <li className='footer__contacts-item'>{ contactsData.email }</li>
-          <li className='footer__contacts-item'>{ contactsData.adress }</li>
+          <li className='footer__contacts-item'>{contactsData.phoneNumber}</li>
+          <li className='footer__contacts-item'>{contactsData.email}</li>
+          <li className='footer__contacts-item'>{contactsData.adress}</li>
         </ul>
         <nav className='footer__nav'>
           <NavLink className='footer__nav-link' to='/about-company'>
