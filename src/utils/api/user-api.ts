@@ -18,7 +18,7 @@ const request = async (
   endpoint: string,
   options: RequestInit
 ): Promise<any> => {
-  const url = `http://localhost:8080${endpoint}`;
+  const url = `http://45.12.236.120:8080${endpoint}`;
   return await fetch(url, options).then(checkResponse);
 };
 
@@ -52,13 +52,12 @@ export const authorize = async (
   });
 };
 
-// export const sayHello = async (jwt: string): Promise<any> => {
-//   return await request('/hello', {
-//     method: 'GET',
-//     headers: {
-//       Accept: 'application/json',
-//       'Content-Type': 'application/json',
-//       Authorization: `Bearer ${jwt}`,
-//     },
-//   });
-// };
+export const getBanners = async (): Promise<any> => {
+  return await request('/collections', {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  });
+};

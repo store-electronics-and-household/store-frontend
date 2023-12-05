@@ -6,11 +6,17 @@ import './Slider.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-import LIGHTGRAYNANNER from '../../image/swiper-main_lightgrey-banner.png';
-import BLACKNANNER from '../../image/swiper-main_black-banner.png';
 import { useSlideContext } from '../../context/SlideContext';
 
-const Slider: React.FC = () => {
+interface SliderProps {
+  bannerImage: Array<{
+    id: number;
+    name: string;
+    imageLink: string;
+  }>;
+}
+
+const Slider: React.FC<SliderProps> = ({ bannerImage }) => {
   const slideContext: any | undefined = useSlideContext();
   const { isLight, setLight } = slideContext;
 
@@ -28,28 +34,20 @@ const Slider: React.FC = () => {
         modules={[Navigation]}
         slidesPerView={1}
         className='swiper-container'
-        loop={true}
         allowTouchMove={false}
         onSlideChange={handleSlideChange}
       >
-        <SwiperSlide>
-          <Link to='#' rel='noreferrer'>
-            <img
-              src={LIGHTGRAYNANNER}
-              alt='баннер'
-              className='slider__action-img'
-            />
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link to='#' rel='noreferrer'>
-            <img
-              src={BLACKNANNER}
-              alt='баннер'
-              className='slider__action-img'
-            />
-          </Link>
-        </SwiperSlide>
+        {bannerImage.map((banner, index) => (
+          <SwiperSlide key={banner.id}>
+            <Link to='#' rel='noreferrer'>
+              <img
+                src={banner.imageLink}
+                alt={`${banner.name}`}
+                className='slider__action-img'
+              />
+            </Link>
+          </SwiperSlide>
+        ))}
         <div
           className={`swiper-button-next ${
             !isLight
