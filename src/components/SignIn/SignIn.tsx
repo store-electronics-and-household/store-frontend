@@ -5,6 +5,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
 // import './Signin.css';
+import OPENEDEYE from '../../image/icons/open-eye.svg';
+import CLOSEDEYE from '../../image/icons/eye-closed.svg';
 
 interface SignInProps {
   onOpenSignIn: () => void;
@@ -19,6 +21,7 @@ const SignIn: React.FC<SignInProps> = ({
   onOpenReg,
   onOpenRecovery,
 }) => {
+  const [showPassword, setShowPassword] = React.useState<boolean>(false);
   const formik = useFormik({
     initialValues: {
       enableReinitialize: true,
@@ -39,9 +42,11 @@ const SignIn: React.FC<SignInProps> = ({
         .required('Введите Ваш пароль'),
     }),
     onSubmit: (values) => {
-      // Обработка отправки данных
-      onOpenSignIn();
-      formik.resetForm();
+      if (formik.isValid) {
+        // Обработка отправки данных
+        onOpenSignIn();
+        formik.resetForm();
+      }
     },
   });
 
@@ -56,10 +61,17 @@ const SignIn: React.FC<SignInProps> = ({
     formik.resetForm();
   };
 
-  const handleOpenRecoveryPass = (): void => {
+  const OpenRecoveryPass = (): void => {
     onOpenSignIn();
     onOpenRecovery();
     formik.resetForm();
+  };
+
+  const handleOpenRecoveryPass = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ): void => {
+    event.preventDefault();
+    OpenRecoveryPass();
   };
 
   return (
@@ -86,63 +98,89 @@ const SignIn: React.FC<SignInProps> = ({
             </p>
           </div>
           <div className='signin__inputs'>
-            <input
-              className={`signin__input ${
-                formik.touched.loginAuth && formik.errors.loginAuth
-                  ? 'signin__input_invalid'
-                  : formik.touched.loginAuth
-                    ? 'signin__input_valid'
-                    : ''
-              }`}
-              placeholder='E-mail'
-              type='email'
-              name='loginAuth'
-              value={formik.values.loginAuth}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              minLength={6}
-              required
-            />
-            {formik.touched.loginAuth && formik.errors.loginAuth && (
-              <span className='signin__error-text'>
-                {formik.errors.loginAuth}
+            <div className='signin__input-wrapper'>
+              <label className='signin__label'>Почта</label>
+              <input
+                className={`signin__input ${
+                  formik.submitCount > 0 &&
+                  formik.touched.loginAuth &&
+                  formik.errors.loginAuth
+                    ? 'signin__input_invalid'
+                    : formik.touched.loginAuth && formik.submitCount > 0
+                      ? 'signin__input_valid'
+                      : ''
+                }`}
+                type='email'
+                name='loginAuth'
+                value={formik.values.loginAuth}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                minLength={6}
+                required
+              />
+            </div>
+            {formik.submitCount > 0 &&
+              formik.touched.loginAuth &&
+              formik.errors.loginAuth && (
+                <span className='signin__error-text'>
+                  {formik.errors.loginAuth}
+                </span>
+              )}
+            <div className='signin__input-wrapper'>
+              <label className='signin__label'>Пароль</label>
+              <input
+                className={`signin__input ${
+                  formik.submitCount > 0 &&
+                  formik.touched.passwordAuth &&
+                  formik.errors.passwordAuth
+                    ? 'signin__input_invalid'
+                    : formik.touched.passwordAuth && formik.submitCount > 0
+                      ? 'signin__input_valid'
+                      : ''
+                }`}
+                type={showPassword ? 'text' : 'password'}
+                minLength={6}
+                maxLength={10}
+                name='passwordAuth'
+                value={formik.values.passwordAuth}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                required
+              />
+              <span
+                className='signin__toggle-password'
+                onClick={() => {
+                  setShowPassword(!showPassword);
+                }}
+              >
+                <img
+                  className='signin__toggle-password-icon'
+                  src={showPassword ? OPENEDEYE : CLOSEDEYE}
+                  alt='показать/скрыть пароль'
+                />
               </span>
+            </div>
+            {formik.submitCount > 0 &&
+              formik.touched.passwordAuth &&
+              formik.errors.passwordAuth && (
+                <span className='signin__error-text'>
+                  {formik.errors.passwordAuth}
+                </span>
+              )}
+            {!formik.isValid && formik.submitCount > 0 && (
+              <Link
+                className='signin__link'
+                onClick={handleOpenRecoveryPass}
+                to={''}
+              >
+                Не помню пароль
+              </Link>
             )}
-            <input
-              className={`signin__input ${
-                formik.touched.passwordAuth && formik.errors.passwordAuth
-                  ? 'signin__input_invalid'
-                  : formik.touched.passwordAuth
-                    ? 'signin__input_valid'
-                    : ''
-              }`}
-              placeholder='Пароль'
-              type='password'
-              minLength={6}
-              maxLength={10}
-              name='passwordAuth'
-              value={formik.values.passwordAuth}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              required
-            />
-            {formik.touched.passwordAuth && formik.errors.passwordAuth && (
-              <span className='signin__error-text'>
-                {formik.errors.passwordAuth}
-              </span>
-            )}
-            <Link
-              className='signin__link'
-              onClick={handleOpenRecoveryPass}
-              to={''}
-            >
-              Не помню пароль
-            </Link>
           </div>
           <div className='signin__buttons'>
             <button
               className='signin__button signin__button_enter'
-              disabled={!(formik.dirty && formik.isValid)}
+              disabled={formik.isSubmitting}
               type='submit'
             >
               Войти
@@ -161,96 +199,3 @@ const SignIn: React.FC<SignInProps> = ({
 };
 
 export default SignIn;
-
-/*
-return (
-    <PopupTemplate
-      isOpen={isOpenSignIn}
-      OnClose={onOpenSignIn}
-      popupClass='popup'
-      popupClassOverlay='popup_overlay'
-    >
-      <div className='signin__container'>
-        <button className='signin__button_cls' onClick={onOpenSignIn} />
-        <form
-          className='signin__form'
-          onSubmit={formik.handleSubmit}
-          noValidate
-        >
-          <div className='signin__title-container'>
-            <div className='signin__title'>Введите логин и пароль</div>
-            <p className='signin__subtitle'>
-              Авторизируйтесь, чтобы совершить покупку или наполнить корзину
-            </p>
-          </div>
-          <div className='signin__inputs'>
-            <input
-              className={`signin__input ${
-                formik.dirty && !formik.errors.loginAuth
-                  ? 'signin__input_valid'
-                  : formik.touched.loginAuth
-                  ? 'signin__input_invalid'
-                  : ''
-              }`}
-              placeholder='E-mail'
-              type='email'
-              name='loginAuth'
-              value={formik.values.loginAuth}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              minLength={6}
-              required
-            />
-            {formik.touched.loginAuth && formik.errors.loginAuth && (
-              <span className='signin__error-text'>
-                {formik.errors.loginAuth}
-              </span>
-            )}
-            <input
-              className={`signin__input ${
-                formik.dirty && !formik.errors.passwordAuth
-                  ? 'signin__input_valid'
-                  : formik.touched.passwordAuth
-                  ? 'signin__input_invalid'
-                  : ''
-              }`}
-              placeholder='Пароль'
-              type='password'
-              minLength={6}
-              maxLength={10}
-              name='passwordAuth'
-              value={formik.values.passwordAuth}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              required
-            />
-            {formik.touched.passwordAuth && formik.errors.passwordAuth && (
-              <span className='signin__error-text'>
-                {formik.errors.passwordAuth}
-              </span>
-            )}
-            <Link className='signin__link' to='/'>
-              Не помню пароль
-            </Link>
-          </div>
-          <div className='signin__buttons'>
-            <button
-              className='signin__button signin__button_enter'
-              disabled={!(formik.dirty && formik.isValid)}
-              type='submit'
-            >
-              Войти
-            </button>
-            <button
-              className='signin__button signin__button_registr'
-              onClick={handleOpenReg}
-            >
-              Регистрация
-            </button>
-          </div>
-        </form>
-      </div>
-    </PopupTemplate>
-  );
-};
-*/
