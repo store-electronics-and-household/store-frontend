@@ -9,6 +9,7 @@ import {
   productSpecifyValue,
 } from '../../utils/constants';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
+// import './ProductPage.css';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import BreadcrumbItem from '../Breadcrumb/BreadcrumbItem';
 import ProductCharacteristicsList from '../ProductCharacteristicsList/ProductCharacteristicsList';

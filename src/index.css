@@ -75,8 +75,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: "goal delivery" "new delivery";
-  -moz-column-gap: 139px;
-       column-gap: 139px;
+  column-gap: 139px;
   row-gap: 64px;
 }
 
@@ -229,6 +228,54 @@ body {
 .breadcrumb__item-link {
   text-decoration: none;
   color: #272A31;
+}
+
+.contacts {
+  max-width: 1130px;
+  margin: 0 auto;
+  padding: 44px 20px 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.contacts__header {
+  margin: 0;
+  font-size: 68px;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.contacts__info {
+  font-size: 56px;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.contacts__phone-time {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  max-width: 400px;
+  margin: 0;
+}
+
+.contacts__adress {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 0;
+  margin-bottom: 32px;
+  max-width: 899px;
+}
+
+.contacts__map {
+  width: 100%;
+  max-height: 721px;
+  object-fit: cover;
+  border-radius: 25px;
 }
 
 .faq {
@@ -478,7 +525,6 @@ body {
   align-items: flex-end;
   position: absolute;
   top: calc(100% + 8px);
-  width: -moz-max-content;
   width: max-content;
 }
 
@@ -646,7 +692,6 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  width: -moz-max-content;
   width: max-content;
   color: white;
 }
@@ -757,8 +802,7 @@ body {
   margin: auto;
   height: 72px;
   max-width: 59px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 6px;
 }
 
@@ -940,8 +984,7 @@ body {
 }
 
 .card-medium__link {
-  -webkit-hyphens: auto;
-          hyphens: auto;
+  hyphens: auto;
   word-wrap: break-word;
   text-decoration: none;
   display: flex;
@@ -1010,7 +1053,7 @@ body {
   flex-direction: column;
   align-items: center;
   max-width: 440px;
-  min-height: 516px;
+  min-height: 430px;
   width: 100%;
   left: 50%;
   top: 50%;
@@ -1058,21 +1101,40 @@ body {
   margin-top: 40px;
 }
 
+.signin__input-container {
+  position: relative;
+}
+
+.signin__input-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+.signin__input-wrapper:first-of-type {
+  margin-top: 0px;
+}
+
 .signin__input {
   padding: 10px 12px 10px;
   border-radius: 12px;
   border: 1px solid #B6B6B6;
   width: 324px;
   min-height: 24px;
-  margin-top: 20px;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  flex: 1;
 }
 
-.signin__input:first-of-type {
-  margin-top: 0px;
+.signin__label {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  margin-bottom: 8px;
 }
 
 .signin__input:focus {
@@ -1175,6 +1237,19 @@ body {
   text-align: center;
 }
 
+.signin__toggle-password-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.signin__toggle-password {
+  position: absolute;
+  top: 70%;
+  right: 8px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
 .signup__container {
   position: relative;
   display: flex;
@@ -1229,21 +1304,36 @@ body {
   margin-top: 40px;
 }
 
+.signup__input-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+.signup__input-wrapper:first-of-type {
+  margin-top: 0px;
+}
+
 .signup__input {
   padding: 10px 12px 10px;
   border-radius: 12px;
   border: 1px solid #B6B6B6;
   width: 324px;
   min-height: 24px;
-  margin-top: 20px;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  flex: 1;
 }
 
-.signup__input:first-of-type {
-  margin-top: 0px;
+.signup__label {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  margin-bottom: 8px;
 }
 
 .signup__input:focus {
@@ -1348,9 +1438,7 @@ body {
 
 .signup__checkbox + label {
   display: inline-flex;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .signup__checkbox + label::before {
@@ -1410,6 +1498,19 @@ body {
 
 .signup__personal-data {
   color: #0500FF;
+}
+
+.signup__toggle-password-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.signup__toggle-password {
+  position: absolute;
+  top: 70%;
+  right: 8px;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
 .warningPopup {
@@ -1936,7 +2037,6 @@ body {
   justify-content: center;
   align-items: center;
   margin: auto;
-  min-height: -moz-max-content;
   min-height: max-content;
 }
 
@@ -1962,8 +2062,7 @@ body {
 .favourites__content {
   display: grid;
   row-gap: 64px;
-  -moz-column-gap: 24px;
-       column-gap: 24px;
+  column-gap: 24px;
   margin-top: 44px;
   grid-template-columns: repeat(4, 1fr);
   max-width: 1360px;
@@ -2011,15 +2110,6 @@ body {
   outline: transparent;
 }
 
-.header__searchbar-input::-moz-placeholder {
-  display: flex;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  color: black;
-}
-
 .header__searchbar-input::placeholder {
   display: flex;
   font-size: 20px;
@@ -2027,10 +2117,6 @@ body {
   font-weight: 600;
   line-height: normal;
   color: black;
-}
-
-.header__searchbar-input:focus::-moz-placeholder {
-  color: transparent;
 }
 
 .header__searchbar-input:focus::placeholder {
@@ -2099,7 +2185,7 @@ body {
   cursor: pointer;
 }
 
-.header__catalog-button {
+.header__catalog-button_white {
   color: black;
   background-color: white;
 }
@@ -2158,8 +2244,7 @@ body {
 .popup-add-to-cart__product-photo {
   width: 138px;
   height: 138px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 10px;
   margin-right: 16px;
 }
@@ -2207,8 +2292,7 @@ body {
 
 .characteristics-list_full {
   display: block;
-  -moz-column-count: 2;
-       column-count: 2;
+  column-count: 2;
 }
 
 .characteristics-list__item:not(:last-of-type) {
@@ -2293,7 +2377,6 @@ body {
 
 .product-page__price-block {
   padding: 40px 24px;
-  height: -moz-fit-content;
   height: fit-content;
   background-color: #EDEDED;
   border-radius: 15px;
@@ -2636,3 +2719,4 @@ body {
   display: flex;
   flex-direction: column;
 }/*# sourceMappingURL=index.css.map */
+
