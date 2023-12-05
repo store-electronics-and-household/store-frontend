@@ -14,13 +14,22 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
   onOpenRecoveryPopup,
   isOpenPasswordRecovery,
 }) => {
+  const [isNext, setisNext] = React.useState<boolean>(false);
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
+      loginRecovery: '',
       passwordRecovery: '',
       confirmPasswordRecovery: '',
     },
     validationSchema: Yup.object({
+      loginRecovery: Yup.string()
+        .email('Введите корректный email')
+        .matches(
+          /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
+          'Некорректный формат email'
+        )
+        .required('Введите email'),
       passwordRecovery: Yup.string()
         .min(6, 'Пароль должен содержать не менее 6 символов')
         .max(8, 'Пароль не должен превышать 8 символов')
@@ -39,6 +48,10 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
   const handleCloseRecoveryPasswordPopup = (): void => {
     onOpenRecoveryPopup();
     formik.resetForm();
+  };
+
+  const handleNextLevel = (): void => {
+    setisNext(true);
   };
 
   return (
@@ -60,9 +73,42 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
         >
           <div className='pass-recovery__title-container'>
             <div className='pass-recovery__title'>Восстановление пароля</div>
-            <p className='pass-recovery__subtitle'>Введите новый пароль</p>
+            {isNext && (
+              <p className='pass-recovery__subtitle'>
+                Введите почту, чтобы мы смогли найти ваш аккаунт
+              </p>
+            )}
           </div>
           <div className='pass-recovery__inputs'>
+            <div className='pass-recovery__input-wrapper'>
+              <label className='pass-recovery__label'>Почта</label>
+              <input
+                className={`pass-recovery__input ${
+                  formik.submitCount > 0 &&
+                  formik.touched.loginRecovery &&
+                  formik.errors.loginRecovery
+                    ? 'pass-recovery__input_invalid'
+                    : formik.touched.loginRecovery && formik.submitCount > 0
+                      ? 'pass-recovery__input_valid'
+                      : ''
+                }`}
+                type='text'
+                name='loginRecovery'
+                value={formik.values.loginRecovery}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                minLength={6}
+                required
+              />
+            </div>
+            {formik.submitCount > 0 &&
+              formik.touched.loginRecovery &&
+              formik.errors.loginRecovery && (
+                <span className='pass-recovery__error-text'>
+                  {formik.errors.loginRecovery}
+                </span>
+              )}
+
             <input
               className={`pass-recovery__input ${
                 formik.touched.passwordRecovery &&
@@ -117,6 +163,13 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
               type='submit'
             >
               Восстановить
+            </button>
+            <button
+              className='pass-recovery__button signin__button_enter'
+              disabled={formik.isValid}
+              onClick={handleNextLevel}
+            >
+              Далее
             </button>
           </div>
         </form>
