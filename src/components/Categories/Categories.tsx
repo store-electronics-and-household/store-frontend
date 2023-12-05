@@ -14,64 +14,44 @@ const Categories: React.FC<{
 }> = () => {
   return (
     <>
-      <Breadcrumb currentPlace='Смартфоны' />
+      <Breadcrumb currentPlace='Ноутбуки и аксессуары' />
       <section className='catalog'>
         <div className='catalog__container-big'>
-          <h1 className='catalog__title'>Смартфоны</h1>
+          <h1 className='catalog__title'>Ноутбуки и аксессуары</h1>
           <div className='catalog__container'>
             <ul className='catalog__collection'>
               <li className='catalog__models'>
                 <a className='catalog__model-link' href=''>
-                  Производитель
+                  Ноутбуки
                 </a>
                 <ul className='catalog__models'>
                   <li className='catalog__model'>
                     <a className='catalog__model-link' href='/catalog'>
-                      Apple IPhone
+                      Apple Macbook
                     </a>
                   </li>
                   <li className='catalog__model'>
                     <a className='catalog__model-link' href='/catalog'>
-                      Samsung Galaxy
+                      Игровые ноутбуки
                     </a>
                   </li>
                   <li className='catalog__model'>
                     <a className='catalog__model-link' href=''>
-                      Xiaomi
+                      Ультрабуки
                     </a>
                   </li>
                   <li className='catalog__model'>
                     <a className='catalog__model-link' href=''>
-                      Google
+                      Ноутбуки-трансформеры
                     </a>
                   </li>
                   <li className='catalog__model'>
                     <a className='catalog__model-link' href=''>
-                      Honor
-                    </a>
-                  </li>
-                  <li className='catalog__model'>
-                    <a className='catalog__model-link' href=''>
-                      Realme
-                    </a>
-                  </li>
-                  <li className='catalog__model'>
-                    <a className='catalog__model-link' href=''>
-                      HUAWEI
-                    </a>
-                  </li>
-                  <li className='catalog__model'>
-                    <a className='catalog__model-link' href=''>
-                      OnePlus
+                      Нетбуки
                     </a>
                   </li>
                 </ul>
               </li>
-              <ul className='catalog__models'>
-                <a className='catalog__model-link' href=''>
-                  Кнопочные телефоны
-                </a>
-              </ul>
               <ul className='catalog__models'>
                 <li className='catalog__models'>
                   <a className='catalog__model-link' href=''>
@@ -80,27 +60,27 @@ const Categories: React.FC<{
                 </li>
                 <li className='catalog__model'>
                   <a className='catalog__model-link' href=''>
-                    Зарядные устройства
+                    Клавиатуры и комплекты
                   </a>
                 </li>
                 <li className='catalog__model'>
                   <a className='catalog__model-link' href=''>
-                    Кабели и адаптеры
+                    Подставки для ноутбука
                   </a>
                 </li>
                 <li className='catalog__model'>
                   <a className='catalog__model-link' href=''>
-                    Защитные пленки и стекла
+                    Внешние жесткие диски
                   </a>
                 </li>
                 <li className='catalog__model'>
                   <a className='catalog__model-link' href=''>
-                    Наушники
+                    Мыши компьютерные
                   </a>
                 </li>
                 <li className='catalog__model'>
                   <a className='catalog__model-link' href=''>
-                    Чехлы
+                    USB флешки
                   </a>
                 </li>
               </ul>
