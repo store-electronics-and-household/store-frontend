@@ -2,6 +2,7 @@
 @import url("./vendor/normalize.css");
 @import url("../src/vendor/fonts.css");
 @import url("https://fonts.cdnfonts.com/css/wix-madefor-text");
+@import url("https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@500;600&display=swap");
 body {
   margin: 0;
   font-family: "Inter", Arial, sans-serif;
@@ -141,9 +142,9 @@ body {
 }
 
 .accordion__container-head {
-  padding: 12px 0;
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  font-family: "Wix Madefor Display";
   font-size: 32px;
   font-weight: 500;
   line-height: 40px;
@@ -155,17 +156,13 @@ body {
   margin: 0;
 }
 
-.accordion__item {
-  margin-bottom: 16px;
-}
-
 .accordion__btn {
   width: 100%;
   display: flex;
   justify-content: flex-start;
   border: none;
   background-color: transparent;
-  padding: 16px 0 15px;
+  padding: 18px 0 18px;
   color: #222;
   cursor: pointer;
 }
@@ -174,8 +171,10 @@ body {
   text-align: start;
   margin: 0;
   margin-right: 10px;
+  font-family: "Wix Madefor Display";
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
+  line-height: 30px;
 }
 
 .accordion__arrow {
@@ -235,12 +234,13 @@ body {
   max-width: 1130px;
   width: 100%;
   margin: auto;
-  padding: 44px 40px 140px;
+  padding: 44px 40px 138px;
 }
 
 .faq__header {
   margin-top: 0;
   margin-bottom: 44px;
+  font-family: "Wix Madefor Display";
   font-size: 40px;
   font-weight: 500;
   line-height: 40px;
@@ -261,7 +261,8 @@ body {
 .footer__logo {
   width: 253px;
   height: 80px;
-  margin-left: 4px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .footer__copyright {
@@ -275,12 +276,11 @@ body {
 .footer__contacts-list {
   display: flex;
   flex-direction: column;
-  justify-self: end;
   gap: 12px;
   padding: 0;
   margin: 0;
   list-style: none;
-  max-width: 410px;
+  max-width: 416px;
 }
 
 .footer__contacts-item, .footer__nav-link {
@@ -291,12 +291,18 @@ body {
   line-height: 24px;
 }
 
+.footer__contacts-item {
+  margin-left: 6px;
+}
+
 .footer__nav {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-self: end;
   gap: 12px;
+  max-width: 322px;
+  width: 100%;
 }
 
 .footer__nav-link {
