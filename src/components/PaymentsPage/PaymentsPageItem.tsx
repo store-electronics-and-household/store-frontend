@@ -1,11 +1,14 @@
 import React from 'react';
 
 interface PaymentsPageItemProps {
-  quantity: number
-  imgUrl: string
+  quantity: number;
+  imgUrl: string;
 }
 
-const PaymentsPageItem: React.FC<PaymentsPageItemProps> = ({ quantity, imgUrl }) => {
+const PaymentsPageItem: React.FC<PaymentsPageItemProps> = ({
+  quantity,
+  imgUrl,
+}) => {
   return (
     <div className='payments-page__good'>
       <img

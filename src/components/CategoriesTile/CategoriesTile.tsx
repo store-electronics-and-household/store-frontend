@@ -1,31 +1,28 @@
 import React from 'react';
-import './CategoriesTile.css';
 import { useLocation } from 'react-router-dom';
 
 const CategoriesTile: React.FC<{
-  catTitle: string;
-  catImg: string;
-  catUrl?: string;
+  title: string;
+  img: string;
+  url: string;
 }> = (tile) => {
-  const location = useLocation();
+  const location = useLocation().pathname;
   return (
     <li
       className={
-        location.pathname === '/main'
-          ? 'tile__item'
-          : 'tile__item tile__item_small'
+        location === '/main' ? 'tile__item' : 'tile__item tile__item_small'
       }
     >
-      <a className='tile__content' href={tile.catUrl}>
-        <span className='tile__category-name'>{tile.catTitle}</span>
+      <a className='tile__content' href={tile.url}>
+        <span className='tile__category-title'>{tile.title}</span>
         <img
           className={
-            location.pathname === '/main'
+            location === '/main'
               ? 'tile__image'
               : 'tile__image tile__image_small'
           }
           alt=''
-          src={tile.catImg}
+          src={tile.img}
         />
       </a>
     </li>

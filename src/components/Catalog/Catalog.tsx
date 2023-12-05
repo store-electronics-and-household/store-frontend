@@ -1,8 +1,8 @@
 import React from 'react';
-import './Catalog.css';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import BreadcrumbItem from '../Breadcrumb/BreadcrumbItem';
+import { PaginatedItems } from '../Pagination/Pagination';
 import { product } from '../../utils/constants';
 
 const Catalog: React.FC<{
@@ -16,7 +16,10 @@ const Catalog: React.FC<{
   return (
     <>
       <Breadcrumb currentPlace='Apple IPhone'>
-        <BreadcrumbItem breadcrumbText='Смартфоны' breadcrumbPath='/categories'/>
+        <BreadcrumbItem
+          breadcrumbText='Смартфоны'
+          breadcrumbPath='/categories'
+        />
       </Breadcrumb>
       <section className='catalog'>
         <div className='catalog__container-big'>
@@ -77,16 +80,19 @@ const Catalog: React.FC<{
               </ul>
             </ul>
             <ul className='catalog__rendered-list'>
-              {product.slice(0, 12).map((product) => (
-                <ProductCardMedium
-                  key={product.id}
-                  name={product.name}
-                  originPrice={product.originPrice}
-                  salesPrice={product.salesPrice}
-                  discount={product.discount}
-                  url={product.url}
-                />
-              ))}
+              <PaginatedItems
+                itemsPerPage={12}
+                items={product.map((product) => (
+                  <ProductCardMedium
+                    key={product.id}
+                    name={product.name}
+                    originPrice={product.originPrice}
+                    salesPrice={product.salesPrice}
+                    discount={product.discount}
+                    url={''}
+                  />
+                ))}
+              />
             </ul>
           </div>
         </div>

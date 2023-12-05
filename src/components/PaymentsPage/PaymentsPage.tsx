@@ -1,28 +1,66 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useEffect } from 'react';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
-import { paymentPageData } from '../../utils/constants';
+// import { paymentPageData } from '../../utils/constants';
 import PaymentsPageItem from './PaymentsPageItem';
+import { type GoodsListProps } from '../../utils/types';
+import { formatSumm } from '../../utils/formatSumm';
 
-const PaymentsPage: React.FC = () => {
-  // interface ClientDataProps {
-  //   name: string
-  //   phone: string
-  //   address: string
-  // }
-  // const [clientData, setClientData] = React.useState<ClientDataProps | null>(null);
+interface PaymentsPageProps {
+  GoodsList: GoodsListProps[];
+}
 
-  interface GoodsListProps {
-    id: number
-    quantity: number
-    salesPrice: number
-    imgUrl: string
-    discount: number
+const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
+  interface ClientDataProps {
+    name: string;
+    phone: string;
+    address: string;
   }
-  const [goodsList, setGoodsList] = React.useState <GoodsListProps[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [clientData, setClientData] = React.useState<ClientDataProps | null>(
+    null
+  );
+
+  const [deliveryPrice, setDeliveryPrice] = React.useState<number>();
 
   useEffect(() => {
-    setGoodsList(paymentPageData);
+    setDeliveryPrice(8500);
   }, []);
+
+  // const formatSumm = (summ: number): string => {
+  //   const formatedSumm = summ.toLocaleString('ru-RU', {
+  //     style: 'currency',
+  //     currency: 'RUB',
+  //     minimumFractionDigits: 0
+  //   });
+  //   return formatedSumm;
+  // };
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const fullQuantity: number = GoodsList.reduce(function (acc, item) {
+    return acc + item.quantity;
+  }, 0);
+
+  const formatedDeliveryPrice: string =
+    deliveryPrice != null ? formatSumm(deliveryPrice) : '';
+
+  const fullPrice: string = formatSumm(
+    GoodsList.reduce(function (acc, item) {
+      return acc + item.quantity * item.salesPrice;
+    }, 0)
+  );
+
+  const summaryDiscount: string = formatSumm(
+    GoodsList.reduce(function (acc, item) {
+      return acc + item.quantity * item.discount;
+    }, 0)
+  );
+
+  const finalPrice: string = formatSumm(
+    GoodsList.reduce(function (acc, item) {
+      return acc + item.quantity * (item.salesPrice - item.discount);
+    }, 0) - (deliveryPrice ?? 0)
+  );
 
   return (
     <>
@@ -51,7 +89,7 @@ const PaymentsPage: React.FC = () => {
               <p className='payments-page__form-title'>Ваш заказ</p>
               <div className='payments-page__line'></div>
               <div className='payments-page__cart-container'>
-                {goodsList.map((item) => (
+                {GoodsList.map((item) => (
                   <PaymentsPageItem
                     key={item.id}
                     quantity={item.quantity}
@@ -60,23 +98,28 @@ const PaymentsPage: React.FC = () => {
                 ))}
               </div>
               <div className='payments-page__summary-data'>
-                <p className='payments-page__summary-row'>3 товара на сумму</p>
-                <p className='payments-page__summary-row'>463970р</p>
+                <p className='payments-page__summary-row'>
+                  {fullQuantity} {fullQuantity % 2 === 0 ? 'товара' : 'товаров'}{' '}
+                  на сумму
+                </p>
+                <p className='payments-page__summary-row'>{fullPrice}</p>
               </div>
               <div className='payments-page__summary-data'>
                 <p className='payments-page__summary-row'>Скидка</p>
                 <p className='payments-page__summary-row payments-page__summary-row_discount'>
-                  12390
+                  {summaryDiscount}
                 </p>
               </div>
               <div className='payments-page__summary-data'>
                 <p className='payments-page__summary-row'>Доставка</p>
-                <p className='payments-page__summary-row '>Не выбрано</p>
+                <p className='payments-page__summary-row '>
+                  {deliveryPrice != null ? formatedDeliveryPrice : 'Не выбрано'}
+                </p>
               </div>
               <div className='payments-page__line'></div>
               <div className='payments-page__summary-data'>
                 <p className='payments-page__summary-final'>Итого</p>
-                <p className='payments-page__summary-final'>463 970 ₽</p>
+                <p className='payments-page__summary-final'>{finalPrice}</p>
               </div>
             </div>
           </div>
@@ -87,39 +130,3 @@ const PaymentsPage: React.FC = () => {
 };
 
 export default PaymentsPage;
-
-//   const [clientData, setClientData] = React.useState({});
-/*
-<div className='payments-page__good'>
-                <img
-                  className='payments-page__good-photo'
-                  src={GOOD_1}
-                  alt='фото товара'
-                />
-                <p className='payments-page__good-numbers'>x2</p>
-              </div>
-              <div className='payments-page__good'>
-                <img
-                  className='payments-page__good-photo'
-                  src={GOOD_2}
-                  alt='фото товара'
-                />
-                <p className='payments-page__good-numbers'>x2</p>
-              </div>
-              <div className='payments-page__good'>
-                <img
-                  className='payments-page__good-photo'
-                  src={GOOD_2}
-                  alt='фото товара'
-                />
-                <p className='payments-page__good-numbers'>x2</p>
-              </div>
-              <div className='payments-page__good'>
-                <img
-                  className='payments-page__good-photo'
-                  src={GOOD_2}
-                  alt='фото товара'
-                />
-                <p className='payments-page__good-numbers'>x2</p>
-              </div>
-*/

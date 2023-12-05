@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { type ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '../../image/logo.svg';
+import footerLogo from '../../image/icons/logo-footer.svg';
 import { contactsData } from '../../utils/constants';
 
-const Footer: React.FC = () => {
+const Footer = (): ReactElement => {
   return (
     <footer className='footer'>
       <div className='footer__content'>
         <div className='footer__logo-area'>
           <img
             className='footer__logo'
-            src={logo}
+            src={footerLogo}
             alt='Логотип, магазин электроники'
           />
           <span className='footer__copyright'>

@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import { type FaqItem } from '../../utils/types';
 import AccordionItem from './AccordionItem';
+import { type AccordionProps } from '../../utils/types';
 
-const Accordion: React.FC<{ faqList: FaqItem[]; headText: string }> = ({
+const Accordion: React.FC<AccordionProps> = ({
   faqList,
   headText,
-}: {
-  faqList: FaqItem[];
-  headText: string;
-}) => {
+}: AccordionProps) => {
   const [currentFaqId, setCurrentFaqId] = useState(-1);
   const btnOnClick = (faqId: number): void => {
     setCurrentFaqId((currentValue) => (currentValue !== faqId ? faqId : -1));

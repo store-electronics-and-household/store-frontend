@@ -6,18 +6,19 @@ export interface FaqItem {
 }
 
 export interface PopupProps {
-  isOpen: boolean;
-  OnClose: () => void;
-  popupClass: string;
-  popupClassOverlay: string;
-  children: ReactNode;
-  style?: React.CSSProperties;
+  isOpen: boolean
+  OnClose: () => void
+  popupClass: string
+  popupClassOverlay: string
+  children: ReactNode
+  style?: React.CSSProperties
 }
-
 
 export interface SpecifyType {
   productName: string
   article: number
+  price?: number
+  oldPrice?: number
   color?: string
   diagonal?: string | number
   brend?: string
@@ -37,4 +38,23 @@ export interface SpecifyType {
   ram1?: string | number
   batteryCapacity1?: string | number
   aboutProduct?: string
+}
+
+export interface GoodsListProps {
+  id: number;
+  quantity: number;
+  salesPrice: number;
+  imgUrl: string;
+  discount: number;
+}
+
+export interface AccordionProps {
+  faqList: FaqItem[];
+  headText: string;
+}
+
+export interface AccordionItemProps {
+  faqItem: FaqItem;
+  isQuestionOpen: boolean | null;
+  btnOnClick: () => void;
 }

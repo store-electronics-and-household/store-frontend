@@ -7,15 +7,17 @@ import PopupTemplate from '../PopupTemplate/PopupTemplate';
 // import './Signin.css';
 
 interface SignInProps {
-  onOpenSignIn: () => void
-  isOpenSignIn: boolean
-  onOpenReg: () => void
+  onOpenSignIn: () => void;
+  isOpenSignIn: boolean;
+  onOpenReg: () => void;
+  onOpenRecovery: () => void;
 }
 
 const SignIn: React.FC<SignInProps> = ({
   onOpenSignIn,
   isOpenSignIn,
   onOpenReg,
+  onOpenRecovery,
 }) => {
   const formik = useFormik({
     initialValues: {
@@ -54,6 +56,12 @@ const SignIn: React.FC<SignInProps> = ({
     formik.resetForm();
   };
 
+  const handleOpenRecoveryPass = (): void => {
+    onOpenSignIn();
+    onOpenRecovery();
+    formik.resetForm();
+  };
+
   return (
     <PopupTemplate
       isOpen={isOpenSignIn}
@@ -83,8 +91,8 @@ const SignIn: React.FC<SignInProps> = ({
                 formik.touched.loginAuth && formik.errors.loginAuth
                   ? 'signin__input_invalid'
                   : formik.touched.loginAuth
-                  ? 'signin__input_valid'
-                  : ''
+                    ? 'signin__input_valid'
+                    : ''
               }`}
               placeholder='E-mail'
               type='email'
@@ -105,8 +113,8 @@ const SignIn: React.FC<SignInProps> = ({
                 formik.touched.passwordAuth && formik.errors.passwordAuth
                   ? 'signin__input_invalid'
                   : formik.touched.passwordAuth
-                  ? 'signin__input_valid'
-                  : ''
+                    ? 'signin__input_valid'
+                    : ''
               }`}
               placeholder='Пароль'
               type='password'
@@ -123,7 +131,11 @@ const SignIn: React.FC<SignInProps> = ({
                 {formik.errors.passwordAuth}
               </span>
             )}
-            <Link className='signin__link' to='/'>
+            <Link
+              className='signin__link'
+              onClick={handleOpenRecoveryPass}
+              to={''}
+            >
               Не помню пароль
             </Link>
           </div>
