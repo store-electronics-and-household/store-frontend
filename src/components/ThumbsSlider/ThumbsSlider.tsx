@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { type ReactElement, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,11 +13,14 @@ import 'swiper/css/thumbs';
 
 import './ThumbsSlider.css';
 import { productPhotoArray } from '../../utils/constants';
-
 // import required modules
-import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import { FreeMode, Mousewheel, Navigation, Thumbs } from 'swiper/modules';
 
-const ThumbsSlider = (): ReactElement => {
+interface ThumbsSliderProps {
+  onPopupFullPhoto: () => void;
+}
+
+const ThumbsSlider: React.FC<ThumbsSliderProps> = ({ onPopupFullPhoto }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
   return (
@@ -35,6 +39,7 @@ const ThumbsSlider = (): ReactElement => {
           return (
             <SwiperSlide key={photoId}>
               <img
+                onClick={onPopupFullPhoto}
                 className='swiper-second__img'
                 src={photo}
                 alt='фото товара'
@@ -48,8 +53,9 @@ const ThumbsSlider = (): ReactElement => {
         spaceBetween={8}
         slidesPerView={5}
         freeMode={true}
+        mousewheel={true}
         watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
+        modules={[FreeMode, Mousewheel, Navigation, Thumbs]}
         className='swiper-first'
         direction='vertical'
       >

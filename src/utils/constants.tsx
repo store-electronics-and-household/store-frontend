@@ -296,9 +296,9 @@ export const product = [
 /* ------------------------------------------- */
 export const contactsData = {
   phoneNumber: '8 800 555-35-35',
-  email: 'companyname@mail.ru',
+  email: 'cyberplace@gmail.ru',
   adress:
-    'Юр. адрес: г. Москва, ул. Нижняя Красносельская, д. 40/12, корпус 20, этаж 5, помещение II, комната 3;',
+    'г. Москва, ул. Нижняя Красносельская, д. 40/12, корпус 20, этаж 5, помещение II, комната 3;',
 };
 
 export const faqList = {
@@ -390,8 +390,8 @@ export const productSpecifyName = {
 export const productSpecifyValue = {
   productName: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
   article: 68898484,
-  // price: 119 700 ₽,
-  // oldPrice: 430 800 ₽,
+  price: 119700,
+  oldPrice: 430800,
   color: 'титановый черный',
   diagonal: 6.1,
   brend: 'Apple',

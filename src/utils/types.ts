@@ -17,6 +17,8 @@ export interface PopupProps {
 export interface SpecifyType {
   productName: string;
   article: number;
+  price?: number;
+  oldPrice?: number;
   color?: string;
   diagonal?: string | number;
   brend?: string;
