@@ -7,6 +7,7 @@ body {
   font-family: "Inter", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
 }
 
 .payments-page__summary-final, .payments-page__summary-row, .payments-page__good-numbers, .payments-page__delivery-type, .payments-page__form-title, .payments-page__title {
@@ -2629,4 +2630,9 @@ body {
 
 .pagination__previous-link_hidden {
   display: none;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
 }/*# sourceMappingURL=index.css.map */

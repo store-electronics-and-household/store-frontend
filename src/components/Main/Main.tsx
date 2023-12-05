@@ -1,5 +1,4 @@
 import React from 'react';
-import './Main.css';
 import Slider from '../Slider/Slider';
 import Discount from '../Discount/Discount';
 import CategoriesMain from '../CategoriesMain/CategoriesMain';
