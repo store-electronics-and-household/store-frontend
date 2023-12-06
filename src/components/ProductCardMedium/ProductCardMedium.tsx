@@ -4,8 +4,8 @@ import vector from '../../image/Vector.png';
 import map from '../../image/map.png';
 
 const ProductCardMedium: React.FC<{
-  originPrice: number;
-  salesPrice?: number;
+  originPrice?: number;
+  salesPrice: number;
   name: string;
   discount?: number;
   url: string;
@@ -79,9 +79,12 @@ const ProductCardMedium: React.FC<{
             <div className='card-medium__container-footer'>
               <h3 className='card-medium__title'>{product.name}</h3>
               <div className='card-medium__container-price'>
+
                 <p className='card-medium__price'>
-                  {' '}
-                  {formatSumm(product.originPrice)}{' '}
+                  {product.originPrice !== 0 &&
+                  typeof product.originPrice === 'number'
+                    ? formatSumm(product.originPrice)
+                    : ''}
                 </p>
                 <p className='card-medium__oldprice'>
                   {product.salesPrice !== 0 &&
@@ -99,3 +102,14 @@ const ProductCardMedium: React.FC<{
 };
 
 export default ProductCardMedium;
+
+/*
+<p className='card-medium__price'>
+                  {' '}
+                  { product.originPrice !== null && product.originPrice.toLocaleString('ru-RU', {
+                    style: 'currency',
+                    currency: 'RUB',
+                    maximumFractionDigits: 0,
+                  })}{' '}
+                </p>
+*/
