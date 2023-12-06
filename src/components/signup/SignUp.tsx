@@ -10,8 +10,13 @@ import CLOSEDEYE from '../../image/icons/eye-closed.svg';
 interface SignUpProps {
   onOpenSignUp: () => void;
   isOpenSignUp: boolean;
+  onRegistr: (email: string, password: string) => void;
 }
-const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
+const SignUp: React.FC<SignUpProps> = ({
+  onOpenSignUp,
+  isOpenSignUp,
+  onRegistr,
+}) => {
   const [showRegPassword, setShowRegPassword] = React.useState<boolean>(false);
   const [showConfPassword, setShowConfPassword] =
     React.useState<boolean>(false);
@@ -44,9 +49,9 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
         .required('Подтвердите пароль'),
       RegCheckbox: Yup.boolean().oneOf([true], '').required(),
     }),
-    onSubmit: (values) => {
+    onSubmit: ({ loginReg, passwordReg }) => {
       if (formik.isValid) {
-        // Обработка отправки данных
+        onRegistr(loginReg, passwordReg);
         onOpenSignUp();
         formik.resetForm();
       }
@@ -92,8 +97,8 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
                   formik.errors.loginReg
                     ? 'signup__input_invalid'
                     : formik.touched.loginReg && formik.submitCount > 0
-                      ? 'signup__input_valid'
-                      : ''
+                    ? 'signup__input_valid'
+                    : ''
                 }`}
                 type='text'
                 name='loginReg'
@@ -120,8 +125,8 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
                   formik.errors.passwordReg
                     ? 'signup__input_invalid'
                     : formik.touched.passwordReg && formik.submitCount > 0
-                      ? 'signup__input_valid'
-                      : ''
+                    ? 'signup__input_valid'
+                    : ''
                 }`}
                 type={showRegPassword ? 'text' : 'password'}
                 minLength={6}
@@ -161,8 +166,8 @@ const SignUp: React.FC<SignUpProps> = ({ onOpenSignUp, isOpenSignUp }) => {
                   formik.errors.ConfirmPass
                     ? 'signup__input_invalid'
                     : formik.touched.ConfirmPass && formik.submitCount > 0
-                      ? 'signup__input_valid'
-                      : ''
+                    ? 'signup__input_valid'
+                    : ''
                 }`}
                 type={showConfPassword ? 'text' : 'password'}
                 minLength={6}

@@ -5,19 +5,55 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import './Slider.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
-import LIGHTGRAYNANNER from '../../image/swiper-main_lightgrey-banner.png';
-import BLACKNANNER from '../../image/swiper-main_black-banner.png';
+import { Navigation, Autoplay } from 'swiper/modules';
 import { useSlideContext } from '../../context/SlideContext';
 
-const Slider: React.FC = () => {
+interface SliderProps {
+  bannerImage: Array<{
+    id: number;
+    name: string;
+    imageLink: string;
+  }>;
+}
+
+const Slider: React.FC<SliderProps> = ({ bannerImage }) => {
   const slideContext: any | undefined = useSlideContext();
   const { isLight, setLight } = slideContext;
 
-  const handleSlideChange = (): void => {
-    const newIsLight = !isLight;
-    setLight(newIsLight);
+  const handleSlideChange = (swiper: any): void => {
+    const activeSlideIndex = swiper.activeIndex;
+    const isLightForCurrentSlide = isLighChangetForSlide(activeSlideIndex);
+    setLight(isLightForCurrentSlide);
+    console.log(isLight);
   };
+
+  const isLighChangetForSlide = (index: number): boolean => {
+    if (index === 0) {
+      return true;
+    } else if (index === 1) {
+      return false;
+    } else if (index === 2) {
+      return false;
+    } else if (index === 3) {
+      return true;
+    } else if (index === 4) {
+      return true;
+    } else if (index === 5) {
+      return true;
+    } else if (index === 6) {
+      return false;
+    } else if (index === 7) {
+      return true;
+    } else if (index === 8) {
+      return false;
+    } else {
+      return false;
+    }
+  };
+
+  React.useEffect(() => {
+    handleSlideChange({ activeIndex: 0 });
+  }, []);
 
   return (
     <>
@@ -25,31 +61,24 @@ const Slider: React.FC = () => {
         navigation={{
           nextEl: '.swiper-button-next',
         }}
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}
+        autoplay={{ delay: 6000 }}
         slidesPerView={1}
         className='swiper-container'
-        loop={true}
         allowTouchMove={false}
         onSlideChange={handleSlideChange}
       >
-        <SwiperSlide>
-          <Link to='#' rel='noreferrer'>
-            <img
-              src={LIGHTGRAYNANNER}
-              alt='баннер'
-              className='slider__action-img'
-            />
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link to='#' rel='noreferrer'>
-            <img
-              src={BLACKNANNER}
-              alt='баннер'
-              className='slider__action-img'
-            />
-          </Link>
-        </SwiperSlide>
+        {bannerImage.map((banner, index) => (
+          <SwiperSlide key={banner.id}>
+            <Link to='#' rel='noreferrer'>
+              <img
+                src={banner.imageLink}
+                alt={`${banner.name}`}
+                className='slider__action-img'
+              />
+            </Link>
+          </SwiperSlide>
+        ))}
         <div
           className={`swiper-button-next ${
             !isLight

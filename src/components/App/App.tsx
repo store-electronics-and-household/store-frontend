@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import AboutCompany from '../AboutCompany/AboutCompany';
@@ -24,6 +24,7 @@ import {
   type GoodsListProps,
   type CategoriesTileProps,
 } from '../../utils/types';
+import { authorize, register } from '../../utils/api/user-api';
 import { getCategoriesMain } from '../../utils/api/catalog+categories.api';
 
 const App: React.FC = () => {
@@ -57,6 +58,31 @@ const App: React.FC = () => {
     setGoodsList(data);
   };
 
+  const navigate = useNavigate();
+
+  const handleRegister = (email: string, password: string): void => {
+    register(email, password)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleLogin = (email: string, password: string): void => {
+    authorize(email, password)
+      .then((data) => {
+        localStorage.setItem('token', data.token);
+        console.log(data);
+        // setIsLogged(true);
+        navigate('/', { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   React.useEffect(() => {
     getCategoriesMain()
       .then((categoriesMain) => {
@@ -87,10 +113,12 @@ const App: React.FC = () => {
                   isOpenSignIn={isSignInPopupOpen}
                   onOpenReg={toggleSignUpPopup}
                   onOpenRecovery={PasswordRecoveryPopup}
+                  onLogin={handleLogin}
                 />
                 <SignUp
                   onOpenSignUp={toggleSignUpPopup}
                   isOpenSignUp={isSignUpPopupOpen}
+                  onRegistr={handleRegister}
                 />
                 <PasswordRecovery
                   isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}

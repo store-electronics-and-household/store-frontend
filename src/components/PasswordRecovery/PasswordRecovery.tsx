@@ -73,10 +73,12 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
         >
           <div className='pass-recovery__title-container'>
             <div className='pass-recovery__title'>Восстановление пароля</div>
-            {isNext && (
+            {!isNext ? (
               <p className='pass-recovery__subtitle'>
                 Введите почту, чтобы мы смогли найти ваш аккаунт
               </p>
+            ) : (
+              ''
             )}
           </div>
           <div className='pass-recovery__inputs'>
@@ -89,8 +91,8 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
                   formik.errors.loginRecovery
                     ? 'pass-recovery__input_invalid'
                     : formik.touched.loginRecovery && formik.submitCount > 0
-                      ? 'pass-recovery__input_valid'
-                      : ''
+                    ? 'pass-recovery__input_valid'
+                    : ''
                 }`}
                 type='text'
                 name='loginRecovery'
@@ -115,8 +117,8 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
                 formik.errors.passwordRecovery
                   ? 'pass-recovery__input_invalid'
                   : formik.touched.passwordRecovery
-                    ? 'pass-recovery__input_valid'
-                    : ''
+                  ? 'pass-recovery__input_valid'
+                  : ''
               }`}
               placeholder='Пароль'
               type='password'
@@ -138,8 +140,8 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
                 formik.errors.confirmPasswordRecovery
                   ? 'pass-recovery__input_invalid'
                   : formik.touched.confirmPasswordRecovery
-                    ? 'pass-recovery__input_valid'
-                    : ''
+                  ? 'pass-recovery__input_valid'
+                  : ''
               }`}
               placeholder='Повторите пароль'
               type='password'
@@ -166,7 +168,6 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
             </button>
             <button
               className='pass-recovery__button signin__button_enter'
-              disabled={formik.isValid}
               onClick={handleNextLevel}
             >
               Далее
