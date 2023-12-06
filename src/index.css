@@ -9,7 +9,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.payments-page__summary-final, .payments-page__summary-row, .payments-page__good-numbers, .payments-page__delivery-type, .payments-page__input-title, .payments-page__form-title, .payments-page__title {
+.results__title, .payments-page__summary-final, .payments-page__summary-row, .payments-page__good-numbers, .payments-page__delivery-type, .payments-page__input-title, .payments-page__form-title, .payments-page__title {
   margin: 0;
   color: #222;
 }
@@ -201,7 +201,7 @@ body {
 
 .breadcrumb {
   list-style: none;
-  margin: 32px auto 12px;
+  margin: 24px auto 12px;
   max-width: 1360px;
   width: 100%;
   padding: 0;
@@ -737,6 +737,10 @@ body {
   padding: 40px 0 24px 40px;
 }
 
+.payments-page__form-title_type_address {
+  line-height: 35px;
+}
+
 .payments-page__line {
   border-bottom: 1px #B6B6B6 solid;
   margin: 0 40px;
@@ -762,7 +766,7 @@ body {
 
 .payments-page__client-data-input {
   width: 100%;
-  height: 43px;
+  height: 40px;
   background-color: #EDEDED;
   border-radius: 12px;
   border: 1px solid #222;
@@ -800,15 +804,44 @@ body {
   text-decoration: none;
   margin: auto 0;
   border: none;
+  margin: 40px 24px 24px auto;
 }
 
 .payments-page__delivery-type:first-of-type {
   width: 92px;
-  margin: auto 24px auto auto;
 }
 
 .payments-page__delivery-type:last-of-type {
   width: 126px;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.payments-page__address-container {
+  margin: 24px 40px 0;
+  height: 228px;
+  border: 1px solid red;
+  display: flex;
+}
+
+.payments-page__address-input-container {
+  border: 1px solid blue;
+  width: 255px;
+  height: 100%;
+}
+
+.payments-page__input-label_type_address {
+  width: 100%;
+}
+
+.payments-page__address-box {
+  margin-top: 16px;
+  border: 1px greenyellow solid;
+  height: 146px;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 25px;
 }
 
 .payments-page__summary {
@@ -1661,28 +1694,26 @@ body {
   display: flex;
   width: 1440px;
   box-sizing: border-box;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
+  margin: 0 auto auto;
 }
 
 .results__container {
   display: flex;
   flex-direction: column;
-  margin-top: 64px;
   padding-right: 40px;
   padding-left: 40px;
   width: 1360px;
 }
 
 .results__title {
+  font-size: 56px;
+  font-weight: 500;
+  text-decoration: none;
   display: flex;
-  margin: 0;
   align-self: flex-start;
   font-family: "Inter", Arial, sans-serif;
-  font-weight: 500;
-  font-size: 56px;
-  line-height: 68.38px;
+  line-height: 1.2;
+  margin-bottom: 44px;
 }
 
 .header {

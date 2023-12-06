@@ -46,6 +46,10 @@
   padding: 40px 0 24px 40px;
 }
 
+.payments-page__form-title_type_address {
+  line-height: 35px;
+}
+
 .payments-page__line {
   border-bottom: 1px #B6B6B6 solid;
   margin: 0 40px;
@@ -69,13 +73,10 @@
 
 .payments-page__client-data-input {
   width: 100%;
-  height: 43px;
-  // background: #2F2F2F;
+  height: 40px;
   background-color: $greyColor;
   border-radius: 12px;
-  // border: 1px solid $blackColor;
   border: 1px solid $blackColor;
-  // border: none
   padding: 0;
   color: $blackColor;
   font-style: normal;
@@ -100,8 +101,6 @@
   font-size: 10px;
 }
 
-
-
 .payments-page__delivery-type {
   background: var(--main-white, #FFF);
   width: 126px;
@@ -110,15 +109,45 @@
   @include fontStyle($fontSBodyBold, $fontWBodyBold);
   margin: auto 0;
   border: none;
+  margin: 40px 24px 24px auto;
 }
 
 .payments-page__delivery-type:first-of-type {
   width: 92px;
-  margin: auto 24px auto auto;
+  // margin: 40px 24px 24px auto;
 }
 
 .payments-page__delivery-type:last-of-type {
   width: 126px;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.payments-page__address-container {
+  margin: 24px 40px 0;
+  height: 228px;
+  border: 1px solid red;
+  display: flex;
+}
+
+.payments-page__address-input-container {
+  border: 1px solid blue;
+  width: 255px;
+  height: 100%;
+}
+
+.payments-page__input-label_type_address {
+  width: 100%;
+}
+
+.payments-page__address-box {
+  margin-top: 16px;
+  border: 1px greenyellow solid;
+  height: 146px;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 25px;
 }
 
 .payments-page__summary-conatiner {

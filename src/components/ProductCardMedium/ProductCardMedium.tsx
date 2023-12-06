@@ -2,7 +2,7 @@ import React from 'react';
 import vector from '../../image/Vector.png';
 
 const ProductCardMedium: React.FC<{
-  originPrice: number
+  originPrice?: number
   salesPrice: number
   name: string
   discount: number
@@ -58,14 +58,15 @@ const ProductCardMedium: React.FC<{
             <div className='card-medium__container-footer'>
               <h3 className='card-medium__title'>{product.name}</h3>
               <div className='card-medium__price-container'>
+
                 <p className='card-medium__price'>
-                  {' '}
-                  {product.originPrice.toLocaleString('ru-RU', {
+                  {product.originPrice?.toLocaleString('ru-RU', {
                     style: 'currency',
                     currency: 'RUB',
                     maximumFractionDigits: 0,
-                  })}{' '}
+                  })}
                 </p>
+
                 <p className='card-medium__oldprice'>
                   {product.salesPrice.toLocaleString('ru-RU', {
                     style: 'currency',
@@ -83,3 +84,14 @@ const ProductCardMedium: React.FC<{
 };
 
 export default ProductCardMedium;
+
+/*
+<p className='card-medium__price'>
+                  {' '}
+                  { product.originPrice !== null && product.originPrice.toLocaleString('ru-RU', {
+                    style: 'currency',
+                    currency: 'RUB',
+                    maximumFractionDigits: 0,
+                  })}{' '}
+                </p>
+*/

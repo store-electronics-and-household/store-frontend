@@ -8,14 +8,14 @@ import { formatSumm } from '../../utils/formatSumm';
 import { useForm } from 'react-hook-form';
 
 interface PaymentsPageProps {
-  GoodsList: GoodsListProps[];
+  GoodsList: GoodsListProps[]
 }
 
 const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
   interface ClientDataProps {
-    name: string;
-    phone: string;
-    address: string;
+    name: string
+    phone: string
+    address: string
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [clientData, setClientData] = React.useState<ClientDataProps | null>(
@@ -64,16 +64,42 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
     }, 0) - (deliveryPrice ?? 0)
   );
 
-
-
   const {
-    register,
+    register: registerForm1,
+    getValues: getValuesForm1,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    formState: { errors, isValid },
+    formState: { errors: errorsForm1, isValid: isValidForm1 },
   } = useForm({
     // mode: 'all', // "onChange"
-    mode: 'onChange'
+    mode: 'onChange',
   });
+
+  const {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    register: registerForm2,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    getValues: getValuesForm2,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    formState: { errors: errorsForm2, isValid: isValidForm2 },
+  } = useForm({
+    // mode: 'all', // "onChange"
+    mode: 'onChange',
+  });
+
+  const handleDeliveryTypeClick = (
+    e: React.MouseEvent<HTMLButtonElement>
+  ): void => {
+    e.preventDefault();
+    const form1Values = getValuesForm1();
+    const form2Values = getValuesForm2();
+    console.log('Form 1 Values:', form1Values);
+    console.log('Form 2 Values:', form2Values);
+  };
+
+  // const handleOutsideFunction = (): void => {
+  //   const form2Values = getValuesForm2();
+  //   console.log(form2Values);
+  // };
 
   return (
     <>
@@ -91,38 +117,38 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
               <p className='payments-page__form-title'>Ваши данные</p>
               <div className='payments-page__line'></div>
               <div className='payments-page__input-container'>
-
-                <label
-                  className='payments-page__input-label'
-                >
-                  <p className='payments-page__input-title'>Имя <sup className=''>*</sup></p>
+                <label className='payments-page__input-label'>
+                  <p className='payments-page__input-title'>
+                    Имя <sup className=''>*</sup>
+                  </p>
                   <input
-                    {...register('name', {
+                    {...registerForm1('name', {
                       required: {
                         value: true,
                         message: 'Поле имя обязательно к заполнению',
                       },
                     })}
                     type='text'
-                    placeholder="Иванов Иван"
+                    placeholder='Иванов Иван'
                     className='payments-page__client-data-input'
                     name='name'
                     required
-                    onChange={handlePhoneChange}
+                    // onChange={handleOutsideFunction}
                   />
-                  {(errors.name != null) && typeof errors.name === 'object' && 'message' in errors.name && (
-                    <span className='payments-page__input-error'>
-                      {(errors.name as { message: string }).message}
-                    </span>
+                  {errorsForm1.name != null &&
+                    typeof errorsForm1.name === 'object' &&
+                    'message' in errorsForm1.name && (
+                      <span className='payments-page__input-error'>
+                        {(errorsForm1.name as { message: string }).message}
+                      </span>
                   )}
                 </label>
-
-                <label
-                  className='payments-page__input-label'
-                >
-                  <p className='payments-page__input-title'>Номер телефона <sup className=''>*</sup></p>
+                <label className='payments-page__input-label'>
+                  <p className='payments-page__input-title'>
+                    Номер телефона <sup className=''>*</sup>
+                  </p>
                   <input
-                    {...register('phone', {
+                    {...registerForm1('phone', {
                       required: {
                         value: true,
                         message: 'Поле телефон обязательно к заполнению',
@@ -133,29 +159,115 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                       },
                     })}
                     type='text'
-                    placeholder="+7 (900) 100 00 00"
+                    placeholder='+7 (900) 100 00 00'
                     className='payments-page__client-data-input'
                     name='phone'
                     required
                   />
-                  {(errors.phone != null) && typeof errors.phone === 'object' && 'message' in errors.phone && (
-                    <span className='payments-page__input-error'>
-                      {(errors.phone as { message: string }).message}
-                    </span>
+                  {errorsForm1.phone != null &&
+                    typeof errorsForm1.phone === 'object' &&
+                    'message' in errorsForm1.phone && (
+                      <span className='payments-page__input-error'>
+                        {(errorsForm1.phone as { message: string }).message}
+                      </span>
                   )}
                 </label>
-                </div>
+              </div>
             </form>
 
-            <form className='payments-page__client-address' action=''>
+            <form
+              id='clientAddressForm'
+              name='clientAddressForm'
+              action=''
+              className='payments-page__client-address'
+            >
               <div className='payments-page__title-container'>
-                <p className='payments-page__form-title'>Адрес доставки</p>
-                <button className='payments-page__delivery-type'>Курьер</button>
+                <p className='payments-page__form-title payments-page__form-title_type_address'>
+                  Адрес доставки
+                </p>
+                <button
+                  onClick={handleDeliveryTypeClick}
+                  className='payments-page__delivery-type'
+                >
+                  Курьер
+                </button>
                 <button className='payments-page__delivery-type'>
                   Самовывоз
                 </button>
               </div>
               <div className='payments-page__line'></div>
+              <div className='payments-page__address-container'>
+                <div className='payments-page__address-input-container'>
+                  <label className='payments-page__input-label payments-page__input-label_type_address'>
+                    <p className='payments-page__input-title'>
+                      Город, улица и дом <sup className=''>*</sup>
+                    </p>
+                    <input
+                      {...registerForm2('address', {
+                        required: {
+                          value: true,
+                          message: 'Поле адрес обязательно к заполнению',
+                        },
+                      })}
+                      type='text'
+                      placeholder='Пушкина, 33, Москва'
+                      className='payments-page__client-data-input'
+                      name='address'
+                      required
+                    />
+                    {errorsForm2.address != null &&
+                      typeof errorsForm2.address === 'object' &&
+                      'message' in errorsForm2.address && (
+                        <span className='payments-page__input-error'>
+                          {(errorsForm2.address as { message: string }).message}
+                        </span>
+                    )}
+                  </label>
+
+                  <div className='payments-page__address-box'>
+                    <label className='payments-page__input-label payments-page__input-label_type_address'>
+                      <p className='payments-page__input-title'>Квартира</p>
+                      <input
+                        {...registerForm2('appartment')}
+                        type='text'
+                        placeholder='12'
+                        className='payments-page__client-data-input'
+                        name='appartment'
+                      />
+                    </label>
+                    <label className='payments-page__input-label payments-page__input-label_type_address'>
+                      <p className='payments-page__input-title'>Подъезд</p>
+                      <input
+                        {...registerForm2('gate')}
+                        type='text'
+                        placeholder='1'
+                        className='payments-page__client-data-input'
+                        name='gate'
+                      />
+                    </label>
+                    <label className='payments-page__input-label payments-page__input-label_type_address'>
+                      <p className='payments-page__input-title'>Этаж</p>
+                      <input
+                        {...registerForm2('floor')}
+                        type='text'
+                        placeholder='3'
+                        className='payments-page__client-data-input'
+                        name='floor'
+                      />
+                    </label>
+                    <label className='payments-page__input-label payments-page__input-label_type_address'>
+                      <p className='payments-page__input-title'>Этаж</p>
+                      <input
+                        {...registerForm2('ring')}
+                        type='text'
+                        placeholder='12'
+                        className='payments-page__client-data-input'
+                        name='ring'
+                      />
+                    </label>
+                  </div>
+                </div>
+              </div>
             </form>
           </div>
           <div className='payments-page__summary-conatiner'>
@@ -229,4 +341,14 @@ export default PaymentsPage;
                     </span>
                   )}
                 </label>
+
+                  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  // const handleOutsideFunction = () => {
+  //   const form1Values = getValuesForm1();
+  //   // const form2Values = getValuesForm2();
+  //   console.log('Form 1 Values:', form1Values);
+  //   // console.log('Form 2 Values:', form2Values);
+
+  //   // Ваш код для обработки значений вне формы
+  // };
 */
