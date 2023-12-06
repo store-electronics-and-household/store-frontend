@@ -2161,7 +2161,6 @@ body {
   width: 24px;
   height: 24px;
 }
-
 .header__searchbar-input {
   display: flex;
   height: 100%;
@@ -2237,6 +2236,7 @@ body {
   height: 76px;
 }
 
+
 .header__container {
   max-width: 1440px;
   display: flex;
@@ -2251,6 +2251,7 @@ body {
 .header__logo {
   display: flex;
   margin-right: 20px;
+  height: 40px;
 }
 
 .header__catalog-button {
@@ -2297,7 +2298,8 @@ body {
   z-index: 1;
 }
 
-.header__navbar-icon-count {
+.header__navbar-icon-count  {
+
   position: absolute;
   top: -9px;
   right: -13px;
