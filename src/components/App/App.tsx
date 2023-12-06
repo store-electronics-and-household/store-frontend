@@ -21,6 +21,7 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import SearchResults from '../SearchResults/SearchResults';
 // import { paymentPageData } from '../../utils/constants';
 import { type GoodsListProps } from '../../utils/types';
+import { productData, productAttributes } from '../../utils/constants';
 import { authorize, register } from '../../utils/api/user-api';
 
 const App: React.FC = () => {
@@ -118,7 +119,10 @@ const App: React.FC = () => {
             <Route path='/categories' element={<Categories />} />
             <Route path='/catalog' element={<Catalog />} />
             <Route path='/favourites' element={<Favourites />} />
-            <Route path='/product' element={<ProductPage />} />
+            <Route
+              path='/product'
+              element={<ProductPage product={productData} attributes={productAttributes}/>}
+            />
             <Route
               path='/cart'
               element={<Cart onCheckoutClick={setGoodsForPayment} />}

@@ -1,10 +1,10 @@
 import React from 'react';
-import { type SpecifyType } from '../../utils/types';
+import { type productAttributesDataType } from '../../utils/types';
 
 interface ProductCharacteristicListProps {
-  productSpecifyName: SpecifyType;
-  productSpecifyValue: SpecifyType;
-  keysList: Array<keyof SpecifyType>;
+  productSpecifyName: productAttributesDataType;
+  productSpecifyValue: productAttributesDataType;
+  keysList: Array<keyof productAttributesDataType>;
   modifyClass?: string;
 }
 

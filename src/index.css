@@ -2161,6 +2161,7 @@ body {
   width: 24px;
   height: 24px;
 }
+
 .header__searchbar-input {
   display: flex;
   height: 100%;
@@ -2236,7 +2237,6 @@ body {
   height: 76px;
 }
 
-
 .header__container {
   max-width: 1440px;
   display: flex;
@@ -2251,7 +2251,6 @@ body {
 .header__logo {
   display: flex;
   margin-right: 20px;
-  height: 40px;
 }
 
 .header__catalog-button {
@@ -2298,8 +2297,7 @@ body {
   z-index: 1;
 }
 
-.header__navbar-icon-count  {
-
+.header__navbar-icon-count {
   position: absolute;
   top: -9px;
   right: -13px;
@@ -2641,7 +2639,7 @@ body {
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 19px;
   display: flex;
   align-items: center;
@@ -2664,6 +2662,7 @@ body {
 }
 
 .swiper.swiper-full-photo {
+  width: 90%;
   border-radius: unset;
   margin-top: 0;
 }
@@ -2687,13 +2686,13 @@ body {
 
 .popup-product-photo__btn-close {
   position: absolute;
-  right: -25px;
-  top: -25px;
-  border: none;
-  background-color: transparent;
+  right: 0;
+  top: -55px;
+  border: 1px solid #AFB4C0;
+  background-color: rgba(0, 0, 0, 0.6);
   border-radius: 50%;
-  width: 35px;
-  height: 35px;
+  width: 45px;
+  height: 45px;
 }
 
 .popup-product-photo__btn-close::after,
@@ -2701,10 +2700,10 @@ body {
   content: "";
   width: 25px;
   height: 2px;
-  background-color: rgb(31, 175, 211);
+  background-color: #AFB4C0;
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 20px;
+  right: 9px;
 }
 
 .popup-product-photo__btn-close::after {
@@ -2713,6 +2712,25 @@ body {
 
 .popup-product-photo__btn-close::before {
   transform: rotate(-45deg);
+}
+
+.swiper-full-photo .swiper-button-next,
+.swiper-full-photo .swiper-button-prev {
+  background-image: url("./image/icons/swiper-main-gray-btn.svg");
+  background-position: -20px 80px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 60px;
+  width: 57px;
+  height: 57px;
+}
+
+.swiper-full-photo .swiper-button-prev {
+  transform: rotate(180deg);
+}
+
+.swiper-full-photo .swiper-button-next:after,
+.swiper-full-photo .swiper-button-prev:after {
+  content: none;
 }
 
 .delivery {
