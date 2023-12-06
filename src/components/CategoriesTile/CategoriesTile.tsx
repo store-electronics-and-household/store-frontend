@@ -1,10 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { API_CAT_IMG, API_URL } from '../../utils/constants';
-const CategoriesTile: React.FC<{
-  id: number;
-  name: string;
-}> = (tile) => {
+
+const CategoriesTile: React.FC<{ id: number; name: string }> = (tile) => {
   const location = useLocation().pathname;
   return (
     <li

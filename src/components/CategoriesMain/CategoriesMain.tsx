@@ -2,7 +2,10 @@ import React from 'react';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
 
 interface Props {
-  categoriesMain: string[] | any;
+  categoriesMain: Array<{
+    id: number;
+    name: string;
+  }>;
 }
 
 const CategoriesMain: React.FC<Props> = ({ categoriesMain }) => {
@@ -14,8 +17,8 @@ const CategoriesMain: React.FC<Props> = ({ categoriesMain }) => {
           .sort((a: { name: string }, b: { name: string }) =>
             a.name.toLowerCase().localeCompare(b.name.toLowerCase())
           )
-          .map((tile: { id: React.Key | null | undefined; name: string }) => (
-            <CategoriesTile key={tile.id} name={tile.name} id={0} />
+          .map((tile) => (
+            <CategoriesTile key={tile.id} name={tile.name} id={tile.id} />
           ))}
       </ul>{' '}
     </section>
