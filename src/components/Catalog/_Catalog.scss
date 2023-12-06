@@ -3,6 +3,10 @@
   max-width: 1360px;
 }
 
+.catalog-shared {
+  margin-bottom: 140px;
+}
+
 .catalog__title {
   color: #000;
   font-size: 40px;
@@ -21,9 +25,14 @@
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 60px 24px;
+  gap: 44px 24px;
   max-width: 1014px;
   margin: 0;
+}
+
+.catalog__rendered-list_type_4items {
+  grid-template-columns: repeat(4, 1fr);
+  max-width: none;
 }
 
 .catalog__container {
