@@ -9,9 +9,9 @@ const CategoriesMain: React.FC<{
   url: string;
 }> = (tile) => {
   return (
-    <section className='tile-main'>
-      <h2 className='tile-main__title'>Категории</h2>
-      <ul className='tile-main__list'>
+    <section className='tile'>
+      <h2 className='tile__title'>Категории</h2>
+      <ul className='tile__list'>
         {categoriesList
           .sort((a, b) => a.title.localeCompare(b.title))
           .map((tile) => (

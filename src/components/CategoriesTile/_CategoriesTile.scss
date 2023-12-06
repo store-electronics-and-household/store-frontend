@@ -36,7 +36,9 @@
 }
 
 .tile__image_small {
-  height: 210px;
+  max-height: 210px;
+  min-height: 180px;
+  aspect-ratio: 274/210;
 }
 
 .tile__image:after {
