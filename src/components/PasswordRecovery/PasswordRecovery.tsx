@@ -91,8 +91,8 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
                   formik.errors.loginRecovery
                     ? 'pass-recovery__input_invalid'
                     : formik.touched.loginRecovery && formik.submitCount > 0
-                      ? 'pass-recovery__input_valid'
-                      : ''
+                    ? 'pass-recovery__input_valid'
+                    : ''
                 }`}
                 type='text'
                 name='loginRecovery'
@@ -117,8 +117,8 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
                 formik.errors.passwordRecovery
                   ? 'pass-recovery__input_invalid'
                   : formik.touched.passwordRecovery
-                    ? 'pass-recovery__input_valid'
-                    : ''
+                  ? 'pass-recovery__input_valid'
+                  : ''
               }`}
               placeholder='Пароль'
               type='password'
@@ -140,8 +140,8 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
                 formik.errors.confirmPasswordRecovery
                   ? 'pass-recovery__input_invalid'
                   : formik.touched.confirmPasswordRecovery
-                    ? 'pass-recovery__input_valid'
-                    : ''
+                  ? 'pass-recovery__input_valid'
+                  : ''
               }`}
               placeholder='Повторите пароль'
               type='password'

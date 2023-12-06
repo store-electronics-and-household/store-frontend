@@ -141,7 +141,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                       <span className='payments-page__input-error'>
                         {(errorsForm1.name as { message: string }).message}
                       </span>
-                  )}
+                    )}
                 </label>
                 <label className='payments-page__input-label'>
                   <p className='payments-page__input-title'>
@@ -170,7 +170,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                       <span className='payments-page__input-error'>
                         {(errorsForm1.phone as { message: string }).message}
                       </span>
-                  )}
+                    )}
                 </label>
               </div>
             </form>
@@ -221,7 +221,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                         <span className='payments-page__input-error'>
                           {(errorsForm2.address as { message: string }).message}
                         </span>
-                    )}
+                      )}
                   </label>
 
                   <div className='payments-page__address-box'>
