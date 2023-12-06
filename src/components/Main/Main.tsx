@@ -3,7 +3,7 @@ import Slider from '../Slider/Slider';
 import Discount from '../Discount/Discount';
 import CategoriesMain from '../CategoriesMain/CategoriesMain';
 
-const Main: React.FC = (_categoriesMain) => {
+const Main: React.FC = (categoriesMain) => {
   return (
     <>
       <section className='main'>
