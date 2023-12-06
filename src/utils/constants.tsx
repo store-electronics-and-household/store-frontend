@@ -84,6 +84,7 @@ export const product = [
     id: 2,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
     originPrice: 119700,
+    salesPrice: 430800,
     url: '/product',
   },
   {
