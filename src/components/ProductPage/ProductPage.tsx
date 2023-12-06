@@ -3,25 +3,25 @@ import cart from '../../image/icons/busket_icon-white.svg';
 import deliveryIcon from '../../image/icons/delivery_icon.svg';
 import favoriteIcon from '../../image/icons/favourite_icon.svg';
 import ThumbsSlider from '../ThumbsSlider/ThumbsSlider';
-import {
-  productPhotoArray,
-  productSpecifyName,
-  productSpecifyValue,
-} from '../../utils/constants';
+import { productSpecifyName } from '../../utils/constants';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
-// import './ProductPage.css';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import BreadcrumbItem from '../Breadcrumb/BreadcrumbItem';
 import ProductCharacteristicsList from '../ProductCharacteristicsList/ProductCharacteristicsList';
-import { type SpecifyType } from '../../utils/types';
+import { type productDataType, type productAttributesDataType } from '../../utils/types';
 import { formatSumm } from '../../utils/formatSumm';
 import PopupProductPhoto from '../PopupProductPhoto/PopupProductPhoto';
 
-const objectKeys = (object: SpecifyType): Array<keyof SpecifyType> => {
-  return Object.keys(object) as Array<keyof SpecifyType>;
+const objectKeys = (object: productAttributesDataType): Array<keyof productAttributesDataType> => {
+  return Object.keys(object) as Array<keyof productAttributesDataType>;
 };
 
-const ProductPage: React.FC = () => {
+interface ProductPageProps {
+  product: productDataType;
+  attributes: productAttributesDataType;
+};
+
+const ProductPage: React.FC<ProductPageProps> = ({ product, attributes }: ProductPageProps) => {
   // const refSetTimeout = useRef<NodeJS.Timeout>();
   const [isActive, setIsActive] = useState(true);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -52,7 +52,7 @@ const ProductPage: React.FC = () => {
 
   return (
     <>
-      <Breadcrumb currentPlace={productSpecifyValue.productName}>
+      <Breadcrumb currentPlace={product.name}>
         <BreadcrumbItem
           breadcrumbText='Смартфоны'
           breadcrumbPath='/categories'
@@ -69,15 +69,18 @@ const ProductPage: React.FC = () => {
       <section className='product-page'>
         <div className='product-page__head-container'>
           <h1 className='product-page__header'>
-            {productSpecifyValue.productName}
+            {product.name}
           </h1>
           <span className='product-page__item-number'>
-            Арт. <span>{productSpecifyValue.article}</span>
+            Арт. <span>{product.id}</span>
           </span>
         </div>
         <div className='product-page__info-container'>
           <div className='product-page__slider'>
-            <ThumbsSlider onPopupFullPhoto={handleOpenPopupPhoto} />
+            <ThumbsSlider
+              images={product.images}
+              onPopupFullPhoto={handleOpenPopupPhoto}
+              />
           </div>
           <div className='product-page__characteristics'>
             <h2 className='product-page__characteristic-head'>
@@ -85,16 +88,10 @@ const ProductPage: React.FC = () => {
             </h2>
             <ProductCharacteristicsList
               productSpecifyName={productSpecifyName}
-              productSpecifyValue={productSpecifyValue}
-              keysList={objectKeys(productSpecifyValue)
+              productSpecifyValue={attributes}
+              keysList={objectKeys(attributes)
                 .filter((n) => {
-                  return (
-                    n !== 'productName' &&
-                    n !== 'price' &&
-                    n !== 'oldPrice' &&
-                    n !== 'article' &&
-                    n !== 'aboutProduct'
-                  );
+                  return (n);
                 })
                 .splice(0, 10)}
             />
@@ -109,11 +106,17 @@ const ProductPage: React.FC = () => {
           <div className='product-page__price-block'>
             <div className='product-page__price'>
               <span className='product-page__current-price'>
-                {formatSumm(productSpecifyValue.price)}
+                {formatSumm(product.price)}
               </span>
-              <span className='product-page__old-price'>
-                {formatSumm(productSpecifyValue.oldPrice)}
-              </span>
+              { product.oldPrice !== 0
+                ? <span className='product-page__old-price'>
+                    { product.oldPrice !== 0 && typeof product.oldPrice === 'number'
+                      ? formatSumm(product.oldPrice)
+                      : ''
+                    }
+                  </span>
+                : null
+              }
             </div>
             <div className='product-page__buttons'>
               <button
@@ -191,64 +194,36 @@ const ProductPage: React.FC = () => {
               Характеристики
             </h2>
           </div>
-          {isActive ? (
-            <div className='product-page__about'>
-              <p className='product-page__about-description'>
-                Данная модель могла быть активирована до продажи без привязки к
-                аккаунту Apple ID. Это не влияет на потребительские
-                характеристики, внешний вид товара, функциональность или
-                какие-либо иные свойства продукта. Срок гарантии на смартфон
-                составляет 1 год с момента покупки.
-              </p>
-              <p className='product-page__about-description'>
-                Смартфон Apple iPhone 15 Pro Max Black Titanium получил дисплей
-                диагональю 6,7 дюйма, выполненный по технологии Super Retina
-                XDR. Разрешение — 2796x1290 пикселей, яркость достигает 2000
-                кд/м², контрастность составляет 2000000:1 — изображение четкое,
-                детализированное и насыщенное.
-              </p>
-              <p className='product-page__about-description'>
-                Основная камера тройная: 48/12/12 Мп. Она способна снимать в
-                разрешении до 4К (3840x2160 пикселей). Оптический зум на
-                увеличение и на уменьшение, цифровая и оптическая стабилизация и
-                вспышка помогут получить отличные результаты в любых условиях.
-                Фокус при съемке портретов можно менять уже после того, как
-                сделан снимок. Для селфи и видеосвязи предназначена фронтальная
-                камера на 12 Мп.
-              </p>
-              <p className='product-page__about-description'>
-                Смартфон снабжен универсальным портом USB Type-C,
-                соответствующий кабель для зарядки прилагается. Доступна также
-                беспроводная и быстрая зарядка, поддерживается технология
-                MagSafe. Корпус выполнен из авиационного титана, внутренняя рама
-                — из алюминия (100% переработки), задняя панель отделана
-                стеклом. На боковой панели размещена кнопка Action Button,
-                отвечающая активацию беззвучного режима, включение камеры,
-                фонарика и прочих функций. Заявлена защита по стандарту IP68 —
-                смартфон может без вреда для себя погружаться на глубину до 6 м.
-              </p>
-            </div>
-          ) : (
-            <ProductCharacteristicsList
-              productSpecifyName={productSpecifyName}
-              productSpecifyValue={productSpecifyValue}
-              keysList={objectKeys(productSpecifyValue).filter((n) => {
-                return (
-                  n !== 'productName' && n !== 'article' && n !== 'aboutProduct'
-                );
-              })}
+          { isActive
+            ? <div className='product-page__about'>
+                {
+                  product.description.map((desc, id) => {
+                    return <p
+                      key={id}className='product-page__about-description'>{desc}
+                    </p>;
+                  })
+                }
+              </div>
+            : <ProductCharacteristicsList
+                productSpecifyName={productSpecifyName}
+                productSpecifyValue={attributes}
+                keysList={objectKeys(attributes).filter((n) => {
+                  return (n);
+                })
+          }
               modifyClass={'characteristics-list_full'}
             />
-          )}
+          }
         </div>
         <PopupProductPhoto
+          images={product.images}
           isOpen={isPopupFullPhotoOpen}
           closePopup={handleClosePopupFullPhoto}
         />
         <PopupAddToCart
           isOpen={isPopupOpen}
-          productName={productSpecifyValue.productName}
-          photoUrl={productPhotoArray[0]}
+          productName={product.name}
+          photoUrl={product.images[0]}
         />
       </section>
       ;
