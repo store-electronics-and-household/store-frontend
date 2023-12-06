@@ -13,6 +13,7 @@ interface SignInProps {
   isOpenSignIn: boolean;
   onOpenReg: () => void;
   onOpenRecovery: () => void;
+  onLogin: (email: string, password: string) => void;
 }
 
 const SignIn: React.FC<SignInProps> = ({
@@ -20,6 +21,7 @@ const SignIn: React.FC<SignInProps> = ({
   isOpenSignIn,
   onOpenReg,
   onOpenRecovery,
+  onLogin,
 }) => {
   const [showPassword, setShowPassword] = React.useState<boolean>(false);
   const formik = useFormik({
@@ -41,9 +43,9 @@ const SignIn: React.FC<SignInProps> = ({
         .max(8, 'Пароль не должен превышать 8 символов')
         .required('Введите Ваш пароль'),
     }),
-    onSubmit: (values) => {
+    onSubmit: ({ loginAuth, passwordAuth }) => {
       if (formik.isValid) {
-        // Обработка отправки данных
+        onLogin(loginAuth, passwordAuth);
         onOpenSignIn();
         formik.resetForm();
       }
@@ -107,8 +109,8 @@ const SignIn: React.FC<SignInProps> = ({
                   formik.errors.loginAuth
                     ? 'signin__input_invalid'
                     : formik.touched.loginAuth && formik.submitCount > 0
-                      ? 'signin__input_valid'
-                      : ''
+                    ? 'signin__input_valid'
+                    : ''
                 }`}
                 type='email'
                 name='loginAuth'
@@ -135,8 +137,8 @@ const SignIn: React.FC<SignInProps> = ({
                   formik.errors.passwordAuth
                     ? 'signin__input_invalid'
                     : formik.touched.passwordAuth && formik.submitCount > 0
-                      ? 'signin__input_valid'
-                      : ''
+                    ? 'signin__input_valid'
+                    : ''
                 }`}
                 type={showPassword ? 'text' : 'password'}
                 minLength={6}

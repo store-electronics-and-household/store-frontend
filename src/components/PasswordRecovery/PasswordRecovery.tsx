@@ -73,10 +73,12 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
         >
           <div className='pass-recovery__title-container'>
             <div className='pass-recovery__title'>Восстановление пароля</div>
-            {isNext && (
+            {!isNext ? (
               <p className='pass-recovery__subtitle'>
                 Введите почту, чтобы мы смогли найти ваш аккаунт
               </p>
+            ) : (
+              ''
             )}
           </div>
           <div className='pass-recovery__inputs'>
@@ -166,7 +168,6 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
             </button>
             <button
               className='pass-recovery__button signin__button_enter'
-              disabled={formik.isValid}
               onClick={handleNextLevel}
             >
               Далее
