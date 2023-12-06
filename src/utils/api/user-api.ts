@@ -26,7 +26,7 @@ export const register = async (
   email: string,
   password: string
 ): Promise<any> => {
-  return await request('/regist', {
+  return await request('/auth/registration', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ export const authorize = async (
   password: string
 ): Promise<any> => {
   // const base64Credentials = btoa(`${email}:${password}`);
-  return await request('/autoriz', {
+  return await request('/auth/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

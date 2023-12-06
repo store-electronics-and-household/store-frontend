@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import './Slider.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import { useSlideContext } from '../../context/SlideContext';
 
 interface SliderProps {
@@ -20,10 +20,40 @@ const Slider: React.FC<SliderProps> = ({ bannerImage }) => {
   const slideContext: any | undefined = useSlideContext();
   const { isLight, setLight } = slideContext;
 
-  const handleSlideChange = (): void => {
-    const newIsLight = !isLight;
-    setLight(newIsLight);
+  const handleSlideChange = (swiper: any): void => {
+    const activeSlideIndex = swiper.activeIndex;
+    const isLightForCurrentSlide = isLighChangetForSlide(activeSlideIndex);
+    setLight(isLightForCurrentSlide);
+    console.log(isLight);
   };
+
+  const isLighChangetForSlide = (index: number): boolean => {
+    if (index === 0) {
+      return true;
+    } else if (index === 1) {
+      return false;
+    } else if (index === 2) {
+      return false;
+    } else if (index === 3) {
+      return true;
+    } else if (index === 4) {
+      return true;
+    } else if (index === 5) {
+      return true;
+    } else if (index === 6) {
+      return false;
+    } else if (index === 7) {
+      return true;
+    } else if (index === 8) {
+      return false;
+    } else {
+      return false;
+    }
+  };
+
+  React.useEffect(() => {
+    handleSlideChange({ activeIndex: 0 });
+  }, []);
 
   return (
     <>
@@ -31,7 +61,8 @@ const Slider: React.FC<SliderProps> = ({ bannerImage }) => {
         navigation={{
           nextEl: '.swiper-button-next',
         }}
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}
+        autoplay={{ delay: 6000 }}
         slidesPerView={1}
         className='swiper-container'
         allowTouchMove={false}

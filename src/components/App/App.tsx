@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import AboutCompany from '../AboutCompany/AboutCompany';
@@ -21,6 +21,7 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import SearchResults from '../SearchResults/SearchResults';
 // import { paymentPageData } from '../../utils/constants';
 import { type GoodsListProps } from '../../utils/types';
+import { authorize, register } from '../../utils/api/user-api';
 
 const App: React.FC = () => {
   // const [isLogged, setIsLogged] = useState<boolean>(false);
@@ -52,6 +53,31 @@ const App: React.FC = () => {
     setGoodsList(data);
   };
 
+  const navigate = useNavigate();
+
+  const handleRegister = (email: string, password: string): void => {
+    register(email, password)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleLogin = (email: string, password: string): void => {
+    authorize(email, password)
+      .then((data) => {
+        localStorage.setItem('token', data.token);
+        console.log(data);
+        // setIsLogged(true);
+        navigate('/', { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className='App'>
       <ScrollToTop>
@@ -71,10 +97,12 @@ const App: React.FC = () => {
                   isOpenSignIn={isSignInPopupOpen}
                   onOpenReg={toggleSignUpPopup}
                   onOpenRecovery={PasswordRecoveryPopup}
+                  onLogin={handleLogin}
                 />
                 <SignUp
                   onOpenSignUp={toggleSignUpPopup}
                   isOpenSignUp={isSignUpPopupOpen}
+                  onRegistr={handleRegister}
                 />
                 <PasswordRecovery
                   isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
