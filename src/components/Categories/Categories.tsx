@@ -90,12 +90,7 @@ const Categories: React.FC<{
             <ul className='catalog__rendered-categories'>
               <div className='catalog__render-cat'>
                 {subCategoriesList.slice(0, 9).map((tile) => (
-                  <CategoriesTile
-                    key={tile.id}
-                    title={tile.catTitle}
-                    img={tile.catImg}
-                    url={tile.catUrl}
-                  />
+                  <CategoriesTile key={tile.id} name={tile.catTitle} id={0} />
                 ))}
               </div>
               <h2 className='catalog__popular'>Популярные товары</h2>
