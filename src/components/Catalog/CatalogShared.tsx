@@ -1,21 +1,20 @@
 import React from 'react';
-import './Catalog.css';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 // import { product } from '../../utils/constants';
 
 interface MyTypeCatalogItem {
-  id: number
-  name: string
-  originPrice?: number
-  salesPrice: number
-  discount: number
-  url: string
+  id: number;
+  name: string;
+  originPrice?: number;
+  salesPrice: number;
+  discount?: number;
+  url: string;
 }
 
 interface CatalogSharedProps {
-  itemArray: MyTypeCatalogItem[]
-  itemsToShow: number
-  is4Items?: boolean
+  itemArray: MyTypeCatalogItem[];
+  itemsToShow: number;
+  is4Items?: boolean;
 }
 
 const CatalogShared: React.FC<CatalogSharedProps> = ({ itemArray, itemsToShow, is4Items }) => {
@@ -26,6 +25,7 @@ const CatalogShared: React.FC<CatalogSharedProps> = ({ itemArray, itemsToShow, i
   // useEffect(() => {
   //   setcurrentItemsArray(product);
   // }, []);
+  console.log(is4Items);
 
   return (
     <>

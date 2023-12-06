@@ -1,14 +1,14 @@
 .swiper {
-  margin-top: 43px;
-  margin-bottom: 40px;
-  max-width: 1360px;
-  height: 100%;
-  border-radius: 30px;
+
 }
 
 .swiper-container {
-  width: 100%;
-  height: 100%;
+  width: 1440px;
+  height: 640px;
+  position: absolute !important;
+  top:0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .swiper-slide {
@@ -21,7 +21,34 @@
 }
 
 .slider__action-img {
-  max-width: 1360px;
-  height: 500px;
-  border-radius: 30px;
+  width: 1440px;
+  height: 640px;
+  vertical-align: bottom;
+}
+
+.swiper-button-next_lightgrey{
+  background-image: url("../../image/icons/swiper-main-black-btn.svg") !important;
+  width: 56px !important;
+  height: 56px !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  padding: 4px;
+  content: none !important;
+}
+
+.swiper-button-next_black{
+  background-image: url("../../image//icons/swiper-main-gray-btn.svg") !important;
+  width: 56px !important;
+  height: 56px !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  padding: 4px;
+  content: none !important;
+}
+
+.swiper-button-next_black:after,
+.swiper-button-next_lightgrey:after {
+  content: none !important;
 }

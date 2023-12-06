@@ -5,6 +5,7 @@ import './index.css';
 import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { SlideContextProvider } from '../src/context/SlideContext';
 
 Modal.setAppElement('#root');
 
@@ -13,9 +14,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <SlideContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </SlideContextProvider>
   </React.StrictMode>
 );
 

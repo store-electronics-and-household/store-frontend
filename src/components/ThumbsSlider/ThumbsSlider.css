@@ -52,7 +52,7 @@
   opacity: 1;
 }
 
-/*
-.swiper-button-prev, .swiper-button-next {
+.swiper-second .swiper-button-prev,
+.swiper-second .swiper-button-next {
   color: #fff;
-} */
+}

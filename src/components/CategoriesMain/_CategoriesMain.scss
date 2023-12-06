@@ -1,34 +1,23 @@
-.tile-main {
+.tile {
   max-width: 1360px;
   display: flex;
   flex-direction: column;
   margin: 0 auto 140px;
 }
 
-.tile-main__text {
+.tile__title {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 44px;
-  letter-spacing: 3px;
-}
-
-.tile-main__title {
-  font-family:
-    Helvetica Neue,
-    Arial,
-    Helvetica,
-    sans-serif;
-  font-size: 56px;
+  align-items: start;
+  margin: 0 0 32px;
+  font-size: 40px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin: 0;
   color: var(--Black, #222);
   z-index: 1;
 }
 
-.tile-main__list {
+.tile__list {
   max-width:  1360px;
   display: grid;
   grid-template-columns: repeat(4, 322px);

@@ -1,23 +1,32 @@
 import React from 'react';
+import { formatSumm } from '../../utils/formatSumm';
 import vector from '../../image/Vector.png';
+import map from '../../image/map.png';
 
 const ProductCardMedium: React.FC<{
-  originPrice?: number
-  salesPrice: number
-  name: string
-  discount: number
-  url: string
+  originPrice?: number;
+  salesPrice: number;
+  name: string;
+  discount?: number;
+  url: string;
 }> = (product) => {
+  const [isMainImage, setIsMainImage] = React.useState(true);
   const [isLiked, setIsLiked] = React.useState(false);
-  function handleLike (): void {
+  const handleMouseOver = (): void => {
+    setIsMainImage(false);
+  };
+  const handleMouseOut = (): void => {
+    setIsMainImage(true);
+  };
+  const handleLike = (): void => {
     setIsLiked(!isLiked);
-  }
+  };
   const [isCounter, setIsCounter] = React.useState(0);
-  function handleAddToBasket (): void {
+  const handleAddToBasket = (): void => {
     setIsCounter((prev) => {
       return prev + 1;
     });
-  }
+  };
   const cardLikeButtonClassName = `card-medium__like ${
     isLiked && 'card-medium__like_active'
   }`;
@@ -28,10 +37,22 @@ const ProductCardMedium: React.FC<{
           <a className='card-medium__link' href={product.url}>
             <img
               className='card-medium__image'
-              src={vector}
-              alt='прекрасная фотография товара'
+              src={isMainImage ? vector : map}
+              alt={product.name}
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
             />
-            <p className='card-medium__sticker'>- {product.discount} %</p>
+            <p
+              className={
+                product.discount != null
+                  ? product.discount > 20
+                    ? 'card-medium__sticker'
+                    : 'card-medium__sticker card-medium__sticker_lowdiscount'
+                  : 'card-medium__sticker card-medium__sticker_inactive'
+              }
+            >
+              -{product.discount}%
+            </p>
           </a>
           <button
             type='button'
@@ -57,22 +78,19 @@ const ProductCardMedium: React.FC<{
           <a className='card-medium__link' href={product.url}>
             <div className='card-medium__container-footer'>
               <h3 className='card-medium__title'>{product.name}</h3>
-              <div className='card-medium__price-container'>
+              <div className='card-medium__container-price'>
 
                 <p className='card-medium__price'>
-                  {product.originPrice?.toLocaleString('ru-RU', {
-                    style: 'currency',
-                    currency: 'RUB',
-                    maximumFractionDigits: 0,
-                  })}
+                  {product.originPrice !== 0 &&
+                  typeof product.originPrice === 'number'
+                    ? formatSumm(product.originPrice)
+                    : ''}
                 </p>
-
                 <p className='card-medium__oldprice'>
-                  {product.salesPrice.toLocaleString('ru-RU', {
-                    style: 'currency',
-                    currency: 'RUB',
-                    maximumFractionDigits: 0,
-                  })}
+                  {product.salesPrice !== 0 &&
+                  typeof product.salesPrice === 'number'
+                    ? formatSumm(product.salesPrice)
+                    : ''}
                 </p>
               </div>
             </div>

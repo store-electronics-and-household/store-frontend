@@ -1,28 +1,25 @@
 import React from 'react';
-import './CategoriesMain.css';
 import { categoriesList } from '../../utils/constants';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
 
 const CategoriesMain: React.FC<{
-  catId?: number
-  catTitle?: string
-  catImg?: string
-  catUrl?: string
+  id: number;
+  title: string;
+  img: string;
+  url: string;
 }> = (tile) => {
   return (
-    <section className='tile-main'>
-      <div className='tile-main__text'>
-        <h2 className='tile-main__title'>Категории</h2>
-      </div>
-      <ul className='tile-main__list'>
+    <section className='tile'>
+      <h2 className='tile__title'>Категории</h2>
+      <ul className='tile__list'>
         {categoriesList
-          .sort((a, b) => a.catTitle.localeCompare(b.catTitle))
+          .sort((a, b) => a.title.localeCompare(b.title))
           .map((tile) => (
             <CategoriesTile
-              key={tile.catId}
-              catTitle={tile.catTitle}
-              catImg={tile.catImg}
-              catUrl={tile.catUrl}
+              key={tile.id}
+              title={tile.title}
+              img={tile.img}
+              url={tile.url}
             />
           ))}
       </ul>{' '}

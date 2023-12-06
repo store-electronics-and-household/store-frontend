@@ -8,14 +8,14 @@ import { formatSumm } from '../../utils/formatSumm';
 import { useForm } from 'react-hook-form';
 
 interface PaymentsPageProps {
-  GoodsList: GoodsListProps[]
+  GoodsList: GoodsListProps[];
 }
 
 const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
   interface ClientDataProps {
-    name: string
-    phone: string
-    address: string
+    name: string;
+    phone: string;
+    address: string;
   }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [clientData, setClientData] = React.useState<ClientDataProps | null>(
@@ -284,6 +284,10 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                 ))}
               </div>
               <div className='payments-page__summary-data'>
+                <p className='payments-page__summary-row'>
+                  {fullQuantity} {fullQuantity % 2 === 0 ? 'товара' : 'товаров'}{' '}
+                  на сумму
+                </p>
                 <p className='payments-page__summary-row'>
                   {fullQuantity} {fullQuantity % 2 === 0 ? 'товара' : 'товаров'}{' '}
                   на сумму

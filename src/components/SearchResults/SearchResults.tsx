@@ -18,6 +18,7 @@ const SearchResults: React.FC = () => {
         </div>
       </section>
     </>
+
   );
 };
 

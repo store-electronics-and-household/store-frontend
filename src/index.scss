@@ -5,11 +5,13 @@ body {
   font-family: 'Inter', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
 }
 
 @import url('./vendor/normalize.css');
 @import url('../src/vendor/fonts.css');
 @import url('https://fonts.cdnfonts.com/css/wix-madefor-text');
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@500;600&display=swap');
 
 @import '../src/utils/_variables.scss';
 @import '../src/utils/_mixins.scss';
@@ -19,7 +21,6 @@ body {
 @import '../src/components/AboutCompany/AboutCompany';
 @import '../src/components/Accordion/Accordion';
 @import '../src/components/Breadcrumb/Breadcrumb';
-@import '../src/components/Contacts/Contacts';
 @import '../src/components/Faq/Faq';
 @import '../src/components/Footer/Footer';
 @import '../src/components/Cart/Cart';
@@ -29,6 +30,11 @@ body {
 @import '../src/components/SignIn/Signin';
 @import '../src/components/signup/Signup';
 @import '../src/components/WarningPopup/WarningPopup';
+@import '../src/components/Catalog/Catalog';
+@import '../src/components/CategoriesMain/CategoriesMain';
+@import '../src/components/CategoriesTile/CategoriesTile';
+@import '../src/components/NotFound/NotFound';
+@import '../src/components/PasswordRecovery/passwordrecovery';
 @import '../src/components/Favourites/Favourites';
 @import '../src/components/SearchBar/SearchBar';
 @import '../src/components/SearchResults/SearchResults';
@@ -36,3 +42,7 @@ body {
 @import '../src/components/PopupAddToCart/PopupAddToCart';
 @import '../src/components/ProductCharacteristicsList/ProductCharacteristicsList';
 @import '../src/components/ProductPage/ProductPage';
+@import '../src/components/PopupProductPhoto/PopupProductPhoto';
+@import '../src/components/Delivery/Delivery';
+@import '../src/components/Pagination/Pagination';
+@import '../src/components/Main/Main';

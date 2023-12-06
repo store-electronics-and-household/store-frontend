@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import React, { type ReactElement, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { type Swiper as SwiperType } from 'swiper';
@@ -11,11 +13,14 @@ import 'swiper/css/thumbs';
 
 import './ThumbsSlider.css';
 import { productPhotoArray } from '../../utils/constants';
-
 // import required modules
-import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import { FreeMode, Mousewheel, Navigation, Thumbs } from 'swiper/modules';
 
-const ThumbsSlider: React.FC = () => {
+interface ThumbsSliderProps {
+  onPopupFullPhoto: () => void;
+}
+
+const ThumbsSlider: React.FC<ThumbsSliderProps> = ({ onPopupFullPhoto }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
   return (
@@ -24,14 +29,23 @@ const ThumbsSlider: React.FC = () => {
         spaceBetween={10}
         navigation={true}
         // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-        thumbs={ { swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null } }
+        thumbs={{
+          swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+        }}
         modules={[FreeMode, Navigation, Thumbs]}
         className='swiper-second'
       >
         {productPhotoArray.map((photo, photoId) => {
-          return <SwiperSlide key={photoId}>
-            <img className='swiper-second__img' src={photo} alt="фото товара" />
-          </SwiperSlide>;
+          return (
+            <SwiperSlide key={photoId}>
+              <img
+                onClick={onPopupFullPhoto}
+                className='swiper-second__img'
+                src={photo}
+                alt='фото товара'
+              />
+            </SwiperSlide>
+          );
         })}
       </Swiper>
       <Swiper
@@ -39,15 +53,22 @@ const ThumbsSlider: React.FC = () => {
         spaceBetween={8}
         slidesPerView={5}
         freeMode={true}
+        mousewheel={true}
         watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
+        modules={[FreeMode, Mousewheel, Navigation, Thumbs]}
         className='swiper-first'
         direction='vertical'
       >
         {productPhotoArray.map((photo, photoId) => {
-          return <SwiperSlide key={photoId}>
-            <img className='swiper-first__img' src={photo} alt="фото товара" />
-          </SwiperSlide>;
+          return (
+            <SwiperSlide key={photoId}>
+              <img
+                className='swiper-first__img'
+                src={photo}
+                alt='фото товара'
+              />
+            </SwiperSlide>
+          );
         })}
       </Swiper>
     </>

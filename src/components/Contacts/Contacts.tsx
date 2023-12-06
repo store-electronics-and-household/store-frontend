@@ -6,21 +6,21 @@ import Breadcrumb from '../Breadcrumb/Breadcrumb';
 const Contacts: React.FC = () => {
   return (
     <>
-      <Breadcrumb currentPlace='Контакты'/>
+      <Breadcrumb currentPlace='Контакты' />
       <section className='contacts'>
         <h1 className='contacts__header'>Контакты</h1>
         <div className='contacts__wrap'>
           <p className='contacts__info'>{contactsData.phoneNumber}</p>
           <p className='contacts__phone-time'>
-            для заказов с доставкой по территории РФ принимаем звонки с 9:00
-            до 22:00 по Мск
+            для заказов с доставкой по территории РФ принимаем звонки с 9:00 до
+            22:00 по Мск
           </p>
         </div>
         <div className='contacts__wrap'>
           <p className='contacts__info'>{contactsData.email}</p>
           <p className='contacts__phone-time'>
-            для заказов с доставкой по территории РФ принимаем звонки с 9:00
-            до 22:00 по Мск
+            для заказов с доставкой по территории РФ принимаем звонки с 9:00 до
+            22:00 по Мск
           </p>
         </div>
         <div className='contacts__map-block'>
