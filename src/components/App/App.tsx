@@ -20,7 +20,11 @@ import PasswordRecovery from '../PasswordRecovery/PasswordRecovery';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import SearchResults from '../SearchResults/SearchResults';
 // import { paymentPageData } from '../../utils/constants';
-import { type GoodsListProps } from '../../utils/types';
+import {
+  type GoodsListProps,
+  type CategoriesTileProps,
+} from '../../utils/types';
+import { getCategoriesMain } from '../../utils/api/catalog+categories.api';
 
 const App: React.FC = () => {
   // const [isLogged, setIsLogged] = useState<boolean>(false);
@@ -31,7 +35,8 @@ const App: React.FC = () => {
     useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [goodsList, setGoodsList] = React.useState<GoodsListProps[]>();
-
+  const [categoriesMain, setCategoriesMain] =
+    React.useState<CategoriesTileProps[]>();
   const toggleWarningPopup = (): void => {
     setWarningPopupOpen(!isWarningPopupOpen);
   };
@@ -51,6 +56,17 @@ const App: React.FC = () => {
   const setGoodsForPayment = (data: GoodsListProps[]): void => {
     setGoodsList(data);
   };
+
+  React.useEffect(() => {
+    getCategoriesMain()
+      .then((categoriesMain) => {
+        console.log(categoriesMain);
+        setCategoriesMain(categoriesMain);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className='App'>
@@ -84,7 +100,10 @@ const App: React.FC = () => {
               </>
             }
           >
-            <Route path='/main' element={<Main />} />
+            <Route
+              path='/main'
+              element={<Main categoriesMain={categoriesMain} />}
+            />
             <Route path='/about-company' element={<AboutCompany />} />
             <Route path='/delivery' element={<Delivery />} />
             <Route path='/faq' element={<Faq />} />

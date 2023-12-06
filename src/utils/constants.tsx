@@ -2,75 +2,11 @@ import iconSmile from '../image/icons/smile_icon.svg';
 import iconDelivery from '../image/icons/delivery_icon.svg';
 import iconMedal from '../image/icons/medal-original_icon.svg';
 
+export const API_URL: string = 'http://45.12.236.120:8080';
+export const API_CAT_IMG: string = 'http://45.12.236.120/images/categories';
+
 /* это нужно будет удалить после--------------- */
-export const categoriesList = [
-  {
-    id: 1,
-    title: 'Игровые приставки',
-    img: 'imageforcat/ps.png',
-    url: '/categories',
-  },
-  {
-    id: 2,
-    title: 'Телефоны и аксессуары',
-    img: 'imageforcat/phone.png',
-    url: '/categories',
-  },
-  {
-    id: 3,
-    title: 'Планшеты',
-    img: 'imageforcat/tab.png',
-    url: '/categories',
-  },
-  {
-    id: 4,
-    title: 'Ноутбуки',
-    img: 'imageforcat/note.png',
-    url: '/categories',
-  },
-  {
-    id: 5,
-    title: 'Наушники и гарнитуры',
-    img: 'imageforcat/ears.png',
-    url: '/categories',
-  },
-  {
-    id: 6,
-    title: 'Умные часы',
-    img: 'imageforcat/watch.png',
-    url: '/categories',
-  },
-  {
-    id: 7,
-    title: 'Аксессуары',
-    img: 'imageforcat/acc.png',
-    url: '/categories',
-  },
-  {
-    id: 8,
-    title: 'Квадрокоптеры',
-    img: 'imageforcat/q.png',
-    url: '/categories',
-  },
-  {
-    id: 9,
-    title: 'Компьютеры и комплектующие',
-    img: 'imageforcat/disp.png',
-    url: '/categories',
-  },
-  {
-    id: 10,
-    title: 'Портативная акустика',
-    img: 'imageforcat/h.png',
-    url: '/categories',
-  },
-  {
-    id: 11,
-    title: 'Техника для дома',
-    img: 'imageforcat/p.png',
-    url: '/categories',
-  },
-];
+
 export const product = [
   {
     id: 1,
