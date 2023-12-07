@@ -2,75 +2,11 @@ import iconSmile from '../image/icons/smile_icon.svg';
 import iconDelivery from '../image/icons/delivery_icon.svg';
 import iconMedal from '../image/icons/medal-original_icon.svg';
 
+export const API_URL: string = 'http://45.12.236.120:8080';
+export const API_CAT_IMG: string = 'http://45.12.236.120/images/categories';
+
 /* это нужно будет удалить после--------------- */
-export const categoriesList = [
-  {
-    id: 1,
-    title: 'Игровые приставки',
-    img: 'imageforcat/ps.png',
-    url: '/categories',
-  },
-  {
-    id: 2,
-    title: 'Телефоны и аксессуары',
-    img: 'imageforcat/phone.png',
-    url: '/categories',
-  },
-  {
-    id: 3,
-    title: 'Планшеты',
-    img: 'imageforcat/tab.png',
-    url: '/categories',
-  },
-  {
-    id: 4,
-    title: 'Ноутбуки',
-    img: 'imageforcat/note.png',
-    url: '/categories',
-  },
-  {
-    id: 5,
-    title: 'Наушники и гарнитуры',
-    img: 'imageforcat/ears.png',
-    url: '/categories',
-  },
-  {
-    id: 6,
-    title: 'Умные часы',
-    img: 'imageforcat/watch.png',
-    url: '/categories',
-  },
-  {
-    id: 7,
-    title: 'Аксессуары',
-    img: 'imageforcat/acc.png',
-    url: '/categories',
-  },
-  {
-    id: 8,
-    title: 'Квадрокоптеры',
-    img: 'imageforcat/q.png',
-    url: '/categories',
-  },
-  {
-    id: 9,
-    title: 'Компьютеры и комплектующие',
-    img: 'imageforcat/disp.png',
-    url: '/categories',
-  },
-  {
-    id: 10,
-    title: 'Портативная акустика',
-    img: 'imageforcat/h.png',
-    url: '/categories',
-  },
-  {
-    id: 11,
-    title: 'Техника для дома',
-    img: 'imageforcat/p.png',
-    url: '/categories',
-  },
-];
+
 export const product = [
   {
     id: 1,
@@ -348,19 +284,28 @@ export const faqList = {
   ],
 };
 
-export const productPhotoArray = [
-  'https://images.unsplash.com/photo-1505156868547-9b49f4df4e04?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aXBob25lfGVufDB8fDB8fHww',
-  'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
-  'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
-  'https://images.unsplash.com/photo-1611472173362-3f53dbd65d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
-  'https://images.unsplash.com/photo-1695639526461-7244f263119c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFwcGxlJTIwaXBob25lJTIwMTUlMjBwcm98ZW58MHx8MHx8fDA%3D',
-  'https://images.unsplash.com/photo-1620049185596-1f16f414c448?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA0fHxpcGhvbmV8ZW58MHx8MHx8fDA%3D',
-  'https://images.unsplash.com/photo-1695822822491-d92cee704368?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBwbGUlMjBpcGhvbmUlMjAxNSUyMHByb3xlbnwwfHwwfHx8MA%3D%3D',
-];
+export const productData = {
+  id: 68898484,
+  name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+  price: 119700,
+  oldPrice: 430800,
+  description: [
+    ' Данная модель могла быть активирована до продажи без привязки к аккаунту Apple ID. Это не влияет на потребительские характеристики, внешний вид товара, функциональность или какие-либо иные свойства продукта. Срок гарантии на смартфон составляет 1 год с момента покупки.',
+    'Смартфон Apple iPhone 15 Pro Max Black Titanium получил дисплей диагональю 6,7 дюйма, выполненный по технологии Super Retina XDR. Разрешение — 2796x1290 пикселей, яркость достигает 2000 кд/м², контрастность составляет 2000000:1 — изображение четкое, детализированное и насыщенное.',
+    'Основная камера тройная: 48/12/12 Мп. Она способна снимать в разрешении до 4К (3840x2160 пикселей). Оптический зум на увеличение и на уменьшение, цифровая и оптическая стабилизация и вспышка помогут получить отличные результаты в любых условиях. Фокус при съемке портретов можно менять уже после того, как сделан снимок. Для селфи и видеосвязи предназначена фронтальная камера на 12 Мп.',
+    'Смартфон снабжен универсальным портом USB Type-C, соответствующий кабель для зарядки прилагается. Доступна также беспроводная и быстрая зарядка, поддерживается технология MagSafe. Корпус выполнен из авиационного титана, внутренняя рама — из алюминия (100% переработки), задняя панель отделана стеклом. На боковой панели размещена кнопка Action Button, отвечающая активацию беззвучного режима, включение камеры, фонарика и прочих функций. Заявлена защита по стандарту IP68 — смартфон может без вреда для себя погружаться на глубину до 6 м.'],
+  images: [
+    'https://images.unsplash.com/photo-1505156868547-9b49f4df4e04?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aXBob25lfGVufDB8fDB8fHww',
+    'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+    'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+    'https://images.unsplash.com/photo-1611472173362-3f53dbd65d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+    'https://images.unsplash.com/photo-1695639526461-7244f263119c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFwcGxlJTIwaXBob25lJTIwMTUlMjBwcm98ZW58MHx8MHx8fDA%3D',
+    'https://images.unsplash.com/photo-1620049185596-1f16f414c448?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA0fHxpcGhvbmV8ZW58MHx8MHx8fDA%3D',
+    'https://images.unsplash.com/photo-1695822822491-d92cee704368?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBwbGUlMjBpcGhvbmUlMjAxNSUyMHByb3xlbnwwfHwwfHx8MA%3D%3D',
+  ]
+};
 
 export const productSpecifyName = {
-  productName: 'name',
-  article: 0,
   color: 'Цвет:',
   diagonal: 'Диагональ экрана, в дюймах:',
   brend: 'Бренд:',
@@ -381,11 +326,7 @@ export const productSpecifyName = {
   batteryCapacity1: 'Емкость аккумулятора, в мА-ч:',
 };
 
-export const productSpecifyValue = {
-  productName: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-  article: 68898484,
-  price: 119700,
-  oldPrice: 430800,
+export const productAttributes = {
   color: 'титановый черный',
   diagonal: 6.1,
   brend: 'Apple',

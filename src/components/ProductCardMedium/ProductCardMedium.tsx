@@ -79,7 +79,6 @@ const ProductCardMedium: React.FC<{
             <div className='card-medium__container-footer'>
               <h3 className='card-medium__title'>{product.name}</h3>
               <div className='card-medium__container-price'>
-
                 <p className='card-medium__price'>
                   {product.originPrice !== 0 &&
                   typeof product.originPrice === 'number'
