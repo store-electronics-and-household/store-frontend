@@ -2,18 +2,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import './Slider.css';
+// import './Slider.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
 import { useSlideContext } from '../../context/SlideContext';
+import { type MyTypeBanners } from '../../utils/types';
 
 interface SliderProps {
-  bannerImage: Array<{
-    id: number;
-    name: string;
-    imageLink: string;
-  }>;
+  bannerImage: MyTypeBanners[];
 }
 
 const Slider: React.FC<SliderProps> = ({ bannerImage }) => {

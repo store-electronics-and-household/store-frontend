@@ -63,6 +63,12 @@ export interface AccordionItemProps {
   btnOnClick: () => void;
 }
 
+export interface MyTypeBanners {
+  id: number;
+  name: string;
+  imageLink: string;
+}
+
 export interface CategoriesTileProps {
   id: number;
   name: string;

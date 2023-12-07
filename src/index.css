@@ -25,33 +25,38 @@ body {
 .discount {
   margin: 576px auto 77px auto;
   height: 360px;
-  display: flex;
+  display: grid;
   gap: 24px;
   width: 1360px;
+  grid-template: "banner-1 banner-2 banner-3" "banner-1 banner-2 banner-4"/553px 322px 437px;
 }
 
 .discount__container {
   height: 100%;
+  border-radius: 20px;
 }
 
-.discount__container:first-child {
-  width: 553px;
+.discount__container_type_0 {
+  grid-area: banner-1;
 }
 
-.discount__container:nth-child(2) {
-  width: 323px;
+.discount__container_type_1 {
+  grid-area: banner-2;
 }
 
-.discount__container:last-child {
-  width: 438px;
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 24px;
+.discount__container_type_2 {
+  grid-area: banner-3;
+  height: calc(50% - 24px);
+}
+
+.discount__container_type_3 {
+  grid-area: banner-4;
+  height: calc(50% - 24px);
 }
 
 .discount__offer {
   width: 100%;
-  height: 100%;
+  border-radius: 20px;
 }
 
 .about-company {
@@ -1546,6 +1551,60 @@ body {
   cursor: pointer;
 }
 
+.swiper-container {
+  width: 1440px;
+  height: 640px;
+  position: absolute !important;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 60px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider__action-img {
+  width: 1440px;
+  height: 640px;
+  vertical-align: bottom;
+  box-sizing: content-box;
+  border-radius: 60px;
+}
+
+.swiper-button-next_lightgrey {
+  background-image: url("./image/icons/swiper-main-black-btn.svg") !important;
+  width: 56px !important;
+  height: 56px !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  padding: 4px;
+  content: none !important;
+}
+
+.swiper-button-next_black {
+  background-image: url("./image/icons/swiper-main-gray-btn.svg") !important;
+  width: 56px !important;
+  height: 56px !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  padding: 4px;
+  content: none !important;
+}
+
+.swiper-button-next_black:after,
+.swiper-button-next_lightgrey:after {
+  content: none !important;
+}
+
 .warningPopup {
   position: absolute;
   margin: 0 auto;
@@ -2209,7 +2268,7 @@ body {
   display: flex;
   width: 1440px;
   box-sizing: border-box;
-  margin: 0 auto auto;
+  margin: 48px auto auto;
 }
 
 .results__container {
