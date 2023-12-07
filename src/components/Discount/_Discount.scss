@@ -1,31 +1,62 @@
+// .discount {
+//   margin: 576px auto 140px auto;
+//   height: 360px;
+//   display: flex;
+//   gap: 24px;
+//   width: 1360px;
+// }
+
 .discount {
   margin: 576px auto 140px auto;
   height: 360px;
-  display: flex;
+  display: grid;
   gap: 24px;
   width: 1360px;
+  grid-template:
+    "banner-1 banner-2 banner-3"
+    "banner-1 banner-2 banner-4" / 553px 322px 437px
 }
 
 .discount__container {
   height: 100%;
+  border-radius: 20px;
 }
 
-.discount__container:first-child {
-  width: 553px;
+.discount__container_type_0 {
+  grid-area: banner-1;
 }
 
-.discount__container:nth-child(2) {
-  width: 323px;
+.discount__container_type_1 {
+  grid-area: banner-2;
 }
 
-.discount__container:last-child {
-  width: 438px;
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 24px;
+.discount__container_type_2 {
+  grid-area: banner-3;
+  height: calc(100% / 2 - 24px);
 }
+
+.discount__container_type_3 {
+  grid-area: banner-4;
+  height: calc(100% / 2 - 24px);
+}
+
+// .discount__container:first-of-type {
+//   width: 553px;
+// }
+
+// .discount__container:nth-child(2) {
+//   width: 323px;
+// }
+
+// .discount__container:last-child {
+//   width: 438px;
+//   display: flex;
+//   flex-direction: column-reverse;
+//   gap: 24px;
+// }
 
 .discount__offer {
   width: 100%;
-  height: 100%;
+  border-radius: 20px;
+  // height: 100%;
 }

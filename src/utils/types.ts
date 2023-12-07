@@ -58,3 +58,9 @@ export interface AccordionItemProps {
   isQuestionOpen: boolean | null;
   btnOnClick: () => void;
 }
+
+export interface MyTypeBanners {
+  id: number;
+  name: string;
+  imageLink: string;
+}
