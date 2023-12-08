@@ -98,14 +98,18 @@ const ProductPage: React.FC<ProductPageProps> = ({
               <span className='product-page__current-price'>
                 {formatSumm(product.price)}
               </span>
-              {product.oldPrice !== 0 ? (
-                <span className='product-page__old-price'>
-                  {product.oldPrice !== 0 &&
-                  typeof product.oldPrice === 'number'
-                    ? formatSumm(product.oldPrice)
-                    : ''}
-                </span>
-              ) : null}
+              {
+                product.oldPrice !== 0
+                  ? (
+                      <span className='product-page__old-price'>
+                        {product.oldPrice !== 0 &&
+                        typeof product.oldPrice === 'number'
+                          ? formatSumm(product.oldPrice)
+                          : ''}
+                      </span>
+                    )
+                  : null
+              }
             </div>
             <div className='product-page__buttons'>
               <button
@@ -183,26 +187,28 @@ const ProductPage: React.FC<ProductPageProps> = ({
               Характеристики
             </h2>
           </div>
-          {isActive ? (
-            <div className='product-page__about'>
-              {product.description.map((desc, id) => {
-                return (
-                  <p key={id} className='product-page__about-description'>
-                    {desc}
-                  </p>
-                );
-              })}
-            </div>
-          ) : (
-            <ProductCharacteristicsList
-              productSpecifyName={productSpecifyName}
-              productSpecifyValue={attributes}
-              keysList={objectKeys(attributes).filter((n) => {
-                return n;
-              })}
-              modifyClass={'characteristics-list_full'}
-            />
-          )}
+          {isActive
+            ? (
+                <div className='product-page__about'>
+                  {product.description.map((desc, id) => {
+                    return (
+                      <p key={id} className='product-page__about-description'>
+                        {desc}
+                      </p>
+                    );
+                  })}
+                </div>
+              )
+            : (
+                <ProductCharacteristicsList
+                  productSpecifyName={productSpecifyName}
+                  productSpecifyValue={attributes}
+                  keysList={objectKeys(attributes).filter((n) => {
+                    return n;
+                  })}
+                  modifyClass={'characteristics-list_full'}
+                />
+              )}
         </div>
         <PopupProductPhoto
           images={product.images}
