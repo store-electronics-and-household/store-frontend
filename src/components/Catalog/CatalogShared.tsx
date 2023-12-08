@@ -17,7 +17,11 @@ interface CatalogSharedProps {
   is4Items?: boolean;
 }
 
-const CatalogShared: React.FC<CatalogSharedProps> = ({ itemArray, itemsToShow, is4Items }) => {
+const CatalogShared: React.FC<CatalogSharedProps> = ({
+  itemArray,
+  itemsToShow,
+  is4Items,
+}) => {
   // const [currentItemsArray, setcurrentItemsArray] = React.useState<
   // MyTypeCatalogItem[]
   // >([]);
@@ -25,23 +29,26 @@ const CatalogShared: React.FC<CatalogSharedProps> = ({ itemArray, itemsToShow, i
   // useEffect(() => {
   //   setcurrentItemsArray(product);
   // }, []);
-  console.log(is4Items);
 
   return (
     <>
       <section className='catalog-shared'>
-            <ul className={`catalog__rendered-list ${(is4Items ?? false) ? 'catalog__rendered-list_type_4items' : ''}  `}>
-              {itemArray.slice(0, itemsToShow).map((product) => (
-                <ProductCardMedium
-                  key={product.id}
-                  name={product.name}
-                  originPrice={product.originPrice}
-                  salesPrice={product.salesPrice}
-                  discount={product.discount}
-                  url={product.url}
-                />
-              ))}
-            </ul>
+        <ul
+          className={`catalog__rendered-list ${
+            is4Items ?? false ? 'catalog__rendered-list_type_4items' : ''
+          }  `}
+        >
+          {itemArray.slice(0, itemsToShow).map((product) => (
+            <ProductCardMedium
+              key={product.id}
+              name={product.name}
+              originPrice={product.originPrice}
+              salesPrice={product.salesPrice}
+              discount={product.discount}
+              url={product.url}
+            />
+          ))}
+        </ul>
       </section>
       ;
     </>

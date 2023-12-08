@@ -3,16 +3,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 440px;
+  max-width: 428px;
   min-height: 516px;
   width: 100%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 40px;
   background-color: #fff;
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.07);
   border-radius: 25px;
@@ -22,7 +18,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 28px;
+  margin-top: 53px;
 }
 
 .signup__title {
@@ -41,7 +37,7 @@
   font-weight: 400;
   line-height: normal;
   text-align: center;
-  margin: 4px 0 0;
+  margin: 1px 0 0;
   max-width: 400px;
 }
 
@@ -49,7 +45,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 35px;
 }
 
 .signup__input-wrapper {
@@ -64,7 +60,7 @@
 }
 
 .signup__input {
-  padding: 10px 12px 10px;
+  padding: 10px 5px 10px;
   border-radius: 12px;
   border: 1px solid #B6B6B6;
   width: 324px;
@@ -108,7 +104,7 @@
 }
 
 .signup__buttons {
-  margin-top: 40px;
+  margin-top: 35px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,7 +119,6 @@
   width: 324px;
   height: 56px;
   cursor: pointer;
-  margin-bottom: 12px;
   font-family: 'Wix Madefor Display';
 }
 
@@ -131,8 +126,8 @@
   transform: scale(0.95);
 }
 
-.signup__button:last-child {
-  margin-bottom: 12px;
+.signin__button:last-child {
+  margin-bottom: 52px;
 }
 
 .signup__button_enter {
@@ -152,11 +147,11 @@
 
 .signup__button_cls {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 24px;
-  height: 24px;
-  background-image: url('#{$images-dir2}icons/popup__button-close.svg');
+  top: 23px;
+  right: 22px;
+  width: 20px;
+  height: 20px;
+  background-image: url('#{$imagesDir}icons/popup__button-close.svg');
   box-sizing: border-box;
   border-radius: 24px;
   background-repeat: no-repeat;
@@ -172,7 +167,7 @@
 }
 
 .signup__checkbox-container {
-  margin-top: 12px;
+  margin: 12px 0 48px;
   display: flex;
   flex-direction: row;
   max-width: 324px;
@@ -192,8 +187,8 @@
 .signup__checkbox+label::before {
   content: '';
   display: inline-block;
-  width: 19px;
-  height: 19px;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
   flex-grow: 0;
   border: 1px solid black;

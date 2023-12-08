@@ -37,9 +37,9 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
   };
 
   const handleNavLinkClick = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+    // event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ): void => {
-    event.preventDefault();
+    // event.preventDefault();
     toggleWarningPopup();
   };
 
@@ -102,8 +102,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
           <nav className='header__navbar'>
             <NavLink
               className='header__navbar-link'
-              to='/'
-              onClick={handleNavLinkClick}
+              to='/delivery'
             >
               <img
                 className='header__navbar-icon'
@@ -130,6 +129,9 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
             </NavLink>
           </nav>
           <button
+            onClick={() => {
+              handleNavLinkClick();
+            }}
             className={`header__auth-button ${
               location.pathname === '/main'
                 ? isLight
