@@ -1,17 +1,18 @@
 import React, { type MouseEvent } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { productPhotoArray } from '../../utils/constants';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 interface PopupProductPhotoProps {
+  images: string[];
   isOpen: boolean;
   closePopup: () => void;
 }
 
 const PopupProductPhoto: React.FC<PopupProductPhotoProps> = ({
+  images,
   isOpen,
   closePopup,
 }) => {
@@ -46,12 +47,12 @@ const PopupProductPhoto: React.FC<PopupProductPhotoProps> = ({
           className='swiper-full-photo'
           modules={[Navigation]}
         >
-          {productPhotoArray.map((photo, photoId) => {
+          {images.map((img, imgId) => {
             return (
-              <SwiperSlide key={photoId}>
+              <SwiperSlide key={imgId}>
                 <img
                   className='swiper-full-photo__img'
-                  src={photo}
+                  src={img}
                   alt='фото товара'
                 />
               </SwiperSlide>

@@ -122,6 +122,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
                 src={busketSrc}
                 alt="Перейти в раздел 'Корзина'"
               />
+              <div className='header__navbar-icon-count '>99</div>
             </NavLink>
           </nav>
           <button
