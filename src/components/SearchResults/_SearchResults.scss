@@ -20,9 +20,9 @@
 .results__title {
   @include fontStyle($fontSH2, $fontWH2);
   display: flex;
-  // margin: 0;
+  font-family: 'Wix Madefor Display', 'Inter', Arial, sans-serif;
   align-self: flex-start;
-  font-family: "Inter", Arial, sans-serif;
+  // font-family: "Inter", Arial, sans-serif;
   // font-weight: 500;
   // font-size: 56px;
   line-height: 1.2;
