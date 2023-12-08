@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import type { BreadcrumbMatch } from 'use-react-router-breadcrumbs';
 
 interface BreadcrumbsItemProps {
-  breadcrumb: ReactNode
-  className?: string
-  isFirstCrumb: boolean
-  isLastCrumb: boolean
-  match: BreadcrumbMatch<string>
+  breadcrumb: ReactNode;
+  className?: string;
+  isFirstCrumb: boolean;
+  isLastCrumb: boolean;
+  match: BreadcrumbMatch<string>;
 };
 
 const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({

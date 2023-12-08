@@ -21,6 +21,8 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import SearchResults from '../SearchResults/SearchResults';
 // import { paymentPageData } from '../../utils/constants';
 import { type GoodsListProps } from '../../utils/types';
+
+import { CartProvider } from '../../context/CartContext';
 import { productData, productAttributes } from '../../utils/constants';
 import { authorize, register, changePassword } from '../../utils/api/user-api';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
@@ -106,6 +108,7 @@ const App: React.FC = () => {
 
   return (
     <div className='App'>
+<CartProvider>
       <ScrollToTop>
         <Routes>
           <Route
@@ -227,7 +230,8 @@ const App: React.FC = () => {
           <Route path='*' element={<NotFound />} />
         </Routes>
       </ScrollToTop>
-    </div>
+</CartProvider>
+</div>
   );
 };
 

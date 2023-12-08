@@ -18,6 +18,7 @@ import CatalogMenu from '../CatalogMenu/CatalogMenu';
 import SearchBar from '../SearchBar/SearchBar';
 
 import { useSlideContext } from '../../context/SlideContext';
+import { useCartContext } from '../../context';
 
 interface HeaderProps {
   toggleWarningPopup: () => void;
@@ -25,7 +26,10 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
   const [isVisible, setIsVisible] = useState(false);
+
   const context = useSlideContext();
+  const { totalCount } = useCartContext();
+
   const { isLight } = context ?? { isLight: false };
 
   const handleClick = (): void => {
@@ -116,12 +120,12 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
             </NavLink>
 
             <NavLink className='header__navbar-link' to='/cart'>
-              <img
-                className='header__navbar-icon'
-                src={busketSrc}
-                alt="Перейти в раздел 'Корзина'"
-              />
-              <div className='header__navbar-icon-count '>99</div>
+                <img
+                  className='header__navbar-icon'
+                  src={busketSrc}
+                  alt="Перейти в раздел 'Корзина'"
+                />
+              <div className='header__navbar-icon-count '>{totalCount}</div>
             </NavLink>
           </nav>
           <button

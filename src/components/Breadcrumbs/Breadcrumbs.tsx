@@ -4,9 +4,9 @@ import BreadcrumbsItem from './BreadcrumbsItem';
 
 interface IBreadcrumbsProps {
   crumbs: Array<{
-    path: string
-    breadcrumb: string
-  }>
+    path: string;
+    breadcrumb: string;
+  }>;
 }
 
 const Breadcrumbs: React.FC<IBreadcrumbsProps> = ({ crumbs }) => {
