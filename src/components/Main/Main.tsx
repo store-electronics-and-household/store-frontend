@@ -3,13 +3,19 @@ import Slider from '../Slider/Slider';
 import Discount from '../Discount/Discount';
 import CategoriesMain from '../CategoriesMain/CategoriesMain';
 import { getBanners } from '../../utils/api/user-api';
-import { type CategoriesTileProps } from '../../utils/types';
+import {
+  type CategoriesTileProps,
+  type MyTypeBanners,
+} from '../../utils/types';
 import { getCategoriesMain } from '../../utils/api/catalog+categories.api';
-import { type MyTypeBanners } from '../../utils/types';
 
 const Main: React.FC = () => {
-  const [mainPageBanners, setMainPageBanners] = React.useState<MyTypeBanners[]>([]);
-  const [mainPageDicountBanners, setMainPageDicountBanners] = React.useState<MyTypeBanners[]>([]);
+  const [mainPageBanners, setMainPageBanners] = React.useState<MyTypeBanners[]>(
+    []
+  );
+  const [mainPageDicountBanners, setMainPageDicountBanners] = React.useState<
+    MyTypeBanners[]
+  >([]);
 
   const [categoriesMain, setCategoriesMain] = React.useState<
     CategoriesTileProps[]
@@ -36,7 +42,7 @@ const Main: React.FC = () => {
     <>
       <section className='main'>
         <Slider bannerImage={mainPageBanners} />
-        <Discount discountBannerImages={mainPageDicountBanners}/>
+        <Discount discountBannerImages={mainPageDicountBanners} />
         <CategoriesMain categoriesMain={categoriesMain} />
       </section>
     </>

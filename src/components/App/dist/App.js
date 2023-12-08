@@ -21,6 +21,7 @@ var SignUp_1 = require('../signup/SignUp');
 var PasswordRecovery_1 = require('../PasswordRecovery/PasswordRecovery');
 var ScrollToTop_1 = require('../ScrollToTop/ScrollToTop');
 var SearchResults_1 = require('../SearchResults/SearchResults');
+var constants_1 = require('../../utils/constants');
 var user_api_1 = require('../../utils/api/user-api');
 var App = function () {
   // const [isLogged, setIsLogged] = useState<boolean>(false);
@@ -79,6 +80,16 @@ var App = function () {
         console.log(error);
       });
   };
+  var handleChangePassword = function (email, password) {
+    user_api_1
+      .changePassword(email, password)
+      .then(function (data) {
+        console.log(data);
+      })
+      ['catch'](function (error) {
+        console.log(error);
+      });
+  };
   return react_1['default'].createElement(
     'div',
     { className: 'App' },
@@ -118,6 +129,7 @@ var App = function () {
               react_1['default'].createElement(PasswordRecovery_1['default'], {
                 isOpenPasswordRecovery: isPasswordRecoveryPopupOpen,
                 onOpenRecoveryPopup: PasswordRecoveryPopup,
+                onChangePassword: handleChangePassword,
               }),
               react_1['default'].createElement(Footer_1['default'], null)
             ),
@@ -169,7 +181,10 @@ var App = function () {
             path: '/product',
             element: react_1['default'].createElement(
               ProductPage_1['default'],
-              null
+              {
+                product: constants_1.productData,
+                attributes: constants_1.productAttributes,
+              }
             ),
           }),
           react_1['default'].createElement(react_router_dom_1.Route, {

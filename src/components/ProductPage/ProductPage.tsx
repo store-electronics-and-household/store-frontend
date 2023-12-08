@@ -8,20 +8,28 @@ import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import BreadcrumbItem from '../Breadcrumb/BreadcrumbItem';
 import ProductCharacteristicsList from '../ProductCharacteristicsList/ProductCharacteristicsList';
-import { type productDataType, type productAttributesDataType } from '../../utils/types';
+import {
+  type productDataType,
+  type productAttributesDataType,
+} from '../../utils/types';
 import { formatSumm } from '../../utils/formatSumm';
 import PopupProductPhoto from '../PopupProductPhoto/PopupProductPhoto';
 
-const objectKeys = (object: productAttributesDataType): Array<keyof productAttributesDataType> => {
+const objectKeys = (
+  object: productAttributesDataType
+): Array<keyof productAttributesDataType> => {
   return Object.keys(object) as Array<keyof productAttributesDataType>;
 };
 
 interface ProductPageProps {
   product: productDataType;
   attributes: productAttributesDataType;
-};
+}
 
-const ProductPage: React.FC<ProductPageProps> = ({ product, attributes }: ProductPageProps) => {
+const ProductPage: React.FC<ProductPageProps> = ({
+  product,
+  attributes,
+}: ProductPageProps) => {
   // const refSetTimeout = useRef<NodeJS.Timeout>();
   const [isActive, setIsActive] = useState(true);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -68,9 +76,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, attributes }: Produc
       </Breadcrumb>
       <section className='product-page'>
         <div className='product-page__head-container'>
-          <h1 className='product-page__header'>
-            {product.name}
-          </h1>
+          <h1 className='product-page__header'>{product.name}</h1>
           <span className='product-page__item-number'>
             Арт. <span>{product.id}</span>
           </span>
@@ -80,7 +86,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, attributes }: Produc
             <ThumbsSlider
               images={product.images}
               onPopupFullPhoto={handleOpenPopupPhoto}
-              />
+            />
           </div>
           <div className='product-page__characteristics'>
             <h2 className='product-page__characteristic-head'>
@@ -91,7 +97,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, attributes }: Produc
               productSpecifyValue={attributes}
               keysList={objectKeys(attributes)
                 .filter((n) => {
-                  return (n);
+                  return n;
                 })
                 .splice(0, 10)}
             />
@@ -108,15 +114,14 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, attributes }: Produc
               <span className='product-page__current-price'>
                 {formatSumm(product.price)}
               </span>
-              { product.oldPrice !== 0
-                ? <span className='product-page__old-price'>
-                    { product.oldPrice !== 0 && typeof product.oldPrice === 'number'
-                      ? formatSumm(product.oldPrice)
-                      : ''
-                    }
-                  </span>
-                : null
-              }
+              {product.oldPrice !== 0 ? (
+                <span className='product-page__old-price'>
+                  {product.oldPrice !== 0 &&
+                  typeof product.oldPrice === 'number'
+                    ? formatSumm(product.oldPrice)
+                    : ''}
+                </span>
+              ) : null}
             </div>
             <div className='product-page__buttons'>
               <button
@@ -194,26 +199,26 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, attributes }: Produc
               Характеристики
             </h2>
           </div>
-          { isActive
-            ? <div className='product-page__about'>
-                {
-                  product.description.map((desc, id) => {
-                    return <p
-                      key={id}className='product-page__about-description'>{desc}
-                    </p>;
-                  })
-                }
-              </div>
-            : <ProductCharacteristicsList
-                productSpecifyName={productSpecifyName}
-                productSpecifyValue={attributes}
-                keysList={objectKeys(attributes).filter((n) => {
-                  return (n);
-                })
-          }
+          {isActive ? (
+            <div className='product-page__about'>
+              {product.description.map((desc, id) => {
+                return (
+                  <p key={id} className='product-page__about-description'>
+                    {desc}
+                  </p>
+                );
+              })}
+            </div>
+          ) : (
+            <ProductCharacteristicsList
+              productSpecifyName={productSpecifyName}
+              productSpecifyValue={attributes}
+              keysList={objectKeys(attributes).filter((n) => {
+                return n;
+              })}
               modifyClass={'characteristics-list_full'}
             />
-          }
+          )}
         </div>
         <PopupProductPhoto
           images={product.images}

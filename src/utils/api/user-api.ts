@@ -71,3 +71,17 @@ export const getSearchResults = async (id: number): Promise<any> => {
     },
   });
 };
+
+export const changePassword = async (
+  email: string,
+  password: string
+): Promise<any> => {
+  return await request('/auth/change', {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
+  });
+};

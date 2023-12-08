@@ -117,11 +117,11 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
             </NavLink>
 
             <NavLink className='header__navbar-link' to='/cart'>
-                <img
-                  className='header__navbar-icon'
-                  src={busketSrc}
-                  alt="Перейти в раздел 'Корзина'"
-                />
+              <img
+                className='header__navbar-icon'
+                src={busketSrc}
+                alt="Перейти в раздел 'Корзина'"
+              />
               <div className='header__navbar-icon-count '>99</div>
             </NavLink>
           </nav>
