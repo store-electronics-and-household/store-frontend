@@ -96,7 +96,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 2,
@@ -104,7 +104,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 3,
@@ -112,7 +112,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 4,
@@ -120,7 +120,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 5,
@@ -128,7 +128,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 6,
@@ -136,7 +136,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 7,
@@ -144,7 +144,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 8,
@@ -152,7 +152,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 9,
@@ -160,7 +160,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 10,
@@ -314,7 +314,7 @@ export const subCategoriesList = [
     catImg:
       'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 
-    catUrl: '/catalog',
+    catUrl: '/categories/catalog',
   },
   {
     id: 2,

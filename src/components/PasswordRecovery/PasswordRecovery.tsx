@@ -84,7 +84,7 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
                 <span className='pass-recovery__error-text'>
                   {formik.errors.passwordRecovery}
                 </span>
-              )}
+            )}
             <input
               className={`pass-recovery__input ${
                 formik.touched.confirmPasswordRecovery &&
@@ -107,7 +107,7 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
                 <span className='pass-recovery__error-text'>
                   {formik.errors.confirmPasswordRecovery}
                 </span>
-              )}
+            )}
           </div>
           <div className='pass-recovery__buttons'>
             <button

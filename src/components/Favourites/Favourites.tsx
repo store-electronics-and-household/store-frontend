@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import { mockedFavouritesProducts } from '../../utils/mocks';
-import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
+// import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 
 const Favourites: React.FC<{
   name?: string
@@ -12,7 +12,7 @@ const Favourites: React.FC<{
 }> = () => {
   return (
     <>
-      <Breadcrumbs />
+      {/* <Breadcrumbs /> */}
       <section className='favourites'>
         <div className='favourites__container'>
           <h2 className='favourites__header'>Избранное</h2>

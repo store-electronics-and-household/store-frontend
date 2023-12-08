@@ -27,12 +27,12 @@ const Categories: React.FC<{
                 </a>
                 <ul className='catalog__models'>
                   <li className='catalog__model'>
-                    <a className='catalog__model-link' href='/catalog'>
+                    <a className='catalog__model-link' href='/categories/catalog'>
                       Apple IPhone
                     </a>
                   </li>
                   <li className='catalog__model'>
-                    <a className='catalog__model-link' href='/catalog'>
+                    <a className='catalog__model-link' href='/categories/catalog'>
                       Samsung Galaxy
                     </a>
                   </li>
