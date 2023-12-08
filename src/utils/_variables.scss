@@ -1,43 +1,47 @@
 $blackColor: #222;
 $greyColor: #EDEDED;
+$whiteColof: #FFF;
 $fontMargin: 0;
 $fontDOldPrice: line-through;
-$images-dir: './images/';
-$images-dir2: './image/';
 $imagesDir: './image/';
 
+$fontSH1: 40px;
+$fontWH1: 500;
 
-$fontSH1: 68px;
-$fontWH1: 700;
-
-$fontSH2: 56px;
+$fontSH2: 32px;
 $fontWH2: 500;
 
-$fontSH3: 32px;
-$fontWH3: 700;
+$fontSH3: 24px;
+$fontWH3: 600;
 
 $fontSH4: 24px;
 $fontWH4: 500;
 
 $fontSPrice: 24px;
-$fontWPrice: 600;
+$fontWPrice: 700;
 
 $fontSPriceSmall: 20px;
-$fontWPriceSmall: 600;
+$fontWPriceSmall: 500;
 
-$fontSOldPrice: 20px;
+$fontSOldPrice: 24px;
 $fontWOldPrice: 600;
 
 $fontSOldPriceSmall: 16px;
 $fontWOldPriceSmall: 600;
 
-$fontSButton: 20px;
+$fontSTag: 20px;
+$fontWTag: 700;
+
+$fontSButton: 16px;
 $fontWButton: 600;
 
-$fontSBodyBold: 16px;
-$fontWBodyBold: 700;
+$fontSAmount: 14px;
+$fontWAmount: 600;
 
-$fontSBody: 16px;
+// $fontSBodyBold: 16px;
+// $fontWBodyBold: 700;
+
+$fontSBody: 20px;
 $fontWBody: 400;
 
 $fontSCaption: 14px;
