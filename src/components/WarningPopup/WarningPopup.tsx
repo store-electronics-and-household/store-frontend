@@ -2,9 +2,9 @@ import React from 'react';
 import './WarningPopup.css';
 
 interface WarningPopupProps {
-  isOpen: boolean
-  onOpenAuth: () => void
-  onOpenWarningPopup: () => void
+  isOpen: boolean;
+  onOpenAuth: () => void;
+  onOpenWarningPopup: () => void;
 }
 
 const WarningPopup: React.FC<WarningPopupProps> = ({

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import AboutCompany from '../AboutCompany/AboutCompany';
@@ -21,6 +21,8 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import SearchResults from '../SearchResults/SearchResults';
 // import { paymentPageData } from '../../utils/constants';
 import { type GoodsListProps } from '../../utils/types';
+import { productData, productAttributes } from '../../utils/constants';
+import { authorize, register, changePassword } from '../../utils/api/user-api';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 
 const App: React.FC = () => {
@@ -32,7 +34,6 @@ const App: React.FC = () => {
     useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [goodsList, setGoodsList] = React.useState<GoodsListProps[]>();
-
   const toggleWarningPopup = (): void => {
     setWarningPopupOpen(!isWarningPopupOpen);
   };
@@ -49,9 +50,44 @@ const App: React.FC = () => {
     setPasswordRecoveryPopupOpen(!isPasswordRecoveryPopupOpen);
   };
 
-  function setGoodsForPayment (data: GoodsListProps[]): void {
+  const setGoodsForPayment = (data: GoodsListProps[]): void => {
     setGoodsList(data);
-  }
+  };
+
+  const navigate = useNavigate();
+
+  const handleRegister = (email: string, password: string): void => {
+    register(email, password)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleLogin = (email: string, password: string): void => {
+    authorize(email, password)
+      .then((data) => {
+        localStorage.setItem('token', data.token);
+        console.log(data);
+        // setIsLogged(true);
+        navigate('/', { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleChangePassword = (email: string, password: string): void => {
+    changePassword(email, password)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   // const CustomPropsBreadcrumb = ({ someProp }: { someProp: string }): JSX.Element => <span>{someProp}</span>;
   // const DynamicUserBreadcrumb = ({ match }) => (
@@ -87,14 +123,17 @@ const App: React.FC = () => {
                   isOpenSignIn={isSignInPopupOpen}
                   onOpenReg={toggleSignUpPopup}
                   onOpenRecovery={PasswordRecoveryPopup}
+                  onLogin={handleLogin}
                 />
                 <SignUp
                   onOpenSignUp={toggleSignUpPopup}
                   isOpenSignUp={isSignUpPopupOpen}
+                  onRegistr={handleRegister}
                 />
                 <PasswordRecovery
                   isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
                   onOpenRecoveryPopup={PasswordRecoveryPopup}
+                  onChangePassword={handleChangePassword}
                 />
                 <Footer />
               </>
@@ -142,7 +181,10 @@ const App: React.FC = () => {
               element={
                 <>
                   <Breadcrumbs crumbs={crumbs} />
-                  <ProductPage />
+                  <ProductPage
+                    product={productData}
+                    attributes={productAttributes}
+                  />
                 </>
               }
             />

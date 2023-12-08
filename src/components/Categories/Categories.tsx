@@ -1,120 +1,94 @@
 import React from 'react';
-import '../Catalog/Catalog.css';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
-// import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import { product, subCategoriesList } from '../../utils/constants';
 
 const Categories: React.FC<{
-  id?: number
-  name?: string
-  originPrice?: number
-  salesPrice?: number
-  discount?: number
-  url?: string
+  id?: number;
+  name?: string;
+  originPrice?: number;
+  salesPrice?: number;
+  discount?: number;
+  url?: string;
 }> = () => {
   return (
     <>
-      {/* <Breadcrumbs /> */}
       <section className='catalog'>
         <div className='catalog__container-big'>
-          <h1 className='catalog__title'>Смартфоны</h1>
+          <h1 className='catalog__title'>Ноутбуки и аксессуары</h1>
           <div className='catalog__container'>
             <ul className='catalog__collection'>
               <li className='catalog__models'>
                 <a className='catalog__model-link' href=''>
-                  Производитель
+                  Ноутбуки
                 </a>
                 <ul className='catalog__models'>
                   <li className='catalog__model'>
                     <a className='catalog__model-link' href='/categories/catalog'>
-                      Apple IPhone
+                      Apple Macbook
                     </a>
                   </li>
                   <li className='catalog__model'>
                     <a className='catalog__model-link' href='/categories/catalog'>
-                      Samsung Galaxy
+                      Игровые ноутбуки
                     </a>
                   </li>
                   <li className='catalog__model'>
                     <a className='catalog__model-link' href=''>
-                      Xiaomi
+                      Ультрабуки
                     </a>
                   </li>
                   <li className='catalog__model'>
                     <a className='catalog__model-link' href=''>
-                      Google
+                      Ноутбуки-трансформеры
                     </a>
                   </li>
                   <li className='catalog__model'>
                     <a className='catalog__model-link' href=''>
-                      Honor
+                      Нетбуки
                     </a>
                   </li>
-                  <li className='catalog__model'>
-                    <a className='catalog__model-link' href=''>
-                      Realme
-                    </a>
-                  </li>
-                  <li className='catalog__model'>
-                    <a className='catalog__model-link' href=''>
-                      HUAWEI
-                    </a>
-                  </li>
-                  <li className='catalog__model'>
-                    <a className='catalog__model-link' href=''>
-                      OnePlus
-                    </a>
-                  </li>
-                </ul>
+                </ul>{' '}
               </li>
-              <ul className='catalog__models'>
-                <a className='catalog__model-link' href=''>
-                  Кнопочные телефоны
-                </a>
-              </ul>
               <ul className='catalog__models'>
                 <li className='catalog__models'>
                   <a className='catalog__model-link' href=''>
                     Аксессуары
                   </a>
-                </li>
-                <li className='catalog__model'>
-                  <a className='catalog__model-link' href=''>
-                    Зарядные устройства
-                  </a>
-                </li>
-                <li className='catalog__model'>
-                  <a className='catalog__model-link' href=''>
-                    Кабели и адаптеры
-                  </a>
-                </li>
-                <li className='catalog__model'>
-                  <a className='catalog__model-link' href=''>
-                    Защитные пленки и стекла
-                  </a>
-                </li>
-                <li className='catalog__model'>
-                  <a className='catalog__model-link' href=''>
-                    Наушники
-                  </a>
-                </li>
-                <li className='catalog__model'>
-                  <a className='catalog__model-link' href=''>
-                    Чехлы
-                  </a>
+                  <ul className='catalog__models'>
+                    <li className='catalog__model'>
+                      <a className='catalog__model-link' href=''>
+                        Клавиатуры и комплекты
+                      </a>
+                    </li>
+                    <li className='catalog__model'>
+                      <a className='catalog__model-link' href=''>
+                        Подставки для ноутбука
+                      </a>
+                    </li>
+                    <li className='catalog__model'>
+                      <a className='catalog__model-link' href=''>
+                        Внешние жесткие диски
+                      </a>
+                    </li>
+                    <li className='catalog__model'>
+                      <a className='catalog__model-link' href=''>
+                        Мыши компьютерные
+                      </a>
+                    </li>
+                    <li className='catalog__model'>
+                      <a className='catalog__model-link' href=''>
+                        USB флешки
+                      </a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </ul>
             <ul className='catalog__rendered-categories'>
               <div className='catalog__render-cat'>
                 {subCategoriesList.slice(0, 9).map((tile) => (
-                  <CategoriesTile
-                    key={tile.id}
-                    catTitle={tile.catTitle}
-                    catImg={tile.catImg}
-                    catUrl={tile.catUrl}
-                  />
+                  <CategoriesTile key={tile.id} name={tile.catTitle} id={0} />
                 ))}
               </div>
               <h2 className='catalog__popular'>Популярные товары</h2>

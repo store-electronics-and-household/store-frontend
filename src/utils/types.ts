@@ -14,13 +14,20 @@ export interface PopupProps {
   style?: React.CSSProperties;
 }
 
-export interface SpecifyType {
-  productName: string;
-  article: number;
-  color?: string;
-  diagonal?: string | number;
+export interface productDataType {
+  id: number;
+  name: string;
+  price: number;
+  oldPrice?: number;
+  description: string[];
+  images: string[];
+}
+
+export interface productAttributesDataType {
   brend?: string;
   country?: string;
+  color?: string;
+  diagonal?: string | number;
   year?: string | number;
   display?: string;
   builtInMemory?: string | number;
@@ -35,7 +42,6 @@ export interface SpecifyType {
   builtInMemory1?: string | number;
   ram1?: string | number;
   batteryCapacity1?: string | number;
-  aboutProduct?: string;
 }
 
 export interface GoodsListProps {
@@ -55,4 +61,15 @@ export interface AccordionItemProps {
   faqItem: FaqItem;
   isQuestionOpen: boolean | null;
   btnOnClick: () => void;
-};
+}
+
+export interface MyTypeBanners {
+  id: number;
+  name: string;
+  imageLink: string;
+}
+
+export interface CategoriesTileProps {
+  id: number;
+  name: string;
+}
