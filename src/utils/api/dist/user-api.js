@@ -133,7 +133,12 @@ var __generator =
     }
   };
 exports.__esModule = true;
-exports.getBanners = exports.authorize = exports.register = void 0;
+exports.changePassword =
+  exports.getSearchResults =
+  exports.getBanners =
+  exports.authorize =
+  exports.register =
+    void 0;
 var checkResponse = function (res) {
   return __awaiter(void 0, void 0, Promise, function () {
     var errorData, errorMessage;
@@ -231,6 +236,49 @@ exports.getBanners = function () {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
               },
+            }),
+          ];
+        case 1:
+          return [2 /*return*/, _a.sent()];
+      }
+    });
+  });
+};
+exports.getSearchResults = function (id) {
+  return __awaiter(void 0, void 0, Promise, function () {
+    return __generator(this, function (_a) {
+      switch (_a.label) {
+        case 0:
+          return [
+            4 /*yield*/,
+            request('/collections/' + id, {
+              method: 'GET',
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+            }),
+          ];
+        case 1:
+          return [2 /*return*/, _a.sent()];
+      }
+    });
+  });
+};
+exports.changePassword = function (email, password) {
+  return __awaiter(void 0, void 0, Promise, function () {
+    return __generator(this, function (_a) {
+      switch (_a.label) {
+        case 0:
+          return [
+            4 /*yield*/,
+            request('/auth/change', {
+              method: 'PATCH',
+              headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+              },
+              body: JSON.stringify({ email: email, password: password }),
             }),
           ];
         case 1:

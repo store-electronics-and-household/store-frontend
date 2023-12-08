@@ -6,15 +6,24 @@ var react_1 = require('react');
 var formik_1 = require('formik');
 var Yup = require('yup');
 var PopupTemplate_1 = require('../PopupTemplate/PopupTemplate');
+var open_eye_svg_1 = require('../../image/icons/open-eye.svg');
+var eye_closed_svg_1 = require('../../image/icons/eye-closed.svg');
 var PasswordRecovery = function (_a) {
   var onOpenRecoveryPopup = _a.onOpenRecoveryPopup,
-    isOpenPasswordRecovery = _a.isOpenPasswordRecovery;
+    isOpenPasswordRecovery = _a.isOpenPasswordRecovery,
+    onChangePassword = _a.onChangePassword;
   var _b = react_1['default'].useState(false),
     isNext = _b[0],
     SetIsNext = _b[1];
   var _c = react_1['default'].useState(false),
     isEmailValidationEnabled = _c[0],
     setEmailValidationEnabled = _c[1];
+  var _d = react_1['default'].useState(false),
+    showRecPassword = _d[0],
+    setShowRecPassword = _d[1];
+  var _e = react_1['default'].useState(false),
+    showConfRecPassword = _e[0],
+    setShowConfRecPassword = _e[1];
   var formik = formik_1.useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -39,18 +48,24 @@ var PasswordRecovery = function (_a) {
         .required('Подтвердите пароль'),
     }),
     onSubmit: function (values) {
-      // Обработка отправки данных
-      onOpenRecoveryPopup();
-      formik.resetForm();
+      if (formik.isValid) {
+        onChangePassword(values.loginRecovery, values.passwordRecovery);
+        onOpenRecoveryPopup();
+        SetIsNext(false);
+        setEmailValidationEnabled(false);
+        formik.resetForm();
+      }
     },
   });
   var handleCloseRecoveryPasswordPopup = function () {
     onOpenRecoveryPopup();
     formik.resetForm();
+    SetIsNext(false);
+    setEmailValidationEnabled(false);
   };
   var handleClickNextBtn = function () {
     setEmailValidationEnabled(true);
-    if (formik.errors.loginRecovery) {
+    if (!formik.errors.loginRecovery) {
       SetIsNext(true);
     } else {
       console.log('');
@@ -112,7 +127,8 @@ var PasswordRecovery = function (_a) {
                   formik.touched.loginRecovery &&
                   formik.errors.loginRecovery
                     ? 'pass-recovery__input_invalid'
-                    : formik.touched.loginRecovery
+                    : formik.touched.loginRecovery &&
+                      !formik.errors.loginRecovery
                     ? 'pass-recovery__input_valid'
                     : ''),
                 type: 'text',
@@ -139,60 +155,105 @@ var PasswordRecovery = function (_a) {
               react_1['default'].createElement(
                 'div',
                 { className: 'pass-recovery__input-wrapper' },
+                react_1['default'].createElement(
+                  'label',
+                  { className: 'pass-recovery__label' },
+                  '\u041F\u0430\u0440\u043E\u043B\u044C'
+                ),
                 react_1['default'].createElement('input', {
                   className:
                     'pass-recovery__input ' +
                     (formik.touched.passwordRecovery &&
+                    formik.submitCount > 0 &&
                     formik.errors.passwordRecovery
                       ? 'pass-recovery__input_invalid'
-                      : formik.touched.passwordRecovery
+                      : formik.touched.passwordRecovery &&
+                        formik.submitCount > 0
                       ? 'pass-recovery__input_valid'
                       : ''),
-                  placeholder: '\u041F\u0430\u0440\u043E\u043B\u044C',
-                  type: 'password',
+                  type: showRecPassword ? 'text' : 'password',
                   name: 'passwordRecovery',
                   value: formik.values.passwordRecovery,
                   onChange: formik.handleChange,
                   onBlur: formik.handleBlur,
                   required: true,
                 }),
-                formik.touched.passwordRecovery &&
-                  formik.errors.passwordRecovery &&
-                  react_1['default'].createElement(
-                    'span',
-                    { className: 'pass-recovery__error-text' },
-                    formik.errors.passwordRecovery
-                  )
+                react_1['default'].createElement(
+                  'span',
+                  {
+                    className: 'pass-recovery__toggle-password',
+                    onClick: function () {
+                      setShowRecPassword(!showRecPassword);
+                    },
+                  },
+                  react_1['default'].createElement('img', {
+                    className: 'pass-recovery__toggle-password-icon',
+                    src: showRecPassword
+                      ? open_eye_svg_1['default']
+                      : eye_closed_svg_1['default'],
+                    alt: '\u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C/\u0441\u043A\u0440\u044B\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C',
+                  })
+                )
               ),
+              formik.submitCount > 0 &&
+                formik.touched.passwordRecovery &&
+                formik.errors.passwordRecovery &&
+                react_1['default'].createElement(
+                  'span',
+                  { className: 'pass-recovery__error-text' },
+                  formik.errors.passwordRecovery
+                ),
               react_1['default'].createElement(
                 'div',
                 { className: 'pass-recovery__input-wrapper' },
+                react_1['default'].createElement(
+                  'label',
+                  { className: 'pass-recovery__label' },
+                  '\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C'
+                ),
                 react_1['default'].createElement('input', {
                   className:
                     'pass-recovery__input ' +
                     (formik.touched.confirmPasswordRecovery &&
+                    formik.submitCount > 0 &&
                     formik.errors.confirmPasswordRecovery
                       ? 'pass-recovery__input_invalid'
-                      : formik.touched.confirmPasswordRecovery
+                      : formik.touched.confirmPasswordRecovery &&
+                        formik.submitCount > 0
                       ? 'pass-recovery__input_valid'
                       : ''),
-                  placeholder:
-                    '\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C',
-                  type: 'password',
+                  type: showConfRecPassword ? 'text' : 'password',
                   name: 'confirmPasswordRecovery',
                   value: formik.values.confirmPasswordRecovery,
                   onChange: formik.handleChange,
                   onBlur: formik.handleBlur,
                   required: true,
                 }),
+                react_1['default'].createElement(
+                  'span',
+                  {
+                    className: 'pass-recovery__toggle-password',
+                    onClick: function () {
+                      setShowConfRecPassword(!showConfRecPassword);
+                    },
+                  },
+                  react_1['default'].createElement('img', {
+                    className: 'pass-recovery__toggle-password-icon',
+                    src: showConfRecPassword
+                      ? open_eye_svg_1['default']
+                      : eye_closed_svg_1['default'],
+                    alt: '\u043F\u043E\u043A\u0430\u0437\u0430\u0442\u044C/\u0441\u043A\u0440\u044B\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C',
+                  })
+                )
+              ),
+              formik.submitCount > 0 &&
                 formik.touched.confirmPasswordRecovery &&
-                  formik.errors.confirmPasswordRecovery &&
-                  react_1['default'].createElement(
-                    'span',
-                    { className: 'pass-recovery__error-text' },
-                    formik.errors.confirmPasswordRecovery
-                  )
-              )
+                formik.errors.confirmPasswordRecovery &&
+                react_1['default'].createElement(
+                  'span',
+                  { className: 'pass-recovery__error-text' },
+                  formik.errors.confirmPasswordRecovery
+                )
             ),
           react_1['default'].createElement(
             'div',

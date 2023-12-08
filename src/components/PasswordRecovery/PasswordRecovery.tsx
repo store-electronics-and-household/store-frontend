@@ -4,8 +4,11 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
+import OPENEDEYE from '../../image/icons/open-eye.svg';
+import CLOSEDEYE from '../../image/icons/eye-closed.svg';
 
 interface PasswordRecoveryProps {
+  onChangePassword: (email: string, password: string) => void;
   onOpenRecoveryPopup: () => void;
   isOpenPasswordRecovery: boolean;
 }
@@ -13,9 +16,13 @@ interface PasswordRecoveryProps {
 const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
   onOpenRecoveryPopup,
   isOpenPasswordRecovery,
+  onChangePassword,
 }) => {
   const [isNext, SetIsNext] = React.useState<boolean>(false);
   const [isEmailValidationEnabled, setEmailValidationEnabled] =
+    React.useState<boolean>(false);
+  const [showRecPassword, setShowRecPassword] = React.useState<boolean>(false);
+  const [showConfRecPassword, setShowConfRecPassword] =
     React.useState<boolean>(false);
   const formik = useFormik({
     enableReinitialize: true,
@@ -41,20 +48,26 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
         .required('Подтвердите пароль'),
     }),
     onSubmit: (values) => {
-      // Обработка отправки данных
-      onOpenRecoveryPopup();
-      formik.resetForm();
+      if (formik.isValid) {
+        onChangePassword(values.loginRecovery, values.passwordRecovery);
+        onOpenRecoveryPopup();
+        SetIsNext(false);
+        setEmailValidationEnabled(false);
+        formik.resetForm();
+      }
     },
   });
 
   const handleCloseRecoveryPasswordPopup = (): void => {
     onOpenRecoveryPopup();
     formik.resetForm();
+    SetIsNext(false);
+    setEmailValidationEnabled(false);
   };
 
   const handleClickNextBtn = (): void => {
     setEmailValidationEnabled(true);
-    if (formik.errors.loginRecovery) {
+    if (!formik.errors.loginRecovery) {
       SetIsNext(true);
     } else {
       console.log('');
@@ -96,7 +109,8 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
                     formik.touched.loginRecovery &&
                     formik.errors.loginRecovery
                       ? 'pass-recovery__input_invalid'
-                      : formik.touched.loginRecovery
+                      : formik.touched.loginRecovery &&
+                        !formik.errors.loginRecovery
                       ? 'pass-recovery__input_valid'
                       : ''
                   }`}
@@ -120,55 +134,87 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
             {isNext && (
               <>
                 <div className='pass-recovery__input-wrapper'>
+                  <label className='pass-recovery__label'>Пароль</label>
                   <input
                     className={`pass-recovery__input ${
                       formik.touched.passwordRecovery &&
+                      formik.submitCount > 0 &&
                       formik.errors.passwordRecovery
                         ? 'pass-recovery__input_invalid'
-                        : formik.touched.passwordRecovery
+                        : formik.touched.passwordRecovery &&
+                          formik.submitCount > 0
                         ? 'pass-recovery__input_valid'
                         : ''
                     }`}
-                    placeholder='Пароль'
-                    type='password'
+                    type={showRecPassword ? 'text' : 'password'}
                     name='passwordRecovery'
                     value={formik.values.passwordRecovery}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     required
                   />
-                  {formik.touched.passwordRecovery &&
-                    formik.errors.passwordRecovery && (
-                      <span className='pass-recovery__error-text'>
-                        {formik.errors.passwordRecovery}
-                      </span>
-                    )}
+                  <span
+                    className='pass-recovery__toggle-password'
+                    onClick={() => {
+                      setShowRecPassword(!showRecPassword);
+                    }}
+                  >
+                    <img
+                      className='pass-recovery__toggle-password-icon'
+                      src={showRecPassword ? OPENEDEYE : CLOSEDEYE}
+                      alt='показать/скрыть пароль'
+                    />
+                  </span>
                 </div>
+                {formik.submitCount > 0 &&
+                  formik.touched.passwordRecovery &&
+                  formik.errors.passwordRecovery && (
+                    <span className='pass-recovery__error-text'>
+                      {formik.errors.passwordRecovery}
+                    </span>
+                  )}
                 <div className='pass-recovery__input-wrapper'>
+                  <label className='pass-recovery__label'>
+                    Повторите пароль
+                  </label>
                   <input
                     className={`pass-recovery__input ${
                       formik.touched.confirmPasswordRecovery &&
+                      formik.submitCount > 0 &&
                       formik.errors.confirmPasswordRecovery
                         ? 'pass-recovery__input_invalid'
-                        : formik.touched.confirmPasswordRecovery
+                        : formik.touched.confirmPasswordRecovery &&
+                          formik.submitCount > 0
                         ? 'pass-recovery__input_valid'
                         : ''
                     }`}
-                    placeholder='Повторите пароль'
-                    type='password'
+                    type={showConfRecPassword ? 'text' : 'password'}
                     name='confirmPasswordRecovery'
                     value={formik.values.confirmPasswordRecovery}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     required
                   />
-                  {formik.touched.confirmPasswordRecovery &&
-                    formik.errors.confirmPasswordRecovery && (
-                      <span className='pass-recovery__error-text'>
-                        {formik.errors.confirmPasswordRecovery}
-                      </span>
-                    )}
+                  <span
+                    className='pass-recovery__toggle-password'
+                    onClick={() => {
+                      setShowConfRecPassword(!showConfRecPassword);
+                    }}
+                  >
+                    <img
+                      className='pass-recovery__toggle-password-icon'
+                      src={showConfRecPassword ? OPENEDEYE : CLOSEDEYE}
+                      alt='показать/скрыть пароль'
+                    />
+                  </span>
                 </div>
+                {formik.submitCount > 0 &&
+                  formik.touched.confirmPasswordRecovery &&
+                  formik.errors.confirmPasswordRecovery && (
+                    <span className='pass-recovery__error-text'>
+                      {formik.errors.confirmPasswordRecovery}
+                    </span>
+                  )}
               </>
             )}
             <div className='pass-recovery__buttons'>

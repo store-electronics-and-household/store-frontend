@@ -22,7 +22,7 @@ import SearchResults from '../SearchResults/SearchResults';
 // import { paymentPageData } from '../../utils/constants';
 import { type GoodsListProps } from '../../utils/types';
 import { productData, productAttributes } from '../../utils/constants';
-import { authorize, register } from '../../utils/api/user-api';
+import { authorize, register, changePassword } from '../../utils/api/user-api';
 
 const App: React.FC = () => {
   // const [isLogged, setIsLogged] = useState<boolean>(false);
@@ -78,6 +78,16 @@ const App: React.FC = () => {
       });
   };
 
+  const handleChangePassword = (email: string, password: string): void => {
+    changePassword(email, password)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className='App'>
       <ScrollToTop>
@@ -107,6 +117,7 @@ const App: React.FC = () => {
                 <PasswordRecovery
                   isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
                   onOpenRecoveryPopup={PasswordRecoveryPopup}
+                  onChangePassword={handleChangePassword}
                 />
                 <Footer />
               </>
