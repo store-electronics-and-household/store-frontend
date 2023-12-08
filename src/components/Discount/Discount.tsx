@@ -23,7 +23,10 @@ const Discount: React.FC<DiscountProps> = ({ discountBannerImages }) => {
   return (
     <section className='discount'>
       {discountBannerImages.map((banner, index) => (
-        <div key={banner.id} className={`discount__container discount__container_type_${index}`}>
+        <div
+          key={banner.id}
+          className={`discount__container discount__container_type_${index}`}
+        >
           <img
             src={banner.imageLink}
             alt={banner.name}

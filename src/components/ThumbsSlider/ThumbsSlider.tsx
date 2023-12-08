@@ -20,7 +20,10 @@ interface ThumbsSliderProps {
   onPopupFullPhoto: () => void;
 }
 
-const ThumbsSlider: React.FC<ThumbsSliderProps> = ({ images, onPopupFullPhoto }) => {
+const ThumbsSlider: React.FC<ThumbsSliderProps> = ({
+  images,
+  onPopupFullPhoto,
+}) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
   return (
@@ -62,11 +65,7 @@ const ThumbsSlider: React.FC<ThumbsSliderProps> = ({ images, onPopupFullPhoto })
         {images.map((img, imgId) => {
           return (
             <SwiperSlide key={imgId}>
-              <img
-                className='swiper-first__img'
-                src={img}
-                alt='фото товара'
-              />
+              <img className='swiper-first__img' src={img} alt='фото товара' />
             </SwiperSlide>
           );
         })}

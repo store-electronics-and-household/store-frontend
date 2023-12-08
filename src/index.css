@@ -81,8 +81,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: "goal delivery" "new delivery";
-  -moz-column-gap: 139px;
-       column-gap: 139px;
+  column-gap: 139px;
   row-gap: 64px;
 }
 
@@ -101,9 +100,7 @@ body {
 .content {
   display: grid;
   grid-template-areas: "a b" "a c";
-  -moz-column-gap: 9px;
-       column-gap: 9px;
-  height: -moz-fit-content;
+  column-gap: 9px;
   height: fit-content;
 }
 
@@ -266,8 +263,7 @@ body {
 .footer__logo {
   width: 253px;
   height: 80px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .footer__copyright {
@@ -489,7 +485,6 @@ body {
   align-items: flex-end;
   position: absolute;
   top: calc(100% + 8px);
-  width: -moz-max-content;
   width: max-content;
 }
 
@@ -657,7 +652,6 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  width: -moz-max-content;
   width: max-content;
   color: white;
 }
@@ -850,8 +844,7 @@ body {
   margin: auto;
   height: 72px;
   max-width: 59px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 6px;
 }
 
@@ -997,8 +990,7 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  -webkit-hyphens: auto;
-          hyphens: auto;
+  hyphens: auto;
   word-wrap: break-word;
   margin: 0;
   max-height: 48px;
@@ -1033,8 +1025,7 @@ body {
 }
 
 .card-medium__link {
-  -webkit-hyphens: auto;
-          hyphens: auto;
+  hyphens: auto;
   word-wrap: break-word;
   text-decoration: none;
   display: flex;
@@ -1159,7 +1150,7 @@ body {
 }
 
 .signin__input {
-  padding: 10px 0 10px;
+  padding: 10px 5px 10px;
   border-radius: 12px;
   border: 1px solid #B6B6B6;
   width: 324px;
@@ -1200,7 +1191,6 @@ body {
   max-width: 324px;
   margin: 8px 0 0;
   align-self: flex-start;
-  padding-left: 25px;
 }
 
 .signin__buttons {
@@ -1354,7 +1344,7 @@ body {
 }
 
 .signup__input {
-  padding: 10px 0 10px;
+  padding: 10px 5px 10px;
   border-radius: 12px;
   border: 1px solid #B6B6B6;
   width: 324px;
@@ -1475,9 +1465,7 @@ body {
 
 .signup__checkbox + label {
   display: inline-flex;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .signup__checkbox + label::before {
@@ -1861,8 +1849,7 @@ body {
   max-width: 274px;
   min-height: 204px;
   max-height: 234px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   z-index: 0;
   margin: 0 24px 0;
 }
@@ -1981,8 +1968,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 440px;
-  min-height: 337px;
+  max-width: 405px;
+  min-height: 320px;
   width: 100%;
   left: 50%;
   top: 50%;
@@ -2010,7 +1997,7 @@ body {
   line-height: normal;
   margin: 0;
   font-family: "Wix Madefor Display";
-  max-width: 400px;
+  max-width: 300px;
 }
 
 .pass-recovery__subtitle {
@@ -2027,7 +2014,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 25px;
 }
 
 .pass-recovery__input-wrapper {
@@ -2037,21 +2024,29 @@ body {
   margin-top: 12px;
 }
 
+.pass-recovery__input-wrapper:first-of-type {
+  margin-top: 0px;
+}
+
 .pass-recovery__input {
   padding: 10px 12px 10px;
   border-radius: 12px;
   border: 1px solid #B6B6B6;
   width: 324px;
   min-height: 24px;
-  margin-top: 20px;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  flex: 1;
 }
 
-.pass-recovery__input:first-of-type {
-  margin-top: 0px;
+.pass-recovery__label {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  margin-bottom: 8px;
 }
 
 .pass-recovery__input:focus {
@@ -2153,6 +2148,19 @@ body {
   text-align: center;
 }
 
+.pass-recovery__toggle-password-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.pass-recovery__toggle-password {
+  position: absolute;
+  top: 70%;
+  right: 8px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
 .favourites {
   display: flex;
   width: 1440px;
@@ -2160,7 +2168,6 @@ body {
   justify-content: center;
   align-items: center;
   margin: auto;
-  min-height: -moz-max-content;
   min-height: max-content;
 }
 
@@ -2186,8 +2193,7 @@ body {
 .favourites__content {
   display: grid;
   row-gap: 64px;
-  -moz-column-gap: 24px;
-       column-gap: 24px;
+  column-gap: 24px;
   margin-top: 44px;
   grid-template-columns: repeat(4, 1fr);
   max-width: 1360px;
@@ -2235,17 +2241,6 @@ body {
   outline: transparent;
 }
 
-.header__searchbar-input::-moz-placeholder {
-  display: flex;
-  font-family: Inter;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px;
-  margin-left: 12px;
-  color: #AFB4C0;
-}
-
 .header__searchbar-input::placeholder {
   display: flex;
   font-family: Inter;
@@ -2255,10 +2250,6 @@ body {
   line-height: 18px;
   margin-left: 12px;
   color: #AFB4C0;
-}
-
-.header__searchbar-input:focus::-moz-placeholder {
-  color: transparent;
 }
 
 .header__searchbar-input:focus::placeholder {
@@ -2420,8 +2411,7 @@ body {
 .popup-add-to-cart__product-photo {
   width: 138px;
   height: 138px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 10px;
   margin-right: 16px;
 }
@@ -2469,8 +2459,7 @@ body {
 
 .characteristics-list_full {
   display: block;
-  -moz-column-count: 2;
-       column-count: 2;
+  column-count: 2;
 }
 
 .characteristics-list__item:not(:last-of-type) {
@@ -2555,7 +2544,6 @@ body {
 
 .product-page__price-block {
   padding: 40px 24px;
-  height: -moz-fit-content;
   height: fit-content;
   background-color: #EDEDED;
   border-radius: 15px;
@@ -2732,8 +2720,7 @@ body {
   height: 100%;
   max-height: 75vh;
   max-width: 75vw;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 .swiper-full-photo .swiper-slide {
@@ -2812,8 +2799,7 @@ body {
 .delivery__content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  -moz-column-gap: 139px;
-       column-gap: 139px;
+  column-gap: 139px;
   margin-top: 64px;
 }
 
@@ -2844,7 +2830,6 @@ body {
   line-height: 146%;
   margin: 0;
   line-break: anywhere;
-  width: -moz-max-content;
   width: max-content;
 }
 
@@ -2917,4 +2902,6 @@ body {
 .main {
   display: flex;
   flex-direction: column;
-}/*# sourceMappingURL=index.css.map */
+}
+
+/*# sourceMappingURL=index.css.map */
