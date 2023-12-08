@@ -5,8 +5,6 @@ import favoriteIcon from '../../image/icons/favourite_icon.svg';
 import ThumbsSlider from '../ThumbsSlider/ThumbsSlider';
 import { productSpecifyName } from '../../utils/constants';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
-import Breadcrumb from '../Breadcrumb/Breadcrumb';
-import BreadcrumbItem from '../Breadcrumb/BreadcrumbItem';
 import ProductCharacteristicsList from '../ProductCharacteristicsList/ProductCharacteristicsList';
 import {
   type productDataType,
@@ -60,20 +58,6 @@ const ProductPage: React.FC<ProductPageProps> = ({
 
   return (
     <>
-      <Breadcrumb currentPlace={product.name}>
-        <BreadcrumbItem
-          breadcrumbText='Смартфоны'
-          breadcrumbPath='/categories'
-        />
-        <BreadcrumbItem
-          breadcrumbText='Apple iPhone'
-          breadcrumbPath='/catalog'
-        />
-        <BreadcrumbItem
-          breadcrumbText='iPhone 15 Pro'
-          breadcrumbPath='/catalog'
-        />
-      </Breadcrumb>
       <section className='product-page'>
         <div className='product-page__head-container'>
           <h1 className='product-page__header'>{product.name}</h1>
@@ -114,14 +98,18 @@ const ProductPage: React.FC<ProductPageProps> = ({
               <span className='product-page__current-price'>
                 {formatSumm(product.price)}
               </span>
-              {product.oldPrice !== 0 ? (
-                <span className='product-page__old-price'>
-                  {product.oldPrice !== 0 &&
-                  typeof product.oldPrice === 'number'
-                    ? formatSumm(product.oldPrice)
-                    : ''}
-                </span>
-              ) : null}
+              {
+                product.oldPrice !== 0
+                  ? (
+                      <span className='product-page__old-price'>
+                        {product.oldPrice !== 0 &&
+                        typeof product.oldPrice === 'number'
+                          ? formatSumm(product.oldPrice)
+                          : ''}
+                      </span>
+                    )
+                  : null
+              }
             </div>
             <div className='product-page__buttons'>
               <button
@@ -199,26 +187,28 @@ const ProductPage: React.FC<ProductPageProps> = ({
               Характеристики
             </h2>
           </div>
-          {isActive ? (
-            <div className='product-page__about'>
-              {product.description.map((desc, id) => {
-                return (
-                  <p key={id} className='product-page__about-description'>
-                    {desc}
-                  </p>
-                );
-              })}
-            </div>
-          ) : (
-            <ProductCharacteristicsList
-              productSpecifyName={productSpecifyName}
-              productSpecifyValue={attributes}
-              keysList={objectKeys(attributes).filter((n) => {
-                return n;
-              })}
-              modifyClass={'characteristics-list_full'}
-            />
-          )}
+          {isActive
+            ? (
+                <div className='product-page__about'>
+                  {product.description.map((desc, id) => {
+                    return (
+                      <p key={id} className='product-page__about-description'>
+                        {desc}
+                      </p>
+                    );
+                  })}
+                </div>
+              )
+            : (
+                <ProductCharacteristicsList
+                  productSpecifyName={productSpecifyName}
+                  productSpecifyValue={attributes}
+                  keysList={objectKeys(attributes).filter((n) => {
+                    return n;
+                  })}
+                  modifyClass={'characteristics-list_full'}
+                />
+              )}
         </div>
         <PopupProductPhoto
           images={product.images}

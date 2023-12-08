@@ -1,6 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useEffect } from 'react';
-import Breadcrumb from '../Breadcrumb/Breadcrumb';
 // import { paymentPageData } from '../../utils/constants';
 import PaymentsPageItem from './PaymentsPageItem';
 import { type GoodsListProps } from '../../utils/types';
@@ -103,7 +102,6 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
 
   return (
     <>
-      <Breadcrumb currentPlace='Оформление заказа' />
       <section className='payments-page'>
         <h2 className='payments-page__title'>Оформление</h2>
         <div className='payments-page__container'>
@@ -141,7 +139,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                       <span className='payments-page__input-error'>
                         {(errorsForm1.name as { message: string }).message}
                       </span>
-                    )}
+                  )}
                 </label>
                 <label className='payments-page__input-label'>
                   <p className='payments-page__input-title'>
@@ -170,7 +168,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                       <span className='payments-page__input-error'>
                         {(errorsForm1.phone as { message: string }).message}
                       </span>
-                    )}
+                  )}
                 </label>
               </div>
             </form>
@@ -221,7 +219,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                         <span className='payments-page__input-error'>
                           {(errorsForm2.address as { message: string }).message}
                         </span>
-                      )}
+                    )}
                   </label>
 
                   <div className='payments-page__address-box'>

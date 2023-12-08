@@ -1,7 +1,6 @@
 import React from 'react';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
-import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import { product, subCategoriesList } from '../../utils/constants';
 
 const Categories: React.FC<{
@@ -14,7 +13,6 @@ const Categories: React.FC<{
 }> = () => {
   return (
     <>
-      <Breadcrumb currentPlace='Ноутбуки и аксессуары' />
       <section className='catalog'>
         <div className='catalog__container-big'>
           <h1 className='catalog__title'>Ноутбуки и аксессуары</h1>
@@ -26,12 +24,12 @@ const Categories: React.FC<{
                 </a>
                 <ul className='catalog__models'>
                   <li className='catalog__model'>
-                    <a className='catalog__model-link' href='/catalog'>
+                    <a className='catalog__model-link' href='/categories/catalog'>
                       Apple Macbook
                     </a>
                   </li>
                   <li className='catalog__model'>
-                    <a className='catalog__model-link' href='/catalog'>
+                    <a className='catalog__model-link' href='/categories/catalog'>
                       Игровые ноутбуки
                     </a>
                   </li>

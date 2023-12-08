@@ -108,7 +108,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 14,
@@ -116,7 +116,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 15,
@@ -124,7 +124,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 16,
@@ -132,7 +132,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 17,
@@ -140,7 +140,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 18,
@@ -148,7 +148,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 19,
@@ -156,7 +156,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 20,
@@ -164,7 +164,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 21,
@@ -172,7 +172,7 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/categories/catalog/product',
   },
   {
     id: 22,
@@ -355,7 +355,7 @@ export const subCategoriesList = [
     catTitle: 'Apple Macbook',
     catImg: 'imageforcat/apple.png',
 
-    catUrl: '/catalog',
+    catUrl: '/categories/catalog',
   },
   {
     id: 2,

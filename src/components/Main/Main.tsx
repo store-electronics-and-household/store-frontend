@@ -13,13 +13,12 @@ const Main: React.FC = () => {
   const [mainPageBanners, setMainPageBanners] = React.useState<MyTypeBanners[]>(
     []
   );
-  const [mainPageDicountBanners, setMainPageDicountBanners] = React.useState<
-    MyTypeBanners[]
-  >([]);
+  const [mainPageDicountBanners, setMainPageDicountBanners] = React
+    .useState<MyTypeBanners[]>([]);
 
-  const [categoriesMain, setCategoriesMain] = React.useState<
-    CategoriesTileProps[]
-  >([]);
+  const [categoriesMain, setCategoriesMain] = React
+    .useState<CategoriesTileProps[]>([]);
+
   React.useEffect(() => {
     Promise.all([getBanners(), getCategoriesMain()])
       .then(([res, categoriesMain]) => {
