@@ -58,3 +58,14 @@ export interface AccordionItemProps {
   isQuestionOpen: boolean | null;
   btnOnClick: () => void;
 }
+
+export interface ProductInfo {
+  id: number;
+  name: string;
+  description: string;
+  article: number;
+  quantity: number;
+  originPrice: number;
+  salesPrice: number;
+  imgUrl: string;
+}
