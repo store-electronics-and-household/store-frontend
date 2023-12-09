@@ -21,7 +21,6 @@ const Slider: React.FC<SliderProps> = ({ bannerImage }) => {
     const activeSlideIndex = swiper.activeIndex;
     const isLightForCurrentSlide = isLighChangetForSlide(activeSlideIndex);
     setLight(isLightForCurrentSlide);
-    console.log(isLight);
   };
 
   const isLighChangetForSlide = (index: number): boolean => {
