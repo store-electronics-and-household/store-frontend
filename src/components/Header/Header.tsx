@@ -4,11 +4,13 @@ import type { FC } from 'react';
 
 import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
 
-import headerLogo from '../../image/icons/logo_black.svg';
 import deliveryIcon from '../../image/icons/delivery_icon.svg';
 import busketIcon from '../../image/icons/busket_icon.svg';
 import favouriteIcon from '../../image/icons/favourite_icon.svg';
-import headerLogoWhite from '../../image/icons/logo_white.svg';
+
+import headerLogoWhite from '../../image/icons/header_logo_white.svg';
+import headerLogoColor from '../../image/icons/header_logo_color.svg';
+
 import deliveryIconWhite from '../../image/icons/delivery_icon-white.svg';
 import busketIconWhite from '../../image/icons/cart_icon-white.svg';
 import favouriteIconWhite from '../../image/icons/favourite_icon-white.svg';
@@ -47,9 +49,9 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
   const logoSrc =
     location.pathname === '/main'
       ? isLight
-        ? headerLogo
+        ? headerLogoColor
         : headerLogoWhite
-      : headerLogo;
+      : headerLogoColor;
   const busketSrc =
     location.pathname === '/main'
       ? isLight
@@ -121,7 +123,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
                 src={busketSrc}
                 alt="Перейти в раздел 'Корзина'"
               />
-              <div className='header__navbar-icon-count '>{totalCount}</div>
+              <div className='header__navbar-icon-count'>{totalCount}</div>
             </NavLink>
           </nav>
           <button
