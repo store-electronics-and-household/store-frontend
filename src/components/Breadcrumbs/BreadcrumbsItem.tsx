@@ -9,7 +9,7 @@ interface BreadcrumbsItemProps {
   isFirstCrumb: boolean;
   isLastCrumb: boolean;
   match: BreadcrumbMatch<string>;
-};
+}
 
 const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({
   breadcrumb,
@@ -29,15 +29,15 @@ const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({
     } else if (isLastCrumb) {
       return <span className='breadcrumbs__link'>{crumb}</span>;
     } else {
-      return <Link className='breadcrumbs__link' to={match.pathname || ''}>{crumb}</Link>;
+      return (
+        <Link className='breadcrumbs__link' to={match.pathname || ''}>
+          {crumb}
+        </Link>
+      );
     }
   };
 
-  return (
-    <li className='breadcrumbs__item'>
-      {renderTitle(breadcrumb)}
-    </li>
-  );
+  return <li className='breadcrumbs__item'>{renderTitle(breadcrumb)}</li>;
 };
 
 export default BreadcrumbsItem;

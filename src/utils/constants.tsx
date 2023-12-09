@@ -5,8 +5,6 @@ import iconMedal from '../image/icons/medal-original_icon.svg';
 export const API_URL: string = 'http://45.12.236.120:8080';
 export const API_CAT_IMG: string = 'http://45.12.236.120/images/categories';
 
-/* это нужно будет удалить после--------------- */
-
 export const product = [
   {
     id: 1,
@@ -15,6 +13,24 @@ export const product = [
     salesPrice: 430800,
     url: '/product',
   },
+  // {
+  //   id: 1,
+  //   name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+  //   price: 119700,
+  //   oldPrice: 430800,
+  //   url: '/product',
+  //   percent: 30
+  //   modelsImages: [
+  //   {
+  //     "id": 1,
+  //     "imageLink": "/"
+  //   },
+  //      {
+  //       "id": 2,
+  //     "imageLink": "/"
+  //      }
+  // ],
+  // },
   {
     id: 2,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
@@ -284,6 +300,38 @@ export const faqList = {
   ],
 };
 
+export const subCategoriesList = {
+  id: 1,
+  name: 'Ноутбуки',
+  categoryAttributes: [
+    {
+      id: 0,
+      priority: 0,
+      attributeName: 'Apple Macbook',
+    },
+    {
+      id: 1,
+      priority: 0,
+      attributeName: 'Игровые ноутбуки',
+    },
+    {
+      id: 2,
+      priority: 0,
+      attributeName: 'Ультрабуки',
+    },
+    {
+      id: 3,
+      priority: 0,
+      attributeName: 'Ноутбуки-трансформеры',
+    },
+    {
+      id: 4,
+      priority: 0,
+      attributeName: 'Нетбуки',
+    },
+  ],
+};
+
 export const productData = {
   id: 68898484,
   name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
@@ -347,45 +395,6 @@ export const productAttributes = {
   ram1: 8,
   batteryCapacity1: 4912,
 };
-
-/* это нужно будет удалить после--------------- */
-export const subCategoriesList = [
-  {
-    id: 1,
-    catTitle: 'Apple Macbook',
-    catImg: 'imageforcat/apple.png',
-
-    catUrl: '/categories/catalog',
-  },
-  {
-    id: 2,
-    catTitle: 'Игровые ноутбуки',
-    catImg: 'imageforcat/game.png',
-
-    catUrl: '/',
-  },
-  {
-    id: 3,
-    catTitle: 'Ультрабуки',
-    catImg: 'imageforcat/ultra.png',
-
-    catUrl: '/',
-  },
-  {
-    id: 4,
-    catTitle: 'Ноутбуки – трансформеры',
-    catImg: 'imageforcat/trans.png',
-
-    catUrl: '/',
-  },
-  {
-    id: 5,
-    catTitle: 'Нетбуки',
-    catImg: 'imageforcat/net.png',
-
-    catUrl: '/',
-  },
-];
 
 export const paymentPageData = [
   {

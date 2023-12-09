@@ -33,30 +33,56 @@ const CartContext = createContext<CartContextType>({
   totalSumValue: 0,
 });
 
-export function useCartContext (): CartContextType {
+export function useCartContext(): CartContextType {
   const context = useContext(CartContext);
   return context;
 }
 
-const getTotalCartItemQuantities = (cartItems: ProductInfo[]): number => cartItems.reduce((acc, currentValue) => acc + currentValue.quantity, 0);
-const getTotalDiscountItem = (cartItems: ProductInfo[]): number => cartItems.reduce((acc, currentValue) => acc + (currentValue.originPrice - currentValue.salesPrice) * currentValue.quantity, 0);
-const getSumValue = (cartItems: ProductInfo[]): number => cartItems.reduce((acc, currentValue) => acc + (currentValue.quantity * currentValue.salesPrice), 0);
-const getTotalSumValue = (cartItems: ProductInfo[]): number => cartItems.reduce((acc, currentValue) => acc + (currentValue.quantity * currentValue.salesPrice), 0);
+const getTotalCartItemQuantities = (cartItems: ProductInfo[]): number =>
+  cartItems.reduce((acc, currentValue) => acc + currentValue.quantity, 0);
+const getTotalDiscountItem = (cartItems: ProductInfo[]): number =>
+  cartItems.reduce(
+    (acc, currentValue) =>
+      acc +
+      (currentValue.originPrice - currentValue.salesPrice) *
+        currentValue.quantity,
+    0
+  );
+const getSumValue = (cartItems: ProductInfo[]): number =>
+  cartItems.reduce(
+    (acc, currentValue) =>
+      acc + currentValue.quantity * currentValue.salesPrice,
+    0
+  );
+const getTotalSumValue = (cartItems: ProductInfo[]): number =>
+  cartItems.reduce(
+    (acc, currentValue) =>
+      acc + currentValue.quantity * currentValue.salesPrice,
+    0
+  );
 
-export function CartProvider ({ children }: CartProviderProps): JSX.Element {
+export function CartProvider({ children }: CartProviderProps): JSX.Element {
   const [cartQuantity] = useState<number>(0);
   const [cartItems, setCartItems] = useState<ProductInfo[]>(mockedCartProducts);
-  const [totalCount, setTotalCount] = useState<number>(getTotalCartItemQuantities(mockedCartProducts));
-  const [totalDiscount, setTotalDiscount] = useState<number>(getTotalDiscountItem(mockedCartProducts));
-  const [sumValue, setSumValue] = useState<number>(getSumValue(mockedCartProducts));
-  const [totalSumValue, setTotalSumValue] = useState<number>(getTotalDiscountItem(mockedCartProducts));
+  const [totalCount, setTotalCount] = useState<number>(
+    getTotalCartItemQuantities(mockedCartProducts)
+  );
+  const [totalDiscount, setTotalDiscount] = useState<number>(
+    getTotalDiscountItem(mockedCartProducts)
+  );
+  const [sumValue, setSumValue] = useState<number>(
+    getSumValue(mockedCartProducts)
+  );
+  const [totalSumValue, setTotalSumValue] = useState<number>(
+    getTotalDiscountItem(mockedCartProducts)
+  );
 
-  function getItemQuantity (id: number): number | undefined {
-    return cartItems.find(item => item.id === id)?.quantity ?? 0;
+  function getItemQuantity(id: number): number | undefined {
+    return cartItems.find((item) => item.id === id)?.quantity ?? 0;
   }
 
   const increaseCartQuantity = (id: number): void => {
-    const foundItemIndex = cartItems.findIndex(item => item.id === id);
+    const foundItemIndex = cartItems.findIndex((item) => item.id === id);
 
     if (foundItemIndex !== -1) {
       const updatedArray = [...cartItems];
@@ -66,8 +92,8 @@ export function CartProvider ({ children }: CartProviderProps): JSX.Element {
     }
   };
 
-  function decreaseCartQuantity (id: number): void {
-    const foundItemIndex = cartItems.findIndex(item => item.id === id);
+  function decreaseCartQuantity(id: number): void {
+    const foundItemIndex = cartItems.findIndex((item) => item.id === id);
 
     if (foundItemIndex !== -1 && cartItems[foundItemIndex].quantity !== 1) {
       const updatedArray = [...cartItems];
@@ -77,7 +103,7 @@ export function CartProvider ({ children }: CartProviderProps): JSX.Element {
     }
   }
 
-  function removeFromCart (id: number): void {
+  function removeFromCart(id: number): void {
     const updatedArray = cartItems.filter((item) => item.id !== id);
     setCartItems(updatedArray);
   }
@@ -87,7 +113,7 @@ export function CartProvider ({ children }: CartProviderProps): JSX.Element {
 
     if (newTotalCountValue !== totalCount) {
       setTotalCount(newTotalCountValue);
-    };
+    }
   }, [cartItems]);
 
   useEffect(() => {
@@ -95,7 +121,7 @@ export function CartProvider ({ children }: CartProviderProps): JSX.Element {
 
     if (newTotalDiscountValue !== totalDiscount) {
       setTotalDiscount(newTotalDiscountValue);
-    };
+    }
   }, [cartItems]);
 
   useEffect(() => {
@@ -103,7 +129,7 @@ export function CartProvider ({ children }: CartProviderProps): JSX.Element {
 
     if (newSumValue !== sumValue) {
       setSumValue(newSumValue);
-    };
+    }
   }, [cartItems]);
 
   useEffect(() => {
@@ -111,7 +137,7 @@ export function CartProvider ({ children }: CartProviderProps): JSX.Element {
 
     if (newTotalSumValue !== totalSumValue) {
       setTotalSumValue(newTotalSumValue);
-    };
+    }
   }, [cartItems]);
 
   return (

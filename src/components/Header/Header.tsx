@@ -36,12 +36,12 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
     setIsVisible((current) => !current);
   };
 
-  const handleNavLinkClick = (
-    // event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ): void => {
-    // event.preventDefault();
-    toggleWarningPopup();
-  };
+  const handleNavLinkClick =
+    () // event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+    : void => {
+      // event.preventDefault();
+      toggleWarningPopup();
+    };
 
   const location = useLocation();
 
@@ -100,10 +100,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
           </button>
 
           <nav className='header__navbar'>
-            <NavLink
-              className='header__navbar-link'
-              to='/delivery'
-            >
+            <NavLink className='header__navbar-link' to='/delivery'>
               <img
                 className='header__navbar-icon'
                 src={deliverySrc}
@@ -120,11 +117,11 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
             </NavLink>
 
             <NavLink className='header__navbar-link' to='/cart'>
-                <img
-                  className='header__navbar-icon'
-                  src={busketSrc}
-                  alt="Перейти в раздел 'Корзина'"
-                />
+              <img
+                className='header__navbar-icon'
+                src={busketSrc}
+                alt="Перейти в раздел 'Корзина'"
+              />
               <div className='header__navbar-icon-count '>{totalCount}</div>
             </NavLink>
           </nav>

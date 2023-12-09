@@ -108,130 +108,131 @@ const App: React.FC = () => {
 
   return (
     <div className='App'>
-<CartProvider>
-      <ScrollToTop>
-        <Routes>
-          <Route
-            path='/'
-            element={
-              <>
-                <Header toggleWarningPopup={toggleWarningPopup} />
-                <WarningPopup
-                  isOpen={isWarningPopupOpen}
-                  onOpenWarningPopup={toggleWarningPopup}
-                  onOpenAuth={toggleSignInPopup}
-                />
-                <SignIn
-                  onOpenSignIn={toggleSignInPopup}
-                  isOpenSignIn={isSignInPopupOpen}
-                  onOpenReg={toggleSignUpPopup}
-                  onOpenRecovery={PasswordRecoveryPopup}
-                  onLogin={handleLogin}
-                />
-                <SignUp
-                  onOpenSignUp={toggleSignUpPopup}
-                  isOpenSignUp={isSignUpPopupOpen}
-                  onRegistr={handleRegister}
-                />
-                <PasswordRecovery
-                  isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
-                  onOpenRecoveryPopup={PasswordRecoveryPopup}
-                  onChangePassword={handleChangePassword}
-                />
-                <Footer />
-              </>
-            }
-          >
-            <Route path='/main' element={<Main />} />
+      <CartProvider>
+        <ScrollToTop>
+          <Routes>
             <Route
-              path='/about-company'
+              path='/'
               element={
                 <>
-                  <Breadcrumbs crumbs={crumbs} />
-                  <AboutCompany />
-                </>
-              }
-            />
-            <Route
-              path='/faq'
-              element={
-                <>
-                  <Breadcrumbs crumbs={crumbs} />
-                  <Faq />
-                </>
-              }
-            />
-            <Route
-              path='/categories'
-              element={
-                <>
-                  <Breadcrumbs crumbs={crumbs} />
-                  <Categories />
-                </>
-              }
-            />
-            <Route
-              path='/categories/catalog'
-              element={
-                <>
-                <Breadcrumbs crumbs={crumbs}/>
-                <Catalog />
-                </>
-              }
-            />
-            <Route
-              path='/categories/catalog/product'
-              element={
-                <>
-                  <Breadcrumbs crumbs={crumbs} />
-                  <ProductPage
-                    product={productData}
-                    attributes={productAttributes}
+                  <Header toggleWarningPopup={toggleWarningPopup} />
+                  <WarningPopup
+                    isOpen={isWarningPopupOpen}
+                    onOpenWarningPopup={toggleWarningPopup}
+                    onOpenAuth={toggleSignInPopup}
                   />
+                  <SignIn
+                    onOpenSignIn={toggleSignInPopup}
+                    isOpenSignIn={isSignInPopupOpen}
+                    onOpenReg={toggleSignUpPopup}
+                    onOpenRecovery={PasswordRecoveryPopup}
+                    onLogin={handleLogin}
+                  />
+                  <SignUp
+                    onOpenSignUp={toggleSignUpPopup}
+                    isOpenSignUp={isSignUpPopupOpen}
+                    onRegistr={handleRegister}
+                  />
+                  <PasswordRecovery
+                    isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
+                    onOpenRecoveryPopup={PasswordRecoveryPopup}
+                    onChangePassword={handleChangePassword}
+                  />
+                  <Footer />
                 </>
               }
-            />
-            <Route
-              path='/delivery'
-              element={
-                <>
-                  <Breadcrumbs crumbs={crumbs} />
-                  <Delivery />
-                </>
-              } />
-            <Route
-              path='/favourites'
-              element={
-                <>
-                  <Breadcrumbs crumbs={crumbs}/>
-                  <Favourites />
-                </>
-              }
-            />
-            <Route
-              path='/cart'
-              element={<Cart onCheckoutClick={setGoodsForPayment} />}
-            />
-            <Route
-              path='/payment'
-              element={<PaymentsPage GoodsList={goodsList ?? []} />}
-            />
-            <Route
-              path='/search-results'
-              element={
-                <>
-                  <Breadcrumbs crumbs={crumbs} />
-                  <SearchResults />
-                </>
-              }
-            />
-            <Route path='/' element={<Navigate to='/main' replace />} />
-          </Route>
-          <Route path='*' element={<NotFound />} />
-        </Routes>
-      </ScrollToTop>
-</CartProvider>
-</div>
+            >
+              <Route path='/main' element={<Main />} />
+              <Route
+                path='/about-company'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <AboutCompany />
+                  </>
+                }
+              />
+              <Route
+                path='/faq'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <Faq />
+                  </>
+                }
+              />
+              <Route
+                path='/categories'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <Categories subCategoriesList={[]} product={[]} />
+                  </>
+                }
+              />
+              <Route
+                path='/categories/catalog'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <Catalog />
+                  </>
+                }
+              />
+              <Route
+                path='/categories/catalog/product'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <ProductPage
+                      product={productData}
+                      attributes={productAttributes}
+                    />
+                  </>
+                }
+              />
+              <Route
+                path='/delivery'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <Delivery />
+                  </>
+                }
+              />
+              <Route
+                path='/favourites'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <Favourites />
+                  </>
+                }
+              />
+              <Route
+                path='/cart'
+                element={<Cart onCheckoutClick={setGoodsForPayment} />}
+              />
+              <Route
+                path='/payment'
+                element={<PaymentsPage GoodsList={goodsList ?? []} />}
+              />
+              <Route
+                path='/search-results'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <SearchResults />
+                  </>
+                }
+              />
+              <Route path='/' element={<Navigate to='/main' replace />} />
+            </Route>
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </ScrollToTop>
+      </CartProvider>
+    </div>
   );
 };
 
