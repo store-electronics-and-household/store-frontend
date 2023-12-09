@@ -28,10 +28,11 @@ import { authorize, register, changePassword } from '../../utils/api/user-api';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 
 const App: React.FC = () => {
-  // const [isLogged, setIsLogged] = useState<boolean>(false);
+  const [isLogged, setIsLogged] = useState<boolean>(false);
   const [isWarningPopupOpen, setWarningPopupOpen] = useState<boolean>(false);
   const [isSignInPopupOpen, setSignInPopupOpen] = useState<boolean>(false);
   const [isSignUpPopupOpen, setSignUpPopupOpen] = useState<boolean>(false);
+
   const [isPasswordRecoveryPopupOpen, setPasswordRecoveryPopupOpen] =
     useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -72,8 +73,8 @@ const App: React.FC = () => {
     authorize(email, password)
       .then((data) => {
         localStorage.setItem('token', data.token);
-        console.log(data);
-        // setIsLogged(true);
+        // console.log(data);
+        setIsLogged(true);
         navigate('/', { replace: true });
       })
       .catch((error) => {
@@ -115,7 +116,10 @@ const App: React.FC = () => {
               path='/'
               element={
                 <>
-                  <Header toggleWarningPopup={toggleWarningPopup} />
+                  <Header
+                    toggleWarningPopup={toggleWarningPopup}
+                    isLogged={isLogged}
+                  />
                   <WarningPopup
                     isOpen={isWarningPopupOpen}
                     onOpenWarningPopup={toggleWarningPopup}
