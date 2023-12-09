@@ -21,7 +21,11 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import SearchResults from '../SearchResults/SearchResults';
 // import { paymentPageData } from '../../utils/constants';
 import { type GoodsListProps } from '../../utils/types';
-import { authorize, register } from '../../utils/api/user-api';
+
+import { CartProvider } from '../../context/CartContext';
+import { productData, productAttributes } from '../../utils/constants';
+import { authorize, register, changePassword } from '../../utils/api/user-api';
+import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 
 const App: React.FC = () => {
   // const [isLogged, setIsLogged] = useState<boolean>(false);
@@ -77,65 +81,157 @@ const App: React.FC = () => {
       });
   };
 
+  const handleChangePassword = (email: string, password: string): void => {
+    changePassword(email, password)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // const CustomPropsBreadcrumb = ({ someProp }: { someProp: string }): JSX.Element => <span>{someProp}</span>;
+  // const DynamicUserBreadcrumb = ({ match }) => (
+  //   <span>{userNamesById[match.params.userId]}</span>
+  // );
+
+  const crumbs = [
+    { path: '/about-company', breadcrumb: 'О нас' },
+    { path: '/faq', breadcrumb: 'Часто задаваемые вопросы' },
+    { path: '/favourites', breadcrumb: 'Избранное' },
+    { path: '/delivery', breadcrumb: 'Доставка' },
+    { path: '/search-results', breadcrumb: 'Результаты поиска' },
+    // { path: '/favourites', breadcrumb: CustomPropsBreadcrumb, props: { someProp: 'Избранное' } },
+    // { path: '/categories/:id', breadcrumb: DynamicUserBreadcrumb },
+  ];
+
   return (
     <div className='App'>
-      <ScrollToTop>
-        <Routes>
-          <Route
-            path='/'
-            element={
-              <>
-                <Header toggleWarningPopup={toggleWarningPopup} />
-                <WarningPopup
-                  isOpen={isWarningPopupOpen}
-                  onOpenWarningPopup={toggleWarningPopup}
-                  onOpenAuth={toggleSignInPopup}
-                />
-                <SignIn
-                  onOpenSignIn={toggleSignInPopup}
-                  isOpenSignIn={isSignInPopupOpen}
-                  onOpenReg={toggleSignUpPopup}
-                  onOpenRecovery={PasswordRecoveryPopup}
-                  onLogin={handleLogin}
-                />
-                <SignUp
-                  onOpenSignUp={toggleSignUpPopup}
-                  isOpenSignUp={isSignUpPopupOpen}
-                  onRegistr={handleRegister}
-                />
-                <PasswordRecovery
-                  isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
-                  onOpenRecoveryPopup={PasswordRecoveryPopup}
-                />
-                <Footer />
-              </>
-            }
-          >
-            <Route path='/main' element={<Main />} />
-            <Route path='/about-company' element={<AboutCompany />} />
-            <Route path='/delivery' element={<Delivery />} />
-            <Route path='/faq' element={<Faq />} />
+      <CartProvider>
+        <ScrollToTop>
+          <Routes>
             <Route
-              path='/categories'
-              element={<Categories subCategoriesList={[]} product={[]} />}
-            />
-            <Route path='/catalog' element={<Catalog />} />
-            <Route path='/favourites' element={<Favourites />} />
-            <Route path='/product' element={<ProductPage />} />
-            <Route
-              path='/cart'
-              element={<Cart onCheckoutClick={setGoodsForPayment} />}
-            />
-            <Route
-              path='/payment'
-              element={<PaymentsPage GoodsList={goodsList ?? []} />}
-            />
-            <Route path='/search-results' element={<SearchResults />} />
-            <Route path='/' element={<Navigate to='/main' replace />} />
-          </Route>
-          <Route path='*' element={<NotFound />} />
-        </Routes>
-      </ScrollToTop>
+              path='/'
+              element={
+                <>
+                  <Header toggleWarningPopup={toggleWarningPopup} />
+                  <WarningPopup
+                    isOpen={isWarningPopupOpen}
+                    onOpenWarningPopup={toggleWarningPopup}
+                    onOpenAuth={toggleSignInPopup}
+                  />
+                  <SignIn
+                    onOpenSignIn={toggleSignInPopup}
+                    isOpenSignIn={isSignInPopupOpen}
+                    onOpenReg={toggleSignUpPopup}
+                    onOpenRecovery={PasswordRecoveryPopup}
+                    onLogin={handleLogin}
+                  />
+                  <SignUp
+                    onOpenSignUp={toggleSignUpPopup}
+                    isOpenSignUp={isSignUpPopupOpen}
+                    onRegistr={handleRegister}
+                  />
+                  <PasswordRecovery
+                    isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
+                    onOpenRecoveryPopup={PasswordRecoveryPopup}
+                    onChangePassword={handleChangePassword}
+                  />
+                  <Footer />
+                </>
+              }
+            >
+              <Route path='/main' element={<Main />} />
+              <Route
+                path='/about-company'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <AboutCompany />
+                  </>
+                }
+              />
+              <Route
+                path='/faq'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <Faq />
+                  </>
+                }
+              />
+              <Route
+                path='/categories'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <Categories subCategoriesList={[]} product={[]} />
+                  </>
+                }
+              />
+              <Route
+                path='/categories/catalog'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <Catalog />
+                  </>
+                }
+              />
+              <Route
+                path='/categories/catalog/product'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <ProductPage
+                      product={productData}
+                      attributes={productAttributes}
+                    />
+                  </>
+                }
+              />
+              <Route
+                path='/delivery'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <Delivery />
+                  </>
+                }
+              />
+              <Route
+                path='/favourites'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <Favourites />
+                  </>
+                }
+              />
+              <Route
+                path='/cart'
+                element={<Cart onCheckoutClick={setGoodsForPayment} />}
+              />
+              <Route
+                path='/payment'
+                element={<PaymentsPage GoodsList={goodsList ?? []} />}
+              />
+              <Route
+                path='/search-results'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <SearchResults />
+                  </>
+                }
+              />
+              <Route path='/' element={<Navigate to='/main' replace />} />
+            </Route>
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </ScrollToTop>
+      </CartProvider>
     </div>
   );
 };

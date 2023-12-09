@@ -18,6 +18,7 @@ import CatalogMenu from '../CatalogMenu/CatalogMenu';
 import SearchBar from '../SearchBar/SearchBar';
 
 import { useSlideContext } from '../../context/SlideContext';
+import { useCartContext } from '../../context';
 
 interface HeaderProps {
   toggleWarningPopup: () => void;
@@ -25,19 +26,22 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
   const [isVisible, setIsVisible] = useState(false);
+
   const context = useSlideContext();
+  const { totalCount } = useCartContext();
+
   const { isLight } = context ?? { isLight: false };
 
   const handleClick = (): void => {
     setIsVisible((current) => !current);
   };
 
-  const handleNavLinkClick = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ): void => {
-    event.preventDefault();
-    toggleWarningPopup();
-  };
+  const handleNavLinkClick =
+    () // event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+    : void => {
+      // event.preventDefault();
+      toggleWarningPopup();
+    };
 
   const location = useLocation();
 
@@ -96,11 +100,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
           </button>
 
           <nav className='header__navbar'>
-            <NavLink
-              className='header__navbar-link'
-              to='/'
-              onClick={handleNavLinkClick}
-            >
+            <NavLink className='header__navbar-link' to='/delivery'>
               <img
                 className='header__navbar-icon'
                 src={deliverySrc}
@@ -117,15 +117,18 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
             </NavLink>
 
             <NavLink className='header__navbar-link' to='/cart'>
-                <img
-                  className='header__navbar-icon'
-                  src={busketSrc}
-                  alt="Перейти в раздел 'Корзина'"
-                />
-              <div className='header__navbar-icon-count '>99</div>
+              <img
+                className='header__navbar-icon'
+                src={busketSrc}
+                alt="Перейти в раздел 'Корзина'"
+              />
+              <div className='header__navbar-icon-count '>{totalCount}</div>
             </NavLink>
           </nav>
           <button
+            onClick={() => {
+              handleNavLinkClick();
+            }}
             className={`header__auth-button ${
               location.pathname === '/main'
                 ? isLight

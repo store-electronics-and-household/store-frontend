@@ -1,6 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useEffect } from 'react';
-import Breadcrumb from '../Breadcrumb/Breadcrumb';
 // import { paymentPageData } from '../../utils/constants';
 import PaymentsPageItem from './PaymentsPageItem';
 import { type GoodsListProps } from '../../utils/types';
@@ -103,9 +102,8 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
 
   return (
     <>
-      <Breadcrumb currentPlace='Оформление заказа' />
       <section className='payments-page'>
-        <h2 className='payments-page__title'>Оформление заказа</h2>
+        <h2 className='payments-page__title'>Оформление</h2>
         <div className='payments-page__container'>
           <div className='payments-page__input-containers'>
             <form
@@ -114,7 +112,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
               className='payments-page__client-name'
               action=''
             >
-              <p className='payments-page__form-title'>Ваши данные</p>
+              <p className='payments-page__form-title'>Получатель</p>
               <div className='payments-page__line'></div>
               <div className='payments-page__input-container'>
                 <label className='payments-page__input-label'>

@@ -61,3 +61,27 @@ export const getBanners = async (): Promise<any> => {
     },
   });
 };
+
+export const getSearchResults = async (id: number): Promise<any> => {
+  return await request(`/collections/${id}`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  });
+};
+
+export const changePassword = async (
+  email: string,
+  password: string
+): Promise<any> => {
+  return await request('/auth/change', {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
+  });
+};

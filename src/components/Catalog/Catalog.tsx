@@ -1,7 +1,5 @@
 import React from 'react';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
-import Breadcrumb from '../Breadcrumb/Breadcrumb';
-import BreadcrumbItem from '../Breadcrumb/BreadcrumbItem';
 import { PaginatedItems } from '../Pagination/Pagination';
 import { product } from '../../utils/constants';
 import { useLocation } from 'react-router-dom';
@@ -17,12 +15,6 @@ const Catalog: React.FC<{
   const location = useLocation().pathname;
   return (
     <>
-      <Breadcrumb currentPlace='Apple Macbook'>
-        <BreadcrumbItem
-          breadcrumbText='Ноутбуки и аксессуары'
-          breadcrumbPath='/categories'
-        />
-      </Breadcrumb>
       <section className='catalog'>
         <div className='catalog__container-big'>
           <h1

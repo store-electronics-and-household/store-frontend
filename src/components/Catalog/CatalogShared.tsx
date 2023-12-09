@@ -29,7 +29,6 @@ const CatalogShared: React.FC<CatalogSharedProps> = ({
   // useEffect(() => {
   //   setcurrentItemsArray(product);
   // }, []);
-  console.log(is4Items);
 
   return (
     <>

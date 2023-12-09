@@ -1,7 +1,6 @@
 import React from 'react';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
-import Breadcrumb from '../Breadcrumb/Breadcrumb';
 import { product, subCategoriesList } from '../../utils/constants';
 import CatalogItem from '../Catalog/CatalogItem';
 //  import { type ProductCardMediumProps } from '../../utils/types';
@@ -28,7 +27,6 @@ interface CategoriesProps {
 const Categories: React.FC<CategoriesProps> = () => {
   return (
     <>
-      <Breadcrumb currentPlace={subCategoriesList.name} />
       <section className='catalog'>
         <div className='catalog__container-big'>
           <h1 className='catalog__title'>{subCategoriesList.name}</h1>

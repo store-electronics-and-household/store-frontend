@@ -1,4 +1,6 @@
-export const mockedCartProducts = [
+import type { ProductInfo } from '../types';
+
+export const mockedCartProducts: ProductInfo[] = [
   {
     id: 1,
     name: 'Apple iPhone 15 Pro Max 512GB',
@@ -7,7 +9,7 @@ export const mockedCartProducts = [
     quantity: 1,
     originPrice: 300000,
     salesPrice: 200000,
-    imgUrl: '',
+    imgUrl: '../../image/item.jpg',
   },
   {
     id: 2,
@@ -15,8 +17,18 @@ export const mockedCartProducts = [
     description: 'Натуральный титан',
     article: 1234980,
     quantity: 2,
-    originPrice: 300000,
-    salesPrice: 200000,
-    imgUrl: '',
+    originPrice: 30000,
+    salesPrice: 20000,
+    imgUrl: '../../image/item.jpg',
+  },
+  {
+    id: 3,
+    name: 'Apple Watch Ultra 2 GPS + Cellular 49mm',
+    description: 'Натуральный титан',
+    article: 1234980,
+    quantity: 2,
+    originPrice: 60000,
+    salesPrice: 20000,
+    imgUrl: '../../image/item.jpg',
   },
 ];
