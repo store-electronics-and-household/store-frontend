@@ -14,7 +14,7 @@ const CategoriesMain: React.FC<Props> = ({ categoriesMain }) => {
       <h2 className='tile__title'>Категории</h2>
       <ul className='tile__list'>
         {categoriesMain
-          .sort((a: { name: string }, b: { name: string }) =>
+          .sort((a, b: { name: string }) =>
             a.name.toLowerCase().localeCompare(b.name.toLowerCase())
           )
           .map((tile) => (

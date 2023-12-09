@@ -2,7 +2,19 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { API_CAT_IMG, API_URL } from '../../utils/constants';
 
-const CategoriesTile: React.FC<{ id: number; name: string }> = (tile) => {
+interface CategoriesTileProps {
+  id: number;
+  name: string;
+  categoryAttributes?: Array<{
+    id: number;
+    priority: number;
+    attributeName: string;
+  }>;
+}
+const CategoriesTile: React.FC<CategoriesTileProps> = (
+  tile,
+  categoryAttributes
+) => {
   const location = useLocation().pathname;
   return (
     <li
@@ -10,7 +22,15 @@ const CategoriesTile: React.FC<{ id: number; name: string }> = (tile) => {
         location === '/main' ? 'tile__item' : 'tile__item tile__item_small'
       }
     >
-      <a className='tile__content' href={`${API_URL}/categories/${tile.id}`}>
+      {/* изменить путь */}
+      <a
+        className='tile__content'
+        href={
+          location === '/main'
+            ? `${API_URL}/categories/${tile.id}`
+            : `${API_URL}/categories/${categoryAttributes.id}`
+        }
+      >
         <span className='tile__category-title'>{tile.name}</span>
         <img
           className={
@@ -18,8 +38,12 @@ const CategoriesTile: React.FC<{ id: number; name: string }> = (tile) => {
               ? 'tile__image'
               : 'tile__image tile__image_small'
           }
-          alt=''
-          src={`${API_CAT_IMG}/${tile.id}.png`}
+          alt={''} /* изменить путь */
+          src={
+            location === '/main'
+              ? `${API_CAT_IMG}/${tile.id}.png`
+              : `${API_CAT_IMG}/${categoryAttributes.id}.png`
+          }
         />
       </a>
     </li>

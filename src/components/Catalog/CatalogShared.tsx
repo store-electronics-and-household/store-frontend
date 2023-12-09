@@ -5,7 +5,7 @@ import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 interface MyTypeCatalogItem {
   id: number;
   name: string;
-  originPrice?: number;
+  originPrice: number;
   salesPrice: number;
   discount?: number;
   url: string;
