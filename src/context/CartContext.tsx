@@ -33,7 +33,7 @@ const CartContext = createContext<CartContextType>({
   totalSumValue: 0,
 });
 
-export function useCartContext(): CartContextType {
+export function useCartContext (): CartContextType {
   const context = useContext(CartContext);
   return context;
 }
@@ -61,7 +61,7 @@ const getTotalSumValue = (cartItems: ProductInfo[]): number =>
     0
   );
 
-export function CartProvider({ children }: CartProviderProps): JSX.Element {
+export function CartProvider ({ children }: CartProviderProps): JSX.Element {
   const [cartQuantity] = useState<number>(0);
   const [cartItems, setCartItems] = useState<ProductInfo[]>(mockedCartProducts);
   const [totalCount, setTotalCount] = useState<number>(
@@ -77,7 +77,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     getTotalDiscountItem(mockedCartProducts)
   );
 
-  function getItemQuantity(id: number): number | undefined {
+  function getItemQuantity (id: number): number | undefined {
     return cartItems.find((item) => item.id === id)?.quantity ?? 0;
   }
 
@@ -92,7 +92,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     }
   };
 
-  function decreaseCartQuantity(id: number): void {
+  function decreaseCartQuantity (id: number): void {
     const foundItemIndex = cartItems.findIndex((item) => item.id === id);
 
     if (foundItemIndex !== -1 && cartItems[foundItemIndex].quantity !== 1) {
@@ -103,7 +103,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
     }
   }
 
-  function removeFromCart(id: number): void {
+  function removeFromCart (id: number): void {
     const updatedArray = cartItems.filter((item) => item.id !== id);
     setCartItems(updatedArray);
   }

@@ -37,8 +37,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
   };
 
   const handleNavLinkClick =
-    () // event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-    : void => {
+    (): void => {
       // event.preventDefault();
       toggleWarningPopup();
     };
