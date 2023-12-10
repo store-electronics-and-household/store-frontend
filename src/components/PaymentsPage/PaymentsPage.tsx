@@ -5,6 +5,7 @@ import PaymentsPageItem from './PaymentsPageItem';
 import { type GoodsListProps } from '../../utils/types';
 import { formatSumm } from '../../utils/formatSumm';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 interface PaymentsPageProps {
   GoodsList: GoodsListProps[];
@@ -22,6 +23,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
   );
 
   const [deliveryPrice, setDeliveryPrice] = React.useState<number>();
+  // const [selectedOption, setSelectedOption] = React.useState('');
 
   useEffect(() => {
     setDeliveryPrice(8500);
@@ -65,7 +67,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
 
   const {
     register: registerForm1,
-    getValues: getValuesForm1,
+    // getValues: getValuesForm1,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     formState: { errors: errorsForm1, isValid: isValidForm1 },
   } = useForm({
@@ -85,16 +87,21 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
     mode: 'onChange',
   });
 
-  const handleDeliveryTypeClick = (
-    e: React.MouseEvent<HTMLButtonElement>
-  ): void => {
-    e.preventDefault();
-    const form1Values = getValuesForm1();
-    const form2Values = getValuesForm2();
-    console.log('Form 1 Values:', form1Values);
-    console.log('Form 2 Values:', form2Values);
+  const handleDeliveryType = (): void => {
+    // e.preventDefault();
+    console.log('hello');
   };
 
+  const handleDeliveryTypeChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    e.preventDefault();
+    console.log('hello');
+  };
+
+  // const form1Values = getValuesForm1();
+  // const form2Values = getValuesForm2();
+  // console.log('Form 1 Values:', form1Values);
+  // console.log('Form 2 Values:', form2Values);
+  // };
   // const handleOutsideFunction = (): void => {
   //   const form2Values = getValuesForm2();
   //   console.log(form2Values);
@@ -113,7 +120,6 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
               action=''
             >
               <p className='payments-page__form-title'>Получатель</p>
-              <div className='payments-page__line'></div>
               <div className='payments-page__input-container'>
                 <label className='payments-page__input-label'>
                   <p className='payments-page__input-title'>
@@ -139,7 +145,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                       <span className='payments-page__input-error'>
                         {(errorsForm1.name as { message: string }).message}
                       </span>
-                    )}
+                  )}
                 </label>
                 <label className='payments-page__input-label'>
                   <p className='payments-page__input-title'>
@@ -168,22 +174,39 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                       <span className='payments-page__input-error'>
                         {(errorsForm1.phone as { message: string }).message}
                       </span>
-                    )}
+                  )}
                 </label>
               </div>
             </form>
+            <div className='payments-page__line'></div>
+            <p className='payments-page__form-title payments-page__form-title_type_address'>
+              Способ получения
+            </p>
+            <Link to={'/delivery'} className='payments-page__subtitle'>
+              Способы и тарифы доставки
+            </Link>
+            <form className='payments-page__title-container'>
+              <input
+                type='radio'
+                name='deliveryOption'
+                checked
+                className='payments-page__delivery-type_type_invisible'
+                onClick={handleDeliveryType}
+                onChange={handleDeliveryTypeChange}
+              />
+              <span className='payments-page__delivery-type_type_visible'></span>
+              <label className='payments-page__delivery-label'>Самовывоз</label>
 
-            <form
-              id='clientAddressForm'
-              name='clientAddressForm'
-              action=''
-              className='payments-page__client-address'
-            >
-              <div className='payments-page__title-container'>
-                <p className='payments-page__form-title payments-page__form-title_type_address'>
-                  Адрес доставки
-                </p>
-                <button
+              <input
+                type='radio'
+                name='deliveryOption'
+                className='payments-page__delivery-type_type_invisible'
+                onClick={handleDeliveryType}
+              />
+              <span className='payments-page__delivery-type_type_visible'></span>
+              <label className='payments-page__delivery-label'>Курьер</label>
+            </form>
+            {/* <button
                   onClick={handleDeliveryTypeClick}
                   className='payments-page__delivery-type'
                 >
@@ -191,10 +214,15 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                 </button>
                 <button className='payments-page__delivery-type'>
                   Самовывоз
-                </button>
-              </div>
-              <div className='payments-page__line'></div>
-              <div className='payments-page__address-container'>
+                </button> */}
+
+            <form
+              id='clientAddressForm'
+              name='clientAddressForm'
+              action=''
+              className='payments-page__client-address'
+            >
+              {/* <div className='payments-page__address-container'>
                 <div className='payments-page__address-input-container'>
                   <label className='payments-page__input-label payments-page__input-label_type_address'>
                     <p className='payments-page__input-title'>
@@ -265,12 +293,14 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                     </label>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </form>
           </div>
           <div className='payments-page__summary-conatiner'>
             <div className='payments-page__summary'>
-              <p className='payments-page__form-title'>Ваш заказ</p>
+              <p className='payments-page__form-title payments-page__form-title_type_summary'>
+                Ваш заказ
+              </p>
               <div className='payments-page__line'></div>
               <div className='payments-page__cart-container'>
                 {GoodsList.map((item) => (
@@ -282,10 +312,6 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                 ))}
               </div>
               <div className='payments-page__summary-data'>
-                <p className='payments-page__summary-row'>
-                  {fullQuantity} {fullQuantity % 2 === 0 ? 'товара' : 'товаров'}{' '}
-                  на сумму
-                </p>
                 <p className='payments-page__summary-row'>
                   {fullQuantity} {fullQuantity % 2 === 0 ? 'товара' : 'товаров'}{' '}
                   на сумму
@@ -353,4 +379,28 @@ export default PaymentsPage;
 
   //   // Ваш код для обработки значений вне формы
   // };
+*/
+
+// <div className='payments-page__line'></div>
+
+/*
+  <input
+                type='radio'
+                name='option'
+                value='option1'
+                // checked
+                className='payments-page__delivery-type_type_invisible'
+                onChange={handleDeliveryTypeChange}
+              />
+              <span className='payments-page__delivery-type_type_visible'></span>
+              <label className='payments-page__delivery-label'>Самовывоз</label>
+              <input
+                type='radio'
+                name='option'
+                value='option2'
+                className='payments-page__delivery-type_type_invisible'
+                onChange={handleDeliveryTypeChange}
+              />
+              <span className='payments-page__delivery-type_type_visible'></span>
+              <label className='payments-page__delivery-label'>Курьер</label>
 */
