@@ -103,7 +103,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
   return (
     <>
       <section className='payments-page'>
-        <h2 className='payments-page__title'>Оформление</h2>
+        <h2 className='payments-page__title'>Оформление </h2>
         <div className='payments-page__container'>
           <div className='payments-page__input-containers'>
             <form
