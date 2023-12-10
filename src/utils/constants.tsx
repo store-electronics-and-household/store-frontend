@@ -422,22 +422,22 @@ export const paymentPageData = [
     // imgUrl: '../../image/good_2.svg',
     discount: 2000,
   },
-  {
-    id: 104,
-    quantity: 2,
-    salesPrice: 10000,
-    imgUrl:
-      'https://images.unsplash.com/photo-1511499271651-073325718d90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHx8',
-    discount: 3000,
-  },
-  {
-    id: 105,
-    quantity: 1,
-    salesPrice: 10000,
-    imgUrl:
-      'https://images.unsplash.com/photo-1573739022854-abceaeb585dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGhvbmUlMjBhY2Nlc3Nvcmllc3xlbnwwfHwwfHx8MA%3D%3D',
-    discount: 500,
-  },
+  // {
+  //   id: 104,
+  //   quantity: 2,
+  //   salesPrice: 10000,
+  //   imgUrl:
+  //     'https://images.unsplash.com/photo-1511499271651-073325718d90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHx8',
+  //   discount: 3000,
+  // },
+  // {
+  //   id: 105,
+  //   quantity: 1,
+  //   salesPrice: 10000,
+  //   imgUrl:
+  //     'https://images.unsplash.com/photo-1573739022854-abceaeb585dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGhvbmUlMjBhY2Nlc3Nvcmllc3xlbnwwfHwwfHx8MA%3D%3D',
+  //   discount: 500,
+  // },
 ];
 
 export const aboutCompanyInfo = [

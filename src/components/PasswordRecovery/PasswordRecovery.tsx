@@ -70,7 +70,6 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
   };
 
   // console.log(isPassValidationEnabled);
-
   const handleClickNextBtn = (): void => {
     setEmailValidationEnabled(true);
     if (!formik.errors.loginRecovery && formik.values.loginRecovery !== '') {
@@ -81,7 +80,6 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
   };
 
   const handleSubmitBtn = (): void => {
-    console.log('WTF?');
     setIsPassValidationEnabled(true);
   };
 

@@ -11,7 +11,7 @@ body {
   background-color: #f5f5f5;
 }
 
-.results__title, .payments-page__summary-final, .payments-page__summary-row, .payments-page__good-numbers, .payments-page__delivery-type, .payments-page__input-title, .payments-page__form-title, .payments-page__title {
+.results__title, .payments-page__summary-final, .payments-page__summary-row, .payments-page__good-numbers, .payments-page__input-title, .payments-page__subtitle, .payments-page__form-title, .payments-page__title {
   margin: 0;
   color: #222;
 }
@@ -742,7 +742,7 @@ body {
 }
 
 .payments-page__title {
-  max-width: 1360px;
+  max-width: 1129px;
   margin: 44px auto 44px auto;
   font-size: 32px;
   font-weight: 500;
@@ -751,20 +751,14 @@ body {
 }
 
 .payments-page__container {
-  width: 1360px;
+  width: 1129px;
   margin: 0 auto 140px;
   display: flex;
 }
 
 .payments-page__input-containers {
-  width: 899px;
-  height: 635px;
-}
-
-.payments-page__client-name {
-  width: 100%;
-  height: 220px;
-  margin-bottom: 24px;
+  width: 667px;
+  height: 582px;
   background-color: #FFF;
   border-radius: 24px;
 }
@@ -777,20 +771,35 @@ body {
 }
 
 .payments-page__title-container {
-  display: flex;
-  justify-content: space-between;
-  padding-right: 40px;
+  padding-left: 40px;
+  margin-top: 16px;
 }
 
 .payments-page__form-title {
   font-size: 24px;
   font-weight: 600;
   text-decoration: none;
+  line-height: 1.25;
   padding: 40px 0 24px 40px;
+}
+
+.payments-page__form-title_type_summary {
+  padding-bottom: 12px;
+}
+
+.payments-page__subtitle {
+  color: #4350D6;
+  line-height: 112.5%;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  padding-left: 40px;
 }
 
 .payments-page__form-title_type_address {
   line-height: 35px;
+  padding-top: 32px;
+  padding-bottom: 12px;
 }
 
 .payments-page__line {
@@ -799,15 +808,14 @@ body {
 }
 
 .payments-page__input-container {
-  display: flex;
-  width: 819px;
-  margin: 24px 40px 0 40px;
+  margin: 0 40px 0 40px;
 }
 
 .payments-page__input-label {
   width: 394px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 32px;
 }
 
 .payments-page__input-title {
@@ -818,7 +826,7 @@ body {
 
 .payments-page__client-data-input {
   width: 100%;
-  height: 40px;
+  height: 48px;
   background-color: #FFF;
   border-radius: 12px;
   border: 1px solid #222;
@@ -835,7 +843,7 @@ body {
 }
 
 .payments-page__input-label:first-of-type {
-  margin-right: 31px;
+  margin-bottom: 16px;
 }
 
 .payments-page__input-error {
@@ -846,27 +854,29 @@ body {
   font-size: 10px;
 }
 
-.payments-page__delivery-type {
-  background: var(--main-white, #FFF);
-  width: 126px;
-  height: 35px;
-  border-radius: 24px;
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  margin: auto 0;
-  border: none;
-  margin: 40px 24px 24px auto;
+.payments-page__delivery-type_type_visible {
+  border: 1px solid #222;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
 }
 
-.payments-page__delivery-type:first-of-type {
-  width: 92px;
+.payments-page__delivery-type_type_visible::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%; /* Радиус скругления для внутреннего круга (маркера) */
+  top: 3px;
+  right: 3px;
 }
 
-.payments-page__delivery-type:last-of-type {
-  width: 126px;
-  margin-right: 0;
-  margin-left: 0;
+/* Стилизация маркера (внутреннего круга) радиокнопки при выбранном состоянии */
+.payments-page__delivery-type_type_invisible:checked + .payments-page__delivery-type_type_visible::before {
+  background-color: #222;
 }
 
 .payments-page__address-container {
@@ -923,10 +933,10 @@ body {
 
 .payments-page__good-photo {
   margin: auto;
-  height: 72px;
-  max-width: 59px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  height: 82px;
+  width: 82px;
+  -o-object-fit: contain;
+     object-fit: contain;
   border-radius: 6px;
 }
 
@@ -951,6 +961,7 @@ body {
   font-size: 20px;
   font-weight: 400;
   text-decoration: none;
+  line-height: 1.2;
 }
 
 .payments-page__summary-row_discount {
@@ -958,8 +969,8 @@ body {
 }
 
 .payments-page__summary-final {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 24px;
+  font-weight: 600;
   text-decoration: none;
   margin: 24px 0 40px;
 }
