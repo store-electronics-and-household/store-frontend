@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import AboutCompany from '../AboutCompany/AboutCompany';
@@ -108,6 +108,140 @@ const App: React.FC = () => {
 
   return (
     <div className='App'>
+      <CartProvider>
+        <ScrollToTop>
+          <Router>
+          <Routes>
+            <Route
+              path='/'
+              element={
+                <>
+                  <Header toggleWarningPopup={toggleWarningPopup} />
+                  <WarningPopup
+                    isOpen={isWarningPopupOpen}
+                    onOpenWarningPopup={toggleWarningPopup}
+                    onOpenAuth={toggleSignInPopup}
+                  />
+                  <SignIn
+                    onOpenSignIn={toggleSignInPopup}
+                    isOpenSignIn={isSignInPopupOpen}
+                    onOpenReg={toggleSignUpPopup}
+                    onOpenRecovery={PasswordRecoveryPopup}
+                    onLogin={handleLogin}
+                  />
+                  <SignUp
+                    onOpenSignUp={toggleSignUpPopup}
+                    isOpenSignUp={isSignUpPopupOpen}
+                    onRegistr={handleRegister}
+                  />
+                  <PasswordRecovery
+                    isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
+                    onOpenRecoveryPopup={PasswordRecoveryPopup}
+                    onChangePassword={handleChangePassword}
+                  />
+                  <Footer />
+                </>
+              }
+            >
+              <Route path='/main' element={<Main />} />
+              <Route
+                path='/about-company'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <AboutCompany />
+                  </>
+                }
+              />
+              <Route
+                path='/faq'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <Faq />
+                  </>
+                }
+              />
+              <Route
+                path='/categories'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <Categories subCategoriesList={[]} product={[]} />
+                  </>
+                }
+              />
+              <Route
+                path='/categories/catalog'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <Catalog />
+                  </>
+                }
+              />
+              <Route
+                path='/categories/catalog/product'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <ProductPage
+                      product={productData}
+                      attributes={productAttributes}
+                    />
+                  </>
+                }
+              />
+              <Route
+                path='/delivery'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <Delivery />
+                  </>
+                }
+              />
+              <Route
+                path='/favourites'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <Favourites />
+                  </>
+                }
+              />
+              <Route
+                path='/cart'
+                element={<Cart onCheckoutClick={setGoodsForPayment} />}
+              />
+              <Route
+                path='/payment'
+                element={<PaymentsPage GoodsList={goodsList ?? []} />}
+              />
+              <Route
+                path='/search-results'
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <SearchResults />
+                  </>
+                }
+              />
+              <Route path='/' element={<Navigate to='/main' replace />} />
+            </Route>
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+          </Router>
+        </ScrollToTop>
+      </CartProvider>
+    </div>
+  );
+};
+
+export default App;
+
+/*
+<div className='App'>
       <CartProvider>
         <ScrollToTop>
           <Routes>
@@ -233,7 +367,4 @@ const App: React.FC = () => {
         </ScrollToTop>
       </CartProvider>
     </div>
-  );
-};
-
-export default App;
+*/
