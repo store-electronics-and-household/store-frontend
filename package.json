@@ -1,7 +1,7 @@
 {
   "name": "store-frontend",
   "version": "0.1.0",
-  "homepage": "https://store-electronics-and-household.github.io/",
+  "homepage": "https://store-electronics-and-household.github.io/store-frontend/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
