@@ -2,7 +2,7 @@
 @import url("./vendor/normalize.css");
 @import url("../src/vendor/fonts.css");
 @import url("https://fonts.cdnfonts.com/css/wix-madefor-text");
-@import url("https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600&display=swap");
 body {
   margin: 0;
   font-family: "Inter", Arial, sans-serif;
@@ -11,7 +11,7 @@ body {
   background-color: #f5f5f5;
 }
 
-.results__title, .payments-page__summary-final, .payments-page__summary-row, .payments-page__good-numbers, .payments-page__input-title, .payments-page__subtitle, .payments-page__form-title, .payments-page__title {
+.product-page__about-description, .product-page__description-btn, .product-page__benefit-text, .product-page__button-basket, .product-page__old-price, .product-page__current-price, .product-page__all-characteristics, .product-page__characteristic-head, .product-page__item-number, .product-page__header, .characteristics-list__item-value, .characteristics-list__item-key, .results__title, .payments-page__summary-final, .payments-page__summary-row, .payments-page__good-numbers, .payments-page__input-title, .payments-page__subtitle, .payments-page__form-title, .payments-page__title, .faq__header, .accordion__answer, .accordion__question, .accordion__container-head, .content__text, .content__head, .about-company__header {
   margin: 0;
   color: #222;
 }
@@ -62,28 +62,31 @@ body {
 .about-company {
   box-sizing: border-box;
   max-width: 1440px;
+  width: 100%;
   margin: 0 auto;
-  padding: 44px 271px 140px 155px;
+  padding: 44px 271px 138px 155px;
 }
 
 .about-company__header {
-  font-size: 68px;
-  font-weight: 700;
-  line-height: 100%;
-  margin-top: 0;
-  margin-bottom: 64px;
+  font-size: 40px;
+  font-weight: 500;
+  text-decoration: none;
+  font-family: "Wix Madefor Display";
+  line-height: 40px;
+  margin-bottom: 44px;
 }
 
 .about-company__feature-list {
   list-style: none;
   padding: 0;
   margin: 0;
+  max-width: 899px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: "goal delivery" "new delivery";
-  -moz-column-gap: 139px;
-       column-gap: 139px;
-  row-gap: 64px;
+  -moz-column-gap: 24px;
+       column-gap: 24px;
+  row-gap: 44px;
 }
 
 .about-company__feature:first-of-type {
@@ -101,31 +104,33 @@ body {
 .content {
   display: grid;
   grid-template-areas: "a b" "a c";
-  -moz-column-gap: 9px;
-       column-gap: 9px;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
   height: -moz-fit-content;
   height: fit-content;
 }
 
 .content__head {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 146%;
-  margin-top: 0;
-  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 400;
+  text-decoration: none;
+  font-family: "Wix Madefor Display";
+  line-height: normal;
+  margin-bottom: 26px;
   grid-area: b;
 }
 
 .content__icon {
   grid-area: a;
-  width: 38px;
-  height: 38px;
+  width: 32px;
+  height: 32px;
 }
 
 .content__text {
-  font-size: 16px;
-  line-height: 1.19;
-  margin-top: 0;
+  font-size: 20px;
+  font-weight: 400;
+  text-decoration: none;
+  line-height: 24px;
   margin-bottom: 16px;
   max-width: 386px;
 }
@@ -147,11 +152,11 @@ body {
 }
 
 .accordion__container-head {
-  margin-top: 0;
-  margin-bottom: 20px;
-  font-family: "Wix Madefor Display";
   font-size: 32px;
   font-weight: 500;
+  text-decoration: none;
+  font-family: "Wix Madefor Display";
+  margin-bottom: 20px;
   line-height: 40px;
 }
 
@@ -162,23 +167,23 @@ body {
 }
 
 .accordion__btn {
+  color: #222;
   width: 100%;
   display: flex;
   justify-content: flex-start;
   border: none;
   background-color: transparent;
   padding: 18px 0 18px;
-  color: #222;
   cursor: pointer;
 }
 
 .accordion__question {
-  text-align: start;
-  margin: 0;
-  margin-right: 10px;
-  font-family: "Wix Madefor Display";
   font-size: 24px;
   font-weight: 600;
+  text-decoration: none;
+  font-family: "Wix Madefor Display";
+  text-align: start;
+  margin-right: 10px;
   line-height: 30px;
 }
 
@@ -191,10 +196,11 @@ body {
 }
 
 .accordion__answer {
-  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+  text-decoration: none;
   padding-bottom: 16px;
   max-width: 720px;
-  font-size: 20px;
   line-height: 24px;
   color: #000;
 }
@@ -206,7 +212,7 @@ body {
 
 .breadcrumbs {
   list-style: none;
-  margin: 24px auto 12px;
+  margin: 10px auto 26px;
   max-width: 1360px;
   width: 100%;
   padding: 0;
@@ -244,16 +250,16 @@ body {
 .faq {
   max-width: 1130px;
   width: 100%;
-  margin: auto;
+  margin: 0 auto;
   padding: 44px 40px 138px;
 }
 
 .faq__header {
-  margin-top: 0;
   margin-bottom: 44px;
-  font-family: "Wix Madefor Display";
   font-size: 40px;
   font-weight: 500;
+  text-decoration: none;
+  font-family: "Wix Madefor Display";
   line-height: 40px;
 }
 
@@ -1645,7 +1651,6 @@ body {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 60px;
 }
 
 .swiper-slide {
@@ -1662,7 +1667,6 @@ body {
   height: 640px;
   vertical-align: bottom;
   box-sizing: content-box;
-  border-radius: 60px;
 }
 
 .swiper-button-next_lightgrey {
@@ -2571,59 +2575,69 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 0;
   padding: 0;
+  margin: 0;
   list-style: none;
-  font-size: 16px;
+  gap: 16px;
 }
 
 .characteristics-list_full {
-  display: block;
-  -moz-column-count: 2;
-       column-count: 2;
+  gap: 24px;
+  max-width: 780px;
 }
 
-.characteristics-list__item:not(:last-of-type) {
-  margin-bottom: 20px;
+.characteristics-list__item_full {
+  display: flex;
+  justify-content: space-between;
 }
 
 .characteristics-list__item-key {
-  color: #B6B6B6;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #272A31;
   margin-right: 12px;
+  line-height: 24px;
 }
 
 .characteristics-list__item-value {
+  font-size: 20px;
+  font-weight: 400;
+  text-decoration: none;
   color: #222;
 }
 
 .product-page {
   max-width: 1360px;
   width: 100%;
-  padding: 44px 0 187px;
-  margin: auto;
+  padding: 44px 0 120px;
+  margin: 0 auto;
   position: relative;
 }
 
 .product-page__head-container {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 32px;
+  margin-bottom: 44px;
 }
 
 .product-page__header {
-  margin: 0;
-  color: #000;
   font-size: 32px;
-  font-weight: 700;
-  line-height: 146%;
+  font-weight: 500;
+  text-decoration: none;
+  font-family: "Wix Madefor Display";
+  color: #000;
+  line-height: 40px;
   max-width: 1130px;
 }
 
 .product-page__item-number {
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
   text-align: right;
   margin-left: 24px;
   color: #000;
-  font-size: 14px;
 }
 
 .product-page__info-container {
@@ -2644,46 +2658,47 @@ body {
 .product-page__characteristics {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 20px;
 }
 
 .product-page__characteristic-head {
-  color: #000;
   font-size: 24px;
-  font-weight: 500;
-  line-height: normal;
-  margin: 0;
+  font-weight: 600;
+  text-decoration: none;
+  color: #000;
+  line-height: 30px;
 }
 
 .product-page__all-characteristics {
-  text-decoration: none;
-  color: #000;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
+  text-decoration: none;
+  color: #2635D6;
   cursor: pointer;
+  margin-top: 12px;
 }
 
 .product-page__price-block {
   padding: 40px 24px;
   height: -moz-fit-content;
   height: fit-content;
-  background-color: #EDEDED;
-  border-radius: 15px;
-  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.07);
+  background-color: #FFF;
+  border-radius: 24px;
   margin-left: auto;
 }
 
 .product-page__current-price {
-  color: #000;
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 700;
+  text-decoration: none;
+  color: #4350D6;
+  line-height: 30px;
   margin-right: 16px;
 }
 
 .product-page__old-price {
-  color: #B6B6B6;
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 500;
   text-decoration: line-through;
 }
 
@@ -2697,13 +2712,15 @@ body {
 }
 
 .product-page__button-basket {
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #FFF;
+  line-height: 18px;
   padding: 16px 20px;
   border-radius: 40px;
   border: none;
   background-color: #222;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
   display: flex;
   min-width: 206px;
   min-height: 56px;
@@ -2714,6 +2731,7 @@ body {
 }
 
 .product-page__button-faivorite {
+  background-color: #FFF;
   border: none;
   padding: 12px 6px;
   cursor: pointer;
@@ -2733,20 +2751,11 @@ body {
   gap: 12px;
 }
 
-.product-page__benefit {
-  display: flex;
-}
-
 .product-page__benefit-text {
+  font-size: 20px;
+  font-weight: 400;
+  text-decoration: none;
   color: #000;
-  font-size: 16px;
-  margin: 0;
-}
-
-.product-page__benefit-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 16px;
 }
 
 .product-page__about-product {
@@ -2760,47 +2769,40 @@ body {
   margin-bottom: 44px;
 }
 
-.product-page__description-title {
-  font-size: 24px;
-  font-weight: 500;
-  margin: 0;
-  padding: 8px;
-  width: 206px;
+.product-page__description-btn {
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 18px;
+  padding: 16px 40px;
+  width: 204px;
   text-align: center;
-  color: #B6B6B6;
-  border-bottom: 1px solid #B6B6B6;
+  color: #000;
+  background-color: transparent;
+  border: 1px solid #AFB4C0;
+  border-radius: 40px;
   cursor: pointer;
 }
 
-.product-page__description-title_active {
-  color: #000;
+.product-page__description-btn_active {
   border-color: #000;
   cursor: default;
 }
 
 .product-page__about {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  max-width: 784px;
 }
 
 .product-page__about-description {
+  font-size: 20px;
+  font-weight: 400;
+  text-decoration: none;
   color: #000;
-  font-size: 16px;
-  margin: 0;
+  line-height: 24px;
 }
 
-.product-page__about-description:nth-of-type(2) {
-  grid-column-start: 1;
-  grid-column-end: 1;
-  grid-row-start: 2;
-  grid-row-end: 3;
-}
-
-.product-page__about-description:nth-of-type(3),
-.product-page__about-description:nth-of-type(4) {
-  grid-row-start: 1;
-  grid-row-end: 3;
+.product-page__about-description:not(:last-of-type) {
+  margin-bottom: 24px;
 }
 
 .popup-product-photo {

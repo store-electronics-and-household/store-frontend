@@ -1,27 +1,30 @@
+@import '../../utils/variables';
+
 .about-company {
     box-sizing: border-box;
     max-width: 1440px;
+    width: 100%;
     margin: 0 auto;
-    padding: 44px 271px 140px 155px;
+    padding: 44px 271px 138px 155px;
 }
 
 .about-company__header {
-  font-size: 68px;
-  font-weight: 700;
-  line-height: 100%;
-  margin-top: 0;
-  margin-bottom: 64px;
+  @include fontStyle($fontSH1, $fontWH1);
+  font-family: $fontFamilyWMD;
+  line-height: 40px;
+  margin-bottom: 44px;
 }
 
 .about-company__feature-list {
   list-style: none;
   padding: 0;
   margin: 0;
+  max-width: 899px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: 'goal delivery' 'new delivery';
-  column-gap: 139px;
-  row-gap: 64px;
+  column-gap: 24px;
+  row-gap: 44px;
 }
 
 .about-company__feature:first-of-type {
@@ -39,29 +42,27 @@
 .content {
   display: grid;
   grid-template-areas: 'a b' 'a c';
-  column-gap: 9px;
+  column-gap: 8px;
   height: fit-content;
 }
 
 .content__head {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 146%;
-  margin-top: 0;
-  margin-bottom: 24px;
+  @include fontStyle($fontSH4, $fontWBody);
+  font-family: $fontFamilyWMD;
+  line-height: normal;
+  margin-bottom: 26px;
   grid-area: b;
 }
 
 .content__icon {
   grid-area: a;
-  width: 38px;
-  height: 38px;
+  width: 32px;
+  height: 32px;
 }
 
 .content__text {
-  font-size: 16px;
-  line-height: 1.19;
-  margin-top: 0;
+  @include fontStyle($fontSBody, $fontWBody);
+  line-height: 24px;
   margin-bottom: 16px;
   max-width: 386px;
 }
