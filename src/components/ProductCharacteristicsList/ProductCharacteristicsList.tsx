@@ -5,20 +5,22 @@ interface ProductCharacteristicListProps {
   productSpecifyName: productAttributesDataType;
   productSpecifyValue: productAttributesDataType;
   keysList: Array<keyof productAttributesDataType>;
-  modifyClass?: string;
+  modifyListClass?: string;
+  modifyItemClass?: string;
 }
 
 const ProductCharacteristicsList: React.FC<ProductCharacteristicListProps> = ({
   productSpecifyName,
   productSpecifyValue,
   keysList,
-  modifyClass,
+  modifyListClass,
+  modifyItemClass
 }: ProductCharacteristicListProps) => {
   return (
-    <ul className={`characteristics-list ${modifyClass}`}>
+    <ul className={`characteristics-list ${modifyListClass}`}>
       {keysList.map((keysListItem, keysListKey) => {
         return (
-          <li className='characteristics-list__item' key={keysListKey}>
+          <li className={`characteristics-list__item ${modifyItemClass}`} key={keysListKey}>
             <span className='characteristics-list__item-key'>
               {productSpecifyName[keysListItem]}
             </span>

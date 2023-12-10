@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../image/logo.svg';
+import logo from '../../image/icons/logo_black.svg';
 import vector from '../../image/vector1.svg';
 
 const NotFound: React.FC = () => {

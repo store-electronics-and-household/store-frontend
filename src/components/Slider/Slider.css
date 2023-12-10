@@ -5,7 +5,6 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 60px;
 }
 
 .swiper-slide {
@@ -22,7 +21,6 @@
   height: 640px;
   vertical-align: bottom;
   box-sizing: content-box;
-  border-radius: 60px;
 }
 
 .swiper-button-next_lightgrey {

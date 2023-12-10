@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import cart from '../../image/icons/busket_icon-white.svg';
-import deliveryIcon from '../../image/icons/delivery_icon.svg';
 import favoriteIcon from '../../image/icons/favourite_icon.svg';
 import ThumbsSlider from '../ThumbsSlider/ThumbsSlider';
 import { productSpecifyName } from '../../utils/constants';
@@ -129,31 +128,10 @@ const ProductPage: React.FC<ProductPageProps> = ({
             </div>
             <ul className='product-page__benefits-list'>
               <li className='product-page__benefit'>
-                <img
-                  className='product-page__benefit-icon'
-                  src={deliveryIcon}
-                  alt='преимущество доставки, быстрая доставка'
-                />
-                <p className='product-page__benefit-text'>
-                  Оригинальная продукция
+                <p className='product-page__benefit-text'>Доставка сегодня – 300 ₽
                 </p>
               </li>
               <li className='product-page__benefit'>
-                <img
-                  className='product-page__benefit-icon'
-                  src={deliveryIcon}
-                  alt='преимущество доставки, быстрая доставка'
-                />
-                <p className='product-page__benefit-text'>
-                  Доставка сегодня – 300 ₽
-                </p>
-              </li>
-              <li className='product-page__benefit'>
-                <img
-                  className='product-page__benefit-icon'
-                  src={deliveryIcon}
-                  alt='преимущество доставки, быстрая доставка'
-                />
                 <p className='product-page__benefit-text'>
                   Самовывоз – бесплатно
                 </p>
@@ -166,22 +144,22 @@ const ProductPage: React.FC<ProductPageProps> = ({
           className='product-page__about-product'
         >
           <div className='product-page__about-header'>
-            <h2
+            <button
               onClick={handleOnAboutProduct}
-              className={`product-page__description-title ${
-                !isActive ? '' : 'product-page__description-title_active'
+              className={`product-page__description-btn ${
+                !isActive ? '' : 'product-page__description-btn_active'
               }`}
             >
               О товаре
-            </h2>
-            <h2
+            </button>
+            <button
               onClick={handleOnAllcharacteristics}
-              className={`product-page__description-title ${
-                isActive ? '' : 'product-page__description-title_active'
+              className={`product-page__description-btn ${
+                isActive ? '' : 'product-page__description-btn_active'
               }`}
             >
               Характеристики
-            </h2>
+            </button>
           </div>
           {isActive ? (
             <div className='product-page__about'>
@@ -200,7 +178,8 @@ const ProductPage: React.FC<ProductPageProps> = ({
               keysList={objectKeys(attributes).filter((n) => {
                 return n;
               })}
-              modifyClass={'characteristics-list_full'}
+              modifyListClass={'characteristics-list_full'}
+              modifyItemClass={'characteristics-list__item_full'}
             />
           )}
         </div>

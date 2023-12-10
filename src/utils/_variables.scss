@@ -1,9 +1,12 @@
 $blackColor: #222;
+$secondaryBlackColor: #000;
 $greyColor: #EDEDED;
 $whiteColof: #FFF;
+$accentBlueColor: #4350D6;
 $fontMargin: 0;
 $fontDOldPrice: line-through;
 $imagesDir: './image/';
+$fontFamilyWMD: 'Wix Madefor Display';
 
 $fontSH1: 40px;
 $fontWH1: 500;
@@ -26,6 +29,9 @@ $fontWPriceSmall: 500;
 $fontSOldPrice: 24px;
 $fontWOldPrice: 600;
 
+$fontSOldPriceMedium: 24px;
+$fontWOldPriceMedium: 500;
+
 $fontSOldPriceSmall: 16px;
 $fontWOldPriceSmall: 600;
 
@@ -46,3 +52,9 @@ $fontWBody: 400;
 
 $fontSCaption: 14px;
 $fontWCaption: 400;
+
+$fontSCaptionRegular: 16px;
+$fontWCaptionRegular: 400;
+
+$fontSCharacteristics: 20px;
+$fontWCharacteristics: 600;

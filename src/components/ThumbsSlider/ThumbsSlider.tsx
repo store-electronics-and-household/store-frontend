@@ -30,7 +30,6 @@ const ThumbsSlider: React.FC<ThumbsSliderProps> = ({
     <>
       <Swiper
         spaceBetween={10}
-        navigation={true}
         // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         thumbs={{
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,

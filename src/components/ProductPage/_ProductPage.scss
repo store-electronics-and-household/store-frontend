@@ -1,31 +1,30 @@
 .product-page {
   max-width: 1360px;
   width: 100%;
-  padding: 44px 0 187px;
-  margin: auto;
+  padding: 44px 0 120px;
+  margin: 0 auto;
   position: relative;
 }
 
 .product-page__head-container {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 32px;
+  margin-bottom: 44px;
 }
 
 .product-page__header {
-  margin: 0;
-  color: #000;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 146%;
+  @include fontStyle($fontSH2, $fontWH2);
+  font-family: $fontFamilyWMD;
+  color: $secondaryBlackColor;
+  line-height: 40px;
   max-width: 1130px;
 }
 
 .product-page__item-number {
+  @include fontStyle($fontSCaptionRegular, $fontWCaptionRegular);
   text-align: right;
   margin-left: 24px;
-  color: #000;
-  font-size: 14px;
+  color: $secondaryBlackColor;
 }
 
 .product-page__info-container {
@@ -46,46 +45,39 @@
 .product-page__characteristics {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 20px;
 }
 
 .product-page__characteristic-head {
-  color: #000;
-  font-size: 24px;
-  font-weight: 500;
-  line-height: normal;
-  margin: 0;
+  @include fontStyle($fontSH3, $fontWH3);
+  color: $secondaryBlackColor;
+  line-height: 30px;
 }
 
 .product-page__all-characteristics {
-  text-decoration: none;
-  color: #000;
-  font-size: 16px;
-  font-weight: 700;
+  @include fontStyle($fontSButton, $fontWButton);
+  color: #2635D6;
   cursor: pointer;
+  margin-top: 12px;
 }
 
 .product-page__price-block {
   padding: 40px 24px;
   height: fit-content;
-  background-color: #EDEDED;
-  border-radius: 15px;
-  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.07);;
+  background-color: $whiteColof;
+  border-radius: 24px;
   margin-left: auto;
 }
 
 .product-page__current-price {
-  color: #000;
-  font-size: 24px;
-  font-weight: 500;
+  @include fontStyle($fontSPrice, $fontWPrice);
+  color: $accentBlueColor;
+  line-height: 30px;
   margin-right: 16px;
 }
 
 .product-page__old-price {
-  color: #B6B6B6;
-  font-size: 20px;
-  font-weight: 700;
-  text-decoration: line-through;
+  @include fontStyle($fontSOldPriceMedium, $fontWOldPriceMedium, $fontDOldPrice);
 }
 
 .product-page__buttons {
@@ -98,13 +90,13 @@
 }
 
 .product-page__button-basket {
+  @include fontStyle($fontSButton, $fontWButton);
+  color: $whiteColof;
+  line-height: 18px;
   padding: 16px 20px;
   border-radius: 40px;
   border: none;
-  background-color: #222;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
+  background-color: $blackColor;
   display: flex;
   min-width: 206px;
   min-height: 56px;
@@ -115,6 +107,7 @@
 }
 
 .product-page__button-faivorite {
+  background-color: $whiteColof;
   border: none;
   padding: 12px 6px;
   cursor: pointer;
@@ -134,20 +127,9 @@
   gap: 12px;
 }
 
-.product-page__benefit {
-  display: flex;
-}
-
 .product-page__benefit-text {
-  color: #000;
-  font-size: 16px;
-  margin: 0;
-}
-
-.product-page__benefit-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 16px;
+  @include fontStyle($fontSBody, $fontWBody);
+  color: $secondaryBlackColor;
 }
 
 .product-page__about-product {
@@ -161,45 +143,34 @@
   margin-bottom: 44px;
 }
 
-.product-page__description-title {
-  font-size: 24px;
-  font-weight: 500;
-  margin: 0;
-  padding: 8px;
-  width: 206px;
+.product-page__description-btn {
+  @include fontStyle($fontSButton, $fontWButton);
+  line-height: 18px;
+  padding: 16px 40px;
+  width: 204px;
   text-align: center;
-  color: #B6B6B6;
-  border-bottom: 1px solid #B6B6B6;
+  color: $secondaryBlackColor;
+  background-color: transparent;
+  border: 1px solid #AFB4C0;
+  border-radius: 40px;
   cursor: pointer;
 }
 
-.product-page__description-title_active {
-  color: #000;
-  border-color: #000;
+.product-page__description-btn_active {
+  border-color: $secondaryBlackColor;
   cursor: default;
 }
 
 .product-page__about {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  max-width: 784px;
 }
 
 .product-page__about-description {
-  color: #000;
-  font-size: 16px;
-  margin: 0;
+  @include fontStyle($fontSBody, $fontWBody);
+  color: $secondaryBlackColor;
+  line-height: 24px;
 }
 
-.product-page__about-description:nth-of-type(2) {
-  grid-column-start: 1;
-  grid-column-end: 1;
-  grid-row-start: 2;
-  grid-row-end: 3;
-}
-
-.product-page__about-description:nth-of-type(3),
-.product-page__about-description:nth-of-type(4) {
-  grid-row-start: 1;
-  grid-row-end: 3;
+.product-page__about-description:not(:last-of-type) {
+  margin-bottom: 24px;
 }

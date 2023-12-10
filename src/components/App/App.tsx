@@ -101,6 +101,7 @@ const App: React.FC = () => {
     { path: '/faq', breadcrumb: 'Часто задаваемые вопросы' },
     { path: '/favourites', breadcrumb: 'Избранное' },
     { path: '/delivery', breadcrumb: 'Доставка' },
+    { path: '/cart', breadcrumb: 'Корзина' },
     { path: '/search-results', breadcrumb: 'Результаты поиска' },
     // { path: '/favourites', breadcrumb: CustomPropsBreadcrumb, props: { someProp: 'Избранное' } },
     // { path: '/categories/:id', breadcrumb: DynamicUserBreadcrumb },
@@ -211,7 +212,12 @@ const App: React.FC = () => {
               />
               <Route
                 path='/cart'
-                element={<Cart onCheckoutClick={setGoodsForPayment} />}
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <Cart onCheckoutClick={setGoodsForPayment} />
+                  </>
+                }
               />
               <Route
                 path='/payment'
