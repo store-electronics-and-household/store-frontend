@@ -41,7 +41,7 @@
     "scss:compile": "sass src/index.scss dist/index.css",
     "prepare": "husky install",
     "commit": "cz",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages-new -d build"
   },
   "eslintConfig": {
     "extends": [
