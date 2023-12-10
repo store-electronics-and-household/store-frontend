@@ -24,10 +24,12 @@ import { useCartContext } from '../../context';
 
 interface HeaderProps {
   toggleWarningPopup: () => void;
+  isLogged: boolean;
 }
 
-const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {
+const Header: FC<HeaderProps> = ({ toggleWarningPopup, isLogged }) => {
   const [isVisible, setIsVisible] = useState(false);
+  // console.log(isLogged);
 
   const context = useSlideContext();
   const { totalCount } = useCartContext();

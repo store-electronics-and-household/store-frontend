@@ -169,7 +169,6 @@ const SignIn: React.FC<SignInProps> = ({
                   {formik.errors.passwordAuth}
                 </span>
               )}
-            {!formik.isValid && formik.submitCount > 0 && (
               <Link
                 className='signin__link'
                 onClick={handleOpenRecoveryPass}
@@ -177,7 +176,6 @@ const SignIn: React.FC<SignInProps> = ({
               >
                 Не помню пароль
               </Link>
-            )}
           </div>
           <div className='signin__buttons'>
             <button
@@ -201,3 +199,15 @@ const SignIn: React.FC<SignInProps> = ({
 };
 
 export default SignIn;
+
+/*
+{!formik.isValid && formik.submitCount > 0 && (
+              <Link
+                className='signin__link'
+                onClick={handleOpenRecoveryPass}
+                to={''}
+              >
+                Не помню пароль
+              </Link>
+            )}
+*/

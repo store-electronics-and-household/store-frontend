@@ -21,6 +21,8 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
   const [isNext, SetIsNext] = React.useState<boolean>(false);
   const [isEmailValidationEnabled, setEmailValidationEnabled] =
     React.useState<boolean>(false);
+  const [isPassValidationEnabled, setIsPassValidationEnabled] =
+    React.useState<boolean>(false);
   const [showRecPassword, setShowRecPassword] = React.useState<boolean>(false);
   const [showConfRecPassword, setShowConfRecPassword] =
     React.useState<boolean>(false);
@@ -54,6 +56,7 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
         SetIsNext(false);
         setEmailValidationEnabled(false);
         formik.resetForm();
+        setIsPassValidationEnabled(false);
       }
     },
   });
@@ -63,15 +66,21 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
     formik.resetForm();
     SetIsNext(false);
     setEmailValidationEnabled(false);
+    setIsPassValidationEnabled(false);
   };
 
+  // console.log(isPassValidationEnabled);
   const handleClickNextBtn = (): void => {
     setEmailValidationEnabled(true);
-    if (!formik.errors.loginRecovery) {
+    if (!formik.errors.loginRecovery && formik.values.loginRecovery !== '') {
       SetIsNext(true);
     } else {
       console.log('');
     }
+  };
+
+  const handleSubmitBtn = (): void => {
+    setIsPassValidationEnabled(true);
   };
 
   return (
@@ -137,12 +146,14 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
                   <label className='pass-recovery__label'>Пароль</label>
                   <input
                     className={`pass-recovery__input ${
+                      isPassValidationEnabled &&
                       formik.touched.passwordRecovery &&
                       formik.submitCount > 0 &&
                       formik.errors.passwordRecovery
                         ? 'pass-recovery__input_invalid'
                         : formik.touched.passwordRecovery &&
-                          formik.submitCount > 0
+                          formik.submitCount > 0 &&
+                          isPassValidationEnabled
                         ? 'pass-recovery__input_valid'
                         : ''
                     }`}
@@ -168,7 +179,8 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
                 </div>
                 {formik.submitCount > 0 &&
                   formik.touched.passwordRecovery &&
-                  formik.errors.passwordRecovery && (
+                  formik.errors.passwordRecovery &&
+                  isPassValidationEnabled && (
                     <span className='pass-recovery__error-text'>
                       {formik.errors.passwordRecovery}
                     </span>
@@ -179,12 +191,14 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
                   </label>
                   <input
                     className={`pass-recovery__input ${
+                      isPassValidationEnabled &&
                       formik.touched.confirmPasswordRecovery &&
                       formik.submitCount > 0 &&
                       formik.errors.confirmPasswordRecovery
                         ? 'pass-recovery__input_invalid'
                         : formik.touched.confirmPasswordRecovery &&
-                          formik.submitCount > 0
+                          formik.submitCount > 0 &&
+                          isPassValidationEnabled
                         ? 'pass-recovery__input_valid'
                         : ''
                     }`}
@@ -210,7 +224,8 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
                 </div>
                 {formik.submitCount > 0 &&
                   formik.touched.confirmPasswordRecovery &&
-                  formik.errors.confirmPasswordRecovery && (
+                  formik.errors.confirmPasswordRecovery &&
+                  isPassValidationEnabled && (
                     <span className='pass-recovery__error-text'>
                       {formik.errors.confirmPasswordRecovery}
                     </span>
@@ -222,6 +237,7 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
                 <button
                   className='pass-recovery__button signin__button_enter'
                   type='submit'
+                  onClick={handleSubmitBtn}
                 >
                   Восстановить
                 </button>

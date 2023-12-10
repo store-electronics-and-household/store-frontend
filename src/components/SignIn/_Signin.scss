@@ -70,6 +70,7 @@
   font-weight: 400;
   line-height: normal;
   flex: 1;
+  box-sizing: border-box;
 }
 
 .signin__label {
@@ -169,14 +170,14 @@
 
 .signin__link {
   text-decoration: none;
-  margin-top: 16px;
-  align-self: center;
+  margin-top: 12px;
+  align-self: baseline;
   color: #0500FF;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 18px;
-  text-align: center;
+  // text-align: center;
 }
 
 .signin__toggle-password-icon {
