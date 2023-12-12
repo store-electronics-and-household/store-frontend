@@ -20,7 +20,7 @@
 
 .characteristics-list__item-key {
   @include fontStyle($fontSCharacteristics, $fontWCharacteristics);
-  color: #272A31;
+  color: $accentBlackColor;
   margin-right: 12px;
   line-height: 24px;
 }

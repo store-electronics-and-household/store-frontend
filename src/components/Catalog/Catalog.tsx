@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import { PaginatedItems } from '../Pagination/Pagination';
-import { product } from '../../utils/constants';
+import { products } from '../../utils/constants';
 import { useLocation } from 'react-router-dom';
 
 const Catalog: React.FC<{
@@ -10,7 +10,6 @@ const Catalog: React.FC<{
   originPrice?: number;
   salesPrice?: number;
   discount?: number;
-  url?: string;
 }> = () => {
   const location = useLocation().pathname;
   return (
@@ -42,14 +41,16 @@ const Catalog: React.FC<{
             <ul className='catalog__rendered-list'>
               <PaginatedItems
                 itemsPerPage={12}
-                items={product.map((product) => (
+                items={products.map((product) => (
                   <ProductCardMedium
                     key={product.id}
                     name={product.name}
                     originPrice={product.originPrice}
                     salesPrice={product.salesPrice}
                     discount={product.discount}
-                    url={''}
+                    imgUrl={product.imgUrl}
+                    isLiked={product.isLiked}
+                    quantityInCart={product.quantityInCart}
                   />
                 ))}
               />

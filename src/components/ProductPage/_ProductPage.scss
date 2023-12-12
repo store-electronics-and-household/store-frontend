@@ -62,6 +62,7 @@
 }
 
 .product-page__price-block {
+  max-width: 322px;
   padding: 40px 24px;
   height: fit-content;
   background-color: $whiteColof;
@@ -87,6 +88,9 @@
   justify-content: space-between;
   margin-top: 16px;
   margin-bottom: 32px;
+  width: 274px;
+  padding-right: 8px;
+  box-sizing: border-box;
 }
 
 .product-page__button-basket {
@@ -98,12 +102,46 @@
   border: none;
   background-color: $blackColor;
   display: flex;
-  min-width: 206px;
+  width: 202px;
   min-height: 56px;
   justify-content: center;
   align-items: center;
   gap: 8px;
   cursor: pointer;
+}
+
+.product__quantity-button {
+  box-sizing: border-box;
+  display: flex;
+  width: 202px;
+  padding: 12px 34px;
+  gap: 30px;
+  border-radius: 40px;
+  border: 1px solid $secondaryBlackColor;
+}
+
+.product__quantity-button-symbol {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.product__quantity-button-symbol_inactive {
+  cursor: default;
+}
+
+.product__quantity-button-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.product__quantity-button-number {
+  @include fontStyle($fontSPrice, $fontWPrice);
+  line-height: 30px;
 }
 
 .product-page__button-faivorite {

@@ -1,0 +1,29 @@
+.card-like-btn__button{
+  // background-image: url('#{$imagesDir}1.svg');
+  // background-repeat: no-repeat;
+  // background-position: center;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.card-like-btn__icon {
+  fill: $blackColor;
+  transition: .3s;
+}
+
+.card-like-btn__icon:hover {
+  fill: $accentBlueColor;
+}
+
+// .card-like-btn__button:hover {
+//   background-image: url('#{$imagesDir}hover-like.svg');
+// }
+
+// .card-like-btn__button_active, .card-like-btn__button_active:hover {
+  // background-image: url('#{$imagesDir}liked.svg');
+// }
