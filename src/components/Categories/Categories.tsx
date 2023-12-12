@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
-import { product, subCategoriesList } from '../../utils/constants';
+import { products, subCategoriesList } from '../../utils/constants';
 import CatalogItem from '../Catalog/CatalogItem';
 //  import { type ProductCardMediumProps } from '../../utils/types';
 
@@ -21,6 +21,9 @@ interface CategoriesProps {
     originPrice: number;
     salesPrice?: number;
     discount?: number;
+    isLiked: boolean;
+    imgUrl: string[];
+    quantityInCart: number;
   }>;
 }
 
@@ -53,14 +56,16 @@ const Categories: React.FC<CategoriesProps> = () => {
               </div>
               <h2 className='catalog__popular'>Популярные товары</h2>
               <div className='catalog__render-popular'>
-                {product.slice(0, 6).map((product) => (
+                {products.slice(0, 6).map((product) => (
                   <ProductCardMedium
                     key={product.id}
                     name={product.name}
                     originPrice={product.originPrice}
                     salesPrice={product.salesPrice}
                     discount={product.discount}
-                    url={product.url}
+                    imgUrl={product.imgUrl}
+                    isLiked={product.isLiked}
+                    quantityInCart={product.quantityInCart}
                   />
                 ))}
               </div>
