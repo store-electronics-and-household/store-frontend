@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { type RefObject } from 'react';
 
-const CatalogMenu: React.FC = () => (
-  <section className='catalog-menu'>
+interface Props {
+  catalogRef: RefObject<HTMLElement>;
+  visible: boolean | null;
+}
+
+const CatalogMenu: React.FC<Props> = ({ visible, catalogRef }) => {
+  let animationClass = '';
+
+  if (visible !== null) {
+    animationClass = `${visible ? 'catalog-menu-animation-entrance' : 'catalog-menu-animation-exit'}`;
+  } else {
+    return null;
+  }
+
+  return (
+  <section ref={catalogRef} className={`catalog-menu ${animationClass}`}>
     <h2 className='catalog-menu__title'>Каталог</h2>
 
     <div className='catalog-menu__grid-wrapper'>
@@ -120,7 +134,7 @@ const CatalogMenu: React.FC = () => (
         </div>
 
     </div>
-  </section>
-);
+  </section>);
+};
 
 export default CatalogMenu;

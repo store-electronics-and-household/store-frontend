@@ -2,23 +2,23 @@
   box-sizing: border-box;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 44px 271px 187px 155px;
+  padding: 64px 271px 187px 155px;
 }
 
 .delivery__header {
   margin: 0;
-  font-family: Helvetica Neue;
-  font-size: 68px;
+  font-family: Wix Madefor Display;
+  font-size: 40px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 100%;
+  font-weight: 500;
+  line-height: 40px;
 }
 
 .delivery__content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 139px;
-  margin-top: 64px;
+  margin-top: 44px;
 }
 
 .delivery__info {
@@ -35,17 +35,17 @@
 }
 
 .delivery__info-icon {
-  width: 39px;
-  height: 39px;
+  width: 32px;
+  height: 32px;
   margin-right: 8px;
 }
 
 .delivery__info-title {
-  font-family: "Helvetica", "Inter", Arial, sans-serif;
-  font-size: 32px;
+  font-family: Wix Madefor Display;
+  font-size: 24px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 146%;
+  font-weight: 400;
+  line-height: normal;
   margin: 0;
   line-break: anywhere;
   width: max-content;
@@ -54,18 +54,18 @@
 .delivery__info-description {
   max-width: 438px;
   font-family: "Inter", Arial, sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 24px;
   margin-top: 24px;
 }
 
 .delivery__info-highlight {
   font-family: "Inter", Arial, sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+  font-weight: 400;
+  line-height: 24px;
   margin-top: 16px;
 }
