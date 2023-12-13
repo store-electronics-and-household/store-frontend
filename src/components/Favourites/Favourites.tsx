@@ -14,7 +14,7 @@ const Favourites: FC = () => {
           <h2 className='favourites__header'>Избранное</h2>
           <div className='favourites__content'>
             {mockedFavouritesProducts.map(
-              ({ name, originPrice, salesPrice, discount, url }) => {
+              ({ name, originPrice, salesPrice, discount, imgUrl, isLiked, quantityInCart }) => {
                 return (
                   <>
                     <ProductCardMedium
@@ -22,7 +22,9 @@ const Favourites: FC = () => {
                       originPrice={originPrice}
                       salesPrice={salesPrice}
                       discount={discount}
-                      url={url}
+                      isLiked={isLiked}
+                      imgUrl={imgUrl}
+                      quantityInCart={quantityInCart}
                     />
                   </>
                 );

@@ -1,25 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface PopupAddToCartProps {
   isOpen: boolean;
-  // overlayClickClose: (e: MouseEvent) => void
   photoUrl: string;
   productName: string;
 }
 
 const PopupAddToCart: React.FC<PopupAddToCartProps> = ({
   isOpen,
-  // overlayClickClose,
   productName,
   photoUrl,
 }: PopupAddToCartProps) => {
+  if (isOpen) {
+    setTimeout(() => {
+      isOpen = !isOpen;
+    }, 2000);
+  }
+
   return (
     <section
       className={`popup-add-to-cart ${
         isOpen ? 'popup-add-to-cart_opened' : ''
       }`}
     >
-      {/* // onMouseDown={overlayClickClose}> */}
       <img
         src={photoUrl}
         alt='фото товара'
@@ -28,7 +32,7 @@ const PopupAddToCart: React.FC<PopupAddToCartProps> = ({
       <div className='popup-add-to-cart__container'>
         <h3 className='popup-add-to-cart__head'>добавлен в корзину</h3>
         <p className='popup-add-to-cart__product-name'>{productName}</p>
-        <button className='popup-add-to-cart__button'>В корзину</button>
+        <Link to='/cart' className='popup-add-to-cart__button'>В корзину</Link>
       </div>
     </section>
   );

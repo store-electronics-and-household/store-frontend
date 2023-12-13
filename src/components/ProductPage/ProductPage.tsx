@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import cart from '../../image/icons/busket_icon-white.svg';
-import favoriteIcon from '../../image/icons/favourite_icon.svg';
 import ThumbsSlider from '../ThumbsSlider/ThumbsSlider';
+import minusIconDefault from '../../image/icons/cart_minus_icon_default.svg';
+import plusIconActive from '../../image/icons/cart_plus_icon_active.svg';
+import minusIconActive from '../../image/icons/cart_minus_icon_active.svg';
 import { productSpecifyName } from '../../utils/constants';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import ProductCharacteristicsList from '../ProductCharacteristicsList/ProductCharacteristicsList';
@@ -11,6 +13,7 @@ import {
 } from '../../utils/types';
 import { formatSumm } from '../../utils/formatSumm';
 import PopupProductPhoto from '../PopupProductPhoto/PopupProductPhoto';
+import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
 
 const objectKeys = (
   object: productAttributesDataType
@@ -27,10 +30,11 @@ const ProductPage: React.FC<ProductPageProps> = ({
   product,
   attributes,
 }: ProductPageProps) => {
-  // const refSetTimeout = useRef<NodeJS.Timeout>();
   const [isActive, setIsActive] = useState(true);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isPopupFullPhotoOpen, setIsPopupFullPhotoOpen] = useState(false);
+  const [count, setCount] = useState(product.quantityInCart);
+  const [isQuantityBtn, setIsQuantityBtn] = useState(false);
 
   const handleOnAllcharacteristics = (): void => {
     setIsActive(false);
@@ -49,10 +53,26 @@ const ProductPage: React.FC<ProductPageProps> = ({
   };
 
   const handleAddToCart = (): void => {
+    setCount((count) => {
+      return count + 1;
+    });
+    setIsQuantityBtn(true);
     setIsPopupOpen(true);
     setTimeout(() => {
       setIsPopupOpen(false);
     }, 2000);
+  };
+
+  const increaseQuantity = (): void => {
+    setCount((count) => {
+      return count + 1;
+    });
+  };
+
+  const decreaseCartQuantity = (): void => {
+    setCount((count) => {
+      return count - 1;
+    });
   };
 
   return (
@@ -94,37 +114,55 @@ const ProductPage: React.FC<ProductPageProps> = ({
           </div>
           <div className='product-page__price-block'>
             <div className='product-page__price'>
-              <span className='product-page__current-price'>
+              <span className={`product-page__current-price ${product.oldPrice !== 0 ? 'product-page__current-price_sale' : ''}`}>
                 {formatSumm(product.price)}
               </span>
-              {product.oldPrice !== 0 ? (
-                <span className='product-page__old-price'>
-                  {product.oldPrice !== 0 &&
-                  typeof product.oldPrice === 'number'
-                    ? formatSumm(product.oldPrice)
-                    : ''}
-                </span>
-              ) : null}
+              {product.oldPrice !== 0
+                ? (<span className='product-page__old-price'>
+                    {product.oldPrice !== 0 && typeof product.oldPrice === 'number'
+                      ? formatSumm(product.oldPrice)
+                      : ''}
+                  </span>)
+                : null
+              }
             </div>
             <div className='product-page__buttons'>
-              <button
-                onClick={handleAddToCart}
-                className='product-page__button-basket'
-              >
-                В корзину
-                <img
-                  className='product-page__cart-icon'
-                  src={cart}
-                  alt='корзина покупок, магазин'
-                />
-              </button>
-              <button className='product-page__button-faivorite'>
-                <img
-                  className='product-page__faivorite-icon'
-                  src={favoriteIcon}
-                  alt='сердце, лайк, кнопка нравится'
-                />
-              </button>
+
+              <div>
+                {!isQuantityBtn
+                  ? <button
+                      onClick={handleAddToCart}
+                      className='product-page__button-basket'
+                    >
+                      В корзину
+                      <img
+                        className='product-page__cart-icon'
+                        src={cart}
+                        alt='корзина покупок, магазин'
+                      />
+                    </button>
+                  : <div className='product__quantity-button'>
+                      <button
+                        className={`product__quantity-button-symbol ${product.quantityInCart === 1 ? 'product__quantity-button-symbol_inactive' : ''}`}
+                        onClick={decreaseCartQuantity}
+                        disabled={count <= 1}
+                      >
+                        { count > 1
+                          ? (<img className='product__quantity-button-icon' src={minusIconActive} alt='Уменьшить количество' />)
+                          : (<img className='product__quantity-button-icon' src={minusIconDefault} alt='Уменьшить количество' />)
+                        }
+                      </button>
+                      <p className='product__quantity-button-number'>{count}</p>
+                      <button
+                        className='product__quantity-button-symbol'
+                        onClick={increaseQuantity}
+                      >
+                        <img className='product__quantity-button-icon' src={plusIconActive} alt='Увеличить количество' />
+                      </button>
+                    </div>
+                }
+              </div>
+              <CardLikeBtn isLikedCard={product.isLiked}/>
             </div>
             <ul className='product-page__benefits-list'>
               <li className='product-page__benefit'>
@@ -161,27 +199,27 @@ const ProductPage: React.FC<ProductPageProps> = ({
               Характеристики
             </button>
           </div>
-          {isActive ? (
-            <div className='product-page__about'>
-              {product.description.map((desc, id) => {
-                return (
-                  <p key={id} className='product-page__about-description'>
-                    {desc}
-                  </p>
-                );
-              })}
-            </div>
-          ) : (
-            <ProductCharacteristicsList
-              productSpecifyName={productSpecifyName}
-              productSpecifyValue={attributes}
-              keysList={objectKeys(attributes).filter((n) => {
-                return n;
-              })}
-              modifyListClass={'characteristics-list_full'}
-              modifyItemClass={'characteristics-list__item_full'}
-            />
-          )}
+          {isActive
+            ? (<div className='product-page__about'>
+                {product.description.map((desc, id) => {
+                  return (
+                    <p key={id} className='product-page__about-description'>
+                      {desc}
+                    </p>
+                  );
+                })}
+              </div>)
+            : (<ProductCharacteristicsList
+                productSpecifyName={productSpecifyName}
+                productSpecifyValue={attributes}
+                keysList={objectKeys(attributes).filter((n) => {
+                  return n;
+                })}
+                modifyListClass={'characteristics-list_full'}
+                modifyItemClass={'characteristics-list__item_full'}
+              />
+              )
+          }
         </div>
         <PopupProductPhoto
           images={product.images}
@@ -194,7 +232,6 @@ const ProductPage: React.FC<ProductPageProps> = ({
           photoUrl={product.images[0]}
         />
       </section>
-      ;
     </>
   );
 };

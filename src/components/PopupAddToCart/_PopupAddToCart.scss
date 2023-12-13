@@ -1,14 +1,13 @@
 .popup-add-to-cart {
   display: flex;
   width: 396px;
-  height: 138px;
-  padding: 20px;
-  border-radius: 25px;
-  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.07);
+  height: 149px;
+  padding: 20px 32px;
+  border-radius: 24px;
   position: absolute;
-  top: -89px;
-  right: 40px;
-  background-color: #fff;
+  top: -80px;
+  right: 0px;
+  background-color: $whiteColof;
   opacity: 0;
   transition: 0.3s;
 }
@@ -18,7 +17,8 @@
 }
 
 .popup-add-to-cart__product-photo {
-  width: 138px;
+  min-width: 138px;
+  max-width: 138px;
   height: 138px;
   object-fit: cover;
   border-radius: 10px;
@@ -31,9 +31,10 @@
 }
 
 .popup-add-to-cart__product-name {
+  @include fontStyle($fontSBody, $fontWBody);
+  color: $secondaryBlackColor;
   margin-top: 12px;
   margin-bottom: 20px;
-  font-size: 16px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -41,17 +42,19 @@
 }
 
 .popup-add-to-cart__head {
-  font-size: 14px;
-  margin: 0;
+  @include fontStyle($fontSCaption, $fontWCaption);
+  line-height: 18px;
+  color: $secondaryBlackColor;
 }
 
 .popup-add-to-cart__button {
-  width: 100%;
-  padding: 16px;
+  // width: 100%;
+  text-align: center;
+  padding: 16px 20px;
   border: none;
   border-radius: 40px;
-  background-color: #222;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
+  background-color: $accentBlackColor;
+  color: $whiteColof;
+  @include fontStyle($fontSOldPriceSmall, $fontWOldPriceSmall);
+  line-height: 18px;
 }
