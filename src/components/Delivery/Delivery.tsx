@@ -42,10 +42,10 @@ const Delivery: React.FC = () => {
                   часов.
                 </span>
                 <span className='delivery__info-highlight'>
-                  Доставка по Петербургу стандартная: 300 ₽
+                  Доставка стандартная: 300 ₽
                 </span>
                 <span className='delivery__info-highlight'>
-                  Экспресс доставка по Петербургу: 500 ₽
+                  Экспресс доставка: 500 ₽
                 </span>
               </div>
             </div>
@@ -57,7 +57,7 @@ const Delivery: React.FC = () => {
               />
               <div className='delivery__info-wrapper'>
                 <h3 className='delivery__info-title'>
-                  Доставка в пункт выдачи
+                  Доставка в пункт СДЭК
                 </h3>
                 <span className='delivery__info-description'>
                   Вы можете забрать свой заказ в одном из пунктов выдачи СДЭК в

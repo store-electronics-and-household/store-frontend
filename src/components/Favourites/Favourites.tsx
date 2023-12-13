@@ -1,5 +1,6 @@
 import React from 'react';
 import type { FC } from 'react';
+
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import { mockedFavouritesProducts } from '../../utils/mocks';
 // import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';

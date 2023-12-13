@@ -5,7 +5,7 @@ export const mockedFavouritesProducts = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    url: '/src/image/test_image.png',
   },
   {
     id: 2,
