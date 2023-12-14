@@ -7,6 +7,7 @@ import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
 import deliveryIcon from '../../image/icons/delivery_icon.svg';
 import busketIcon from '../../image/icons/busket_icon.svg';
 import favouriteIcon from '../../image/icons/favourite_icon.svg';
+// import profileIcon from '../../image/icons/profile_icon.svg';
 
 import headerLogoWhite from '../../image/icons/header_logo_white.svg';
 import headerLogoColor from '../../image/icons/header_logo_color.svg';
@@ -145,6 +146,15 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, isLogged }) => {
               />
               <div className='header__navbar-icon-count'>{totalCount}</div>
             </NavLink>
+            {/* for Auth
+            <NavLink className='header__navbar-link' to='/'>
+              <img
+                className='header__navbar-icon'
+                src={profileIcon}
+                alt="Перейти в раздел 'Профиль'"
+              />
+            </NavLink>
+            */}
           </nav>
           <button
             onClick={() => {
