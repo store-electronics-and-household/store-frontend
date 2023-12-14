@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import cart from '../../image/icons/busket_icon-white.svg';
 import ThumbsSlider from '../ThumbsSlider/ThumbsSlider';
-import minusIconDefault from '../../image/icons/cart_minus_icon_default.svg';
 import plusIconActive from '../../image/icons/cart_plus_icon_active.svg';
 import minusIconActive from '../../image/icons/cart_minus_icon_active.svg';
 import { productSpecifyName } from '../../utils/constants';
@@ -52,15 +51,15 @@ const ProductPage: React.FC<ProductPageProps> = ({
     setIsPopupFullPhotoOpen(false);
   };
 
-  const handleAddToCart = (): void => {
-    setCount((count) => {
-      return count + 1;
-    });
-    setIsQuantityBtn(true);
-    setIsPopupOpen(true);
+  const setTimeOutInfoPopup = (): void => {
     setTimeout(() => {
       setIsPopupOpen(false);
-    }, 2000);
+    }, 5000);
+  };
+
+  const openInfoPopup = (): void => {
+    setIsPopupOpen(true);
+    setTimeOutInfoPopup();
   };
 
   const increaseQuantity = (): void => {
@@ -69,10 +68,21 @@ const ProductPage: React.FC<ProductPageProps> = ({
     });
   };
 
-  const decreaseCartQuantity = (): void => {
+  const decreaseQuantity = (): void => {
     setCount((count) => {
       return count - 1;
     });
+  };
+
+  const handleAddToCart = (): void => {
+    increaseQuantity();
+    openInfoPopup();
+    count === 0 && setIsQuantityBtn(true);
+  };
+
+  const handleDeleteFromCart = (): void => {
+    decreaseQuantity();
+    count === 1 && setIsQuantityBtn(false);
   };
 
   return (
@@ -114,7 +124,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
           </div>
           <div className='product-page__price-block'>
             <div className='product-page__price'>
-              <span className={`product-page__current-price ${product.oldPrice !== 0 ? 'product-page__current-price_sale' : ''}`}>
+              <span className={`product-page__current-price ${product.oldPrice !== undefined ? 'product-page__current-price_sale' : ''}`}>
                 {formatSumm(product.price)}
               </span>
               {product.oldPrice !== 0
@@ -144,18 +154,14 @@ const ProductPage: React.FC<ProductPageProps> = ({
                   : <div className='product__quantity-button'>
                       <button
                         className={`product__quantity-button-symbol ${product.quantityInCart === 1 ? 'product__quantity-button-symbol_inactive' : ''}`}
-                        onClick={decreaseCartQuantity}
-                        disabled={count <= 1}
+                        onClick={handleDeleteFromCart}
                       >
-                        { count > 1
-                          ? (<img className='product__quantity-button-icon' src={minusIconActive} alt='Уменьшить количество' />)
-                          : (<img className='product__quantity-button-icon' src={minusIconDefault} alt='Уменьшить количество' />)
-                        }
+                        <img className='product__quantity-button-icon' src={minusIconActive} alt='Уменьшить количество' />
                       </button>
                       <p className='product__quantity-button-number'>{count}</p>
                       <button
                         className='product__quantity-button-symbol'
-                        onClick={increaseQuantity}
+                        onClick={handleAddToCart}
                       >
                         <img className='product__quantity-button-icon' src={plusIconActive} alt='Увеличить количество' />
                       </button>

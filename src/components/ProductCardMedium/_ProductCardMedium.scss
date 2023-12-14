@@ -107,14 +107,15 @@
 }
 
 .card-medium__counter {
-  color: var(--Black, #222);
   font-size: 20px;
   font-style: normal;
-  font-weight: 600;
+  color: $blackColor;
+  font-weight: 500;
   line-height: normal;
   position: absolute;
   top: 321px;
   left: 244px;
+  transition: color .4s;
 }
 
 .card-medium__buy_big {
@@ -130,6 +131,16 @@
   top: 304px;
   right: 16px;
   background-repeat: no-repeat;
+  transition: .4s;
+}
+
+.card-medium__buy_big:hover {
+  border-color: $accentBlueColor;
+  background-image: url('#{$imagesDir}icons/shopping_blue.svg');
+}
+
+.card-medium__buy_big:hover ~ .card-medium__counter {
+  color: $accentBlueColor;
 }
 
 .card-medium__container-footer {
