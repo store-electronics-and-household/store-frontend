@@ -100,7 +100,7 @@ const ProductCardMedium: React.FC<{
       <PopupAddToCart
         isOpen={isPopupOpen}
         productName={product.name}
-        photoUrl={'../../image/Vector.png'}
+        photoUrl={product.imgUrl[0]}
       />
     </>
   );
