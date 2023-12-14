@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 // import { paymentPageData } from '../../utils/constants';
 import PaymentsPageItem from './PaymentsPageItem';
+import PaymentsPageButton from './PaymentsPageButton';
 import { type GoodsListProps } from '../../utils/types';
 import { formatSumm } from '../../utils/formatSumm';
 import { useForm } from 'react-hook-form';
@@ -21,6 +22,10 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
   const [clientData, setClientData] = React.useState<ClientDataProps | null>(
     null
   );
+
+  const [isFirstPage, setIsFirstPage] = React.useState<boolean>(true);
+  // const [isDeliveryPage, setIsDeliveryPage] = React.useState<boolean>(true);
+  // const [isFinalPage, setIsFinalPage] = React.useState<boolean>(true);
 
   const [deliveryPrice, setDeliveryPrice] = React.useState<number>();
   // const [selectedOption, setSelectedOption] = React.useState('');
@@ -92,7 +97,9 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
     console.log('hello');
   };
 
-  const handleDeliveryTypeChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleDeliveryTypeChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     e.preventDefault();
     console.log('hello');
   };
@@ -106,6 +113,11 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
   //   const form2Values = getValuesForm2();
   //   console.log(form2Values);
   // };
+
+  const choosePickUpPoint = (): void => {
+    console.log('выбивает пункт выдачи');
+    setIsFirstPage(!isFirstPage);
+  };
 
   return (
     <>
@@ -186,116 +198,40 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
               Способы и тарифы доставки
             </Link>
             <form className='payments-page__title-container'>
-              <input
-                type='radio'
-                name='deliveryOption'
-                checked
-                className='payments-page__delivery-type_type_invisible'
-                onClick={handleDeliveryType}
-                onChange={handleDeliveryTypeChange}
-              />
-              <span className='payments-page__delivery-type_type_visible'></span>
-              <label className='payments-page__delivery-label'>Самовывоз</label>
-
-              <input
-                type='radio'
-                name='deliveryOption'
-                className='payments-page__delivery-type_type_invisible'
-                onClick={handleDeliveryType}
-              />
-              <span className='payments-page__delivery-type_type_visible'></span>
-              <label className='payments-page__delivery-label'>Курьер</label>
+              <label className='payments-page__delivery-label'>
+                <input
+                  type='radio'
+                  name='deliveryOption'
+                  checked
+                  className='payments-page__delivery-type_type_invisible'
+                  onClick={handleDeliveryType}
+                  onChange={handleDeliveryTypeChange}
+                />
+                <span className='payments-page__delivery-type_type_visible'></span>
+                Самовывоз
+              </label>
+              <label className='payments-page__delivery-label'>
+                <input
+                  type='radio'
+                  name='deliveryOption'
+                  className='payments-page__delivery-type_type_invisible'
+                  onClick={handleDeliveryType}
+                />
+                <span className='payments-page__delivery-type_type_visible'></span>
+                Курьер
+              </label>
             </form>
-            {/* <button
-                  onClick={handleDeliveryTypeClick}
-                  className='payments-page__delivery-type'
-                >
-                  Курьер
-                </button>
-                <button className='payments-page__delivery-type'>
-                  Самовывоз
-                </button> */}
-
-            <form
-              id='clientAddressForm'
-              name='clientAddressForm'
-              action=''
-              className='payments-page__client-address'
-            >
-              {/* <div className='payments-page__address-container'>
-                <div className='payments-page__address-input-container'>
-                  <label className='payments-page__input-label payments-page__input-label_type_address'>
-                    <p className='payments-page__input-title'>
-                      Город, улица и дом <sup className=''>*</sup>
-                    </p>
-                    <input
-                      {...registerForm2('address', {
-                        required: {
-                          value: true,
-                          message: 'Поле адрес обязательно к заполнению',
-                        },
-                      })}
-                      type='text'
-                      placeholder='Пушкина, 33, Москва'
-                      className='payments-page__client-data-input'
-                      name='address'
-                      required
-                    />
-                    {errorsForm2.address != null &&
-                      typeof errorsForm2.address === 'object' &&
-                      'message' in errorsForm2.address && (
-                        <span className='payments-page__input-error'>
-                          {(errorsForm2.address as { message: string }).message}
-                        </span>
-                      )}
-                  </label>
-
-                  <div className='payments-page__address-box'>
-                    <label className='payments-page__input-label payments-page__input-label_type_address'>
-                      <p className='payments-page__input-title'>Квартира</p>
-                      <input
-                        {...registerForm2('appartment')}
-                        type='text'
-                        placeholder='12'
-                        className='payments-page__client-data-input'
-                        name='appartment'
-                      />
-                    </label>
-                    <label className='payments-page__input-label payments-page__input-label_type_address'>
-                      <p className='payments-page__input-title'>Подъезд</p>
-                      <input
-                        {...registerForm2('gate')}
-                        type='text'
-                        placeholder='1'
-                        className='payments-page__client-data-input'
-                        name='gate'
-                      />
-                    </label>
-                    <label className='payments-page__input-label payments-page__input-label_type_address'>
-                      <p className='payments-page__input-title'>Этаж</p>
-                      <input
-                        {...registerForm2('floor')}
-                        type='text'
-                        placeholder='3'
-                        className='payments-page__client-data-input'
-                        name='floor'
-                      />
-                    </label>
-                    <label className='payments-page__input-label payments-page__input-label_type_address'>
-                      <p className='payments-page__input-title'>Этаж</p>
-                      <input
-                        {...registerForm2('ring')}
-                        type='text'
-                        placeholder='12'
-                        className='payments-page__client-data-input'
-                        name='ring'
-                      />
-                    </label>
-                  </div>
-                </div>
-              </div> */}
-            </form>
+            {isFirstPage && (
+            <PaymentsPageButton
+              marginTop='44px'
+              title='Выбрать пункт самовывоза'
+              onClick={choosePickUpPoint}
+              width='302px'
+              marginBottom='40px'
+            />
+            )}
           </div>
+
           <div className='payments-page__summary-conatiner'>
             <div className='payments-page__summary'>
               <p className='payments-page__form-title payments-page__form-title_type_summary'>
@@ -381,26 +317,96 @@ export default PaymentsPage;
   // };
 */
 
-// <div className='payments-page__line'></div>
+/*
+<form
+              id='clientAddressForm'
+              name='clientAddressForm'
+              action=''
+              className='payments-page__client-address'
+            >
+              {/* <div className='payments-page__address-container'>
+                <div className='payments-page__address-input-container'>
+                  <label className='payments-page__input-label payments-page__input-label_type_address'>
+                    <p className='payments-page__input-title'>
+                      Город, улица и дом <sup className=''>*</sup>
+                    </p>
+                    <input
+                      {...registerForm2('address', {
+                        required: {
+                          value: true,
+                          message: 'Поле адрес обязательно к заполнению',
+                        },
+                      })}
+                      type='text'
+                      placeholder='Пушкина, 33, Москва'
+                      className='payments-page__client-data-input'
+                      name='address'
+                      required
+                    />
+                    {errorsForm2.address != null &&
+                      typeof errorsForm2.address === 'object' &&
+                      'message' in errorsForm2.address && (
+                        <span className='payments-page__input-error'>
+                          {(errorsForm2.address as { message: string }).message}
+                        </span>
+                      )}
+                  </label>
+
+                  <div className='payments-page__address-box'>
+                    <label className='payments-page__input-label payments-page__input-label_type_address'>
+                      <p className='payments-page__input-title'>Квартира</p>
+                      <input
+                        {...registerForm2('appartment')}
+                        type='text'
+                        placeholder='12'
+                        className='payments-page__client-data-input'
+                        name='appartment'
+                      />
+                    </label>
+                    <label className='payments-page__input-label payments-page__input-label_type_address'>
+                      <p className='payments-page__input-title'>Подъезд</p>
+                      <input
+                        {...registerForm2('gate')}
+                        type='text'
+                        placeholder='1'
+                        className='payments-page__client-data-input'
+                        name='gate'
+                      />
+                    </label>
+                    <label className='payments-page__input-label payments-page__input-label_type_address'>
+                      <p className='payments-page__input-title'>Этаж</p>
+                      <input
+                        {...registerForm2('floor')}
+                        type='text'
+                        placeholder='3'
+                        className='payments-page__client-data-input'
+                        name='floor'
+                      />
+                    </label>
+                    <label className='payments-page__input-label payments-page__input-label_type_address'>
+                      <p className='payments-page__input-title'>Этаж</p>
+                      <input
+                        {...registerForm2('ring')}
+                        type='text'
+                        placeholder='12'
+                        className='payments-page__client-data-input'
+                        name='ring'
+                      />
+                    </label>
+                  </div>
+                </div>
+              </div>
+              </form>
+*/
 
 /*
-  <input
-                type='radio'
-                name='option'
-                value='option1'
-                // checked
-                className='payments-page__delivery-type_type_invisible'
-                onChange={handleDeliveryTypeChange}
-              />
-              <span className='payments-page__delivery-type_type_visible'></span>
-              <label className='payments-page__delivery-label'>Самовывоз</label>
-              <input
-                type='radio'
-                name='option'
-                value='option2'
-                className='payments-page__delivery-type_type_invisible'
-                onChange={handleDeliveryTypeChange}
-              />
-              <span className='payments-page__delivery-type_type_visible'></span>
-              <label className='payments-page__delivery-label'>Курьер</label>
+            <button
+                  onClick={handleDeliveryTypeClick}
+                  className='payments-page__delivery-type'
+                >
+                  Курьер
+                </button>
+                <button className='payments-page__delivery-type'>
+                  Самовывоз
+                </button>
 */

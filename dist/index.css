@@ -15,7 +15,7 @@ body {
   background-color: #f5f5f5;
 }
 
-.product-page__about-description, .product-page__description-btn, .product-page__benefit-text, .product__quantity-button-number, .product-page__button-basket, .product-page__old-price, .product-page__current-price, .product-page__all-characteristics, .product-page__characteristic-head, .product-page__item-number, .product-page__header, .characteristics-list__item-value, .characteristics-list__item-key, .popup-add-to-cart__button, .popup-add-to-cart__head, .popup-add-to-cart__product-name, .results__title, .favourites__header, .not-found__btn, .not-found__info, .not-found__subtitle, .not-found__title, .card-medium__oldprice, .card-medium__price, .card-medium__title, .card-medium__sticker, .payments-page__summary-final, .payments-page__summary-row, .payments-page__good-numbers, .payments-page__input-title, .payments-page__subtitle, .payments-page__form-title, .payments-page__title, .faq__header, .accordion__answer, .accordion__question, .accordion__container-head, .content__text, .content__head, .about-company__header {
+.product-page__about-description, .product-page__description-btn, .product-page__benefit-text, .product__quantity-button-number, .product-page__button-basket, .product-page__old-price, .product-page__current-price, .product-page__all-characteristics, .product-page__characteristic-head, .product-page__item-number, .product-page__header, .characteristics-list__item-value, .characteristics-list__item-key, .popup-add-to-cart__button, .popup-add-to-cart__head, .popup-add-to-cart__product-name, .results__title, .favourites__header, .not-found__btn, .not-found__info, .not-found__subtitle, .not-found__title, .card-medium__oldprice, .card-medium__price, .card-medium__title, .card-medium__sticker, .payments-page__pickup-point-button-title, .payments-page__summary-final, .payments-page__summary-row, .payments-page__good-numbers, .payments-page__delivery-label, .payments-page__input-title, .payments-page__subtitle, .payments-page__form-title, .payments-page__title, .faq__header, .accordion__answer, .accordion__question, .accordion__container-head, .content__text, .content__head, .about-company__header {
   margin: 0;
   color: #222;
 }
@@ -761,9 +761,9 @@ body {
 
 .payments-page__input-containers {
   width: 667px;
-  height: 582px;
   background-color: #FFF;
   border-radius: 24px;
+  padding: 0 40px;
 }
 
 .payments-page__client-address {
@@ -773,17 +773,12 @@ body {
   border-radius: 24px;
 }
 
-.payments-page__title-container {
-  padding-left: 40px;
-  margin-top: 16px;
-}
-
 .payments-page__form-title {
   font-size: 24px;
   font-weight: 600;
   text-decoration: none;
   line-height: 1.25;
-  padding: 40px 0 24px 40px;
+  padding: 40px 0 24px;
 }
 
 .payments-page__form-title_type_summary {
@@ -796,7 +791,6 @@ body {
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
-  padding-left: 40px;
 }
 
 .payments-page__form-title_type_address {
@@ -807,11 +801,10 @@ body {
 
 .payments-page__line {
   border-bottom: 1px #B6B6B6 solid;
-  margin: 0 40px;
 }
 
 .payments-page__input-container {
-  margin: 0 40px 0 40px;
+  margin: 0 40px 0 0;
 }
 
 .payments-page__input-label {
@@ -857,6 +850,32 @@ body {
   font-size: 10px;
 }
 
+.payments-page__title-container {
+  display: flex;
+  margin-top: 16px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.payments-page__delivery-label {
+  display: flex;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.payments-page__delivery-label:first-of-type {
+  margin-right: 36px;
+}
+
+.payments-page__delivery-type_type_invisible {
+  position: absolute;
+  left: 50px;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+}
+
 .payments-page__delivery-type_type_visible {
   border: 1px solid #222;
   display: inline-block;
@@ -865,6 +884,8 @@ body {
   border-radius: 50%;
   position: relative;
   cursor: pointer;
+  margin-top: -3px;
+  margin-right: 12px;
 }
 
 .payments-page__delivery-type_type_visible::before {
@@ -975,6 +996,28 @@ body {
   font-weight: 600;
   text-decoration: none;
   margin: 24px 0 40px;
+}
+
+.payments-page__pickup-point-button {
+  display: flex;
+  width: 437px;
+  height: 56px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  border: 1px solid black;
+  background: transparent;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+.payments-page__pickup-point-button-title {
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 18px;
+  color: #FFF;
 }
 
 .card-medium {
@@ -1893,6 +1936,12 @@ body {
   padding-left: 0;
   list-style: none;
   display: flex;
+  transition: 0.2s ease-in-out;
+}
+
+.tile__item:hover {
+  transform: scale(105%);
+  box-shadow: 0 0 40px rgba(128, 128, 128, 0.3);
 }
 
 .tile__item_small {
@@ -1910,16 +1959,11 @@ body {
 }
 
 .tile__image {
-  background-size: cover;
-  width: 100%;
   z-index: 0;
-  aspect-ratio: 274/234;
   max-width: 274px;
   min-height: 204px;
   max-height: 234px;
-  object-fit: cover;
-  z-index: 0;
-  margin: 0 24px 0;
+  margin: 0 auto;
 }
 
 .tile__image_small {
