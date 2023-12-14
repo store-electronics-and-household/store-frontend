@@ -41,7 +41,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, isLogged }) => {
     setIsVisible(!isVisible);
   };
 
-  const catalogRef = useRef<HTMLElement>(null);
+  const catalogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handler = (e: MouseEvent): void => {
