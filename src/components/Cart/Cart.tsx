@@ -11,7 +11,7 @@ import { type GoodsListProps } from '../../utils/types';
 
 import { paymentPageData } from '../../utils/constants';
 interface CartProps {
-  onCheckoutClick: (data: GoodsListProps[]) => void;
+  onCheckoutClick: (data: GoodsListProps[]) => void
 }
 
 const Cart: FC<CartProps> = ({ onCheckoutClick }) => {

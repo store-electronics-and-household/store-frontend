@@ -49,7 +49,7 @@ const App: React.FC = () => {
     setPasswordRecoveryPopupOpen(!isPasswordRecoveryPopupOpen);
   };
 
-  function setGoodsForPayment(data: GoodsListProps[]): void {
+  function setGoodsForPayment (data: GoodsListProps[]): void {
     setGoodsList(data);
   }
 

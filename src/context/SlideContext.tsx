@@ -6,8 +6,8 @@ import React, {
 } from 'react';
 
 interface SlideContextProps {
-  isLight: boolean;
-  setLight: (isLight: boolean) => void;
+  isLight: boolean
+  setLight: (isLight: boolean) => void
 }
 
 const SlideContext = createContext<SlideContextProps | undefined>(undefined);

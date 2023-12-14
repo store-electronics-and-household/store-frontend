@@ -1,3 +1,8 @@
+export const categoryEndpoint = '/categories';
+
+export const baseUrl: string = 'http://45.12.236.120:8080';
+export const imagesUrl = 'http://45.12.236.120/images/categories/';
+
 /* это нужно будет удалить после--------------- */
 export const categoriesList = [
   {

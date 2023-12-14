@@ -5,8 +5,8 @@ import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
 
 interface PasswordRecoveryProps {
-  onOpenRecoveryPopup: () => void;
-  isOpenPasswordRecovery: boolean;
+  onOpenRecoveryPopup: () => void
+  isOpenPasswordRecovery: boolean
 }
 
 const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
@@ -84,7 +84,7 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
                 <span className='pass-recovery__error-text'>
                   {formik.errors.passwordRecovery}
                 </span>
-              )}
+            )}
             <input
               className={`pass-recovery__input ${
                 formik.touched.confirmPasswordRecovery &&
@@ -107,7 +107,7 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
                 <span className='pass-recovery__error-text'>
                   {formik.errors.confirmPasswordRecovery}
                 </span>
-              )}
+            )}
           </div>
           <div className='pass-recovery__buttons'>
             <button

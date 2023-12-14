@@ -20,7 +20,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import { useSlideContext } from '../../context/SlideContext';
 
 interface HeaderProps {
-  toggleWarningPopup: () => void;
+  toggleWarningPopup: () => void
 }
 
 const Header: FC<HeaderProps> = ({ toggleWarningPopup }) => {

@@ -1,0 +1,51 @@
+.discount {
+  margin: 576px auto 140px auto;
+  height: 360px;
+  display: grid;
+  grid-template-columns: minmax(553px, 1fr) minmax(322px, 1fr) minmax(437px, 1fr);
+  grid-template-rows: repeat(2, 168px);
+  grid-template-areas:
+    "one two three"
+    "one two four";
+  gap: 24px;
+  width: 1360px;
+}
+
+.discount__container {
+  height: 100%;
+  border-radius: 20px;
+  transition: .2s ease-in-out;
+}
+
+.discount__container:first-child {
+  width: 553px;
+  grid-area: one;
+}
+
+.discount__container:nth-child(2) {
+  width: 323px;
+  grid-area: two;
+}
+
+.discount__container:nth-child(3) {
+  width: 438px;
+  grid-area: three;
+}
+
+.discount__container:last-child {
+  width: 438px;
+  grid-area: four;
+}
+
+.discount__container:hover {
+  transform: scale(103%);
+}
+
+.discount__container:nth-child(2):hover {
+  transform: scale(104%);
+}
+
+.discount__offer {
+  width: 100%;
+  height: 100%;
+}

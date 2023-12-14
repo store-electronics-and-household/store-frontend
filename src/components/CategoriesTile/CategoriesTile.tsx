@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { memo } from 'react';
 import './CategoriesTile.css';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const CategoriesTile: React.FC<{
+  categoryId: number
   catTitle: string
   catImg: string
   catUrl?: string
-}> = (tile) => {
+}> = ({ categoryId, catTitle, catImg, catUrl }): React.ReactElement => {
   const location = useLocation();
   return (
     <li
@@ -16,20 +17,20 @@ const CategoriesTile: React.FC<{
           : 'tile__item tile__item_small'
       }
     >
-      <a className='tile__content' href={tile.catUrl}>
-        <span className='tile__category-name'>{tile.catTitle}</span>
+      <Link to={`${catUrl}`} className="tile__content" state={{ categoryId }}>
+        <span className="tile__category-name">{catTitle}</span>
         <img
           className={
             location.pathname === '/main'
               ? 'tile__image'
               : 'tile__image tile__image_small'
           }
-          alt=''
-          src={tile.catImg}
+          alt=""
+          src={catImg}
         />
-      </a>
+      </Link>
     </li>
   );
 };
 
-export default CategoriesTile;
+export default memo(CategoriesTile);

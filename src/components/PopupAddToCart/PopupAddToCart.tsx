@@ -1,10 +1,10 @@
 import React from 'react';
 
 interface PopupAddToCartProps {
-  isOpen: boolean;
+  isOpen: boolean
   // overlayClickClose: (e: MouseEvent) => void
-  photoUrl: string;
-  productName: string;
+  photoUrl: string
+  productName: string
 }
 
 const PopupAddToCart: React.FC<PopupAddToCartProps> = ({

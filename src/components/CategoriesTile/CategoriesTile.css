@@ -11,10 +11,17 @@
   line-height: normal;
   color: var(--Black, #222);
   position: relative;
-  background-color: var(--Gray, #ededed);
+  background-color: var(--Gray, #fff);
   height: 316px;
+  width: 322px;
   padding-left: 0;
   list-style: none;
+  transition: .2s ease-in-out;
+}
+
+.tile__item:hover {
+  transform: scale(106%);
+  box-shadow: 0 0 30px rgba(128, 128, 128, 0.4);
 }
 
 .tile__item_small {
@@ -46,8 +53,6 @@
   aspect-ratio: 274/235;
   max-width: 274px;
   height: 206px;
-  object-fit: cover;
-  z-index: 0;
 }
 
 .tile__image_small {
