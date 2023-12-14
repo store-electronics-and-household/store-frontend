@@ -18,9 +18,10 @@
 
 .payments-page__input-containers {
   width: 667px;
-  height: 582px;
+  // height: 582px;
   background-color: #FFF;
   border-radius: 24px;
+  padding: 0 40px;
 }
 
 .payments-page__client-name {
@@ -38,17 +39,10 @@
   border-radius: 24px;
 }
 
-.payments-page__title-container {
-  // display: flex;
-  // justify-content: space-between;
-  padding-left: 40px;
-  margin-top: 16px;
-}
-
 .payments-page__form-title {
   @include fontStyle($fontSH3, $fontWH3);
   line-height: 1.25;
-  padding: 40px 0 24px 40px;
+  padding: 40px 0 24px;
 }
 
 .payments-page__form-title_type_summary {
@@ -59,7 +53,7 @@
   color: #4350D6;
   line-height: 112.5%;
   @include fontStyle($fontSButton, $fontWButton);
-  padding-left: 40px;
+  // padding-left: 40px;
   // padding-bottom: 16px;
 }
 
@@ -71,13 +65,13 @@
 
 .payments-page__line {
   border-bottom: 1px #B6B6B6 solid;
-  margin: 0 40px;
+  // margin: 0 40px;
 }
 
 .payments-page__input-container {
   // display: flex;
   // width: 819px;
-  margin: 0 40px 0 40px;
+  margin: 0 40px 0 0;
 }
 
 .payments-page__input-label {
@@ -121,17 +115,33 @@
   font-size: 10px;
 }
 
+.payments-page__title-container {
+  display: flex;
+  // justify-content: space-between;
+  // padding-left: 40px;
+  margin-top: 16px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
 .payments-page__delivery-label {
+  display: flex;
+  @include fontStyle($fontSButton, $fontWButton);
+}
+
+.payments-page__delivery-label:first-of-type {
+  margin-right: 36px;
 }
 
 .payments-page__delivery-type_type_invisible {
-  // position: absolute;
-  // left: 17px;
-  // width: 1px;
-  // height: 1px;
+  position: absolute;
+  left: 50px;
+  width: 1px;
+  height: 1px;
   // overflow: hidden;
   // clip-path: inset(0 0 0 0);
-  // display: none;
+  // z-index: 1;
+  clip: rect(0 0 0 0);
 }
 
 .payments-page__delivery-type_type_visible {
@@ -143,6 +153,8 @@
   border-radius: 50%;
   position: relative;
   cursor: pointer;
+  margin-top: -3px;
+  margin-right: 12px;
 }
 
 .payments-page__delivery-type_type_visible::before {
@@ -275,4 +287,25 @@
   @include fontStyle($fontSH3, $fontWH3);
   margin: 24px 0 40px;
 }
+
+.payments-page__pickup-point-button {
+  display: flex;
+  width: 437px;
+  height: 56px;
+  // padding: 16px 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  border: 1px solid black;
+  background: transparent;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  }
+
+  .payments-page__pickup-point-button-title {
+    @include fontStyle($fontSButton, $fontWButton);
+    line-height: 18px;
+    color: $whiteColof;
+  }
 
