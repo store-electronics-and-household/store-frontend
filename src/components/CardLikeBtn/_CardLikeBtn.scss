@@ -1,0 +1,25 @@
+.card-like__button{
+  background-image: url('#{$imagesDir}like.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1;
+  transition: background-image .4s;
+}
+
+.card-like__button:hover {
+  background-image: url('#{$imagesDir}like-hover.svg');
+}
+
+.card-like__button_liked {
+  background-image: url('#{$imagesDir}liked.svg');
+}
+
+.card-like__button_liked:hover {
+  background-image: url('#{$imagesDir}liked-hover.svg');
+}

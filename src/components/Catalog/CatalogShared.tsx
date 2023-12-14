@@ -6,9 +6,11 @@ interface MyTypeCatalogItem {
   id: number;
   name: string;
   originPrice: number;
-  salesPrice: number;
+  salesPrice?: number;
   discount?: number;
-  url: string;
+  imgUrl: string[];
+  isLiked: boolean;
+  quantityInCart: number;
 }
 
 interface CatalogSharedProps {
@@ -45,7 +47,9 @@ const CatalogShared: React.FC<CatalogSharedProps> = ({
               originPrice={product.originPrice}
               salesPrice={product.salesPrice}
               discount={product.discount}
-              url={product.url}
+              imgUrl={product.imgUrl}
+              isLiked={product.isLiked}
+              quantityInCart={product.quantityInCart}
             />
           ))}
         </ul>

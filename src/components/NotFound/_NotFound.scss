@@ -1,79 +1,48 @@
 .not-found {
-  margin: auto;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-}
-
-.not-found__logo {
-  width: 159px;
+  padding: 170px 40px 140px;
 }
 
 .not-found__container-text {
-  position: relative;
-  margin-top: 255px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
 }
 
 .not-found__title {
-  color: #000;
-  text-align: center;
-  font-size: 56px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  margin: 80px 0 25px;
-  letter-spacing: 2px;
+  @include fontStyle($fontSNotFound, $fontWNotFound);
+  color: $secondaryGreyColor;
+  font-family: $fontFamilyWMD;
+  line-height: 86px;
+  margin-bottom: 61px;
+}
+
+.not-found__subtitle {
+  @include fontStyle($fontSH3, $fontWH3);
+  line-height: 30px;
+  margin-bottom: 24px;
+  color: $accentBlackColor;
 }
 
 .not-found__info {
-  color: #000;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin: 0 0 65px;
-  letter-spacing: 0.5px;
+  @include fontStyle($fontSBody, $fontWBody);
+  line-height: 24px;
+  color: $accentBlackColor;
+  margin-bottom: 48px;
 }
 
 .not-found__btn {
-  text-decoration: none;
-  color: #fff;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
+  @include fontStyle($fontSButton, $fontWButton);
+  color: $whiteColof;
+  line-height: 24px;
   border-radius: 40px;
-  background: rgba(13%, 13%, 13%, 1);
+  background-color: $accentBlackColor;
   padding: 16px 40px;
-  transition: opacity 0.3s ease;
-  z-index: 2;
+  transition: background-color 0.4s ease;
 }
 
 .not-found__btn:hover {
-  background: rgba(13%, 13%, 13%, 0.8);
-}
-
-.not-found__image-l {
-  transform: rotate(55.461deg);
-  width: 369.637px;
-  height: 225.751px;
-}
-
-.not-found__image-r {
-  transform: rotate(304.539deg) scale(-1,1);
-  width: 377.962px;
-  height: 230.836px;
-}
-
-.not-found__container-image {
-  position: absolute;
-  display: flex;
-  width: 1138px;
-  justify-content: space-between;
-  position: absolute;
-  top: 235px;
+  background-color: $accentBlueColor;
 }

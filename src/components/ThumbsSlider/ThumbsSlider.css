@@ -26,6 +26,7 @@
 
 .swiper-second {
   width: 437px;
+  border-radius: 25px;
 }
 
 .swiper-first {
@@ -38,6 +39,10 @@
   width: 100%;
   height: 100%;
   border-radius: 10px;
+}
+
+.swiper-second .swiper-slide {
+  border-radius: 25px;
 }
 
 .swiper-first__img {

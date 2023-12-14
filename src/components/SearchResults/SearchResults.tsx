@@ -1,6 +1,6 @@
 import React from 'react';
 import CatalogShared from '../Catalog/CatalogShared';
-import { product } from '../../utils/constants';
+import { products } from '../../utils/constants';
 
 const SearchResults: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const SearchResults: React.FC = () => {
       <section className='results'>
         <div className='results__container'>
           <h2 className='results__title'>Результаты поиска</h2>
-          <CatalogShared itemArray={product} itemsToShow={20} is4Items={true} />
+          <CatalogShared itemArray={products} itemsToShow={20} is4Items={true} />
         </div>
       </section>
     </>

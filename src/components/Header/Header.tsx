@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import type { FC } from 'react';
 
 import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
 import deliveryIcon from '../../image/icons/delivery_icon.svg';
 import busketIcon from '../../image/icons/busket_icon.svg';
 import favouriteIcon from '../../image/icons/favourite_icon.svg';
+// import profileIcon from '../../image/icons/profile_icon.svg';
 
 import headerLogoWhite from '../../image/icons/header_logo_white.svg';
 import headerLogoColor from '../../image/icons/header_logo_color.svg';
@@ -28,7 +29,7 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ toggleWarningPopup, isLogged }) => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState<null | boolean>(null);
   // console.log(isLogged);
 
   const context = useSlideContext();
@@ -37,8 +38,24 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, isLogged }) => {
   const { isLight } = context ?? { isLight: false };
 
   const handleClick = (): void => {
-    setIsVisible((current) => !current);
+    setIsVisible(!isVisible);
   };
+
+  const catalogRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent): void => {
+      if (catalogRef?.current && !catalogRef.current.contains(e.target as Node)) {
+        setIsVisible(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handler);
+
+    return () => {
+      document.removeEventListener('mousedown', handler);
+    };
+  });
 
   const handleNavLinkClick =
     (): void => {
@@ -85,12 +102,14 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, isLogged }) => {
             />
           </Link>
 
-          {isVisible && <CatalogMenu />}
+          <CatalogMenu visible={isVisible} catalogRef={catalogRef}/>
 
           <SearchBar />
 
           <button
-            onClick={handleClick}
+            onClick={() => {
+              handleClick();
+            }}
             className={`header__catalog-button ${
               location.pathname === '/main'
                 ? isLight
@@ -127,6 +146,15 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, isLogged }) => {
               />
               <div className='header__navbar-icon-count'>{totalCount}</div>
             </NavLink>
+            {/* for Auth
+            <NavLink className='header__navbar-link' to='/'>
+              <img
+                className='header__navbar-icon'
+                src={profileIcon}
+                alt="Перейти в раздел 'Профиль'"
+              />
+            </NavLink>
+            */}
           </nav>
           <button
             onClick={() => {

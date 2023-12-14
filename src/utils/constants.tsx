@@ -5,13 +5,19 @@ import iconMedal from '../image/icons/medal-original_icon.svg';
 export const API_URL: string = 'http://45.12.236.120:8080';
 export const API_CAT_IMG: string = 'http://45.12.236.120/images/categories';
 
-export const product = [
+export const products = [
   {
     id: 1,
-    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    url: '/product',
+    name: 'Ноутбук Apple MacBook Air 15 M2 8/256Gb Starlight (MQKU3)',
+    originPrice: 155990,
+    salesPrice: 164990,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    quantityInCart: 0,
+    discount: 9,
+    isLiked: true
   },
   // {
   //   id: 1,
@@ -35,8 +41,12 @@ export const product = [
     id: 2,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
     originPrice: 119700,
-    salesPrice: 430800,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 3,
@@ -44,7 +54,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 20,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: true,
+    quantityInCart: 1
   },
   {
     id: 4,
@@ -52,7 +67,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 1
   },
   {
     id: 5,
@@ -60,7 +80,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 1
   },
   {
     id: 6,
@@ -68,7 +93,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: true,
+    quantityInCart: 1
   },
   {
     id: 7,
@@ -76,7 +106,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 1
   },
   {
     id: 8,
@@ -84,7 +119,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 1
   },
   {
     id: 9,
@@ -92,7 +132,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 1
   },
   {
     id: 10,
@@ -100,7 +145,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 11,
@@ -108,7 +158,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 12,
@@ -116,7 +171,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 13,
@@ -124,7 +184,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/categories/catalog/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 14,
@@ -132,7 +197,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/categories/catalog/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 15,
@@ -140,7 +210,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/categories/catalog/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 16,
@@ -148,7 +223,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/categories/catalog/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 17,
@@ -156,7 +236,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/categories/catalog/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 18,
@@ -164,7 +249,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/categories/catalog/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 19,
@@ -172,7 +262,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/categories/catalog/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 20,
@@ -180,7 +275,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/categories/catalog/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 21,
@@ -188,7 +288,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/categories/catalog/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 22,
@@ -196,7 +301,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 23,
@@ -204,7 +314,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 24,
@@ -212,7 +327,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 25,
@@ -220,7 +340,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 26,
@@ -228,7 +353,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 27,
@@ -236,7 +366,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
 ];
 /* ------------------------------------------- */
@@ -335,8 +470,8 @@ export const subCategoriesList = {
 export const productData = {
   id: 68898484,
   name: 'Apple MacBook Air 15" (M2, 8C CPU/10C GPU, 2023), 8 ГБ, 512 ГБ SSD, «сияющая звезда»',
-  price: 119700,
-  oldPrice: 430800,
+  price: 155990,
+  oldPrice: 164990,
   description: [
     'Ноутбук Apple MacBook Air 15 M2 Space Gray (MQKP3) c macOS — модель в алюминиевом корпусе, снабженная восьмиядерным чипом Apple M2. Последний превосходит по скорости вычисления все другие процессоры компании. Высокая производительность позволяет выполнять на ноутбуке ресурсоемкие задачи, в том числе профессиональное редактирование фото и видео в 4К. Чип способствует равномерному распределению задач между ядрами эффективности и производительности. Объем SSD составляет 256 Гб, оперативной памяти — 8 Гб (частота 5600 МГц).',
     'Восьмиядерный графический процессор позволяет запускать игры последних лет на максимальных настройках. 15,3-дюймовый дисплей Retina обладает разрешением 2880х1864 пикселей, что обеспечивает высокую детализацию. Реалистичная цветопередача делает картинку более насыщенной. Яркости в 500 нит хватит для комфортной работы при любых условиях. Встроенная аудиосистема с поддержкой Dolby Atmos состоит из шести динамиков, которые формируют объемный и направленный звук.',
@@ -348,6 +483,8 @@ export const productData = {
     'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
     'https://images.unsplash.com/photo-1611472173362-3f53dbd65d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
   ],
+  quantityInCart: 0,
+  isLiked: true,
 };
 
 export const productSpecifyName = {

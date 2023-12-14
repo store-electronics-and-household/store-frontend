@@ -21,6 +21,8 @@ export interface productDataType {
   oldPrice?: number;
   description: string[];
   images: string[];
+  quantityInCart: number;
+  isLiked: boolean;
 }
 
 export interface productAttributesDataType {

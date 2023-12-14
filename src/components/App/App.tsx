@@ -24,7 +24,7 @@ import { type GoodsListProps } from '../../utils/types';
 
 import { CartProvider } from '../../context/CartContext';
 import { productData, productAttributes } from '../../utils/constants';
-import { authorize, register, changePassword } from '../../utils/api/user-api';
+import { authorize, register, changePassword, getFavouritesList } from '../../utils/api/user-api';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 
 const App: React.FC = () => {
@@ -92,6 +92,16 @@ const App: React.FC = () => {
       });
   };
 
+  const getFavouriteList = (): void => {
+    getFavouritesList()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  getFavouriteList();
   // const CustomPropsBreadcrumb = ({ someProp }: { someProp: string }): JSX.Element => <span>{someProp}</span>;
   // const DynamicUserBreadcrumb = ({ match }) => (
   //   <span>{userNamesById[match.params.userId]}</span>
@@ -104,6 +114,7 @@ const App: React.FC = () => {
     { path: '/delivery', breadcrumb: 'Доставка' },
     { path: '/cart', breadcrumb: 'Корзина' },
     { path: '/search-results', breadcrumb: 'Результаты поиска' },
+    { path: 'categories/catalog/product', breadcrumb: productData.name }
     // { path: '/favourites', breadcrumb: CustomPropsBreadcrumb, props: { someProp: 'Избранное' } },
     // { path: '/categories/:id', breadcrumb: DynamicUserBreadcrumb },
   ];
@@ -237,8 +248,8 @@ const App: React.FC = () => {
                 }
               />
               <Route path='/' element={<Navigate to='/main' replace />} />
+              <Route path='*' element={<NotFound />} />
             </Route>
-            <Route path='*' element={<NotFound />} />
           </Routes>
         </ScrollToTop>
       </CartProvider>
