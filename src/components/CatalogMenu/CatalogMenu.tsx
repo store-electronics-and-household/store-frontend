@@ -1,21 +1,25 @@
 import React, { type RefObject } from 'react';
 
 interface Props {
-  catalogRef: RefObject<HTMLElement>;
+  catalogRef: RefObject<HTMLDivElement>;
   visible: boolean | null;
 }
 
 const CatalogMenu: React.FC<Props> = ({ visible, catalogRef }) => {
   let animationClass = '';
+  let overlayClass = '';
 
   if (visible !== null) {
     animationClass = `${visible ? 'catalog-menu-animation-entrance' : 'catalog-menu-animation-exit'}`;
+    overlayClass = `${visible ? 'catalog-menu__overlay' : 'catalog-menu__overlay-disactive'}`;
   } else {
     return null;
   }
 
   return (
-  <section ref={catalogRef} className={`catalog-menu ${animationClass}`}>
+    <>
+    <div className={`catalog-menu__overlay ${overlayClass}`} ref={catalogRef}></div>
+    <section className={`catalog-menu ${animationClass}`} ref={catalogRef}>
     <h2 className='catalog-menu__title'>Каталог</h2>
 
     <div className='catalog-menu__grid-wrapper'>
@@ -132,9 +136,10 @@ const CatalogMenu: React.FC<Props> = ({ visible, catalogRef }) => {
             </div>
           </a>
         </div>
-
     </div>
-  </section>);
+  </section>
+  </>
+  );
 };
 
 export default CatalogMenu;
