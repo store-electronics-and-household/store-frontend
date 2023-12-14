@@ -6,6 +6,12 @@
   padding-left: 0;
   list-style: none;
   display: flex;
+  transition: .2s ease-in-out;
+}
+
+.tile__item:hover {
+  transform: scale(105%);
+  box-shadow: 0 0 40px rgba(128, 128, 128, 0.3);
 }
 
 .tile__item_small {
@@ -23,16 +29,11 @@
 }
 
 .tile__image {
-  background-size: cover;
-  width: 100%;
   z-index: 0;
-  aspect-ratio: 274/234;
   max-width: 274px;
   min-height: 204px;
   max-height: 234px;
-  object-fit: cover;
-  z-index: 0;
-  margin: 0 24px 0;
+  margin: 0 auto;
 }
 
 .tile__image_small {
@@ -49,7 +50,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color:  #222;
+  color: #222;
   text-align: center;
 }
 

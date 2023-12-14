@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
   }>;
 }
 
-const CategoriesMain: React.FC<Props> = ({ categoriesMain }) => {
+const CategoriesMain: React.FC<Props> = ({ categoriesMain }): React.ReactElement => {
   return (
     <section className='tile'>
       <h2 className='tile__title'>Категории</h2>
@@ -25,4 +25,4 @@ const CategoriesMain: React.FC<Props> = ({ categoriesMain }) => {
   );
 };
 
-export default CategoriesMain;
+export default memo(CategoriesMain);
