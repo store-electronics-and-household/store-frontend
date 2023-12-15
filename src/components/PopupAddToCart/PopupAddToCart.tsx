@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 interface PopupAddToCartProps {
@@ -12,12 +12,6 @@ const PopupAddToCart: React.FC<PopupAddToCartProps> = ({
   productName,
   photoUrl,
 }: PopupAddToCartProps) => {
-  if (isOpen) {
-    setTimeout(() => {
-      isOpen = !isOpen;
-    }, 2000);
-  }
-
   return (
     <section
       className={`popup-add-to-cart ${
@@ -38,4 +32,4 @@ const PopupAddToCart: React.FC<PopupAddToCartProps> = ({
   );
 };
 
-export default PopupAddToCart;
+export default memo(PopupAddToCart);
