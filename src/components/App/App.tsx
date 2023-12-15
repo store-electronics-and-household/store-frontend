@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import AboutCompany from '../AboutCompany/AboutCompany';
@@ -20,13 +20,12 @@ import PasswordRecovery from '../PasswordRecovery/PasswordRecovery';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import SearchResults from '../SearchResults/SearchResults';
 // import { paymentPageData } from '../../utils/constants';
-import type { ProductDataType, GoodsListProps } from '../../utils/types';
+import type { GoodsListProps } from '../../utils/types';
 
 import { CartProvider } from '../../context/CartContext';
 import { productData, productAttributes } from '../../utils/constants';
-import { authorize, register, changePassword } from '../../utils/api/user-api';
+import { changePassword } from '../../utils/api/user-api';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
-import { getFavouritesList } from '../../utils/api/product-api';
 
 const App: React.FC = () => {
   const [isLogged, setIsLogged] = useState<boolean>(false);
@@ -38,7 +37,6 @@ const App: React.FC = () => {
     useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [goodsList, setGoodsList] = React.useState<GoodsListProps[]>();
-  const [favouritesList, setFavouritesList] = React.useState<ProductDataType[]>();
   const toggleWarningPopup = (): void => {
     setWarningPopupOpen(!isWarningPopupOpen);
   };
@@ -59,31 +57,6 @@ const App: React.FC = () => {
     setGoodsList(data);
   };
 
-  const navigate = useNavigate();
-
-  const handleRegister = (email: string, password: string): void => {
-    register(email, password)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const handleLogin = (email: string, password: string): void => {
-    authorize(email, password)
-      .then((data) => {
-        localStorage.setItem('token', data.token);
-        // console.log(data);
-        setIsLogged(true);
-        navigate('/', { replace: true });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const handleChangePassword = (email: string, password: string): void => {
     changePassword(email, password)
       .then((data) => {
@@ -93,20 +66,6 @@ const App: React.FC = () => {
         console.log(error);
       });
   };
-
-  const getFavouriteList = (): void => {
-    getFavouritesList()
-      .then((res) => {
-        console.log(res);
-        setFavouritesList(res);
-        localStorage.setItem('favouritesList', JSON.stringify(res));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  getFavouriteList();
-  console.log(favouritesList);
 
   // const CustomPropsBreadcrumb = ({ someProp }: { someProp: string }): JSX.Element => <span>{someProp}</span>;
   // const DynamicUserBreadcrumb = ({ match }) => (
@@ -137,6 +96,7 @@ const App: React.FC = () => {
                 <>
                   <Header
                     toggleWarningPopup={toggleWarningPopup}
+                    onOpenAuth={toggleSignInPopup}
                     isLogged={isLogged}
                   />
                   <WarningPopup
@@ -149,29 +109,29 @@ const App: React.FC = () => {
                     isOpenSignIn={isSignInPopupOpen}
                     onOpenReg={toggleSignUpPopup}
                     onOpenRecovery={PasswordRecoveryPopup}
-                    onLogin={handleLogin}
+                    setIsLogged={setIsLogged}
                   />
                   <SignUp
                     onOpenSignUp={toggleSignUpPopup}
                     isOpenSignUp={isSignUpPopupOpen}
-                    onRegistr={handleRegister}
+                    setIsLogged={setIsLogged}
                   />
                   <PasswordRecovery
                     isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
                     onOpenRecoveryPopup={PasswordRecoveryPopup}
                     onChangePassword={handleChangePassword}
                   />
-                  <Footer />
+                  <Footer/>
                 </>
               }
             >
-              <Route path='/main' element={<Main />} />
+              <Route path='/main' element={<Main/>}/>
               <Route
                 path='/about-company'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <AboutCompany />
+                    <Breadcrumbs crumbs={crumbs}/>
+                    <AboutCompany/>
                   </>
                 }
               />
@@ -179,8 +139,8 @@ const App: React.FC = () => {
                 path='/faq'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Faq />
+                    <Breadcrumbs crumbs={crumbs}/>
+                    <Faq/>
                   </>
                 }
               />
@@ -188,8 +148,8 @@ const App: React.FC = () => {
                 path='/categories'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Categories subCategoriesList={[]} product={[]} />
+                    <Breadcrumbs crumbs={crumbs}/>
+                    <Categories subCategoriesList={[]} product={[]}/>
                   </>
                 }
               />
@@ -197,8 +157,8 @@ const App: React.FC = () => {
                 path='/categories/catalog'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Catalog />
+                    <Breadcrumbs crumbs={crumbs}/>
+                    <Catalog/>
                   </>
                 }
               />
@@ -206,7 +166,7 @@ const App: React.FC = () => {
                 path='/categories/catalog/product'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
+                    <Breadcrumbs crumbs={crumbs}/>
                     <ProductPage
                       product={productData}
                       attributes={productAttributes}
@@ -218,8 +178,8 @@ const App: React.FC = () => {
                 path='/delivery'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Delivery />
+                    <Breadcrumbs crumbs={crumbs}/>
+                    <Delivery/>
                   </>
                 }
               />
@@ -227,8 +187,8 @@ const App: React.FC = () => {
                 path='/favourites'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Favourites />
+                    <Breadcrumbs crumbs={crumbs}/>
+                    <Favourites/>
                   </>
                 }
               />
@@ -236,8 +196,8 @@ const App: React.FC = () => {
                 path='/cart'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Cart onCheckoutClick={setGoodsForPayment} />
+                    <Breadcrumbs crumbs={crumbs}/>
+                    <Cart onCheckoutClick={setGoodsForPayment}/>
                   </>
                 }
               />
@@ -254,13 +214,13 @@ const App: React.FC = () => {
                 path='/search-results'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <SearchResults />
+                    <Breadcrumbs crumbs={crumbs}/>
+                    <SearchResults/>
                   </>
                 }
               />
-              <Route path='/' element={<Navigate to='/main' replace />} />
-              <Route path='*' element={<NotFound />} />
+              <Route path='/' element={<Navigate to='/main' replace/>}/>
+              <Route path='*' element={<NotFound/>}/>
             </Route>
           </Routes>
         </ScrollToTop>

@@ -54,7 +54,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
   const setTimeOutInfoPopup = (): void => {
     setTimeout(() => {
       setIsPopupOpen(false);
-    }, 5000);
+    }, 3000);
   };
 
   const openInfoPopup = (): void => {
@@ -76,7 +76,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
 
   const handleAddToCart = (): void => {
     increaseQuantity();
-    openInfoPopup();
+    count === 0 && openInfoPopup();
     count === 0 && setIsQuantityBtn(true);
   };
 

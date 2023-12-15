@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 interface PopupAddToCartProps {
@@ -32,4 +32,4 @@ const PopupAddToCart: React.FC<PopupAddToCartProps> = ({
   );
 };
 
-export default PopupAddToCart;
+export default memo(PopupAddToCart);

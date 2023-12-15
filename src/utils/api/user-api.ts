@@ -40,7 +40,6 @@ export const authorize = async (
   email: string,
   password: string
 ): Promise<any> => {
-  // const base64Credentials = btoa(`${email}:${password}`);
   return await request('/auth/login', {
     method: 'POST',
     headers: {
