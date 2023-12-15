@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import AboutCompany from '../AboutCompany/AboutCompany';
@@ -24,7 +24,7 @@ import { type GoodsListProps } from '../../utils/types';
 
 import { CartProvider } from '../../context/CartContext';
 import { productAttributes, productData } from '../../utils/constants';
-import { authorize, changePassword, getFavouritesList, register } from '../../utils/api/user-api';
+import { changePassword } from '../../utils/api/user-api';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 
 const App: React.FC = () => {
@@ -57,32 +57,6 @@ const App: React.FC = () => {
     setGoodsList(data);
   };
 
-  const navigate = useNavigate();
-
-  const handleRegister = (email: string, password: string): void => {
-    register(email, password)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  // const handleLogin = async (email: string, password: string): Promise<void> => {
-  //   await authorize(email, password)
-  //     .then((data) => {
-  //       localStorage.setItem('token', data.token);
-  //       setIsLogged(true);
-  //       navigate('/', { replace: true });
-  //       return Promise.resolve(true);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       return Promise.reject(error);
-  //     })
-  // };
-
   const handleChangePassword = (email: string, password: string): void => {
     changePassword(email, password)
       .then((data) => {
@@ -93,16 +67,18 @@ const App: React.FC = () => {
       });
   };
 
-  const getFavouriteList = (): void => {
-    getFavouritesList()
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  getFavouriteList();
+  // const getFavouriteList = (): void => {
+  //   getFavouritesList()
+  //     .then((res) => {
+  //       console.log(res);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+  // getFavouriteList();
+
   // const CustomPropsBreadcrumb = ({ someProp }: { someProp: string }): JSX.Element => <span>{someProp}</span>;
   // const DynamicUserBreadcrumb = ({ match }) => (
   //   <span>{userNamesById[match.params.userId]}</span>
@@ -144,13 +120,12 @@ const App: React.FC = () => {
                     isOpenSignIn={isSignInPopupOpen}
                     onOpenReg={toggleSignUpPopup}
                     onOpenRecovery={PasswordRecoveryPopup}
-                    // onLogin={handleLogin}
                     setIsLogged={setIsLogged}
                   />
                   <SignUp
                     onOpenSignUp={toggleSignUpPopup}
                     isOpenSignUp={isSignUpPopupOpen}
-                    onRegistr={handleRegister}
+                    setIsLogged={setIsLogged}
                   />
                   <PasswordRecovery
                     isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
