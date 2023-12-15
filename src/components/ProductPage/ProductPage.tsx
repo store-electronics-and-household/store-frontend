@@ -7,22 +7,22 @@ import { productSpecifyName } from '../../utils/constants';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import ProductCharacteristicsList from '../ProductCharacteristicsList/ProductCharacteristicsList';
 import {
-  type productDataType,
-  type productAttributesDataType,
+  type ProductDataType,
+  type ProductAttributesDataType,
 } from '../../utils/types';
 import { formatSumm } from '../../utils/formatSumm';
 import PopupProductPhoto from '../PopupProductPhoto/PopupProductPhoto';
 import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
 
 const objectKeys = (
-  object: productAttributesDataType
-): Array<keyof productAttributesDataType> => {
-  return Object.keys(object) as Array<keyof productAttributesDataType>;
+  object: ProductAttributesDataType
+): Array<keyof ProductAttributesDataType> => {
+  return Object.keys(object) as Array<keyof ProductAttributesDataType>;
 };
 
 interface ProductPageProps {
-  product: productDataType;
-  attributes: productAttributesDataType;
+  product: ProductDataType;
+  attributes: ProductAttributesDataType;
 }
 
 const ProductPage: React.FC<ProductPageProps> = ({

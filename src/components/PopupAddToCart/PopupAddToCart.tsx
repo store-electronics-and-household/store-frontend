@@ -12,12 +12,6 @@ const PopupAddToCart: React.FC<PopupAddToCartProps> = ({
   productName,
   photoUrl,
 }: PopupAddToCartProps) => {
-  if (isOpen) {
-    setTimeout(() => {
-      isOpen = !isOpen;
-    }, 2000);
-  }
-
   return (
     <section
       className={`popup-add-to-cart ${

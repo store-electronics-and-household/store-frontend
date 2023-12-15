@@ -20,12 +20,13 @@ import PasswordRecovery from '../PasswordRecovery/PasswordRecovery';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import SearchResults from '../SearchResults/SearchResults';
 // import { paymentPageData } from '../../utils/constants';
-import { type GoodsListProps } from '../../utils/types';
+import type { ProductDataType, GoodsListProps } from '../../utils/types';
 
 import { CartProvider } from '../../context/CartContext';
 import { productData, productAttributes } from '../../utils/constants';
-import { authorize, register, changePassword, getFavouritesList } from '../../utils/api/user-api';
+import { authorize, register, changePassword } from '../../utils/api/user-api';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
+import { getFavouritesList } from '../../utils/api/product-api';
 
 const App: React.FC = () => {
   const [isLogged, setIsLogged] = useState<boolean>(false);
@@ -37,6 +38,7 @@ const App: React.FC = () => {
     useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [goodsList, setGoodsList] = React.useState<GoodsListProps[]>();
+  const [favouritesList, setFavouritesList] = React.useState<ProductDataType[]>();
   const toggleWarningPopup = (): void => {
     setWarningPopupOpen(!isWarningPopupOpen);
   };
@@ -96,12 +98,16 @@ const App: React.FC = () => {
     getFavouritesList()
       .then((res) => {
         console.log(res);
+        setFavouritesList(res);
+        localStorage.setItem('favouritesList', JSON.stringify(res));
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
       });
   };
   getFavouriteList();
+  console.log(favouritesList);
+
   // const CustomPropsBreadcrumb = ({ someProp }: { someProp: string }): JSX.Element => <span>{someProp}</span>;
   // const DynamicUserBreadcrumb = ({ match }) => (
   //   <span>{userNamesById[match.params.userId]}</span>
@@ -114,7 +120,8 @@ const App: React.FC = () => {
     { path: '/delivery', breadcrumb: 'Доставка' },
     { path: '/cart', breadcrumb: 'Корзина' },
     { path: '/search-results', breadcrumb: 'Результаты поиска' },
-    { path: 'categories/catalog/product', breadcrumb: productData.name }
+    { path: 'categories/catalog/product', breadcrumb: productData.name },
+    { path: '/payment', breadcrumb: 'Корзина' },
     // { path: '/favourites', breadcrumb: CustomPropsBreadcrumb, props: { someProp: 'Избранное' } },
     // { path: '/categories/:id', breadcrumb: DynamicUserBreadcrumb },
   ];
@@ -236,7 +243,12 @@ const App: React.FC = () => {
               />
               <Route
                 path='/payment'
-                element={<PaymentsPage GoodsList={goodsList ?? []} />}
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <PaymentsPage GoodsList={goodsList ?? []} />
+                  </>
+                }
               />
               <Route
                 path='/search-results'
