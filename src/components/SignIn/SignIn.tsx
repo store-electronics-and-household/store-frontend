@@ -1,19 +1,19 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
-// import './Signin.css';
 import OPENEDEYE from '../../image/icons/open-eye.svg';
 import CLOSEDEYE from '../../image/icons/eye-closed.svg';
+import { authorize } from '../../utils/api/user-api';
 
 interface SignInProps {
   onOpenSignIn: () => void;
   isOpenSignIn: boolean;
   onOpenReg: () => void;
   onOpenRecovery: () => void;
-  onLogin: (email: string, password: string) => void;
+  setIsLogged: (arg: boolean) => void;
 }
 
 const SignIn: React.FC<SignInProps> = ({
@@ -21,9 +21,11 @@ const SignIn: React.FC<SignInProps> = ({
   isOpenSignIn,
   onOpenReg,
   onOpenRecovery,
-  onLogin,
+  setIsLogged,
 }) => {
   const [showPassword, setShowPassword] = React.useState<boolean>(false);
+  const [isAuthError, setIsAuthError] = React.useState<boolean>(false);
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       enableReinitialize: true,
@@ -44,13 +46,27 @@ const SignIn: React.FC<SignInProps> = ({
         .required('Введите Ваш пароль'),
     }),
     onSubmit: ({ loginAuth, passwordAuth }) => {
+      console.log(formik.isValid);
       if (formik.isValid) {
-        onLogin(loginAuth, passwordAuth);
-        onOpenSignIn();
-        formik.resetForm();
+        handleLogin(loginAuth, passwordAuth);
       }
     },
   });
+
+  const handleLogin = (email: string, password: string): void => {
+    authorize(email, password)
+      .then((data) => {
+        localStorage.setItem('token', data.token);
+        setIsLogged(true);
+        handleCloseSignInPopup();
+        navigate('/', { replace: true });
+      })
+      .catch((error) => {
+        formik.resetForm();
+        setIsAuthError(true);
+        console.error(error);
+      });
+  };
 
   const handleOpenReg = (): void => {
     onOpenSignIn();
@@ -60,13 +76,13 @@ const SignIn: React.FC<SignInProps> = ({
 
   const handleCloseSignInPopup = (): void => {
     onOpenSignIn();
+    setIsAuthError(false);
     formik.resetForm();
   };
 
   const OpenRecoveryPass = (): void => {
-    onOpenSignIn();
     onOpenRecovery();
-    formik.resetForm();
+    handleCloseSignInPopup();
   };
 
   const handleOpenRecoveryPass = (
@@ -109,8 +125,8 @@ const SignIn: React.FC<SignInProps> = ({
                   formik.errors.loginAuth
                     ? 'signin__input_invalid'
                     : formik.touched.loginAuth && formik.submitCount > 0
-                    ? 'signin__input_valid'
-                    : ''
+                      ? 'signin__input_valid'
+                      : ''
                 }`}
                 type='email'
                 name='loginAuth'
@@ -137,8 +153,8 @@ const SignIn: React.FC<SignInProps> = ({
                   formik.errors.passwordAuth
                     ? 'signin__input_invalid'
                     : formik.touched.passwordAuth && formik.submitCount > 0
-                    ? 'signin__input_valid'
-                    : ''
+                      ? 'signin__input_valid'
+                      : ''
                 }`}
                 type={showPassword ? 'text' : 'password'}
                 minLength={6}
@@ -169,13 +185,17 @@ const SignIn: React.FC<SignInProps> = ({
                   {formik.errors.passwordAuth}
                 </span>
             )}
-              <Link
-                className='signin__link'
-                onClick={handleOpenRecoveryPass}
-                to={''}
-              >
-                Не помню пароль
-              </Link>
+            {isAuthError &&
+              <span className='signin__error-text'>
+                  {'Не правильный логин или пароль'}
+                </span>}
+            <Link
+              className='signin__link'
+              onClick={handleOpenRecoveryPass}
+              to={''}
+            >
+              Не помню пароль
+            </Link>
           </div>
           <div className='signin__buttons'>
             <button

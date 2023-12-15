@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import React, { useState, useEffect, useRef } from 'react';
 import type { FC } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 import deliveryIcon from '../../image/icons/delivery_icon.svg';
 import busketIcon from '../../image/icons/busket_icon.svg';
 import favouriteIcon from '../../image/icons/favourite_icon.svg';
 // import profileIcon from '../../image/icons/profile_icon.svg';
-
 import headerLogoWhite from '../../image/icons/header_logo_white.svg';
 import headerLogoColor from '../../image/icons/header_logo_color.svg';
 
@@ -25,17 +24,16 @@ import { useCartContext } from '../../context';
 
 interface HeaderProps {
   toggleWarningPopup: () => void;
+  onOpenAuth: () => void;
   isLogged: boolean;
 }
 
-const Header: FC<HeaderProps> = ({ toggleWarningPopup, isLogged }) => {
+const Header: FC<HeaderProps> = ({ toggleWarningPopup, onOpenAuth, isLogged }) => {
   const [isVisible, setIsVisible] = useState<null | boolean>(null);
-  // console.log(isLogged);
-
   const context = useSlideContext();
   const { totalCount } = useCartContext();
-
   const { isLight } = context ?? { isLight: false };
+  const navigate = useNavigate();
 
   const handleClick = (): void => {
     setIsVisible(!isVisible);
@@ -58,10 +56,16 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, isLogged }) => {
   });
 
   const handleNavLinkClick =
-    (): void => {
-      // event.preventDefault();
+    (path: string): void => {
+      if (isLogged) {
+        navigate(path);
+      }
       toggleWarningPopup();
     };
+
+  const handleOpenAuth = (): void => {
+    onOpenAuth();
+  };
 
   const location = useLocation();
 
@@ -104,7 +108,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, isLogged }) => {
 
           <CatalogMenu visible={isVisible} catalogRef={catalogRef}/>
 
-          <SearchBar />
+          <SearchBar/>
 
           <button
             onClick={() => {
@@ -138,14 +142,16 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, isLogged }) => {
               />
             </NavLink>
 
-            <NavLink className='header__navbar-link' to='/cart'>
+            <div className='header__navbar-link' onClick={() => {
+              handleNavLinkClick('/cart');
+            }}>
               <img
                 className='header__navbar-icon'
                 src={busketSrc}
                 alt="Перейти в раздел 'Корзина'"
               />
               <div className='header__navbar-icon-count'>{totalCount}</div>
-            </NavLink>
+            </div>
             {/* for Auth
             <NavLink className='header__navbar-link' to='/'>
               <img
@@ -158,21 +164,17 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, isLogged }) => {
           </nav>
           <button
             onClick={() => {
-              handleNavLinkClick();
+              handleOpenAuth();
             }}
             className={`header__auth-button ${
-              location.pathname === '/main'
-                ? isLight
-                  ? ''
-                  : 'header__auth-button_white'
-                : ''
+              location.pathname === '/main' && !isLight ? 'header__auth-button_white' : ''
             }`}
           >
             Войти
           </button>
         </div>
       </header>
-      <Outlet />
+      <Outlet/>
     </>
   );
 };
