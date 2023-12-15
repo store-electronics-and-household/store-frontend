@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import AboutCompany from '../AboutCompany/AboutCompany';
@@ -23,8 +23,8 @@ import SearchResults from '../SearchResults/SearchResults';
 import { type GoodsListProps } from '../../utils/types';
 
 import { CartProvider } from '../../context/CartContext';
-import { productData, productAttributes } from '../../utils/constants';
-import { authorize, register, changePassword, getFavouritesList } from '../../utils/api/user-api';
+import { productAttributes, productData } from '../../utils/constants';
+import { authorize, changePassword, getFavouritesList, register } from '../../utils/api/user-api';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 
 const App: React.FC = () => {
@@ -69,18 +69,19 @@ const App: React.FC = () => {
       });
   };
 
-  const handleLogin = (email: string, password: string): void => {
-    authorize(email, password)
-      .then((data) => {
-        localStorage.setItem('token', data.token);
-        // console.log(data);
-        setIsLogged(true);
-        navigate('/', { replace: true });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  // const handleLogin = async (email: string, password: string): Promise<void> => {
+  //   await authorize(email, password)
+  //     .then((data) => {
+  //       localStorage.setItem('token', data.token);
+  //       setIsLogged(true);
+  //       navigate('/', { replace: true });
+  //       return Promise.resolve(true);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       return Promise.reject(error);
+  //     })
+  // };
 
   const handleChangePassword = (email: string, password: string): void => {
     changePassword(email, password)
@@ -130,6 +131,7 @@ const App: React.FC = () => {
                 <>
                   <Header
                     toggleWarningPopup={toggleWarningPopup}
+                    onOpenAuth={toggleSignInPopup}
                     isLogged={isLogged}
                   />
                   <WarningPopup
@@ -142,7 +144,8 @@ const App: React.FC = () => {
                     isOpenSignIn={isSignInPopupOpen}
                     onOpenReg={toggleSignUpPopup}
                     onOpenRecovery={PasswordRecoveryPopup}
-                    onLogin={handleLogin}
+                    // onLogin={handleLogin}
+                    setIsLogged={setIsLogged}
                   />
                   <SignUp
                     onOpenSignUp={toggleSignUpPopup}
@@ -154,17 +157,17 @@ const App: React.FC = () => {
                     onOpenRecoveryPopup={PasswordRecoveryPopup}
                     onChangePassword={handleChangePassword}
                   />
-                  <Footer />
+                  <Footer/>
                 </>
               }
             >
-              <Route path='/main' element={<Main />} />
+              <Route path='/main' element={<Main/>}/>
               <Route
                 path='/about-company'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <AboutCompany />
+                    <Breadcrumbs crumbs={crumbs}/>
+                    <AboutCompany/>
                   </>
                 }
               />
@@ -172,8 +175,8 @@ const App: React.FC = () => {
                 path='/faq'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Faq />
+                    <Breadcrumbs crumbs={crumbs}/>
+                    <Faq/>
                   </>
                 }
               />
@@ -181,8 +184,8 @@ const App: React.FC = () => {
                 path='/categories'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Categories subCategoriesList={[]} product={[]} />
+                    <Breadcrumbs crumbs={crumbs}/>
+                    <Categories subCategoriesList={[]} product={[]}/>
                   </>
                 }
               />
@@ -190,8 +193,8 @@ const App: React.FC = () => {
                 path='/categories/catalog'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Catalog />
+                    <Breadcrumbs crumbs={crumbs}/>
+                    <Catalog/>
                   </>
                 }
               />
@@ -199,7 +202,7 @@ const App: React.FC = () => {
                 path='/categories/catalog/product'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
+                    <Breadcrumbs crumbs={crumbs}/>
                     <ProductPage
                       product={productData}
                       attributes={productAttributes}
@@ -211,8 +214,8 @@ const App: React.FC = () => {
                 path='/delivery'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Delivery />
+                    <Breadcrumbs crumbs={crumbs}/>
+                    <Delivery/>
                   </>
                 }
               />
@@ -220,8 +223,8 @@ const App: React.FC = () => {
                 path='/favourites'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Favourites />
+                    <Breadcrumbs crumbs={crumbs}/>
+                    <Favourites/>
                   </>
                 }
               />
@@ -229,26 +232,26 @@ const App: React.FC = () => {
                 path='/cart'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Cart onCheckoutClick={setGoodsForPayment} />
+                    <Breadcrumbs crumbs={crumbs}/>
+                    <Cart onCheckoutClick={setGoodsForPayment}/>
                   </>
                 }
               />
               <Route
                 path='/payment'
-                element={<PaymentsPage GoodsList={goodsList ?? []} />}
+                element={<PaymentsPage GoodsList={goodsList ?? []}/>}
               />
               <Route
                 path='/search-results'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <SearchResults />
+                    <Breadcrumbs crumbs={crumbs}/>
+                    <SearchResults/>
                   </>
                 }
               />
-              <Route path='/' element={<Navigate to='/main' replace />} />
-              <Route path='*' element={<NotFound />} />
+              <Route path='/' element={<Navigate to='/main' replace/>}/>
+              <Route path='*' element={<NotFound/>}/>
             </Route>
           </Routes>
         </ScrollToTop>
