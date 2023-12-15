@@ -14,18 +14,19 @@ export interface PopupProps {
   style?: React.CSSProperties;
 }
 
-export interface productDataType {
+export interface ProductDataType {
   id: number;
   name: string;
   price: number;
   oldPrice?: number;
+  discount?: number;
   description: string[];
   images: string[];
   quantityInCart: number;
   isLiked: boolean;
 }
 
-export interface productAttributesDataType {
+export interface ProductAttributesDataType {
   brend?: string;
   country?: string;
   color?: string;
@@ -75,6 +76,7 @@ export interface ProductInfo {
   salesPrice: number;
   imgUrl: string;
 }
+
 export interface MyTypeBanners {
   id: number;
   name: string;

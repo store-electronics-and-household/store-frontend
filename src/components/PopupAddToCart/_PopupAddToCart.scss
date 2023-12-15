@@ -48,7 +48,6 @@
 }
 
 .popup-add-to-cart__button {
-  // width: 100%;
   text-align: center;
   padding: 16px 20px;
   border: none;
@@ -57,4 +56,9 @@
   color: $whiteColof;
   @include fontStyle($fontSOldPriceSmall, $fontWOldPriceSmall);
   line-height: 18px;
+  transition: .4s;
+}
+
+.popup-add-to-cart__button:hover {
+  background-color: $accentBlueColor;
 }

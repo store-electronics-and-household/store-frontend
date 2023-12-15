@@ -20,10 +20,10 @@ import PasswordRecovery from '../PasswordRecovery/PasswordRecovery';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import SearchResults from '../SearchResults/SearchResults';
 // import { paymentPageData } from '../../utils/constants';
-import { type GoodsListProps } from '../../utils/types';
+import type { GoodsListProps } from '../../utils/types';
 
 import { CartProvider } from '../../context/CartContext';
-import { productAttributes, productData } from '../../utils/constants';
+import { productData, productAttributes } from '../../utils/constants';
 import { changePassword } from '../../utils/api/user-api';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 
@@ -67,18 +67,6 @@ const App: React.FC = () => {
       });
   };
 
-  // const getFavouriteList = (): void => {
-  //   getFavouritesList()
-  //     .then((res) => {
-  //       console.log(res);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
-  // getFavouriteList();
-
   // const CustomPropsBreadcrumb = ({ someProp }: { someProp: string }): JSX.Element => <span>{someProp}</span>;
   // const DynamicUserBreadcrumb = ({ match }) => (
   //   <span>{userNamesById[match.params.userId]}</span>
@@ -91,7 +79,8 @@ const App: React.FC = () => {
     { path: '/delivery', breadcrumb: 'Доставка' },
     { path: '/cart', breadcrumb: 'Корзина' },
     { path: '/search-results', breadcrumb: 'Результаты поиска' },
-    { path: 'categories/catalog/product', breadcrumb: productData.name }
+    { path: 'categories/catalog/product', breadcrumb: productData.name },
+    { path: '/payment', breadcrumb: 'Корзина' },
     // { path: '/favourites', breadcrumb: CustomPropsBreadcrumb, props: { someProp: 'Избранное' } },
     // { path: '/categories/:id', breadcrumb: DynamicUserBreadcrumb },
   ];
@@ -214,7 +203,12 @@ const App: React.FC = () => {
               />
               <Route
                 path='/payment'
-                element={<PaymentsPage GoodsList={goodsList ?? []}/>}
+                element={
+                  <>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <PaymentsPage GoodsList={goodsList ?? []} />
+                  </>
+                }
               />
               <Route
                 path='/search-results'

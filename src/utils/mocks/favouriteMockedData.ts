@@ -26,7 +26,7 @@ export const mockedFavouritesProducts = [
     id: 3,
     name: 'Умная колонка Яндекс Станция 2 с Алисой, кобальт (YNDX-00051B)',
     originPrice: 21990,
-    isLiked: false,
+    isLiked: true,
     imgUrl: ['/categories/catalog/product'],
     quantityInCart: 0
   },
@@ -35,7 +35,7 @@ export const mockedFavouritesProducts = [
     name: 'Портативная колонка harman/kardon Go + Play Mini White',
     originPrice: 45990,
     salesPrice: 33990,
-    isLiked: false,
+    isLiked: true,
     discount: 30,
     imgUrl: [
       'https://images.unsplash.com/photo-1505156868547-9b49f4df4e04?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aXBob25lfGVufDB8fDB8fHww',
@@ -51,7 +51,7 @@ export const mockedFavouritesProducts = [
     originPrice: 60990,
     salesPrice: 53660,
     discount: 30,
-    isLiked: false,
+    isLiked: true,
     imgUrl: [
       'https://images.unsplash.com/photo-1505156868547-9b49f4df4e04?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aXBob25lfGVufDB8fDB8fHww',
       'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',

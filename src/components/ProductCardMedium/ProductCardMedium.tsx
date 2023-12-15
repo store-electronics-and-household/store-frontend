@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { formatSumm } from '../../utils/formatSumm';
-// import vector from '../../image/Vector.png';
-// import map from '../../image/map.png';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
 
