@@ -834,12 +834,9 @@ body {
   border-radius: 12px;
   border: 1px solid #222;
   padding: 0;
-  color: #222;
-  font-style: normal;
+  font-size: 20px;
   font-weight: 400;
-  font-size: 13px;
-  line-height: 1.2;
-  outline: none;
+  text-decoration: none;
   margin-top: 8px;
   padding: 0 10px;
   box-sizing: border-box;
@@ -942,10 +939,12 @@ body {
   border-radius: 24px;
   width: 437px;
   margin-left: 24px;
+  padding: 0 40px;
+  box-sizing: border-box;
 }
 
 .payments-page__cart-container {
-  margin: 24px 40px 24px 40px;
+  margin: 24px 0;
   display: grid;
   grid-template-columns: repeat(3, 100px);
   gap: 16px;
@@ -985,7 +984,7 @@ body {
 .payments-page__summary-data {
   display: flex;
   justify-content: space-between;
-  margin: 0 40px 24px 40px;
+  margin-bottom: 24px;
 }
 
 .payments-page__summary-row {
@@ -1026,6 +1025,23 @@ body {
   text-decoration: none;
   line-height: 18px;
   color: #FFF;
+}
+
+.payments-page__phone-input {
+  outline: none;
+  font-size: 20px;
+  font-weight: 400;
+  text-decoration: none;
+  width: 100%;
+  height: 48px;
+  background-color: #FFF;
+  border-radius: 12px;
+  border: 1px solid #222;
+  padding: 0;
+  text-decoration: none;
+  margin-top: 8px;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 .card-medium {

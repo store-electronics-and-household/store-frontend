@@ -1,27 +1,29 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React, { useEffect } from 'react';
-// import { paymentPageData } from '../../utils/constants';
+import React, { useEffect, useState } from 'react';
 import PaymentsPageItem from './PaymentsPageItem';
 import PaymentsPageButton from './PaymentsPageButton';
 import { type GoodsListProps } from '../../utils/types';
 import { formatSumm } from '../../utils/formatSumm';
 import { useForm } from 'react-hook-form';
+import 'react-phone-number-input/style.css';
 import { Link } from 'react-router-dom';
+import PhoneForm from './PaymentsPageInput';
 
 interface PaymentsPageProps {
   GoodsList: GoodsListProps[];
 }
 
 const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
-  interface ClientDataProps {
-    name: string;
-    phone: string;
-    address: string;
-  }
+  // interface ClientDataProps {
+  //   name: string;
+  //   phone: string;
+  //   address: string;
+  // }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [clientData, setClientData] = React.useState<ClientDataProps | null>(
-    null
-  );
+  const [clientData, setClientData] = React.useState({});
+
+  const [isPhoneValid, setIsPhoneValid] = useState<boolean>(false);
+
+  const [isPhoneValidated, setIsPhoneValidated] = useState<boolean>(false);
 
   const [isFirstPage, setIsFirstPage] = React.useState<boolean>(true);
   // const [isDeliveryPage, setIsDeliveryPage] = React.useState<boolean>(true);
@@ -33,17 +35,6 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
   useEffect(() => {
     setDeliveryPrice(8500);
   }, []);
-
-  // const formatSumm = (summ: number): string => {
-  //   const formatedSumm = summ.toLocaleString('ru-RU', {
-  //     style: 'currency',
-  //     currency: 'RUB',
-  //     minimumFractionDigits: 0
-  //   });
-  //   return formatedSumm;
-  // };
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
   const fullQuantity: number = GoodsList.reduce(function (acc, item) {
     return acc + item.quantity;
@@ -92,6 +83,20 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
     mode: 'onChange',
   });
 
+  const {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    register: registerForm3,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    getValues: getValuesForm3,
+    // handleSubmitForm1,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    control: controlForm3,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    formState: { errors: errorsPhone, isValid: isValidPhone },
+  } = useForm({
+    mode: 'onChange',
+  });
+
   const handleDeliveryType = (): void => {
     // e.preventDefault();
     console.log('hello');
@@ -115,8 +120,22 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
   // };
 
   const choosePickUpPoint = (): void => {
-    console.log('выбивает пункт выдачи');
-    setIsFirstPage(!isFirstPage);
+    setIsPhoneValidated(true);
+    // console.log('выбирает пункт выдачи');
+    console.log(isPhoneValid);
+    if (isPhoneValid && isValidForm1) {
+      setIsFirstPage(!isFirstPage);
+    }
+  };
+
+  const phoneHandler = (clientPhone: string): void => {
+    setClientData({ ...clientData, phone: clientPhone });
+  };
+
+  const validPhoneHandler = (isPhoneValid: boolean): void => {
+    if (isPhoneValid !== undefined) {
+      setIsPhoneValid(isPhoneValid);
+    }
   };
 
   return (
@@ -145,51 +164,39 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                       },
                     })}
                     type='text'
-                    placeholder='Иванов Иван'
                     className='payments-page__client-data-input'
                     name='name'
                     required
                     // onChange={handleOutsideFunction}
                   />
-                  {errorsForm1.name != null &&
-                    typeof errorsForm1.name === 'object' &&
-                    'message' in errorsForm1.name && (
-                      <span className='payments-page__input-error'>
-                        {(errorsForm1.name as { message: string }).message}
-                      </span>
-                  )}
-                </label>
-                <label className='payments-page__input-label'>
-                  <p className='payments-page__input-title'>
-                    Номер телефона <sup className=''>*</sup>
-                  </p>
-                  <input
-                    {...registerForm1('phone', {
-                      required: {
-                        value: true,
-                        message: 'Поле телефон обязательно к заполнению',
-                      },
-                      pattern: {
-                        value: /^\+\d{1,3} \(\d{3}\) \d{3}-\d{4}$/,
-                        message: 'Введите корректный номер телефона',
-                      },
-                    })}
-                    type='text'
-                    placeholder='+7 (900) 100 00 00'
-                    className='payments-page__client-data-input'
-                    name='phone'
-                    required
-                  />
-                  {errorsForm1.phone != null &&
-                    typeof errorsForm1.phone === 'object' &&
-                    'message' in errorsForm1.phone && (
-                      <span className='payments-page__input-error'>
-                        {(errorsForm1.phone as { message: string }).message}
-                      </span>
-                  )}
+                  {errorsForm1.name === undefined
+                    ? isPhoneValidated &&
+                      !isValidForm1 &&
+                      errorsForm1?.name !== null && (
+                        <span className='payments-page__input-error'>
+                          Поле имя обязательно к заполнению?
+                        </span>
+                      )
+                    : errorsForm1.name != null &&
+                      typeof errorsForm1.name === 'object' &&
+                      'message' in errorsForm1.name && (
+                        <span className='payments-page__input-error'>
+                          {(errorsForm1.name as { message: string }).message}
+                        </span>
+                      )}
                 </label>
               </div>
             </form>
+            <label className='payments-page__input-label'>
+              <p className='payments-page__input-title'>
+                Номер телефона <sup className=''>*</sup>
+              </p>
+              <PhoneForm
+                isPhoneValidated={isPhoneValidated}
+                passIsPhoneValid={validPhoneHandler}
+                passPhone={phoneHandler}
+              />
+            </label>
             <div className='payments-page__line'></div>
             <p className='payments-page__form-title payments-page__form-title_type_address'>
               Способ получения
@@ -222,13 +229,16 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
               </label>
             </form>
             {isFirstPage && (
-            <PaymentsPageButton
-              marginTop='44px'
-              title='Выбрать пункт самовывоза'
-              onClick={choosePickUpPoint}
-              width='302px'
-              marginBottom='40px'
-            />
+              <>
+                <PaymentsPageButton
+                  marginTop='44px'
+                  title='Выбрать пункт самовывоза'
+                  onClick={choosePickUpPoint}
+                  width='302px'
+                  marginBottom='40px'
+                />
+                {/* <PhoneNumberInput/> */}
+              </>
             )}
           </div>
 
@@ -282,6 +292,29 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
 export default PaymentsPage;
 
 /*
+
+{errorsForm1.name != null &&
+                    typeof errorsForm1.name === 'object' &&
+                    'message' in errorsForm1.name && (
+                      <span className='payments-page__input-error'>
+                        {(errorsForm1.name as { message: string }).message}
+                      </span>
+                    )}
+                  {
+                    // errorsForm1 !== null && // ОК
+                    // errorsForm1.name !== null && // ОК
+                    // isValidForm1 !== null && // ОК
+                    // isPhoneValidated !== null && // ОК
+                    isPhoneValidated && // ОК
+                    !isValidForm1 && // ОК
+                    (errorsForm1?.name !== null) &&
+                    // !errorsForm1.name &&
+                    (
+                      <span className='payments-page__input-error'>
+                        Поле имя обязательно к заполнению?
+                      </span>
+                    )}
+
                 <label className='form__inputLabel'>
                   E-mail
                   <input
