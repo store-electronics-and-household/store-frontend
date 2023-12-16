@@ -1,6 +1,7 @@
-import React, { type ReactElement } from 'react';
+import React from 'react';
 
-const NotFound = (): ReactElement => {
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const NotFound = () => {
   return (
     <section className='not-found'>
       <div className='not-found__container-text'>

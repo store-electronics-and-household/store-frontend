@@ -1,8 +1,9 @@
-import React, { type ReactElement } from 'react';
+import React from 'react';
 import AboutCompanyContent from './AboutCompanyContent';
 import { aboutCompanyInfo } from '../../utils/constants';
 
-const AboutCompany = (): ReactElement => {
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const AboutCompany = () => {
   return (
     <>
       <section className='about-company'>

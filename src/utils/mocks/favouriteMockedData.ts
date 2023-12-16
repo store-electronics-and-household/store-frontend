@@ -19,7 +19,10 @@ export const mockedFavouritesProducts = [
     name: 'Портативная колонка Marshall Stockwell Black',
     originPrice: 38990,
     isLiked: true,
-    imgUrl: ['/categories/catalog/product'],
+    imgUrl: [
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      'https://images.unsplash.com/photo-1611472173362-3f53dbd65d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+    ],
     quantityInCart: 0
   },
   {
@@ -27,7 +30,10 @@ export const mockedFavouritesProducts = [
     name: 'Умная колонка Яндекс Станция 2 с Алисой, кобальт (YNDX-00051B)',
     originPrice: 21990,
     isLiked: true,
-    imgUrl: ['/categories/catalog/product'],
+    imgUrl: [
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      'https://images.unsplash.com/photo-1611472173362-3f53dbd65d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+    ],
     quantityInCart: 0
   },
   {

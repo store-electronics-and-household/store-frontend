@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import arrow from '../../image/icons/arr-down.svg';
 import { type AccordionItemProps } from '../../utils/types';
+import cn from 'classnames';
 
 const AccordionItem: React.FC<AccordionItemProps> = ({
   faqItem,
@@ -19,14 +20,15 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
     }
   }, [isQuestionOpen]);
 
+  // eslint-disable-next-line quote-props
+  const classname = cn('accordion__arrow', { 'accordion__arrow_opened': isQuestionOpen });
+
   return (
     <li className='accordion__item'>
       <button className='accordion__btn' onClick={btnOnClick}>
         <p className='accordion__question'>{faqItem.q}</p>
         <img
-          className={`accordion__arrow ${
-            isQuestionOpen === true ? 'accordion__arrow_opened' : ''
-          }`}
+          className={classname}
           src={arrow}
           alt='Стрелка'
         />

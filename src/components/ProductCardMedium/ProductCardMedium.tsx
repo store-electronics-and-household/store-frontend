@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { formatSumm } from '../../utils/formatSumm';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
+import cn from 'classnames';
 
 const ProductCardMedium: React.FC<{
   originPrice: number;
@@ -31,6 +32,12 @@ const ProductCardMedium: React.FC<{
       setIsPopupOpen(false);
     }, 2000);
   };
+
+  const cardPriceClassname = cn(
+    'card-medium__price',
+    { 'card-medium__price_sale': product.salesPrice !== undefined }
+  );
+
   return (
     <>
       <li className='card-medium'>
@@ -77,7 +84,7 @@ const ProductCardMedium: React.FC<{
               <div className='card-medium__container-footer'>
                 <h3 className='card-medium__title'>{product.name}</h3>
                 <div className='card-medium__container-price'>
-                  <p className={`card-medium__price ${product.salesPrice !== undefined && 'card-medium__price_sale'}`}>
+                  <p className={cardPriceClassname}>
                     {product.originPrice !== 0 &&
                     typeof product.originPrice === 'number'
                       ? formatSumm(product.originPrice)

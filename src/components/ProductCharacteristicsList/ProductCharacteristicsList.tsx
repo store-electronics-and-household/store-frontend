@@ -1,5 +1,6 @@
 import React from 'react';
 import { type ProductAttributesDataType } from '../../utils/types';
+import cn from 'classnames';
 
 interface ProductCharacteristicListProps {
   productSpecifyName: ProductAttributesDataType;
@@ -16,11 +17,14 @@ const ProductCharacteristicsList: React.FC<ProductCharacteristicListProps> = ({
   modifyListClass,
   modifyItemClass
 }: ProductCharacteristicListProps) => {
+  const characteristicsListClassname = cn('characteristics-list', modifyListClass);
+  const characteristicsItemClassname = cn('characteristics-list__item', modifyItemClass);
+
   return (
-    <ul className={`characteristics-list ${modifyListClass}`}>
+    <ul className={characteristicsListClassname}>
       {keysList.map((keysListItem, keysListKey) => {
         return (
-          <li className={`characteristics-list__item ${modifyItemClass}`} key={keysListKey}>
+          <li className={characteristicsItemClassname} key={keysListKey}>
             <span className='characteristics-list__item-key'>
               {productSpecifyName[keysListItem]}
             </span>

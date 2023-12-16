@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import cn from 'classnames';
 import cart from '../../image/icons/busket_icon-white.svg';
 import ThumbsSlider from '../ThumbsSlider/ThumbsSlider';
 import plusIconActive from '../../image/icons/cart_plus_icon_active.svg';
@@ -85,6 +86,26 @@ const ProductPage: React.FC<ProductPageProps> = ({
     count === 1 && setIsQuantityBtn(false);
   };
 
+  const currentPriceClassname = cn(
+    'product-page__current-price',
+    { 'product-page__current-price_sale': product.oldPrice !== undefined }
+  );
+
+  const quantityBtnSymbolClassname = cn(
+    'product__quantity-button-symbol',
+    { 'product__quantity-button-symbol_inactive': product.quantityInCart === 1 }
+  );
+
+  const descriptionBtnClassname = cn(
+    'product-page__description-btn',
+    { 'product-page__description-btn_active': isActive }
+  );
+
+  const descriptionCharacteristicBtnClassname = cn(
+    'product-page__description-btn',
+    { 'product-page__description-btn_active': !isActive }
+  );
+
   return (
     <>
       <section className='product-page'>
@@ -124,7 +145,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
           </div>
           <div className='product-page__price-block'>
             <div className='product-page__price'>
-              <span className={`product-page__current-price ${product.oldPrice !== undefined ? 'product-page__current-price_sale' : ''}`}>
+              <span className={currentPriceClassname}>
                 {formatSumm(product.price)}
               </span>
               {product.oldPrice !== 0
@@ -153,7 +174,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
                     </button>
                   : <div className='product__quantity-button'>
                       <button
-                        className={`product__quantity-button-symbol ${product.quantityInCart === 1 ? 'product__quantity-button-symbol_inactive' : ''}`}
+                        className={quantityBtnSymbolClassname}
                         onClick={handleDeleteFromCart}
                       >
                         <img className='product__quantity-button-icon' src={minusIconActive} alt='Уменьшить количество' />
@@ -190,17 +211,13 @@ const ProductPage: React.FC<ProductPageProps> = ({
           <div className='product-page__about-header'>
             <button
               onClick={handleOnAboutProduct}
-              className={`product-page__description-btn ${
-                !isActive ? '' : 'product-page__description-btn_active'
-              }`}
+              className={descriptionBtnClassname}
             >
               О товаре
             </button>
             <button
               onClick={handleOnAllcharacteristics}
-              className={`product-page__description-btn ${
-                isActive ? '' : 'product-page__description-btn_active'
-              }`}
+              className={descriptionCharacteristicBtnClassname}
             >
               Характеристики
             </button>
