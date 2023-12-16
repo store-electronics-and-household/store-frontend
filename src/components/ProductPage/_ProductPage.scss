@@ -193,7 +193,7 @@
 .product-page__description-btn {
   @include fontStyle($fontSButton, $fontWButton);
   line-height: 18px;
-  padding: 16px 40px;
+  padding: 14px 40px;
   width: 204px;
   text-align: center;
   color: $secondaryBlackColor;
@@ -204,7 +204,7 @@
 }
 
 .product-page__description-btn_active {
-  border-color: $secondaryBlackColor;
+  border: 2px solid $secondaryBlackColor;
   cursor: default;
 }
 

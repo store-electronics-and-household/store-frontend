@@ -1,25 +1,30 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import React from 'react';
+import React, { type FC, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
 // import './Signup.css';
 import OPENEDEYE from '../../image/icons/open-eye.svg';
 import CLOSEDEYE from '../../image/icons/eye-closed.svg';
+import { register } from '../../utils/api/user-api';
+import { useNavigate } from 'react-router-dom';
 
 interface SignUpProps {
   onOpenSignUp: () => void;
   isOpenSignUp: boolean;
-  onRegistr: (email: string, password: string) => void;
+  setIsLogged: (arg: boolean) => void;
 }
-const SignUp: React.FC<SignUpProps> = ({
+
+const SignUp: FC<SignUpProps> = ({
   onOpenSignUp,
   isOpenSignUp,
-  onRegistr,
-}) => {
-  const [showRegPassword, setShowRegPassword] = React.useState<boolean>(false);
-  const [showConfPassword, setShowConfPassword] =
-    React.useState<boolean>(false);
+  setIsLogged,
+}): React.ReactElement => {
+  const [showRegPassword, setShowRegPassword] = useState<boolean>(false);
+  const [showConfPassword, setShowConfPassword] = useState<boolean>(false);
+  const [isAuthError, setIsAuthError] = React.useState<boolean>(false);
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       loginReg: '',
@@ -51,12 +56,27 @@ const SignUp: React.FC<SignUpProps> = ({
     }),
     onSubmit: ({ loginReg, passwordReg }) => {
       if (formik.isValid) {
-        onRegistr(loginReg, passwordReg);
+        handleRegister(loginReg, passwordReg);
         onOpenSignUp();
         formik.resetForm();
       }
     },
   });
+
+  const handleRegister = (email: string, password: string): void => {
+    register(email, password)
+      .then((res) => {
+        setIsLogged(true);
+        onOpenSignUp();
+        formik.resetForm();
+        navigate('/', { replace: true });
+      })
+      .catch((error) => {
+        formik.resetForm();
+        setIsAuthError(true);
+        console.error(error);
+      });
+  };
 
   const handleCloseSignUpPopup = (): void => {
     onOpenSignUp();
@@ -97,8 +117,8 @@ const SignUp: React.FC<SignUpProps> = ({
                   formik.errors.loginReg
                     ? 'signup__input_invalid'
                     : formik.touched.loginReg && formik.submitCount > 0
-                    ? 'signup__input_valid'
-                    : ''
+                      ? 'signup__input_valid'
+                      : ''
                 }`}
                 type='text'
                 name='loginReg'
@@ -115,7 +135,7 @@ const SignUp: React.FC<SignUpProps> = ({
                 <span className='signup__error-text'>
                   {formik.errors.loginReg}
                 </span>
-              )}
+            )}
             <div className='signup__input-wrapper'>
               <label className='signup__label'>Пароль</label>
               <input
@@ -125,8 +145,8 @@ const SignUp: React.FC<SignUpProps> = ({
                   formik.errors.passwordReg
                     ? 'signup__input_invalid'
                     : formik.touched.passwordReg && formik.submitCount > 0
-                    ? 'signup__input_valid'
-                    : ''
+                      ? 'signup__input_valid'
+                      : ''
                 }`}
                 type={showRegPassword ? 'text' : 'password'}
                 minLength={6}
@@ -156,7 +176,7 @@ const SignUp: React.FC<SignUpProps> = ({
                 <span className='signup__error-text'>
                   {formik.errors.passwordReg}
                 </span>
-              )}
+            )}
             <div className='signup__input-wrapper'>
               <label className='signup__label'>Повторите пароль</label>
               <input
@@ -166,8 +186,8 @@ const SignUp: React.FC<SignUpProps> = ({
                   formik.errors.ConfirmPass
                     ? 'signup__input_invalid'
                     : formik.touched.ConfirmPass && formik.submitCount > 0
-                    ? 'signup__input_valid'
-                    : ''
+                      ? 'signup__input_valid'
+                      : ''
                 }`}
                 type={showConfPassword ? 'text' : 'password'}
                 minLength={6}
@@ -197,7 +217,7 @@ const SignUp: React.FC<SignUpProps> = ({
                 <span className='signup__error-text'>
                   {formik.errors.ConfirmPass}
                 </span>
-              )}
+            )}
           </div>
           <div className='signup__buttons'>
             <button
@@ -232,6 +252,10 @@ const SignUp: React.FC<SignUpProps> = ({
                 {formik.errors.RegCheckbox}
               </span>
             )}
+            {isAuthError && <span className='signup__error-text'>
+                {'Что-то пошло не так, попробуйте еще раз'}
+              </span>
+            }
           </div>
         </form>
       </div>
