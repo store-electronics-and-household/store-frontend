@@ -15,7 +15,7 @@ body {
   background-color: #f5f5f5;
 }
 
-.product-page__about-description, .product-page__description-btn, .product-page__benefit-text, .product__quantity-button-number, .product-page__button-basket, .product-page__old-price, .product-page__current-price, .product-page__all-characteristics, .product-page__characteristic-head, .product-page__item-number, .product-page__header, .characteristics-list__item-value, .characteristics-list__item-key, .popup-add-to-cart__button, .popup-add-to-cart__head, .popup-add-to-cart__product-name, .results__title, .favourites__header, .not-found__btn, .not-found__info, .not-found__subtitle, .not-found__title, .card-medium__oldprice, .card-medium__price, .card-medium__title, .card-medium__sticker, .payments-page__summary-final, .payments-page__summary-row, .payments-page__good-numbers, .payments-page__input-title, .payments-page__subtitle, .payments-page__form-title, .payments-page__title, .faq__header, .accordion__answer, .accordion__question, .accordion__container-head, .content__text, .content__head, .about-company__header {
+.product-page__about-description, .product-page__description-btn, .product-page__benefit-text, .product__quantity-button-number, .product-page__button-basket, .product-page__old-price, .product-page__current-price, .product-page__all-characteristics, .product-page__characteristic-head, .product-page__item-number, .product-page__header, .characteristics-list__item-value, .characteristics-list__item-key, .popup-add-to-cart__button, .popup-add-to-cart__head, .popup-add-to-cart__product-name, .results__title, .favourites__header, .not-found__btn, .not-found__info, .not-found__subtitle, .not-found__title, .card-medium__oldprice, .card-medium__price, .card-medium__title, .card-medium__sticker, .payments-page__phone-input, .payments-page__pickup-point-button-title, .payments-page__summary-final, .payments-page__summary-row, .payments-page__good-numbers, .payments-page__delivery-label, .payments-page__client-data-input, .payments-page__input-title, .payments-page__subtitle, .payments-page__form-title, .payments-page__title, .faq__header, .accordion__answer, .accordion__question, .accordion__container-head, .content__text, .content__head, .about-company__header {
   margin: 0;
   color: #222;
 }
@@ -834,12 +834,9 @@ body {
   border-radius: 12px;
   border: 1px solid #222;
   padding: 0;
-  color: #222;
-  font-style: normal;
+  font-size: 20px;
   font-weight: 400;
-  font-size: 13px;
-  line-height: 1.2;
-  outline: none;
+  text-decoration: none;
   margin-top: 8px;
   padding: 0 10px;
   box-sizing: border-box;
@@ -942,10 +939,12 @@ body {
   border-radius: 24px;
   width: 437px;
   margin-left: 24px;
+  padding: 0 40px;
+  box-sizing: border-box;
 }
 
 .payments-page__cart-container {
-  margin: 24px 40px 24px 40px;
+  margin: 24px 0;
   display: grid;
   grid-template-columns: repeat(3, 100px);
   gap: 16px;
@@ -985,7 +984,7 @@ body {
 .payments-page__summary-data {
   display: flex;
   justify-content: space-between;
-  margin: 0 40px 24px 40px;
+  margin-bottom: 24px;
 }
 
 .payments-page__summary-row {
@@ -1026,6 +1025,23 @@ body {
   text-decoration: none;
   line-height: 18px;
   color: #FFF;
+}
+
+.payments-page__phone-input {
+  outline: none;
+  font-size: 20px;
+  font-weight: 400;
+  text-decoration: none;
+  width: 100%;
+  height: 48px;
+  background-color: #FFF;
+  border-radius: 12px;
+  border: 1px solid #222;
+  padding: 0;
+  text-decoration: none;
+  margin-top: 8px;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 .card-medium {
