@@ -11,7 +11,6 @@ interface IBreadcrumbsProps {
 
 const Breadcrumbs: React.FC<IBreadcrumbsProps> = ({ crumbs }) => {
   const breadcrumbs = useBreadcrumbs(crumbs);
-  console.log(breadcrumbs);
 
   return (
     <nav className='breadcrumbs'>
@@ -36,43 +35,3 @@ const Breadcrumbs: React.FC<IBreadcrumbsProps> = ({ crumbs }) => {
 };
 
 export default Breadcrumbs;
-
-// ----------------------------------------
-// import React, { type ReactElement } from 'react';
-// import { Link, useLocation } from 'react-router-dom';
-
-// // const routes: Array<{
-// //   path: string
-// //   breadcrumb: string
-// // }> = [
-// //   { path: '', breadcrumb: 'Главная' },
-// //   { path: '/about-company', breadcrumb: 'О нас' },
-// //   { path: '/faq', breadcrumb: 'Часто задаваемые вопросы' },
-// //   { path: '/favourites', breadcrumb: 'Избранное' },
-// //   { path: '/categories/:id', breadcrumb: dynamicCrumb }
-// // ];
-
-// const Breadcrumbs = (): ReactElement => {
-//   const { pathname } = useLocation();
-//   const segments = pathname.split('/');
-
-//   return (
-//     <nav className='breadcrumbs'>
-//       { segments.map((segment, id) => {
-//         let url = '';
-//         url += `/${segment}`;
-//         return (
-//             <Link to={url} key={id}>
-//               { segment === ''
-//                 ? 'Главная'
-//                 : segment
-//               }
-//             </Link>
-//         );
-//       })
-//     }
-//     </nav>
-//   );
-// };
-
-// export default Breadcrumbs;

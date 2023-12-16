@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
+import cn from 'classnames';
 
 interface PopupAddToCartProps {
   isOpen: boolean;
@@ -12,11 +13,14 @@ const PopupAddToCart: React.FC<PopupAddToCartProps> = ({
   productName,
   photoUrl,
 }: PopupAddToCartProps) => {
+  const popupAddToCartClass = cn(
+    'popup-add-to-cart',
+    { 'popup-add-to-cart_opened': isOpen }
+  );
+
   return (
     <section
-      className={`popup-add-to-cart ${
-        isOpen ? 'popup-add-to-cart_opened' : ''
-      }`}
+      className={popupAddToCartClass}
     >
       <img
         src={photoUrl}

@@ -1,8 +1,9 @@
-import React, { type ReactElement } from 'react';
+import React from 'react';
 import Accordion from '../Accordion/Accordion';
 import { faqList } from '../../utils/constants';
 
-const Faq = (): ReactElement => {
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const Faq = () => {
   return (
     <>
       <section className='faq'>
