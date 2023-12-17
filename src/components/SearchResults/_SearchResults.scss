@@ -28,3 +28,35 @@
   line-height: 1.2;
   margin-bottom: 44px;
 }
+
+.results__no-results-container {
+  margin: 40px auto 140px;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.results__no-results-title {
+  text-align: center;
+  @include fontStyle($fontSH3, $fontWH3);
+}
+
+.results__no-results-subtitle {
+  @include fontStyle($fontSBody, $fontWBody);
+}
+
+.results__button {
+  width: 228px;
+  height: 56px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  border: 1px solid black;
+  background: transparent;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  @include fontStyle($fontSButton, $fontWButton);
+}

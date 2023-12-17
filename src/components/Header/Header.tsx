@@ -26,9 +26,10 @@ interface HeaderProps {
   toggleWarningPopup: () => void;
   onOpenAuth: () => void;
   isLogged: boolean;
+  handleSearch: (request: string) => void;
 }
 
-const Header: FC<HeaderProps> = ({ toggleWarningPopup, onOpenAuth, isLogged }) => {
+const Header: FC<HeaderProps> = ({ toggleWarningPopup, onOpenAuth, isLogged, handleSearch }) => {
   const [isVisible, setIsVisible] = useState<null | boolean>(null);
   const context = useSlideContext();
   const { totalCount } = useCartContext();
@@ -108,7 +109,9 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, onOpenAuth, isLogged }) =
 
           <CatalogMenu visible={isVisible} catalogRef={catalogRef}/>
 
-          <SearchBar/>
+          <SearchBar
+            handleSearch={handleSearch}
+          />
 
           <button
             onClick={() => {
