@@ -29,7 +29,7 @@ const CategoriesTile: React.FC<CategoriesTileProps> = ({ id, name, categoryAttri
         <span className='tile__category-title'>{name}</span>
         <img
           className={location === '/main' ? 'tile__image' : 'tile__image tile__image_small'}
-          alt={''}
+          alt={`фото категории ${name}`}
           src={CategoryTumbNail}
         />
       </Link>

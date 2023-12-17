@@ -4,6 +4,8 @@ import iconMedal from '../image/icons/medal-original_icon.svg';
 
 export const API_URL: string = 'http://45.12.236.120:8080';
 export const API_CAT_IMG: string = 'http://45.12.236.120/images/categories';
+export const popularCardsToShow = 6;
+export const productCharacteristicsShortListLength = 10;
 
 export const products = [
   {

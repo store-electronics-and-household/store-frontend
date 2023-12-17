@@ -4,7 +4,7 @@ import cart from '../../image/icons/busket_icon-white.svg';
 import ThumbsSlider from '../ThumbsSlider/ThumbsSlider';
 import plusIconActive from '../../image/icons/cart_plus_icon_active.svg';
 import minusIconActive from '../../image/icons/cart_minus_icon_active.svg';
-import { productSpecifyName } from '../../utils/constants';
+import { productCharacteristicsShortListLength, productSpecifyName } from '../../utils/constants';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import ProductCharacteristicsList from '../ProductCharacteristicsList/ProductCharacteristicsList';
 import {
@@ -133,7 +133,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
                 .filter((n) => {
                   return n;
                 })
-                .splice(0, 10)}
+                .splice(0, productCharacteristicsShortListLength)}
             />
             <a
               href='#characteristics-anchor'

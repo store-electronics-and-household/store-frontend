@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
-import { products, subCategoriesList } from '../../utils/constants';
+import { popularCardsToShow, products, subCategoriesList } from '../../utils/constants';
 import CatalogItem from '../Catalog/CatalogItem';
 //  import { type ProductCardMediumProps } from '../../utils/types';
 
@@ -56,7 +56,7 @@ const Categories: React.FC<CategoriesProps> = () => {
               </div>
               <h2 className='catalog__popular'>Популярные товары</h2>
               <div className='catalog__render-popular'>
-                {products.slice(0, 6).map((product) => (
+                {products.slice(0, popularCardsToShow).map((product) => (
                   <ProductCardMedium
                     key={product.id}
                     name={product.name}
