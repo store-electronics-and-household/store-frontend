@@ -8,16 +8,20 @@ interface PhoneFormProps {
   passPhone: (clientPhone: string) => void;
 }
 
-const PhoneForm: React.FC<PhoneFormProps> = ({ isPhoneValidated, passIsPhoneValid, passPhone }) => {
-  const {
-    register,
-  } = useForm({ mode: 'onTouched' });
+const PhoneForm: React.FC<PhoneFormProps> = ({
+  isPhoneValidated,
+  passIsPhoneValid,
+  passPhone,
+}) => {
+  const { register } = useForm({ mode: 'onTouched' });
   const registerWithMask = useHookFormMask(register);
 
   // const [isPhoneValidated, setIsPhoneValidated] = useState<boolean>(false);
   const [isPhoneValid, setIsPhoneValid] = useState<boolean>(false);
   // const [clientPhone, setClientPhone] = useState<string>('');
-  const [validationMessage, setValidationMessage] = useState<string>('Поле телефон не может быть пустым');
+  const [validationMessage, setValidationMessage] = useState<string>(
+    'Поле телефон не может быть пустым'
+  );
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onSubmit = (): void => {
@@ -46,7 +50,7 @@ const PhoneForm: React.FC<PhoneFormProps> = ({ isPhoneValidated, passIsPhoneVali
       setIsPhoneValid(true);
       console.log(`сохранили в стейт номер телефона ${num}`);
       passPhone(num);
-    };
+    }
   };
 
   return (
@@ -55,12 +59,12 @@ const PhoneForm: React.FC<PhoneFormProps> = ({ isPhoneValidated, passIsPhoneVali
         {...registerWithMask('phone', '+7 (999) 999-99-99', {
           required: {
             value: true,
-            message: 'Поле Email обязательно к заполнению',
+            message: 'Поле телефон обязательно к заполнению',
           },
           pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message: 'Некорректный адрес электронной почты'
-          }
+            message: 'Некорректный номер телефона',
+          },
         })}
         type='text'
         name='phone'
@@ -70,20 +74,17 @@ const PhoneForm: React.FC<PhoneFormProps> = ({ isPhoneValidated, passIsPhoneVali
         className='payments-page__client-data-input'
         // onChange={onSubmit}
         onChange={(e) => {
-                     // const { value } = e.target;
-                    validPhone(e.target.value);
-                     // console.log(e.target.value);
-                  }}
+          // const { value } = e.target;
+          validPhone(e.target.value);
+          // console.log(e.target.value);
+        }}
       />
       {isPhoneValidated && !isPhoneValid && (
-          <span className='payments-page__input-error'>
-            {validationMessage}
-          </span>
-        )}
+        <span className='payments-page__input-error'>{validationMessage}</span>
+      )}
       {/* <button type='button' onClick={onSubmit}>
         Submit
       </button> */}
-
     </form>
   );
 };

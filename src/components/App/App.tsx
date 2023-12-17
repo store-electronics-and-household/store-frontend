@@ -34,6 +34,7 @@ const App: React.FC = () => {
   const [isSignInPopupOpen, setSignInPopupOpen] = useState<boolean>(false);
   const [isSignUpPopupOpen, setSignUpPopupOpen] = useState<boolean>(false);
   const [productById, setProductById] = useState<ProductDataType>();
+  const [searchRequest, setSearchRequest] = useState<string>('');
 
   const [isPasswordRecoveryPopupOpen, setPasswordRecoveryPopupOpen] =
     useState<boolean>(false);
@@ -41,6 +42,10 @@ const App: React.FC = () => {
   const [goodsList, setGoodsList] = React.useState<GoodsListProps[]>();
   const toggleWarningPopup = (): void => {
     setWarningPopupOpen(!isWarningPopupOpen);
+  };
+
+  const handleSearch = (request: string): void => {
+    setSearchRequest(request);
   };
 
   const toggleSignInPopup = (): void => {
@@ -117,6 +122,7 @@ const App: React.FC = () => {
                     toggleWarningPopup={toggleWarningPopup}
                     onOpenAuth={toggleSignInPopup}
                     isLogged={isLogged}
+                    handleSearch={handleSearch}
                   />
                   <WarningPopup
                     isOpen={isWarningPopupOpen}
@@ -234,7 +240,9 @@ const App: React.FC = () => {
                 element={
                   <>
                     <Breadcrumbs crumbs={crumbs}/>
-                    <SearchResults/>
+                    <SearchResults
+                      searchRequest={searchRequest}
+                    />
                   </>
                 }
               />
