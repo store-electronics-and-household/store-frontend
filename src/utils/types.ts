@@ -86,4 +86,5 @@ export interface MyTypeBanners {
 export interface CategoriesTileProps {
   id: number;
   name: string;
+  imageLink: string;
 }

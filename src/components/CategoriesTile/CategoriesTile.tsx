@@ -5,6 +5,7 @@ import { API_CAT_IMG } from '../../utils/constants';
 interface CategoriesTileProps {
   id: number;
   name: string;
+  imageLink?: string;
   categoryAttributes?: {
     id: number;
     priority: number;
@@ -12,13 +13,13 @@ interface CategoriesTileProps {
   };
 }
 
-const CategoriesTile: React.FC<CategoriesTileProps> = ({ id, name, categoryAttributes }): React.ReactElement => {
+const CategoriesTile: React.FC<CategoriesTileProps> = ({ id, name, imageLink, categoryAttributes }): React.ReactElement => {
   const location = useLocation().pathname;
   const nextPath = location === '/main'
     ? `/categories/${id}`
     : `/categories/${categoryAttributes?.id}`;
   const CategoryTumbNail = location === '/main'
-    ? `${API_CAT_IMG}/${id}.png`
+    ? imageLink
     : `${API_CAT_IMG}/${categoryAttributes?.id}.png`;
 
   return (

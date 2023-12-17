@@ -440,6 +440,7 @@ export const faqList = {
 export const subCategoriesList = {
   id: 1,
   name: 'Ноутбуки',
+  imageLink: '',
   categoryAttributes: [
     {
       id: 0,

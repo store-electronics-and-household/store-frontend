@@ -35,6 +35,7 @@ const request = async <T>(
 export interface IgetMainCategories {
   id: number;
   name: string;
+  imageLink: string;
 }
 
 export const getMainCategories = async (): Promise<IgetMainCategories[]> => await request<IgetMainCategories[]>('/categories/roots', 'GET');
