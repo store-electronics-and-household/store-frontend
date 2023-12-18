@@ -27,22 +27,31 @@ import { productData, productAttributes, subCategoriesList } from '../../utils/c
 import { changePassword } from '../../utils/api/user-api';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import { getProductDataById } from '../../utils/api/product-api';
+import { type IContext, UserContext } from '../../context/UserContext';
 
 const App: React.FC = () => {
-  const [isLogged, setIsLogged] = useState<boolean>(false);
   const [isWarningPopupOpen, setWarningPopupOpen] = useState<boolean>(false);
   const [isSignInPopupOpen, setSignInPopupOpen] = useState<boolean>(false);
   const [isSignUpPopupOpen, setSignUpPopupOpen] = useState<boolean>(false);
   const [productById, setProductById] = useState<ProductDataType>();
   const [searchRequest, setSearchRequest] = useState<string>('');
+  // Context provider
 
-  const [isPasswordRecoveryPopupOpen, setPasswordRecoveryPopupOpen] =
-    useState<boolean>(false);
+  const [generalContext, setGeneralContext] = useState<IContext>({
+    isLoggedIn: false,
+    userName: '',
+    userPhone: '',
+  });
+  // Context provider end
+  const [isPasswordRecoveryPopupOpen, setPasswordRecoveryPopupOpen] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [goodsList, setGoodsList] = React.useState<GoodsListProps[]>();
   const toggleWarningPopup = (): void => {
     setWarningPopupOpen(!isWarningPopupOpen);
   };
+  useEffect(() => {
+    // checkAuth()
+  }, []);
 
   const handleSearch = (request: string): void => {
     setSearchRequest(request);
@@ -113,6 +122,7 @@ const App: React.FC = () => {
     <div className='App'>
       <CartProvider>
         <ScrollToTop>
+          <UserContext.Provider value={generalContext}>
           <Routes>
             <Route
               path='/'
@@ -121,7 +131,6 @@ const App: React.FC = () => {
                   <Header
                     toggleWarningPopup={toggleWarningPopup}
                     onOpenAuth={toggleSignInPopup}
-                    isLogged={isLogged}
                     handleSearch={handleSearch}
                   />
                   <WarningPopup
@@ -134,12 +143,12 @@ const App: React.FC = () => {
                     isOpenSignIn={isSignInPopupOpen}
                     onOpenReg={toggleSignUpPopup}
                     onOpenRecovery={PasswordRecoveryPopup}
-                    setIsLogged={setIsLogged}
+                    setGeneralContext={setGeneralContext}
                   />
                   <SignUp
                     onOpenSignUp={toggleSignUpPopup}
                     isOpenSignUp={isSignUpPopupOpen}
-                    setIsLogged={setIsLogged}
+                    setGeneralContext={setGeneralContext}
                   />
                   <PasswordRecovery
                     isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
@@ -250,6 +259,7 @@ const App: React.FC = () => {
               <Route path='*' element={<NotFound/>}/>
             </Route>
           </Routes>
+          </UserContext.Provider>
         </ScrollToTop>
       </CartProvider>
     </div>

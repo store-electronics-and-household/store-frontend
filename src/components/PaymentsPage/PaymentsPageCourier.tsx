@@ -35,32 +35,32 @@ const PaymentsPageCourier: React.FC<PaymentsPageCourierProps> = ({
   const today = new Date();
 
   const datesArray = [];
-const weekdaysRussian = [
-  'Воскресенье',
-  'Понедельник',
-  'Вторник',
-  'Среда',
-  'Четверг',
-  'Пятница',
-  'Суббота',
-];
+  const weekdaysRussian = [
+    'Воскресенье',
+    'Понедельник',
+    'Вторник',
+    'Среда',
+    'Четверг',
+    'Пятница',
+    'Суббота',
+  ];
 
-for (let i = 0; i < 5; i++) {
-  const nextDate = new Date(today);
-  nextDate.setDate(today.getDate() + i);
+  for (let i = 0; i < 5; i++) {
+    const nextDate = new Date(today);
+    nextDate.setDate(today.getDate() + i);
 
-  // Получение дня недели на русском
-  const dayOfWeek = weekdaysRussian[nextDate.getDay()];
+    // Получение дня недели на русском
+    const dayOfWeek = weekdaysRussian[nextDate.getDay()];
 
-  // Форматирование даты в виде "число.месяц"
-  const formattedDate = `${nextDate.getDate()}.${nextDate.getMonth() + 1}`;
+    // Форматирование даты в виде "число.месяц"
+    const formattedDate = `${nextDate.getDate()}.${nextDate.getMonth() + 1}`;
 
-  // Добавление объекта в массив
-  datesArray.push({
-    date: formattedDate,
-    dayOfWeek: dayOfWeek,
-  });
-}
+    // Добавление объекта в массив
+    datesArray.push({
+      date: formattedDate,
+      dayOfWeek,
+    });
+  }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const onSubmit = (): void => {};
 
@@ -102,7 +102,7 @@ for (let i = 0; i < 5; i++) {
                   <span className='payments-page__input-error'>
                     {(errorsForm2.address as { message: string }).message}
                   </span>
-                )}
+              )}
             </label>
             <div className='payments-page__address-box'>
               <label className='payments-page__input-label payments-page__input-label_type_address'>
