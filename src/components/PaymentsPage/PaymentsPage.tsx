@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import 'react-phone-number-input/style.css';
 import { Link } from 'react-router-dom';
 import PhoneForm from './PaymentsPageInput';
+import PaymentsPageCourier from './PaymentsPageCourier';
 
 interface PaymentsPageProps {
   GoodsList: GoodsListProps[];
@@ -26,6 +27,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
   const [isPhoneValidated, setIsPhoneValidated] = useState<boolean>(false);
 
   const [isFirstPage, setIsFirstPage] = React.useState<boolean>(true);
+  const [isСourierPage, setIsСourierPage] = React.useState<boolean>(false);
   // const [isDeliveryPage, setIsDeliveryPage] = React.useState<boolean>(true);
   // const [isFinalPage, setIsFinalPage] = React.useState<boolean>(true);
 
@@ -73,18 +75,6 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
 
   const {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    register: registerForm2,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    getValues: getValuesForm2,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    formState: { errors: errorsForm2, isValid: isValidForm2 },
-  } = useForm({
-    // mode: 'all', // "onChange"
-    mode: 'onChange',
-  });
-
-  const {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     register: registerForm3,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     getValues: getValuesForm3,
@@ -98,16 +88,18 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
   });
 
   const handleDeliveryType = (): void => {
-    // e.preventDefault();
-    console.log('hello');
+    console.log('выбираем тип доставки');
+    setIsFirstPage(!isFirstPage);
+    setIsСourierPage(!isСourierPage);
   };
 
-  const handleDeliveryTypeChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    e.preventDefault();
-    console.log('hello');
-  };
+  // // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // const handleDeliveryTypeChange = (
+  //   e: React.ChangeEvent<HTMLInputElement>
+  // ): void => {
+  //   e.preventDefault();
+  //   console.log('hello');
+  // };
 
   // const form1Values = getValuesForm1();
   // const form2Values = getValuesForm2();
@@ -209,10 +201,12 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                 <input
                   type='radio'
                   name='deliveryOption'
-                  checked
+                  // checked
+                  defaultChecked
                   className='payments-page__delivery-type_type_invisible'
                   onClick={handleDeliveryType}
-                  onChange={handleDeliveryTypeChange}
+                  // readOnly
+                  // onChange={handleDeliveryTypeChange}
                 />
                 <span className='payments-page__delivery-type_type_visible'></span>
                 Самовывоз
@@ -238,6 +232,12 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                   marginBottom='40px'
                 />
                 {/* <PhoneNumberInput/> */}
+              </>
+            )}
+            {isСourierPage && (
+              <>
+                <div className='payments-page__line payments-page__line_type_courier'></div>
+                <PaymentsPageCourier/>
               </>
             )}
           </div>
@@ -290,65 +290,6 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
 };
 
 export default PaymentsPage;
-
-/*
-
-{errorsForm1.name != null &&
-                    typeof errorsForm1.name === 'object' &&
-                    'message' in errorsForm1.name && (
-                      <span className='payments-page__input-error'>
-                        {(errorsForm1.name as { message: string }).message}
-                      </span>
-                    )}
-                  {
-                    // errorsForm1 !== null && // ОК
-                    // errorsForm1.name !== null && // ОК
-                    // isValidForm1 !== null && // ОК
-                    // isPhoneValidated !== null && // ОК
-                    isPhoneValidated && // ОК
-                    !isValidForm1 && // ОК
-                    (errorsForm1?.name !== null) &&
-                    // !errorsForm1.name &&
-                    (
-                      <span className='payments-page__input-error'>
-                        Поле имя обязательно к заполнению?
-                      </span>
-                    )}
-
-                <label className='form__inputLabel'>
-                  E-mail
-                  <input
-                    {...register('email', {
-                      required: {
-                        value: true,
-                        message: 'Поле Email обязательно к заполнению',
-                      },
-                      pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: 'Некорректный адрес электронной почты',
-                      },
-                    })}
-                    type='email'
-                    className='form__input'
-                    required
-                  />
-                  {errors.email && (
-                    <span className='form__inputError'>
-                      {errors.email.message}
-                    </span>
-                  )}
-                </label>
-
-                  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  // const handleOutsideFunction = () => {
-  //   const form1Values = getValuesForm1();
-  //   // const form2Values = getValuesForm2();
-  //   console.log('Form 1 Values:', form1Values);
-  //   // console.log('Form 2 Values:', form2Values);
-
-  //   // Ваш код для обработки значений вне формы
-  // };
-*/
 
 /*
 <form
