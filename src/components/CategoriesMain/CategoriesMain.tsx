@@ -5,6 +5,7 @@ interface Props {
   categoriesMain: Array<{
     id: number;
     name: string;
+    imageLink: string;
   }>;
 }
 
@@ -18,7 +19,7 @@ const CategoriesMain: React.FC<Props> = ({ categoriesMain }): React.ReactElement
             a.name.toLowerCase().localeCompare(b.name.toLowerCase())
           )
           .map((tile) => (
-            <CategoriesTile key={tile.id} name={tile.name} id={tile.id} />
+            <CategoriesTile key={tile.id} name={tile.name} id={tile.id} imageLink={tile.imageLink}/>
           ))}
       </ul>
     </section>

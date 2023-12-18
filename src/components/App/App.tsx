@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -23,15 +23,17 @@ import SearchResults from '../SearchResults/SearchResults';
 import type { MediumCardProps } from '../../utils/types';
 
 import { CartProvider } from '../../context/CartContext';
-import { productData, productAttributes } from '../../utils/constants';
+import { productData, productAttributes, subCategoriesList } from '../../utils/constants';
 import { changePassword } from '../../utils/api/user-api';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
+import { getProductDataById } from '../../utils/api/product-api';
 
 const App: React.FC = () => {
   const [isLogged, setIsLogged] = useState<boolean>(false);
   const [isWarningPopupOpen, setWarningPopupOpen] = useState<boolean>(false);
   const [isSignInPopupOpen, setSignInPopupOpen] = useState<boolean>(false);
   const [isSignUpPopupOpen, setSignUpPopupOpen] = useState<boolean>(false);
+  const [productById, setProductById] = useState<ProductDataType>();
   const [searchRequest, setSearchRequest] = useState<string>('');
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchResults, setSearchResults] = useState<MediumCardProps[]>([]);
@@ -78,6 +80,23 @@ const App: React.FC = () => {
         console.log(error);
       });
   };
+
+  const getProductById = (productId: number): void => {
+    getProductDataById(productId)
+      .then((data) => {
+        console.log(data);
+        setProductById(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    getProductById(1);
+  }, []);
+
+  console.log(productById);
 
   // const CustomPropsBreadcrumb = ({ someProp }: { someProp: string }): JSX.Element => <span>{someProp}</span>;
   // const DynamicUserBreadcrumb = ({ match }) => (
@@ -162,7 +181,7 @@ const App: React.FC = () => {
                 element={
                   <>
                     <Breadcrumbs crumbs={crumbs}/>
-                    <Categories subCategoriesList={[]} product={[]}/>
+                    <Categories subCategoriesList={subCategoriesList} product={[]}/>
                   </>
                 }
               />

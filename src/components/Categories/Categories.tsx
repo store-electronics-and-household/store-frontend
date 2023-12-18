@@ -1,20 +1,21 @@
 import React from 'react';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
-import { products, subCategoriesList } from '../../utils/constants';
+import { popularCardsToShow, products } from '../../utils/constants';
 import CatalogItem from '../Catalog/CatalogItem';
 //  import { type ProductCardMediumProps } from '../../utils/types';
 
 interface CategoriesProps {
-  subCategoriesList: Array<{
+  subCategoriesList: {
     id: number;
     name: string;
-    categoryAttributes?: Array<{
-      id?: number;
+    imageLink: string;
+    categoryAttributes: Array<{
+      id: number;
       priority?: number;
-      attributeName?: string;
+      attributeName: string;
     }>;
-  }>;
+  };
   product: Array<{
     id: number;
     name: string;
@@ -27,7 +28,7 @@ interface CategoriesProps {
   }>;
 }
 
-const Categories: React.FC<CategoriesProps> = () => {
+const Categories: React.FC<CategoriesProps> = ({ subCategoriesList, product }: CategoriesProps) => {
   return (
     <>
       <section className='catalog'>
@@ -56,7 +57,7 @@ const Categories: React.FC<CategoriesProps> = () => {
               </div>
               <h2 className='catalog__popular'>Популярные товары</h2>
               <div className='catalog__render-popular'>
-                {products.slice(0, 6).map((product) => (
+                {products.slice(0, popularCardsToShow).map((product) => (
                   <ProductCardMedium
                     key={product.id}
                     product={product}
