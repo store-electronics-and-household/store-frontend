@@ -20,7 +20,8 @@ import PasswordRecovery from '../PasswordRecovery/PasswordRecovery';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import SearchResults from '../SearchResults/SearchResults';
 // import { paymentPageData } from '../../utils/constants';
-import type { MediumCardProps } from '../../utils/types';
+import type { MediumCardProps, ProductDataType } from '../../utils/types';
+// import type { ProductDataType } from '../../utils/types';
 
 import { CartProvider } from '../../context/CartContext';
 import { productData, productAttributes, subCategoriesList } from '../../utils/constants';

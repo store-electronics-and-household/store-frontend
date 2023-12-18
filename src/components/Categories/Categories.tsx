@@ -9,7 +9,7 @@ interface CategoriesProps {
   subCategoriesList: {
     id: number;
     name: string;
-    imageLink: string;
+    imageLink?: string;
     categoryAttributes: Array<{
       id: number;
       priority?: number;
