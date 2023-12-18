@@ -2,7 +2,7 @@
 import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
 
-import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 import deliveryIcon from '../../image/icons/delivery_icon.svg';
 import busketIcon from '../../image/icons/busket_icon.svg';
@@ -21,6 +21,7 @@ import SearchBar from '../SearchBar/SearchBar';
 
 import { useSlideContext } from '../../context/SlideContext';
 import { useCartContext } from '../../context';
+import Layout from '../Layout/Layout';
 
 interface HeaderProps {
   toggleWarningPopup: () => void;
@@ -177,7 +178,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, onOpenAuth, isLogged, han
           </button>
         </div>
       </header>
-      <Outlet/>
+      <Layout />
     </>
   );
 };
