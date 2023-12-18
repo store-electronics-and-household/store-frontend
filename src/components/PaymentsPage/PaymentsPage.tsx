@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PaymentsPageItem from './PaymentsPageItem';
 import PaymentsPageButton from './PaymentsPageButton';
-import { type GoodsListProps } from '../../utils/types';
+import { type MediumCardProps } from '../../utils/types';
 import { formatSumm } from '../../utils/formatSumm';
 import { useForm } from 'react-hook-form';
 import 'react-phone-number-input/style.css';
@@ -10,7 +10,7 @@ import PhoneForm from './PaymentsPageInput';
 import PaymentsPageCourier from './PaymentsPageCourier';
 
 interface PaymentsPageProps {
-  GoodsList: GoodsListProps[];
+  GoodsList: MediumCardProps[];
 }
 
 const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
@@ -47,19 +47,30 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
 
   const fullPrice: string = formatSumm(
     GoodsList.reduce(function (acc, item) {
-      return acc + item.quantity * item.salesPrice;
+      return acc + item.quantity * item.oldPrice;
     }, 0)
   );
 
   const summaryDiscount: string = formatSumm(
     GoodsList.reduce(function (acc, item) {
-      return acc + item.quantity * item.discount;
+      // return acc + item.quantity * (item.percent ? item.percent : 1);
+      return (
+        acc +
+        item.quantity * (typeof item.percent === 'number' ? item.percent : 0)
+      );
     }, 0)
   );
 
   const finalPrice: string = formatSumm(
     GoodsList.reduce(function (acc, item) {
-      return acc + item.quantity * (item.salesPrice - item.discount);
+      // return acc + item.quantity * (item.percent ? item.price - item.percent : 1);
+      return (
+        acc +
+        item.quantity *
+          (typeof item.percent === 'number'
+            ? item.oldPrice - item.percent
+            : item.oldPrice)
+      );
     }, 0) - (deliveryPrice ?? 0)
   );
 
@@ -168,14 +179,14 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                         <span className='payments-page__input-error'>
                           Поле имя обязательно к заполнению?
                         </span>
-                      )
+                    )
                     : errorsForm1.name != null &&
                       typeof errorsForm1.name === 'object' &&
                       'message' in errorsForm1.name && (
                         <span className='payments-page__input-error'>
                           {(errorsForm1.name as { message: string }).message}
                         </span>
-                      )}
+                    )}
                 </label>
               </div>
             </form>
@@ -237,7 +248,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
             {isСourierPage && (
               <>
                 <div className='payments-page__line payments-page__line_type_courier'></div>
-                <PaymentsPageCourier/>
+                <PaymentsPageCourier />
               </>
             )}
           </div>
@@ -253,7 +264,8 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                   <PaymentsPageItem
                     key={item.id}
                     quantity={item.quantity}
-                    imgUrl={item.imgUrl}
+                    // imgUrl={item.imgUrl}
+                    imgUrl={item.modelsImages?.[0]?.imageLink}
                   />
                 ))}
               </div>

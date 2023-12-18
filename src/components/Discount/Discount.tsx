@@ -2,7 +2,7 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 import { type MyTypeBanners } from '../../utils/types';
 import { useNavigate } from 'react-router-dom';
-import { getSearchResults } from '../../utils/api/user-api';
+import { getPromoResults } from '../../utils/api/search-api';
 
 interface DiscountProps {
   discountBannerImages: MyTypeBanners[];
@@ -11,12 +11,13 @@ interface DiscountProps {
 const Discount: React.FC<DiscountProps> = ({ discountBannerImages }) => {
   const navigate = useNavigate();
   const handleOnClick = (id: number): void => {
-    getSearchResults(id)
+    getPromoResults(id)
       .then((res) => {
+        console.log(res.content);
         navigate('/search-results');
       })
       .catch((error) => {
-        console.log(error);
+        console.log(`НЕ успех ${error}`);
       });
   };
 

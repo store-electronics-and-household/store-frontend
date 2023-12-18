@@ -2,14 +2,14 @@ import React from 'react';
 import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { type GoodsListProps } from '../../utils/types';
+import { type MediumCardProps } from '../../utils/types';
 import { formatCurrency } from '../../utils/formatCurrency';
 
 import { paymentPageData } from '../../utils/constants';
 import CartItem from '../CartItem/CartItem';
 import { useCartContext } from '../../context';
 interface CartProps {
-  onCheckoutClick: (data: GoodsListProps[]) => void;
+  onCheckoutClick: (data: MediumCardProps[]) => void;
 }
 
 const Cart: FC<CartProps> = ({ onCheckoutClick }) => {

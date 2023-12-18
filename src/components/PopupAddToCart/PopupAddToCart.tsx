@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 interface PopupAddToCartProps {
   isOpen: boolean;
-  photoUrl: string;
+  photoUrl?: string;
   productName: string;
 }
 

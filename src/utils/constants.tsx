@@ -11,378 +11,300 @@ export const products = [
   {
     id: 1,
     name: 'Ноутбук Apple MacBook Air 15 M2 8/256Gb Starlight (MQKU3)',
-    originPrice: 155990,
-    salesPrice: 164990,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    oldPrice: 155990,
+    price: 164990,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      }
     ],
-    quantityInCart: 0,
-    discount: 9,
-    isLiked: true
+    quantity: 0,
+    percent: 9,
+    // isLiked: true
   },
-  // {
-  //   id: 1,
-  //   name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-  //   price: 119700,
-  //   oldPrice: 430800,
-  //   url: '/product',
-  //   percent: 30
-  //   modelsImages: [
-  //   {
-  //     "id": 1,
-  //     "imageLink": "/"
-  //   },
-  //      {
-  //       "id": 2,
-  //     "imageLink": "/"
-  //      }
-  // ],
-  // },
   {
     id: 2,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    oldPrice: 119700,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+      }
     ],
-    isLiked: false,
-    quantityInCart: 0
+    // isLiked: false,
+    quantity: 0,
   },
   {
     id: 3,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
+    oldPrice: 119700,
+    price: 430800,
     discount: 20,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      }
     ],
-    isLiked: true,
-    quantityInCart: 1
+    // isLiked: true,
+    quantity: 1
   },
   {
     id: 4,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    oldPrice: 119700,
+    price: 430800,
+    percent: 30,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+      }
     ],
-    isLiked: false,
-    quantityInCart: 1
+    // isLiked: false,
+    quantity: 2
   },
   {
     id: 5,
-    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    name: 'Ноутбук Apple MacBook Air 15 M2 8/256Gb Starlight (MQKU3)',
+    oldPrice: 155990,
+    price: 164990,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      }
     ],
-    isLiked: false,
-    quantityInCart: 1
+    quantity: 0,
+    percent: 9,
+    // isLiked: true
   },
   {
     id: 6,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    oldPrice: 119700,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+      }
     ],
-    isLiked: true,
-    quantityInCart: 1
+    // isLiked: false,
+    quantity: 0,
   },
   {
     id: 7,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    oldPrice: 155990,
+    price: 164990,
+    discount: 20,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      }
     ],
-    isLiked: false,
-    quantityInCart: 1
+    // isLiked: true,
+    quantity: 1
   },
   {
     id: 8,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    oldPrice: 155990,
+    price: 164990,
+    percent: 30,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+      }
     ],
-    isLiked: false,
-    quantityInCart: 1
+    // isLiked: false,
+    quantity: 2
   },
   {
     id: 9,
-    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    name: 'Ноутбук Apple MacBook Air 15 M2 8/256Gb Starlight (MQKU3)',
+    oldPrice: 155990,
+    price: 164990,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      }
     ],
-    isLiked: false,
-    quantityInCart: 1
+    quantity: 0,
+    percent: 9,
+    // isLiked: true
   },
   {
     id: 10,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    oldPrice: 119700,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+      }
     ],
-    isLiked: false,
-    quantityInCart: 0
+    // isLiked: false,
+    quantity: 0,
   },
   {
     id: 11,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    oldPrice: 155990,
+    price: 164990,
+    discount: 20,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+      }
     ],
-    isLiked: false,
-    quantityInCart: 0
+    // isLiked: true,
+    quantity: 1
   },
   {
     id: 12,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    oldPrice: 155990,
+    price: 164990,
+    percent: 30,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+      }
     ],
-    isLiked: false,
-    quantityInCart: 0
+    // isLiked: false,
+    quantity: 2
   },
   {
     id: 13,
-    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    name: 'Ноутбук Apple MacBook Air 15 M2 8/256Gb Starlight (MQKU3)',
+    oldPrice: 155990,
+    price: 164990,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+      }
     ],
-    isLiked: false,
-    quantityInCart: 0
+    quantity: 0,
+    percent: 9,
+    // isLiked: true
   },
   {
     id: 14,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    oldPrice: 119700,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+      }
     ],
-    isLiked: false,
-    quantityInCart: 0
+    // isLiked: false,
+    quantity: 0,
   },
   {
     id: 15,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    oldPrice: 155990,
+    price: 164990,
+    discount: 20,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+      }
     ],
-    isLiked: false,
-    quantityInCart: 0
+    // isLiked: true,
+    quantity: 1
   },
   {
     id: 16,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    oldPrice: 155990,
+    price: 164990,
+    percent: 30,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+      }
     ],
-    isLiked: false,
-    quantityInCart: 0
-  },
-  {
-    id: 17,
-    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-    ],
-    isLiked: false,
-    quantityInCart: 0
-  },
-  {
-    id: 18,
-    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-    ],
-    isLiked: false,
-    quantityInCart: 0
-  },
-  {
-    id: 19,
-    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-    ],
-    isLiked: false,
-    quantityInCart: 0
-  },
-  {
-    id: 20,
-    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-    ],
-    isLiked: false,
-    quantityInCart: 0
-  },
-  {
-    id: 21,
-    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-    ],
-    isLiked: false,
-    quantityInCart: 0
-  },
-  {
-    id: 22,
-    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-    ],
-    isLiked: false,
-    quantityInCart: 0
-  },
-  {
-    id: 23,
-    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-    ],
-    isLiked: false,
-    quantityInCart: 0
-  },
-  {
-    id: 24,
-    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-    ],
-    isLiked: false,
-    quantityInCart: 0
-  },
-  {
-    id: 25,
-    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-    ],
-    isLiked: false,
-    quantityInCart: 0
-  },
-  {
-    id: 26,
-    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-    ],
-    isLiked: false,
-    quantityInCart: 0
-  },
-  {
-    id: 27,
-    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    imgUrl: [
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-    ],
-    isLiked: false,
-    quantityInCart: 0
+    // isLiked: false,
+    quantity: 2
   },
 ];
-/* ------------------------------------------- */
-export const contactsData = {
-  phoneNumber: '8 800 555-35-35',
-  email: 'cyberplace@gmail.ru',
-  adress:
-    'г. Москва, ул. Нижняя Красносельская, д. 40/12, корпус 20, этаж 5, помещение\u00A0II, комната 3;',
-};
 
 export const faqList = {
   deliveryFaq: [
@@ -440,7 +362,6 @@ export const faqList = {
 export const subCategoriesList = {
   id: 1,
   name: 'Ноутбуки',
-  imageLink: '',
   categoryAttributes: [
     {
       id: 0,
@@ -535,24 +456,27 @@ export const productAttributes = {
 export const paymentPageData = [
   {
     id: 100,
+    name: 'хороший товар',
     quantity: 1,
-    salesPrice: 10000,
+    oldPrice: 10000,
     imgUrl:
       'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     discount: 5000,
   },
   {
     id: 101,
+    name: 'очень хороший товар',
     quantity: 2,
-    salesPrice: 10000,
+    oldPrice: 10000,
     imgUrl:
       'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     discount: 7000,
   },
   {
     id: 103,
+    name: 'вашпе хороший товар',
     quantity: 3,
-    salesPrice: 10000,
+    oldPrice: 10000,
     imgUrl:
       'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     // imgUrl: '../../image/good_2.svg',
@@ -605,3 +529,10 @@ export const aboutCompanyInfo = [
     ],
   },
 ];
+
+export const contactsData = {
+  phoneNumber: '8 800 555-35-35',
+  email: 'cyberplace@gmail.ru',
+  adress:
+    'г. Москва, ул. Нижняя Красносельская, д. 40/12, корпус 20, этаж 5, помещение\u00A0II, комната 3;',
+};

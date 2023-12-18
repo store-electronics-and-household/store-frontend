@@ -20,7 +20,8 @@ import PasswordRecovery from '../PasswordRecovery/PasswordRecovery';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import SearchResults from '../SearchResults/SearchResults';
 // import { paymentPageData } from '../../utils/constants';
-import type { GoodsListProps, ProductDataType } from '../../utils/types';
+import type { MediumCardProps, ProductDataType } from '../../utils/types';
+// import type { ProductDataType } from '../../utils/types';
 
 import { CartProvider } from '../../context/CartContext';
 import { productData, productAttributes, subCategoriesList } from '../../utils/constants';
@@ -35,13 +36,20 @@ const App: React.FC = () => {
   const [isSignUpPopupOpen, setSignUpPopupOpen] = useState<boolean>(false);
   const [productById, setProductById] = useState<ProductDataType>();
   const [searchRequest, setSearchRequest] = useState<string>('');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [searchResults, setSearchResults] = useState<MediumCardProps[]>([]);
 
   const [isPasswordRecoveryPopupOpen, setPasswordRecoveryPopupOpen] =
     useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [goodsList, setGoodsList] = React.useState<GoodsListProps[]>();
+  const [goodsList, setGoodsList] = React.useState<MediumCardProps[]>();
   const toggleWarningPopup = (): void => {
     setWarningPopupOpen(!isWarningPopupOpen);
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleSearchCards = (array: MediumCardProps[]): void => {
+    setSearchResults(array);
   };
 
   const handleSearch = (request: string): void => {
@@ -60,7 +68,7 @@ const App: React.FC = () => {
     setPasswordRecoveryPopupOpen(!isPasswordRecoveryPopupOpen);
   };
 
-  const setGoodsForPayment = (data: GoodsListProps[]): void => {
+  const setGoodsForPayment = (data: MediumCardProps[]): void => {
     setGoodsList(data);
   };
 
@@ -242,6 +250,7 @@ const App: React.FC = () => {
                     <Breadcrumbs crumbs={crumbs}/>
                     <SearchResults
                       searchRequest={searchRequest}
+                      searchResults={searchResults}
                     />
                   </>
                 }
