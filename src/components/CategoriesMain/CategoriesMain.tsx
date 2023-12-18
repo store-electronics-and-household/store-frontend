@@ -1,33 +1,29 @@
-import React from 'react';
-import './CategoriesMain.css';
-import { categoriesList } from '../../utils/constants';
+import React, { memo } from 'react';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
 
-const CategoriesMain: React.FC<{
-  catId?: number
-  catTitle?: string
-  catImg?: string
-  catUrl?: string
-}> = (tile) => {
+interface Props {
+  categoriesMain: Array<{
+    id: number;
+    name: string;
+    imageLink: string;
+  }>;
+}
+
+const CategoriesMain: React.FC<Props> = ({ categoriesMain }): React.ReactElement => {
   return (
-    <section className='tile-main'>
-      <div className='tile-main__text'>
-        <h2 className='tile-main__title'>Категории</h2>
-      </div>
-      <ul className='tile-main__list'>
-        {categoriesList
-          .sort((a, b) => a.catTitle.localeCompare(b.catTitle))
+    <section className='tile'>
+      <h2 className='tile__title'>Категории</h2>
+      <ul className='tile__list'>
+        {categoriesMain
+          .sort((a, b: { name: string }) =>
+            a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+          )
           .map((tile) => (
-            <CategoriesTile
-              key={tile.catId}
-              catTitle={tile.catTitle}
-              catImg={tile.catImg}
-              catUrl={tile.catUrl}
-            />
+            <CategoriesTile key={tile.id} name={tile.name} id={tile.id} imageLink={tile.imageLink}/>
           ))}
-      </ul>{' '}
+      </ul>
     </section>
   );
 };
 
-export default CategoriesMain;
+export default memo(CategoriesMain);

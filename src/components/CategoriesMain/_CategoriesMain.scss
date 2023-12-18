@@ -1,0 +1,28 @@
+.tile {
+  max-width: 1360px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 140px;
+}
+
+.tile__title {
+  display: flex;
+  align-items: start;
+  margin: 0 0 32px;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--Black, #222);
+  z-index: 1;
+}
+
+.tile__list {
+  max-width:  1360px;
+  display: grid;
+  grid-template-columns: repeat(4, 322px);
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

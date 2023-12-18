@@ -1,37 +1,39 @@
-import React from 'react';
+import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
+import cn from 'classnames';
 
 interface PopupAddToCartProps {
   isOpen: boolean;
-  // overlayClickClose: (e: MouseEvent) => void
   photoUrl: string;
   productName: string;
 }
 
 const PopupAddToCart: React.FC<PopupAddToCartProps> = ({
   isOpen,
-  // overlayClickClose,
   productName,
   photoUrl,
 }: PopupAddToCartProps) => {
+  const popupAddToCartClass = cn(
+    'popup-add-to-cart',
+    { 'popup-add-to-cart_opened': isOpen }
+  );
+
   return (
     <section
-      className={`popup-add-to-cart ${
-        isOpen ? 'popup-add-to-cart_opened' : ''
-      }`}
+      className={popupAddToCartClass}
     >
-      {/* // onMouseDown={overlayClickClose}> */}
       <img
         src={photoUrl}
         alt='фото товара'
         className='popup-add-to-cart__product-photo'
       />
       <div className='popup-add-to-cart__container'>
-        <h3 className='popup-add-to-cart__head'>добавлен в ворзину</h3>
+        <h3 className='popup-add-to-cart__head'>добавлен в корзину</h3>
         <p className='popup-add-to-cart__product-name'>{productName}</p>
-        <button className='popup-add-to-cart__button'>В корзину</button>
+        <Link to='/cart' className='popup-add-to-cart__button'>В корзину</Link>
       </div>
     </section>
   );
 };
 
-export default PopupAddToCart;
+export default memo(PopupAddToCart);

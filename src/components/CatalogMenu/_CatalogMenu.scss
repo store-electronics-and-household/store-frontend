@@ -1,0 +1,129 @@
+@keyframes entranceCatalog {
+	0% {
+		opacity: 0;
+		transform: translateY(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes exitCatalog {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+.catalog-menu__overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: transparent;
+
+  z-index: 5;
+  cursor: pointer;
+}
+
+.catalog-menu__overlay-disactive {
+  display: none;
+}
+.catalog-menu {
+  box-sizing: border-box;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  width: 1360px;
+  height: 456px;
+  top: 76px;
+  padding: 64px 40px;
+  z-index: 10;
+  background-color: #F5F5F5;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.07);
+  border-radius: 24px;
+  box-sizing: border-box;
+
+  z-index: 10;
+}
+
+.catalog-menu-animation-entrance {
+  animation: entranceCatalog 0.5s ease 0s 1 normal forwards;
+}
+
+.catalog-menu-animation-exit {
+  animation: exitCatalog 0.2s ease 0s 1 normal forwards;
+  pointer-events: none;
+}
+
+.catalog-menu__title {
+  font-family: Wix Madefor Display;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px;
+  margin: 0;
+  height: 68px;
+  text-align: start;
+  color: black;
+  margin-right: 52px;
+}
+
+.catalog-menu__grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 322px);
+  grid-template-rows: repeat(4, 64px);
+  column-gap: 32px;
+  row-gap: 24px;
+}
+
+.catalog-menu__category {
+  display: flex;
+  width: 322px;
+  height: 64px;
+}
+
+.catalog-menu__category-wrapper {
+  display: flex;
+  width: 322px;
+  height: 64px;
+  align-items: center;
+}
+
+.catalog-menu__category-img {
+  display: flex;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  margin-right: 16px;
+  background-color: white;
+}
+
+.catalog-menu__category-name {
+  display: flex;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+}
+
+.catalog-menu__category-link {
+  display: flex;
+  text-decoration: none;
+  color: black;
+}

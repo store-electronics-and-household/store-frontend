@@ -3,16 +3,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 440px;
-  min-height: 516px;
+  max-width: 428px;
+  min-height: 430px;
   width: 100%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 40px;
   background-color: #fff;
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.07);
   border-radius: 25px;
@@ -22,7 +18,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 28px;
+  margin-top: 53px;
 }
 
 .signin__title {
@@ -41,33 +37,48 @@
   font-weight: 400;
   line-height: normal;
   text-align: center;
-  margin: 4px 0 0;
-  max-width: 400px;
+  margin: 0;
+  max-width: 324px;
 }
 
 .signin__inputs {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
+.signin__input-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+.signin__input-wrapper:first-of-type {
+  margin-top: 0px;
+}
 
 .signin__input {
-  padding: 10px 12px 10px;
+  padding: 10px 5px 10px;
   border-radius: 12px;
   border: 1px solid #B6B6B6;
   width: 324px;
   min-height: 24px;
-  margin-top: 20px;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  flex: 1;
+  box-sizing: border-box;
 }
 
-.signin__input:first-of-type {
-  margin-top: 0px;
+.signin__label {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  margin-bottom: 8px;
 }
 
 .signin__input:focus {
@@ -91,7 +102,6 @@
   max-width: 324px;
   margin: 8px 0 0;
   align-self: flex-start;
-  padding-left: 25px;
 }
 
 .signin__buttons {
@@ -119,7 +129,7 @@
 }
 
 .signin__button:last-child {
-  margin-bottom: 12px;
+  margin-bottom: 52px;
 }
 
 .signin__button_enter {
@@ -139,11 +149,11 @@
 
 .signin__button_cls {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 24px;
-  height: 24px;
-  background-image: url('#{$images-dir2}icons/popup__button-close.svg');
+  top: 23px;
+  right: 22px;
+  width: 20px;
+  height: 20px;
+  background-image: url('#{$imagesDir}icons/popup__button-close.svg');
   box-sizing: border-box;
   border-radius: 24px;
   background-repeat: no-repeat;
@@ -160,12 +170,25 @@
 
 .signin__link {
   text-decoration: none;
-  margin-top: 16px;
-  align-self: center;
+  margin-top: 12px;
+  align-self: baseline;
   color: #0500FF;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 18px;
-  text-align: center;
+  // text-align: center;
+}
+
+.signin__toggle-password-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.signin__toggle-password {
+  position: absolute;
+  top: 70%;
+  right: 8px;
+  transform: translateY(-50%);
+  cursor: pointer;
 }

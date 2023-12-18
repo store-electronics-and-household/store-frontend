@@ -1,24 +1,30 @@
 import React from 'react';
-import { type SpecifyType } from '../../utils/types';
+import { type ProductAttributesDataType } from '../../utils/types';
+import cn from 'classnames';
 
 interface ProductCharacteristicListProps {
-  productSpecifyName: SpecifyType;
-  productSpecifyValue: SpecifyType;
-  keysList: Array<keyof SpecifyType>;
-  modifyClass?: string;
+  productSpecifyName: ProductAttributesDataType;
+  productSpecifyValue: ProductAttributesDataType;
+  keysList: Array<keyof ProductAttributesDataType>;
+  modifyListClass?: string;
+  modifyItemClass?: string;
 }
 
 const ProductCharacteristicsList: React.FC<ProductCharacteristicListProps> = ({
   productSpecifyName,
   productSpecifyValue,
   keysList,
-  modifyClass,
+  modifyListClass,
+  modifyItemClass
 }: ProductCharacteristicListProps) => {
+  const characteristicsListClassname = cn('characteristics-list', modifyListClass);
+  const characteristicsItemClassname = cn('characteristics-list__item', modifyItemClass);
+
   return (
-    <ul className={`characteristics-list ${modifyClass}`}>
+    <ul className={characteristicsListClassname}>
       {keysList.map((keysListItem, keysListKey) => {
         return (
-          <li className='characteristics-list__item' key={keysListKey}>
+          <li className={characteristicsItemClassname} key={keysListKey}>
             <span className='characteristics-list__item-key'>
               {productSpecifyName[keysListItem]}
             </span>

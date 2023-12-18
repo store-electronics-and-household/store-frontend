@@ -1,0 +1,48 @@
+.not-found {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 170px 40px 140px;
+}
+
+.not-found__container-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.not-found__title {
+  @include fontStyle($fontSNotFound, $fontWNotFound);
+  color: $secondaryGreyColor;
+  font-family: $fontFamilyWMD;
+  line-height: 86px;
+  margin-bottom: 61px;
+}
+
+.not-found__subtitle {
+  @include fontStyle($fontSH3, $fontWH3);
+  line-height: 30px;
+  margin-bottom: 24px;
+  color: $accentBlackColor;
+}
+
+.not-found__info {
+  @include fontStyle($fontSBody, $fontWBody);
+  line-height: 24px;
+  color: $accentBlackColor;
+  margin-bottom: 48px;
+}
+
+.not-found__btn {
+  @include fontStyle($fontSButton, $fontWButton);
+  color: $whiteColof;
+  line-height: 24px;
+  border-radius: 40px;
+  background-color: $accentBlackColor;
+  padding: 16px 40px;
+  transition: background-color 0.4s ease;
+}
+
+.not-found__btn:hover {
+  background-color: $accentBlueColor;
+}

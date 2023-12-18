@@ -1,14 +1,13 @@
 .faq {
   max-width: 1130px;
   width: 100%;
-  margin: auto;
-  padding: 44px 40px 140px;
+  margin: 0 auto;
+  padding: 44px 40px 138px;
 }
 
 .faq__header {
-  margin-top: 0;
   margin-bottom: 44px;
-  font-size: 40px;
-  font-weight: 500;
+  @include fontStyle($fontSH1, $fontWH1);
+  font-family: $fontFamilyWMD;
   line-height: 40px;
 }

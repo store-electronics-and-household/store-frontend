@@ -4,70 +4,203 @@
 }
 
 .payments-page__title {
-  max-width: 1360px;
+  max-width: 1129px;
   margin: 44px auto 44px auto;
-  @include fontStyle($fontSH2, $fontWH2)
+  @include fontStyle($fontSH2, $fontWH2);
+  font-family: 'Wix Madefor Display';
 }
 
 .payments-page__container {
-  width: 1360px;
+  width: 1129px;
   margin: 0 auto 140px;
   display: flex;
 }
 
 .payments-page__input-containers {
-  width: 899px;
-  height: 635px;
+  width: 667px;
+  // height: 582px;
+  background-color: #FFF;
+  border-radius: 24px;
+  padding: 0 40px;
 }
 
 .payments-page__client-name {
-  width: 100%;
-  height: 220px;
-  margin-bottom: 24px;
-  background-color: $greyColor;
-  border-radius: 24px;
+  // width: 667px;
+  // height: 582px;
+  // margin-bottom: 24px;
+  // background-color: $whiteColof;
+  // border-radius: 24px;
 }
 
 .payments-page__client-address {
   width: 100%;
-  height: 391px;
-  background-color: $greyColor;
+  // height: 391px;
+  background-color: $whiteColof;
   border-radius: 24px;
 }
 
-.payments-page__title-container {
-  display: flex;
-  justify-content: space-between;
-  padding-right: 40px;
+.payments-page__form-title {
+  @include fontStyle($fontSH3, $fontWH3);
+  line-height: 1.25;
+  padding: 40px 0 24px;
 }
 
-.payments-page__form-title {
-  @include fontStyle($fontSPriceSmall, $fontWPriceSmall);
-  padding: 40px 0 24px 40px;
+.payments-page__form-title_type_summary {
+  padding-bottom: 12px;
+}
+
+.payments-page__subtitle {
+  color: #4350D6;
+  line-height: 112.5%;
+  @include fontStyle($fontSButton, $fontWButton);
+  // padding-left: 40px;
+  // padding-bottom: 16px;
+}
+
+.payments-page__form-title_type_address {
+  line-height: 35px;
+  padding-top: 32px;
+  padding-bottom: 12px;
 }
 
 .payments-page__line {
   border-bottom: 1px #B6B6B6 solid;
-  margin: 0 40px;
+  // margin: 0 40px;
 }
 
-.payments-page__delivery-type {
-  background: var(--main-white, #FFF);
-  width: 126px;
-  height: 35px;
-  border-radius: 24px;
-  @include fontStyle($fontSBodyBold, $fontWBodyBold);
-  margin: auto 0;
-  border: none;
+.payments-page__line_type_courier {
+  margin: 32px 0;
 }
 
-.payments-page__delivery-type:first-of-type {
-  width: 92px;
-  margin: auto 24px auto auto;
+.payments-page__input-container {
+  // display: flex;
+  // width: 819px;
+  margin: 0 40px 0 0;
 }
 
-.payments-page__delivery-type:last-of-type {
-  width: 126px;
+.payments-page__input-label {
+  width: 394px;
+  display: flex;
+  flex-direction: column;
+}
+
+.payments-page__input-title {
+  @include fontStyle($fontSCaptionRegular, $fontWCaptionRegular);
+}
+
+.payments-page__client-data-input {
+  width: 100%;
+  height: 48px;
+  background-color: #FFF;
+  border-radius: 12px;
+  border: 1px solid $blackColor;
+  padding: 0;
+  // color: $blackColor;
+  @include fontStyle($fontSBody, $fontWBody);
+  margin-top: 8px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+// .payments-page__input-label:first-of-type {
+//   margin-bottom: 16px;
+// }
+
+.payments-page__input-error {
+  color: #EE3465;
+  margin-top: 3px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+}
+
+.payments-page__title-container {
+  display: flex;
+  // justify-content: space-between;
+  // padding-left: 40px;
+  margin-top: 16px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.payments-page__delivery-label {
+  display: flex;
+  @include fontStyle($fontSButton, $fontWButton);
+}
+
+.payments-page__delivery-label:first-of-type {
+  margin-right: 36px;
+}
+
+.payments-page__delivery-type_type_invisible {
+  position: absolute;
+  left: 50px;
+  width: 1px;
+  height: 1px;
+  // overflow: hidden;
+  // clip-path: inset(0 0 0 0);
+  // z-index: 1;
+  clip: rect(0 0 0 0);
+}
+
+.payments-page__delivery-type_type_visible {
+  border: 1px solid $blackColor;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  // background-color: #3DDC84;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  margin-top: -3px;
+  margin-right: 12px;
+}
+
+.payments-page__delivery-type_type_visible::before {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  top: 3px;
+  right: 3px;
+}
+
+.payments-page__delivery-type_type_invisible:checked + .payments-page__delivery-type_type_visible::before {
+  background-color: $blackColor;
+}
+
+.payments-page__address-container {
+  // margin: 24px 40px 0;
+  // height: 228px;
+  // border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+}
+
+.payments-page__address-title {
+  @include fontStyle($fontSH3, $fontWH3);
+  margin-bottom: 27px;
+}
+
+.payments-page__address-input-container {
+  // border: 1px solid blue;
+  width: 508px;
+  // height: 100%;
+}
+
+.payments-page__input-label_type_address {
+  width: 100%;
+}
+
+.payments-page__address-box {
+  margin-top: 16px;
+  // border: 1px greenyellow solid;
+  // height: 146px;
+  display: grid;
+  // grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
 }
 
 .payments-page__summary-conatiner {
@@ -75,15 +208,17 @@
 }
 
 .payments-page__summary {
-  background-color: $greyColor;
+  background-color: $whiteColof;
   border-radius: 24px;
   width: 437px;
   margin-left: 24px;
+  padding: 0 40px;
+  box-sizing: border-box;
 
 }
 
 .payments-page__cart-container {
-  margin: 24px 40px 24px 40px;
+  margin: 24px 0;
   display: grid;
   grid-template-columns: repeat(3, 100px);
   gap: 16px;
@@ -102,9 +237,9 @@
 
 .payments-page__good-photo {
   margin: auto;
-  height: 72px;
-  max-width: 59px;
-  object-fit: cover;
+  height: 82px;
+  width: 82px;
+  object-fit: contain;
   border-radius: 6px;
 }
 
@@ -120,11 +255,13 @@
 .payments-page__summary-data {
   display: flex;
   justify-content: space-between;
-  margin: 0 40px 24px 40px;
+  // margin: 0 40px 24px 40px;
+  margin-bottom: 24px;
 }
 
 .payments-page__summary-row {
-  @include fontStyle($fontSBody, $fontWBody)
+  @include fontStyle($fontSBody, $fontWBody);
+  line-height: 1.2;
 }
 
 .payments-page__summary-row_discount {
@@ -132,7 +269,119 @@
 }
 
 .payments-page__summary-final {
-  @include fontStyle($fontSPriceSmall, $fontWPriceSmall);
+  @include fontStyle($fontSH3, $fontWH3);
   margin: 24px 0 40px;
 }
 
+.payments-page__pickup-point-button {
+  display: flex;
+  width: 437px;
+  height: 56px;
+  // padding: 16px 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  border: 1px solid black;
+  background: transparent;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  }
+
+.payments-page__pickup-point-button-title {
+    @include fontStyle($fontSButton, $fontWButton);
+    line-height: 18px;
+    color: $whiteColof;
+}
+
+.payments-page__phone-input {
+  // border: none;
+  outline: none;
+  @include fontStyle($fontSBody, $fontWBody);
+  width: 100%;
+  height: 48px;
+  background-color: #FFF;
+  border-radius: 12px;
+  border: 1px solid #222;
+  padding: 0;
+  text-decoration: none;
+  margin-top: 8px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.payments-page__date-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  // overflow: hidden;
+  height: 68px;
+  // overflow-x: scroll;
+  overflow-x: clip;
+}
+
+.payments-page__date-label {
+  display: flex;
+  @include fontStyle($fontSButton, $fontWButton);
+}
+
+.payments-page__date_type_invisible {
+  position: absolute;
+  left: 50px;
+  width: 1px;
+  height: 1px;
+  // overflow: hidden;
+  // clip-path: inset(0 0 0 0);
+  // z-index: 1;
+  clip: rect(0 0 0 0);
+}
+
+.payments-page__date_type_visible {
+  border: 1px solid $greyColor;
+  display: inline-block;
+  width: 153px;
+  height: 68px;
+  // background-color: #3DDC84;
+  border-radius: 40px;
+  position: relative;
+  cursor: pointer;
+  margin-top: -3px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.payments-page__page__delivery-date-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.payments-page__date_type_visible-text {
+  @include fontStyle($fontSButton, $fontWButton)
+}
+
+.payments-page__date_type_invisible:checked + .payments-page__date_type_visible {
+  border: 1px solid $blackColor;
+}
+
+/*
+
+.payments-page__delivery-type_type_visible::before {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  top: 3px;
+  right: 3px;
+}
+
+.payments-page__delivery-type_type_invisible:checked + .payments-page__delivery-type_type_visible::before {
+  background-color: $blackColor;
+}
+
+*/

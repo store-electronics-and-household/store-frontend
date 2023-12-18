@@ -8,10 +8,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #eaeaea;
+  color: #AFB4C0;
+  background-color: white;
   border-radius: 40px;
-  height: 56px;
-  padding: 0 40px 0 40px;
+  height: 40px;
+  padding: 0 24px 0 24px;
 }
 
 .header__searchbar-button {
@@ -25,13 +26,17 @@
   height: 24px;
 }
 
+.header__searchbar-form {
+  display: flex;
+  width: 100%;
+}
+
 .header__searchbar-input {
   display: flex;
   height: 100%;
   width: 100%;
   background-color: transparent;
   border: none;
-  font-size: 1rem;
   margin-left: 12px;
 }
 
@@ -41,11 +46,13 @@
 
 .header__searchbar-input::placeholder {
   display: flex;
-  font-size: 20px;
+  font-family: Inter;
+  font-size: 16px;
   font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  color: black;
+  font-weight: 400;
+  line-height: 18px;
+  margin-left: 12px;
+  color: #AFB4C0;
 }
 
 .header__searchbar-input:focus::placeholder {

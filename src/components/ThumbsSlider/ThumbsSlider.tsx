@@ -11,19 +11,24 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
 import './ThumbsSlider.css';
-import { productPhotoArray } from '../../utils/constants';
-
 // import required modules
-import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import { FreeMode, Mousewheel, Navigation, Thumbs } from 'swiper/modules';
 
-const ThumbsSlider: React.FC = () => {
+interface ThumbsSliderProps {
+  images: string[];
+  onPopupFullPhoto: () => void;
+}
+
+const ThumbsSlider: React.FC<ThumbsSliderProps> = ({
+  images,
+  onPopupFullPhoto,
+}) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
   return (
     <>
       <Swiper
         spaceBetween={10}
-        navigation={true}
         // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         thumbs={{
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
@@ -31,12 +36,13 @@ const ThumbsSlider: React.FC = () => {
         modules={[FreeMode, Navigation, Thumbs]}
         className='swiper-second'
       >
-        {productPhotoArray.map((photo, photoId) => {
+        {images.map((img, imgId) => {
           return (
-            <SwiperSlide key={photoId}>
+            <SwiperSlide key={imgId}>
               <img
+                onClick={onPopupFullPhoto}
                 className='swiper-second__img'
-                src={photo}
+                src={img}
                 alt='фото товара'
               />
             </SwiperSlide>
@@ -48,19 +54,16 @@ const ThumbsSlider: React.FC = () => {
         spaceBetween={8}
         slidesPerView={5}
         freeMode={true}
+        mousewheel={true}
         watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
+        modules={[FreeMode, Mousewheel, Navigation, Thumbs]}
         className='swiper-first'
         direction='vertical'
       >
-        {productPhotoArray.map((photo, photoId) => {
+        {images.map((img, imgId) => {
           return (
-            <SwiperSlide key={photoId}>
-              <img
-                className='swiper-first__img'
-                src={photo}
-                alt='фото товара'
-              />
+            <SwiperSlide key={imgId}>
+              <img className='swiper-first__img' src={img} alt='фото товара' />
             </SwiperSlide>
           );
         })}

@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  z-index: 10000;
+  z-index: 100;
 }
 
 .header__container {
@@ -25,30 +25,74 @@
   color: white;
   background-color: black;
   border-radius: 40px;
-  font-weight: bold;
-  font-size: 17px;
+
+  font-family: Inter, serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
   margin-left: 20px;
+  margin-right: 20px;
   border: none;
   cursor: pointer;
 }
 
-.header__catalog-button {
+.header__catalog-button_white {
   color: black;
   background-color: white;
 }
 
-.header__navbar-link {
-  cursor: pointer;
-}
-
 .header__navbar {
   display: flex;
+  justify-content: center;
+}
+
+.header__navbar-link {
+  display: flex;
+  cursor: pointer;
+  position: relative;
+
+  height: 24px;
+  width: 24px;
+  margin: 12px 20px;
+
+  transition: .2s ease-in-out;
+}
+
+.header__navbar-link:hover {
+  transform: scale(115%);
+  color: #4350D6;
 }
 
 .header__navbar-icon {
-  height: 32px;
-  width: 32px;
-  margin: 12px 20px;
+  display: flex;
+  height: 24px;
+  width: 24px;
+  margin: 0;
+  z-index: 1;
+}
+
+.header__navbar-icon-count {
+  position: absolute;
+  top: -9px;
+  right: -13px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  width: 19px;
+  height: 14px;
+  padding: 4px;
+  background-color: #4350D6;
+
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 14px;
+  color: white;
 }
 
 .header__auth-button {
@@ -62,6 +106,11 @@
   font-weight: 600;
   cursor: pointer;
   border: 1px solid #272A31;
+  transition: .2s ease-in-out;
+}
+
+.header__auth-button:hover {
+  transform: scale(107%);
 }
 
 .header__auth-button_white {

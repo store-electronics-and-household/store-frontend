@@ -1,12 +1,8 @@
-.swiper {
-
-}
-
 .swiper-container {
   width: 1440px;
   height: 640px;
   position: absolute !important;
-  top:0;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -23,10 +19,11 @@
 .slider__action-img {
   width: 1440px;
   height: 640px;
+  vertical-align: bottom;
+  box-sizing: content-box;
 }
 
-.swiper-button-next_lightgrey{
-  background-image: url("../../image/icons/swiper-main-black-btn.svg") !important;
+.swiper-button-next_lightgrey {
   width: 56px !important;
   height: 56px !important;
   background-repeat: no-repeat;
@@ -36,8 +33,7 @@
   content: none !important;
 }
 
-.swiper-button-next_black{
-  background-image: url("../../image//icons/swiper-main-gray-btn.svg") !important;
+.swiper-button-next_black {
   width: 56px !important;
   height: 56px !important;
   background-repeat: no-repeat;
@@ -50,4 +46,4 @@
 .swiper-button-next_black:after,
 .swiper-button-next_lightgrey:after {
   content: none !important;
-}
+}/*# sourceMappingURL=Slider.css.map */

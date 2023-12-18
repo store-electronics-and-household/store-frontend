@@ -1,33 +1,39 @@
 import React from 'react';
-import './CategoriesTile.css';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { API_CAT_IMG } from '../../utils/constants';
 
-const CategoriesTile: React.FC<{
-  catTitle: string
-  catImg: string
-  catUrl?: string
-}> = (tile) => {
-  const location = useLocation();
+interface CategoriesTileProps {
+  id: number;
+  name: string;
+  imageLink?: string;
+  categoryAttributes?: {
+    id: number;
+    priority: number;
+    attributeName: string;
+  };
+}
+
+const CategoriesTile: React.FC<CategoriesTileProps> = ({ id, name, imageLink, categoryAttributes }): React.ReactElement => {
+  const location = useLocation().pathname;
+  const nextPath = location === '/main'
+    ? `/categories/${id}`
+    : `/categories/${categoryAttributes?.id}`;
+  const CategoryTumbNail = location === '/main'
+    ? imageLink
+    : `${API_CAT_IMG}/${categoryAttributes?.id}.png`;
+
   return (
     <li
-      className={
-        location.pathname === '/main'
-          ? 'tile__item'
-          : 'tile__item tile__item_small'
-      }
+      className={location === '/main' ? 'tile__item' : 'tile__item tile__item_small'}
     >
-      <a className='tile__content' href={tile.catUrl}>
-        <span className='tile__category-name'>{tile.catTitle}</span>
+      <Link to={nextPath} className='tile__content'>
+        <span className='tile__category-title'>{name}</span>
         <img
-          className={
-            location.pathname === '/main'
-              ? 'tile__image'
-              : 'tile__image tile__image_small'
-          }
-          alt=''
-          src={tile.catImg}
+          className={location === '/main' ? 'tile__image' : 'tile__image tile__image_small'}
+          alt={`фото категории ${name}`}
+          src={CategoryTumbNail}
         />
-      </a>
+      </Link>
     </li>
   );
 };

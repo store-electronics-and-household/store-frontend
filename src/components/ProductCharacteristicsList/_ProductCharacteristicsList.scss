@@ -2,26 +2,30 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 0;
   padding: 0;
+  margin: 0;
   list-style: none;
-  font-size: 16px;
+  gap: 16px;
 }
 
 .characteristics-list_full {
-  display: block;
-  column-count: 2;
+  gap: 24px;
+  max-width: 780px;
 }
 
-.characteristics-list__item:not(:last-of-type) {
-  margin-bottom: 20px;
+.characteristics-list__item_full {
+  display: flex;
+  justify-content: space-between;
 }
 
 .characteristics-list__item-key {
-  color: #B6B6B6;
+  @include fontStyle($fontSCharacteristics, $fontWCharacteristics);
+  color: $accentBlackColor;
   margin-right: 12px;
+  line-height: 24px;
 }
 
 .characteristics-list__item-value {
-  color: #222;
+  @include fontStyle($fontSBody, $fontWBody);
+  color: $blackColor;
 }

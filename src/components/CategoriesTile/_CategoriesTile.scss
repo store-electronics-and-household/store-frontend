@@ -1,0 +1,66 @@
+.tile__item {
+  border-radius: 20px;
+  position: relative;
+  background-color: #fff;
+  height: 316px;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  transition: .2s ease-in-out;
+}
+
+.tile__item:hover {
+  transform: scale(105%);
+  box-shadow: 0 0 40px rgba(128, 128, 128, 0.3);
+}
+
+.tile__item_small {
+  height: 292px;
+}
+
+.tile__content {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #222;
+  z-index: 1;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.tile__image {
+  z-index: 0;
+  max-width: 274px;
+  min-height: 204px;
+  max-height: 234px;
+  margin: 0 auto;
+}
+
+.tile__image_small {
+  max-height: 210px;
+  min-height: 180px;
+  aspect-ratio: 274/210;
+}
+
+.tile__image:after {
+  display: block;
+  position: absolute;
+  font-size: 16px;
+  content: 'Не удалось загрузить изображение';
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #222;
+  text-align: center;
+}
+
+.tile__category-title {
+  margin: 32px 0 20px 24px;
+  color: #222;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 30px;
+  text-align: start;
+  max-width: 267px;
+}

@@ -26,6 +26,7 @@
 
 .swiper-second {
   width: 437px;
+  border-radius: 25px;
 }
 
 .swiper-first {
@@ -40,6 +41,10 @@
   border-radius: 10px;
 }
 
+.swiper-second .swiper-slide {
+  border-radius: 25px;
+}
+
 .swiper-first__img {
   border-radius: 10px;
 }
@@ -52,7 +57,7 @@
   opacity: 1;
 }
 
-/*
-.swiper-button-prev, .swiper-button-next {
+.swiper-second .swiper-button-prev,
+.swiper-second .swiper-button-next {
   color: #fff;
-} */
+}

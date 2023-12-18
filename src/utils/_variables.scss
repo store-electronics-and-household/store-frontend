@@ -1,44 +1,66 @@
 $blackColor: #222;
+$secondaryBlackColor: #000;
 $greyColor: #EDEDED;
+$whiteColof: #FFF;
+$accentBlackColor: #272A31;
+$accentBlueColor: #4350D6;
+$accentLightGreenColor: #E3FF72;
+$secondaryGreyColor: #AFB4C0;
 $fontMargin: 0;
 $fontDOldPrice: line-through;
-$images-dir: './images/';
-$images-dir2: './image/';
 $imagesDir: './image/';
+$fontFamilyWMD: 'Wix Madefor Display';
 
+$fontSH1: 40px;
+$fontWH1: 500;
 
-$fontSH1: 68px;
-$fontWH1: 700;
-
-$fontSH2: 56px;
+$fontSH2: 32px;
 $fontWH2: 500;
 
-$fontSH3: 32px;
-$fontWH3: 700;
+$fontSH3: 24px;
+$fontWH3: 600;
 
 $fontSH4: 24px;
 $fontWH4: 500;
 
 $fontSPrice: 24px;
-$fontWPrice: 600;
+$fontWPrice: 700;
 
 $fontSPriceSmall: 20px;
-$fontWPriceSmall: 600;
+$fontWPriceSmall: 500;
 
-$fontSOldPrice: 20px;
+$fontSOldPrice: 24px;
 $fontWOldPrice: 600;
+
+$fontSOldPriceMedium: 24px;
+$fontWOldPriceMedium: 500;
 
 $fontSOldPriceSmall: 16px;
 $fontWOldPriceSmall: 600;
 
-$fontSButton: 20px;
+$fontSTag: 20px;
+$fontWTag: 700;
+
+$fontSButton: 16px;
 $fontWButton: 600;
 
-$fontSBodyBold: 16px;
-$fontWBodyBold: 700;
+$fontSAmount: 14px;
+$fontWAmount: 600;
 
-$fontSBody: 16px;
+// $fontSBodyBold: 16px;
+// $fontWBodyBold: 700;
+
+$fontSBody: 20px;
 $fontWBody: 400;
 
 $fontSCaption: 14px;
 $fontWCaption: 400;
+
+$fontSCaptionRegular: 16px;
+$fontWCaptionRegular: 400;
+
+$fontSCharacteristics: 20px;
+$fontWCharacteristics: 600;
+
+$fontSNotFound: 128px;
+$fontWNotFound: 800;

@@ -1,114 +1,67 @@
-/* это нужно будет удалить после--------------- */
-export const categoriesList = [
-  {
-    catId: 1,
-    catTitle: 'Игровые приставки',
-    catImg:
-      'https://images.unsplash.com/photo-1621259182978-fbf93132d53d?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/categories',
-  },
-  {
-    catId: 2,
-    catTitle: 'Телефоны и аксессуары',
-    catImg:
-      'https://images.unsplash.com/photo-1585060544812-6b45742d762f?q=80&w=1762&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/categories',
-  },
-  {
-    catId: 3,
-    catTitle: 'Планшеты',
-    catImg:
-      'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/categories',
-  },
-  {
-    catId: 4,
-    catTitle: 'Ноутбуки',
-    catImg:
-      'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/categories',
-  },
-  {
-    catId: 5,
-    catTitle: 'Аксессуары',
-    catImg:
-      'https://images.unsplash.com/photo-1573739022854-abceaeb585dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGhvbmUlMjBhY2Nlc3Nvcmllc3xlbnwwfHwwfHx8MA%3D%3D',
-    catUrl: '/categories',
-  },
-  {
-    catId: 6,
-    catTitle: 'Умные часы и браслеты',
-    catImg:
-      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/categories',
-  },
-  {
-    catId: 7,
-    catTitle: 'Наушники и аксессуары',
-    catImg:
-      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/categories',
-  },
-  {
-    catId: 8,
-    catTitle: 'Квадрокоптеры',
-    catImg:
-      'https://images.unsplash.com/photo-1617109224926-b69d0862ef1b?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/categories',
-  },
-  {
-    catId: 9,
-    catTitle: 'Компьютеры и комплектующие',
-    catImg:
-      'https://images.unsplash.com/photo-1547082299-de196ea013d6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGNvbXB1dGVyfGVufDB8fDB8fHww',
-    catUrl: '/categories',
-  },
-  {
-    catId: 10,
-    catTitle: 'Портативная акустика',
-    catImg:
-      'https://images.unsplash.com/photo-1511499271651-073325718d90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHx8',
-    catUrl: '/categories',
-  },
-  {
-    catId: 11,
-    catTitle: 'Техника для дома',
-    catImg:
-      'https://images.unsplash.com/photo-1570222094114-d054a817e56b?q=80&w=1805&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/categories',
-  },
-  {
-    catId: 12,
-    catTitle: 'Гаджеты',
-    catImg:
-      'https://images.unsplash.com/photo-1620213391117-0d169a917221?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    catUrl: '/categories',
-  },
-];
-export const product = [
+import iconSmile from '../image/icons/smile_icon.svg';
+import iconDelivery from '../image/icons/delivery_icon.svg';
+import iconMedal from '../image/icons/medal-original_icon.svg';
+
+export const API_URL: string = 'http://45.12.236.120:8080';
+export const API_CAT_IMG: string = 'http://45.12.236.120/images/categories';
+export const popularCardsToShow = 6;
+export const productCharacteristicsShortListLength = 10;
+
+export const products = [
   {
     id: 1,
-    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-    originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    url: '/product',
+    name: 'Ноутбук Apple MacBook Air 15 M2 8/256Gb Starlight (MQKU3)',
+    originPrice: 155990,
+    salesPrice: 164990,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    quantityInCart: 0,
+    discount: 9,
+    isLiked: true
   },
+  // {
+  //   id: 1,
+  //   name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+  //   price: 119700,
+  //   oldPrice: 430800,
+  //   url: '/product',
+  //   percent: 30
+  //   modelsImages: [
+  //   {
+  //     "id": 1,
+  //     "imageLink": "/"
+  //   },
+  //      {
+  //       "id": 2,
+  //     "imageLink": "/"
+  //      }
+  // ],
+  // },
   {
     id: 2,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
     originPrice: 119700,
-    salesPrice: 430800,
-    discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 3,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
     originPrice: 119700,
     salesPrice: 430800,
-    discount: 30,
-    url: '/product',
+    discount: 20,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: true,
+    quantityInCart: 1
   },
   {
     id: 4,
@@ -116,7 +69,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 1
   },
   {
     id: 5,
@@ -124,7 +82,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 1
   },
   {
     id: 6,
@@ -132,7 +95,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: true,
+    quantityInCart: 1
   },
   {
     id: 7,
@@ -140,7 +108,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 1
   },
   {
     id: 8,
@@ -148,7 +121,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 1
   },
   {
     id: 9,
@@ -156,7 +134,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 1
   },
   {
     id: 10,
@@ -164,7 +147,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 11,
@@ -172,7 +160,12 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
   {
     id: 12,
@@ -180,15 +173,215 @@ export const product = [
     originPrice: 119700,
     salesPrice: 430800,
     discount: 30,
-    url: '/product',
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
+  },
+  {
+    id: 13,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
+    discount: 30,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
+  },
+  {
+    id: 14,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
+    discount: 30,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
+  },
+  {
+    id: 15,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
+    discount: 30,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
+  },
+  {
+    id: 16,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
+    discount: 30,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
+  },
+  {
+    id: 17,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
+    discount: 30,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
+  },
+  {
+    id: 18,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
+    discount: 30,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
+  },
+  {
+    id: 19,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
+    discount: 30,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
+  },
+  {
+    id: 20,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
+    discount: 30,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
+  },
+  {
+    id: 21,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
+    discount: 30,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
+  },
+  {
+    id: 22,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
+    discount: 30,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
+  },
+  {
+    id: 23,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
+    discount: 30,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
+  },
+  {
+    id: 24,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
+    discount: 30,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
+  },
+  {
+    id: 25,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
+    discount: 30,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
+  },
+  {
+    id: 26,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
+    discount: 30,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
+  },
+  {
+    id: 27,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    originPrice: 119700,
+    salesPrice: 430800,
+    discount: 30,
+    imgUrl: [
+      'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+    ],
+    isLiked: false,
+    quantityInCart: 0
   },
 ];
 /* ------------------------------------------- */
 export const contactsData = {
   phoneNumber: '8 800 555-35-35',
-  email: 'companyname@mail.ru',
+  email: 'cyberplace@gmail.ru',
   adress:
-    'Юр. адрес: г. Москва, ул. Нижняя Красносельская, д. 40/12, корпус 20, этаж 5, помещение II, комната 3;',
+    'г. Москва, ул. Нижняя Красносельская, д. 40/12, корпус 20, этаж 5, помещение\u00A0II, комната 3;',
 };
 
 export const faqList = {
@@ -203,7 +396,7 @@ export const faqList = {
     },
     {
       q: 'Получение заказа',
-      a: 'Для получения товара Покупатель должен предъявить шестизначный код на каждый заказ. Мы отправили их посредством СМС на номер мобильного телефона, указанного Покупателем при создании заказа. В случае отсутствия кода подтверждения, при Вас будет заполнен Акт выдачи Товара без смс-верификации и /или в отсутствии связи на адресе выдачи',
+      a: 'Для получения товара Покупатель должен предъявить шестизначный код на каждый заказ. Мы отправили их посредством СМС на номер мобильного телефона, указанного Покупателем при создании заказа. В\u00A0случае отсутствия кода подтверждения, при Вас будет заполнен Акт выдачи Товара без смс-верификации и /или в отсутствии связи на адресе выдачи',
     },
     {
       q: 'Как узнать стоимость и интервалы доставки в моём городе?',
@@ -234,32 +427,73 @@ export const faqList = {
       a: 'Это зависит от категории товара. В соответствии со ст. 25 закона «О защите прав потребителей» возврат товара надлежащего качества возможен в течение 14 дней с момента его покупки при условии, что Ваш товар не входит в список не подлежащих возврату.',
     },
     {
-      q: 'Почему у меня не получается сделать обмен или возврат на сайте?',
+      q: 'Могу ли я поменять или вернуть технику, купленную в интернет-магазине?',
       a: 'Возможно Ваш товар относится к категории не подлежащей обмену или возврату. Если у Вас возникли трудности при использовании товара, советуем обратиться в сервисный центр или к представителю производителя.',
     },
     {
-      q: 'Могу ли я поменять или вернуть технику, купленную в интернет-магазине?',
+      q: 'Почему у меня не получается сделать обмен или возврат на сайте?',
       a: 'Да, в соответствии со ст. 25 закона «О защите прав потребителей» возврат товара надлежащего качества возможен в течение 14 дней с момента его покупки при условии, что Ваш товар не входит в список не подлежащих возврату.',
     },
   ],
 };
 
-export const productPhotoArray = [
-  'https://images.unsplash.com/photo-1505156868547-9b49f4df4e04?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aXBob25lfGVufDB8fDB8fHww',
-  'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
-  'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
-  'https://images.unsplash.com/photo-1611472173362-3f53dbd65d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
-  'https://images.unsplash.com/photo-1695639526461-7244f263119c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGFwcGxlJTIwaXBob25lJTIwMTUlMjBwcm98ZW58MHx8MHx8fDA%3D',
-  'https://images.unsplash.com/photo-1620049185596-1f16f414c448?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA0fHxpcGhvbmV8ZW58MHx8MHx8fDA%3D',
-  'https://images.unsplash.com/photo-1695822822491-d92cee704368?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBwbGUlMjBpcGhvbmUlMjAxNSUyMHByb3xlbnwwfHwwfHx8MA%3D%3D',
-];
+export const subCategoriesList = {
+  id: 1,
+  name: 'Ноутбуки',
+  imageLink: '',
+  categoryAttributes: [
+    {
+      id: 0,
+      priority: 0,
+      attributeName: 'Apple Macbook',
+    },
+    {
+      id: 1,
+      priority: 0,
+      attributeName: 'Игровые ноутбуки',
+    },
+    {
+      id: 2,
+      priority: 0,
+      attributeName: 'Ультрабуки',
+    },
+    {
+      id: 3,
+      priority: 0,
+      attributeName: 'Ноутбуки-трансформеры',
+    },
+    {
+      id: 4,
+      priority: 0,
+      attributeName: 'Нетбуки',
+    },
+  ],
+};
+
+export const productData = {
+  id: 68898484,
+  name: 'Apple MacBook Air 15" (M2, 8C CPU/10C GPU, 2023), 8 ГБ, 512 ГБ SSD, «сияющая звезда»',
+  price: 155990,
+  oldPrice: 164990,
+  description: [
+    'Ноутбук Apple MacBook Air 15 M2 Space Gray (MQKP3) c macOS — модель в алюминиевом корпусе, снабженная восьмиядерным чипом Apple M2. Последний превосходит по скорости вычисления все другие процессоры компании. Высокая производительность позволяет выполнять на ноутбуке ресурсоемкие задачи, в том числе профессиональное редактирование фото и видео в 4К. Чип способствует равномерному распределению задач между ядрами эффективности и производительности. Объем SSD составляет 256 Гб, оперативной памяти — 8 Гб (частота 5600 МГц).',
+    'Восьмиядерный графический процессор позволяет запускать игры последних лет на максимальных настройках. 15,3-дюймовый дисплей Retina обладает разрешением 2880х1864 пикселей, что обеспечивает высокую детализацию. Реалистичная цветопередача делает картинку более насыщенной. Яркости в 500 нит хватит для комфортной работы при любых условиях. Встроенная аудиосистема с поддержкой Dolby Atmos состоит из шести динамиков, которые формируют объемный и направленный звук.',
+    'Встроенная веб-камера идеально подходит для общения с удаленными пользователями. Микрофон с функцией шумоподавления обеспечивает качественную передачу голоса собеседнику. Touch ID избавляет от необходимости вводить пароли, позволяя оперативно входить в систему владельцу ноутбука. Время автономной работы от аккумулятора — до 18 часов. Набор интерфейсов состоит из USB-C, Thunderbolt 3, разъема для наушников 3,5 мм и MagSafe 3.'
+  ],
+  images: [
+    'https://images.unsplash.com/photo-1505156868547-9b49f4df4e04?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aXBob25lfGVufDB8fDB8fHww',
+    'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+    'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+    'https://images.unsplash.com/photo-1611472173362-3f53dbd65d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+  ],
+  quantityInCart: 0,
+  isLiked: true,
+};
 
 export const productSpecifyName = {
-  productName: 'name',
-  article: 0,
+  brend: 'Бренд:',
   color: 'Цвет:',
   diagonal: 'Диагональ экрана, в дюймах:',
-  brend: 'Бренд:',
   country: 'Страна-производитель:',
   year: 'Год выхода модели:',
   display: 'Тип дисплея:',
@@ -277,14 +511,10 @@ export const productSpecifyName = {
   batteryCapacity1: 'Емкость аккумулятора, в мА-ч:',
 };
 
-export const productSpecifyValue = {
-  productName: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
-  article: 68898484,
-  // price: 119 700 ₽,
-  // oldPrice: 430 800 ₽,
+export const productAttributes = {
+  brend: 'Apple',
   color: 'титановый черный',
   diagonal: 6.1,
-  brend: 'Apple',
   country: 'Китай',
   year: 2023,
   display: 'OLED',
@@ -301,74 +531,6 @@ export const productSpecifyValue = {
   ram1: 8,
   batteryCapacity1: 4912,
 };
-
-/* это нужно будет удалить после--------------- */
-export const subCategoriesList = [
-  {
-    id: 1,
-    catTitle: 'Apple IPhone',
-    catImg:
-      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-
-    catUrl: '/catalog',
-  },
-  {
-    id: 2,
-    catTitle: 'Samsung Galaxy',
-    catImg:
-      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-
-    catUrl: '/',
-  },
-  {
-    id: 3,
-    catTitle: 'Xiaomi',
-    catImg:
-      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-
-    catUrl: '/',
-  },
-  {
-    id: 4,
-    catTitle: 'Google',
-    catImg:
-      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-
-    catUrl: '/',
-  },
-  {
-    id: 5,
-    catTitle: 'Honor',
-    catImg:
-      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-
-    catUrl: '/',
-  },
-  {
-    id: 6,
-    catTitle: 'Realme',
-    catImg:
-      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-
-    catUrl: '/',
-  },
-  {
-    id: 7,
-    catTitle: 'HUAWEI',
-    catImg:
-      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-
-    catUrl: '/',
-  },
-  {
-    id: 8,
-    catTitle: 'OnePlus',
-    catImg:
-      'https://images.unsplash.com/photo-1525598912003-663126343e1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-
-    catUrl: '/',
-  },
-];
 
 export const paymentPageData = [
   {
@@ -396,20 +558,50 @@ export const paymentPageData = [
     // imgUrl: '../../image/good_2.svg',
     discount: 2000,
   },
+  // {
+  //   id: 104,
+  //   quantity: 2,
+  //   salesPrice: 10000,
+  //   imgUrl:
+  //     'https://images.unsplash.com/photo-1511499271651-073325718d90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHx8',
+  //   discount: 3000,
+  // },
+  // {
+  //   id: 105,
+  //   quantity: 1,
+  //   salesPrice: 10000,
+  //   imgUrl:
+  //     'https://images.unsplash.com/photo-1573739022854-abceaeb585dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGhvbmUlMjBhY2Nlc3Nvcmllc3xlbnwwfHwwfHx8MA%3D%3D',
+  //   discount: 500,
+  // },
+];
+
+export const aboutCompanyInfo = [
   {
-    id: 104,
-    quantity: 2,
-    salesPrice: 10000,
-    imgUrl:
-      'https://images.unsplash.com/photo-1511499271651-073325718d90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHx8',
-    discount: 3000,
+    head: 'Наша цель',
+    iconSrc: iconSmile,
+    altText: 'смайл, улыбка, цель компании',
+    text: [
+      'У нас есть офлайновая торговая точка и интернет-магазин. Продаем смартфоны, компьютеры, «умные» часы и браслеты, кофемашины и др.',
+      'Цель, к которой мы стремимся — сделать так, чтобы люди пользовались классными гаджетами и\u00A0электроникой за приемлемую стоимость. Потому что крутая техника облегчает жизнь и доставляет удовольствие — пусть ее у всех будет больше.',
+    ],
   },
   {
-    id: 105,
-    quantity: 1,
-    salesPrice: 10000,
-    imgUrl:
-      'https://images.unsplash.com/photo-1573739022854-abceaeb585dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGhvbmUlMjBhY2Nlc3Nvcmllc3xlbnwwfHwwfHx8MA%3D%3D',
-    discount: 500,
+    head: 'Супер-доставка',
+    iconSrc: iconDelivery,
+    altText: 'Супер быстрая доставка, транспорт',
+    text: [
+      'У нас работает доставка до двери и\u00A0самовывоз. Большинство заказов доставляем в день оформления либо на следующий день. Возможна оплата на сайте или при получении.',
+      'Срок и стоимость доставки в регионы рассчитывается автоматически, когда вы оформляете заказ, но в этом случае мы просим сразу внести оплату.',
+      'Мы гарантируем, что заказ будет доставлен вовремя и без повреждений, даже если вокруг новогодние праздники или упал метеорит. Остальные условия читайте в разделе Доставка.',
+    ],
+  },
+  {
+    head: 'Только оригинальная техника и\u00A0новинки',
+    iconSrc: iconMedal,
+    altText: 'Супер быстрая доставка, транспорт',
+    text: [
+      'У нас вы не встретите подделок и устаревших моделей товаров. Продаем только оригинальную технику. Выбираем проверенные бренды и новинки.',
+    ],
   },
 ];
