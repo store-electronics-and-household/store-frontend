@@ -4,16 +4,18 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 
+import headerLogoWhite from '../../image/icons/header_logo_white.svg';
+import headerLogoColor from '../../image/icons/header_logo_color.svg';
+
 import deliveryIcon from '../../image/icons/delivery_icon.svg';
 import busketIcon from '../../image/icons/busket_icon.svg';
 import favouriteIcon from '../../image/icons/favourite_icon.svg';
-// import profileIcon from '../../image/icons/profile_icon.svg';
-import headerLogoWhite from '../../image/icons/header_logo_white.svg';
-import headerLogoColor from '../../image/icons/header_logo_color.svg';
+import profileIcon from '../../image/icons/profile_icon.svg';
 
 import deliveryIconWhite from '../../image/icons/delivery_icon-white.svg';
 import busketIconWhite from '../../image/icons/cart_icon-white.svg';
 import favouriteIconWhite from '../../image/icons/favourite_icon-white.svg';
+import profileIconWhite from '../../image/icons/profile_icon_white.svg';
 
 import CatalogMenu from '../CatalogMenu/CatalogMenu';
 
@@ -95,6 +97,12 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, onOpenAuth, isLogged, han
         ? favouriteIcon
         : favouriteIconWhite
       : favouriteIcon;
+  const profileSrc =
+      location.pathname === '/main'
+        ? isLight
+          ? profileIcon
+          : profileIconWhite
+        : profileIcon;
 
   return (
     <>
@@ -156,26 +164,29 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, onOpenAuth, isLogged, han
               />
               <div className='header__navbar-icon-count'>{totalCount}</div>
             </div>
-            {/* for Auth
+
+      { isLogged && (
             <NavLink className='header__navbar-link' to='/'>
               <img
                 className='header__navbar-icon'
-                src={profileIcon}
+                src={profileSrc}
                 alt="Перейти в раздел 'Профиль'"
               />
             </NavLink>
-            */}
+      )}
           </nav>
+          { !isLogged && (
           <button
-            onClick={() => {
-              handleOpenAuth();
-            }}
-            className={`header__auth-button ${
-              location.pathname === '/main' && !isLight ? 'header__auth-button_white' : ''
-            }`}
-          >
-            Войти
+           onClick={() => {
+             handleOpenAuth();
+           }}
+          className={`header__auth-button ${
+         location.pathname === '/main' && !isLight ? 'header__auth-button_white' : ''
+        }`}
+         >
+          Войти
           </button>
+          )}
         </div>
       </header>
       <Layout />
