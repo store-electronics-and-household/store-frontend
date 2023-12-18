@@ -20,7 +20,7 @@ const CategoriesMain: React.FC<Props> = ({ categoriesMain }): React.ReactElement
           .map((tile) => (
             <CategoriesTile key={tile.id} name={tile.name} id={tile.id} />
           ))}
-      </ul>{' '}
+      </ul>
     </section>
   );
 };

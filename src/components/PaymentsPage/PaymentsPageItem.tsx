@@ -2,7 +2,7 @@ import React from 'react';
 
 interface PaymentsPageItemProps {
   quantity: number;
-  imgUrl: string;
+  imgUrl?: string;
 }
 
 const PaymentsPageItem: React.FC<PaymentsPageItemProps> = ({

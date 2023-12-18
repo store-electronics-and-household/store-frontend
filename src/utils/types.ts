@@ -47,14 +47,6 @@ export interface ProductAttributesDataType {
   batteryCapacity1?: string | number;
 }
 
-export interface GoodsListProps {
-  id: number;
-  quantity: number;
-  salesPrice: number;
-  imgUrl: string;
-  discount: number;
-}
-
 export interface AccordionProps {
   faqList: FaqItem[];
   headText: string;
@@ -86,4 +78,22 @@ export interface MyTypeBanners {
 export interface CategoriesTileProps {
   id: number;
   name: string;
+}
+
+interface MeyTypeCardImage {
+  id: number,
+  imageLink: string,
+}
+
+export interface MediumCardProps {
+  id: number;
+  name: string;
+  description?: string,
+  quantity: number; // ПОМЕНЯТЬ
+  price?: number;
+  // imgUrl: string;
+  discount?: number; // ПОМЕНЯТЬ
+  modelsImages?: Array<MeyTypeCardImage>;
+  oldPrice: number;
+  percent?: number;
 }

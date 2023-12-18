@@ -1,20 +1,21 @@
 import React from 'react';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
+import { type MediumCardProps } from '../../utils/types';
 // import { product } from '../../utils/constants';
 
-interface MyTypeCatalogItem {
-  id: number;
-  name: string;
-  originPrice: number;
-  salesPrice?: number;
-  discount?: number;
-  imgUrl: string[];
-  isLiked: boolean;
-  quantityInCart: number;
-}
+// interface MyTypeCatalogItem {
+//   id: number;
+//   name: string;
+//   originPrice: number;
+//   salesPrice?: number;
+//   discount?: number;
+//   imgUrl: string[];
+//   isLiked: boolean;
+//   quantityInCart: number;
+// }
 
 interface CatalogSharedProps {
-  itemArray: MyTypeCatalogItem[];
+  itemArray: MediumCardProps[];
   itemsToShow: number;
   is4Items?: boolean;
 }
@@ -43,13 +44,14 @@ const CatalogShared: React.FC<CatalogSharedProps> = ({
           {itemArray.slice(0, itemsToShow).map((product) => (
             <ProductCardMedium
               key={product.id}
-              name={product.name}
-              originPrice={product.originPrice}
-              salesPrice={product.salesPrice}
-              discount={product.discount}
-              imgUrl={product.imgUrl}
-              isLiked={product.isLiked}
-              quantityInCart={product.quantityInCart}
+              product={product}
+              // name={product.name}
+              // originPrice={product.price}
+              // salesPrice={product.price}
+              // discount={product.discount}
+              // imgUrls={product.modelsImages}
+              // // isLiked={product.isLiked}
+              // quantityInCart={product.quantity}
             />
           ))}
         </ul>

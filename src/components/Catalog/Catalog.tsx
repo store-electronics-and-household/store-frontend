@@ -44,13 +44,14 @@ const Catalog: React.FC<{
                 items={products.map((product) => (
                   <ProductCardMedium
                     key={product.id}
-                    name={product.name}
-                    originPrice={product.originPrice}
-                    salesPrice={product.salesPrice}
-                    discount={product.discount}
-                    imgUrl={product.imgUrl}
-                    isLiked={product.isLiked}
-                    quantityInCart={product.quantityInCart}
+                    product={product}
+                    // name={product.name}
+                    // originPrice={product.originPrice}
+                    // salesPrice={product.salesPrice}
+                    // discount={product.discount}
+                    // imgUrl={product.imgUrl}
+                    // isLiked={product.isLiked}
+                    // quantityInCart={product.quantityInCart}
                   />
                 ))}
               />

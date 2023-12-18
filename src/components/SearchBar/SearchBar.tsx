@@ -13,13 +13,16 @@ const SearchBar: React.FC<SearchBarProps> = ({ handleSearch }) => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const { value } = e.target;
-
     setInput(value);
   };
 
-  const handleSearchBar = (e?: any): void => {
-    console.log(e);
+  const handleSumbit = (e: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    handleSearch(input);
+    navigate('/search-results');
+  };
+
+  const handleSearchBar = (): void => {
     handleSearch(input);
     navigate('/search-results');
   };
@@ -39,7 +42,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ handleSearch }) => {
           </button>
         {/* </Link> */}
 
-      <form className='header__searchbar-form' onSubmit={handleSearchBar}>
+      <form className='header__searchbar-form' onSubmit={handleSumbit}>
         <label></label>
         <input
             className='header__searchbar-input'
