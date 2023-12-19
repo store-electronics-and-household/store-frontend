@@ -32,7 +32,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ passSearchResults, handleSearch }
         passSearchResults(res.content);
         handleSearch(input);
         navigate('/search-results');
-        console.log(res);
+        // console.log(res);
       })
       .catch((error) => {
         console.log(`НЕ успех ${error}`);

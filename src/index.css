@@ -801,7 +801,6 @@ body {
 
 .payments-page__form-title_type_address {
   line-height: 35px;
-  padding-top: 32px;
   padding-bottom: 12px;
 }
 
@@ -813,8 +812,12 @@ body {
   margin: 32px 0;
 }
 
+.payments-page__line_type_courier-scroll {
+  margin: 17px 0 32px 0;
+}
+
 .payments-page__input-container {
-  margin: 0 40px 0 0;
+  margin-bottom: 16px;
 }
 
 .payments-page__input-label {
@@ -1042,11 +1045,11 @@ body {
 }
 
 .payments-page__date-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
   gap: 24px;
-  height: 68px;
-  overflow-x: clip;
+  height: 83px;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .payments-page__date-label {
@@ -1069,10 +1072,10 @@ body {
   display: inline-block;
   width: 153px;
   height: 68px;
+  box-sizing: border-box;
   border-radius: 40px;
   position: relative;
   cursor: pointer;
-  margin-top: -3px;
   margin-right: 12px;
   display: flex;
   align-items: center;

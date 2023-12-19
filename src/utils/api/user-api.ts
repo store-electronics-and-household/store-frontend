@@ -20,7 +20,6 @@ export const request = async (
   endpoint: string,
   options: RequestInit
 ): Promise<any> => {
-  // const url = `http://45.12.236.120:8080${endpoint}`;
   const url = `${API_URL}${endpoint}`;
   return await fetch(url, options).then(checkResponse);
 };

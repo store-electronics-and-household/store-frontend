@@ -200,7 +200,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                 passPhone={phoneHandler}
               />
             </label>
-            <div className='payments-page__line'></div>
+            <div className='payments-page__line payments-page__line_type_courier'></div>
             <p className='payments-page__form-title payments-page__form-title_type_address'>
               Способ получения
             </p>
