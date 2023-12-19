@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import React, { useContext } from 'react';
+import React, { memo, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -218,7 +218,7 @@ const SignIn: React.FC<SignInProps> = ({
   );
 };
 
-export default SignIn;
+export default memo(SignIn);
 
 /*
 {!formik.isValid && formik.submitCount > 0 && (

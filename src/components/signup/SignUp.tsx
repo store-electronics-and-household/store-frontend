@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import React, { type FC, useContext, useState } from 'react';
+import React, { type FC, memo, useContext, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
@@ -59,8 +59,6 @@ const SignUp: FC<SignUpProps> = ({
     onSubmit: ({ loginReg, passwordReg }) => {
       if (formik.isValid) {
         handleRegister(loginReg, passwordReg);
-        onOpenSignUp();
-        formik.resetForm();
       }
     },
   });
@@ -221,11 +219,15 @@ const SignUp: FC<SignUpProps> = ({
                 </span>
             )}
           </div>
+          {isAuthError && <span className='signup__error-text'>
+                {'Что-то пошло не так, попробуйте еще раз'}
+              </span>
+          }
           <div className='signup__buttons'>
             <button
+              type='submit'
               className='signup__button signup__button_enter'
               disabled={formik.isSubmitting}
-              type='submit'
             >
               Зарегистрироваться
             </button>
@@ -254,10 +256,6 @@ const SignUp: FC<SignUpProps> = ({
                 {formik.errors.RegCheckbox}
               </span>
             )}
-            {isAuthError && <span className='signup__error-text'>
-                {'Что-то пошло не так, попробуйте еще раз'}
-              </span>
-            }
           </div>
         </form>
       </div>
@@ -265,4 +263,4 @@ const SignUp: FC<SignUpProps> = ({
   );
 };
 
-export default SignUp;
+export default memo(SignUp);

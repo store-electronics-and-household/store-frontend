@@ -24,7 +24,6 @@ import type { GoodsListProps, ProductDataType } from '../../utils/types';
 
 import { CartProvider } from '../../context/CartContext';
 import { productData, productAttributes, subCategoriesList } from '../../utils/constants';
-import { changePassword } from '../../utils/api/user-api';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import { getProductDataById } from '../../utils/api/product-api';
 import { type IContext, UserContext } from '../../context/UserContext';
@@ -73,20 +72,9 @@ const App: React.FC = () => {
     setGoodsList(data);
   };
 
-  const handleChangePassword = (email: string, password: string): void => {
-    changePassword(email, password)
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const getProductById = (productId: number): void => {
     getProductDataById(productId)
       .then((data) => {
-        console.log(data);
         setProductById(data);
       })
       .catch((error) => {
@@ -97,8 +85,6 @@ const App: React.FC = () => {
   useEffect(() => {
     getProductById(1);
   }, []);
-
-  console.log(productById);
 
   // const CustomPropsBreadcrumb = ({ someProp }: { someProp: string }): JSX.Element => <span>{someProp}</span>;
   // const DynamicUserBreadcrumb = ({ match }) => (
@@ -153,7 +139,6 @@ const App: React.FC = () => {
                   <PasswordRecovery
                     isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
                     onOpenRecoveryPopup={PasswordRecoveryPopup}
-                    onChangePassword={handleChangePassword}
                   />
                   <Footer/>
                 </>
@@ -179,16 +164,16 @@ const App: React.FC = () => {
                 }
               />
               <Route
-                path='/categories'
+                path='/categories/:subcategory'
                 element={
                   <>
                     <Breadcrumbs crumbs={crumbs}/>
-                    <Categories subCategoriesList={subCategoriesList} product={[]}/>
+                    <Categories/>
                   </>
                 }
               />
               <Route
-                path='/categories/catalog'
+                path='/categories/:catalog'
                 element={
                   <>
                     <Breadcrumbs crumbs={crumbs}/>
