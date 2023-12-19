@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import React from 'react';
+import React, { memo, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -7,13 +7,14 @@ import PopupTemplate from '../PopupTemplate/PopupTemplate';
 import OPENEDEYE from '../../image/icons/open-eye.svg';
 import CLOSEDEYE from '../../image/icons/eye-closed.svg';
 import { authorize } from '../../utils/api/user-api';
+import { type IContext, UserContext } from '../../context/UserContext';
 
 interface SignInProps {
   onOpenSignIn: () => void;
   isOpenSignIn: boolean;
   onOpenReg: () => void;
   onOpenRecovery: () => void;
-  setIsLogged: (arg: boolean) => void;
+  setGeneralContext: (arg: IContext) => void;
 }
 
 const SignIn: React.FC<SignInProps> = ({
@@ -21,10 +22,11 @@ const SignIn: React.FC<SignInProps> = ({
   isOpenSignIn,
   onOpenReg,
   onOpenRecovery,
-  setIsLogged,
+  setGeneralContext,
 }) => {
   const [showPassword, setShowPassword] = React.useState<boolean>(false);
   const [isAuthError, setIsAuthError] = React.useState<boolean>(false);
+  const context = useContext(UserContext);
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -57,7 +59,7 @@ const SignIn: React.FC<SignInProps> = ({
     authorize(email, password)
       .then((data) => {
         localStorage.setItem('token', data.token);
-        setIsLogged(true);
+        setGeneralContext({ ...context, isLoggedIn: true });
         handleCloseSignInPopup();
         navigate('/', { replace: true });
       })
@@ -142,8 +144,7 @@ const SignIn: React.FC<SignInProps> = ({
               formik.errors.loginAuth && (
                 <span className='signin__error-text'>
                   {formik.errors.loginAuth}
-                </span>
-            )}
+                </span>)}
             <div className='signin__input-wrapper'>
               <label className='signin__label'>Пароль</label>
               <input
@@ -183,8 +184,7 @@ const SignIn: React.FC<SignInProps> = ({
               formik.errors.passwordAuth && (
                 <span className='signin__error-text'>
                   {formik.errors.passwordAuth}
-                </span>
-            )}
+                </span>)}
             {isAuthError &&
               <span className='signin__error-text'>
                   {'Не правильный логин или пароль'}
@@ -218,7 +218,7 @@ const SignIn: React.FC<SignInProps> = ({
   );
 };
 
-export default SignIn;
+export default memo(SignIn);
 
 /*
 {!formik.isValid && formik.submitCount > 0 && (

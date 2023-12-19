@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import React, { type FC, useState } from 'react';
+import React, { type FC, memo, useContext, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
@@ -8,21 +8,23 @@ import OPENEDEYE from '../../image/icons/open-eye.svg';
 import CLOSEDEYE from '../../image/icons/eye-closed.svg';
 import { register } from '../../utils/api/user-api';
 import { useNavigate } from 'react-router-dom';
+import { type IContext, UserContext } from '../../context/UserContext';
 
 interface SignUpProps {
   onOpenSignUp: () => void;
   isOpenSignUp: boolean;
-  setIsLogged: (arg: boolean) => void;
+  setGeneralContext: (arg: IContext) => void;
 }
 
 const SignUp: FC<SignUpProps> = ({
   onOpenSignUp,
   isOpenSignUp,
-  setIsLogged,
+  setGeneralContext,
 }): React.ReactElement => {
   const [showRegPassword, setShowRegPassword] = useState<boolean>(false);
   const [showConfPassword, setShowConfPassword] = useState<boolean>(false);
   const [isAuthError, setIsAuthError] = React.useState<boolean>(false);
+  const context = useContext(UserContext);
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -57,8 +59,6 @@ const SignUp: FC<SignUpProps> = ({
     onSubmit: ({ loginReg, passwordReg }) => {
       if (formik.isValid) {
         handleRegister(loginReg, passwordReg);
-        onOpenSignUp();
-        formik.resetForm();
       }
     },
   });
@@ -66,7 +66,7 @@ const SignUp: FC<SignUpProps> = ({
   const handleRegister = (email: string, password: string): void => {
     register(email, password)
       .then((res) => {
-        setIsLogged(true);
+        setGeneralContext({ ...context, isLoggedIn: true }); ;
         onOpenSignUp();
         formik.resetForm();
         navigate('/', { replace: true });
@@ -219,11 +219,15 @@ const SignUp: FC<SignUpProps> = ({
                 </span>
             )}
           </div>
+          {isAuthError && <span className='signup__error-text'>
+                {'Что-то пошло не так, попробуйте еще раз'}
+              </span>
+          }
           <div className='signup__buttons'>
             <button
+              type='submit'
               className='signup__button signup__button_enter'
               disabled={formik.isSubmitting}
-              type='submit'
             >
               Зарегистрироваться
             </button>
@@ -252,10 +256,6 @@ const SignUp: FC<SignUpProps> = ({
                 {formik.errors.RegCheckbox}
               </span>
             )}
-            {isAuthError && <span className='signup__error-text'>
-                {'Что-то пошло не так, попробуйте еще раз'}
-              </span>
-            }
           </div>
         </form>
       </div>
@@ -263,4 +263,4 @@ const SignUp: FC<SignUpProps> = ({
   );
 };
 
-export default SignUp;
+export default memo(SignUp);
