@@ -1,5 +1,8 @@
+/* eslint-disable no-lone-blocks */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { request } from './user-api';
 
+{ /*
 
 export const getBusket = async (token: string): Promise<any> => {
   return await request(`/search?text=${text}`, {
@@ -11,3 +14,4 @@ export const getBusket = async (token: string): Promise<any> => {
     },
   });
 };
+*/ }
