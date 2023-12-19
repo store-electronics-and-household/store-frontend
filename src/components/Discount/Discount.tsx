@@ -12,8 +12,10 @@ interface DiscountProps {
 const Discount: React.FC<DiscountProps> = ({ handleSearch, discountBannerImages, passSearchResults }) => {
   const navigate = useNavigate();
   const handleOnClick = (id: number, name: string): void => {
+    // console.log('debug1');
     getPromoResults(id)
       .then((res) => {
+        // console.log('debug2');
         // console.log(res.content);
         passSearchResults(res.content);
         navigate('/search-results');

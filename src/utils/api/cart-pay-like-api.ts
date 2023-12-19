@@ -2,10 +2,8 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { request } from './user-api';
 
-{ /*
-
 export const getBusket = async (token: string): Promise<any> => {
-  return await request(`/search?text=${text}`, {
+  return await request(`/basket/user`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -14,4 +12,3 @@ export const getBusket = async (token: string): Promise<any> => {
     },
   });
 };
-*/ }

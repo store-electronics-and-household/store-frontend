@@ -21,6 +21,7 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import SearchResults from '../SearchResults/SearchResults';
 import type { MediumCardProps, ProductDataType } from '../../utils/types';
 import { CartProvider } from '../../context/CartContext';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { productData, productAttributes, subCategoriesList } from '../../utils/constants';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import { getProductDataById } from '../../utils/api/product-api';
@@ -30,6 +31,7 @@ const App: React.FC = () => {
   const [isWarningPopupOpen, setWarningPopupOpen] = useState<boolean>(false);
   const [isSignInPopupOpen, setSignInPopupOpen] = useState<boolean>(false);
   const [isSignUpPopupOpen, setSignUpPopupOpen] = useState<boolean>(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [productById, setProductById] = useState<ProductDataType>();
   const [searchRequest, setSearchRequest] = useState<string>('');
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

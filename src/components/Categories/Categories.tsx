@@ -10,6 +10,7 @@ const Categories: React.FC = (): React.ReactElement => {
   const [subCategories, setSubCategories] = useState<IgetSubcategories[]>();
   const { subcategory: subcategoryId = '' } = useParams();
   const location = useLocation();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const navigate = useNavigate();
   const subcategoryName: string = location.state.subcategoryName;
   useEffect(() => {
