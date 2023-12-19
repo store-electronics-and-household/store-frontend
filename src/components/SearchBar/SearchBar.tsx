@@ -1,4 +1,4 @@
-import React, { type ChangeEvent, useState } from 'react';
+import React, { type ChangeEvent, useState, useRef } from 'react';
 // import { Link } from 'react-router-dom';
 import searchIcon from '../../image/icons/search_icon.svg';
 import { useNavigate } from 'react-router-dom';
@@ -19,11 +19,20 @@ const SearchBar: React.FC<SearchBarProps> = ({ passSearchResults, handleSearch }
     setInput(value);
   };
 
+  const controlFocus = useRef(null);
+
   const handleSumbit = (e: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
     handleSearchBar();
     // handleSearch(input);
     // navigate('/search-results');
+  };
+
+  const onClearInput = (): void => {
+    setInput('');
   };
 
   const handleSearchBar = (): void => {
@@ -36,6 +45,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ passSearchResults, handleSearch }
       })
       .catch((error) => {
         console.log(`НЕ успех ${error}`);
+      })
+      .finally(() => {
+        onClearInput();
       });
   };
 
@@ -54,7 +66,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ passSearchResults, handleSearch }
           </button>
         {/* </Link> */}
 
-      <form className='header__searchbar-form' onSubmit={handleSumbit}>
+      <form className='header__searchbar-form' ref={controlFocus} onSubmit={handleSumbit}>
         <label></label>
         <input
             className='header__searchbar-input'
