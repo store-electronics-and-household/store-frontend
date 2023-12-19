@@ -3,10 +3,15 @@ import Slider from '../Slider/Slider';
 import Discount from '../Discount/Discount';
 import CategoriesMain from '../CategoriesMain/CategoriesMain';
 import { getBanners } from '../../utils/api/user-api';
-import { type CategoriesTileProps, type MyTypeBanners } from '../../utils/types';
+import { type CategoriesTileProps, type MyTypeBanners, type MediumCardProps } from '../../utils/types';
 import { getMainCategories } from '../../utils/api/catalog+categories.api';
 
-const Main: React.FC = () => {
+interface MainProps {
+  passSearchResults: (array: MediumCardProps[]) => void;
+  handleSearch: (request: string) => void;
+}
+
+const Main: React.FC<MainProps> = ({ passSearchResults, handleSearch }) => {
   const [mainPageBanners, setMainPageBanners] = React.useState<MyTypeBanners[]>([]);
   const [mainPageDicountBanners, setMainPageDicountBanners] = React.useState<MyTypeBanners[]>([]);
   const [categoriesMain, setCategoriesMain] = React.useState<CategoriesTileProps[]>([]);
@@ -16,6 +21,7 @@ const Main: React.FC = () => {
       .then(([res, categoriesMain]) => {
         const sliderBanners = res.slice(0, 5);
         const otherBanners = res.slice(5, 9);
+        // console.log(res)
         setMainPageBanners(sliderBanners);
         setMainPageDicountBanners(otherBanners);
         setCategoriesMain(categoriesMain);
@@ -32,8 +38,16 @@ const Main: React.FC = () => {
   return (
     <>
       <section className='main'>
-        <Slider bannerImage={mainPageBanners}/>
-        <Discount discountBannerImages={mainPageDicountBanners}/>
+        <Slider
+          bannerImage={mainPageBanners}
+          passSearchResults={passSearchResults}
+          handleSearch={handleSearch}
+          />
+        <Discount
+          discountBannerImages={mainPageDicountBanners}
+          passSearchResults={passSearchResults}
+          handleSearch={handleSearch}
+        />
         <CategoriesMain categoriesMain={categoriesMain}/>
       </section>
     </>

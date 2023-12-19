@@ -1,20 +1,23 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-import { type MyTypeBanners } from '../../utils/types';
+import type { MyTypeBanners, MediumCardProps } from '../../utils/types';
 import { useNavigate } from 'react-router-dom';
 import { getPromoResults } from '../../utils/api/search-api';
 
 interface DiscountProps {
   discountBannerImages: MyTypeBanners[];
+  passSearchResults: (array: MediumCardProps[]) => void;
+  handleSearch: (request: string) => void;
 }
 
-const Discount: React.FC<DiscountProps> = ({ discountBannerImages }) => {
+const Discount: React.FC<DiscountProps> = ({ handleSearch, discountBannerImages, passSearchResults }) => {
   const navigate = useNavigate();
-  const handleOnClick = (id: number): void => {
+  const handleOnClick = (id: number, name: string): void => {
     getPromoResults(id)
       .then((res) => {
-        console.log(res.content);
+        // console.log(res.content);
+        passSearchResults(res.content);
         navigate('/search-results');
+        handleSearch(name);
       })
       .catch((error) => {
         console.log(`НЕ успех ${error}`);
@@ -33,7 +36,7 @@ const Discount: React.FC<DiscountProps> = ({ discountBannerImages }) => {
             alt={banner.name}
             className={`discount__offer discount__offer_type_${index}`}
             onClick={() => {
-              handleOnClick(banner.id);
+              handleOnClick(banner.id, banner.name);
             }}
           />
         </div>

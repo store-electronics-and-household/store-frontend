@@ -1,26 +1,44 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import './Slider.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
 import { useSlideContext } from '../../context/SlideContext';
-import { type MyTypeBanners } from '../../utils/types';
+import type { MyTypeBanners, MediumCardProps } from '../../utils/types';
+import { useNavigate } from 'react-router-dom';
+import { getPromoResults } from '../../utils/api/search-api';
 
 interface SliderProps {
   bannerImage: MyTypeBanners[];
+  passSearchResults: (array: MediumCardProps[]) => void;
+  handleSearch: (request: string) => void;
 }
 
-const Slider: React.FC<SliderProps> = ({ bannerImage }) => {
+const Slider: React.FC<SliderProps> = ({ handleSearch, bannerImage, passSearchResults }) => {
   const slideContext: any | undefined = useSlideContext();
   const { isLight, setLight } = slideContext;
+  const navigate = useNavigate();
 
   const handleSlideChange = (swiper: any): void => {
     const activeSlideIndex = swiper.activeIndex;
     const isLightForCurrentSlide = isLighChangetForSlide(activeSlideIndex);
     setLight(isLightForCurrentSlide);
+  };
+
+  const handleOnClick = (id: number, name: string): void => {
+    getPromoResults(id)
+      .then((res) => {
+        // console.log(res.content);
+        passSearchResults(res.content);
+        handleSearch(name);
+        navigate('/search-results');
+      })
+      .catch((error) => {
+        console.log(`НЕ успех ${error}`);
+      });
   };
 
   const isLighChangetForSlide = (index: number): boolean => {
@@ -66,13 +84,16 @@ const Slider: React.FC<SliderProps> = ({ bannerImage }) => {
       >
         {bannerImage.map((banner, index) => (
           <SwiperSlide key={banner.id}>
-            <Link to='#' rel='noreferrer'>
+            {/* <Link to='#' rel='noreferrer'> */}
               <img
                 src={banner.imageLink}
                 alt={`${banner.name}`}
                 className='slider__action-img'
+                onClick={() => {
+                  handleOnClick(banner.id, banner.name);
+                }}
               />
-            </Link>
+            {/* </Link> */}
           </SwiperSlide>
         ))}
         <div

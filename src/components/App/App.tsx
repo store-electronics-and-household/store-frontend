@@ -19,10 +19,7 @@ import SignUp from '../signup/SignUp';
 import PasswordRecovery from '../PasswordRecovery/PasswordRecovery';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import SearchResults from '../SearchResults/SearchResults';
-// import { paymentPageData } from '../../utils/constants';
 import type { MediumCardProps, ProductDataType } from '../../utils/types';
-// import type { ProductDataType } from '../../utils/types';
-
 import { CartProvider } from '../../context/CartContext';
 import { productData, productAttributes, subCategoriesList } from '../../utils/constants';
 import { changePassword } from '../../utils/api/user-api';
@@ -131,6 +128,7 @@ const App: React.FC = () => {
                     onOpenAuth={toggleSignInPopup}
                     isLogged={isLogged}
                     handleSearch={handleSearch}
+                    passSearchResults={handleSearchCards}
                   />
                   <WarningPopup
                     isOpen={isWarningPopupOpen}
@@ -158,7 +156,15 @@ const App: React.FC = () => {
                 </>
               }
             >
-              <Route path='/main' element={<Main/>}/>
+              <Route
+                path='/main'
+                element={
+                  <Main
+                    passSearchResults={handleSearchCards}
+                    handleSearch={handleSearch}
+                  />
+                }
+              />
               <Route
                 path='/about-company'
                 element={
