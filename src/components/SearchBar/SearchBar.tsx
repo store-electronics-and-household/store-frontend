@@ -2,12 +2,15 @@ import React, { type ChangeEvent, useState } from 'react';
 // import { Link } from 'react-router-dom';
 import searchIcon from '../../image/icons/search_icon.svg';
 import { useNavigate } from 'react-router-dom';
+import { type MediumCardProps } from '../../utils/types';
+import { getSearchResults } from '../../utils/api/search-api';
 
 interface SearchBarProps {
   handleSearch: (request: string) => void;
+  passSearchResults: (array: MediumCardProps[]) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ handleSearch }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ passSearchResults, handleSearch }) => {
   const [input, setInput] = useState('');
   const navigate = useNavigate();
 
@@ -18,13 +21,22 @@ const SearchBar: React.FC<SearchBarProps> = ({ handleSearch }) => {
 
   const handleSumbit = (e: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    handleSearch(input);
-    navigate('/search-results');
+    handleSearchBar();
+    // handleSearch(input);
+    // navigate('/search-results');
   };
 
   const handleSearchBar = (): void => {
-    handleSearch(input);
-    navigate('/search-results');
+    getSearchResults(input)
+      .then((res) => {
+        passSearchResults(res.content);
+        handleSearch(input);
+        navigate('/search-results');
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(`НЕ успех ${error}`);
+      });
   };
 
   return (

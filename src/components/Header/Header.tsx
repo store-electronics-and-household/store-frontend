@@ -24,15 +24,17 @@ import SearchBar from '../SearchBar/SearchBar';
 import { useSlideContext } from '../../context/SlideContext';
 import { useCartContext } from '../../context';
 import Layout from '../Layout/Layout';
+import { type MediumCardProps } from '../../utils/types';
 
 interface HeaderProps {
   toggleWarningPopup: () => void;
   onOpenAuth: () => void;
   isLogged: boolean;
   handleSearch: (request: string) => void;
+  passSearchResults: (array: MediumCardProps[]) => void;
 }
 
-const Header: FC<HeaderProps> = ({ toggleWarningPopup, onOpenAuth, isLogged, handleSearch }) => {
+const Header: FC<HeaderProps> = ({ passSearchResults, toggleWarningPopup, onOpenAuth, isLogged, handleSearch }) => {
   const [isVisible, setIsVisible] = useState<null | boolean>(null);
   const context = useSlideContext();
   const { totalCount } = useCartContext();
@@ -120,6 +122,7 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, onOpenAuth, isLogged, han
 
           <SearchBar
             handleSearch={handleSearch}
+            passSearchResults={passSearchResults}
           />
 
           <button
@@ -177,13 +180,13 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, onOpenAuth, isLogged, han
           </nav>
           { !isLogged && (
           <button
-           onClick={() => {
-             handleOpenAuth();
-           }}
+            onClick={() => {
+              handleOpenAuth();
+            }}
           className={`header__auth-button ${
-         location.pathname === '/main' && !isLight ? 'header__auth-button_white' : ''
+          location.pathname === '/main' && !isLight ? 'header__auth-button_white' : ''
         }`}
-         >
+          >
           Войти
           </button>
           )}

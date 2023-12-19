@@ -149,8 +149,10 @@ const PaymentsPageCourier: React.FC<PaymentsPageCourierProps> = ({
       <h3 className='payments-page__address-title'>Дата доставки</h3>
       <form className='payments-page__date-container'>
         {datesArray.map((item) => (
-          <>
-            <label className='payments-page__date-label'>
+            <label
+              className='payments-page__date-label'
+              key={item.date}
+            >
               <input
                 key={item.date}
                 type='radio'
@@ -169,7 +171,6 @@ const PaymentsPageCourier: React.FC<PaymentsPageCourierProps> = ({
                 </div>
               </span>
             </label>
-          </>
         ))}
       </form>
       <div className='payments-page__line payments-page__line_type_courier'></div>

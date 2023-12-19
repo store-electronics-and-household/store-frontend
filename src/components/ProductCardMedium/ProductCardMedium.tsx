@@ -32,7 +32,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
 
   const cardPriceClassname = cn(
     'card-medium__price',
-    { 'card-medium__price_sale': product.price !== undefined }
+    { 'card-medium__price_sale': product.oldPrice !== null }
   );
 
   return (
@@ -83,15 +83,15 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
                 <h3 className='card-medium__title'>{product.name}</h3>
                 <div className='card-medium__container-price'>
                   <p className={cardPriceClassname}>
-                    {product.oldPrice !== 0 &&
-                    typeof product.oldPrice === 'number'
-                      ? formatSumm(product.oldPrice)
-                      : ''}
-                  </p>
-                  <p className='card-medium__oldprice'>
                     {product.price !== 0 &&
                     typeof product.price === 'number'
                       ? formatSumm(product.price)
+                      : ''}
+                  </p>
+                  <p className='card-medium__oldprice'>
+                    {product.oldPrice !== 0 &&
+                    typeof product.oldPrice === 'number'
+                      ? formatSumm(product.oldPrice)
                       : ''}
                   </p>
                 </div>
