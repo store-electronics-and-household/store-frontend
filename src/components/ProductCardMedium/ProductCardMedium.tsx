@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { formatSumm } from '../../utils/formatSumm';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
@@ -110,7 +110,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
   );
 };
 
-export default ProductCardMedium;
+export default memo(ProductCardMedium);
 
 /*
 

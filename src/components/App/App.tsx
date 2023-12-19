@@ -183,20 +183,21 @@ const App: React.FC = () => {
                 path='/categories/:subcategory'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs}/>
-                    <Categories/>
+                    <Breadcrumbs crumbs={crumbs} />
+                    <Categories />
                   </>
                 }
-              />
-              <Route
-                path='/categories/:catalog'
-                element={
-                  <>
-                    <Breadcrumbs crumbs={crumbs}/>
-                    <Catalog/>
-                  </>
-                }
-              />
+              >
+                <Route
+                  path=':model'
+                  element={
+                    <>
+                      <Catalog />
+                    </>
+                  }
+                />
+              </Route>
+
               <Route
                 path='/categories/catalog/product'
                 element={

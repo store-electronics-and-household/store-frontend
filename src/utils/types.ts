@@ -82,19 +82,19 @@ export interface CategoriesTileProps {
 }
 
 interface MeyTypeCardImage {
-  id: number,
-  imageLink: string,
+  id: number;
+  imageLink: string;
 }
 
 export interface MediumCardProps {
   id: number;
   name: string;
-  description?: string,
+  description?: string;
   quantity: number; // ПОМЕНЯТЬ
   price?: number;
   // imgUrl: string;
   discount?: number; // ПОМЕНЯТЬ
-  modelsImages?: Array<MeyTypeCardImage>;
+  modelsImages?: MeyTypeCardImage[];
   oldPrice: number;
   percent?: number;
 }

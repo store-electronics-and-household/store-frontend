@@ -46,3 +46,7 @@ export interface IgetSubcategories {
   'imageLink': 'string' | null;
 }
 export const getSubcategories = async (subcategoryId: string): Promise<IgetSubcategories[]> => await request(`/categories/${subcategoryId}/childs`, 'GET');
+
+export const getCategoryName = async (subcategoryId: string): Promise<IgetSubcategories> => await request(`/categories/${subcategoryId}`, 'GET');
+
+export const getModelsList = async (modelsId: string): Promise<any> => await request(`/category/${modelsId}/model?from=0&size=100&sort=NAME`, 'GET');

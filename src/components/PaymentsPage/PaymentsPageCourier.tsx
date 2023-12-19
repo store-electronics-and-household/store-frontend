@@ -49,33 +49,33 @@ const PaymentsPageCourier: React.FC<PaymentsPageCourierProps> = ({
   // };
 
   const containerRef = useRef<HTMLFormElement | null>(null);
-const isMouseDownRef = useRef(false);
-const scrollLeftRef = useRef(0);
-const startXRef = useRef(0);
+  const isMouseDownRef = useRef(false);
+  const scrollLeftRef = useRef(0);
+  const startXRef = useRef(0);
 
-const handleMouseDown = (e: React.MouseEvent<HTMLFormElement>): void => {
-  const container = containerRef.current;
-  if (container === null) return;
+  const handleMouseDown = (e: React.MouseEvent<HTMLFormElement>): void => {
+    const container = containerRef.current;
+    if (container === null) return;
 
-  // Проверка, что containerRef.current не является null
-  // if (container === null) return;
+    // Проверка, что containerRef.current не является null
+    // if (container === null) return;
     isMouseDownRef.current = true;
     startXRef.current = e.pageX - container.offsetLeft;
     scrollLeftRef.current = container.scrollLeft;
-};
+  };
 
-const handleMouseMove = (e: React.MouseEvent<HTMLFormElement>): void => {
-  const container = containerRef.current;
-  if (container === null) return;
+  const handleMouseMove = (e: React.MouseEvent<HTMLFormElement>): void => {
+    const container = containerRef.current;
+    if (container === null) return;
 
-  const x = e.pageX - container.offsetLeft;
-  const walk = (x - startXRef.current) * 2; // You can adjust the sensitivity here
-  container.scrollLeft = scrollLeftRef.current - walk;
-};
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startXRef.current) * 2; // You can adjust the sensitivity here
+    container.scrollLeft = scrollLeftRef.current - walk;
+  };
 
-const handleMouseUp = (): void => {
-  isMouseDownRef.current = false;
-};
+  const handleMouseUp = (): void => {
+    isMouseDownRef.current = false;
+  };
 
   const {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -114,7 +114,7 @@ const handleMouseUp = (): void => {
     // Добавление объекта в массив
     datesArray.push({
       date: formattedDate,
-      dayOfWeek: dayOfWeek,
+      dayOfWeek,
     });
   }
 
