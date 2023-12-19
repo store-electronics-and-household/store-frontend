@@ -22,12 +22,11 @@ import SearchResults from '../SearchResults/SearchResults';
 import type { MediumCardProps, ProductDataType } from '../../utils/types';
 import { CartProvider } from '../../context/CartContext';
 import { productData, productAttributes, subCategoriesList } from '../../utils/constants';
-import { changePassword } from '../../utils/api/user-api';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import { getProductDataById } from '../../utils/api/product-api';
+import { type IContext, UserContext } from '../../context/UserContext';
 
 const App: React.FC = () => {
-  const [isLogged, setIsLogged] = useState<boolean>(false);
   const [isWarningPopupOpen, setWarningPopupOpen] = useState<boolean>(false);
   const [isSignInPopupOpen, setSignInPopupOpen] = useState<boolean>(false);
   const [isSignUpPopupOpen, setSignUpPopupOpen] = useState<boolean>(false);
@@ -35,14 +34,23 @@ const App: React.FC = () => {
   const [searchRequest, setSearchRequest] = useState<string>('');
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchResults, setSearchResults] = useState<MediumCardProps[]>([]);
+  // Context provider
 
-  const [isPasswordRecoveryPopupOpen, setPasswordRecoveryPopupOpen] =
-    useState<boolean>(false);
+  const [generalContext, setGeneralContext] = useState<IContext>({
+    isLoggedIn: false,
+    userName: '',
+    userPhone: '',
+  });
+  // Context provider end
+  const [isPasswordRecoveryPopupOpen, setPasswordRecoveryPopupOpen] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [goodsList, setGoodsList] = React.useState<MediumCardProps[]>();
   const toggleWarningPopup = (): void => {
     setWarningPopupOpen(!isWarningPopupOpen);
   };
+  useEffect(() => {
+    // checkAuth()
+  }, []);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSearchCards = (array: MediumCardProps[]): void => {
@@ -69,20 +77,9 @@ const App: React.FC = () => {
     setGoodsList(data);
   };
 
-  const handleChangePassword = (email: string, password: string): void => {
-    changePassword(email, password)
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const getProductById = (productId: number): void => {
     getProductDataById(productId)
       .then((data) => {
-        console.log(data);
         setProductById(data);
       })
       .catch((error) => {
@@ -93,8 +90,6 @@ const App: React.FC = () => {
   useEffect(() => {
     getProductById(1);
   }, []);
-
-  console.log(productById);
 
   // const CustomPropsBreadcrumb = ({ someProp }: { someProp: string }): JSX.Element => <span>{someProp}</span>;
   // const DynamicUserBreadcrumb = ({ match }) => (
@@ -118,6 +113,7 @@ const App: React.FC = () => {
     <div className='App'>
       <CartProvider>
         <ScrollToTop>
+          <UserContext.Provider value={generalContext}>
           <Routes>
             <Route
               path='/'
@@ -126,7 +122,6 @@ const App: React.FC = () => {
                   <Header
                     toggleWarningPopup={toggleWarningPopup}
                     onOpenAuth={toggleSignInPopup}
-                    isLogged={isLogged}
                     handleSearch={handleSearch}
                     passSearchResults={handleSearchCards}
                   />
@@ -140,17 +135,16 @@ const App: React.FC = () => {
                     isOpenSignIn={isSignInPopupOpen}
                     onOpenReg={toggleSignUpPopup}
                     onOpenRecovery={PasswordRecoveryPopup}
-                    setIsLogged={setIsLogged}
+                    setGeneralContext={setGeneralContext}
                   />
                   <SignUp
                     onOpenSignUp={toggleSignUpPopup}
                     isOpenSignUp={isSignUpPopupOpen}
-                    setIsLogged={setIsLogged}
+                    setGeneralContext={setGeneralContext}
                   />
                   <PasswordRecovery
                     isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
                     onOpenRecoveryPopup={PasswordRecoveryPopup}
-                    onChangePassword={handleChangePassword}
                   />
                   <Footer/>
                 </>
@@ -184,16 +178,16 @@ const App: React.FC = () => {
                 }
               />
               <Route
-                path='/categories'
+                path='/categories/:subcategory'
                 element={
                   <>
                     <Breadcrumbs crumbs={crumbs}/>
-                    <Categories subCategoriesList={subCategoriesList} product={[]}/>
+                    <Categories/>
                   </>
                 }
               />
               <Route
-                path='/categories/catalog'
+                path='/categories/:catalog'
                 element={
                   <>
                     <Breadcrumbs crumbs={crumbs}/>
@@ -265,6 +259,7 @@ const App: React.FC = () => {
               <Route path='*' element={<NotFound/>}/>
             </Route>
           </Routes>
+          </UserContext.Provider>
         </ScrollToTop>
       </CartProvider>
     </div>

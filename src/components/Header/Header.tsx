@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import type { FC } from 'react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 
@@ -24,17 +23,18 @@ import SearchBar from '../SearchBar/SearchBar';
 import { useSlideContext } from '../../context/SlideContext';
 import { useCartContext } from '../../context';
 import Layout from '../Layout/Layout';
+import { UserContext } from '../../context/UserContext';
 import { type MediumCardProps } from '../../utils/types';
 
 interface HeaderProps {
   toggleWarningPopup: () => void;
   onOpenAuth: () => void;
-  isLogged: boolean;
   handleSearch: (request: string) => void;
   passSearchResults: (array: MediumCardProps[]) => void;
 }
 
-const Header: FC<HeaderProps> = ({ passSearchResults, toggleWarningPopup, onOpenAuth, isLogged, handleSearch }) => {
+const Header: React.FC<HeaderProps> = ({ passSearchResults, toggleWarningPopup, onOpenAuth, handleSearch }) => {
+  const { isLoggedIn } = useContext(UserContext);
   const [isVisible, setIsVisible] = useState<null | boolean>(null);
   const context = useSlideContext();
   const { totalCount } = useCartContext();
@@ -63,7 +63,7 @@ const Header: FC<HeaderProps> = ({ passSearchResults, toggleWarningPopup, onOpen
 
   const handleNavLinkClick =
     (path: string): void => {
-      if (isLogged) {
+      if (isLoggedIn) {
         navigate(path);
       }
       toggleWarningPopup();
@@ -168,7 +168,7 @@ const Header: FC<HeaderProps> = ({ passSearchResults, toggleWarningPopup, onOpen
               <div className='header__navbar-icon-count'>{totalCount}</div>
             </div>
 
-      { isLogged && (
+      { isLoggedIn && (
             <NavLink className='header__navbar-link' to='/'>
               <img
                 className='header__navbar-icon'
@@ -178,7 +178,7 @@ const Header: FC<HeaderProps> = ({ passSearchResults, toggleWarningPopup, onOpen
             </NavLink>
       )}
           </nav>
-          { !isLogged && (
+          { !isLoggedIn && (
           <button
             onClick={() => {
               handleOpenAuth();

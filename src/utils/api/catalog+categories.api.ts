@@ -39,3 +39,10 @@ export interface IgetMainCategories {
 }
 
 export const getMainCategories = async (): Promise<IgetMainCategories[]> => await request<IgetMainCategories[]>('/categories/roots', 'GET');
+
+export interface IgetSubcategories {
+  'id': number;
+  'name': 'string';
+  'imageLink': 'string' | null;
+}
+export const getSubcategories = async (subcategoryId: string): Promise<IgetSubcategories[]> => await request(`/categories/${subcategoryId}/childs`, 'GET');
