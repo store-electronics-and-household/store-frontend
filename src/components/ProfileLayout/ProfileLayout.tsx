@@ -20,6 +20,8 @@ const ProfileLayout = ({
   const token = localStorage.getItem('token') ?? '';
   const navigate = useNavigate();
 
+  //
+
   function onDeleteUser(): void {
     deleteUser(token)
       .then((res) => {
