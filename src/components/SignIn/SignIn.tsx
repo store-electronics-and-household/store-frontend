@@ -61,7 +61,7 @@ const SignIn: React.FC<SignInProps> = ({
     authorize(email, password)
       .then((data) => {
         localStorage.setItem('token', data.token);
-        setGeneralContext({ ...context, isLoggedIn: true });
+        setGeneralContext({ ...context, isLoggedIn: true, email });
         handleCloseSignInPopup();
         navigate('/', { replace: true });
         getFavouriteList();
@@ -130,8 +130,8 @@ const SignIn: React.FC<SignInProps> = ({
                   formik.errors.loginAuth
                     ? 'signin__input_invalid'
                     : formik.touched.loginAuth && formik.submitCount > 0
-                      ? 'signin__input_valid'
-                      : ''
+                    ? 'signin__input_valid'
+                    : ''
                 }`}
                 type='email'
                 name='loginAuth'
@@ -147,7 +147,8 @@ const SignIn: React.FC<SignInProps> = ({
               formik.errors.loginAuth && (
                 <span className='signin__error-text'>
                   {formik.errors.loginAuth}
-                </span>)}
+                </span>
+              )}
             <div className='signin__input-wrapper'>
               <label className='signin__label'>Пароль</label>
               <input
@@ -157,8 +158,8 @@ const SignIn: React.FC<SignInProps> = ({
                   formik.errors.passwordAuth
                     ? 'signin__input_invalid'
                     : formik.touched.passwordAuth && formik.submitCount > 0
-                      ? 'signin__input_valid'
-                      : ''
+                    ? 'signin__input_valid'
+                    : ''
                 }`}
                 type={showPassword ? 'text' : 'password'}
                 minLength={6}
@@ -187,11 +188,13 @@ const SignIn: React.FC<SignInProps> = ({
               formik.errors.passwordAuth && (
                 <span className='signin__error-text'>
                   {formik.errors.passwordAuth}
-                </span>)}
-            {isAuthError &&
+                </span>
+              )}
+            {isAuthError && (
               <span className='signin__error-text'>
-                  {'Не правильный логин или пароль'}
-                </span>}
+                {'Не правильный логин или пароль'}
+              </span>
+            )}
             <Link
               className='signin__link'
               onClick={handleOpenRecoveryPass}

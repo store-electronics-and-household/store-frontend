@@ -7,22 +7,20 @@ import minusIconActive from '../../image/icons/cart_minus_icon_active.svg';
 import { productCharacteristicsShortListLength } from '../../utils/constants';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import ProductCharacteristicsList from '../ProductCharacteristicsList/ProductCharacteristicsList';
-import { type ProductFullDataType } from '../../utils/types';
+// import { type ProductFullDataType } from '../../utils/types';
 import { formatSumm } from '../../utils/formatSumm';
 import PopupProductPhoto from '../PopupProductPhoto/PopupProductPhoto';
 // import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
-
-interface IProductPage {
-  product: ProductFullDataType;
-}
+import { useFavouritesContext } from '../../context/FavouritesContext';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const ProductPage: React.FC<IProductPage> = ({ product }) => {
+const ProductPage = () => {
   const [isActive, setIsActive] = useState(true);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isPopupFullPhotoOpen, setIsPopupFullPhotoOpen] = useState(false);
   const [count, setCount] = useState(0);
   const [isQuantityBtn, setIsQuantityBtn] = useState(false);
+  const { product } = useFavouritesContext();
   const images = product.images.map(item => item.imageLink);
   const attributes = product.attributes;
 
@@ -86,10 +84,9 @@ const ProductPage: React.FC<IProductPage> = ({ product }) => {
     { 'product__quantity-button-symbol_inactive': count === 1 }
   );
 
-  const descriptionBtnClassname = cn(
-    'product-page__description-btn',
-    { 'product-page__description-btn_active': isActive }
-  );
+  const descriptionBtnClassname = cn('product-page__description-btn', {
+    'product-page__description-btn_active': isActive,
+  });
 
   const descriptionCharacteristicBtnClassname = cn(
     'product-page__description-btn',
@@ -118,7 +115,6 @@ const ProductPage: React.FC<IProductPage> = ({ product }) => {
             </h2>
             <ProductCharacteristicsList
               attributes={attributes.slice(0, productCharacteristicsShortListLength)}
-              // attributes={attributes}
             />
             <a
               href='#characteristics-anchor'
@@ -135,15 +131,14 @@ const ProductPage: React.FC<IProductPage> = ({ product }) => {
               </span>
               {product.oldPrice !== null
                 ? (<span className='product-page__old-price'>
-                    {product.oldPrice !== null && typeof product.oldPrice === 'number'
+                    {product.oldPrice !== null &&
+                    typeof product.oldPrice === 'number'
                       ? formatSumm(product.oldPrice)
                       : ''}
                   </span>)
-                : null
-              }
+                : null}
             </div>
             <div className='product-page__buttons'>
-
               <div>
                 {!isQuantityBtn
                   ? <button
@@ -162,14 +157,22 @@ const ProductPage: React.FC<IProductPage> = ({ product }) => {
                         className={quantityBtnSymbolClassname}
                         onClick={handleDeleteFromCart}
                       >
-                        <img className='product__quantity-button-icon' src={minusIconActive} alt='Уменьшить количество' />
+                        <img
+                          className='product__quantity-button-icon'
+                          src={minusIconActive}
+                          alt='Уменьшить количество'
+                        />
                       </button>
                       <p className='product__quantity-button-number'>{count}</p>
                       <button
                         className='product__quantity-button-symbol'
                         onClick={handleAddToCart}
                       >
-                        <img className='product__quantity-button-icon' src={plusIconActive} alt='Увеличить количество' />
+                        <img
+                          className='product__quantity-button-icon'
+                          src={plusIconActive}
+                          alt='Увеличить количество'
+                        />
                       </button>
                     </div>
                 }
@@ -178,7 +181,8 @@ const ProductPage: React.FC<IProductPage> = ({ product }) => {
             </div>
             <ul className='product-page__benefits-list'>
               <li className='product-page__benefit'>
-                <p className='product-page__benefit-text'>Доставка сегодня – 300 ₽
+                <p className='product-page__benefit-text'>
+                  Доставка сегодня – 300 ₽
                 </p>
               </li>
               <li className='product-page__benefit'>

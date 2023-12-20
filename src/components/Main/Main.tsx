@@ -3,8 +3,7 @@ import Slider from '../Slider/Slider';
 import Discount from '../Discount/Discount';
 import CategoriesMain from '../CategoriesMain/CategoriesMain';
 import { getBanners } from '../../utils/api/user-api';
-import { type CategoriesTileProps, type MyTypeBanners, type MediumCardProps } from '../../utils/types';
-import { getMainCategories } from '../../utils/api/catalog+categories.api';
+import type { MyTypeBanners, MediumCardProps } from '../../utils/types';
 
 interface MainProps {
   passSearchResults: (array: MediumCardProps[]) => void;
@@ -12,19 +11,19 @@ interface MainProps {
 }
 
 const Main: React.FC<MainProps> = ({ passSearchResults, handleSearch }) => {
-  const [mainPageBanners, setMainPageBanners] = React.useState<MyTypeBanners[]>([]);
-  const [mainPageDicountBanners, setMainPageDicountBanners] = React.useState<MyTypeBanners[]>([]);
-  const [categoriesMain, setCategoriesMain] = React.useState<CategoriesTileProps[]>([]);
-
+  const [mainPageBanners, setMainPageBanners] = React.useState<MyTypeBanners[]>(
+    []
+  );
+  const [mainPageDicountBanners, setMainPageDicountBanners] = React.useState<
+    MyTypeBanners[]
+  >([]);
   React.useEffect(() => {
-    Promise.all([getBanners(), getMainCategories()])
-      .then(([res, categoriesMain]) => {
+    getBanners()
+      .then((res) => {
         const sliderBanners = res.slice(0, 5);
         const otherBanners = res.slice(5, 9);
-        // console.log(res)
         setMainPageBanners(sliderBanners);
         setMainPageDicountBanners(otherBanners);
-        setCategoriesMain(categoriesMain);
       })
       .catch((error) => {
         console.log(error.message);
@@ -42,13 +41,13 @@ const Main: React.FC<MainProps> = ({ passSearchResults, handleSearch }) => {
           bannerImage={mainPageBanners}
           passSearchResults={passSearchResults}
           handleSearch={handleSearch}
-          />
+        />
         <Discount
           discountBannerImages={mainPageDicountBanners}
           passSearchResults={passSearchResults}
           handleSearch={handleSearch}
         />
-        <CategoriesMain categoriesMain={categoriesMain}/>
+        <CategoriesMain />
       </section>
     </>
   );

@@ -17,7 +17,11 @@ interface SliderProps {
   handleSearch: (request: string) => void;
 }
 
-const Slider: React.FC<SliderProps> = ({ handleSearch, bannerImage, passSearchResults }) => {
+const Slider: React.FC<SliderProps> = ({
+  handleSearch,
+  bannerImage,
+  passSearchResults,
+}) => {
   const slideContext: any | undefined = useSlideContext();
   const { isLight, setLight } = slideContext;
   const navigate = useNavigate();
@@ -85,14 +89,14 @@ const Slider: React.FC<SliderProps> = ({ handleSearch, bannerImage, passSearchRe
         {bannerImage.map((banner, index) => (
           <SwiperSlide key={banner.id}>
             {/* <Link to='#' rel='noreferrer'> */}
-              <img
-                src={banner.imageLink}
-                alt={`${banner.name}`}
-                className='slider__action-img'
-                onClick={() => {
-                  handleOnClick(banner.id, banner.name);
-                }}
-              />
+            <img
+              src={banner.imageLink}
+              alt={`${banner.name}`}
+              className='slider__action-img'
+              onClick={() => {
+                handleOnClick(banner.id, banner.name);
+              }}
+            />
             {/* </Link> */}
           </SwiperSlide>
         ))}

@@ -13,10 +13,16 @@ interface ProductCharacteristicListProps {
 const ProductCharacteristicsList: React.FC<ProductCharacteristicListProps> = ({
   attributes,
   modifyListClass,
-  modifyItemClass
+  modifyItemClass,
 }: ProductCharacteristicListProps) => {
-  const characteristicsListClassname = cn('characteristics-list', modifyListClass);
-  const characteristicsItemClassname = cn('characteristics-list__item', modifyItemClass);
+  const characteristicsListClassname = cn(
+    'characteristics-list',
+    modifyListClass
+  );
+  const characteristicsItemClassname = cn(
+    'characteristics-list__item',
+    modifyItemClass
+  );
 
   return (
     <ul className={characteristicsListClassname}>

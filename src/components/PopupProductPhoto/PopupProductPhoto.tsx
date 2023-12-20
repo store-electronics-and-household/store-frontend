@@ -30,16 +30,12 @@ const PopupProductPhoto: React.FC<PopupProductPhotoProps> = ({
     }
   };
 
-  const popupProductPhotoClass = cn(
-    'popup-product-photo',
-    { 'popup-product-photo_opened': isOpen }
-  );
+  const popupProductPhotoClass = cn('popup-product-photo', {
+    'popup-product-photo_opened': isOpen,
+  });
 
   return (
-    <section
-      className={popupProductPhotoClass}
-      onMouseDown={overlayClickClose}
-    >
+    <section className={popupProductPhotoClass} onMouseDown={overlayClickClose}>
       <div className='popup-product-photo__container'>
         <button
           onClick={closePopup}

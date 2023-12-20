@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { formatSumm } from '../../utils/formatSumm';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
@@ -37,37 +37,44 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
     getProductById(1);
   };
 
-  const cardPriceClassname = cn(
-    'card-medium__price',
-    { 'card-medium__price_sale': product.oldPrice !== null }
-  );
+  const cardPriceClassname = cn('card-medium__price', {
+    'card-medium__price_sale': product.oldPrice !== null,
+  });
 
   return (
     <>
       <li className='card-medium'>
         <div className='card-medium__container'>
           <div className='card-medium__container-image'>
-            <a className='card-medium__link' href={'/categories/catalog/product'} onClick={handleGetFullProduct}>
+            <a
+              className='card-medium__link'
+              href={'/product'}
+              onClick={handleGetFullProduct}
+            >
               <img
                 className='card-medium__image'
-                src={isMainImage ? product.modelsImages?.[0]?.imageLink : product.modelsImages?.[1]?.imageLink}
+                src={
+                  isMainImage
+                    ? product.modelsImages?.[0]?.imageLink
+                    : product.modelsImages?.[1]?.imageLink
+                }
                 alt={product.name}
                 onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseOut}
               />
-              { product.percent != null &&
-                <p className={
-                  product.percent > 20
-                    ? 'card-medium__sticker'
-                    : 'card-medium__sticker card-medium__sticker_lowdiscount'
+              {product.percent != null && (
+                <p
+                  className={
+                    product.percent > 20
+                      ? 'card-medium__sticker'
+                      : 'card-medium__sticker card-medium__sticker_lowdiscount'
                   }
                 >
                   -{product.percent}%
                 </p>
-              }
+              )}
             </a>
             <div className='card-medium__like'>
-              {/* <CardLikeBtn isLikedCard={product.isLiked}/> */}
               <CardLikeBtn product={product}/>
             </div>
             <div className='card-medium__button'>
@@ -85,13 +92,16 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
             </div>
           </div>
           <div className='card-medium__footer'>
-            <a className='card-medium__link' href={'/categories/catalog/product'} onClick={handleGetFullProduct}>
+            <a
+              className='card-medium__link'
+              href={'/product'}
+              onClick={handleGetFullProduct}
+            >
               <div className='card-medium__container-footer'>
                 <h3 className='card-medium__title'>{product.name}</h3>
                 <div className='card-medium__container-price'>
                   <p className={cardPriceClassname}>
-                    {product.price !== 0 &&
-                    typeof product.price === 'number'
+                    {product.price !== 0 && typeof product.price === 'number'
                       ? formatSumm(product.price)
                       : ''}
                   </p>
@@ -117,7 +127,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
   );
 };
 
-export default ProductCardMedium;
+export default memo(ProductCardMedium);
 
 /*
 

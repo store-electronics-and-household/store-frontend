@@ -13,15 +13,12 @@ const PopupAddToCart: React.FC<PopupAddToCartProps> = ({
   productName,
   photoUrl,
 }: PopupAddToCartProps) => {
-  const popupAddToCartClass = cn(
-    'popup-add-to-cart',
-    { 'popup-add-to-cart_opened': isOpen }
-  );
+  const popupAddToCartClass = cn('popup-add-to-cart', {
+    'popup-add-to-cart_opened': isOpen,
+  });
 
   return (
-    <section
-      className={popupAddToCartClass}
-    >
+    <section className={popupAddToCartClass}>
       <img
         src={photoUrl}
         alt='фото товара'
@@ -30,7 +27,9 @@ const PopupAddToCart: React.FC<PopupAddToCartProps> = ({
       <div className='popup-add-to-cart__container'>
         <h3 className='popup-add-to-cart__head'>добавлен в корзину</h3>
         <p className='popup-add-to-cart__product-name'>{productName}</p>
-        <Link to='/cart' className='popup-add-to-cart__button'>В корзину</Link>
+        <Link to='/cart' className='popup-add-to-cart__button'>
+          В корзину
+        </Link>
       </div>
     </section>
   );

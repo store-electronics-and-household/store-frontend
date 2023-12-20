@@ -1,7 +1,16 @@
-import React, { createContext, type ReactNode, useContext, useState } from 'react';
+import React, {
+  createContext,
+  type ReactNode,
+  useContext,
+  useState
+} from 'react';
 import type { ProductFullDataType, MediumCardProps } from '../utils/types';
-import { addCardToFavoritesList, getFavouritesList, getProductDataById, removeCardFromFavoritesList } from '../utils/api/product-api';
-import { any } from 'prop-types';
+import {
+  addCardToFavoritesList,
+  getFavouritesList,
+  getProductDataById,
+  removeCardFromFavoritesList
+} from '../utils/api/product-api';
 
 interface FavouritesProviderProps {
   children: ReactNode;
@@ -16,7 +25,7 @@ interface FavouritesContextType {
   isCardLiked: (id: number) => boolean;
   getProductById: (productId: number) => void;
   favouritesList: MediumCardProps[];
-  productById: any;
+  product: ProductFullDataType;
 }
 
 const FavoritesContext = createContext<FavouritesContextType>({
@@ -28,7 +37,20 @@ const FavoritesContext = createContext<FavouritesContextType>({
   isCardLiked: (id: number) => false,
   favouritesList: [],
   getProductById: (productId: number) => null,
-  productById: any,
+  product: {
+    id: 0,
+    name: '',
+    description: '',
+    price: 0,
+    oldPrice: null,
+    category: {
+      id: 0,
+      name: '',
+      imageLink: ''
+    },
+    images: [],
+    attributes: []
+  },
 });
 
 export function useFavouritesContext (): FavouritesContextType {
@@ -38,7 +60,20 @@ export function useFavouritesContext (): FavouritesContextType {
 
 export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.Element {
   const [favouritesList, setFavouritesList] = useState<MediumCardProps[]>([]);
-  const [productById, setProductById] = useState<ProductFullDataType>();
+  const [productById, setProductById] = useState<ProductFullDataType>({
+    id: 0,
+    name: '',
+    description: '',
+    price: 0,
+    oldPrice: null,
+    category: {
+      id: 0,
+      name: '',
+      imageLink: ''
+    },
+    images: [],
+    attributes: []
+  });
 
   // favourites: получение, добавление, удаление.
   // useEffect(() => { // обновление массива избранных в локалСторадж при лайке/дизлайке
@@ -55,6 +90,8 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
         console.log(error);
       });
   };
+
+  const product = productById;
 
   const getFavouriteList = (): void => {
     getFavouritesList()
@@ -97,7 +134,9 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
   };
 
   const isCardLiked = (modelId: number): boolean => {
-    return favouritesList.some((favoriteProduct) => favoriteProduct.id === modelId);
+    return favouritesList.some(
+      (favoriteProduct) => favoriteProduct.id === modelId
+    );
   };
 
   // const getProductToDeleteId = (modelId: number): number => {
@@ -131,7 +170,7 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
         isCardLiked,
         getProductById,
         favouritesList,
-        productById,
+        product,
       }}
     >
       {children}

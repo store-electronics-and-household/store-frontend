@@ -1,0 +1,54 @@
+.profile__account {
+  padding: 64px 115px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  background-color: white;
+  &-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    width: 100%;
+  }
+  &-fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    padding: 0;
+    margin: 0;
+  }
+  &-label {
+    color: $accentBlackColor;
+    font-size: $fontSCaptionRegular;
+    font-weight: $fontWCaptionRegular;
+    line-height: 112.5%;
+  }
+  &-input {
+    padding: 12px 8px;
+    border-radius: 12px;
+    border: 1px solid #AFB4C0;
+    font-size: $fontSBody;
+    font-weight: $fontWBody;
+    line-height: 120%;
+  }
+  &-button {
+    padding: 16px 40px;
+    background-color: $accentBlackColor;
+    color: white;
+    font-size: $fontSButton;
+    font-weight: $fontWButton;
+    line-height: 112.5%;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    margin-top: 16px;
+  }
+  &-error {
+    color: #FF014E;
+    font-size: $fontSCaptionRegular;
+    font-weight: $fontWCaptionRegular;
+    line-height: normal;
+  }
+}

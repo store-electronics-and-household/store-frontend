@@ -83,3 +83,10 @@ export interface ProductFullDataType {
     value: string;
   }>;
 }
+
+export interface FormProps {
+  email?: string;
+  phone?: string;
+  firstName?: string;
+  lastName?: string;
+}

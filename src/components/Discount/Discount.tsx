@@ -9,7 +9,11 @@ interface DiscountProps {
   handleSearch: (request: string) => void;
 }
 
-const Discount: React.FC<DiscountProps> = ({ handleSearch, discountBannerImages, passSearchResults }) => {
+const Discount: React.FC<DiscountProps> = ({
+  handleSearch,
+  discountBannerImages,
+  passSearchResults,
+}) => {
   const navigate = useNavigate();
   const handleOnClick = (id: number, name: string): void => {
     // console.log('debug1');

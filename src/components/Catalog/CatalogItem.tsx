@@ -1,15 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CatalogItem: React.FC<{
   id: number;
   name: string;
-}> = (i) => {
+}> = ({ name, id }) => {
   return (
     <ul className='catalog__models'>
       <li className='catalog__model'>
-        <a className='catalog__model-link' href=''>
-          {i.name}
-        </a>
+        <Link to={`${id}`} className='catalog__model-link'>
+          {name}
+        </Link>
       </li>
     </ul>
   );

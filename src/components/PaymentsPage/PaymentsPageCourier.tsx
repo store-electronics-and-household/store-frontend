@@ -49,33 +49,33 @@ const PaymentsPageCourier: React.FC<PaymentsPageCourierProps> = ({
   // };
 
   const containerRef = useRef<HTMLFormElement | null>(null);
-const isMouseDownRef = useRef(false);
-const scrollLeftRef = useRef(0);
-const startXRef = useRef(0);
+  const isMouseDownRef = useRef(false);
+  const scrollLeftRef = useRef(0);
+  const startXRef = useRef(0);
 
-const handleMouseDown = (e: React.MouseEvent<HTMLFormElement>): void => {
-  const container = containerRef.current;
-  if (container === null) return;
+  const handleMouseDown = (e: React.MouseEvent<HTMLFormElement>): void => {
+    const container = containerRef.current;
+    if (container === null) return;
 
-  // Проверка, что containerRef.current не является null
-  // if (container === null) return;
+    // Проверка, что containerRef.current не является null
+    // if (container === null) return;
     isMouseDownRef.current = true;
     startXRef.current = e.pageX - container.offsetLeft;
     scrollLeftRef.current = container.scrollLeft;
-};
+  };
 
-const handleMouseMove = (e: React.MouseEvent<HTMLFormElement>): void => {
-  const container = containerRef.current;
-  if (container === null) return;
+  const handleMouseMove = (e: React.MouseEvent<HTMLFormElement>): void => {
+    const container = containerRef.current;
+    if (container === null) return;
 
-  const x = e.pageX - container.offsetLeft;
-  const walk = (x - startXRef.current) * 2; // You can adjust the sensitivity here
-  container.scrollLeft = scrollLeftRef.current - walk;
-};
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startXRef.current) * 2; // You can adjust the sensitivity here
+    container.scrollLeft = scrollLeftRef.current - walk;
+  };
 
-const handleMouseUp = (): void => {
-  isMouseDownRef.current = false;
-};
+  const handleMouseUp = (): void => {
+    isMouseDownRef.current = false;
+  };
 
   const {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -114,7 +114,7 @@ const handleMouseUp = (): void => {
     // Добавление объекта в массив
     datesArray.push({
       date: formattedDate,
-      dayOfWeek: dayOfWeek,
+      dayOfWeek,
     });
   }
 
@@ -160,7 +160,7 @@ const handleMouseUp = (): void => {
                   <span className='payments-page__input-error'>
                     {(errorsForm2.address as { message: string }).message}
                   </span>
-              )}
+                )}
             </label>
             <div className='payments-page__address-box'>
               <label className='payments-page__input-label payments-page__input-label_type_address'>
@@ -205,45 +205,45 @@ const handleMouseUp = (): void => {
       </form>
       <div className='payments-page__line payments-page__line_type_courier'></div>
       <h3 className='payments-page__address-title'>Дата доставки</h3>
-      <form className='payments-page__date-container'
+      <form
+        className='payments-page__date-container'
         ref={containerRef}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}>
-
+        onMouseLeave={handleMouseUp}
+      >
         {datesArray.map((item) => (
-            <label
-              className='payments-page__date-label'
+          <label
+            className='payments-page__date-label'
+            key={item.date}
+            onClick={() => {
+              handleChooseDate(item);
+            }}
+          >
+            <input
               key={item.date}
-              onClick={() => {
-                handleChooseDate(item);
-              }}
-            >
-              <input
-                key={item.date}
-                type='radio'
-                name='deliveryDate'
-                className='payments-page__date_type_invisible'
-                // onClick={() => handleChooseDate(item)}
-              />
-              <span className='payments-page__date_type_visible'>
-                <div className='payments-page__delivery-date-container'>
-                  <p className='payments-page__date_type_visible-text'>
-                    {item.date}
-                  </p>
-                  <p className='payments-page__date_type_visible-text'>
-                    {item.dayOfWeek}
-                  </p>
-                </div>
-              </span>
-            </label>
+              type='radio'
+              name='deliveryDate'
+              className='payments-page__date_type_invisible'
+              // onClick={() => handleChooseDate(item)}
+            />
+            <span className='payments-page__date_type_visible'>
+              <div className='payments-page__delivery-date-container'>
+                <p className='payments-page__date_type_visible-text'>
+                  {item.date}
+                </p>
+                <p className='payments-page__date_type_visible-text'>
+                  {item.dayOfWeek}
+                </p>
+              </div>
+            </span>
+          </label>
         ))}
       </form>
       {
         <span className='payments-page__input-error'>
           Выберите дату доставки
-
         </span>
       }
       <div className='payments-page__line payments-page__line_type_courier-scroll'></div>

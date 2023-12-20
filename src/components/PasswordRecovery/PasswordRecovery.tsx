@@ -15,7 +15,7 @@ interface PasswordRecoveryProps {
 
 const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
   onOpenRecoveryPopup,
-  isOpenPasswordRecovery
+  isOpenPasswordRecovery,
 }) => {
   const [isNext, SetIsNext] = React.useState<boolean>(false);
   const [isEmailValidationEnabled, setEmailValidationEnabled] =

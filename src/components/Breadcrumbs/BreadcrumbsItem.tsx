@@ -16,18 +16,22 @@ const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({
   isLastCrumb,
   match,
 }) => {
-  const renderTitle = (crumb: ReactNode): JSX.Element => {
+  const renderTitle = (crumb: ReactNode): React.ReactElement => {
     switch (true) {
       case isFirstCrumb:
-        return <Link className='breadcrumbs__link' to={match.pathname || ''}>
-          Главная
-        </Link>;
+        return (
+          <Link className='breadcrumbs__link' to={match.pathname || ''}>
+            Главная
+          </Link>
+        );
       case isLastCrumb:
         return <span className='breadcrumbs__link'>{crumb}</span>;
       default:
-        return <Link className='breadcrumbs__link' to={match.pathname || ''}>
-          {crumb}
-        </Link>;
+        return (
+          <Link className='breadcrumbs__link' to={match.pathname || ''}>
+            {crumb}
+          </Link>
+        );
     }
   };
 
