@@ -1,17 +1,21 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import type { MouseEvent } from 'react';
 import ProfileLayout from '../ProfileLayout/ProfileLayout';
-import { changePassword } from '../../utils/api/user-api';
-import { authorize } from '../../utils/api/dist/user-api';
+import { changePassword, authorize } from '../../utils/api/user-api';
+import { type IContext, UserContext } from '../../context/UserContext';
 
-const ChangePassword = (): JSX.Element => {
-  const CURRENT_EMAIL = '12345678@mail.ru';
+const ChangePassword = ({
+  setGeneralContext,
+}: {
+  setGeneralContext: (args: IContext) => void;
+}): JSX.Element => {
+  const { email } = useContext(UserContext);
   const statusMessage = useRef<HTMLSpanElement>(null);
   const formik = useFormik({
     initialValues: {
-      email: CURRENT_EMAIL,
+      email,
       currentPassword: '',
       newPassword: '',
       newPasswordConfirmation: '',
@@ -32,8 +36,9 @@ const ChangePassword = (): JSX.Element => {
     onSubmit: ({ email, currentPassword, newPassword }) => {
       if (formik.isValid) {
         authorize(email, currentPassword)
-          .then(() => {
+          .then((res) => {
             formik.setFieldError('currentPassword', undefined);
+            localStorage.setItem('token', res.token);
             changePassword(email, newPassword)
               .then(() => {
                 if (statusMessage.current != null) {
@@ -57,6 +62,7 @@ const ChangePassword = (): JSX.Element => {
                     statusMessage.current.innerText = '';
                   }
                 }, 8000);
+                formik.resetForm();
               });
           })
           .catch(() => {
@@ -89,7 +95,7 @@ const ChangePassword = (): JSX.Element => {
   }
 
   return (
-    <ProfileLayout>
+    <ProfileLayout setGeneralContext={setGeneralContext}>
       <div className='profile__password'>
         <form
           onSubmit={formik.handleSubmit}

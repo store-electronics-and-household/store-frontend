@@ -1,10 +1,15 @@
 import React from 'react';
 import ProfileLayout from '../ProfileLayout/ProfileLayout';
 import orderItem from '../../image/order-item.png';
+import type { IContext } from '../../context/UserContext';
 
-const Orders = (): JSX.Element => {
+const Orders = ({
+  setGeneralContext,
+}: {
+  setGeneralContext: (args: IContext) => void;
+}): JSX.Element => {
   return (
-    <ProfileLayout>
+    <ProfileLayout setGeneralContext={setGeneralContext}>
       <div className='profile__orders'>
         <div className='profile__order'>
           <div className='profile__order-info'>

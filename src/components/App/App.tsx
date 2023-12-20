@@ -25,11 +25,14 @@ import { CartProvider } from '../../context/CartContext';
 import {
   productData,
   productAttributes,
-  subCategoriesList,
+  // subCategoriesList,
 } from '../../utils/constants';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import { getProductDataById } from '../../utils/api/product-api';
 import { type IContext, UserContext } from '../../context/UserContext';
+import ChangePassword from '../ChangePassword/ChangePassword';
+import Profile from '../Profile/Profile';
+import Orders from '../Orders/Orders';
 
 const App: React.FC = () => {
   const [isWarningPopupOpen, setWarningPopupOpen] = useState<boolean>(false);
@@ -45,7 +48,9 @@ const App: React.FC = () => {
   const [generalContext, setGeneralContext] = useState<IContext>({
     isLoggedIn: false,
     userName: '',
+    userLastName: '',
     userPhone: '',
+    email: '',
   });
   // Context provider end
   const [isPasswordRecoveryPopupOpen, setPasswordRecoveryPopupOpen] =
@@ -262,6 +267,20 @@ const App: React.FC = () => {
                       />
                     </>
                   }
+                />
+                <Route
+                  path='/profile'
+                  element={<Profile setGeneralContext={setGeneralContext} />}
+                />
+                <Route
+                  path='/profile/changepass'
+                  element={
+                    <ChangePassword setGeneralContext={setGeneralContext} />
+                  }
+                />
+                <Route
+                  path='/profile/orders'
+                  element={<Orders setGeneralContext={setGeneralContext} />}
                 />
                 <Route path='/' element={<Navigate to='/main' replace />} />
                 <Route path='*' element={<NotFound />} />

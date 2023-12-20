@@ -59,7 +59,7 @@ const SignIn: React.FC<SignInProps> = ({
     authorize(email, password)
       .then((data) => {
         localStorage.setItem('token', data.token);
-        setGeneralContext({ ...context, isLoggedIn: true });
+        setGeneralContext({ ...context, isLoggedIn: true, email });
         handleCloseSignInPopup();
         navigate('/', { replace: true });
       })

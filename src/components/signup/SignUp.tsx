@@ -66,7 +66,7 @@ const SignUp: FC<SignUpProps> = ({
   const handleRegister = (email: string, password: string): void => {
     register(email, password)
       .then((res) => {
-        setGeneralContext({ ...context, isLoggedIn: true });
+        setGeneralContext({ ...context, isLoggedIn: true, email: res.email });
         onOpenSignUp();
         formik.resetForm();
         navigate('/', { replace: true });

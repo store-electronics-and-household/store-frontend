@@ -1,14 +1,47 @@
 import React, { type ReactNode } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { ReactComponent as ProfileIcon } from '../../image/icons/profile-icon.svg';
 import { ReactComponent as OrdersIcon } from '../../image/icons/orders-icon.svg';
 import { ReactComponent as PasswordIcon } from '../../image/icons/password-key.svg';
 import { ReactComponent as DeleteIcon } from '../../image/icons/delete-icon.svg';
 import { ReactComponent as ExitIcon } from '../../image/icons/exit-icon.svg';
+import { deleteUser } from '../../utils/api/user-api';
+import type { IContext } from '../../context/UserContext';
 
-const ProfileLayout = ({ children }: { children: ReactNode }): JSX.Element => {
+const ProfileLayout = ({
+  children,
+  setGeneralContext,
+}: {
+  children: ReactNode;
+  setGeneralContext: (args: IContext) => void;
+}): JSX.Element => {
   const location = useLocation();
   const path = location.pathname;
+  const token = localStorage.getItem('token') ?? '';
+  const navigate = useNavigate();
+
+  function onDeleteUser(): void {
+    deleteUser(token)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+
+  function unAthorize(): void {
+    localStorage.clear();
+    setGeneralContext({
+      isLoggedIn: false,
+      userLastName: '',
+      userName: '',
+      userPhone: '',
+      email: '',
+    });
+    navigate('/');
+  }
+
   return (
     <section className='profile'>
       <div className='profile__sidemenu'>
@@ -42,10 +75,10 @@ const ProfileLayout = ({ children }: { children: ReactNode }): JSX.Element => {
             >
               <PasswordIcon /> Сменить пароль
             </NavLink>
-            <button className='profile__sidemenu-link'>
+            <button onClick={onDeleteUser} className='profile__sidemenu-link'>
               <DeleteIcon /> Удалить аккаунт
             </button>
-            <button className='profile__sidemenu-link'>
+            <button onClick={unAthorize} className='profile__sidemenu-link'>
               <ExitIcon /> Выйти
             </button>
           </div>

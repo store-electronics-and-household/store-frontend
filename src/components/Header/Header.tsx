@@ -179,7 +179,7 @@ const Header: React.FC<HeaderProps> = ({
             </div>
 
             {isLoggedIn && (
-              <NavLink className='header__navbar-link' to='/'>
+              <NavLink className='header__navbar-link' to='/profile'>
                 <img
                   className='header__navbar-icon'
                   src={profileSrc}

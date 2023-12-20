@@ -1,65 +1,71 @@
-import React from 'react';
-// import type { FormEvent } from 'react';
+import React, { useContext } from 'react';
 import ProfileLayout from '../ProfileLayout/ProfileLayout';
 import InputMask from 'react-input-mask';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { patchUser } from '../../utils/api/user-api';
+import { UserContext } from '../../context/UserContext';
+import type { IContext } from '../../context/UserContext';
+import type { FormProps } from '../../utils/types';
 
-const Profile = (): JSX.Element => {
-  const CURRENT_EMAIL = '123455678@mail.ru';
-  interface FormProps {
-    email: string;
-    number?: string;
-    name?: string;
-    lastName?: string;
-  }
+const Profile = ({
+  setGeneralContext,
+}: {
+  setGeneralContext: (args: IContext) => void;
+}): JSX.Element => {
+  const context = useContext(UserContext);
+  const { email, userName, userPhone, userLastName }: IContext = context;
+  console.log(context);
+  const token = localStorage.getItem('token') ?? '';
+
   const formik = useFormik({
     initialValues: {
-      email: CURRENT_EMAIL,
-      number: '',
-      name: '',
-      lastName: '',
+      email,
+      phone: userPhone,
+      firstName: userName,
+      lastName: userLastName,
     },
     validationSchema: Yup.object({
-      number: Yup.string()
+      phone: Yup.string()
         .matches(
           /\+7\(\d\d\d\)\d\d\d-\d\d-\d\d/i,
           'Номер не соответствует схеме'
         )
-        .notRequired(),
-      name: Yup.string()
+        .required('Поле необходимо заполнить'),
+      firstName: Yup.string()
         .min(2, 'Имя должно быть длиннее 2 символов')
         .max(30, 'Имя не может содержать больше 30 символов')
-        .notRequired(),
+        .required('Поле необходимо заполнить'),
       lastName: Yup.string()
         .min(2, 'Фамилия должна быть длиннее 2 символов')
         .max(30, 'Фамилия не может содержать больше 30 символов')
-        .notRequired(),
+        .required('Поле необходимо заполнить'),
     }),
-    onSubmit: ({ email, name, number, lastName }) => {
-      const data: FormProps = { email, name, number, lastName };
-      if (number === '') {
-        delete data.number;
-      } else {
-        const res = number.match(/[0-9]/g);
-        data.number = res?.join('');
-      }
-      if (name === '') {
-        delete data.name;
-      }
-      if (lastName === '') {
-        delete data.lastName;
-      }
-      patchUser(data);
+    onSubmit: ({ firstName, phone, lastName }) => {
+      const data: FormProps = { firstName, phone, lastName };
+      const res = phone.match(/[0-9]/g);
+      data.phone = res?.join('');
+
+      patchUser(data, token)
+        .then((res) => {
+          const { phone } = res;
+          const phoneWPlus = '+'.concat(phone);
+          setGeneralContext({
+            ...context,
+            userName: res.firstName,
+            userPhone: phoneWPlus,
+            userLastName: res.lastName,
+          });
+          console.log(res);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
   });
 
-  function patchUser(data: FormProps): void {
-    console.log(data);
-  }
-
   return (
-    <ProfileLayout>
+    <ProfileLayout setGeneralContext={setGeneralContext}>
       <div className='profile__account'>
         <form
           noValidate
@@ -70,8 +76,6 @@ const Profile = (): JSX.Element => {
             <label className='profile__account-label'>Email</label>
             <input
               value={formik.values.email}
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
               name='email'
               readOnly
               className='profile__account-input'
@@ -80,39 +84,40 @@ const Profile = (): JSX.Element => {
           <fieldset className='profile__account-fieldset'>
             <label className='profile__account-label'>Номер телефона</label>
             <InputMask
-              value={formik.values.number}
+              value={formik.values.phone}
               minLength={16}
               alwaysShowMask={true}
-              name='number'
+              name='phone'
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               className='profile__account-input'
               mask={'+7(999)999-99-99'}
               placeholder='+7(___)___-__-__'
             />
-            {formik.touched.number != null && formik.errors.number != null && (
+            {formik.touched.phone != null && formik.errors.phone != null && (
               <span className='profile__account-error'>
-                {formik.errors.number}
+                {formik.errors.phone}
               </span>
             )}
           </fieldset>
           <fieldset className='profile__account-fieldset'>
             <label className='profile__account-label'>Имя</label>
             <input
-              value={formik.values.name}
+              value={formik.values.firstName}
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              name='name'
+              name='firstName'
               minLength={2}
               maxLength={30}
               type='text'
               className='profile__account-input'
             />
-            {formik.touched.name != null && formik.errors.name != null && (
-              <span className='profile__account-error'>
-                {formik.errors.name}
-              </span>
-            )}
+            {formik.touched.firstName != null &&
+              formik.errors.firstName != null && (
+                <span className='profile__account-error'>
+                  {formik.errors.firstName}
+                </span>
+              )}
           </fieldset>
           <fieldset className='profile__account-fieldset'>
             <label className='profile__account-label'>Фамилия</label>
