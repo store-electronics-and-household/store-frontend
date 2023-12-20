@@ -16,6 +16,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",
+    "react-input-mask": "^2.0.4",
     "react-modal": "^3.16.1",
     "react-paginate": "^8.2.0",
     "react-router-dom": "^6.18.0",
@@ -38,6 +39,7 @@
     "build-storybook": "storybook build",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,md}'",
     "scss:compile": "sass src/index.scss dist/index.css",
+    "scss-dev": "sass --watch --update src/index.scss src/index.css",
     "prepare": "husky install",
     "commit": "cz",
     "deploy": "gh-pages -d build"
@@ -87,6 +89,7 @@
     "@storybook/react-webpack5": "^7.5.3",
     "@storybook/testing-library": "^0.2.2",
     "@stylistic/eslint-plugin-ts": "^1.4.1",
+    "@types/react-input-mask": "^3.0.5",
     "@types/react-modal": "^3.16.3",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",

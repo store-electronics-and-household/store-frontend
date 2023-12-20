@@ -26,6 +26,9 @@ import { CartProvider } from '../../context/CartContext';
 import { productData, productAttributes } from '../../utils/constants';
 import { authorize, register, changePassword } from '../../utils/api/user-api';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
+import Profile from '../Profile/Profile';
+import ChangePassword from '../ChangePassword/ChangePassword';
+import Orders from '../Orders/Orders';
 
 const App: React.FC = () => {
   const [isLogged, setIsLogged] = useState<boolean>(false);
@@ -104,7 +107,7 @@ const App: React.FC = () => {
     { path: '/delivery', breadcrumb: 'Доставка' },
     { path: '/cart', breadcrumb: 'Корзина' },
     { path: '/search-results', breadcrumb: 'Результаты поиска' },
-    { path: 'categories/catalog/product', breadcrumb: productData.name }
+    { path: 'categories/catalog/product', breadcrumb: productData.name },
     // { path: '/favourites', breadcrumb: CustomPropsBreadcrumb, props: { someProp: 'Избранное' } },
     // { path: '/categories/:id', breadcrumb: DynamicUserBreadcrumb },
   ];
@@ -238,6 +241,9 @@ const App: React.FC = () => {
                 }
               />
               <Route path='/' element={<Navigate to='/main' replace />} />
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/profile/changepass' element={<ChangePassword />} />
+              <Route path='/profile/orders' element={<Orders />} />
             </Route>
             <Route path='*' element={<NotFound />} />
           </Routes>
