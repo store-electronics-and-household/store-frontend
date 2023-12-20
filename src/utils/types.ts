@@ -98,3 +98,10 @@ export interface MediumCardProps {
   oldPrice: number;
   percent?: number;
 }
+
+export interface FormProps {
+  email?: string;
+  phone?: string;
+  firstName?: string;
+  lastName?: string;
+}

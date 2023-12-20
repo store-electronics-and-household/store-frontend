@@ -4,7 +4,10 @@ import cart from '../../image/icons/busket_icon-white.svg';
 import ThumbsSlider from '../ThumbsSlider/ThumbsSlider';
 import plusIconActive from '../../image/icons/cart_plus_icon_active.svg';
 import minusIconActive from '../../image/icons/cart_minus_icon_active.svg';
-import { productCharacteristicsShortListLength, productSpecifyName } from '../../utils/constants';
+import {
+  productCharacteristicsShortListLength,
+  productSpecifyName,
+} from '../../utils/constants';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import ProductCharacteristicsList from '../ProductCharacteristicsList/ProductCharacteristicsList';
 import {
@@ -86,20 +89,17 @@ const ProductPage: React.FC<ProductPageProps> = ({
     count === 1 && setIsQuantityBtn(false);
   };
 
-  const currentPriceClassname = cn(
-    'product-page__current-price',
-    { 'product-page__current-price_sale': product.oldPrice !== undefined }
-  );
+  const currentPriceClassname = cn('product-page__current-price', {
+    'product-page__current-price_sale': product.oldPrice !== undefined,
+  });
 
-  const quantityBtnSymbolClassname = cn(
-    'product__quantity-button-symbol',
-    { 'product__quantity-button-symbol_inactive': product.quantityInCart === 1 }
-  );
+  const quantityBtnSymbolClassname = cn('product__quantity-button-symbol', {
+    'product__quantity-button-symbol_inactive': product.quantityInCart === 1,
+  });
 
-  const descriptionBtnClassname = cn(
-    'product-page__description-btn',
-    { 'product-page__description-btn_active': isActive }
-  );
+  const descriptionBtnClassname = cn('product-page__description-btn', {
+    'product-page__description-btn_active': isActive,
+  });
 
   const descriptionCharacteristicBtnClassname = cn(
     'product-page__description-btn',
@@ -148,52 +148,61 @@ const ProductPage: React.FC<ProductPageProps> = ({
               <span className={currentPriceClassname}>
                 {formatSumm(product.price)}
               </span>
-              {product.oldPrice !== 0
-                ? (<span className='product-page__old-price'>
-                    {product.oldPrice !== 0 && typeof product.oldPrice === 'number'
-                      ? formatSumm(product.oldPrice)
-                      : ''}
-                  </span>)
-                : null
-              }
+              {product.oldPrice !== 0 ? (
+                <span className='product-page__old-price'>
+                  {product.oldPrice !== 0 &&
+                  typeof product.oldPrice === 'number'
+                    ? formatSumm(product.oldPrice)
+                    : ''}
+                </span>
+              ) : null}
             </div>
             <div className='product-page__buttons'>
-
               <div>
-                {!isQuantityBtn
-                  ? <button
-                      onClick={handleAddToCart}
-                      className='product-page__button-basket'
+                {!isQuantityBtn ? (
+                  <button
+                    onClick={handleAddToCart}
+                    className='product-page__button-basket'
+                  >
+                    В корзину
+                    <img
+                      className='product-page__cart-icon'
+                      src={cart}
+                      alt='корзина покупок, магазин'
+                    />
+                  </button>
+                ) : (
+                  <div className='product__quantity-button'>
+                    <button
+                      className={quantityBtnSymbolClassname}
+                      onClick={handleDeleteFromCart}
                     >
-                      В корзину
                       <img
-                        className='product-page__cart-icon'
-                        src={cart}
-                        alt='корзина покупок, магазин'
+                        className='product__quantity-button-icon'
+                        src={minusIconActive}
+                        alt='Уменьшить количество'
                       />
                     </button>
-                  : <div className='product__quantity-button'>
-                      <button
-                        className={quantityBtnSymbolClassname}
-                        onClick={handleDeleteFromCart}
-                      >
-                        <img className='product__quantity-button-icon' src={minusIconActive} alt='Уменьшить количество' />
-                      </button>
-                      <p className='product__quantity-button-number'>{count}</p>
-                      <button
-                        className='product__quantity-button-symbol'
-                        onClick={handleAddToCart}
-                      >
-                        <img className='product__quantity-button-icon' src={plusIconActive} alt='Увеличить количество' />
-                      </button>
-                    </div>
-                }
+                    <p className='product__quantity-button-number'>{count}</p>
+                    <button
+                      className='product__quantity-button-symbol'
+                      onClick={handleAddToCart}
+                    >
+                      <img
+                        className='product__quantity-button-icon'
+                        src={plusIconActive}
+                        alt='Увеличить количество'
+                      />
+                    </button>
+                  </div>
+                )}
               </div>
-              <CardLikeBtn isLikedCard={product.isLiked}/>
+              <CardLikeBtn isLikedCard={product.isLiked} />
             </div>
             <ul className='product-page__benefits-list'>
               <li className='product-page__benefit'>
-                <p className='product-page__benefit-text'>Доставка сегодня – 300 ₽
+                <p className='product-page__benefit-text'>
+                  Доставка сегодня – 300 ₽
                 </p>
               </li>
               <li className='product-page__benefit'>
@@ -222,27 +231,27 @@ const ProductPage: React.FC<ProductPageProps> = ({
               Характеристики
             </button>
           </div>
-          {isActive
-            ? (<div className='product-page__about'>
-                {product.description.map((desc, id) => {
-                  return (
-                    <p key={id} className='product-page__about-description'>
-                      {desc}
-                    </p>
-                  );
-                })}
-              </div>)
-            : (<ProductCharacteristicsList
-                productSpecifyName={productSpecifyName}
-                productSpecifyValue={attributes}
-                keysList={objectKeys(attributes).filter((n) => {
-                  return n;
-                })}
-                modifyListClass={'characteristics-list_full'}
-                modifyItemClass={'characteristics-list__item_full'}
-              />
-              )
-          }
+          {isActive ? (
+            <div className='product-page__about'>
+              {product.description.map((desc, id) => {
+                return (
+                  <p key={id} className='product-page__about-description'>
+                    {desc}
+                  </p>
+                );
+              })}
+            </div>
+          ) : (
+            <ProductCharacteristicsList
+              productSpecifyName={productSpecifyName}
+              productSpecifyValue={attributes}
+              keysList={objectKeys(attributes).filter((n) => {
+                return n;
+              })}
+              modifyListClass={'characteristics-list_full'}
+              modifyItemClass={'characteristics-list__item_full'}
+            />
+          )}
         </div>
         <PopupProductPhoto
           images={product.images}

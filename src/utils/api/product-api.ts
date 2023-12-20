@@ -1,8 +1,6 @@
 import { request } from './user-api';
 
-export const getProductDataById = async (
-  id: number
-): Promise<any> => {
+export const getProductDataById = async (id: number): Promise<any> => {
   return await request(`/models/${id}/model-attributes`, {
     method: 'GET',
     headers: {
@@ -23,9 +21,7 @@ export const getFavouritesList = async (): Promise<any> => {
   });
 };
 
-export const addCardToFavoritesList = async (
-  cardId: number
-): Promise<any> => {
+export const addCardToFavoritesList = async (cardId: number): Promise<any> => {
   return await request('/favourite/add', {
     method: 'POST',
     headers: {

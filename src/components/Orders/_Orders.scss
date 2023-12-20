@@ -1,0 +1,59 @@
+.profile__orders {
+  grid-column: 2 / -1;
+}
+
+.profile__order {
+  background-color: white;
+  border-radius: 24px;
+  padding: 32px 40px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  &-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    row-gap: 8px;
+    grid-template-areas:
+    "date status"
+    "number .";
+  }
+  &-date {
+    margin: 0;
+    grid-area: date;
+    font-size: $fontSH3;
+    font-weight: $fontWH3;
+    line-height: 125%;
+
+  }
+  &-number {
+    margin: 0;
+    grid-area: number;
+    font-size: $fontSBody;
+    font-weight: $fontWBody;
+    line-height: 120%;
+  }
+  &-status {
+    grid-area: status;
+    justify-self: end;
+    background-color: #E3FF72;
+    font-size: $fontSBodyBold;
+    font-weight: $fontWBodyBold;
+    line-height: normal;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  &-summary {
+    display: flex;
+    justify-content: space-between;
+  }
+  &-summary-info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    align-self: flex-end;
+    font-size: $fontSCharacteristics;
+    font-weight: $fontWCharacteristics;
+    line-height: 120%;
+  }
+}

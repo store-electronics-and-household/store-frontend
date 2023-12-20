@@ -8,7 +8,7 @@ export const getBusket = async (token: string): Promise<any> => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      ...!!token && { Authorization: `Bearer ${token}` }
+      ...(!(token === '') && { Authorization: `Bearer ${token}` }),
     },
   });
 };
