@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
+import cn from 'classnames';
 
 interface PopupAddToCartProps {
   isOpen: boolean;
-  photoUrl: string;
+  photoUrl?: string;
   productName: string;
 }
 
@@ -12,18 +13,12 @@ const PopupAddToCart: React.FC<PopupAddToCartProps> = ({
   productName,
   photoUrl,
 }: PopupAddToCartProps) => {
-  if (isOpen) {
-    setTimeout(() => {
-      isOpen = !isOpen;
-    }, 2000);
-  }
+  const popupAddToCartClass = cn('popup-add-to-cart', {
+    'popup-add-to-cart_opened': isOpen,
+  });
 
   return (
-    <section
-      className={`popup-add-to-cart ${
-        isOpen ? 'popup-add-to-cart_opened' : ''
-      }`}
-    >
+    <section className={popupAddToCartClass}>
       <img
         src={photoUrl}
         alt='фото товара'
@@ -32,10 +27,12 @@ const PopupAddToCart: React.FC<PopupAddToCartProps> = ({
       <div className='popup-add-to-cart__container'>
         <h3 className='popup-add-to-cart__head'>добавлен в корзину</h3>
         <p className='popup-add-to-cart__product-name'>{productName}</p>
-        <Link to='/cart' className='popup-add-to-cart__button'>В корзину</Link>
+        <Link to='/cart' className='popup-add-to-cart__button'>
+          В корзину
+        </Link>
       </div>
     </section>
   );
 };
 
-export default PopupAddToCart;
+export default memo(PopupAddToCart);

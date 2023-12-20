@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { memo } from 'react';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
+import { getMainCategories } from '../../utils/api/catalog+categories.api';
+import { type CategoriesTileProps } from '../../utils/types';
 
-interface Props {
-  categoriesMain: Array<{
-    id: number;
-    name: string;
-  }>;
-}
-
-const CategoriesMain: React.FC<Props> = ({ categoriesMain }) => {
+const CategoriesMain: React.FC = (): React.ReactElement => {
+  const [categoriesMain, setCategoriesMain] = React.useState<
+    CategoriesTileProps[]
+  >([]);
+  React.useEffect(() => {
+    getMainCategories()
+      .then((res) => {
+        setCategoriesMain(res);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, []);
   return (
     <section className='tile'>
       <h2 className='tile__title'>Категории</h2>
@@ -18,11 +25,16 @@ const CategoriesMain: React.FC<Props> = ({ categoriesMain }) => {
             a.name.toLowerCase().localeCompare(b.name.toLowerCase())
           )
           .map((tile) => (
-            <CategoriesTile key={tile.id} name={tile.name} id={tile.id} />
+            <CategoriesTile
+              key={tile.id}
+              name={tile.name}
+              id={tile.id}
+              imageLink={tile.imageLink}
+            />
           ))}
-      </ul>{' '}
+      </ul>
     </section>
   );
 };
 
-export default CategoriesMain;
+export default memo(CategoriesMain);

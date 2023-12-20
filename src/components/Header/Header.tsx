@@ -1,19 +1,20 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import React, { useState } from 'react';
-import type { FC } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 
-import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
-
-import deliveryIcon from '../../image/icons/delivery_icon.svg';
-import busketIcon from '../../image/icons/busket_icon.svg';
-import favouriteIcon from '../../image/icons/favourite_icon.svg';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 import headerLogoWhite from '../../image/icons/header_logo_white.svg';
 import headerLogoColor from '../../image/icons/header_logo_color.svg';
 
+import deliveryIcon from '../../image/icons/delivery_icon.svg';
+import busketIcon from '../../image/icons/busket_icon.svg';
+import favouriteIcon from '../../image/icons/favourite_icon.svg';
+import profileIcon from '../../image/icons/profile_icon.svg';
+
 import deliveryIconWhite from '../../image/icons/delivery_icon-white.svg';
 import busketIconWhite from '../../image/icons/cart_icon-white.svg';
 import favouriteIconWhite from '../../image/icons/favourite_icon-white.svg';
+import profileIconWhite from '../../image/icons/profile_icon_white.svg';
 
 import CatalogMenu from '../CatalogMenu/CatalogMenu';
 
@@ -21,30 +22,63 @@ import SearchBar from '../SearchBar/SearchBar';
 
 import { useSlideContext } from '../../context/SlideContext';
 import { useCartContext } from '../../context';
+import Layout from '../Layout/Layout';
+import { UserContext } from '../../context/UserContext';
+import { type MediumCardProps } from '../../utils/types';
 
 interface HeaderProps {
   toggleWarningPopup: () => void;
-  isLogged: boolean;
+  onOpenAuth: () => void;
+  handleSearch: (request: string) => void;
+  passSearchResults: (array: MediumCardProps[]) => void;
 }
 
-const Header: FC<HeaderProps> = ({ toggleWarningPopup, isLogged }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  // console.log(isLogged);
-
+const Header: React.FC<HeaderProps> = ({
+  passSearchResults,
+  toggleWarningPopup,
+  onOpenAuth,
+  handleSearch,
+}) => {
+  const { isLoggedIn } = useContext(UserContext);
+  const [isVisible, setIsVisible] = useState<null | boolean>(null);
   const context = useSlideContext();
   const { totalCount } = useCartContext();
-
   const { isLight } = context ?? { isLight: false };
+  const navigate = useNavigate();
 
   const handleClick = (): void => {
-    setIsVisible((current) => !current);
+    setIsVisible(!isVisible);
   };
 
-  const handleNavLinkClick =
-    (): void => {
-      // event.preventDefault();
-      toggleWarningPopup();
+  const catalogRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent): void => {
+      if (
+        catalogRef?.current &&
+        !catalogRef.current.contains(e.target as Node)
+      ) {
+        setIsVisible(false);
+      }
     };
+
+    document.addEventListener('mousedown', handler);
+
+    return () => {
+      document.removeEventListener('mousedown', handler);
+    };
+  });
+
+  const handleNavLinkClick = (path: string): void => {
+    if (isLoggedIn) {
+      navigate(path);
+    }
+    toggleWarningPopup();
+  };
+
+  const handleOpenAuth = (): void => {
+    onOpenAuth();
+  };
 
   const location = useLocation();
 
@@ -72,6 +106,12 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, isLogged }) => {
         ? favouriteIcon
         : favouriteIconWhite
       : favouriteIcon;
+  const profileSrc =
+    location.pathname === '/main'
+      ? isLight
+        ? profileIcon
+        : profileIconWhite
+      : profileIcon;
 
   return (
     <>
@@ -85,12 +125,17 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, isLogged }) => {
             />
           </Link>
 
-          {isVisible && <CatalogMenu />}
+          <CatalogMenu visible={isVisible} catalogRef={catalogRef} />
 
-          <SearchBar />
+          <SearchBar
+            handleSearch={handleSearch}
+            passSearchResults={passSearchResults}
+          />
 
           <button
-            onClick={handleClick}
+            onClick={() => {
+              handleClick();
+            }}
             className={`header__catalog-button ${
               location.pathname === '/main'
                 ? isLight
@@ -119,32 +164,47 @@ const Header: FC<HeaderProps> = ({ toggleWarningPopup, isLogged }) => {
               />
             </NavLink>
 
-            <NavLink className='header__navbar-link' to='/cart'>
+            <div
+              className='header__navbar-link'
+              onClick={() => {
+                handleNavLinkClick('/cart');
+              }}
+            >
               <img
                 className='header__navbar-icon'
                 src={busketSrc}
                 alt="Перейти в раздел 'Корзина'"
               />
               <div className='header__navbar-icon-count'>{totalCount}</div>
-            </NavLink>
+            </div>
+
+            {isLoggedIn && (
+              <NavLink className='header__navbar-link' to='/'>
+                <img
+                  className='header__navbar-icon'
+                  src={profileSrc}
+                  alt="Перейти в раздел 'Профиль'"
+                />
+              </NavLink>
+            )}
           </nav>
-          <button
-            onClick={() => {
-              handleNavLinkClick();
-            }}
-            className={`header__auth-button ${
-              location.pathname === '/main'
-                ? isLight
-                  ? ''
-                  : 'header__auth-button_white'
-                : ''
-            }`}
-          >
-            Войти
-          </button>
+          {!isLoggedIn && (
+            <button
+              onClick={() => {
+                handleOpenAuth();
+              }}
+              className={`header__auth-button ${
+                location.pathname === '/main' && !isLight
+                  ? 'header__auth-button_white'
+                  : ''
+              }`}
+            >
+              Войти
+            </button>
+          )}
         </div>
       </header>
-      <Outlet />
+      <Layout />
     </>
   );
 };

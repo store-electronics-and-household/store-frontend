@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import AboutCompany from '../AboutCompany/AboutCompany';
@@ -19,29 +19,53 @@ import SignUp from '../signup/SignUp';
 import PasswordRecovery from '../PasswordRecovery/PasswordRecovery';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import SearchResults from '../SearchResults/SearchResults';
-// import { paymentPageData } from '../../utils/constants';
-import { type GoodsListProps } from '../../utils/types';
-
+import type { MediumCardProps, ProductDataType } from '../../utils/types';
 import { CartProvider } from '../../context/CartContext';
-import { productData, productAttributes } from '../../utils/constants';
-import { authorize, register, changePassword } from '../../utils/api/user-api';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import {
+  productData,
+  productAttributes,
+  subCategoriesList,
+} from '../../utils/constants';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
-import Profile from '../Profile/Profile';
-import ChangePassword from '../ChangePassword/ChangePassword';
-import Orders from '../Orders/Orders';
+import { getProductDataById } from '../../utils/api/product-api';
+import { type IContext, UserContext } from '../../context/UserContext';
 
 const App: React.FC = () => {
-  const [isLogged, setIsLogged] = useState<boolean>(false);
   const [isWarningPopupOpen, setWarningPopupOpen] = useState<boolean>(false);
   const [isSignInPopupOpen, setSignInPopupOpen] = useState<boolean>(false);
   const [isSignUpPopupOpen, setSignUpPopupOpen] = useState<boolean>(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [productById, setProductById] = useState<ProductDataType>();
+  const [searchRequest, setSearchRequest] = useState<string>('');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [searchResults, setSearchResults] = useState<MediumCardProps[]>([]);
+  // Context provider
 
+  const [generalContext, setGeneralContext] = useState<IContext>({
+    isLoggedIn: false,
+    userName: '',
+    userPhone: '',
+  });
+  // Context provider end
   const [isPasswordRecoveryPopupOpen, setPasswordRecoveryPopupOpen] =
     useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [goodsList, setGoodsList] = React.useState<GoodsListProps[]>();
+  const [goodsList, setGoodsList] = React.useState<MediumCardProps[]>();
   const toggleWarningPopup = (): void => {
     setWarningPopupOpen(!isWarningPopupOpen);
+  };
+  useEffect(() => {
+    // checkAuth()
+  }, []);
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleSearchCards = (array: MediumCardProps[]): void => {
+    setSearchResults(array);
+  };
+
+  const handleSearch = (request: string): void => {
+    setSearchRequest(request);
   };
 
   const toggleSignInPopup = (): void => {
@@ -56,44 +80,23 @@ const App: React.FC = () => {
     setPasswordRecoveryPopupOpen(!isPasswordRecoveryPopupOpen);
   };
 
-  const setGoodsForPayment = (data: GoodsListProps[]): void => {
+  const setGoodsForPayment = (data: MediumCardProps[]): void => {
     setGoodsList(data);
   };
 
-  const navigate = useNavigate();
-
-  const handleRegister = (email: string, password: string): void => {
-    register(email, password)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const handleLogin = (email: string, password: string): void => {
-    authorize(email, password)
+  const getProductById = (productId: number): void => {
+    getProductDataById(productId)
       .then((data) => {
-        localStorage.setItem('token', data.token);
-        // console.log(data);
-        setIsLogged(true);
-        navigate('/', { replace: true });
+        setProductById(data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  const handleChangePassword = (email: string, password: string): void => {
-    changePassword(email, password)
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  useEffect(() => {
+    getProductById(1);
+  }, []);
 
   // const CustomPropsBreadcrumb = ({ someProp }: { someProp: string }): JSX.Element => <span>{someProp}</span>;
   // const DynamicUserBreadcrumb = ({ match }) => (
@@ -108,6 +111,7 @@ const App: React.FC = () => {
     { path: '/cart', breadcrumb: 'Корзина' },
     { path: '/search-results', breadcrumb: 'Результаты поиска' },
     { path: 'categories/catalog/product', breadcrumb: productData.name },
+    { path: '/payment', breadcrumb: 'Корзина' },
     // { path: '/favourites', breadcrumb: CustomPropsBreadcrumb, props: { someProp: 'Избранное' } },
     // { path: '/categories/:id', breadcrumb: DynamicUserBreadcrumb },
   ];
@@ -116,137 +120,154 @@ const App: React.FC = () => {
     <div className='App'>
       <CartProvider>
         <ScrollToTop>
-          <Routes>
-            <Route
-              path='/'
-              element={
-                <>
-                  <Header
-                    toggleWarningPopup={toggleWarningPopup}
-                    isLogged={isLogged}
-                  />
-                  <WarningPopup
-                    isOpen={isWarningPopupOpen}
-                    onOpenWarningPopup={toggleWarningPopup}
-                    onOpenAuth={toggleSignInPopup}
-                  />
-                  <SignIn
-                    onOpenSignIn={toggleSignInPopup}
-                    isOpenSignIn={isSignInPopupOpen}
-                    onOpenReg={toggleSignUpPopup}
-                    onOpenRecovery={PasswordRecoveryPopup}
-                    onLogin={handleLogin}
-                  />
-                  <SignUp
-                    onOpenSignUp={toggleSignUpPopup}
-                    isOpenSignUp={isSignUpPopupOpen}
-                    onRegistr={handleRegister}
-                  />
-                  <PasswordRecovery
-                    isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
-                    onOpenRecoveryPopup={PasswordRecoveryPopup}
-                    onChangePassword={handleChangePassword}
-                  />
-                  <Footer />
-                </>
-              }
-            >
-              <Route path='/main' element={<Main />} />
+          <UserContext.Provider value={generalContext}>
+            <Routes>
               <Route
-                path='/about-company'
+                path='/'
                 element={
                   <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <AboutCompany />
-                  </>
-                }
-              />
-              <Route
-                path='/faq'
-                element={
-                  <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Faq />
-                  </>
-                }
-              />
-              <Route
-                path='/categories'
-                element={
-                  <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Categories subCategoriesList={[]} product={[]} />
-                  </>
-                }
-              />
-              <Route
-                path='/categories/catalog'
-                element={
-                  <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Catalog />
-                  </>
-                }
-              />
-              <Route
-                path='/categories/catalog/product'
-                element={
-                  <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <ProductPage
-                      product={productData}
-                      attributes={productAttributes}
+                    <Header
+                      toggleWarningPopup={toggleWarningPopup}
+                      onOpenAuth={toggleSignInPopup}
+                      handleSearch={handleSearch}
+                      passSearchResults={handleSearchCards}
                     />
+                    <WarningPopup
+                      isOpen={isWarningPopupOpen}
+                      onOpenWarningPopup={toggleWarningPopup}
+                      onOpenAuth={toggleSignInPopup}
+                    />
+                    <SignIn
+                      onOpenSignIn={toggleSignInPopup}
+                      isOpenSignIn={isSignInPopupOpen}
+                      onOpenReg={toggleSignUpPopup}
+                      onOpenRecovery={PasswordRecoveryPopup}
+                      setGeneralContext={setGeneralContext}
+                    />
+                    <SignUp
+                      onOpenSignUp={toggleSignUpPopup}
+                      isOpenSignUp={isSignUpPopupOpen}
+                      setGeneralContext={setGeneralContext}
+                    />
+                    <PasswordRecovery
+                      isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
+                      onOpenRecoveryPopup={PasswordRecoveryPopup}
+                    />
+                    <Footer />
                   </>
                 }
-              />
-              <Route
-                path='/delivery'
-                element={
-                  <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Delivery />
-                  </>
-                }
-              />
-              <Route
-                path='/favourites'
-                element={
-                  <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Favourites />
-                  </>
-                }
-              />
-              <Route
-                path='/cart'
-                element={
-                  <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <Cart onCheckoutClick={setGoodsForPayment} />
-                  </>
-                }
-              />
-              <Route
-                path='/payment'
-                element={<PaymentsPage GoodsList={goodsList ?? []} />}
-              />
-              <Route
-                path='/search-results'
-                element={
-                  <>
-                    <Breadcrumbs crumbs={crumbs} />
-                    <SearchResults />
-                  </>
-                }
-              />
-              <Route path='/' element={<Navigate to='/main' replace />} />
-              <Route path='/profile' element={<Profile />} />
-              <Route path='/profile/changepass' element={<ChangePassword />} />
-              <Route path='/profile/orders' element={<Orders />} />
-            </Route>
-            <Route path='*' element={<NotFound />} />
-          </Routes>
+              >
+                <Route
+                  path='/main'
+                  element={
+                    <Main
+                      passSearchResults={handleSearchCards}
+                      handleSearch={handleSearch}
+                    />
+                  }
+                />
+                <Route
+                  path='/about-company'
+                  element={
+                    <>
+                      <Breadcrumbs crumbs={crumbs} />
+                      <AboutCompany />
+                    </>
+                  }
+                />
+                <Route
+                  path='/faq'
+                  element={
+                    <>
+                      <Breadcrumbs crumbs={crumbs} />
+                      <Faq />
+                    </>
+                  }
+                />
+                <Route
+                  path='/categories/:subcategory'
+                  element={
+                    <>
+                      <Breadcrumbs crumbs={crumbs} />
+                      <Categories />
+                    </>
+                  }
+                >
+                  <Route
+                    path=':model'
+                    element={
+                      <>
+                        <Catalog />
+                      </>
+                    }
+                  />
+                </Route>
+
+                <Route
+                  path='/categories/catalog/product'
+                  element={
+                    <>
+                      <Breadcrumbs crumbs={crumbs} />
+                      <ProductPage
+                        product={productData}
+                        attributes={productAttributes}
+                      />
+                    </>
+                  }
+                />
+                <Route
+                  path='/delivery'
+                  element={
+                    <>
+                      <Breadcrumbs crumbs={crumbs} />
+                      <Delivery />
+                    </>
+                  }
+                />
+                <Route
+                  path='/favourites'
+                  element={
+                    <>
+                      <Breadcrumbs crumbs={crumbs} />
+                      <Favourites />
+                    </>
+                  }
+                />
+                <Route
+                  path='/cart'
+                  element={
+                    <>
+                      <Breadcrumbs crumbs={crumbs} />
+                      <Cart onCheckoutClick={setGoodsForPayment} />
+                    </>
+                  }
+                />
+                <Route
+                  path='/payment'
+                  element={
+                    <>
+                      <Breadcrumbs crumbs={crumbs} />
+                      <PaymentsPage GoodsList={goodsList ?? []} />
+                    </>
+                  }
+                />
+                <Route
+                  path='/search-results'
+                  element={
+                    <>
+                      <Breadcrumbs crumbs={crumbs} />
+                      <SearchResults
+                        searchRequest={searchRequest}
+                        searchResults={searchResults}
+                      />
+                    </>
+                  }
+                />
+                <Route path='/' element={<Navigate to='/main' replace />} />
+                <Route path='*' element={<NotFound />} />
+              </Route>
+            </Routes>
+          </UserContext.Provider>
         </ScrollToTop>
       </CartProvider>
     </div>

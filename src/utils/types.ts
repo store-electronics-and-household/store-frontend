@@ -14,18 +14,19 @@ export interface PopupProps {
   style?: React.CSSProperties;
 }
 
-export interface productDataType {
+export interface ProductDataType {
   id: number;
   name: string;
   price: number;
   oldPrice?: number;
+  discount?: number;
   description: string[];
   images: string[];
   quantityInCart: number;
   isLiked: boolean;
 }
 
-export interface productAttributesDataType {
+export interface ProductAttributesDataType {
   brend?: string;
   country?: string;
   color?: string;
@@ -44,14 +45,6 @@ export interface productAttributesDataType {
   builtInMemory1?: string | number;
   ram1?: string | number;
   batteryCapacity1?: string | number;
-}
-
-export interface GoodsListProps {
-  id: number;
-  quantity: number;
-  salesPrice: number;
-  imgUrl: string;
-  discount: number;
 }
 
 export interface AccordionProps {
@@ -75,6 +68,7 @@ export interface ProductInfo {
   salesPrice: number;
   imgUrl: string;
 }
+
 export interface MyTypeBanners {
   id: number;
   name: string;
@@ -84,4 +78,23 @@ export interface MyTypeBanners {
 export interface CategoriesTileProps {
   id: number;
   name: string;
+  imageLink: string;
+}
+
+interface MeyTypeCardImage {
+  id: number;
+  imageLink: string;
+}
+
+export interface MediumCardProps {
+  id: number;
+  name: string;
+  description?: string;
+  quantity: number; // ПОМЕНЯТЬ
+  price?: number;
+  // imgUrl: string;
+  discount?: number; // ПОМЕНЯТЬ
+  modelsImages?: MeyTypeCardImage[];
+  oldPrice: number;
+  percent?: number;
 }

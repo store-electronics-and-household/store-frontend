@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
+import { API_URL } from '../constants';
+
 interface ErrorResponse {
   message?: string;
 }
@@ -14,11 +16,11 @@ const checkResponse = async (res: Response): Promise<any> => {
   }
 };
 
-const request = async (
+export const request = async (
   endpoint: string,
   options: RequestInit
 ): Promise<any> => {
-  const url = `http://45.12.236.120:8080${endpoint}`;
+  const url = `${API_URL}${endpoint}`;
   return await fetch(url, options).then(checkResponse);
 };
 
@@ -40,7 +42,6 @@ export const authorize = async (
   email: string,
   password: string
 ): Promise<any> => {
-  // const base64Credentials = btoa(`${email}:${password}`);
   return await request('/auth/login', {
     method: 'POST',
     headers: {
@@ -54,16 +55,6 @@ export const authorize = async (
 
 export const getBanners = async (): Promise<any> => {
   return await request('/collections', {
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-  });
-};
-
-export const getSearchResults = async (id: number): Promise<any> => {
-  return await request(`/collections/${id}`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',

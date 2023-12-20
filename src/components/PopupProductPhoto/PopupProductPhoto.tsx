@@ -4,6 +4,7 @@ import { Navigation } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import cn from 'classnames';
 
 interface PopupProductPhotoProps {
   images: string[];
@@ -29,13 +30,12 @@ const PopupProductPhoto: React.FC<PopupProductPhotoProps> = ({
     }
   };
 
+  const popupProductPhotoClass = cn('popup-product-photo', {
+    'popup-product-photo_opened': isOpen,
+  });
+
   return (
-    <section
-      className={`popup-product-photo ${
-        isOpen ? 'popup-product-photo_opened' : ''
-      }`}
-      onMouseDown={overlayClickClose}
-    >
+    <section className={popupProductPhotoClass} onMouseDown={overlayClickClose}>
       <div className='popup-product-photo__container'>
         <button
           onClick={closePopup}

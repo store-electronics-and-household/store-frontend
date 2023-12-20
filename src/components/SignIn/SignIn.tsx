@@ -1,19 +1,20 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { memo, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
-// import './Signin.css';
 import OPENEDEYE from '../../image/icons/open-eye.svg';
 import CLOSEDEYE from '../../image/icons/eye-closed.svg';
+import { authorize } from '../../utils/api/user-api';
+import { type IContext, UserContext } from '../../context/UserContext';
 
 interface SignInProps {
   onOpenSignIn: () => void;
   isOpenSignIn: boolean;
   onOpenReg: () => void;
   onOpenRecovery: () => void;
-  onLogin: (email: string, password: string) => void;
+  setGeneralContext: (arg: IContext) => void;
 }
 
 const SignIn: React.FC<SignInProps> = ({
@@ -21,9 +22,12 @@ const SignIn: React.FC<SignInProps> = ({
   isOpenSignIn,
   onOpenReg,
   onOpenRecovery,
-  onLogin,
+  setGeneralContext,
 }) => {
   const [showPassword, setShowPassword] = React.useState<boolean>(false);
+  const [isAuthError, setIsAuthError] = React.useState<boolean>(false);
+  const context = useContext(UserContext);
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       enableReinitialize: true,
@@ -44,13 +48,27 @@ const SignIn: React.FC<SignInProps> = ({
         .required('Введите Ваш пароль'),
     }),
     onSubmit: ({ loginAuth, passwordAuth }) => {
+      console.log(formik.isValid);
       if (formik.isValid) {
-        onLogin(loginAuth, passwordAuth);
-        onOpenSignIn();
-        formik.resetForm();
+        handleLogin(loginAuth, passwordAuth);
       }
     },
   });
+
+  const handleLogin = (email: string, password: string): void => {
+    authorize(email, password)
+      .then((data) => {
+        localStorage.setItem('token', data.token);
+        setGeneralContext({ ...context, isLoggedIn: true });
+        handleCloseSignInPopup();
+        navigate('/', { replace: true });
+      })
+      .catch((error) => {
+        formik.resetForm();
+        setIsAuthError(true);
+        console.error(error);
+      });
+  };
 
   const handleOpenReg = (): void => {
     onOpenSignIn();
@@ -60,13 +78,13 @@ const SignIn: React.FC<SignInProps> = ({
 
   const handleCloseSignInPopup = (): void => {
     onOpenSignIn();
+    setIsAuthError(false);
     formik.resetForm();
   };
 
   const OpenRecoveryPass = (): void => {
-    onOpenSignIn();
     onOpenRecovery();
-    formik.resetForm();
+    handleCloseSignInPopup();
   };
 
   const handleOpenRecoveryPass = (
@@ -169,13 +187,18 @@ const SignIn: React.FC<SignInProps> = ({
                   {formik.errors.passwordAuth}
                 </span>
               )}
-              <Link
-                className='signin__link'
-                onClick={handleOpenRecoveryPass}
-                to={''}
-              >
-                Не помню пароль
-              </Link>
+            {isAuthError && (
+              <span className='signin__error-text'>
+                {'Не правильный логин или пароль'}
+              </span>
+            )}
+            <Link
+              className='signin__link'
+              onClick={handleOpenRecoveryPass}
+              to={''}
+            >
+              Не помню пароль
+            </Link>
           </div>
           <div className='signin__buttons'>
             <button
@@ -198,7 +221,7 @@ const SignIn: React.FC<SignInProps> = ({
   );
 };
 
-export default SignIn;
+export default memo(SignIn);
 
 /*
 {!formik.isValid && formik.submitCount > 0 && (

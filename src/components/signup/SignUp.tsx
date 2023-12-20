@@ -1,25 +1,32 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import React from 'react';
+import React, { type FC, memo, useContext, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
 // import './Signup.css';
 import OPENEDEYE from '../../image/icons/open-eye.svg';
 import CLOSEDEYE from '../../image/icons/eye-closed.svg';
+import { register } from '../../utils/api/user-api';
+import { useNavigate } from 'react-router-dom';
+import { type IContext, UserContext } from '../../context/UserContext';
 
 interface SignUpProps {
   onOpenSignUp: () => void;
   isOpenSignUp: boolean;
-  onRegistr: (email: string, password: string) => void;
+  setGeneralContext: (arg: IContext) => void;
 }
-const SignUp: React.FC<SignUpProps> = ({
+
+const SignUp: FC<SignUpProps> = ({
   onOpenSignUp,
   isOpenSignUp,
-  onRegistr,
-}) => {
-  const [showRegPassword, setShowRegPassword] = React.useState<boolean>(false);
-  const [showConfPassword, setShowConfPassword] =
-    React.useState<boolean>(false);
+  setGeneralContext,
+}): React.ReactElement => {
+  const [showRegPassword, setShowRegPassword] = useState<boolean>(false);
+  const [showConfPassword, setShowConfPassword] = useState<boolean>(false);
+  const [isAuthError, setIsAuthError] = React.useState<boolean>(false);
+  const context = useContext(UserContext);
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       loginReg: '',
@@ -51,12 +58,25 @@ const SignUp: React.FC<SignUpProps> = ({
     }),
     onSubmit: ({ loginReg, passwordReg }) => {
       if (formik.isValid) {
-        onRegistr(loginReg, passwordReg);
-        onOpenSignUp();
-        formik.resetForm();
+        handleRegister(loginReg, passwordReg);
       }
     },
   });
+
+  const handleRegister = (email: string, password: string): void => {
+    register(email, password)
+      .then((res) => {
+        setGeneralContext({ ...context, isLoggedIn: true });
+        onOpenSignUp();
+        formik.resetForm();
+        navigate('/', { replace: true });
+      })
+      .catch((error) => {
+        formik.resetForm();
+        setIsAuthError(true);
+        console.error(error);
+      });
+  };
 
   const handleCloseSignUpPopup = (): void => {
     onOpenSignUp();
@@ -199,11 +219,16 @@ const SignUp: React.FC<SignUpProps> = ({
                 </span>
               )}
           </div>
+          {isAuthError && (
+            <span className='signup__error-text'>
+              {'Что-то пошло не так, попробуйте еще раз'}
+            </span>
+          )}
           <div className='signup__buttons'>
             <button
+              type='submit'
               className='signup__button signup__button_enter'
               disabled={formik.isSubmitting}
-              type='submit'
             >
               Зарегистрироваться
             </button>
@@ -239,4 +264,4 @@ const SignUp: React.FC<SignUpProps> = ({
   );
 };
 
-export default SignUp;
+export default memo(SignUp);

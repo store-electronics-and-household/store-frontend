@@ -5,7 +5,6 @@ import type { BreadcrumbMatch } from 'use-react-router-breadcrumbs';
 
 interface BreadcrumbsItemProps {
   breadcrumb: ReactNode;
-  className?: string;
   isFirstCrumb: boolean;
   isLastCrumb: boolean;
   match: BreadcrumbMatch<string>;
@@ -13,27 +12,26 @@ interface BreadcrumbsItemProps {
 
 const BreadcrumbsItem: React.FC<BreadcrumbsItemProps> = ({
   breadcrumb,
-  className,
   isFirstCrumb,
   isLastCrumb,
   match,
 }) => {
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  const renderTitle = (crumb: ReactNode) => {
-    if (isFirstCrumb) {
-      return (
-        <Link className='breadcrumbs__link' to={match.pathname || ''}>
-          Главная
-        </Link>
-      );
-    } else if (isLastCrumb) {
-      return <span className='breadcrumbs__link'>{crumb}</span>;
-    } else {
-      return (
-        <Link className='breadcrumbs__link' to={match.pathname || ''}>
-          {crumb}
-        </Link>
-      );
+  const renderTitle = (crumb: ReactNode): React.ReactElement => {
+    switch (true) {
+      case isFirstCrumb:
+        return (
+          <Link className='breadcrumbs__link' to={match.pathname || ''}>
+            Главная
+          </Link>
+        );
+      case isLastCrumb:
+        return <span className='breadcrumbs__link'>{crumb}</span>;
+      default:
+        return (
+          <Link className='breadcrumbs__link' to={match.pathname || ''}>
+            {crumb}
+          </Link>
+        );
     }
   };
 

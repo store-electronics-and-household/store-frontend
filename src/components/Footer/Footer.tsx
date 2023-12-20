@@ -1,9 +1,10 @@
-import React, { type ReactElement } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import footerLogo from '../../image/icons/logo-footer.svg';
 import { contactsData } from '../../utils/constants';
 
-const Footer = (): ReactElement => {
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const Footer = () => {
   return (
     <footer className='footer'>
       <div className='footer__content'>

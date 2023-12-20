@@ -1,22 +1,32 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-import { type MyTypeBanners } from '../../utils/types';
+import type { MyTypeBanners, MediumCardProps } from '../../utils/types';
 import { useNavigate } from 'react-router-dom';
-import { getSearchResults } from '../../utils/api/user-api';
+import { getPromoResults } from '../../utils/api/search-api';
 
 interface DiscountProps {
   discountBannerImages: MyTypeBanners[];
+  passSearchResults: (array: MediumCardProps[]) => void;
+  handleSearch: (request: string) => void;
 }
 
-const Discount: React.FC<DiscountProps> = ({ discountBannerImages }) => {
+const Discount: React.FC<DiscountProps> = ({
+  handleSearch,
+  discountBannerImages,
+  passSearchResults,
+}) => {
   const navigate = useNavigate();
-  const handleOnClick = (id: number): void => {
-    getSearchResults(id)
+  const handleOnClick = (id: number, name: string): void => {
+    // console.log('debug1');
+    getPromoResults(id)
       .then((res) => {
+        // console.log('debug2');
+        // console.log(res.content);
+        passSearchResults(res.content);
         navigate('/search-results');
+        handleSearch(name);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(`НЕ успех ${error}`);
       });
   };
 
@@ -32,7 +42,7 @@ const Discount: React.FC<DiscountProps> = ({ discountBannerImages }) => {
             alt={banner.name}
             className={`discount__offer discount__offer_type_${index}`}
             onClick={() => {
-              handleOnClick(banner.id);
+              handleOnClick(banner.id, banner.name);
             }}
           />
         </div>
@@ -42,41 +52,3 @@ const Discount: React.FC<DiscountProps> = ({ discountBannerImages }) => {
 };
 
 export default Discount;
-
-/* <Link to='/search-results' rel='noreferrer' key={banner.id} className={`discount__container discount__container_type_${index}`}>
-          <img
-            src={banner.imageLink}
-            alt={banner.name}
-            className={`discount__offer discount__offer_type_${index}`}
-            onClick={() => {
-              handleOnClick(banner.id);
-            }}
-          />
-        </Link> */
-
-/* <Link className='discount__container' rel='noreferrer' to='#'>
-        <img
-          src={discountBannerImages[0].imageLink}
-          alt={discountBannerImages[0].name}
-          className='discount__offer'
-        />
-      </Link>
-      <Link className='discount__container' rel='noreferrer' to='#'>
-        <img
-          src={discountBannerImages[1].imageLink}
-          alt={discountBannerImages[1].name}
-          className='discount__offer'
-      />
-      </Link>
-      <Link className='discount__container' rel='noreferrer' to='#'>
-        <img
-          src={discountBannerImages[2].imageLink}
-          alt={discountBannerImages[2].name}
-          className='discount__offer'
-        />
-        <img
-          src={discountBannerImages[3].imageLink}
-          alt={discountBannerImages[3].name}
-          className='discount__offer'
-        />
-      </Link> */

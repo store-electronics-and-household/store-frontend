@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/indent */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import React from 'react';
+import React, { memo } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
 import OPENEDEYE from '../../image/icons/open-eye.svg';
 import CLOSEDEYE from '../../image/icons/eye-closed.svg';
+import { changePassword } from '../../utils/api/user-api';
 
 interface PasswordRecoveryProps {
-  onChangePassword: (email: string, password: string) => void;
   onOpenRecoveryPopup: () => void;
   isOpenPasswordRecovery: boolean;
 }
@@ -16,7 +16,6 @@ interface PasswordRecoveryProps {
 const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
   onOpenRecoveryPopup,
   isOpenPasswordRecovery,
-  onChangePassword,
 }) => {
   const [isNext, SetIsNext] = React.useState<boolean>(false);
   const [isEmailValidationEnabled, setEmailValidationEnabled] =
@@ -51,15 +50,24 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
     }),
     onSubmit: (values) => {
       if (formik.isValid) {
-        onChangePassword(values.loginRecovery, values.passwordRecovery);
+        handleChangePassword(values.loginRecovery, values.passwordRecovery);
+      }
+    },
+  });
+
+  const handleChangePassword = (email: string, password: string): void => {
+    changePassword(email, password)
+      .then((data) => {
         onOpenRecoveryPopup();
         SetIsNext(false);
         setEmailValidationEnabled(false);
         formik.resetForm();
         setIsPassValidationEnabled(false);
-      }
-    },
-  });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleCloseRecoveryPasswordPopup = (): void => {
     onOpenRecoveryPopup();
@@ -258,4 +266,4 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
   );
 };
 
-export default PasswordRecovery;
+export default memo(PasswordRecovery);

@@ -1,26 +1,35 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React, { useEffect } from 'react';
-// import { paymentPageData } from '../../utils/constants';
+import React, { useEffect, useState } from 'react';
 import PaymentsPageItem from './PaymentsPageItem';
-import { type GoodsListProps } from '../../utils/types';
+import PaymentsPageButton from './PaymentsPageButton';
+import { type MediumCardProps } from '../../utils/types';
 import { formatSumm } from '../../utils/formatSumm';
 import { useForm } from 'react-hook-form';
+import 'react-phone-number-input/style.css';
 import { Link } from 'react-router-dom';
+import PhoneForm from './PaymentsPageInput';
+import PaymentsPageCourier from './PaymentsPageCourier';
 
 interface PaymentsPageProps {
-  GoodsList: GoodsListProps[];
+  GoodsList: MediumCardProps[];
 }
 
 const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
-  interface ClientDataProps {
-    name: string;
-    phone: string;
-    address: string;
-  }
+  // interface ClientDataProps {
+  //   name: string;
+  //   phone: string;
+  //   address: string;
+  // }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [clientData, setClientData] = React.useState<ClientDataProps | null>(
-    null
-  );
+  const [clientData, setClientData] = React.useState({});
+
+  const [isPhoneValid, setIsPhoneValid] = useState<boolean>(false);
+
+  const [isPhoneValidated, setIsPhoneValidated] = useState<boolean>(false);
+
+  const [isFirstPage, setIsFirstPage] = React.useState<boolean>(true);
+  const [isСourierPage, setIsСourierPage] = React.useState<boolean>(false);
+  // const [isDeliveryPage, setIsDeliveryPage] = React.useState<boolean>(true);
+  // const [isFinalPage, setIsFinalPage] = React.useState<boolean>(true);
 
   const [deliveryPrice, setDeliveryPrice] = React.useState<number>();
   // const [selectedOption, setSelectedOption] = React.useState('');
@@ -28,17 +37,6 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
   useEffect(() => {
     setDeliveryPrice(8500);
   }, []);
-
-  // const formatSumm = (summ: number): string => {
-  //   const formatedSumm = summ.toLocaleString('ru-RU', {
-  //     style: 'currency',
-  //     currency: 'RUB',
-  //     minimumFractionDigits: 0
-  //   });
-  //   return formatedSumm;
-  // };
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
   const fullQuantity: number = GoodsList.reduce(function (acc, item) {
     return acc + item.quantity;
@@ -49,19 +47,30 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
 
   const fullPrice: string = formatSumm(
     GoodsList.reduce(function (acc, item) {
-      return acc + item.quantity * item.salesPrice;
+      return acc + item.quantity * item.oldPrice;
     }, 0)
   );
 
   const summaryDiscount: string = formatSumm(
     GoodsList.reduce(function (acc, item) {
-      return acc + item.quantity * item.discount;
+      // return acc + item.quantity * (item.percent ? item.percent : 1);
+      return (
+        acc +
+        item.quantity * (typeof item.percent === 'number' ? item.percent : 0)
+      );
     }, 0)
   );
 
   const finalPrice: string = formatSumm(
     GoodsList.reduce(function (acc, item) {
-      return acc + item.quantity * (item.salesPrice - item.discount);
+      // return acc + item.quantity * (item.percent ? item.price - item.percent : 1);
+      return (
+        acc +
+        item.quantity *
+          (typeof item.percent === 'number'
+            ? item.oldPrice - item.percent
+            : item.oldPrice)
+      );
     }, 0) - (deliveryPrice ?? 0)
   );
 
@@ -77,25 +86,31 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
 
   const {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    register: registerForm2,
+    register: registerForm3,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    getValues: getValuesForm2,
+    getValues: getValuesForm3,
+    // handleSubmitForm1,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    formState: { errors: errorsForm2, isValid: isValidForm2 },
+    control: controlForm3,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    formState: { errors: errorsPhone, isValid: isValidPhone },
   } = useForm({
-    // mode: 'all', // "onChange"
     mode: 'onChange',
   });
 
   const handleDeliveryType = (): void => {
-    // e.preventDefault();
-    console.log('hello');
+    console.log('выбираем тип доставки');
+    setIsFirstPage(!isFirstPage);
+    setIsСourierPage(!isСourierPage);
   };
 
-  const handleDeliveryTypeChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    e.preventDefault();
-    console.log('hello');
-  };
+  // // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // const handleDeliveryTypeChange = (
+  //   e: React.ChangeEvent<HTMLInputElement>
+  // ): void => {
+  //   e.preventDefault();
+  //   console.log('hello');
+  // };
 
   // const form1Values = getValuesForm1();
   // const form2Values = getValuesForm2();
@@ -106,6 +121,25 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
   //   const form2Values = getValuesForm2();
   //   console.log(form2Values);
   // };
+
+  const choosePickUpPoint = (): void => {
+    setIsPhoneValidated(true);
+    // console.log('выбирает пункт выдачи');
+    console.log(isPhoneValid);
+    if (isPhoneValid && isValidForm1) {
+      setIsFirstPage(!isFirstPage);
+    }
+  };
+
+  const phoneHandler = (clientPhone: string): void => {
+    setClientData({ ...clientData, phone: clientPhone });
+  };
+
+  const validPhoneHandler = (isPhoneValid: boolean): void => {
+    if (isPhoneValid !== undefined) {
+      setIsPhoneValid(isPhoneValid);
+    }
+  };
 
   return (
     <>
@@ -133,52 +167,40 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                       },
                     })}
                     type='text'
-                    placeholder='Иванов Иван'
                     className='payments-page__client-data-input'
                     name='name'
                     required
                     // onChange={handleOutsideFunction}
                   />
-                  {errorsForm1.name != null &&
-                    typeof errorsForm1.name === 'object' &&
-                    'message' in errorsForm1.name && (
-                      <span className='payments-page__input-error'>
-                        {(errorsForm1.name as { message: string }).message}
-                      </span>
-                  )}
-                </label>
-                <label className='payments-page__input-label'>
-                  <p className='payments-page__input-title'>
-                    Номер телефона <sup className=''>*</sup>
-                  </p>
-                  <input
-                    {...registerForm1('phone', {
-                      required: {
-                        value: true,
-                        message: 'Поле телефон обязательно к заполнению',
-                      },
-                      pattern: {
-                        value: /^\+\d{1,3} \(\d{3}\) \d{3}-\d{4}$/,
-                        message: 'Введите корректный номер телефона',
-                      },
-                    })}
-                    type='text'
-                    placeholder='+7 (900) 100 00 00'
-                    className='payments-page__client-data-input'
-                    name='phone'
-                    required
-                  />
-                  {errorsForm1.phone != null &&
-                    typeof errorsForm1.phone === 'object' &&
-                    'message' in errorsForm1.phone && (
-                      <span className='payments-page__input-error'>
-                        {(errorsForm1.phone as { message: string }).message}
-                      </span>
-                  )}
+                  {errorsForm1.name === undefined
+                    ? isPhoneValidated &&
+                      !isValidForm1 &&
+                      errorsForm1?.name !== null && (
+                        <span className='payments-page__input-error'>
+                          Поле имя обязательно к заполнению?
+                        </span>
+                      )
+                    : errorsForm1.name != null &&
+                      typeof errorsForm1.name === 'object' &&
+                      'message' in errorsForm1.name && (
+                        <span className='payments-page__input-error'>
+                          {(errorsForm1.name as { message: string }).message}
+                        </span>
+                      )}
                 </label>
               </div>
             </form>
-            <div className='payments-page__line'></div>
+            <label className='payments-page__input-label'>
+              <p className='payments-page__input-title'>
+                Номер телефона <sup className=''>*</sup>
+              </p>
+              <PhoneForm
+                isPhoneValidated={isPhoneValidated}
+                passIsPhoneValid={validPhoneHandler}
+                passPhone={phoneHandler}
+              />
+            </label>
+            <div className='payments-page__line payments-page__line_type_courier'></div>
             <p className='payments-page__form-title payments-page__form-title_type_address'>
               Способ получения
             </p>
@@ -186,37 +208,103 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
               Способы и тарифы доставки
             </Link>
             <form className='payments-page__title-container'>
-              <input
-                type='radio'
-                name='deliveryOption'
-                checked
-                className='payments-page__delivery-type_type_invisible'
-                onClick={handleDeliveryType}
-                onChange={handleDeliveryTypeChange}
-              />
-              <span className='payments-page__delivery-type_type_visible'></span>
-              <label className='payments-page__delivery-label'>Самовывоз</label>
-
-              <input
-                type='radio'
-                name='deliveryOption'
-                className='payments-page__delivery-type_type_invisible'
-                onClick={handleDeliveryType}
-              />
-              <span className='payments-page__delivery-type_type_visible'></span>
-              <label className='payments-page__delivery-label'>Курьер</label>
+              <label className='payments-page__delivery-label'>
+                <input
+                  type='radio'
+                  name='deliveryOption'
+                  // checked
+                  defaultChecked
+                  className='payments-page__delivery-type_type_invisible'
+                  onClick={handleDeliveryType}
+                  // readOnly
+                  // onChange={handleDeliveryTypeChange}
+                />
+                <span className='payments-page__delivery-type_type_visible'></span>
+                Самовывоз
+              </label>
+              <label className='payments-page__delivery-label'>
+                <input
+                  type='radio'
+                  name='deliveryOption'
+                  className='payments-page__delivery-type_type_invisible'
+                  onClick={handleDeliveryType}
+                />
+                <span className='payments-page__delivery-type_type_visible'></span>
+                Курьер
+              </label>
             </form>
-            {/* <button
-                  onClick={handleDeliveryTypeClick}
-                  className='payments-page__delivery-type'
-                >
-                  Курьер
-                </button>
-                <button className='payments-page__delivery-type'>
-                  Самовывоз
-                </button> */}
+            {isFirstPage && (
+              <>
+                <PaymentsPageButton
+                  marginTop='44px'
+                  title='Выбрать пункт самовывоза'
+                  onClick={choosePickUpPoint}
+                  width='302px'
+                  marginBottom='40px'
+                />
+                {/* <PhoneNumberInput/> */}
+              </>
+            )}
+            {isСourierPage && (
+              <>
+                <div className='payments-page__line payments-page__line_type_courier'></div>
+                <PaymentsPageCourier />
+              </>
+            )}
+          </div>
 
-            <form
+          <div className='payments-page__summary-conatiner'>
+            <div className='payments-page__summary'>
+              <p className='payments-page__form-title payments-page__form-title_type_summary'>
+                Ваш заказ
+              </p>
+              <div className='payments-page__line'></div>
+              <div className='payments-page__cart-container'>
+                {GoodsList.map((item) => (
+                  <PaymentsPageItem
+                    key={item.id}
+                    quantity={item.quantity}
+                    // imgUrl={item.imgUrl}
+                    imgUrl={item.modelsImages?.[0]?.imageLink}
+                  />
+                ))}
+              </div>
+              <div className='payments-page__summary-data'>
+                <p className='payments-page__summary-row'>
+                  {fullQuantity} {fullQuantity % 2 === 0 ? 'товара' : 'товаров'}{' '}
+                  на сумму
+                </p>
+                <p className='payments-page__summary-row'>{fullPrice}</p>
+              </div>
+              <div className='payments-page__summary-data'>
+                <p className='payments-page__summary-row'>Скидка</p>
+                <p className='payments-page__summary-row payments-page__summary-row_discount'>
+                  {summaryDiscount}
+                </p>
+              </div>
+              <div className='payments-page__summary-data'>
+                <p className='payments-page__summary-row'>Доставка</p>
+                <p className='payments-page__summary-row '>
+                  {deliveryPrice != null ? formatedDeliveryPrice : 'Не выбрано'}
+                </p>
+              </div>
+              <div className='payments-page__line'></div>
+              <div className='payments-page__summary-data'>
+                <p className='payments-page__summary-final'>Итого</p>
+                <p className='payments-page__summary-final'>{finalPrice}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default PaymentsPage;
+
+/*
+<form
               id='clientAddressForm'
               name='clientAddressForm'
               action=''
@@ -293,114 +381,18 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                     </label>
                   </div>
                 </div>
-              </div> */}
-            </form>
-          </div>
-          <div className='payments-page__summary-conatiner'>
-            <div className='payments-page__summary'>
-              <p className='payments-page__form-title payments-page__form-title_type_summary'>
-                Ваш заказ
-              </p>
-              <div className='payments-page__line'></div>
-              <div className='payments-page__cart-container'>
-                {GoodsList.map((item) => (
-                  <PaymentsPageItem
-                    key={item.id}
-                    quantity={item.quantity}
-                    imgUrl={item.imgUrl}
-                  />
-                ))}
               </div>
-              <div className='payments-page__summary-data'>
-                <p className='payments-page__summary-row'>
-                  {fullQuantity} {fullQuantity % 2 === 0 ? 'товара' : 'товаров'}{' '}
-                  на сумму
-                </p>
-                <p className='payments-page__summary-row'>{fullPrice}</p>
-              </div>
-              <div className='payments-page__summary-data'>
-                <p className='payments-page__summary-row'>Скидка</p>
-                <p className='payments-page__summary-row payments-page__summary-row_discount'>
-                  {summaryDiscount}
-                </p>
-              </div>
-              <div className='payments-page__summary-data'>
-                <p className='payments-page__summary-row'>Доставка</p>
-                <p className='payments-page__summary-row '>
-                  {deliveryPrice != null ? formatedDeliveryPrice : 'Не выбрано'}
-                </p>
-              </div>
-              <div className='payments-page__line'></div>
-              <div className='payments-page__summary-data'>
-                <p className='payments-page__summary-final'>Итого</p>
-                <p className='payments-page__summary-final'>{finalPrice}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-};
-
-export default PaymentsPage;
-
-/*
-                <label className='form__inputLabel'>
-                  E-mail
-                  <input
-                    {...register('email', {
-                      required: {
-                        value: true,
-                        message: 'Поле Email обязательно к заполнению',
-                      },
-                      pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: 'Некорректный адрес электронной почты',
-                      },
-                    })}
-                    type='email'
-                    className='form__input'
-                    required
-                  />
-                  {errors.email && (
-                    <span className='form__inputError'>
-                      {errors.email.message}
-                    </span>
-                  )}
-                </label>
-
-                  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  // const handleOutsideFunction = () => {
-  //   const form1Values = getValuesForm1();
-  //   // const form2Values = getValuesForm2();
-  //   console.log('Form 1 Values:', form1Values);
-  //   // console.log('Form 2 Values:', form2Values);
-
-  //   // Ваш код для обработки значений вне формы
-  // };
+              </form>
 */
 
-// <div className='payments-page__line'></div>
-
 /*
-  <input
-                type='radio'
-                name='option'
-                value='option1'
-                // checked
-                className='payments-page__delivery-type_type_invisible'
-                onChange={handleDeliveryTypeChange}
-              />
-              <span className='payments-page__delivery-type_type_visible'></span>
-              <label className='payments-page__delivery-label'>Самовывоз</label>
-              <input
-                type='radio'
-                name='option'
-                value='option2'
-                className='payments-page__delivery-type_type_invisible'
-                onChange={handleDeliveryTypeChange}
-              />
-              <span className='payments-page__delivery-type_type_visible'></span>
-              <label className='payments-page__delivery-label'>Курьер</label>
+            <button
+                  onClick={handleDeliveryTypeClick}
+                  className='payments-page__delivery-type'
+                >
+                  Курьер
+                </button>
+                <button className='payments-page__delivery-type'>
+                  Самовывоз
+                </button>
 */

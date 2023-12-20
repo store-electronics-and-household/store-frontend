@@ -1,22 +1,17 @@
 import React from 'react';
-import logo from '../../image/icons/logo_black.svg';
-import vector from '../../image/vector1.svg';
 
-const NotFound: React.FC = () => {
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const NotFound = () => {
   return (
     <section className='not-found'>
       <div className='not-found__container-text'>
-        <img className='not-found__logo' src={logo} alt='логотип магазина' />
-        <h2 className='not-found__title'>Страница не найдена</h2>
+        <h1 className='not-found__title'>404</h1>
+        <p className='not-found__subtitle'>Кажется, что-то пошло не так</p>
         <p className='not-found__info'>
-          В адресе есть ошибка или страница была удалена
+          Такой страницы у нас нет, зато есть много крутой техники
         </p>
-        <div className='not-found__container-image'>
-          <img className='not-found__image-l' src={vector} alt='' />
-          <img className='not-found__image-r' src={vector} alt='' />
-        </div>
         <a className='not-found__btn' href='/main'>
-          Вернуться на главную
+          На главную
         </a>
       </div>
     </section>

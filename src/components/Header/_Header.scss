@@ -26,7 +26,7 @@
   background-color: black;
   border-radius: 40px;
 
-  font-family: Inter;
+  font-family: Inter, serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -55,6 +55,13 @@
   height: 24px;
   width: 24px;
   margin: 12px 20px;
+
+  transition: .2s ease-in-out;
+}
+
+.header__navbar-link:hover {
+  transform: scale(115%);
+  color: #4350D6;
 }
 
 .header__navbar-icon {
@@ -74,14 +81,13 @@
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  font-size: 11px;
   width: 19px;
   height: 14px;
   padding: 4px;
   background-color: #4350D6;
 
   text-align: center;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -100,6 +106,11 @@
   font-weight: 600;
   cursor: pointer;
   border: 1px solid #272A31;
+  transition: .2s ease-in-out;
+}
+
+.header__auth-button:hover {
+  transform: scale(107%);
 }
 
 .header__auth-button_white {
