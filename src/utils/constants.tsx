@@ -394,65 +394,98 @@ export const subCategoriesList = {
 };
 
 export const productData = {
-  id: 68898484,
-  name: 'Apple MacBook Air 15" (M2, 8C CPU/10C GPU, 2023), 8 ГБ, 512 ГБ SSD, «сияющая звезда»',
-  price: 155990,
-  oldPrice: 164990,
-  description: [
-    'Ноутбук Apple MacBook Air 15 M2 Space Gray (MQKP3) c macOS — модель в алюминиевом корпусе, снабженная восьмиядерным чипом Apple M2. Последний превосходит по скорости вычисления все другие процессоры компании. Высокая производительность позволяет выполнять на ноутбуке ресурсоемкие задачи, в том числе профессиональное редактирование фото и видео в 4К. Чип способствует равномерному распределению задач между ядрами эффективности и производительности. Объем SSD составляет 256 Гб, оперативной памяти — 8 Гб (частота 5600 МГц).',
-    'Восьмиядерный графический процессор позволяет запускать игры последних лет на максимальных настройках. 15,3-дюймовый дисплей Retina обладает разрешением 2880х1864 пикселей, что обеспечивает высокую детализацию. Реалистичная цветопередача делает картинку более насыщенной. Яркости в 500 нит хватит для комфортной работы при любых условиях. Встроенная аудиосистема с поддержкой Dolby Atmos состоит из шести динамиков, которые формируют объемный и направленный звук.',
-    'Встроенная веб-камера идеально подходит для общения с удаленными пользователями. Микрофон с функцией шумоподавления обеспечивает качественную передачу голоса собеседнику. Touch ID избавляет от необходимости вводить пароли, позволяя оперативно входить в систему владельцу ноутбука. Время автономной работы от аккумулятора — до 18 часов. Набор интерфейсов состоит из USB-C, Thunderbolt 3, разъема для наушников 3,5 мм и MagSafe 3.'
-  ],
+  id: 1,
+  name: 'Алиса',
+  description: 'Умная колонка',
+  price: 4990,
+  percent: null,
+  oldPrice: null,
+  category: {
+    id: 35,
+    name: 'Портативная акустика',
+    imageLink: 'https://cyberplace.online/images/categories/11.png'
+  },
   images: [
-    'https://images.unsplash.com/photo-1505156868547-9b49f4df4e04?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aXBob25lfGVufDB8fDB8fHww',
-    'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
-    'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
-    'https://images.unsplash.com/photo-1611472173362-3f53dbd65d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+    {
+      imageLink: 'https://cdn.citilink.ru/H_lcnua17uvLo-ui1qypnJW19EOql5UfOy_xo3fTqrk/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/18cc44a2-d586-4885-a797-27f48bd4a471.jpg'
+    },
+    {
+      imageLink: 'https://cdn.citilink.ru/yYIiakKb0FD_iKMnDMUyrVPoOXvHhr06rMWpDZdVxAM/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/57de8854-94b3-499f-a00e-639b4804dd07.jpg'
+    },
+    {
+      imageLink: 'https://cdn.citilink.ru/yXtaAdXMgz-TLyeXTkvCelFcdZb6pDYdUKSNjFOX7yI/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/7b027e8c-f3a4-4763-ba2e-e1df7d14f5de.jpg'
+    }
   ],
-  quantityInCart: 0,
-  isLiked: true,
-};
-
-export const productSpecifyName = {
-  brend: 'Бренд:',
-  color: 'Цвет:',
-  diagonal: 'Диагональ экрана, в дюймах:',
-  country: 'Страна-производитель:',
-  year: 'Год выхода модели:',
-  display: 'Тип дисплея:',
-  builtInMemory: 'Встроенная память, в ГБ:',
-  ram: 'Оперативная память, в ГБ:',
-  batteryCapacity: 'Емкость аккумулятора, в мА-ч:',
-  color1: 'Цвет:',
-  diagonal1: 'Диагональ экрана, в дюймах:',
-  brend1: 'Бренд:',
-  country1: 'Страна-производитель:',
-  year1: 'Год выхода модели:',
-  display1: 'Тип дисплея:',
-  builtInMemory1: 'Встроенная память, в ГБ:',
-  ram1: 'Оперативная память, в ГБ:',
-  batteryCapacity1: 'Емкость аккумулятора, в мА-ч:',
-};
-
-export const productAttributes = {
-  brend: 'Apple',
-  color: 'титановый черный',
-  diagonal: 6.1,
-  country: 'Китай',
-  year: 2023,
-  display: 'OLED',
-  builtInMemory: 128,
-  ram: 8,
-  batteryCapacity: 4912,
-  color1: 'титановый черный',
-  diagonal1: 6.1,
-  brend1: 'Apple',
-  country1: 'Китай',
-  year1: 2023,
-  display1: 'OLED',
-  builtInMemory1: 128,
-  ram1: 8,
-  batteryCapacity1: 4912,
+  attributes: [
+    {
+      attributeName: 'Суммарная звуковая мощность',
+      value: '5 Вт'
+    },
+    {
+      attributeName: 'Акустический тип',
+      value: '1.0'
+    },
+    {
+      attributeName: 'Версия Bluetooth',
+      value: '4.2/5'
+    },
+    {
+      attributeName: 'Частотный диапазон',
+      value: '-'
+    },
+    {
+      attributeName: 'Материал корпуса',
+      value: 'пластик'
+    },
+    {
+      attributeName: 'Интерфейс подключения',
+      value: 'Bluetooth'
+    },
+    {
+      attributeName: 'Изготовитель',
+      value: 'КНР'
+    },
+    {
+      attributeName: 'Голосовой помощник',
+      value: 'Алиса'
+    },
+    {
+      attributeName: 'Стандарт Wi-Fi',
+      value: '802.11 b/g/n/ac'
+    },
+    {
+      attributeName: 'Тип Электропитания',
+      value: 'от сети'
+    },
+    {
+      attributeName: 'Радиус действия Bluetooth, до',
+      value: '10 м'
+    },
+    {
+      attributeName: 'Встроенный микрофон',
+      value: 'есть'
+    },
+    {
+      attributeName: 'Комплектация',
+      value: 'Инструкция'
+    },
+    {
+      attributeName: 'Вес',
+      value: '230 грамм'
+    },
+    {
+      attributeName: 'Цвет',
+      value: 'фиолетовый'
+    },
+    {
+      attributeName: 'Размеры (ШхВхГ)',
+      value: '90 x 55 x 90 мм'
+    },
+    {
+      attributeName: 'Поддержка Wi-Fi',
+      value: 'есть'
+    }
+  ]
 };
 
 export const paymentPageData = [
@@ -536,5 +569,5 @@ export const contactsData = {
   phoneNumber: '8 800 555-35-35',
   email: 'cyberplace@gmail.ru',
   adress:
-    'г. Москва, ул. Нижняя Красносельская, д. 40/12, корпус 20, этаж 5, помещение\u00A0II, комната 3;',
+    'г. Санкт-Петербург, ул. Нижняя Красносельская, д. 40/12, корпус 20, этаж 5, помещение\u00A0II, комната 3;',
 };

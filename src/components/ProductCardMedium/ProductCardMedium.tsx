@@ -4,6 +4,7 @@ import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
 import cn from 'classnames';
 import { type MediumCardProps } from '../../utils/types';
+import { useFavouritesContext } from '../../context/FavouritesContext';
 
 interface ProductCardMediumProps {
   product: MediumCardProps;
@@ -13,6 +14,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isMainImage, setIsMainImage] = React.useState(true);
   const [isCounter, setIsCounter] = React.useState(0);
+  const { getProductById } = useFavouritesContext();
   const handleMouseOver = (): void => {
     setIsMainImage(false);
   };
@@ -27,7 +29,12 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
     setIsPopupOpen(true);
     setTimeout(() => {
       setIsPopupOpen(false);
-    }, 2000);
+    }, 5000);
+  };
+
+  const handleGetFullProduct = (): void => {
+    console.log(product.id);
+    getProductById(1);
   };
 
   const cardPriceClassname = cn(
@@ -40,7 +47,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
       <li className='card-medium'>
         <div className='card-medium__container'>
           <div className='card-medium__container-image'>
-            <a className='card-medium__link' href={'/categories/catalog/product'}>
+            <a className='card-medium__link' href={'/categories/catalog/product'} onClick={handleGetFullProduct}>
               <img
                 className='card-medium__image'
                 src={isMainImage ? product.modelsImages?.[0]?.imageLink : product.modelsImages?.[1]?.imageLink}
@@ -61,7 +68,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
             </a>
             <div className='card-medium__like'>
               {/* <CardLikeBtn isLikedCard={product.isLiked}/> */}
-              <CardLikeBtn isLikedCard={false}/>
+              <CardLikeBtn product={product}/>
             </div>
             <div className='card-medium__button'>
               <button
@@ -78,7 +85,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
             </div>
           </div>
           <div className='card-medium__footer'>
-            <a className='card-medium__link' href={'/categories/catalog/product'}>
+            <a className='card-medium__link' href={'/categories/catalog/product'} onClick={handleGetFullProduct}>
               <div className='card-medium__container-footer'>
                 <h3 className='card-medium__title'>{product.name}</h3>
                 <div className='card-medium__container-price'>

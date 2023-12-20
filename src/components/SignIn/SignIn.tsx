@@ -8,6 +8,7 @@ import OPENEDEYE from '../../image/icons/open-eye.svg';
 import CLOSEDEYE from '../../image/icons/eye-closed.svg';
 import { authorize } from '../../utils/api/user-api';
 import { type IContext, UserContext } from '../../context/UserContext';
+import { useFavouritesContext } from '../../context/FavouritesContext';
 
 interface SignInProps {
   onOpenSignIn: () => void;
@@ -28,6 +29,7 @@ const SignIn: React.FC<SignInProps> = ({
   const [isAuthError, setIsAuthError] = React.useState<boolean>(false);
   const context = useContext(UserContext);
   const navigate = useNavigate();
+  const { getFavouriteList } = useFavouritesContext();
   const formik = useFormik({
     initialValues: {
       enableReinitialize: true,
@@ -62,6 +64,7 @@ const SignIn: React.FC<SignInProps> = ({
         setGeneralContext({ ...context, isLoggedIn: true });
         handleCloseSignInPopup();
         navigate('/', { replace: true });
+        getFavouriteList();
       })
       .catch((error) => {
         formik.resetForm();

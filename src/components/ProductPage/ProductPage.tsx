@@ -4,37 +4,27 @@ import cart from '../../image/icons/busket_icon-white.svg';
 import ThumbsSlider from '../ThumbsSlider/ThumbsSlider';
 import plusIconActive from '../../image/icons/cart_plus_icon_active.svg';
 import minusIconActive from '../../image/icons/cart_minus_icon_active.svg';
-import { productCharacteristicsShortListLength, productSpecifyName } from '../../utils/constants';
+import { productCharacteristicsShortListLength } from '../../utils/constants';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import ProductCharacteristicsList from '../ProductCharacteristicsList/ProductCharacteristicsList';
-import {
-  type ProductDataType,
-  type ProductAttributesDataType,
-} from '../../utils/types';
+import { type ProductFullDataType } from '../../utils/types';
 import { formatSumm } from '../../utils/formatSumm';
 import PopupProductPhoto from '../PopupProductPhoto/PopupProductPhoto';
-import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
+// import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
 
-const objectKeys = (
-  object: ProductAttributesDataType
-): Array<keyof ProductAttributesDataType> => {
-  return Object.keys(object) as Array<keyof ProductAttributesDataType>;
-};
-
-interface ProductPageProps {
-  product: ProductDataType;
-  attributes: ProductAttributesDataType;
+interface IProductPage {
+  product: ProductFullDataType;
 }
 
-const ProductPage: React.FC<ProductPageProps> = ({
-  product,
-  attributes,
-}: ProductPageProps) => {
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const ProductPage: React.FC<IProductPage> = ({ product }) => {
   const [isActive, setIsActive] = useState(true);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isPopupFullPhotoOpen, setIsPopupFullPhotoOpen] = useState(false);
-  const [count, setCount] = useState(product.quantityInCart);
+  const [count, setCount] = useState(0);
   const [isQuantityBtn, setIsQuantityBtn] = useState(false);
+  const images = product.images.map(item => item.imageLink);
+  const attributes = product.attributes;
 
   const handleOnAllcharacteristics = (): void => {
     setIsActive(false);
@@ -88,12 +78,12 @@ const ProductPage: React.FC<ProductPageProps> = ({
 
   const currentPriceClassname = cn(
     'product-page__current-price',
-    { 'product-page__current-price_sale': product.oldPrice !== undefined }
+    { 'product-page__current-price_sale': product.oldPrice !== null }
   );
 
   const quantityBtnSymbolClassname = cn(
     'product__quantity-button-symbol',
-    { 'product__quantity-button-symbol_inactive': product.quantityInCart === 1 }
+    { 'product__quantity-button-symbol_inactive': count === 1 }
   );
 
   const descriptionBtnClassname = cn(
@@ -118,7 +108,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
         <div className='product-page__info-container'>
           <div className='product-page__slider'>
             <ThumbsSlider
-              images={product.images}
+              images={images}
               onPopupFullPhoto={handleOpenPopupPhoto}
             />
           </div>
@@ -127,13 +117,8 @@ const ProductPage: React.FC<ProductPageProps> = ({
               Характеристики:
             </h2>
             <ProductCharacteristicsList
-              productSpecifyName={productSpecifyName}
-              productSpecifyValue={attributes}
-              keysList={objectKeys(attributes)
-                .filter((n) => {
-                  return n;
-                })
-                .splice(0, productCharacteristicsShortListLength)}
+              attributes={attributes.slice(0, productCharacteristicsShortListLength)}
+              // attributes={attributes}
             />
             <a
               href='#characteristics-anchor'
@@ -148,9 +133,9 @@ const ProductPage: React.FC<ProductPageProps> = ({
               <span className={currentPriceClassname}>
                 {formatSumm(product.price)}
               </span>
-              {product.oldPrice !== 0
+              {product.oldPrice !== null
                 ? (<span className='product-page__old-price'>
-                    {product.oldPrice !== 0 && typeof product.oldPrice === 'number'
+                    {product.oldPrice !== null && typeof product.oldPrice === 'number'
                       ? formatSumm(product.oldPrice)
                       : ''}
                   </span>)
@@ -189,7 +174,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
                     </div>
                 }
               </div>
-              <CardLikeBtn isLikedCard={product.isLiked}/>
+              {/* <CardLikeBtn product={product}/> */}
             </div>
             <ul className='product-page__benefits-list'>
               <li className='product-page__benefit'>
@@ -224,20 +209,12 @@ const ProductPage: React.FC<ProductPageProps> = ({
           </div>
           {isActive
             ? (<div className='product-page__about'>
-                {product.description.map((desc, id) => {
-                  return (
-                    <p key={id} className='product-page__about-description'>
-                      {desc}
-                    </p>
-                  );
-                })}
+                <p className='product-page__about-description'>
+                  {product.description}
+                </p>
               </div>)
             : (<ProductCharacteristicsList
-                productSpecifyName={productSpecifyName}
-                productSpecifyValue={attributes}
-                keysList={objectKeys(attributes).filter((n) => {
-                  return n;
-                })}
+                attributes={attributes}
                 modifyListClass={'characteristics-list_full'}
                 modifyItemClass={'characteristics-list__item_full'}
               />
@@ -245,14 +222,14 @@ const ProductPage: React.FC<ProductPageProps> = ({
           }
         </div>
         <PopupProductPhoto
-          images={product.images}
+          images={images}
           isOpen={isPopupFullPhotoOpen}
           closePopup={handleClosePopupFullPhoto}
         />
         <PopupAddToCart
           isOpen={isPopupOpen}
           productName={product.name}
-          photoUrl={product.images[0]}
+          photoUrl={images[0]}
         />
       </section>
     </>

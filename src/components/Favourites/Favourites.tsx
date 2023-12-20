@@ -2,21 +2,24 @@ import React from 'react';
 import type { FC } from 'react';
 
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
-import { mockedFavouritesProducts } from '../../utils/mocks';
+// import { mockedFavouritesProducts } from '../../utils/mocks';
+import { useFavouritesContext } from '../../context/FavouritesContext';
 
 const Favourites: FC = () => {
+  const { favouritesList } = useFavouritesContext();
+
   return (
     <>
       <section className='favourites'>
         <div className='favourites__container'>
           <h2 className='favourites__header'>Избранное</h2>
           <div className='favourites__content'>
-            {mockedFavouritesProducts.map(
+            {favouritesList.map(
               // ({ name, originPrice, salesPrice, discount, imgUrl, isLiked, quantityInCart }) => {
               (product) => {
                 return (
                   <>
-                    <ProductCardMedium
+                    <ProductCardMedium key={product.id}
                       // name={name}
                       product={product}
                       // originPrice={originPrice}

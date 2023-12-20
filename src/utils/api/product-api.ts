@@ -1,15 +1,14 @@
 import { request } from './user-api';
 
 export const getProductDataById = async (
-  id: number
+  modelId: number
 ): Promise<any> => {
-  return await request(`/models/${id}/model-attributes`, {
+  return await request(`/models/${modelId}`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ id }),
   });
 };
 
@@ -19,32 +18,33 @@ export const getFavouritesList = async (): Promise<any> => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`
     },
   });
 };
 
 export const addCardToFavoritesList = async (
-  cardId: number
+  modelId: number,
 ): Promise<any> => {
-  return await request('/favourite/add', {
+  return await request(`/favourite/add?modelId=${modelId}`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`
     },
-    body: JSON.stringify({ cardId }),
   });
 };
 
 export const removeCardFromFavoritesList = async (
-  cardId: number
+  modelId: number
 ): Promise<any> => {
-  return await request('/favourite/delete', {
+  return await request(`/favourite/delete?modelId=${modelId}`, {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`
     },
-    body: JSON.stringify({ cardId }),
   });
 };
