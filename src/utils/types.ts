@@ -61,7 +61,7 @@ export interface MediumCardProps {
   price?: number;
   // imgUrl: string;
   discount?: number; // ПОМЕНЯТЬ
-  modelsImages?: MeyTypeCardImage[];
+  images?: MeyTypeCardImage[];
   oldPrice: number;
   percent?: number;
 }
@@ -72,7 +72,7 @@ export interface ProductFullDataType {
   name: string;
   description: string;
   price: number;
-  persent?: number;
+  percent?: number;
   oldPrice: number | null;
   category: CategoriesTileProps;
   images: Array<{
@@ -90,3 +90,10 @@ export interface FormProps {
   firstName?: string;
   lastName?: string;
 }
+
+export interface MeTypePickUpPoint {
+  address: string;
+  metro?: string;
+  deliverypice?: string;
+  comment?: string;
+};

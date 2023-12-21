@@ -2,7 +2,8 @@ import React, {
   createContext,
   type ReactNode,
   useContext,
-  useState
+  useState,
+  useEffect
 } from 'react';
 import type { ProductFullDataType, MediumCardProps } from '../utils/types';
 import {
@@ -19,25 +20,25 @@ interface FavouritesProviderProps {
 interface FavouritesContextType {
   getFavouriteList: () => void;
   updateFavouritesList: () => void;
-  handleAddProductToFavourites: (product: MediumCardProps) => void;
-  handleDeleteProductFromFavourites: (product: MediumCardProps) => void;
-  updateProductLikeStatus: (product: MediumCardProps) => void;
+  handleAddProductToFavourites: (product: MediumCardProps | ProductFullDataType) => void;
+  handleDeleteProductFromFavourites: (product: MediumCardProps | ProductFullDataType) => void;
+  updateProductLikeStatus: (product: MediumCardProps | ProductFullDataType) => void;
   isCardLiked: (id: number) => boolean;
-  getProductById: (productId: number) => void;
-  favouritesList: MediumCardProps[];
-  product: ProductFullDataType;
+  favouritesList: Array<MediumCardProps | ProductFullDataType>;
+  getProductById: (productId: number) => void; // получение полной карточки
+  productFull: ProductFullDataType; // полная картока передается для заполнения страницы товара
 }
 
 const FavoritesContext = createContext<FavouritesContextType>({
   getFavouriteList: () => null,
   updateFavouritesList: () => null,
-  handleAddProductToFavourites: (product: MediumCardProps) => null,
-  handleDeleteProductFromFavourites: (product: MediumCardProps) => null,
-  updateProductLikeStatus: (product: MediumCardProps) => null,
+  handleAddProductToFavourites: (product: MediumCardProps | ProductFullDataType) => null,
+  handleDeleteProductFromFavourites: (product: MediumCardProps | ProductFullDataType) => null,
+  updateProductLikeStatus: (product: MediumCardProps | ProductFullDataType) => null,
   isCardLiked: (id: number) => false,
   favouritesList: [],
   getProductById: (productId: number) => null,
-  product: {
+  productFull: {
     id: 0,
     name: '',
     description: '',
@@ -59,7 +60,7 @@ export function useFavouritesContext (): FavouritesContextType {
 }
 
 export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.Element {
-  const [favouritesList, setFavouritesList] = useState<MediumCardProps[]>([]);
+  const [favouritesList, setFavouritesList] = useState<Array<MediumCardProps | ProductFullDataType>>([]);
   const [productById, setProductById] = useState<ProductFullDataType>({
     id: 0,
     name: '',
@@ -74,13 +75,24 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
     images: [],
     attributes: []
   });
+  const [productFull, setProductFull] = useState<ProductFullDataType>({
+    id: 0,
+    name: '',
+    description: '',
+    price: 0,
+    oldPrice: null,
+    category: {
+      id: 0,
+      name: '',
+      imageLink: ''
+    },
+    images: [],
+    attributes: []
+  });
 
-  // favourites: получение, добавление, удаление.
-  // useEffect(() => { // обновление массива избранных в локалСторадж при лайке/дизлайке
-  //   updateFavouritesList();
-  // }, [favouritesList]);
-
+  // получение modelId из productCardMedium и запрос на сервер fullProductDto
   const getProductById = (productId: number): void => {
+    console.log(productId);
     getProductDataById(productId)
       .then((data) => {
         setProductById(data);
@@ -91,7 +103,36 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
       });
   };
 
-  const product = productById;
+  // для очистки стейта после ухода со страницы товара...
+  const setFullProductState = (): void => {
+    location.pathname === '/product'
+      ? setProductFull(productById)
+      : setProductFull({
+        id: 0,
+        name: '',
+        description: '',
+        price: 0,
+        oldPrice: null,
+        category: {
+          id: 0,
+          name: '',
+          imageLink: ''
+        },
+        images: [],
+        attributes: []
+      });
+  };
+
+  useEffect(() => {
+    setFullProductState();
+  }, [location.pathname]);
+  // ...для очистки стейта после ухода со страницы товара
+
+  // favourites: получение, добавление, удаление.
+  useEffect(() => { // обновление массива избранных в локалСторадж при лайке/дизлайке
+    updateFavouritesList();
+    console.log('useEffect', favouritesList);
+  }, [favouritesList]);
 
   const getFavouriteList = (): void => {
     getFavouritesList()
@@ -109,31 +150,33 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
     localStorage.setItem('likedProducts', JSON.stringify(favouritesList));
   };
 
-  const handleAddProductToFavourites = (product: MediumCardProps): void => {
+  const handleAddProductToFavourites = (product: MediumCardProps | ProductFullDataType): void => {
     console.log(product.id);
     addCardToFavoritesList(product.id)
-      .then((res) => {
-        console.log(res);
-        setFavouritesList([...favouritesList, product]);
-      })
+      .then()
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setFavouritesList([...favouritesList, product]);
       });
   };
 
-  const handleDeleteProductFromFavourites = (product: MediumCardProps): void => {
+  const handleDeleteProductFromFavourites = (product: MediumCardProps | ProductFullDataType): void => {
     removeCardFromFavoritesList(product.id)
-      .then((res) => {
+      .then()
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
         setFavouritesList((state) =>
           state.filter((favoutiteProduct) => favoutiteProduct.id !== product.id)
         );
-      })
-      .catch((err) => {
-        console.log(err);
       });
   };
 
   const isCardLiked = (modelId: number): boolean => {
+    console.log('isCardLiked', favouritesList);
     return favouritesList.some(
       (favoriteProduct) => favoriteProduct.id === modelId
     );
@@ -149,7 +192,7 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
   //   return unLikedProduct.id;
   // };
 
-  const updateProductLikeStatus = (product: MediumCardProps): void => {
+  const updateProductLikeStatus = (product: MediumCardProps | ProductFullDataType): void => {
     console.log(favouritesList);
     if (!isCardLiked(product.id)) {
       handleAddProductToFavourites(product);
@@ -170,7 +213,7 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
         isCardLiked,
         getProductById,
         favouritesList,
-        product,
+        productFull,
       }}
     >
       {children}

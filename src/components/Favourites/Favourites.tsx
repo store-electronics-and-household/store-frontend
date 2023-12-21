@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { FC } from 'react';
 
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
@@ -6,7 +6,11 @@ import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import { useFavouritesContext } from '../../context/FavouritesContext';
 
 const Favourites: FC = () => {
-  const { favouritesList } = useFavouritesContext();
+  const { getFavouriteList, favouritesList } = useFavouritesContext();
+
+  useEffect(() => {
+    getFavouriteList();
+  }, []);
 
   return (
     <>
@@ -19,7 +23,7 @@ const Favourites: FC = () => {
               (product) => {
                 return (
                   <>
-                    <ProductCardMedium key={product.id}
+                    <ProductCardMedium
                       // name={name}
                       product={product}
                       // originPrice={originPrice}

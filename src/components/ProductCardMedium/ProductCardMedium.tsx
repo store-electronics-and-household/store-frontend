@@ -3,11 +3,12 @@ import { formatSumm } from '../../utils/formatSumm';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
 import cn from 'classnames';
-import { type MediumCardProps } from '../../utils/types';
+import type { ProductFullDataType, MediumCardProps } from '../../utils/types';
 import { useFavouritesContext } from '../../context/FavouritesContext';
+import { Link } from 'react-router-dom';
 
 interface ProductCardMediumProps {
-  product: MediumCardProps;
+  product: MediumCardProps | ProductFullDataType;
 }
 
 const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
@@ -33,8 +34,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
   };
 
   const handleGetFullProduct = (): void => {
-    console.log(product.id);
-    getProductById(1);
+    getProductById(product.id);
   };
 
   const cardPriceClassname = cn('card-medium__price', {
@@ -43,20 +43,20 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
 
   return (
     <>
-      <li className='card-medium'>
+      <li className='card-medium' key={product.id}>
         <div className='card-medium__container'>
           <div className='card-medium__container-image'>
-            <a
+            <Link
               className='card-medium__link'
-              href={'/product'}
+              to={'/product'}
               onClick={handleGetFullProduct}
             >
               <img
                 className='card-medium__image'
                 src={
                   isMainImage
-                    ? product.modelsImages?.[0]?.imageLink
-                    : product.modelsImages?.[1]?.imageLink
+                    ? product.images?.[0]?.imageLink
+                    : product.images?.[1]?.imageLink
                 }
                 alt={product.name}
                 onMouseOver={handleMouseOver}
@@ -73,7 +73,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
                   -{product.percent}%
                 </p>
               )}
-            </a>
+            </Link>
             <div className='card-medium__like'>
               <CardLikeBtn product={product}/>
             </div>
@@ -92,9 +92,9 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
             </div>
           </div>
           <div className='card-medium__footer'>
-            <a
+            <Link
               className='card-medium__link'
-              href={'/product'}
+              to={'/product'}
               onClick={handleGetFullProduct}
             >
               <div className='card-medium__container-footer'>
@@ -113,7 +113,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
                   </p>
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </li>
@@ -121,7 +121,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
         isOpen={isPopupOpen}
         productName={product.name}
         // photoUrl={product.modelsImages &&  product.modelsImages[0].imageLink}
-        photoUrl={product.modelsImages?.[0]?.imageLink}
+        photoUrl={product.images?.[0]?.imageLink}
       />
     </>
   );

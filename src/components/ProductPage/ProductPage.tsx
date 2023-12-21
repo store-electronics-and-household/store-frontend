@@ -10,7 +10,7 @@ import ProductCharacteristicsList from '../ProductCharacteristicsList/ProductCha
 // import { type ProductFullDataType } from '../../utils/types';
 import { formatSumm } from '../../utils/formatSumm';
 import PopupProductPhoto from '../PopupProductPhoto/PopupProductPhoto';
-// import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
+import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
 import { useFavouritesContext } from '../../context/FavouritesContext';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -20,9 +20,9 @@ const ProductPage = () => {
   const [isPopupFullPhotoOpen, setIsPopupFullPhotoOpen] = useState(false);
   const [count, setCount] = useState(0);
   const [isQuantityBtn, setIsQuantityBtn] = useState(false);
-  const { product } = useFavouritesContext();
-  const images = product.images.map(item => item.imageLink);
-  const attributes = product.attributes;
+  const { productFull } = useFavouritesContext();
+
+  const images = productFull.images.map(item => item.imageLink);
 
   const handleOnAllcharacteristics = (): void => {
     setIsActive(false);
@@ -43,7 +43,7 @@ const ProductPage = () => {
   const setTimeOutInfoPopup = (): void => {
     setTimeout(() => {
       setIsPopupOpen(false);
-    }, 3000);
+    }, 5000);
   };
 
   const openInfoPopup = (): void => {
@@ -76,7 +76,7 @@ const ProductPage = () => {
 
   const currentPriceClassname = cn(
     'product-page__current-price',
-    { 'product-page__current-price_sale': product.oldPrice !== null }
+    { 'product-page__current-price_sale': productFull.oldPrice !== null }
   );
 
   const quantityBtnSymbolClassname = cn(
@@ -97,9 +97,9 @@ const ProductPage = () => {
     <>
       <section className='product-page'>
         <div className='product-page__head-container'>
-          <h1 className='product-page__header'>{product.name}</h1>
+          <h1 className='product-page__header'>{productFull.name}</h1>
           <span className='product-page__item-number'>
-            Арт. <span>{product.id}</span>
+            Арт. <span>{productFull.id}</span>
           </span>
         </div>
         <div className='product-page__info-container'>
@@ -114,7 +114,7 @@ const ProductPage = () => {
               Характеристики:
             </h2>
             <ProductCharacteristicsList
-              attributes={attributes.slice(0, productCharacteristicsShortListLength)}
+              attributes={productFull.attributes.slice(0, productCharacteristicsShortListLength)}
             />
             <a
               href='#characteristics-anchor'
@@ -127,13 +127,13 @@ const ProductPage = () => {
           <div className='product-page__price-block'>
             <div className='product-page__price'>
               <span className={currentPriceClassname}>
-                {formatSumm(product.price)}
+                {formatSumm(productFull.price)}
               </span>
-              {product.oldPrice !== null
+              {productFull.oldPrice !== null
                 ? (<span className='product-page__old-price'>
-                    {product.oldPrice !== null &&
-                    typeof product.oldPrice === 'number'
-                      ? formatSumm(product.oldPrice)
+                    {productFull.oldPrice !== null &&
+                    typeof productFull.oldPrice === 'number'
+                      ? formatSumm(productFull.oldPrice)
                       : ''}
                   </span>)
                 : null}
@@ -177,7 +177,7 @@ const ProductPage = () => {
                     </div>
                 }
               </div>
-              {/* <CardLikeBtn product={product}/> */}
+              <CardLikeBtn product={productFull}/>
             </div>
             <ul className='product-page__benefits-list'>
               <li className='product-page__benefit'>
@@ -214,11 +214,11 @@ const ProductPage = () => {
           {isActive
             ? (<div className='product-page__about'>
                 <p className='product-page__about-description'>
-                  {product.description}
+                  {productFull.description}
                 </p>
               </div>)
             : (<ProductCharacteristicsList
-                attributes={attributes}
+                attributes={productFull.attributes}
                 modifyListClass={'characteristics-list_full'}
                 modifyItemClass={'characteristics-list__item_full'}
               />
@@ -232,7 +232,7 @@ const ProductPage = () => {
         />
         <PopupAddToCart
           isOpen={isPopupOpen}
-          productName={product.name}
+          productName={productFull.name}
           photoUrl={images[0]}
         />
       </section>

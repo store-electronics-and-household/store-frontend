@@ -1,19 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { useFavouritesContext } from '../../context/FavouritesContext';
-import type { MediumCardProps } from '../../utils/types';
+import type { MediumCardProps, ProductFullDataType } from '../../utils/types';
 
 interface ICardLikeBtn {
-  product: MediumCardProps;
+  product: MediumCardProps | ProductFullDataType;
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const CardLikeBtn: React.FC<ICardLikeBtn> = ({ product }) => {
-  const { handleAddProductToFavourites, isCardLiked } = useFavouritesContext();
-  const [isLiked, setIsLiked] = useState(isCardLiked(product.id));
+  const { updateProductLikeStatus, isCardLiked } = useFavouritesContext();
+  const [isLiked, setIsLiked] = useState<boolean>(false);
+  const productId: number = product.id;
+
+  useEffect(() => {
+    setIsLiked(isCardLiked(productId));
+  }, []);
 
   const handleLike = (): void => {
-    handleAddProductToFavourites(product);
+    console.log('handleSetLike', isLiked);
+    updateProductLikeStatus(product);
     setIsLiked(!isLiked);
   };
 

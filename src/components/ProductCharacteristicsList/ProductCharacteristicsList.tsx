@@ -30,7 +30,7 @@ const ProductCharacteristicsList: React.FC<ProductCharacteristicListProps> = ({
         return (
           <li className={characteristicsItemClassname} key={id}>
             <span className='characteristics-list__item-key'>
-              {attribute.attributeName}
+              {attribute.attributeName.charAt(0).toUpperCase() + attribute.attributeName.slice(1)}
             </span>
             <span className='characteristics-list__item-value'>
               {attribute.value}
