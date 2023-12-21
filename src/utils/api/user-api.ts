@@ -100,7 +100,7 @@ export const checkUserEmail = async (email: string): Promise<any> => {
       name: email
     })
   });
-}
+};
 
 export const patchUser = async (
   data: FormProps,

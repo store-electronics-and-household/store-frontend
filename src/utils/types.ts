@@ -110,5 +110,5 @@ export interface MeTypePickUpPoint {
   address: string;
   metro?: string;
   deliverypice?: string;
-  comment?: string
+  comment?: string;
 };
