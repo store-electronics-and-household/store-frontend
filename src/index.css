@@ -1252,6 +1252,19 @@ body {
   background-image: url("./image/icons/edit-icon.svg");
 }
 
+.payments-page__map-container {
+  width: 552px;
+  height: 700px;
+}
+
+.payments-page__map {
+  width: 552px;
+  height: 700px;
+  border: none;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
 /*
 
 .payments-page__delivery-type_type_visible::before {

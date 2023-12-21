@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 // import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import PaymentsPageButton from './PaymentsPageButton';
-import { pickUpPoints } from '../../utils/constants';
+import { pickUpPoints, mapUrl } from '../../utils/constants';
 // import closeIcon from '../../image/icons/btn-close-popup-pick-up.svg';
 
 interface MeTypePickUpPoint {
   address: string;
   metro: string;
   deliverypice: string;
-};
+}
 
 interface PopupChoosePickUpPointProps {
   isOpen: boolean;
@@ -44,7 +44,7 @@ const PopupChoosePickUpPoint: React.FC<PopupChoosePickUpPointProps> = ({
     if (choosedPoint !== undefined && choosedPoint !== null) {
       onClose();
       onChoosenPoint(choosedPoint);
-    };
+    }
   };
 
   const handleClose = (): void => {
@@ -57,13 +57,21 @@ const PopupChoosePickUpPoint: React.FC<PopupChoosePickUpPointProps> = ({
   tomorrow.setDate(today.getDate() + 1);
 
   const months = [
-    'января', 'февраля', 'марта',
-    'апреля', 'мая', 'июня',
-    'июля', 'августа', 'сентября',
-    'октября', 'ноября', 'декабря'
+    'января',
+    'февраля',
+    'марта',
+    'апреля',
+    'мая',
+    'июня',
+    'июля',
+    'августа',
+    'сентября',
+    'октября',
+    'ноября',
+    'декабря',
   ];
 
-const formattedDate = `${tomorrow.getDate()} ${months[tomorrow.getMonth()]}`;
+  const formattedDate = `${tomorrow.getDate()} ${months[tomorrow.getMonth()]}`;
 
   return (
     <section className={PopupChoosePickUpPointClass}>
@@ -74,17 +82,32 @@ const formattedDate = `${tomorrow.getDate()} ${months[tomorrow.getMonth()]}`;
               <div
                 key={item.address}
                 // onClick={(index) => choosePickUpPoint}
-                onClick={() => { choosePickUpPoint(item, index); }}
-                className={`payments-page__pickuppoint ${choosedPointIndex === index ? 'payments-page__pickuppoint_choosed' : ''} `}
+                onClick={() => {
+                  choosePickUpPoint(item, index);
+                }}
+                className={`payments-page__pickuppoint ${
+                  choosedPointIndex === index
+                    ? 'payments-page__pickuppoint_choosed'
+                    : ''
+                } `}
               >
                 <div className='payments-page__pickuppoint-box'>
-                  <h3 className='payments-page__pickuppoint-title'>CyberPlace</h3>
-                  <p className='payments-page__pickuppoint-paragraph'>{item.address}</p>
-                  <p className='payments-page__pickuppoint-paragraph'>{item.metro}</p>
-                  <p className='payments-page__pickuppoint-paragraph'>стоимость - {item.deliverypice}</p>
-                  <p className='payments-page__pickuppoint-paragraph'>дата доставки - завтра, {formattedDate}</p>
+                  <h3 className='payments-page__pickuppoint-title'>
+                    CyberPlace
+                  </h3>
+                  <p className='payments-page__pickuppoint-paragraph'>
+                    {item.address}
+                  </p>
+                  <p className='payments-page__pickuppoint-paragraph'>
+                    {item.metro}
+                  </p>
+                  <p className='payments-page__pickuppoint-paragraph'>
+                    стоимость - {item.deliverypice}
+                  </p>
+                  <p className='payments-page__pickuppoint-paragraph'>
+                    дата доставки - завтра, {formattedDate}
+                  </p>
                 </div>
-
               </div>
             ))}
           </div>
@@ -97,16 +120,22 @@ const formattedDate = `${tomorrow.getDate()} ${months[tomorrow.getMonth()]}`;
               marginBottom='0'
             />
           </div>
-
         </div>
         {/* <p className='popup-add-to-cart__product-name'>что то будет</p>
         <Link to='/cart' className='popup-add-to-cart__button'>В корзину</Link> */}
         <button
-            aria-label="Close"
-            type="button"
-            className='payments-page__close-button'
-            onClick={handleClose}
-          ></button>
+          aria-label='Close'
+          type='button'
+          className='payments-page__close-button'
+          onClick={handleClose}
+        ></button>
+        <div className='payments-page__map-container'>
+        <iframe
+          className='payments-page__map'
+          src={mapUrl}
+          title='2'
+        ></iframe>
+      </div>
       </div>
 
     </section>
