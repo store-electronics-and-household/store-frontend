@@ -83,8 +83,11 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
     if (!formik.errors.loginRecovery && formik.values.loginRecovery !== '') {
       // checkUserEmail(formik.values.loginRecovery)
       //   .then(() => {
-      //
+      //     SetIsNext(true);
       //   })
+      //   .catch((err) => {
+      //     console.error(err);
+      //   });
       SetIsNext(true);
     } else {
       console.log('');
