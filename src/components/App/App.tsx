@@ -19,12 +19,14 @@ import SignUp from '../signup/SignUp';
 import PasswordRecovery from '../PasswordRecovery/PasswordRecovery';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import SearchResults from '../SearchResults/SearchResults';
-import type { MediumCardProps, ProductDataType } from '../../utils/types';
+import type { MediumCardProps } from '../../utils/types';
 import { CartProvider } from '../../context/CartContext';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { productAttributes, productData } from '../../utils/constants';
+import {
+  // subCategoriesList,
+} from '../../utils/constants';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
-import { getProductDataById } from '../../utils/api/product-api';
+import { FavoritesProvider } from '../../context/FavouritesContext';
 import { type IContext, initialUserContext, UserContext } from '../../context/UserContext';
 import ChangePassword from '../ChangePassword/ChangePassword';
 import Profile from '../Profile/Profile';
@@ -36,7 +38,6 @@ const App: React.FC = () => {
   const [isSignInPopupOpen, setSignInPopupOpen] = useState<boolean>(false);
   const [isSignUpPopupOpen, setSignUpPopupOpen] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [productById, setProductById] = useState<ProductDataType>();
   const [searchRequest, setSearchRequest] = useState<string>('');
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchResults, setSearchResults] = useState<MediumCardProps[]>([]);
@@ -97,20 +98,6 @@ const App: React.FC = () => {
     setGoodsList(data);
   };
 
-  const getProductById = (productId: number): void => {
-    getProductDataById(productId)
-      .then((data) => {
-        setProductById(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  useEffect(() => {
-    getProductById(1);
-  }, []);
-
   // const CustomPropsBreadcrumb = ({ someProp }: { someProp: string }): JSX.Element => <span>{someProp}</span>;
   // const DynamicUserBreadcrumb = ({ match }) => (
   //   <span>{userNamesById[match.params.userId]}</span>
@@ -123,7 +110,7 @@ const App: React.FC = () => {
     { path: '/delivery', breadcrumb: 'Доставка' },
     { path: '/cart', breadcrumb: 'Корзина' },
     { path: '/search-results', breadcrumb: 'Результаты поиска' },
-    { path: 'categories/catalog/product', breadcrumb: productData.name },
+    // { path: 'categories/catalog/product', breadcrumb: productData.name },
     { path: '/payment', breadcrumb: 'Корзина' },
     // { path: '/favourites', breadcrumb: CustomPropsBreadcrumb, props: { someProp: 'Избранное' } },
     // { path: '/categories/:id', breadcrumb: DynamicUserBreadcrumb },
@@ -132,8 +119,9 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <CartProvider>
-        <ScrollToTop>
-          <UserContext.Provider value={generalContext}>
+        <FavoritesProvider>
+          <ScrollToTop>
+            <UserContext.Provider value={generalContext}>
             <Routes>
               <Route
                 path="/"
@@ -216,86 +204,84 @@ const App: React.FC = () => {
                   />
                 </Route>
 
-                <Route
-                  path="/categories/catalog/product"
-                  element={
-                    <>
-                      <Breadcrumbs crumbs={crumbs}/>
-                      <ProductPage
-                        product={productData}
-                        attributes={productAttributes}
-                      />
-                    </>
-                  }
-                />
-                <Route
-                  path="/delivery"
-                  element={
-                    <>
-                      <Breadcrumbs crumbs={crumbs}/>
-                      <Delivery/>
-                    </>
-                  }
-                />
-                <Route
-                  path="/favourites"
-                  element={
-                    <>
-                      <Breadcrumbs crumbs={crumbs}/>
-                      <Favourites/>
-                    </>
-                  }
-                />
-                <Route
-                  path="/cart"
-                  element={
-                    <>
-                      <Breadcrumbs crumbs={crumbs}/>
-                      <Cart onCheckoutClick={setGoodsForPayment}/>
-                    </>
-                  }
-                />
-                <Route
-                  path="/payment"
-                  element={
-                    <>
-                      <Breadcrumbs crumbs={crumbs}/>
-                      <PaymentsPage GoodsList={goodsList ?? []}/>
-                    </>
-                  }
-                />
-                <Route
-                  path="/search-results"
-                  element={
-                    <>
-                      <Breadcrumbs crumbs={crumbs}/>
-                      <SearchResults
-                        searchRequest={searchRequest}
-                        searchResults={searchResults}
-                      />
-                    </>
-                  }
-                />
-                <Route
-                  path="/profile"
-                  element={<Profile setGeneralContext={setGeneralContext}/>}
-                />
-                <Route
-                  path="/profile/changepass"
-                  element={
-                    <ChangePassword setGeneralContext={setGeneralContext}/>
-                  }
-                />
-                <Route
-                  path="/profile/orders"
-                  element={<Orders setGeneralContext={setGeneralContext}/>}
-                />
-                <Route path="/" element={<Navigate to="/main" replace/>}/>
-                <Route path="*" element={<NotFound/>}/>
-              </Route>
-            </Routes>
-          </UserContext.Provider>
-        </ScrollToTop>
+                  <Route
+                    path='/product'
+                    element={
+                      <>
+                        <Breadcrumbs crumbs={crumbs}/>
+                        <ProductPage />
+                      </>
+                    }
+                  />
+                  <Route
+                    path='/delivery'
+                    element={
+                      <>
+                        <Breadcrumbs crumbs={crumbs} />
+                        <Delivery />
+                      </>
+                    }
+                  />
+                  <Route
+                    path='/favourites'
+                    element={
+                      <>
+                        <Breadcrumbs crumbs={crumbs} />
+                        <Favourites />
+                      </>
+                    }
+                  />
+                  <Route
+                    path='/cart'
+                    element={
+                      <>
+                        <Breadcrumbs crumbs={crumbs} />
+                        <Cart onCheckoutClick={setGoodsForPayment} />
+                      </>
+                    }
+                  />
+                  <Route
+                    path='/payment'
+                    element={
+                      <>
+                        <Breadcrumbs crumbs={crumbs} />
+                        <PaymentsPage GoodsList={goodsList ?? []} />
+                      </>
+                    }
+                  />
+                  <Route
+                    path='/search-results'
+                    element={
+                      <>
+                        <Breadcrumbs crumbs={crumbs} />
+                        <SearchResults
+                          searchRequest={searchRequest}
+                          searchResults={searchResults}
+                        />
+                      </>
+                    }
+                  />
+                  <Route
+                    path='/profile'
+                    element={<Profile setGeneralContext={setGeneralContext} />}
+                  />
+                  <Route
+                    path='/profile/changepass'
+                    element={
+                      <ChangePassword setGeneralContext={setGeneralContext} />
+                    }
+                  />
+                  <Route
+                    path='/profile/orders'
+                    element={<Orders setGeneralContext={setGeneralContext} />}
+                  />
+                  <Route path='/' element={<Navigate to='/main' replace />} />
+                  <Route path='*' element={<NotFound />} />
+                </Route>
+              </Routes>
+            </UserContext.Provider>
+          </ScrollToTop>
+        </FavoritesProvider>
       </CartProvider>
     </div>
   );
