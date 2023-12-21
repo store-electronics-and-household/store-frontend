@@ -2,8 +2,8 @@ import iconSmile from '../image/icons/smile_icon.svg';
 import iconDelivery from '../image/icons/delivery_icon.svg';
 import iconMedal from '../image/icons/medal-original_icon.svg';
 
-export const API_URL: string = 'http://45.12.236.120:8080/api/v1';
-// export const API_URL: string = 'https://cyberplace.online/api/v1';
+// export const API_URL: string = 'http://45.12.236.120:8080/api/v1';
+export const API_URL: string = 'https://cyberplace.online/api/v1';
 
 export const API_CAT_IMG: string = 'http://45.12.236.120/images/categories';
 export const popularCardsToShow = 6;
@@ -570,3 +570,97 @@ export const contactsData = {
   adress:
     'г. Москва, ул. Нижняя Красносельская, д. 40/12, корпус 20, этаж 5, помещение\u00A0II, комната 3;',
 };
+
+export const pickUpPoints = [
+{
+  address: 'адрес 1',
+  metro: 'метро 1',
+  deliverypice: 'бесплатно'
+},
+{
+  address: 'адрес 2',
+  metro: 'метро 2',
+  deliverypice: 'бесплатно'
+},
+{
+  address: 'адрес 3',
+  metro: 'метро 3',
+  deliverypice: 'бесплатно'
+},
+
+{
+  address: 'адрес 4',
+  metro: 'метро 4',
+  deliverypice: 'бесплатно'
+},
+{
+  address: 'адрес 5',
+  metro: 'метро 5',
+  deliverypice: 'бесплатно'
+},
+
+{
+  address: 'адрес 6',
+  metro: 'метро 6',
+  deliverypice: 'бесплатно'
+}
+];
+
+export const productsForPay = [
+  {
+    id: 1,
+    name: 'Ноутбук Apple MacBook Air 15 M2 8/256Gb Starlight (MQKU3)',
+    oldPrice: 200,
+    price: 180,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      }
+    ],
+    quantity: 2,
+    percent: 10,
+    // isLiked: true
+  },
+  {
+    id: 2,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    oldPrice: 300,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+      }
+    ],
+    // isLiked: false,
+    quantity: 1,
+  },
+  {
+    id: 3,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    oldPrice: 100,
+    price: 85,
+    discount: 20,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      }
+    ],
+    // isLiked: true,
+    quantity: 1,
+    percent: 15,
+  }
+];

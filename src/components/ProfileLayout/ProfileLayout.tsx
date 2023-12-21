@@ -22,7 +22,7 @@ const ProfileLayout = ({
 
   //
 
-  function onDeleteUser(): void {
+  function onDeleteUser (): void {
     deleteUser(token)
       .then((res) => {
         console.log(res);
@@ -32,7 +32,7 @@ const ProfileLayout = ({
       });
   }
 
-  function unAthorize(): void {
+  function unAthorize (): void {
     localStorage.clear();
     setGeneralContext({
       isLoggedIn: false,

@@ -105,3 +105,10 @@ export interface FormProps {
   firstName?: string;
   lastName?: string;
 }
+
+export interface MeTypePickUpPoint {
+  address: string;
+  metro?: string;
+  deliverypice?: string;
+  comment?: string
+};

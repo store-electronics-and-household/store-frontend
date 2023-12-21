@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { type MediumCardProps } from '../../utils/types';
 import { formatCurrency } from '../../utils/formatCurrency';
 
-import { paymentPageData } from '../../utils/constants';
+import { productsForPay } from '../../utils/constants';
 import CartItem from '../CartItem/CartItem';
 import { useCartContext } from '../../context';
 interface CartProps {
@@ -14,7 +14,7 @@ interface CartProps {
 
 const Cart: FC<CartProps> = ({ onCheckoutClick }) => {
   const handleCheckout = (): void => {
-    onCheckoutClick(paymentPageData);
+    onCheckoutClick(productsForPay);
   };
 
   const { cartItems, totalCount, totalDiscount, sumValue, totalSumValue } =
