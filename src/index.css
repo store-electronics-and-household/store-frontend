@@ -1934,7 +1934,7 @@ body {
 }
 
 .swiper-button-next_lightgrey {
-  background-image: url("./image/icons/button-arrow-bclack.png") !important;
+  background-image: url("./image/icons/arrow-main-black.svg") !important;
   width: 56px !important;
   height: 56px !important;
   background-repeat: no-repeat;
@@ -1945,7 +1945,7 @@ body {
 }
 
 .swiper-button-next_black {
-  background-image: url("./image/icons/button-arrow-white.png") !important;
+  background-image: url("./image/icons/arrow-main-white.svg") !important;
   width: 56px !important;
   height: 56px !important;
   background-repeat: no-repeat;
@@ -3535,7 +3535,8 @@ body {
   padding: 64px 40px 140px;
   display: grid;
   grid-template-columns: 322px 553px auto;
-  column-gap: 139px;
+  -moz-column-gap: 139px;
+       column-gap: 139px;
 }
 .profile__sidemenu {
   display: flex;
@@ -3552,7 +3553,8 @@ body {
   color: #272A31;
   padding: 16px;
   display: flex;
-  column-gap: 16px;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
   align-items: center;
   border-radius: 16px;
   border: none;
@@ -3758,6 +3760,4 @@ body {
   font-size: 20px;
   font-weight: 600;
   line-height: 120%;
-}
-
-/*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=index.css.map */
