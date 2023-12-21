@@ -1309,11 +1309,21 @@ body {
   color: #FFF;
 }
 
+.card-medium__container-image {
+  width: 322px;
+  height: 376px;
+  border-radius: 24px;
+  background-color: #FFF;
+}
+
 .card-medium__image {
   border-radius: 24px;
   background: #FFF;
-  width: 322px;
-  height: 376px;
+  width: 282px;
+  height: 236px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin: 60px 20px 0 20px;
 }
 
 .card-medium__buy {
@@ -2816,10 +2826,12 @@ body {
   background-color: #FFF;
   opacity: 0;
   transition: 0.3s;
+  visibility: hidden;
 }
 
 .popup-add-to-cart_opened {
   opacity: 1;
+  visibility: visible;
 }
 
 .popup-add-to-cart__product-photo {

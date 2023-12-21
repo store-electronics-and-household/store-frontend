@@ -47,8 +47,8 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
                 className='card-medium__image'
                 src={
                   isMainImage
-                    ? product.modelsImages?.[0]?.imageLink
-                    : product.modelsImages?.[1]?.imageLink
+                    ? product.images?.[0]?.imageLink
+                    : product.images?.[1]?.imageLink
                 }
                 alt={product.name}
                 onMouseOver={handleMouseOver}
@@ -113,7 +113,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
         isOpen={isPopupOpen}
         productName={product.name}
         // photoUrl={product.modelsImages &&  product.modelsImages[0].imageLink}
-        photoUrl={product.modelsImages?.[0]?.imageLink}
+        photoUrl={product.images?.[0]?.imageLink}
       />
     </>
   );

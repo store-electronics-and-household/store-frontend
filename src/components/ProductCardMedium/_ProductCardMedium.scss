@@ -36,11 +36,20 @@
   color: $whiteColof;
 }
 
+.card-medium__container-image {
+  width: 322px;
+  height: 376px;
+  border-radius: 24px;
+  background-color: $whiteColof;;
+}
+
 .card-medium__image {
   border-radius: 24px;
   background: $whiteColof;
-  width: 322px;
-  height: 376px;
+  width: 282px;
+  height: 236px;
+  object-fit: contain;
+  margin: 60px 20px 0 20px;
 }
 
 .card-medium__buy {

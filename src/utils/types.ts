@@ -94,7 +94,7 @@ export interface MediumCardProps {
   price?: number;
   // imgUrl: string;
   discount?: number; // ПОМЕНЯТЬ
-  modelsImages?: MeyTypeCardImage[];
+  images?: MeyTypeCardImage[];
   oldPrice: number;
   percent?: number;
 }
