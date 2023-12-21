@@ -18,7 +18,6 @@ const CardLikeBtn: React.FC<ICardLikeBtn> = ({ product }) => {
   }, []);
 
   const handleLike = (): void => {
-    console.log('handleSetLike', isLiked);
     updateProductLikeStatus(product);
     setIsLiked(!isLiked);
   };

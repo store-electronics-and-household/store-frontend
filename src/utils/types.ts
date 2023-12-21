@@ -85,10 +85,10 @@ export interface ProductFullDataType {
 }
 
 export interface FormProps {
-  email?: string;
-  phone?: string;
-  firstName?: string;
-  lastName?: string;
+  email?: string | null;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
 }
 
 export interface MeTypePickUpPoint {

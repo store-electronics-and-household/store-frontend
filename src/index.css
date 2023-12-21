@@ -38,6 +38,12 @@ body {
 .discount__container {
   height: 100%;
   border-radius: 20px;
+  transition: 0.2s ease-in-out;
+}
+
+.discount__container:hover {
+  cursor: pointer;
+  transform: scale(103%);
 }
 
 .discount__container_type_0 {
@@ -1252,6 +1258,78 @@ body {
   background-image: url("./image/icons/edit-icon.svg");
 }
 
+.payments-page__map-container {
+  width: 552px;
+  height: 700px;
+}
+
+.payments-page__map {
+  width: 552px;
+  height: 700px;
+  border: none;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+.payments-page__pickuppoint-search {
+  width: 298px;
+  height: 44px;
+  margin: 24px auto 0 auto;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 40px;
+  height: 40px;
+  padding: 0 28px;
+  box-sizing: border-box;
+}
+
+.payments-page__pickuppoint-search-input {
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  margin-left: 8px;
+}
+
+.payments-page__pickuppoint-search-input::-moz-placeholder {
+  display: flex;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  margin-left: 12px;
+  color: #AFB4C0;
+}
+
+.payments-page__pickuppoint-search-input::placeholder {
+  display: flex;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  margin-left: 12px;
+  color: #AFB4C0;
+}
+
+.payments-page__pickuppoint-search-input:focus {
+  outline: none;
+}
+
+.payments-page__pickuppoint-search-button {
+  border: none;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.payments-page__pickuppoint-search-icon {
+  width: 16px;
+  height: 16px;
+}
+
 /*
 
 .payments-page__delivery-type_type_visible::before {
@@ -1663,13 +1741,13 @@ body {
   flex-direction: column;
   align-items: center;
   max-width: 428px;
-  min-height: 516px;
+  min-height: 250px;
   width: 100%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
-  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.07);
   border-radius: 25px;
 }
 
@@ -1803,6 +1881,13 @@ body {
 .signup__button_registr {
   background: #fff;
   color: black;
+}
+
+.signup__button_regEnd {
+  margin-top: 32px;
+  background: #222;
+  color: #fff;
+  border: none;
 }
 
 .signup__button_cls {
@@ -2086,7 +2171,6 @@ body {
   color: var(--Black, #222);
   font-size: 20px;
   font-style: normal;
-  font-weight: 400;
   line-height: 24px;
 }
 
@@ -2204,7 +2288,6 @@ body {
 
 .tile__item:hover {
   transform: scale(105%);
-  box-shadow: 0 0 40px rgba(128, 128, 128, 0.3);
 }
 
 .tile__item_small {

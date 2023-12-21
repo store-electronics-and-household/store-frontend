@@ -92,11 +92,9 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
 
   // получение modelId из productCardMedium и запрос на сервер fullProductDto
   const getProductById = (productId: number): void => {
-    console.log(productId);
     getProductDataById(productId)
       .then((data) => {
         setProductById(data);
-        console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -131,13 +129,11 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
   // favourites: получение, добавление, удаление.
   useEffect(() => { // обновление массива избранных в локалСторадж при лайке/дизлайке
     updateFavouritesList();
-    console.log('useEffect', favouritesList);
   }, [favouritesList]);
 
   const getFavouriteList = (): void => {
     getFavouritesList()
       .then((res) => {
-        console.log(res.modelShortDtos);
         setFavouritesList(res.modelShortDtos);
         localStorage.setItem('likedProducts', JSON.stringify(res.modelShortDtos));
       })
@@ -151,7 +147,6 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
   };
 
   const handleAddProductToFavourites = (product: MediumCardProps | ProductFullDataType): void => {
-    console.log(product.id);
     addCardToFavoritesList(product.id)
       .then()
       .catch((err) => {
@@ -176,7 +171,6 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
   };
 
   const isCardLiked = (modelId: number): boolean => {
-    console.log('isCardLiked', favouritesList);
     return favouritesList.some(
       (favoriteProduct) => favoriteProduct.id === modelId
     );
@@ -193,7 +187,6 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
   // };
 
   const updateProductLikeStatus = (product: MediumCardProps | ProductFullDataType): void => {
-    console.log(favouritesList);
     if (!isCardLiked(product.id)) {
       handleAddProductToFavourites(product);
     } else {

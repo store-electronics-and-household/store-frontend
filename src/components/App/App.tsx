@@ -26,11 +26,12 @@ import {
   // subCategoriesList,
 } from '../../utils/constants';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
-import { type IContext, UserContext } from '../../context/UserContext';
 import { FavoritesProvider } from '../../context/FavouritesContext';
+import { type IContext, initialUserContext, UserContext } from '../../context/UserContext';
 import ChangePassword from '../ChangePassword/ChangePassword';
 import Profile from '../Profile/Profile';
 import Orders from '../Orders/Orders';
+import { authUserByToken } from '../../utils/api/user-api';
 
 const App: React.FC = () => {
   const [isWarningPopupOpen, setWarningPopupOpen] = useState<boolean>(false);
@@ -40,15 +41,9 @@ const App: React.FC = () => {
   const [searchRequest, setSearchRequest] = useState<string>('');
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchResults, setSearchResults] = useState<MediumCardProps[]>([]);
-  // Context provider
 
-  const [generalContext, setGeneralContext] = useState<IContext>({
-    isLoggedIn: false,
-    userName: '',
-    userLastName: '',
-    userPhone: '',
-    email: '',
-  });
+  // Context provider
+  const [generalContext, setGeneralContext] = useState<IContext>(initialUserContext);
   // Context provider end
 
   const [isPasswordRecoveryPopupOpen, setPasswordRecoveryPopupOpen] =
@@ -58,8 +53,24 @@ const App: React.FC = () => {
   const toggleWarningPopup = (): void => {
     setWarningPopupOpen(!isWarningPopupOpen);
   };
+
   useEffect(() => {
-    // checkAuth()
+    const token = localStorage.getItem('token') ?? '';
+    authUserByToken(token)
+      .then((res) => {
+        setGeneralContext({
+          ...generalContext,
+          isLoggedIn: true,
+          userId: res.id,
+          email: res.email,
+          userName: res.firstName,
+        });
+      })
+      .catch((err) => {
+        setGeneralContext(initialUserContext);
+        localStorage.removeItem('token');
+        console.error(`Токен просрочен или не найден - ${err}`);
+      });
   }, []);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -106,14 +117,14 @@ const App: React.FC = () => {
   ];
 
   return (
-    <div className='App'>
+    <div className="App">
       <CartProvider>
         <FavoritesProvider>
           <ScrollToTop>
             <UserContext.Provider value={generalContext}>
             <Routes>
               <Route
-                path='/'
+                path="/"
                 element={
                   <>
                     <Header
@@ -143,12 +154,12 @@ const App: React.FC = () => {
                       isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
                       onOpenRecoveryPopup={PasswordRecoveryPopup}
                     />
-                    <Footer />
+                    <Footer/>
                   </>
                 }
               >
                 <Route
-                  path='/main'
+                  path="/main"
                   element={
                     <Main
                       passSearchResults={handleSearchCards}
@@ -157,37 +168,37 @@ const App: React.FC = () => {
                   }
                 />
                 <Route
-                  path='/about-company'
+                  path="/about-company"
                   element={
                     <>
-                      <Breadcrumbs crumbs={crumbs} />
-                      <AboutCompany />
+                      <Breadcrumbs crumbs={crumbs}/>
+                      <AboutCompany/>
                     </>
                   }
                 />
                 <Route
-                  path='/faq'
+                  path="/faq"
                   element={
                     <>
-                      <Breadcrumbs crumbs={crumbs} />
-                      <Faq />
+                      <Breadcrumbs crumbs={crumbs}/>
+                      <Faq/>
                     </>
                   }
                 />
                 <Route
-                  path='/categories/:subcategory'
+                  path="/categories/:subcategory"
                   element={
                     <>
-                      <Breadcrumbs crumbs={crumbs} />
-                      <Categories />
+                      <Breadcrumbs crumbs={crumbs}/>
+                      <Categories/>
                     </>
                   }
                 >
                   <Route
-                    path=':model'
+                    path=":model"
                     element={
                       <>
-                        <Catalog />
+                        <Catalog/>
                       </>
                     }
                   />

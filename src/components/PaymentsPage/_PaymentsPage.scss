@@ -534,6 +534,71 @@
   background-color: transparent;
   background-image: url('#{$imagesDir}icons/edit-icon.svg');
 }
+
+.payments-page__map-container {
+  width: 552px;
+  height: 700px;
+}
+
+.payments-page__map {
+  width: 552px;
+  height: 700px;
+  border: none;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+.payments-page__pickuppoint-search {
+  width: 298px;
+  height: 44px;
+  margin: 24px auto 0 auto;
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+  background-color: white;
+  border-radius: 40px;
+  height: 40px;
+  padding: 0 28px;
+  box-sizing: border-box;
+}
+
+.payments-page__pickuppoint-search-input {
+  // display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  margin-left: 8px;
+}
+
+.payments-page__pickuppoint-search-input::placeholder {
+  display: flex;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  margin-left: 12px;
+  color: #AFB4C0;
+}
+
+.payments-page__pickuppoint-search-input:focus {
+  outline: none;
+}
+
+.payments-page__pickuppoint-search-button {
+  border: none;
+  // cursor: pointer;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.payments-page__pickuppoint-search-icon {
+  width: 16px;
+  height: 16px;
+}
+
 /*
 
 .payments-page__delivery-type_type_visible::before {
