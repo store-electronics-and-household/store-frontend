@@ -572,38 +572,38 @@ export const contactsData = {
 };
 
 export const pickUpPoints = [
-{
-  address: 'адрес 1',
-  metro: 'метро 1',
-  deliverypice: 'бесплатно'
-},
-{
-  address: 'адрес 2',
-  metro: 'метро 2',
-  deliverypice: 'бесплатно'
-},
-{
-  address: 'адрес 3',
-  metro: 'метро 3',
-  deliverypice: 'бесплатно'
-},
+  {
+    address: 'адрес 1',
+    metro: 'метро 1',
+    deliverypice: 'бесплатно'
+  },
+  {
+    address: 'адрес 2',
+    metro: 'метро 2',
+    deliverypice: 'бесплатно'
+  },
+  {
+    address: 'адрес 3',
+    metro: 'метро 3',
+    deliverypice: 'бесплатно'
+  },
 
-{
-  address: 'адрес 4',
-  metro: 'метро 4',
-  deliverypice: 'бесплатно'
-},
-{
-  address: 'адрес 5',
-  metro: 'метро 5',
-  deliverypice: 'бесплатно'
-},
+  {
+    address: 'адрес 4',
+    metro: 'метро 4',
+    deliverypice: 'бесплатно'
+  },
+  {
+    address: 'адрес 5',
+    metro: 'метро 5',
+    deliverypice: 'бесплатно'
+  },
 
-{
-  address: 'адрес 6',
-  metro: 'метро 6',
-  deliverypice: 'бесплатно'
-}
+  {
+    address: 'адрес 6',
+    metro: 'метро 6',
+    deliverypice: 'бесплатно'
+  }
 ];
 
 export const productsForPay = [

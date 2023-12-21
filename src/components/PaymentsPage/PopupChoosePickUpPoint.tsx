@@ -63,7 +63,7 @@ const PopupChoosePickUpPoint: React.FC<PopupChoosePickUpPointProps> = ({
     'октября', 'ноября', 'декабря'
   ];
 
-const formattedDate = `${tomorrow.getDate()} ${months[tomorrow.getMonth()]}`;
+  const formattedDate = `${tomorrow.getDate()} ${months[tomorrow.getMonth()]}`;
 
   return (
     <section className={PopupChoosePickUpPointClass}>

@@ -246,7 +246,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
     }
   };
 
-    // {
+  // {
   //   "deliveryType": "string", ОК
   //   "name": "string", ОК
   //   "phone": "string", ОК
