@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { type ChangeEvent, useState, useEffect } from 'react';
 // import { Link } from 'react-router-dom';
 import cn from 'classnames';
+import searchIcon from '../../image/icons/search_icon.svg';
 import PaymentsPageButton from './PaymentsPageButton';
 import { pickUpPoints, mapUrl } from '../../utils/constants';
 // import closeIcon from '../../image/icons/btn-close-popup-pick-up.svg';
@@ -73,12 +74,85 @@ const PopupChoosePickUpPoint: React.FC<PopupChoosePickUpPointProps> = ({
 
   const formattedDate = `${tomorrow.getDate()} ${months[tomorrow.getMonth()]}`;
 
+  const [input, setInput] = useState('');
+
+  interface MyTypeCurrentPoints {
+    address: string;
+    metro: string;
+    deliverypice: string;
+  }
+
+  const [currentArray, setCurrentArray] =
+    useState<MyTypeCurrentPoints[]>(pickUpPoints);
+  const [searchPointValue, setSearchPointValue] = useState<string>('');
+  // console.log(searchPointValue);
+
+  useEffect(() => {
+    // console.log(searchPointValue);
+    // console.log(input);
+    // console.log(pickUpPoints);
+    const filteredArray = pickUpPoints.filter((obj) =>
+      obj.address.toLowerCase().includes(input)
+    );
+    setCurrentArray(filteredArray);
+  }, [searchPointValue]);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    const { value } = e.target;
+    setInput(value);
+    handleSearchPickUpPoint();
+  };
+
+  const handleSumbit = (
+    e: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>
+  ): void => {
+    e.preventDefault();
+  };
+
+  const handleSearchPickUpPoint = (): void => {
+    setSearchPointValue(input);
+  };
+
+  // const controlFocus = useRef(null);
+
   return (
     <section className={PopupChoosePickUpPointClass}>
       <div className='payments-page__popup-container'>
         <div className='payments-page__pickuppoint-container'>
+          <div className='payments-page__pickuppoint-search'>
+            {/* <Link to='/search-results'> */}
+            <button
+              className='payments-page__pickuppoint-search-button'
+              // type='submit'
+              // onClick={handleSumbit}
+            >
+              <img
+                className='payments-page__pickuppoint-search-icon'
+                src={searchIcon}
+                alt='Строка поиска'
+                // onClick={handleSearchBar}
+              />
+            </button>
+            {/* </Link> */}
+
+            <form
+              className='payments-page__pickuppoint-search-form'
+              // ref={controlFocus}
+              onSubmit={handleSumbit}
+            >
+              <label></label>
+              <input
+                className='payments-page__pickuppoint-search-input'
+                placeholder='Найти адрес'
+                autoComplete='off'
+                onChange={handleChange}
+                // value={input}
+              />
+            </form>
+          </div>
+
           <div className='payments-page__pickuppoint-list'>
-            {pickUpPoints.map((item, index) => (
+            {currentArray.map((item, index) => (
               <div
                 key={item.address}
                 // onClick={(index) => choosePickUpPoint}
@@ -130,14 +204,13 @@ const PopupChoosePickUpPoint: React.FC<PopupChoosePickUpPointProps> = ({
           onClick={handleClose}
         ></button>
         <div className='payments-page__map-container'>
-        <iframe
-          className='payments-page__map'
-          src={mapUrl}
-          title='2'
-        ></iframe>
+          <iframe
+            className='payments-page__map'
+            src={mapUrl}
+            title='2'
+          ></iframe>
+        </div>
       </div>
-      </div>
-
     </section>
   );
 };
