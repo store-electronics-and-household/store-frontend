@@ -145,7 +145,7 @@ const SignIn: React.FC<SignInProps> = ({
                 <span className='signin__error-text'>
                   {formik.errors.loginAuth}
                 </span>
-              )}
+            )}
             <div className='signin__input-wrapper'>
               <label className='signin__label'>Пароль</label>
               <input
@@ -186,7 +186,7 @@ const SignIn: React.FC<SignInProps> = ({
                 <span className='signin__error-text'>
                   {formik.errors.passwordAuth}
                 </span>
-              )}
+            )}
             {isAuthError && (
               <span className='signin__error-text'>
                 {'Не правильный логин или пароль'}

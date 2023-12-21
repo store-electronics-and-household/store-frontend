@@ -148,18 +148,21 @@ const ProductPage: React.FC<ProductPageProps> = ({
               <span className={currentPriceClassname}>
                 {formatSumm(product.price)}
               </span>
-              {product.oldPrice !== 0 ? (
+              {product.oldPrice !== 0
+                ? (
                 <span className='product-page__old-price'>
                   {product.oldPrice !== 0 &&
                   typeof product.oldPrice === 'number'
                     ? formatSumm(product.oldPrice)
                     : ''}
                 </span>
-              ) : null}
+                  )
+                : null}
             </div>
             <div className='product-page__buttons'>
               <div>
-                {!isQuantityBtn ? (
+                {!isQuantityBtn
+                  ? (
                   <button
                     onClick={handleAddToCart}
                     className='product-page__button-basket'
@@ -171,7 +174,8 @@ const ProductPage: React.FC<ProductPageProps> = ({
                       alt='корзина покупок, магазин'
                     />
                   </button>
-                ) : (
+                    )
+                  : (
                   <div className='product__quantity-button'>
                     <button
                       className={quantityBtnSymbolClassname}
@@ -195,7 +199,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
                       />
                     </button>
                   </div>
-                )}
+                    )}
               </div>
               <CardLikeBtn isLikedCard={product.isLiked} />
             </div>
@@ -231,7 +235,8 @@ const ProductPage: React.FC<ProductPageProps> = ({
               Характеристики
             </button>
           </div>
-          {isActive ? (
+          {isActive
+            ? (
             <div className='product-page__about'>
               {product.description.map((desc, id) => {
                 return (
@@ -241,7 +246,8 @@ const ProductPage: React.FC<ProductPageProps> = ({
                 );
               })}
             </div>
-          ) : (
+              )
+            : (
             <ProductCharacteristicsList
               productSpecifyName={productSpecifyName}
               productSpecifyValue={attributes}
@@ -251,7 +257,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
               modifyListClass={'characteristics-list_full'}
               modifyItemClass={'characteristics-list__item_full'}
             />
-          )}
+              )}
         </div>
         <PopupProductPhoto
           images={product.images}

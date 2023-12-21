@@ -189,7 +189,7 @@ const PaymentsPageCourier: React.FC<PaymentsPageCourierProps> = ({
                   <span className='payments-page__input-error'>
                     Поле адрес обязательно к заполнению
                   </span>
-                )}
+              )}
             </label>
             <div className='payments-page__address-box'>
               <label className='payments-page__input-label payments-page__input-label_type_address'>
