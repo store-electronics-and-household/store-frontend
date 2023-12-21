@@ -15,7 +15,7 @@ const Main: React.FC<MainProps> = ({ passSearchResults, handleSearch }) => {
     []
   );
   const [mainPageDicountBanners, setMainPageDicountBanners] = React.useState<
-    MyTypeBanners[]
+  MyTypeBanners[]
   >([]);
   React.useEffect(() => {
     getBanners()

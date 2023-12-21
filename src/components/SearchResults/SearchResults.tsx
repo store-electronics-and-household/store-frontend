@@ -24,13 +24,15 @@ const SearchResults: React.FC<SearchResultsProps> = ({
           <h2 className='results__title'>
             Результаты поиска по запросу {searchRequest}
           </h2>
-          {searchResults.length > 0 ? (
+          {searchResults.length > 0
+            ? (
             <CatalogShared
               itemArray={searchResults}
               itemsToShow={20}
               is4Items={true}
             />
-          ) : (
+              )
+            : (
             <div className='results__no-results-container'>
               <h3 className='results__no-results-title'>
                 По вашему запросу ничего не нашлось
@@ -42,7 +44,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
                 <button className='results__button'>Перейти в каталог</button>
               </Link>
             </div>
-          )}
+              )}
         </div>
       </section>
     </>

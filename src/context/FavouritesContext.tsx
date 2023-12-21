@@ -36,12 +36,12 @@ const FavoritesContext = createContext<FavouritesContextType>({
   favouritesList: [],
 });
 
-export function useFavouritesContext(): FavouritesContextType {
+export function useFavouritesContext (): FavouritesContextType {
   const context = useContext(FavoritesContext);
   return context;
 }
 
-export function FavoritesProvider({
+export function FavoritesProvider ({
   children,
 }: FavouritesProviderProps): JSX.Element {
   const [favouritesList, setFavouritesList] = useState<ProductDataType[]>([]);

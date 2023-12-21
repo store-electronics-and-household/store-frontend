@@ -160,7 +160,7 @@ const PaymentsPageCourier: React.FC<PaymentsPageCourierProps> = ({
                   <span className='payments-page__input-error'>
                     {(errorsForm2.address as { message: string }).message}
                   </span>
-                )}
+              )}
             </label>
             <div className='payments-page__address-box'>
               <label className='payments-page__input-label payments-page__input-label_type_address'>

@@ -3,10 +3,10 @@ import React, { type FC, memo, useContext, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PopupTemplate from '../PopupTemplate/PopupTemplate';
-// import './Signup.css';
+// import './signup.css';
 import OPENEDEYE from '../../image/icons/open-eye.svg';
 import CLOSEDEYE from '../../image/icons/eye-closed.svg';
-import { register } from '../../utils/api/user-api';
+import { authorize, register } from '../../utils/api/user-api';
 import { useNavigate } from 'react-router-dom';
 import { type IContext, UserContext } from '../../context/UserContext';
 
@@ -66,10 +66,17 @@ const SignUp: FC<SignUpProps> = ({
   const handleRegister = (email: string, password: string): void => {
     register(email, password)
       .then((res) => {
-        setGeneralContext({ ...context, isLoggedIn: true, email: res.email });
-        onOpenSignUp();
-        formik.resetForm();
-        navigate('/', { replace: true });
+        authorize(email, password)
+          .then((res) => {
+            localStorage.setItem('token', res.token);
+            setGeneralContext({ ...context, isLoggedIn: true, email: res.email });
+            onOpenSignUp();
+            formik.resetForm();
+            navigate('/', { replace: true });
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       })
       .catch((error) => {
         formik.resetForm();
@@ -135,7 +142,7 @@ const SignUp: FC<SignUpProps> = ({
                 <span className='signup__error-text'>
                   {formik.errors.loginReg}
                 </span>
-              )}
+            )}
             <div className='signup__input-wrapper'>
               <label className='signup__label'>Пароль</label>
               <input
@@ -176,7 +183,7 @@ const SignUp: FC<SignUpProps> = ({
                 <span className='signup__error-text'>
                   {formik.errors.passwordReg}
                 </span>
-              )}
+            )}
             <div className='signup__input-wrapper'>
               <label className='signup__label'>Повторите пароль</label>
               <input
@@ -217,7 +224,7 @@ const SignUp: FC<SignUpProps> = ({
                 <span className='signup__error-text'>
                   {formik.errors.ConfirmPass}
                 </span>
-              )}
+            )}
           </div>
           {isAuthError && (
             <span className='signup__error-text'>

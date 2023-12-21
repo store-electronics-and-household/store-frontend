@@ -6,7 +6,7 @@ import { ReactComponent as PasswordIcon } from '../../image/icons/password-key.s
 import { ReactComponent as DeleteIcon } from '../../image/icons/delete-icon.svg';
 import { ReactComponent as ExitIcon } from '../../image/icons/exit-icon.svg';
 import { deleteUser } from '../../utils/api/user-api';
-import type { IContext } from '../../context/UserContext';
+import { type IContext, initialUserContext } from '../../context/UserContext';
 
 const ProfileLayout = ({
   children,
@@ -22,7 +22,7 @@ const ProfileLayout = ({
 
   //
 
-  function onDeleteUser(): void {
+  function onDeleteUser (): void {
     deleteUser(token)
       .then((res) => {
         console.log(res);
@@ -32,15 +32,9 @@ const ProfileLayout = ({
       });
   }
 
-  function unAthorize(): void {
+  function unAthorize (): void {
     localStorage.clear();
-    setGeneralContext({
-      isLoggedIn: false,
-      userLastName: '',
-      userName: '',
-      userPhone: '',
-      email: '',
-    });
+    setGeneralContext(initialUserContext);
     navigate('/');
   }
 

@@ -15,7 +15,6 @@ const Profile = ({
 }): JSX.Element => {
   const context = useContext(UserContext);
   const { email, userName, userPhone, userLastName }: IContext = context;
-  console.log(context);
   const token = localStorage.getItem('token') ?? '';
 
   const formik = useFormik({
@@ -43,7 +42,7 @@ const Profile = ({
     }),
     onSubmit: ({ firstName, phone, lastName }) => {
       const data: FormProps = { firstName, phone, lastName };
-      const res = phone.match(/[0-9]/g);
+      const res = phone?.match(/[0-9]/g);
       data.phone = res?.join('');
 
       patchUser(data, token)
@@ -56,7 +55,6 @@ const Profile = ({
             userPhone: phoneWPlus,
             userLastName: res.lastName,
           });
-          console.log(res);
         })
         .catch((e) => {
           console.log(e);
@@ -84,7 +82,6 @@ const Profile = ({
           <fieldset className='profile__account-fieldset'>
             <label className='profile__account-label'>Номер телефона</label>
             <InputMask
-              value={formik.values.phone}
               minLength={16}
               alwaysShowMask={true}
               name='phone'
@@ -103,7 +100,6 @@ const Profile = ({
           <fieldset className='profile__account-fieldset'>
             <label className='profile__account-label'>Имя</label>
             <input
-              value={formik.values.firstName}
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               name='firstName'
@@ -117,12 +113,11 @@ const Profile = ({
                 <span className='profile__account-error'>
                   {formik.errors.firstName}
                 </span>
-              )}
+            )}
           </fieldset>
           <fieldset className='profile__account-fieldset'>
             <label className='profile__account-label'>Фамилия</label>
             <input
-              value={formik.values.lastName}
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               name='lastName'
@@ -136,7 +131,7 @@ const Profile = ({
                 <span className='profile__account-error'>
                   {formik.errors.lastName}
                 </span>
-              )}
+            )}
           </fieldset>
           <button type='submit' className='profile__account-button'>
             Сохранить
