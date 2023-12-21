@@ -429,7 +429,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                     key={item.id}
                     quantity={item.quantity}
                     // imgUrl={item.imgUrl}
-                    imgUrl={item.modelsImages?.[0]?.imageLink}
+                    imgUrl={item.images?.[0]?.imageLink}
                   />
                 ))}
               </div>

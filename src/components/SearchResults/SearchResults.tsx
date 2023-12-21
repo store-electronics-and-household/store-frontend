@@ -14,7 +14,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
   searchRequest,
   searchResults,
 }) => {
-  // console.log(searchResults);
+  console.log(searchResults);
   // console.log(products);
 
   return (
