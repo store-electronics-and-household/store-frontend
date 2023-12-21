@@ -11,14 +11,14 @@ const PopupTemplate: React.FC<PopupProps> = ({
   children,
 }) => {
   return (
-      <ReactModal
-        isOpen={isOpen}
-        onRequestClose={OnClose}
-        className={popupClass}
-        overlayClassName={popupClassOverlay}
-      >
-        {children}
-      </ReactModal>
+    <ReactModal
+      isOpen={isOpen}
+      onRequestClose={OnClose}
+      className={popupClass}
+      overlayClassName={popupClassOverlay}
+    >
+      {children}
+    </ReactModal>
   );
 };
 

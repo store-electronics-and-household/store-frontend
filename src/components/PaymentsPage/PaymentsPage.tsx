@@ -308,14 +308,14 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                         <span className='payments-page__input-error'>
                           Поле имя обязательно к заполнению?
                         </span>
-                    )
+                      )
                     : errorsForm1.name != null &&
                       typeof errorsForm1.name === 'object' &&
                       'message' in errorsForm1.name && (
                         <span className='payments-page__input-error'>
                           {(errorsForm1.name as { message: string }).message}
                         </span>
-                    )}
+                      )}
                 </label>
               </div>
             </form>

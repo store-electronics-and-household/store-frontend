@@ -793,6 +793,19 @@ body {
   text-decoration: none;
 }
 
+.payments-page__form-title_type_summary {
+  padding-bottom: 12px;
+}
+
+.payments-page__subtitle {
+  color: #4350D6;
+  line-height: 112.5%;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  padding-left: 40px;
+}
+
 .payments-page__form-title_type_address {
   line-height: 35px;
   padding-top: 32px;

@@ -1,6 +1,16 @@
-import React, { createContext, type ReactNode, useContext, useState, useEffect } from 'react';
+import React, {
+  createContext,
+  type ReactNode,
+  useContext,
+  useState,
+  useEffect,
+} from 'react';
 import type { ProductDataType } from '../utils/types';
-import { addCardToFavoritesList, getFavouritesList, removeCardFromFavoritesList } from '../utils/api/product-api';
+import {
+  addCardToFavoritesList,
+  getFavouritesList,
+  removeCardFromFavoritesList,
+} from '../utils/api/product-api';
 
 interface FavouritesProviderProps {
   children: ReactNode;
@@ -26,16 +36,19 @@ const FavoritesContext = createContext<FavouritesContextType>({
   favouritesList: [],
 });
 
-export function useFavouritesContext (): FavouritesContextType {
+export function useFavouritesContext(): FavouritesContextType {
   const context = useContext(FavoritesContext);
   return context;
 }
 
-export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.Element {
+export function FavoritesProvider({
+  children,
+}: FavouritesProviderProps): JSX.Element {
   const [favouritesList, setFavouritesList] = useState<ProductDataType[]>([]);
 
   // favourites: получение, добавление, удаление.
-  useEffect(() => { // обновление массива избранных в локалСторадж при лайке/дизлайке
+  useEffect(() => {
+    // обновление массива избранных в локалСторадж при лайке/дизлайке
     updateFavouritesList();
   }, [favouritesList]);
 
@@ -78,7 +91,9 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
   };
 
   const isLiked = (productId: number): boolean => {
-    return favouritesList.some((favoriteProduct) => favoriteProduct.id === productId);
+    return favouritesList.some(
+      (favoriteProduct) => favoriteProduct.id === productId
+    );
   };
 
   // const getProductToDeleteId = (productId: number): number => {
@@ -97,7 +112,7 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
     } else {
       // handleDeleteProductFromFavourites(getProductToDeleteId(productId));
       handleDeleteProductFromFavourites(productId);
-    };
+    }
   };
 
   return (

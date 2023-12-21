@@ -9,20 +9,19 @@ const Delivery: React.FC = () => {
         <div className='delivery__container'>
           <h2 className='delivery__header'>Доставка</h2>
           <div className='delivery__content'>
-
-          {mockedDeliveryData.map((content, key) => {
-            return (
-              <div key={key} className='delivery__info'>
-                <DeliveryContent
-                  title={content.title}
-                  icon={content.icon}
-                  alt={content.alt}
-                  description={content.description}
-                  highlight={content.highlight}
-                />
-              </div>
-            );
-          })}
+            {mockedDeliveryData.map((content, key) => {
+              return (
+                <div key={key} className='delivery__info'>
+                  <DeliveryContent
+                    title={content.title}
+                    icon={content.icon}
+                    alt={content.alt}
+                    description={content.description}
+                    highlight={content.highlight}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

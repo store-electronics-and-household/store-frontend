@@ -66,7 +66,7 @@ const SignUp: FC<SignUpProps> = ({
   const handleRegister = (email: string, password: string): void => {
     register(email, password)
       .then((res) => {
-        setGeneralContext({ ...context, isLoggedIn: true }); ;
+        setGeneralContext({ ...context, isLoggedIn: true, email: res.email });
         onOpenSignUp();
         formik.resetForm();
         navigate('/', { replace: true });
@@ -117,8 +117,8 @@ const SignUp: FC<SignUpProps> = ({
                   formik.errors.loginReg
                     ? 'signup__input_invalid'
                     : formik.touched.loginReg && formik.submitCount > 0
-                      ? 'signup__input_valid'
-                      : ''
+                    ? 'signup__input_valid'
+                    : ''
                 }`}
                 type='text'
                 name='loginReg'
@@ -135,7 +135,7 @@ const SignUp: FC<SignUpProps> = ({
                 <span className='signup__error-text'>
                   {formik.errors.loginReg}
                 </span>
-            )}
+              )}
             <div className='signup__input-wrapper'>
               <label className='signup__label'>Пароль</label>
               <input
@@ -145,8 +145,8 @@ const SignUp: FC<SignUpProps> = ({
                   formik.errors.passwordReg
                     ? 'signup__input_invalid'
                     : formik.touched.passwordReg && formik.submitCount > 0
-                      ? 'signup__input_valid'
-                      : ''
+                    ? 'signup__input_valid'
+                    : ''
                 }`}
                 type={showRegPassword ? 'text' : 'password'}
                 minLength={6}
@@ -176,7 +176,7 @@ const SignUp: FC<SignUpProps> = ({
                 <span className='signup__error-text'>
                   {formik.errors.passwordReg}
                 </span>
-            )}
+              )}
             <div className='signup__input-wrapper'>
               <label className='signup__label'>Повторите пароль</label>
               <input
@@ -186,8 +186,8 @@ const SignUp: FC<SignUpProps> = ({
                   formik.errors.ConfirmPass
                     ? 'signup__input_invalid'
                     : formik.touched.ConfirmPass && formik.submitCount > 0
-                      ? 'signup__input_valid'
-                      : ''
+                    ? 'signup__input_valid'
+                    : ''
                 }`}
                 type={showConfPassword ? 'text' : 'password'}
                 minLength={6}
@@ -217,12 +217,13 @@ const SignUp: FC<SignUpProps> = ({
                 <span className='signup__error-text'>
                   {formik.errors.ConfirmPass}
                 </span>
-            )}
+              )}
           </div>
-          {isAuthError && <span className='signup__error-text'>
-                {'Что-то пошло не так, попробуйте еще раз'}
-              </span>
-          }
+          {isAuthError && (
+            <span className='signup__error-text'>
+              {'Что-то пошло не так, попробуйте еще раз'}
+            </span>
+          )}
           <div className='signup__buttons'>
             <button
               type='submit'

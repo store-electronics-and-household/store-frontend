@@ -21,9 +21,7 @@ const PaymentsPageButton: React.FC<PaymentsPageButtonProps> = ({
       onClick={onClick}
       style={{ marginTop, width, marginBottom }}
     >
-      <span className='payments-page__pickup-point-button-title'>
-        {title}
-      </span>
+      <span className='payments-page__pickup-point-button-title'>{title}</span>
     </button>
   );
 };

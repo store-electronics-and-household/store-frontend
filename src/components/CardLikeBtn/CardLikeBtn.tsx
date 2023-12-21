@@ -12,10 +12,9 @@ const CardLikeBtn: React.FC<ICardLikeBtn> = ({ isLikedCard }: ICardLikeBtn) => {
     setIsLiked(!isLiked);
   };
 
-  const cardLikeButtonClassName = cn(
-    'card-like__button',
-    { 'card-like__button_liked': isLiked }
-  );
+  const cardLikeButtonClassName = cn('card-like__button', {
+    'card-like__button_liked': isLiked,
+  });
 
   return (
     <div className='card-like'>

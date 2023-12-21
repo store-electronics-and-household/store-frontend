@@ -54,7 +54,6 @@ const PaymentsPageCourier: React.FC<PaymentsPageCourierProps> = ({
   const handleMouseUp = (): void => {
     isMouseDownRef.current = false;
   };
-
   const {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     register: registerForm2,
@@ -110,7 +109,7 @@ const PaymentsPageCourier: React.FC<PaymentsPageCourierProps> = ({
     const formattedDate = `${nextDate.getDate()}.${nextDate.getMonth() + 1}`;
     datesArray.push({
       date: formattedDate,
-      dayOfWeek: dayOfWeek,
+      dayOfWeek,
     });
   }
 
@@ -317,52 +316,3 @@ const PaymentsPageCourier: React.FC<PaymentsPageCourierProps> = ({
 };
 
 export default PaymentsPageCourier;
-
-/*
-  const validPhone = (num: string): void => {
-    // console.log(num);
-    // setIsPhoneValidated(true);
-    if (num.charAt(num.length - 1) === '_') {
-      // console.log('введите корректный номер телефона');
-      if (isPhoneValid) {
-        setIsPhoneValid(false);
-      }
-      setValidationMessage('Введите корректный номер телефона');
-    } else if (num.length > 1 && num.charAt(num.length - 1) !== '_') {
-      // setClientPhone(num);
-      setIsPhoneValid(true);
-      console.log(`сохранили в стейт номер телефона ${num}`);
-      passPhone(num);
-    }
-  };
-
-   <form>
-      <input
-        {...registerWithMask('phone', '+7 (999) 999-99-99', {
-          required: {
-            value: true,
-            message: 'Поле телефон обязательно к заполнению',
-          },
-          pattern: {
-            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message: 'Некорректный номер телефона',
-          },
-        })}
-        type='text'
-        name='phone'
-        placeholder='+7 (_ _ _) _ _ _-_ _-_ _'
-        required
-        // className='payments-page__phone-input'
-        className='payments-page__client-data-input'
-        // onChange={onSubmit}
-        onChange={(e) => {
-          // const { value } = e.target;
-          validPhone(e.target.value);
-          // console.log(e.target.value);
-        }}
-      />
-      {isAddressValidated && !isValid && (
-        <span className='payments-page__input-error'>{validationMessage}</span>
-      )}
-    </form>
-*/
