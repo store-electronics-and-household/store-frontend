@@ -573,37 +573,52 @@ export const contactsData = {
 
 export const pickUpPoints = [
 {
-  address: 'адрес 1',
-  metro: 'метро 1',
+  address: 'Садовая улица, 32/1',
+  metro: 'м. Сенная',
   deliverypice: 'бесплатно'
 },
 {
-  address: 'адрес 2',
-  metro: 'метро 2',
+  address: 'Кирочная улица, 10',
+  metro: 'м. Чернышевская',
   deliverypice: 'бесплатно'
 },
 {
-  address: 'адрес 3',
-  metro: 'метро 3',
-  deliverypice: 'бесплатно'
-},
-
-{
-  address: 'адрес 4',
-  metro: 'метро 4',
-  deliverypice: 'бесплатно'
-},
-{
-  address: 'адрес 5',
-  metro: 'метро 5',
+  address: 'Обводного канала, 199-201',
+  metro: 'м. Балтийская',
   deliverypice: 'бесплатно'
 },
 
 {
-  address: 'адрес 6',
-  metro: 'метро 6',
+  address: 'Невский проспект, 10',
+  metro: 'м. Адмиралтейская',
   deliverypice: 'бесплатно'
-}
+},
+{
+  address: 'Набережная Фонтанки, 130',
+  metro: 'м. Техноложка',
+  deliverypice: 'бесплатно'
+},
+
+{
+  address: 'Беринга, 1',
+  metro: 'м. Приморская',
+  deliverypice: 'бесплатно'
+},
+{
+  address: 'Лесной проспект, 13',
+  metro: 'м. Выборгская',
+  deliverypice: 'бесплатно'
+},
+{
+  address: 'Марата, 2',
+  metro: 'м. Маяковская',
+  deliverypice: 'бесплатно'
+},
+{
+  address: 'Большой проспект ПС, 10',
+  metro: 'м. Спортивная',
+  deliverypice: 'бесплатно'
+},
 ];
 
 export const productsForPay = [
@@ -664,3 +679,5 @@ export const productsForPay = [
     percent: 15,
   }
 ];
+
+export const mapUrl = 'https://yandex.ru/map-widget/v1/?scroll=false&um=constructor%3A4d7dc517a7705d82f9f3997088086ea9ac858b0a0b26eb729b89805f01497a84&amp;source=constructor "width="552" height="700" frameborder="0"';
