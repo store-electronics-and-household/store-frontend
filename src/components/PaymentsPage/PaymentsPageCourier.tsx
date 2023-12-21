@@ -1,81 +1,59 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useEffect, useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import PaymentsPageButton from './PaymentsPageButton';
 
 interface PaymentsPageCourierProps {
-  isAddressValidated?: boolean;
-  passIsAddressValid?: (isPhoneValid: boolean) => void;
-  passDeliveryData?: (address: string, date: string) => void;
+  isCourierDataValidated: boolean;
+  passIsAddressValid: (isAddressValid: boolean) => void;
+  passDeliveryData: (clientAddress?: string, clientDate?: string, clientPhone?: string, clientComment?: string) => void;
+  clientPhone: string;
 }
 
 const PaymentsPageCourier: React.FC<PaymentsPageCourierProps> = ({
-  isAddressValidated,
+  isCourierDataValidated,
   passIsAddressValid,
   passDeliveryData,
+  clientPhone
 }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isAddressValid, setIsAddressValid] = useState<boolean>(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [validationMessage, setValidationMessage] = useState<string>(
-    'Поле адрес не может быть пустым'
-  );
 
-  // const containerRef = useRef<HTMLFormElement>(null);
-  // const [isMouseDown, setIsMouseDown] = useState(false);
-  // const [scrollLeft, setScrollLeft] = useState(0);
-  // const [startX, setStartX] = useState(0);
-
-  // const handleMouseDown = (e: any): void => {
-  //   const container = containerRef.current;
-  //   if (!container) {
-  //     // return;
-  //   } else {
-  //     setIsMouseDown(true);
-  //     setStartX(e.pageX - container.offsetLeft);
-  //     setScrollLeft(container.scrollLeft);
-  //   }
-  // };
-
-  // const handleMouseMove = (e: React.MouseEvent<HTMLFormElement>): void => {
-  //   if (!isMouseDown || !containerRef.current) return;
-  //   const container = containerRef.current;
-  //   const x = e.pageX - container.offsetLeft;
-  //   const walk = (x - startX) * 2; // You can adjust the sensitivity here
-  //   container.scrollLeft = scrollLeft - walk;
-  // };
-
-  // const handleMouseUp = (): void => {
-  //   setIsMouseDown(false);
-  // };
-
+  const [date, setDate] = useState<string>('');
   const containerRef = useRef<HTMLFormElement | null>(null);
-const isMouseDownRef = useRef(false);
-const scrollLeftRef = useRef(0);
-const startXRef = useRef(0);
+  const isMouseDownRef = useRef(false);
+  const scrollLeftRef = useRef(0);
+  const startXRef = useRef(0);
 
-const handleMouseDown = (e: React.MouseEvent<HTMLFormElement>): void => {
-  const container = containerRef.current;
-  if (container === null) return;
-
-  // Проверка, что containerRef.current не является null
-  // if (container === null) return;
+  const handleMouseDown = (e: React.MouseEvent<HTMLFormElement>): void => {
+    const container = containerRef.current;
+    if (container === null) return;
     isMouseDownRef.current = true;
     startXRef.current = e.pageX - container.offsetLeft;
     scrollLeftRef.current = container.scrollLeft;
-};
+  };
 
-const handleMouseMove = (e: React.MouseEvent<HTMLFormElement>): void => {
-  const container = containerRef.current;
-  if (container === null) return;
+  // const handleMouseMove = (e: React.MouseEvent<HTMLFormElement>): void => {
+  //   const container = containerRef.current;
+  //   if (container === null) return;
+  //   const x = e.pageX - container.offsetLeft;
+  //   const walk = (x - startXRef.current) * 2; // You can adjust the sensitivity here
+  //   container.scrollLeft = scrollLeftRef.current - walk;
+  // };
 
-  const x = e.pageX - container.offsetLeft;
-  const walk = (x - startXRef.current) * 2; // You can adjust the sensitivity here
-  container.scrollLeft = scrollLeftRef.current - walk;
-};
+  const handleMouseMove = (e: React.MouseEvent<HTMLFormElement>): void => {
+    if (!isMouseDownRef.current) return; // Добавленная проверка
+    const container = containerRef.current;
+    if (container === null) return;
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startXRef.current) * 2; // Вы можете настроить чувствительность здесь
+    container.scrollLeft = scrollLeftRef.current - walk;
+  };
 
-const handleMouseUp = (): void => {
-  isMouseDownRef.current = false;
-};
+  const handleMouseUp = (): void => {
+    isMouseDownRef.current = false;
+  };
 
   const {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -83,7 +61,31 @@ const handleMouseUp = (): void => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     getValues: getValuesForm2,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    formState: { errors: errorsForm2, isValid: isValidForm2 },
+    formState: { isValid: isValidForm2 },
+  } = useForm({
+    // mode: 'all', // "onChange"
+    mode: 'onChange',
+  });
+
+  useEffect(() => {
+    if (date !== '' && isValidForm2) {
+      setIsAddressValid(true);
+    } else {
+      setIsAddressValid(false);
+    }
+  }, [date, isValidForm2]);
+
+  useEffect(() => {
+    passIsAddressValid(isAddressValid);
+  }, [isAddressValid]);
+
+  const {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    register: registerForm3,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    getValues: getValuesForm3,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   } = useForm({
     // mode: 'all', // "onChange"
     mode: 'onChange',
@@ -104,14 +106,8 @@ const handleMouseUp = (): void => {
   for (let i = 0; i < 7; i++) {
     const nextDate = new Date(today);
     nextDate.setDate(today.getDate() + i);
-
-    // Получение дня недели на русском
     const dayOfWeek = weekdaysRussian[nextDate.getDay()];
-
-    // Форматирование даты в виде "число.месяц"
     const formattedDate = `${nextDate.getDate()}.${nextDate.getMonth() + 1}`;
-
-    // Добавление объекта в массив
     datesArray.push({
       date: formattedDate,
       dayOfWeek: dayOfWeek,
@@ -119,7 +115,42 @@ const handleMouseUp = (): void => {
   }
 
   const handleChooseDate = (item: any): void => {
-    console.log(item.date);
+    setDate(item.date);
+    // console.log(item.date);
+  };
+
+  // const convertObjectToString = (obj: any): string => {
+  //   const nonEmptyFields = Object.entries(obj)
+  //     .filter(([key, value]) => value !== '')
+  //     .map(([key, value]) => `${key}:${value}`);
+  //   return nonEmptyFields.join(' ');
+  // };
+
+  const convertObjectToString = (obj: Record<string, string>): string => {
+    const nonEmptyFields = Object.entries(obj)
+      .filter(([key, value]) => value !== '')
+      .map(([key, value]) => `${key}:${value}`);
+    return nonEmptyFields.join(' ');
+  };
+
+  const handlePayout = (): void => {
+    const address = getValuesForm2();
+    const addressForPass = convertObjectToString(address);
+    const clientComment = getValuesForm3();
+    // console.log(clientComment);
+    // const addressIsValid = (date !== '' && isValidForm2);
+
+    // console.log(date);
+    // console.log(addressForPass);
+    // console.log(clientPhone);
+    // passDeliveryData(addressForPass, date, clientPhone)
+    // passIsAddressValid(addressIsValid);
+    if (addressForPass !== undefined && date !== undefined && clientPhone !== undefined && clientComment !== undefined) {
+    //   if (addressForPass !== undefined && date !== undefined && clientComment !== undefined) {
+      passDeliveryData(addressForPass, date, clientPhone, clientComment.comment);
+    }
+    // clientAddress: string, clientDate: string, clientPhone: string
+    // console.log('payment button is pressed');
   };
 
   // useEffect(() => {
@@ -154,13 +185,12 @@ const handleMouseUp = (): void => {
                 name='address'
                 required
               />
-              {errorsForm2.address != null &&
-                typeof errorsForm2.address === 'object' &&
-                'message' in errorsForm2.address && (
+
+              { isCourierDataValidated && !isValidForm2 && (
                   <span className='payments-page__input-error'>
-                    {(errorsForm2.address as { message: string }).message}
+                    Поле адрес обязательно к заполнению
                   </span>
-              )}
+                )}
             </label>
             <div className='payments-page__address-box'>
               <label className='payments-page__input-label payments-page__input-label_type_address'>
@@ -205,48 +235,83 @@ const handleMouseUp = (): void => {
       </form>
       <div className='payments-page__line payments-page__line_type_courier'></div>
       <h3 className='payments-page__address-title'>Дата доставки</h3>
-      <form className='payments-page__date-container'
+      <form
+        className='payments-page__date-container'
         ref={containerRef}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}>
-
+        onMouseLeave={handleMouseUp}
+      >
         {datesArray.map((item) => (
-            <label
-              className='payments-page__date-label'
+          <label
+            className='payments-page__date-label'
+            key={item.date}
+            onClick={() => {
+              handleChooseDate(item);
+            }}
+          >
+            <input
               key={item.date}
-              onClick={() => {
-                handleChooseDate(item);
-              }}
-            >
-              <input
-                key={item.date}
-                type='radio'
-                name='deliveryDate'
-                className='payments-page__date_type_invisible'
-                // onClick={() => handleChooseDate(item)}
-              />
-              <span className='payments-page__date_type_visible'>
-                <div className='payments-page__delivery-date-container'>
-                  <p className='payments-page__date_type_visible-text'>
-                    {item.date}
-                  </p>
-                  <p className='payments-page__date_type_visible-text'>
-                    {item.dayOfWeek}
-                  </p>
-                </div>
-              </span>
-            </label>
+              type='radio'
+              name='deliveryDate'
+              className='payments-page__date_type_invisible'
+              // onClick={() => handleChooseDate(item)}
+            />
+            <span className='payments-page__date_type_visible'>
+              <div className='payments-page__delivery-date-container'>
+                <p className='payments-page__date_type_visible-text'>
+                  {item.date}
+                </p>
+                <p className='payments-page__date_type_visible-text'>
+                  {item.dayOfWeek}
+                </p>
+              </div>
+            </span>
+          </label>
         ))}
       </form>
-      {
-        <span className='payments-page__input-error'>
+      {isCourierDataValidated && date === '' && (<span className='payments-page__input-error'>
           Выберите дату доставки
-
-        </span>
-      }
+      </span>)}
       <div className='payments-page__line payments-page__line_type_courier-scroll'></div>
+      <form
+        id='clientCommentForm'
+        name='clientCommentForm'
+        action=''
+        className='payments-page__client-address'
+      >
+        <div className='payments-page__address-container'>
+          <h3 className='payments-page__address-title'>Комментарий</h3>
+          <div className='payments-page__address-input-container'>
+            <label className='payments-page__input-label payments-page__input-label_type_comment'>
+              <textarea
+                {...registerForm3('comment', {
+                })}
+                // type='text'
+                className='payments-page__client-data-input payments-page__client-data-input_type_comment'
+              />
+              {/* <textarea
+                value={yourTextValue}
+                onChange={(e) => setYourTextValue(e.target.value)}
+                style={{ whiteSpace: 'pre-line' }}
+              /> */}
+            </label>
+          </div>
+        </div>
+      </form>
+      <PaymentsPageButton
+        marginTop='0'
+        title='Перейти к оплате'
+        onClick={handlePayout}
+        width='312px'
+        marginBottom='16px'
+      />
+      <div className='payments-page__link-container'>
+      <Link to={'/delivery'} className='payments-page__subtitle' target='_blank'>
+        Способы и тарифы доставки
+      </Link>
+      </div>
     </>
   );
 };

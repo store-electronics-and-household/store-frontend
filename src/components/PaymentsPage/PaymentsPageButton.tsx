@@ -13,7 +13,7 @@ const PaymentsPageButton: React.FC<PaymentsPageButtonProps> = ({
   title,
   onClick,
   width,
-  marginBottom
+  marginBottom,
 }) => {
   return (
     <button

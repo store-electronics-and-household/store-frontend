@@ -24,13 +24,13 @@ const PhoneForm: React.FC<PhoneFormProps> = ({
   );
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const onSubmit = (): void => {
-    // const formValues = getValues();
-    // e.preventDefault();
-    // console.log(formValues);
-    // console.log(isValidPhone);
-    // console.log(errorsPhone);
-  };
+  // const onSubmit = (): void => {
+  //   // const formValues = getValues();
+  //   // e.preventDefault();
+  //   // console.log(formValues);
+  //   // console.log(isValidPhone);
+  //   // console.log(errorsPhone);
+  // };
 
   useEffect(() => {
     passIsPhoneValid(isPhoneValid);
@@ -48,10 +48,12 @@ const PhoneForm: React.FC<PhoneFormProps> = ({
     } else if (num.length > 1 && num.charAt(num.length - 1) !== '_') {
       // setClientPhone(num);
       setIsPhoneValid(true);
-      console.log(`сохранили в стейт номер телефона ${num}`);
+      // console.log(`сохранили в стейт номер телефона ${num}`);
       passPhone(num);
     }
   };
+
+  // console.log(isPhoneValidated);
 
   return (
     <form>

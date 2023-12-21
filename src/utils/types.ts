@@ -98,3 +98,10 @@ export interface MediumCardProps {
   oldPrice: number;
   percent?: number;
 }
+
+export interface MeTypePickUpPoint {
+  address: string;
+  metro?: string;
+  deliverypice?: string;
+  comment?: string
+};
