@@ -1,12 +1,14 @@
-import React, { type ReactNode } from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import React, { useState, type ReactNode, useRef } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { ReactComponent as ProfileIcon } from '../../image/icons/profile-icon.svg';
 import { ReactComponent as OrdersIcon } from '../../image/icons/orders-icon.svg';
 import { ReactComponent as PasswordIcon } from '../../image/icons/password-key.svg';
 import { ReactComponent as DeleteIcon } from '../../image/icons/delete-icon.svg';
 import { ReactComponent as ExitIcon } from '../../image/icons/exit-icon.svg';
-import { deleteUser } from '../../utils/api/user-api';
-import { type IContext, initialUserContext } from '../../context/UserContext';
+import type { IContext } from '../../context/UserContext';
+import type { IPopupOptions } from '../ProfileLayoutPopup/ProfileLayoutPopup';
+import ProfileLayoutPopup from '../ProfileLayoutPopup/ProfileLayoutPopup';
+
 
 const ProfileLayout = ({
   children,
@@ -17,26 +19,43 @@ const ProfileLayout = ({
 }): JSX.Element => {
   const location = useLocation();
   const path = location.pathname;
-  const token = localStorage.getItem('token') ?? '';
-  const navigate = useNavigate();
+  const [isOpened, setIsOpened] = useState(false);
+  const closeFunction = (): void => {
+    setIsOpened(false);
+  };
 
-  //
+  const popupOptions = useRef<IPopupOptions>({
+    buttonText: '',
+    buttonClass: '',
+    title: '',
+    action: 'delete',
+    closeFunction,
+    setContextFunction: setGeneralContext,
+  });
 
-  function onDeleteUser (): void {
-    deleteUser(token)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }
+  const onDeleteUser = (): void => {
+    setIsOpened(true);
+    popupOptions.current = {
+      buttonClass: 'profile-popup__submit_delete',
+      buttonText: 'Удалить аккаунт',
+      title: 'Вы уверены, что хотите удалить аккаунт?',
+      action: 'delete',
+      closeFunction,
+      setContextFunction: setGeneralContext,
+    };
+  };
 
-  function unAthorize (): void {
-    localStorage.clear();
-    setGeneralContext(initialUserContext);
-    navigate('/');
-  }
+  const onUnathorize = (): void => {
+    setIsOpened(true);
+    popupOptions.current = {
+      buttonClass: 'profile-popup__submit_exit',
+      buttonText: 'Выйти из аккаунта',
+      title: 'Вы уверены, что хотите выйти?',
+      action: 'exit',
+      closeFunction,
+      setContextFunction: setGeneralContext,
+    };
+  };
 
   return (
     <section className='profile'>
@@ -74,13 +93,14 @@ const ProfileLayout = ({
             <button onClick={onDeleteUser} className='profile__sidemenu-link'>
               <DeleteIcon /> Удалить аккаунт
             </button>
-            <button onClick={unAthorize} className='profile__sidemenu-link'>
+            <button onClick={onUnathorize} className='profile__sidemenu-link'>
               <ExitIcon /> Выйти
             </button>
           </div>
         )}
       </div>
       {children}
+      {isOpened && <ProfileLayoutPopup options={popupOptions.current} />}
     </section>
   );
 };
