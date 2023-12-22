@@ -32,9 +32,9 @@ import ChangePassword from '../ChangePassword/ChangePassword';
 import Profile from '../Profile/Profile';
 import Orders from '../Orders/Orders';
 import { authUserByToken } from '../../utils/api/user-api';
+import { WarningPopupProvider } from '../../context/WarningPopupContext';
 
 const App: React.FC = () => {
-  const [isWarningPopupOpen, setWarningPopupOpen] = useState<boolean>(false);
   const [isSignInPopupOpen, setSignInPopupOpen] = useState<boolean>(false);
   const [isSignUpPopupOpen, setSignUpPopupOpen] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -50,9 +50,6 @@ const App: React.FC = () => {
     useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [goodsList, setGoodsList] = React.useState<MediumCardProps[]>();
-  const toggleWarningPopup = (): void => {
-    setWarningPopupOpen(!isWarningPopupOpen);
-  };
 
   useEffect(() => {
     const token = localStorage.getItem('token') ?? '';
@@ -120,114 +117,66 @@ const App: React.FC = () => {
     <div className="App">
       <CartProvider>
         <FavoritesProvider>
-          <ScrollToTop>
-            <UserContext.Provider value={generalContext}>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <>
-                    <Header
-                      toggleWarningPopup={toggleWarningPopup}
-                      onOpenAuth={toggleSignInPopup}
-                      handleSearch={handleSearch}
-                      passSearchResults={handleSearchCards}
-                    />
-                    <WarningPopup
-                      isOpen={isWarningPopupOpen}
-                      onOpenWarningPopup={toggleWarningPopup}
-                      onOpenAuth={toggleSignInPopup}
-                    />
-                    <SignIn
-                      onOpenSignIn={toggleSignInPopup}
-                      isOpenSignIn={isSignInPopupOpen}
-                      onOpenReg={toggleSignUpPopup}
-                      onOpenRecovery={PasswordRecoveryPopup}
-                      setGeneralContext={setGeneralContext}
-                    />
-                    <SignUp
-                      onOpenSignUp={toggleSignUpPopup}
-                      isOpenSignUp={isSignUpPopupOpen}
-                      setGeneralContext={setGeneralContext}
-                    />
-                    <PasswordRecovery
-                      isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
-                      onOpenRecoveryPopup={PasswordRecoveryPopup}
-                    />
-                    <Footer/>
-                  </>
-                }
-              >
+          <WarningPopupProvider>
+            <ScrollToTop>
+              <UserContext.Provider value={generalContext}>
+              <Routes>
                 <Route
-                  path="/main"
-                  element={
-                    <Main
-                      passSearchResults={handleSearchCards}
-                      handleSearch={handleSearch}
-                    />
-                  }
-                />
-                <Route
-                  path="/about-company"
+                  path="/"
                   element={
                     <>
-                      <Breadcrumbs crumbs={crumbs}/>
-                      <AboutCompany/>
-                    </>
-                  }
-                />
-                <Route
-                  path="/faq"
-                  element={
-                    <>
-                      <Breadcrumbs crumbs={crumbs}/>
-                      <Faq/>
-                    </>
-                  }
-                />
-                <Route
-                  path="/categories/:subcategory"
-                  element={
-                    <>
-                      <Breadcrumbs crumbs={crumbs}/>
-                      <Categories/>
+                      <Header
+                        onOpenAuth={toggleSignInPopup}
+                        handleSearch={handleSearch}
+                        passSearchResults={handleSearchCards}
+                      />
+                      <WarningPopup
+                        onOpenAuth={toggleSignInPopup}
+                      />
+                      <SignIn
+                        onOpenSignIn={toggleSignInPopup}
+                        isOpenSignIn={isSignInPopupOpen}
+                        onOpenReg={toggleSignUpPopup}
+                        onOpenRecovery={PasswordRecoveryPopup}
+                        setGeneralContext={setGeneralContext}
+                      />
+                      <SignUp
+                        onOpenSignUp={toggleSignUpPopup}
+                        isOpenSignUp={isSignUpPopupOpen}
+                        setGeneralContext={setGeneralContext}
+                      />
+                      <PasswordRecovery
+                        isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
+                        onOpenRecoveryPopup={PasswordRecoveryPopup}
+                      />
+                      <Footer/>
                     </>
                   }
                 >
                   <Route
-                    path=":model"
+                    path="/main"
                     element={
-                      <>
-                        <Catalog/>
-                      </>
+                      <Main
+                        passSearchResults={handleSearchCards}
+                        handleSearch={handleSearch}
+                      />
                     }
                   />
-                </Route>
-
                   <Route
-                    path='/product'
+                    path="/about-company"
                     element={
                       <>
                         <Breadcrumbs crumbs={crumbs}/>
-                        <ProductPage />
+                        <AboutCompany/>
                       </>
                     }
                   />
                   <Route
-                    path='/delivery'
+                    path="/faq"
                     element={
                       <>
-                        <Breadcrumbs crumbs={crumbs} />
-                        <Delivery />
-                      </>
-                    }
-                  />
-                  <Route
-                    path='/favourites'
-                    element={
-                      <>
-                        <Breadcrumbs crumbs={crumbs} />
-                        <Favourites />
+                        <Breadcrumbs crumbs={crumbs}/>
+                        <Faq/>
                       </>
                     }
                   />
@@ -250,37 +199,102 @@ const App: React.FC = () => {
                     }
                   />
                   <Route
-                    path='/search-results'
+                    path="/categories/:subcategory"
                     element={
                       <>
-                        <Breadcrumbs crumbs={crumbs} />
-                        <SearchResults
-                          searchRequest={searchRequest}
-                          searchResults={searchResults}
-                        />
+                        <Breadcrumbs crumbs={crumbs}/>
+                        <Categories/>
                       </>
                     }
-                  />
-                  <Route
-                    path='/profile'
-                    element={<Profile setGeneralContext={setGeneralContext} />}
-                  />
-                  <Route
-                    path='/profile/changepass'
-                    element={
-                      <ChangePassword setGeneralContext={setGeneralContext} />
-                    }
-                  />
-                  <Route
-                    path='/profile/orders'
-                    element={<Orders setGeneralContext={setGeneralContext} />}
-                  />
-                  <Route path='/' element={<Navigate to='/main' replace />} />
-                  <Route path='*' element={<NotFound />} />
-                </Route>
-              </Routes>
-            </UserContext.Provider>
-          </ScrollToTop>
+                  >
+                    <Route
+                      path=":model"
+                      element={
+                        <>
+                          <Catalog/>
+                        </>
+                      }
+                    />
+                  </Route>
+
+                    <Route
+                      path='/product'
+                      element={
+                        <>
+                          <Breadcrumbs crumbs={crumbs}/>
+                          <ProductPage/>
+                        </>
+                      }
+                    />
+                    <Route
+                      path='/delivery'
+                      element={
+                        <>
+                          <Breadcrumbs crumbs={crumbs} />
+                          <Delivery />
+                        </>
+                      }
+                    />
+                    <Route
+                      path='/favourites'
+                      element={
+                        <>
+                          <Breadcrumbs crumbs={crumbs} />
+                          <Favourites />
+                        </>
+                      }
+                    />
+                    <Route
+                      path='/cart'
+                      element={
+                        <>
+                          <Breadcrumbs crumbs={crumbs} />
+                          <Cart onCheckoutClick={setGoodsForPayment} />
+                        </>
+                      }
+                    />
+                    <Route
+                      path='/payment'
+                      element={
+                        <>
+                          <Breadcrumbs crumbs={crumbs} />
+                          <PaymentsPage oldGoodsList={goodsList ?? []} />
+                        </>
+                      }
+                    />
+                    <Route
+                      path='/search-results'
+                      element={
+                        <>
+                          <Breadcrumbs crumbs={crumbs} />
+                          <SearchResults
+                            searchRequest={searchRequest}
+                            searchResults={searchResults}
+                          />
+                        </>
+                      }
+                    />
+                    <Route
+                      path='/profile'
+                      element={<Profile setGeneralContext={setGeneralContext} />}
+                    />
+                    <Route
+                      path='/profile/changepass'
+                      element={
+                        <ChangePassword setGeneralContext={setGeneralContext} />
+                      }
+                    />
+                    <Route
+                      path='/profile/orders'
+                      element={<Orders setGeneralContext={setGeneralContext} />}
+                    />
+                    <Route path='/' element={<Navigate to='/main' replace />} />
+                    <Route path='*' element={<NotFound />} />
+                  </Route>
+                </Routes>
+              </UserContext.Provider>
+            </ScrollToTop>
+          </WarningPopupProvider>
         </FavoritesProvider>
       </CartProvider>
     </div>

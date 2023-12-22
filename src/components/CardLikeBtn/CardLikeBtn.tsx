@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import cn from 'classnames';
 import { useFavouritesContext } from '../../context/FavouritesContext';
+import { UserContext } from '../../context/UserContext';
 import type { MediumCardProps, ProductFullDataType } from '../../utils/types';
+import { useWarningPopupContext } from '../../context/WarningPopupContext';
 
 interface ICardLikeBtn {
   product: MediumCardProps | ProductFullDataType;
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const CardLikeBtn: React.FC<ICardLikeBtn> = ({ product }) => {
   const { updateProductLikeStatus, isCardLiked } = useFavouritesContext();
+  const { isLoggedIn } = useContext(UserContext);
+  const { handleOpenWarningPopup } = useWarningPopupContext();
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const productId: number = product.id;
 
@@ -18,8 +21,13 @@ const CardLikeBtn: React.FC<ICardLikeBtn> = ({ product }) => {
   }, []);
 
   const handleLike = (): void => {
-    updateProductLikeStatus(product);
-    setIsLiked(!isLiked);
+    console.log(isLoggedIn);
+    if (isLoggedIn) {
+      updateProductLikeStatus(product);
+      setIsLiked(!isLiked);
+    } else {
+      handleOpenWarningPopup('Для добавления товара в избранные необходимо авторизоваться');
+    };
   };
 
   const cardLikeButtonClassName = cn(
