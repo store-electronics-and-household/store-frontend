@@ -75,7 +75,7 @@ const ChangePassword = ({
     },
   });
 
-  function toggleVisibility(e: MouseEvent): void {
+  const toggleVisibility = (e: MouseEvent): void => {
     const target = e.target as HTMLElement;
     const fieldset = target.closest('fieldset');
     const button = fieldset?.querySelector('button');
@@ -92,7 +92,7 @@ const ChangePassword = ({
           break;
       }
     }
-  }
+  };
 
   return (
     <ProfileLayout setGeneralContext={setGeneralContext}>
