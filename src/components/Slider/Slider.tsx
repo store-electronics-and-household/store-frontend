@@ -73,6 +73,8 @@ const Slider: React.FC<SliderProps> = ({
     handleSlideChange({ activeIndex: 0 });
   }, []);
 
+  // const doubledBannerImage = [...bannerImage, ...bannerImage];
+
   // const [isLabeledStatement, setIsLast] = useState<boolean>(false)
 
   return (
@@ -84,11 +86,12 @@ const Slider: React.FC<SliderProps> = ({
         modules={[Navigation, Autoplay]}
         autoplay={{ delay: 6000 }}
         slidesPerView={1}
-        slidesPerGroup={1}
+        // slidesPerGroup={1} // УДАЛИТЬ?
         className='swiper-container'
         allowTouchMove={false}
         onSlideChange={handleSlideChange}
         loop={true}
+        loopAdditionalSlides={bannerImage.length}
       >
         {bannerImage.map((banner, index) => (
           <SwiperSlide key={banner.id}>
