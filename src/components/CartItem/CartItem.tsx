@@ -44,11 +44,13 @@ const CartItem: FC<Props> = ({ data }) => {
                 decreaseCartQuantity(id);
               }}
             >
-              {quantity > 1 ? (
+              {quantity > 1
+                ? (
                 <img src={minusIconActive} alt='Уменьшить количество' />
-              ) : (
+                  )
+                : (
                 <img src={minusIconDefault} alt='Уменьшить количество' />
-              )}
+                  )}
             </button>
 
             <p className='cart__item-quantity-button-number'>{quantity}</p>
@@ -62,7 +64,8 @@ const CartItem: FC<Props> = ({ data }) => {
               <img src={plusIconActive} alt='Увеличить количество' />
             </button>
           </div>
-          {quantity > 1 ? (
+          {quantity > 1
+            ? (
             <div className='cart__item-onceprice-container'>
               <div className='cart__item-onceprice-wrapper'>
                 <span className='cart__item-onceprice'>
@@ -70,9 +73,10 @@ const CartItem: FC<Props> = ({ data }) => {
                 </span>
               </div>
             </div>
-          ) : (
+              )
+            : (
             <div></div>
-          )}
+              )}
         </div>
 
         <div className='cart__item-price-container'>

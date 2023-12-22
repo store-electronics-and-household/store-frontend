@@ -9,6 +9,7 @@ import type { IContext } from '../../context/UserContext';
 import type { IPopupOptions } from '../ProfileLayoutPopup/ProfileLayoutPopup';
 import ProfileLayoutPopup from '../ProfileLayoutPopup/ProfileLayoutPopup';
 
+
 const ProfileLayout = ({
   children,
   setGeneralContext,

@@ -3,13 +3,14 @@ import React, {
   type ReactNode,
   useContext,
   useState,
-  useEffect,
+  useEffect
 } from 'react';
-import type { ProductDataType } from '../utils/types';
+import type { ProductFullDataType, MediumCardProps } from '../utils/types';
 import {
   addCardToFavoritesList,
   getFavouritesList,
-  removeCardFromFavoritesList,
+  getProductDataById,
+  removeCardFromFavoritesList
 } from '../utils/api/product-api';
 
 interface FavouritesProviderProps {
@@ -19,45 +20,122 @@ interface FavouritesProviderProps {
 interface FavouritesContextType {
   getFavouriteList: () => void;
   updateFavouritesList: () => void;
-  handleAddProductToFavourites: (id: number) => void;
-  handleDeleteProductFromFavourites: (id: number) => void;
-  updateProductLikeStatus: (id: number) => void;
-  isLiked: (id: number) => boolean;
-  favouritesList: ProductDataType[];
+  handleAddProductToFavourites: (product: MediumCardProps | ProductFullDataType) => void;
+  handleDeleteProductFromFavourites: (product: MediumCardProps | ProductFullDataType) => void;
+  updateProductLikeStatus: (product: MediumCardProps | ProductFullDataType) => void;
+  isCardLiked: (id: number) => boolean;
+  favouritesList: Array<MediumCardProps | ProductFullDataType>;
+  getProductById: (productId: number) => void; // получение полной карточки
+  productFull: ProductFullDataType; // полная картока передается для заполнения страницы товара
 }
 
 const FavoritesContext = createContext<FavouritesContextType>({
-  getFavouriteList: () => [],
+  getFavouriteList: () => null,
   updateFavouritesList: () => null,
-  handleAddProductToFavourites: (id: number) => null,
-  handleDeleteProductFromFavourites: (id: number) => null,
-  updateProductLikeStatus: (id: number) => null,
-  isLiked: (id: number) => false,
+  handleAddProductToFavourites: (product: MediumCardProps | ProductFullDataType) => null,
+  handleDeleteProductFromFavourites: (product: MediumCardProps | ProductFullDataType) => null,
+  updateProductLikeStatus: (product: MediumCardProps | ProductFullDataType) => null,
+  isCardLiked: (id: number) => false,
   favouritesList: [],
+  getProductById: (productId: number) => null,
+  productFull: {
+    id: 0,
+    name: '',
+    description: '',
+    price: 0,
+    oldPrice: null,
+    category: {
+      id: 0,
+      name: '',
+      imageLink: ''
+    },
+    images: [],
+    attributes: []
+  },
 });
 
-export function useFavouritesContext(): FavouritesContextType {
+export function useFavouritesContext (): FavouritesContextType {
   const context = useContext(FavoritesContext);
   return context;
 }
 
-export function FavoritesProvider({
-  children,
-}: FavouritesProviderProps): JSX.Element {
-  const [favouritesList, setFavouritesList] = useState<ProductDataType[]>([]);
+export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.Element {
+  const [favouritesList, setFavouritesList] = useState<Array<MediumCardProps | ProductFullDataType>>([]);
+  const [productById, setProductById] = useState<ProductFullDataType>({
+    id: 0,
+    name: '',
+    description: '',
+    price: 0,
+    oldPrice: null,
+    category: {
+      id: 0,
+      name: '',
+      imageLink: ''
+    },
+    images: [],
+    attributes: []
+  });
+  const [productFull, setProductFull] = useState<ProductFullDataType>({
+    id: 0,
+    name: '',
+    description: '',
+    price: 0,
+    oldPrice: null,
+    category: {
+      id: 0,
+      name: '',
+      imageLink: ''
+    },
+    images: [],
+    attributes: []
+  });
+
+  // получение modelId из productCardMedium и запрос на сервер fullProductDto
+  const getProductById = (productId: number): void => {
+    getProductDataById(productId)
+      .then((data) => {
+        setProductById(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // для очистки стейта после ухода со страницы товара...
+  const setFullProductState = (): void => {
+    location.pathname === '/product'
+      ? setProductFull(productById)
+      : setProductFull({
+        id: 0,
+        name: '',
+        description: '',
+        price: 0,
+        oldPrice: null,
+        category: {
+          id: 0,
+          name: '',
+          imageLink: ''
+        },
+        images: [],
+        attributes: []
+      });
+  };
+
+  useEffect(() => {
+    setFullProductState();
+  }, [location.pathname]);
+  // ...для очистки стейта после ухода со страницы товара
 
   // favourites: получение, добавление, удаление.
-  useEffect(() => {
-    // обновление массива избранных в локалСторадж при лайке/дизлайке
+  useEffect(() => { // обновление массива избранных в локалСторадж при лайке/дизлайке
     updateFavouritesList();
   }, [favouritesList]);
 
   const getFavouriteList = (): void => {
     getFavouritesList()
       .then((res) => {
-        console.log(res);
-        setFavouritesList(res);
-        localStorage.setItem('likedProducts', JSON.stringify(res));
+        setFavouritesList(res.modelShortDtos);
+        localStorage.setItem('likedProducts', JSON.stringify(res.modelShortDtos));
       })
       .catch((err) => {
         console.log(err);
@@ -68,51 +146,53 @@ export function FavoritesProvider({
     localStorage.setItem('likedProducts', JSON.stringify(favouritesList));
   };
 
-  const handleAddProductToFavourites = (productId: number): void => {
-    addCardToFavoritesList(productId)
-      .then((res) => {
-        setFavouritesList([...favouritesList, res]);
-      })
+  const handleAddProductToFavourites = (product: MediumCardProps | ProductFullDataType): void => {
+    addCardToFavoritesList(product.id)
+      .then()
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setFavouritesList([...favouritesList, product]);
       });
   };
 
-  const handleDeleteProductFromFavourites = (productId: number): void => {
-    removeCardFromFavoritesList(productId)
-      .then((res) => {
+  const handleDeleteProductFromFavourites = (product: MediumCardProps | ProductFullDataType): void => {
+    removeCardFromFavoritesList(product.id)
+      .then()
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
         setFavouritesList((state) =>
-          state.filter((favoutiteProduct) => favoutiteProduct.id !== productId)
+          state.filter((favoutiteProduct) => favoutiteProduct.id !== product.id)
         );
-      })
-      .catch((err) => {
-        console.log(err);
       });
   };
 
-  const isLiked = (productId: number): boolean => {
+  const isCardLiked = (modelId: number): boolean => {
     return favouritesList.some(
-      (favoriteProduct) => favoriteProduct.id === productId
+      (favoriteProduct) => favoriteProduct.id === modelId
     );
   };
 
-  // const getProductToDeleteId = (productId: number): number => {
+  // const getProductToDeleteId = (modelId: number): number => {
   //   const localLikedProducts: ProductDataType[] | undefined = JSON.parse(localStorage.getItem('favouritesList'));
   //   if (localLikedProducts !== null && localLikedProducts !== undefined) {
   //     const unLikedProduct = localLikedProducts.find(
-  //       (productItem: ProductDataType) => productItem.id === productId);
+  //       (productItem: ProductDataType) => productItem.id === modelId);
   //     return unLikedProduct.id;
   //   };
   //   return unLikedProduct.id;
   // };
 
-  const updateProductLikeStatus = (productId: number): void => {
-    if (!isLiked(productId)) {
-      handleAddProductToFavourites(productId);
+  const updateProductLikeStatus = (product: MediumCardProps | ProductFullDataType): void => {
+    if (!isCardLiked(product.id)) {
+      handleAddProductToFavourites(product);
     } else {
       // handleDeleteProductFromFavourites(getProductToDeleteId(productId));
-      handleDeleteProductFromFavourites(productId);
-    }
+      handleDeleteProductFromFavourites(product);
+    };
   };
 
   return (
@@ -123,8 +203,10 @@ export function FavoritesProvider({
         handleAddProductToFavourites,
         handleDeleteProductFromFavourites,
         updateProductLikeStatus,
-        isLiked,
+        isCardLiked,
+        getProductById,
         favouritesList,
+        productFull,
       }}
     >
       {children}

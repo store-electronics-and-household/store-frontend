@@ -27,7 +27,7 @@ const Slider: React.FC<SliderProps> = ({
   const navigate = useNavigate();
 
   const handleSlideChange = (swiper: any): void => {
-    const activeSlideIndex = swiper.activeIndex;
+    const activeSlideIndex = swiper.realIndex;
     const isLightForCurrentSlide = isLighChangetForSlide(activeSlideIndex);
     setLight(isLightForCurrentSlide);
   };
@@ -73,6 +73,8 @@ const Slider: React.FC<SliderProps> = ({
     handleSlideChange({ activeIndex: 0 });
   }, []);
 
+  // const [isLabeledStatement, setIsLast] = useState<boolean>(false)
+
   return (
     <>
       <Swiper
@@ -85,6 +87,7 @@ const Slider: React.FC<SliderProps> = ({
         className='swiper-container'
         allowTouchMove={false}
         onSlideChange={handleSlideChange}
+        loop={true}
       >
         {bannerImage.map((banner, index) => (
           <SwiperSlide key={banner.id}>

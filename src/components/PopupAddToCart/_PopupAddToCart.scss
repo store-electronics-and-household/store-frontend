@@ -10,10 +10,12 @@
   background-color: $whiteColof;
   opacity: 0;
   transition: 0.3s;
+  visibility: hidden;
 }
 
 .popup-add-to-cart_opened {
   opacity: 1;
+  visibility: visible;
 }
 
 .popup-add-to-cart__product-photo {

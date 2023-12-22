@@ -5,7 +5,7 @@ import { type CategoriesTileProps } from '../../utils/types';
 
 const CategoriesMain: React.FC = (): React.ReactElement => {
   const [categoriesMain, setCategoriesMain] = React.useState<
-    CategoriesTileProps[]
+  CategoriesTileProps[]
   >([]);
   React.useEffect(() => {
     getMainCategories()

@@ -121,7 +121,7 @@ const ChangePassword = ({
                 <span className='profile__password-error'>
                   {formik.errors.currentPassword}
                 </span>
-              )}
+            )}
             <button
               type='button'
               onClick={toggleVisibility}
@@ -145,7 +145,7 @@ const ChangePassword = ({
                 <span className='profile__password-error'>
                   {formik.errors.newPassword}
                 </span>
-              )}
+            )}
             <button
               type='button'
               onClick={toggleVisibility}
@@ -169,7 +169,7 @@ const ChangePassword = ({
                 <span className='profile__password-error'>
                   {formik.errors.newPasswordConfirmation}
                 </span>
-              )}
+            )}
             <button
               type='button'
               onClick={toggleVisibility}

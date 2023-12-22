@@ -78,7 +78,7 @@ export const changePassword = async (
   });
 };
 
-export const tokenCheck = async (token: string): Promise<any> => {
+export const authUserByToken = async (token: string): Promise<any> => {
   return await request('/user/check', {
     method: 'GET',
     headers: {
@@ -86,6 +86,19 @@ export const tokenCheck = async (token: string): Promise<any> => {
       Accept: 'application/json',
       Authorization: `Bearer ${token}`,
     },
+  });
+};
+
+export const checkUserEmail = async (email: string): Promise<any> => {
+  return await request('/auth/check', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({
+      name: email
+    })
   });
 };
 

@@ -81,6 +81,13 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
   const handleClickNextBtn = (): void => {
     setEmailValidationEnabled(true);
     if (!formik.errors.loginRecovery && formik.values.loginRecovery !== '') {
+      // checkUserEmail(formik.values.loginRecovery)
+      //   .then(() => {
+      //     SetIsNext(true);
+      //   })
+      //   .catch((err) => {
+      //     console.error(err);
+      //   });
       SetIsNext(true);
     } else {
       console.log('');
@@ -252,6 +259,7 @@ const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({
               )}
               {!isNext && (
                 <button
+                  type='submit'
                   className='pass-recovery__button signin__button_enter'
                   onClick={handleClickNextBtn}
                 >
