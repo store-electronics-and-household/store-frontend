@@ -21,6 +21,20 @@ export const priceToNumber = (currencyString: string): number => {
   return isNaN(numberValue) ? 0 : numberValue;
 };
 
+export const getTomorrowDate = (): string => {
+  const currentDate = new Date();
+  const tomorrowDate = new Date(currentDate);
+  tomorrowDate.setDate(currentDate.getDate() + 1);
+  const months = [
+    'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+    'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+  ];
+  const dayOfMonth = tomorrowDate.getDate();
+  const monthName = months[tomorrowDate.getMonth()];
+  const formattedDate = `${dayOfMonth} ${monthName}`;
+  return formattedDate;
+};
+
 // getDeliveryDate
 export const getDeliveryDate = (inputDate: string): string => {
   // Разбираем строку с датой
