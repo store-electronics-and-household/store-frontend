@@ -112,7 +112,6 @@ export function CartProvider ({ children }: CartProviderProps): JSX.Element {
       .then((res: any) => {
         const mappedData = getMappedProductList(res?.modelSetResponseDtos);
         setCartItems(mappedData);
-        console.log(res);
 
         return res;
       })
