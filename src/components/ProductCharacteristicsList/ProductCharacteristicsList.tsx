@@ -1,35 +1,39 @@
 import React from 'react';
-import { type ProductAttributesDataType } from '../../utils/types';
 import cn from 'classnames';
 
 interface ProductCharacteristicListProps {
-  productSpecifyName: ProductAttributesDataType;
-  productSpecifyValue: ProductAttributesDataType;
-  keysList: Array<keyof ProductAttributesDataType>;
+  attributes: Array<{
+    attributeName: string;
+    value: string;
+  }>;
   modifyListClass?: string;
   modifyItemClass?: string;
 }
 
 const ProductCharacteristicsList: React.FC<ProductCharacteristicListProps> = ({
-  productSpecifyName,
-  productSpecifyValue,
-  keysList,
+  attributes,
   modifyListClass,
-  modifyItemClass
+  modifyItemClass,
 }: ProductCharacteristicListProps) => {
-  const characteristicsListClassname = cn('characteristics-list', modifyListClass);
-  const characteristicsItemClassname = cn('characteristics-list__item', modifyItemClass);
+  const characteristicsListClassname = cn(
+    'characteristics-list',
+    modifyListClass
+  );
+  const characteristicsItemClassname = cn(
+    'characteristics-list__item',
+    modifyItemClass
+  );
 
   return (
     <ul className={characteristicsListClassname}>
-      {keysList.map((keysListItem, keysListKey) => {
+      {attributes.map((attribute, id) => {
         return (
-          <li className={characteristicsItemClassname} key={keysListKey}>
+          <li className={characteristicsItemClassname} key={id}>
             <span className='characteristics-list__item-key'>
-              {productSpecifyName[keysListItem]}
+              {attribute.attributeName.charAt(0).toUpperCase() + attribute.attributeName.slice(1)}
             </span>
             <span className='characteristics-list__item-value'>
-              {productSpecifyValue[keysListItem]}
+              {attribute.value}
             </span>
           </li>
         );

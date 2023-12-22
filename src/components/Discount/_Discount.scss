@@ -20,6 +20,12 @@
 .discount__container {
   height: 100%;
   border-radius: 20px;
+  transition: .2s ease-in-out;
+}
+
+.discount__container:hover {
+  cursor: pointer;
+  transform: scale(103%)
 }
 
 .discount__container_type_0 {

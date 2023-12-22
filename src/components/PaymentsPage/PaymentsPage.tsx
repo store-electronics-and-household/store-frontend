@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import PaymentsPageItem from './PaymentsPageItem';
 import PaymentsPageButton from './PaymentsPageButton';
-import { type MediumCardProps } from '../../utils/types';
+import { type MediumCardProps, type MeTypePickUpPoint } from '../../utils/types';
 import { formatSumm } from '../../utils/formatSumm';
 import { useForm } from 'react-hook-form';
 import 'react-phone-number-input/style.css';
 import { Link } from 'react-router-dom';
 import PhoneForm from './PaymentsPageInput';
 import PaymentsPageCourier from './PaymentsPageCourier';
+import PopupChoosePickUpPoint from './PopupChoosePickUpPoint';
+import { getPickUpDate, adrressToString, priceToNumber, getDeliveryDate } from './DataFormatters';
+// import { productsForPay } from '../../utils/constants';
 
 interface PaymentsPageProps {
   GoodsList: MediumCardProps[];
@@ -20,14 +23,34 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
   //   address: string;
   // }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [clientData, setClientData] = React.useState({});
+  const [clientData, setClientData] = React.useState({
+    phone: '',
+    address: '',
+    date: '',
+    comment: ''
+  });
+
+  const [deliveryPoint, setDeliveryPoint] = React.useState<MeTypePickUpPoint>(
+    {
+      address: '',
+      metro: '',
+      deliverypice: ''
+    }
+  );
+
+  // console.log(clientData);
 
   const [isPhoneValid, setIsPhoneValid] = useState<boolean>(false);
-
+  const [isCourierDataValid, setIsCourierDataValid] = useState<boolean>(false);
+  const [isPopupOpened, setIsPopupOpened] = useState<boolean>(false);
+  const [deliveryType, setDeliveryType] = useState<string>('Самовывоз');
   const [isPhoneValidated, setIsPhoneValidated] = useState<boolean>(false);
-
+  const [isCourierDataValidated, setCourierDataValidated] = useState<boolean>(false);
   const [isFirstPage, setIsFirstPage] = React.useState<boolean>(true);
+  const [isSecondPage, setIsSecondPage] = React.useState<boolean>(false);
   const [isСourierPage, setIsСourierPage] = React.useState<boolean>(false);
+  const [isReadeyToSend, setIsReadeyToSend] = React.useState<boolean>(false);
+
   // const [isDeliveryPage, setIsDeliveryPage] = React.useState<boolean>(true);
   // const [isFinalPage, setIsFinalPage] = React.useState<boolean>(true);
 
@@ -35,8 +58,29 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
   // const [selectedOption, setSelectedOption] = React.useState('');
 
   useEffect(() => {
-    setDeliveryPrice(8500);
-  }, []);
+    if (clientData.address !== '' && isReadeyToSend) {
+      console.log('ЭТО УСПЕХ! СЕЙЧЧАС МЫ ОТПРАВИМ НА СЕРВЕР ДАННЫЕ');
+      const form1Values = getValuesForm1();
+      console.log(deliveryType);
+      console.log(`имя: ${form1Values.name}`);
+      console.log(`телефон: ${clientData.phone}`);
+      // console.log(clientData.date);
+      const dateToApiPrev = clientData.date.toString();
+      const dateToApi = getDeliveryDate(dateToApiPrev);
+      console.log(dateToApi);
+      const { phone, date, ...newObject } = clientData;
+      // console.log(newObject);
+      const addressToApi = adrressToString(newObject);
+      console.log(addressToApi);
+      console.log(deliveryPrice);
+      const priceToApi = priceToNumber(finalPrice);
+      console.log(priceToApi);
+    }
+  }, [clientData, isReadeyToSend]);
+
+  // useEffect(() => {
+  //   setDeliveryPrice(8500);
+  // }, []);
 
   const fullQuantity: number = GoodsList.reduce(function (acc, item) {
     return acc + item.quantity;
@@ -56,7 +100,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
       // return acc + item.quantity * (item.percent ? item.percent : 1);
       return (
         acc +
-        item.quantity * (typeof item.percent === 'number' ? item.percent : 0)
+        item.quantity * (typeof item.percent === 'number' ? item.oldPrice * (item.percent / 100) : 0)
       );
     }, 0)
   );
@@ -68,68 +112,85 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
         acc +
         item.quantity *
           (typeof item.percent === 'number'
-            ? item.oldPrice - item.percent
+            ? item.oldPrice * (100 - item.percent) / 100
             : item.oldPrice)
       );
-    }, 0) - (deliveryPrice ?? 0)
+    }, 0) + (deliveryPrice ?? 0)
   );
 
   const {
     register: registerForm1,
-    // getValues: getValuesForm1,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    getValues: getValuesForm1,
     formState: { errors: errorsForm1, isValid: isValidForm1 },
   } = useForm({
     // mode: 'all', // "onChange"
     mode: 'onChange',
   });
 
-  const {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    register: registerForm3,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    getValues: getValuesForm3,
-    // handleSubmitForm1,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    control: controlForm3,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    formState: { errors: errorsPhone, isValid: isValidPhone },
-  } = useForm({
-    mode: 'onChange',
-  });
-
-  const handleDeliveryType = (): void => {
-    console.log('выбираем тип доставки');
-    setIsFirstPage(!isFirstPage);
-    setIsСourierPage(!isСourierPage);
-  };
-
-  // // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // const handleDeliveryTypeChange = (
-  //   e: React.ChangeEvent<HTMLInputElement>
-  // ): void => {
-  //   e.preventDefault();
-  //   console.log('hello');
-  // };
-
-  // const form1Values = getValuesForm1();
-  // const form2Values = getValuesForm2();
-  // console.log('Form 1 Values:', form1Values);
-  // console.log('Form 2 Values:', form2Values);
-  // };
-  // const handleOutsideFunction = (): void => {
-  //   const form2Values = getValuesForm2();
-  //   console.log(form2Values);
-  // };
-
-  const choosePickUpPoint = (): void => {
-    setIsPhoneValidated(true);
-    // console.log('выбирает пункт выдачи');
-    console.log(isPhoneValid);
-    if (isPhoneValid && isValidForm1) {
-      setIsFirstPage(!isFirstPage);
+  const handleDeliveryType = (input: any): void => {
+    // const form1Values = getValuesForm1();
+    // console.log(form1Values);
+    if (input.id === '1') {
+      setIsFirstPage(true);
+      setIsСourierPage(false);
+      setIsSecondPage(false);
+      setDeliveryType('Самовывоз');
+      setDeliveryPrice(0);
+    } else if (input.id === '2') {
+      setIsFirstPage(false);
+      setIsSecondPage(false);
+      setIsСourierPage(true);
+      setDeliveryType('Доставка');
+      setDeliveryPrice(300);
     }
   };
+
+  const hadleChoosePickUpPoint = (): void => {
+    setIsFirstPage(true);
+    setIsСourierPage(false);
+    setIsSecondPage(false);
+    setIsPopupOpened(true);
+  };
+
+  const choosePickUpPoint = (): void => {
+    setIsPopupOpened(true);
+    // setIsPhoneValidated(true);
+    // console.log(isPhoneValid);
+    // if (isPhoneValid && isValidForm1) {
+    //   setIsPopupOpened(true);
+    // };
+  };
+
+  const handlePayout = (): void => {
+    if (!isPhoneValidated) {
+      setIsPhoneValidated(true);
+    }
+    if (isPhoneValid && isValidForm1) {
+      const currentClientName = getValuesForm1();
+      // setClientName(currentClientName.name);
+      console.log('ЭТО УСПЕХ! СЕЙЧЧАС МЫ ОТПРАВИМ НА СЕРВЕР ДАННЫЕ');
+      console.log(deliveryType);
+      console.log(currentClientName.name);
+      console.log(clientData.phone);
+      const dateToApi = getPickUpDate();
+      console.log(dateToApi);
+      const addressToApi = adrressToString(deliveryPoint);
+      console.log(addressToApi);
+      console.log(deliveryPrice);
+      const priceToApi = priceToNumber(finalPrice);
+      console.log(priceToApi);
+    }
+  };
+
+  // {
+  //   "deliveryType": "string",OK
+  //   "name": "string", OK
+  //   "phone": "string", OK
+  //   "deliveryAddress": "string", OK
+  //   "deliveryDate": "2023-12-21", OK
+  //   "deliveryPrice": 0, OK
+  //   "finalPrice": 0
+  // }
 
   const phoneHandler = (clientPhone: string): void => {
     setClientData({ ...clientData, phone: clientPhone });
@@ -140,6 +201,74 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
       setIsPhoneValid(isPhoneValid);
     }
   };
+
+  const validCourierDataHandler = (isCourierDataValid: boolean): void => {
+    if (isCourierDataValid !== undefined) {
+      setIsCourierDataValid(isCourierDataValid);
+    };
+  };
+
+  const handleClosePopup = (): void => {
+    setDeliveryPrice(0);
+    setIsPopupOpened(false);
+  };
+
+  const courierDataHandler = (clientAddress?: string, clientDate?: string, clientPhone?: string, clientComment?: string): void => {
+    if (!isPhoneValidated) {
+      setIsPhoneValidated(true);
+      // console.log('debug');
+    }
+    if (!isCourierDataValidated) {
+      setCourierDataValidated(true);
+    }
+    if (clientAddress !== undefined && clientDate !== undefined && clientPhone !== undefined && clientComment !== undefined) {
+      setClientData({ ...clientData, address: clientAddress, date: clientDate, comment: clientComment });
+    }
+    // console.log(isCourierDataValid);
+    // console.log(isPhoneValid);
+    if (isCourierDataValid && isPhoneValid && isValidForm1) {
+      setIsReadeyToSend(true);
+      // const form1Values = getValuesForm1();
+      // console.log(deliveryType);
+      // console.log(`имя: ${form1Values.name}`);
+      // console.log(`телефон: ${clientPhone}`);
+      // // console.log(clientData.date);
+      // const dateToApiPrev = clientData.date.toString();
+      // const dateToApi = getDeliveryDate(dateToApiPrev);
+      // console.log(dateToApi);
+      // const { phone, date, ...newObject } = clientData;
+      // console.log(newObject);
+      // // const addressToApi = adrressToString(newObject);
+      // // console.log(addressToApi);
+      // console.log(300);
+      // const priceToApi = priceToNumber(finalPrice);
+      // console.log(priceToApi);
+    }
+  };
+
+  // {
+  //   "deliveryType": "string", ОК
+  //   "name": "string", ОК
+  //   "phone": "string", ОК
+  //   "deliveryAddress": "string",
+  //   "deliveryDate": "2023-12-21", OK
+  //   "deliveryPrice": 0, OK
+  //   "finalPrice": 0
+  // }
+
+  const handleChoosenPoint = (point: MeTypePickUpPoint): void => {
+    setIsFirstPage(false);
+    setIsSecondPage(true);
+    setDeliveryPoint(point);
+  };
+
+  // console.log(deliveryPoint);
+
+  // const validPhoneHandler = (isPhoneValid: boolean): void => {
+  //   if (isPhoneValid !== undefined) {
+  //     setIsPhoneValid(isPhoneValid);
+  //   }
+  // };
 
   return (
     <>
@@ -204,7 +333,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
             <p className='payments-page__form-title payments-page__form-title_type_address'>
               Способ получения
             </p>
-            <Link to={'/delivery'} className='payments-page__subtitle'>
+            <Link to={'/delivery'} className='payments-page__subtitle' target='_blank'>
               Способы и тарифы доставки
             </Link>
             <form className='payments-page__title-container'>
@@ -212,10 +341,11 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                 <input
                   type='radio'
                   name='deliveryOption'
+                  id='1'
                   // checked
                   defaultChecked
                   className='payments-page__delivery-type_type_invisible'
-                  onClick={handleDeliveryType}
+                  onClick={(event) => { handleDeliveryType(event.target); }}
                   // readOnly
                   // onChange={handleDeliveryTypeChange}
                 />
@@ -224,10 +354,11 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
               </label>
               <label className='payments-page__delivery-label'>
                 <input
+                  id='2'
                   type='radio'
                   name='deliveryOption'
                   className='payments-page__delivery-type_type_invisible'
-                  onClick={handleDeliveryType}
+                  onClick={(event) => { handleDeliveryType(event.target); }}
                 />
                 <span className='payments-page__delivery-type_type_visible'></span>
                 Курьер
@@ -245,10 +376,43 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                 {/* <PhoneNumberInput/> */}
               </>
             )}
+            {isSecondPage && (
+              <>
+                <div className='payments-page__line payments-page__line_type_courier'></div>
+                <div className='payments-page__delivery-point'>
+                  <div className='payments-page__edit-delivery'>
+                  <button
+                    aria-label="edit point"
+                    type="button"
+                    className='payments-page__edit-delivery-button'
+                    onClick = {() => { hadleChoosePickUpPoint(); }}
+                  ></button>
+                  </div>
+                  <div className='payments-page__delivery-data'>
+                    <h3 className='payments-page__pickuppoint-title payments-page__pickuppoint-title_payout'>CyberPlace</h3>
+                    <p className='payments-page__pickuppoint-paragraph'>{deliveryPoint.address}</p>
+                    <p className='payments-page__pickuppoint-paragraph payments-page__pickuppoint-paragraph_payout'>{deliveryPoint.metro}</p>
+                  </div>
+                </div>
+                <PaymentsPageButton
+                    marginTop='32px'
+                    marginBottom='32px'
+                    title='Перейти к оплате'
+                    onClick = {() => { handlePayout(); }}
+                    width='222px'
+                  />
+              </>
+            )}
+
             {isСourierPage && (
               <>
                 <div className='payments-page__line payments-page__line_type_courier'></div>
-                <PaymentsPageCourier />
+                <PaymentsPageCourier
+                  isCourierDataValidated={isCourierDataValidated}
+                  passIsAddressValid={validCourierDataHandler}
+                  passDeliveryData={courierDataHandler}
+                  clientPhone={clientData.phone}
+                />
               </>
             )}
           </div>
@@ -265,7 +429,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
                     key={item.id}
                     quantity={item.quantity}
                     // imgUrl={item.imgUrl}
-                    imgUrl={item.modelsImages?.[0]?.imageLink}
+                    imgUrl={item.images?.[0]?.imageLink}
                   />
                 ))}
               </div>
@@ -297,6 +461,11 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
           </div>
         </div>
       </section>
+      <PopupChoosePickUpPoint
+        isOpen={isPopupOpened}
+        onClose={handleClosePopup}
+        onChoosenPoint={handleChoosenPoint}
+      />
     </>
   );
 };

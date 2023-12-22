@@ -3,7 +3,11 @@ import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
 import { popularCardsToShow, products } from '../../utils/constants';
 import CatalogItem from '../Catalog/CatalogItem';
-import { getCategoryName, getSubcategories, type IgetSubcategories } from '../../utils/api/catalog+categories.api';
+import {
+  getCategoryName,
+  getSubcategories,
+  type IgetSubcategories,
+} from '../../utils/api/catalog+categories.api';
 import { Outlet, useParams } from 'react-router-dom';
 
 const Categories: React.FC = (): React.ReactElement => {
@@ -21,7 +25,9 @@ const Categories: React.FC = (): React.ReactElement => {
             setSubCategories(res);
           })
           .catch((err) => {
-            console.error(`При загрузке подкатегорий товаров произошла ошибка - ${err}`);
+            console.error(
+              `При загрузке подкатегорий товаров произошла ошибка - ${err}`
+            );
           });
       })
       .catch((err) => {
@@ -38,11 +44,9 @@ const Categories: React.FC = (): React.ReactElement => {
             <nav>
               <ul className='catalog__collection'>
                 <li className='catalog__models'>
-                  <div className='catalog__model-link'>
-                    {subCategoryName}
-                  </div>
+                  <div className='catalog__model-link'>{subCategoryName}</div>
                   {subCategories?.map((item) => (
-                    <CatalogItem key={item.id} name={item.name} id={item.id}/>
+                    <CatalogItem key={item.id} name={item.name} id={item.id} />
                   ))}
                 </li>
               </ul>
@@ -50,13 +54,9 @@ const Categories: React.FC = (): React.ReactElement => {
             <ul className='catalog__rendered-categories'>
               <div className='catalog__render-cat'>
                 {subCategories?.map((tile) => (
-                  <CategoriesTile
-                    key={tile.id}
-                    name={tile.name}
-                    id={tile.id}
-                  />
+                  <CategoriesTile key={tile.id} name={tile.name} id={tile.id} />
                 ))}
-                <Outlet/>
+                <Outlet />
               </div>
               <h2 className='catalog__popular'>Популярные товары</h2>
               <div className='catalog__render-popular'>

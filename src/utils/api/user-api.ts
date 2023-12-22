@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { API_URL } from '../constants';
+import type { FormProps } from '../types';
 
 interface ErrorResponse {
   message?: string;
@@ -91,5 +92,55 @@ export const changePassword = async (
       Accept: 'application/json',
     },
     body: JSON.stringify({ email, password }),
+  });
+};
+
+export const authUserByToken = async (token: string): Promise<any> => {
+  return await request('/user/check', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const checkUserEmail = async (email: string): Promise<any> => {
+  return await request('/auth/check', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({
+      name: email
+    })
+  });
+};
+
+export const patchUser = async (
+  data: FormProps,
+  token: string
+): Promise<any> => {
+  return await request('/user', {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+};
+
+export const deleteUser = async (token: string): Promise<any> => {
+  return await request('/user', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
   });
 };

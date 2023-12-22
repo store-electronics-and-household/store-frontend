@@ -20,9 +20,7 @@ const Catalog: React.FC = (): React.ReactElement => {
   return (
     <>
       {modelsList.map((item) => {
-        return (
-          <ProductCardMedium key={Math.random()} product={item}/>
-        );
+        return <ProductCardMedium key={Math.random()} product={item} />;
       })}
     </>
   );

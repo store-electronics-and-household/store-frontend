@@ -2,8 +2,8 @@ import iconSmile from '../image/icons/smile_icon.svg';
 import iconDelivery from '../image/icons/delivery_icon.svg';
 import iconMedal from '../image/icons/medal-original_icon.svg';
 
-export const API_URL: string = 'http://45.12.236.120:8080/api/v1';
-// export const API_URL: string = 'https://cyberplace.online/api/v1';
+// export const API_URL: string = 'http://45.12.236.120:8080/api/v1';
+export const API_URL: string = 'https://cyberplace.online/api/v1';
 
 export const API_CAT_IMG: string = 'http://45.12.236.120/images/categories';
 export const popularCardsToShow = 6;
@@ -18,12 +18,14 @@ export const products = [
     modelsImages: [
       {
         id: 1,
-        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+        imageLink:
+          'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
       },
       {
         id: 2,
-        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-      }
+        imageLink:
+          'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      },
     ],
     quantity: 0,
     percent: 9,
@@ -36,12 +38,14 @@ export const products = [
     modelsImages: [
       {
         id: 1,
-        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        imageLink:
+          'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
       {
         id: 2,
-        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-      }
+        imageLink:
+          'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
     ],
     // isLiked: false,
     quantity: 0,
@@ -55,15 +59,17 @@ export const products = [
     modelsImages: [
       {
         id: 1,
-        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+        imageLink:
+          'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
       },
       {
         id: 2,
-        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-      }
+        imageLink:
+          'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      },
     ],
     // isLiked: true,
-    quantity: 1
+    quantity: 1,
   },
   {
     id: 4,
@@ -74,15 +80,17 @@ export const products = [
     modelsImages: [
       {
         id: 1,
-        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        imageLink:
+          'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
       {
         id: 2,
-        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-      }
+        imageLink:
+          'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
     ],
     // isLiked: false,
-    quantity: 2
+    quantity: 2,
   },
   {
     id: 5,
@@ -92,12 +100,14 @@ export const products = [
     modelsImages: [
       {
         id: 1,
-        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+        imageLink:
+          'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
       },
       {
         id: 2,
-        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-      }
+        imageLink:
+          'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      },
     ],
     quantity: 0,
     percent: 9,
@@ -110,12 +120,14 @@ export const products = [
     modelsImages: [
       {
         id: 1,
-        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        imageLink:
+          'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
       {
         id: 2,
-        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-      }
+        imageLink:
+          'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
     ],
     // isLiked: false,
     quantity: 0,
@@ -129,15 +141,17 @@ export const products = [
     modelsImages: [
       {
         id: 1,
-        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+        imageLink:
+          'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
       },
       {
         id: 2,
-        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-      }
+        imageLink:
+          'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      },
     ],
     // isLiked: true,
-    quantity: 1
+    quantity: 1,
   },
   {
     id: 8,
@@ -148,15 +162,17 @@ export const products = [
     modelsImages: [
       {
         id: 1,
-        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        imageLink:
+          'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
       {
         id: 2,
-        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-      }
+        imageLink:
+          'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
     ],
     // isLiked: false,
-    quantity: 2
+    quantity: 2,
   },
   {
     id: 9,
@@ -166,12 +182,14 @@ export const products = [
     modelsImages: [
       {
         id: 1,
-        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+        imageLink:
+          'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
       },
       {
         id: 2,
-        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-      }
+        imageLink:
+          'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      },
     ],
     quantity: 0,
     percent: 9,
@@ -184,12 +202,14 @@ export const products = [
     modelsImages: [
       {
         id: 1,
-        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        imageLink:
+          'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
       {
         id: 2,
-        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-      }
+        imageLink:
+          'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
     ],
     // isLiked: false,
     quantity: 0,
@@ -203,15 +223,17 @@ export const products = [
     modelsImages: [
       {
         id: 1,
-        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        imageLink:
+          'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
       {
         id: 2,
-        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-      }
+        imageLink:
+          'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
     ],
     // isLiked: true,
-    quantity: 1
+    quantity: 1,
   },
   {
     id: 12,
@@ -222,15 +244,17 @@ export const products = [
     modelsImages: [
       {
         id: 1,
-        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        imageLink:
+          'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
       {
         id: 2,
-        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-      }
+        imageLink:
+          'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
     ],
     // isLiked: false,
-    quantity: 2
+    quantity: 2,
   },
   {
     id: 13,
@@ -240,12 +264,14 @@ export const products = [
     modelsImages: [
       {
         id: 1,
-        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        imageLink:
+          'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
       {
         id: 2,
-        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-      }
+        imageLink:
+          'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
     ],
     quantity: 0,
     percent: 9,
@@ -258,12 +284,14 @@ export const products = [
     modelsImages: [
       {
         id: 1,
-        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        imageLink:
+          'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
       {
         id: 2,
-        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-      }
+        imageLink:
+          'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
     ],
     // isLiked: false,
     quantity: 0,
@@ -277,15 +305,17 @@ export const products = [
     modelsImages: [
       {
         id: 1,
-        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        imageLink:
+          'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
       {
         id: 2,
-        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-      }
+        imageLink:
+          'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
     ],
     // isLiked: true,
-    quantity: 1
+    quantity: 1,
   },
   {
     id: 16,
@@ -296,15 +326,17 @@ export const products = [
     modelsImages: [
       {
         id: 1,
-        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        imageLink:
+          'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
       {
         id: 2,
-        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
-      }
+        imageLink:
+          'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
     ],
     // isLiked: false,
-    quantity: 2
+    quantity: 2,
   },
 ];
 
@@ -395,64 +427,97 @@ export const subCategoriesList = {
 
 export const productData = {
   id: 6,
-  name: 'Apple MacBook Air 15" (M2, 8C CPU/10C GPU, 2023), 8 ГБ, 512 ГБ SSD, «сияющая звезда»',
-  price: 155990,
-  oldPrice: 164990,
-  description: [
-    'Ноутбук Apple MacBook Air 15 M2 Space Gray (MQKP3) c macOS — модель в алюминиевом корпусе, снабженная восьмиядерным чипом Apple M2. Последний превосходит по скорости вычисления все другие процессоры компании. Высокая производительность позволяет выполнять на ноутбуке ресурсоемкие задачи, в том числе профессиональное редактирование фото и видео в 4К. Чип способствует равномерному распределению задач между ядрами эффективности и производительности. Объем SSD составляет 256 Гб, оперативной памяти — 8 Гб (частота 5600 МГц).',
-    'Восьмиядерный графический процессор позволяет запускать игры последних лет на максимальных настройках. 15,3-дюймовый дисплей Retina обладает разрешением 2880х1864 пикселей, что обеспечивает высокую детализацию. Реалистичная цветопередача делает картинку более насыщенной. Яркости в 500 нит хватит для комфортной работы при любых условиях. Встроенная аудиосистема с поддержкой Dolby Atmos состоит из шести динамиков, которые формируют объемный и направленный звук.',
-    'Встроенная веб-камера идеально подходит для общения с удаленными пользователями. Микрофон с функцией шумоподавления обеспечивает качественную передачу голоса собеседнику. Touch ID избавляет от необходимости вводить пароли, позволяя оперативно входить в систему владельцу ноутбука. Время автономной работы от аккумулятора — до 18 часов. Набор интерфейсов состоит из USB-C, Thunderbolt 3, разъема для наушников 3,5 мм и MagSafe 3.'
-  ],
+  name: 'Алиса',
+  description: 'Умная колонка',
+  price: 4990,
+  percent: null,
+  oldPrice: null,
+  category: {
+    id: 35,
+    name: 'Портативная акустика',
+    imageLink: 'https://cyberplace.online/images/categories/11.png'
+  },
   images: [
-    'https://images.unsplash.com/photo-1505156868547-9b49f4df4e04?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aXBob25lfGVufDB8fDB8fHww',
-    'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
-    'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
-    'https://images.unsplash.com/photo-1611472173362-3f53dbd65d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+    {
+      imageLink: 'https://cdn.citilink.ru/H_lcnua17uvLo-ui1qypnJW19EOql5UfOy_xo3fTqrk/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/18cc44a2-d586-4885-a797-27f48bd4a471.jpg'
+    },
+    {
+      imageLink: 'https://cdn.citilink.ru/yYIiakKb0FD_iKMnDMUyrVPoOXvHhr06rMWpDZdVxAM/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/57de8854-94b3-499f-a00e-639b4804dd07.jpg'
+    },
+    {
+      imageLink: 'https://cdn.citilink.ru/yXtaAdXMgz-TLyeXTkvCelFcdZb6pDYdUKSNjFOX7yI/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/7b027e8c-f3a4-4763-ba2e-e1df7d14f5de.jpg'
+    }
   ],
-  quantityInCart: 0,
-  isLiked: true,
-};
-
-export const productSpecifyName = {
-  brend: 'Бренд:',
-  color: 'Цвет:',
-  diagonal: 'Диагональ экрана, в дюймах:',
-  country: 'Страна-производитель:',
-  year: 'Год выхода модели:',
-  display: 'Тип дисплея:',
-  builtInMemory: 'Встроенная память, в ГБ:',
-  ram: 'Оперативная память, в ГБ:',
-  batteryCapacity: 'Емкость аккумулятора, в мА-ч:',
-  color1: 'Цвет:',
-  diagonal1: 'Диагональ экрана, в дюймах:',
-  brend1: 'Бренд:',
-  country1: 'Страна-производитель:',
-  year1: 'Год выхода модели:',
-  display1: 'Тип дисплея:',
-  builtInMemory1: 'Встроенная память, в ГБ:',
-  ram1: 'Оперативная память, в ГБ:',
-  batteryCapacity1: 'Емкость аккумулятора, в мА-ч:',
-};
-
-export const productAttributes = {
-  brend: 'Apple',
-  color: 'титановый черный',
-  diagonal: 6.1,
-  country: 'Китай',
-  year: 2023,
-  display: 'OLED',
-  builtInMemory: 128,
-  ram: 8,
-  batteryCapacity: 4912,
-  color1: 'титановый черный',
-  diagonal1: 6.1,
-  brend1: 'Apple',
-  country1: 'Китай',
-  year1: 2023,
-  display1: 'OLED',
-  builtInMemory1: 128,
-  ram1: 8,
-  batteryCapacity1: 4912,
+  attributes: [
+    {
+      attributeName: 'Суммарная звуковая мощность',
+      value: '5 Вт'
+    },
+    {
+      attributeName: 'Акустический тип',
+      value: '1.0'
+    },
+    {
+      attributeName: 'Версия Bluetooth',
+      value: '4.2/5'
+    },
+    {
+      attributeName: 'Частотный диапазон',
+      value: '-'
+    },
+    {
+      attributeName: 'Материал корпуса',
+      value: 'пластик'
+    },
+    {
+      attributeName: 'Интерфейс подключения',
+      value: 'Bluetooth'
+    },
+    {
+      attributeName: 'Изготовитель',
+      value: 'КНР'
+    },
+    {
+      attributeName: 'Голосовой помощник',
+      value: 'Алиса'
+    },
+    {
+      attributeName: 'Стандарт Wi-Fi',
+      value: '802.11 b/g/n/ac'
+    },
+    {
+      attributeName: 'Тип Электропитания',
+      value: 'от сети'
+    },
+    {
+      attributeName: 'Радиус действия Bluetooth, до',
+      value: '10 м'
+    },
+    {
+      attributeName: 'Встроенный микрофон',
+      value: 'есть'
+    },
+    {
+      attributeName: 'Комплектация',
+      value: 'Инструкция'
+    },
+    {
+      attributeName: 'Вес',
+      value: '230 грамм'
+    },
+    {
+      attributeName: 'Цвет',
+      value: 'фиолетовый'
+    },
+    {
+      attributeName: 'Размеры (ШхВхГ)',
+      value: '90 x 55 x 90 мм'
+    },
+    {
+      attributeName: 'Поддержка Wi-Fi',
+      value: 'есть'
+    }
+  ]
 };
 
 export const paymentPageData = [
@@ -536,5 +601,116 @@ export const contactsData = {
   phoneNumber: '8 800 555-35-35',
   email: 'cyberplace@gmail.ru',
   adress:
-    'г. Москва, ул. Нижняя Красносельская, д. 40/12, корпус 20, этаж 5, помещение\u00A0II, комната 3;',
+    'г. Санкт-Петербург, ул. Нижняя Красносельская, д. 40/12, корпус 20, этаж 5, помещение\u00A0II, комната 3;',
 };
+
+export const pickUpPoints = [
+  {
+    address: 'Садовая улица, 32/1',
+    metro: 'м. Сенная',
+    deliverypice: 'бесплатно'
+  },
+  {
+    address: 'Кирочная улица, 10',
+    metro: 'м. Чернышевская',
+    deliverypice: 'бесплатно'
+  },
+  {
+    address: 'Обводного канала, 199-201',
+    metro: 'м. Балтийская',
+    deliverypice: 'бесплатно'
+  },
+
+  {
+    address: 'Невский проспект, 10',
+    metro: 'м. Адмиралтейская',
+    deliverypice: 'бесплатно'
+  },
+  {
+    address: 'Набережная Фонтанки, 130',
+    metro: 'м. Техноложка',
+    deliverypice: 'бесплатно'
+  },
+
+  {
+    address: 'Беринга, 1',
+    metro: 'м. Приморская',
+    deliverypice: 'бесплатно'
+  },
+  {
+    address: 'Лесной проспект, 13',
+    metro: 'м. Выборгская',
+    deliverypice: 'бесплатно'
+  },
+  {
+    address: 'Марата, 2',
+    metro: 'м. Маяковская',
+    deliverypice: 'бесплатно'
+  },
+  {
+    address: 'Большой проспект ПС, 10',
+    metro: 'м. Спортивная',
+    deliverypice: 'бесплатно'
+  },
+];
+
+export const productsForPay = [
+  {
+    id: 1,
+    name: 'Ноутбук Apple MacBook Air 15 M2 8/256Gb Starlight (MQKU3)',
+    oldPrice: 200,
+    price: 180,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      }
+    ],
+    quantity: 2,
+    percent: 10,
+    // isLiked: true
+  },
+  {
+    id: 2,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    oldPrice: 300,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D'
+      }
+    ],
+    // isLiked: false,
+    quantity: 1,
+  },
+  {
+    id: 3,
+    name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
+    oldPrice: 100,
+    price: 85,
+    discount: 20,
+    modelsImages: [
+      {
+        id: 1,
+        imageLink: 'https://images.unsplash.com/photo-1581795669633-91ef7c9699a8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGlwaG9uZXxlbnwwfHwwfHx8MA%3D%3D',
+      },
+      {
+        id: 2,
+        imageLink: 'https://images.unsplash.com/photo-1499686934070-fde9d797e48c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      }
+    ],
+    // isLiked: true,
+    quantity: 1,
+    percent: 15,
+  }
+];
+
+export const mapUrl = 'https://yandex.ru/map-widget/v1/?scroll=false&um=constructor%3A4d7dc517a7705d82f9f3997088086ea9ac858b0a0b26eb729b89805f01497a84&amp;source=constructor "width="552" height="700" frameborder="0"';

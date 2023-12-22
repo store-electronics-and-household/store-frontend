@@ -10,7 +10,10 @@ interface SearchBarProps {
   passSearchResults: (array: MediumCardProps[]) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ passSearchResults, handleSearch }) => {
+const SearchBar: React.FC<SearchBarProps> = ({
+  passSearchResults,
+  handleSearch,
+}) => {
   const [input, setInput] = useState('');
   const navigate = useNavigate();
 
@@ -21,7 +24,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ passSearchResults, handleSearch }
 
   const controlFocus = useRef(null);
 
-  const handleSumbit = (e: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>): void => {
+  const handleSumbit = (
+    e: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>
+  ): void => {
     e.preventDefault();
     if (document.activeElement instanceof HTMLElement) {
       document.activeElement.blur();
@@ -54,28 +59,31 @@ const SearchBar: React.FC<SearchBarProps> = ({ passSearchResults, handleSearch }
   return (
     <div className='header__searchbar-container'>
       <div className='header__searchbar-wrapper'>
-
         {/* <Link to='/search-results'> */}
-          <button className='header__searchbar-button'>
-            <img
-              className='header__searchbar-button-icon'
-              src={searchIcon}
-              alt='Строка поиска'
-              onClick={handleSearchBar}
-            />
-          </button>
+        <button className='header__searchbar-button'>
+          <img
+            className='header__searchbar-button-icon'
+            src={searchIcon}
+            alt='Строка поиска'
+            onClick={handleSearchBar}
+          />
+        </button>
         {/* </Link> */}
 
-      <form className='header__searchbar-form' ref={controlFocus} onSubmit={handleSumbit}>
-        <label></label>
-        <input
+        <form
+          className='header__searchbar-form'
+          ref={controlFocus}
+          onSubmit={handleSumbit}
+        >
+          <label></label>
+          <input
             className='header__searchbar-input'
             placeholder='Поиск'
             autoComplete='off'
             onChange={handleChange}
             value={input}
           />
-      </form>
+        </form>
       </div>
     </div>
   );

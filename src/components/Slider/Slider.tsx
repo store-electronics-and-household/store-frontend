@@ -17,13 +17,17 @@ interface SliderProps {
   handleSearch: (request: string) => void;
 }
 
-const Slider: React.FC<SliderProps> = ({ handleSearch, bannerImage, passSearchResults }) => {
+const Slider: React.FC<SliderProps> = ({
+  handleSearch,
+  bannerImage,
+  passSearchResults,
+}) => {
   const slideContext: any | undefined = useSlideContext();
   const { isLight, setLight } = slideContext;
   const navigate = useNavigate();
 
   const handleSlideChange = (swiper: any): void => {
-    const activeSlideIndex = swiper.activeIndex;
+    const activeSlideIndex = swiper.realIndex;
     const isLightForCurrentSlide = isLighChangetForSlide(activeSlideIndex);
     setLight(isLightForCurrentSlide);
   };
@@ -69,6 +73,8 @@ const Slider: React.FC<SliderProps> = ({ handleSearch, bannerImage, passSearchRe
     handleSlideChange({ activeIndex: 0 });
   }, []);
 
+  // const [isLabeledStatement, setIsLast] = useState<boolean>(false)
+
   return (
     <>
       <Swiper
@@ -81,18 +87,19 @@ const Slider: React.FC<SliderProps> = ({ handleSearch, bannerImage, passSearchRe
         className='swiper-container'
         allowTouchMove={false}
         onSlideChange={handleSlideChange}
+        loop={true}
       >
         {bannerImage.map((banner, index) => (
           <SwiperSlide key={banner.id}>
             {/* <Link to='#' rel='noreferrer'> */}
-              <img
-                src={banner.imageLink}
-                alt={`${banner.name}`}
-                className='slider__action-img'
-                onClick={() => {
-                  handleOnClick(banner.id, banner.name);
-                }}
-              />
+            <img
+              src={banner.imageLink}
+              alt={`${banner.name}`}
+              className='slider__action-img'
+              onClick={() => {
+                handleOnClick(banner.id, banner.name);
+              }}
+            />
             {/* </Link> */}
           </SwiperSlide>
         ))}

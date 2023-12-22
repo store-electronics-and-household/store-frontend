@@ -33,7 +33,12 @@ interface HeaderProps {
   passSearchResults: (array: MediumCardProps[]) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ passSearchResults, toggleWarningPopup, onOpenAuth, handleSearch }) => {
+const Header: React.FC<HeaderProps> = ({
+  passSearchResults,
+  toggleWarningPopup,
+  onOpenAuth,
+  handleSearch,
+}) => {
   const { isLoggedIn } = useContext(UserContext);
   const [isVisible, setIsVisible] = useState<null | boolean>(null);
   const context = useSlideContext();
@@ -49,7 +54,10 @@ const Header: React.FC<HeaderProps> = ({ passSearchResults, toggleWarningPopup, 
 
   useEffect(() => {
     const handler = (e: MouseEvent): void => {
-      if (catalogRef?.current && !catalogRef.current.contains(e.target as Node)) {
+      if (
+        catalogRef?.current &&
+        !catalogRef.current.contains(e.target as Node)
+      ) {
         setIsVisible(false);
       }
     };
@@ -61,13 +69,12 @@ const Header: React.FC<HeaderProps> = ({ passSearchResults, toggleWarningPopup, 
     };
   });
 
-  const handleNavLinkClick =
-    (path: string): void => {
-      if (isLoggedIn) {
-        navigate(path);
-      }
-      toggleWarningPopup();
-    };
+  const handleNavLinkClick = (path: string): void => {
+    if (isLoggedIn) {
+      navigate(path);
+    }
+    toggleWarningPopup();
+  };
 
   const handleOpenAuth = (): void => {
     onOpenAuth();
@@ -100,11 +107,11 @@ const Header: React.FC<HeaderProps> = ({ passSearchResults, toggleWarningPopup, 
         : favouriteIconWhite
       : favouriteIcon;
   const profileSrc =
-      location.pathname === '/main'
-        ? isLight
-          ? profileIcon
-          : profileIconWhite
-        : profileIcon;
+    location.pathname === '/main'
+      ? isLight
+        ? profileIcon
+        : profileIconWhite
+      : profileIcon;
 
   return (
     <>
@@ -118,7 +125,7 @@ const Header: React.FC<HeaderProps> = ({ passSearchResults, toggleWarningPopup, 
             />
           </Link>
 
-          <CatalogMenu visible={isVisible} catalogRef={catalogRef}/>
+          <CatalogMenu visible={isVisible} catalogRef={catalogRef} />
 
           <SearchBar
             handleSearch={handleSearch}
@@ -157,9 +164,12 @@ const Header: React.FC<HeaderProps> = ({ passSearchResults, toggleWarningPopup, 
               />
             </NavLink>
 
-            <div className='header__navbar-link' onClick={() => {
-              handleNavLinkClick('/cart');
-            }}>
+            <div
+              className='header__navbar-link'
+              onClick={() => {
+                handleNavLinkClick('/cart');
+              }}
+            >
               <img
                 className='header__navbar-icon'
                 src={busketSrc}
@@ -168,27 +178,29 @@ const Header: React.FC<HeaderProps> = ({ passSearchResults, toggleWarningPopup, 
               <div className='header__navbar-icon-count'>{totalCount}</div>
             </div>
 
-      { isLoggedIn && (
-            <NavLink className='header__navbar-link' to='/'>
-              <img
-                className='header__navbar-icon'
-                src={profileSrc}
-                alt="Перейти в раздел 'Профиль'"
-              />
-            </NavLink>
-      )}
+            {isLoggedIn && (
+              <NavLink className='header__navbar-link' to='/profile'>
+                <img
+                  className='header__navbar-icon'
+                  src={profileSrc}
+                  alt="Перейти в раздел 'Профиль'"
+                />
+              </NavLink>
+            )}
           </nav>
-          { !isLoggedIn && (
-          <button
-            onClick={() => {
-              handleOpenAuth();
-            }}
-          className={`header__auth-button ${
-          location.pathname === '/main' && !isLight ? 'header__auth-button_white' : ''
-        }`}
-          >
-          Войти
-          </button>
+          {!isLoggedIn && (
+            <button
+              onClick={() => {
+                handleOpenAuth();
+              }}
+              className={`header__auth-button ${
+                location.pathname === '/main' && !isLight
+                  ? 'header__auth-button_white'
+                  : ''
+              }`}
+            >
+              Войти
+            </button>
           )}
         </div>
       </header>

@@ -21,17 +21,15 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
   }, [isQuestionOpen]);
 
   // eslint-disable-next-line quote-props
-  const classname = cn('accordion__arrow', { 'accordion__arrow_opened': isQuestionOpen });
+  const classname = cn('accordion__arrow', {
+    accordion__arrow_opened: isQuestionOpen,
+  });
 
   return (
     <li className='accordion__item'>
       <button className='accordion__btn' onClick={btnOnClick}>
         <p className='accordion__question'>{faqItem.q}</p>
-        <img
-          className={classname}
-          src={arrow}
-          alt='Стрелка'
-        />
+        <img className={classname} src={arrow} alt='Стрелка' />
       </button>
       <div className='accordion__answer-wrap' style={{ height }}>
         <p ref={contentRef} className='accordion__answer'>

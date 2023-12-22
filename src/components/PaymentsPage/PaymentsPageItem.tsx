@@ -17,10 +17,12 @@ const PaymentsPageItem: React.FC<PaymentsPageItemProps> = ({
         alt='фото товара'
       />
       {quantity > 1
-        ? <p className='payments-page__good-numbers'>x{quantity}</p>
-        : ''
-      }
-
+        ? (
+        <p className='payments-page__good-numbers'>x{quantity}</p>
+          )
+        : (
+            ''
+          )}
     </div>
   );
 };

@@ -11,8 +11,12 @@ interface MainProps {
 }
 
 const Main: React.FC<MainProps> = ({ passSearchResults, handleSearch }) => {
-  const [mainPageBanners, setMainPageBanners] = React.useState<MyTypeBanners[]>([]);
-  const [mainPageDicountBanners, setMainPageDicountBanners] = React.useState<MyTypeBanners[]>([]);
+  const [mainPageBanners, setMainPageBanners] = React.useState<MyTypeBanners[]>(
+    []
+  );
+  const [mainPageDicountBanners, setMainPageDicountBanners] = React.useState<
+  MyTypeBanners[]
+  >([]);
   React.useEffect(() => {
     getBanners()
       .then((res) => {
@@ -37,13 +41,13 @@ const Main: React.FC<MainProps> = ({ passSearchResults, handleSearch }) => {
           bannerImage={mainPageBanners}
           passSearchResults={passSearchResults}
           handleSearch={handleSearch}
-          />
+        />
         <Discount
           discountBannerImages={mainPageDicountBanners}
           passSearchResults={passSearchResults}
           handleSearch={handleSearch}
         />
-        <CategoriesMain/>
+        <CategoriesMain />
       </section>
     </>
   );
