@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { memo, useState } from 'react';
 import { formatSumm } from '../../utils/formatSumm';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
 import cn from 'classnames';
 import { type MediumCardProps } from '../../utils/types';
+import { useCartContext } from '../../context';
 
 interface ProductCardMediumProps {
   product: MediumCardProps;
@@ -12,7 +14,9 @@ interface ProductCardMediumProps {
 const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isMainImage, setIsMainImage] = React.useState(true);
-  const [isCounter, setIsCounter] = React.useState(0);
+
+  const { addProductToCart, cartItems, increaseCartQuantity } = useCartContext();
+
   const handleMouseOver = (): void => {
     setIsMainImage(false);
   };
@@ -21,19 +25,23 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
   };
 
   const handleAddToCart = (): void => {
-    setIsCounter((prev) => {
-      return prev + 1;
-    });
-    setIsPopupOpen(true);
-    setTimeout(() => {
-      setIsPopupOpen(false);
-    }, 2000);
+    if (cartItems.findIndex((productInCart) => productInCart.id === product.id) === -1) {
+      setIsPopupOpen(true);
+      setTimeout(() => {
+        setIsPopupOpen(false);
+      }, 2000);
+      addProductToCart(product.id);
+    } else {
+      increaseCartQuantity(product.id);
+    }
   };
 
   const cardPriceClassname = cn(
     'card-medium__price',
     { 'card-medium__price_sale': product.oldPrice !== null }
   );
+
+  const count = cartItems?.find((productInCart) => productInCart.id === product.id)?.count ?? 0;
 
   return (
     <>
@@ -63,19 +71,22 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
               {/* <CardLikeBtn isLikedCard={product.isLiked}/> */}
               <CardLikeBtn isLikedCard={false}/>
             </div>
-            <div className='card-medium__button'>
+
+             <div className='card-medium__button'>
+
               <button
                 type='button'
                 aria-label='Добавить в корзину'
                 className={
-                  isCounter > 0 ? 'card-medium__buy_big' : 'card-medium__buy'
+                  count > 0 ? 'card-medium__buy_big' : 'card-medium__buy'
                 }
                 onClick={handleAddToCart}
               />
-              <span className='card-medium__counter'>
-                {isCounter > 0 ? isCounter : ''}
+            <span className='card-medium__counter'>
+                {count > 0 ? count : ''}
               </span>
             </div>
+
           </div>
           <div className='card-medium__footer'>
             <a className='card-medium__link' href={'/categories/catalog/product'}>

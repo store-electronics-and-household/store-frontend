@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { useState } from 'react';
 import cn from 'classnames';
 import cart from '../../image/icons/busket_icon-white.svg';
@@ -14,6 +15,7 @@ import {
 import { formatSumm } from '../../utils/formatSumm';
 import PopupProductPhoto from '../PopupProductPhoto/PopupProductPhoto';
 import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
+import { useCartContext } from '../../context';
 
 const objectKeys = (
   object: ProductAttributesDataType
@@ -33,8 +35,8 @@ const ProductPage: React.FC<ProductPageProps> = ({
   const [isActive, setIsActive] = useState(true);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isPopupFullPhotoOpen, setIsPopupFullPhotoOpen] = useState(false);
-  const [count, setCount] = useState(product.quantityInCart);
-  const [isQuantityBtn, setIsQuantityBtn] = useState(false);
+
+  const { addProductToCart, cartItems, increaseCartQuantity, decreaseCartQuantity } = useCartContext();
 
   const handleOnAllcharacteristics = (): void => {
     setIsActive(false);
@@ -63,27 +65,17 @@ const ProductPage: React.FC<ProductPageProps> = ({
     setTimeOutInfoPopup();
   };
 
-  const increaseQuantity = (): void => {
-    setCount((count) => {
-      return count + 1;
-    });
-  };
-
-  const decreaseQuantity = (): void => {
-    setCount((count) => {
-      return count - 1;
-    });
-  };
-
   const handleAddToCart = (): void => {
-    increaseQuantity();
-    count === 0 && openInfoPopup();
-    count === 0 && setIsQuantityBtn(true);
+    if (cartItems.findIndex((productInCart) => productInCart.id === product.id) === -1) {
+      openInfoPopup();
+      addProductToCart(product.id);
+    } else {
+      increaseCartQuantity(product.id);
+    }
   };
 
   const handleDeleteFromCart = (): void => {
-    decreaseQuantity();
-    count === 1 && setIsQuantityBtn(false);
+    decreaseCartQuantity(product.id);
   };
 
   const currentPriceClassname = cn(
@@ -105,6 +97,8 @@ const ProductPage: React.FC<ProductPageProps> = ({
     'product-page__description-btn',
     { 'product-page__description-btn_active': !isActive }
   );
+
+  const count = cartItems?.find((productInCart) => productInCart.id === product.id)?.count ?? 0;
 
   return (
     <>
@@ -158,9 +152,8 @@ const ProductPage: React.FC<ProductPageProps> = ({
               }
             </div>
             <div className='product-page__buttons'>
-
               <div>
-                {!isQuantityBtn
+                {count === 0
                   ? <button
                       onClick={handleAddToCart}
                       className='product-page__button-basket'

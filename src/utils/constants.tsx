@@ -394,7 +394,7 @@ export const subCategoriesList = {
 };
 
 export const productData = {
-  id: 68898484,
+  id: 6,
   name: 'Apple MacBook Air 15" (M2, 8C CPU/10C GPU, 2023), 8 ГБ, 512 ГБ SSD, «сияющая звезда»',
   price: 155990,
   oldPrice: 164990,

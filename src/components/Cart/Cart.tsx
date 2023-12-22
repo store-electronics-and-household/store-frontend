@@ -8,6 +8,7 @@ import { formatCurrency } from '../../utils/formatCurrency';
 import { paymentPageData } from '../../utils/constants';
 import CartItem from '../CartItem/CartItem';
 import { useCartContext } from '../../context';
+
 interface CartProps {
   onCheckoutClick: (data: MediumCardProps[]) => void;
 }
@@ -36,11 +37,13 @@ const Cart: FC<CartProps> = ({ onCheckoutClick }) => {
                 если ищете что-то конкретное
               </p>
             </div>
-            <button className='cart__default-button'>
-              <span className='cart__default-button-content'>
-                Перейти в каталог
-              </span>
-            </button>
+            <Link className='cart__default-link' to='/categories/catalog'>
+              <button className='cart__default-button'>
+                <span className='cart__default-button-content'>
+                  Перейти в каталог
+                </span>
+              </button>
+            </Link>
           </div>
         ) : (
           <div className='cart__content'>
