@@ -426,7 +426,7 @@ export const subCategoriesList = {
 };
 
 export const productData = {
-  id: 1,
+  id: 6,
   name: 'Алиса',
   description: 'Умная колонка',
   price: 4990,
@@ -605,53 +605,53 @@ export const contactsData = {
 };
 
 export const pickUpPoints = [
-{
-  address: 'Садовая улица, 32/1',
-  metro: 'м. Сенная',
-  deliverypice: 'бесплатно'
-},
-{
-  address: 'Кирочная улица, 10',
-  metro: 'м. Чернышевская',
-  deliverypice: 'бесплатно'
-},
-{
-  address: 'Обводного канала, 199-201',
-  metro: 'м. Балтийская',
-  deliverypice: 'бесплатно'
-},
+  {
+    address: 'Садовая улица, 32/1',
+    metro: 'м. Сенная',
+    deliverypice: 'бесплатно'
+  },
+  {
+    address: 'Кирочная улица, 10',
+    metro: 'м. Чернышевская',
+    deliverypice: 'бесплатно'
+  },
+  {
+    address: 'Обводного канала, 199-201',
+    metro: 'м. Балтийская',
+    deliverypice: 'бесплатно'
+  },
 
-{
-  address: 'Невский проспект, 10',
-  metro: 'м. Адмиралтейская',
-  deliverypice: 'бесплатно'
-},
-{
-  address: 'Набережная Фонтанки, 130',
-  metro: 'м. Техноложка',
-  deliverypice: 'бесплатно'
-},
+  {
+    address: 'Невский проспект, 10',
+    metro: 'м. Адмиралтейская',
+    deliverypice: 'бесплатно'
+  },
+  {
+    address: 'Набережная Фонтанки, 130',
+    metro: 'м. Техноложка',
+    deliverypice: 'бесплатно'
+  },
 
-{
-  address: 'Беринга, 1',
-  metro: 'м. Приморская',
-  deliverypice: 'бесплатно'
-},
-{
-  address: 'Лесной проспект, 13',
-  metro: 'м. Выборгская',
-  deliverypice: 'бесплатно'
-},
-{
-  address: 'Марата, 2',
-  metro: 'м. Маяковская',
-  deliverypice: 'бесплатно'
-},
-{
-  address: 'Большой проспект ПС, 10',
-  metro: 'м. Спортивная',
-  deliverypice: 'бесплатно'
-},
+  {
+    address: 'Беринга, 1',
+    metro: 'м. Приморская',
+    deliverypice: 'бесплатно'
+  },
+  {
+    address: 'Лесной проспект, 13',
+    metro: 'м. Выборгская',
+    deliverypice: 'бесплатно'
+  },
+  {
+    address: 'Марата, 2',
+    metro: 'м. Маяковская',
+    deliverypice: 'бесплатно'
+  },
+  {
+    address: 'Большой проспект ПС, 10',
+    metro: 'м. Спортивная',
+    deliverypice: 'бесплатно'
+  },
 ];
 
 export const productsForPay = [

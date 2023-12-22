@@ -29,11 +29,12 @@ export interface ProductInfo {
   id: number;
   name: string;
   description: string;
-  article: number;
-  quantity: number;
-  originPrice: number;
-  salesPrice: number;
-  imgUrl: string;
+  price: number;
+  images: string[];
+  article?: number;
+  count: number;
+  oldPrice: number;
+  modelSetId: number;
 }
 
 export interface MyTypeBanners {

@@ -26,25 +26,27 @@ const Cart: FC<CartProps> = ({ onCheckoutClick }) => {
       <div className='cart__container'>
         <h2 className='cart__header'>Корзина</h2>
         {/* If cart is empty: */}
-        {
-          cartItems.length === 0 ? (
-            <div className='cart__default-content'>
-              <h3 className='cart__default-info'>В корзине ничего нет</h3>
-              <div className='cart__default-info-description'>
-                <p className='cart__default-info-p'>
-                  переходите в каталог или воспользуйтесь поиском,
-                </p>
-                <p className='cart__default-info-p'>
-                  если ищете что-то конкретное
-                </p>
-              </div>
-              <button className='cart__default-button'>
-              <span className='cart__default-button-content'>
-                Перейти в каталог
-              </span>
-              </button>
+        {cartItems.length === 0 ? (
+          <div className='cart__default-content'>
+            <h3 className='cart__default-info'>В корзине ничего нет</h3>
+            <div className='cart__default-info-description'>
+              <p className='cart__default-info-p'>
+                переходите в каталог или воспользуйтесь поиском,
+              </p>
+              <p className='cart__default-info-p'>
+                если ищете что-то конкретное
+              </p>
             </div>
-          ) : (
+            <Link className='cart__default-link' to='/categories/catalog'>
+              <button className='cart__default-button'>
+                <span className='cart__default-button-content'>
+                  Перейти в каталог
+                </span>
+              </button>
+            </Link>
+          </div>
+        )
+          : (
             <div className='cart__content'>
               <div className='cart__list'>
                 {cartItems.map((data) => (
@@ -100,7 +102,7 @@ const Cart: FC<CartProps> = ({ onCheckoutClick }) => {
                 </div>
               </div>
             </div>
-          )
+            )
         }
       </div>
     </section>

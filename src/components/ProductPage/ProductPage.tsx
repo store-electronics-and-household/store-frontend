@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { useState } from 'react';
 import cn from 'classnames';
 import cart from '../../image/icons/busket_icon-white.svg';
@@ -11,6 +12,7 @@ import ProductCharacteristicsList from '../ProductCharacteristicsList/ProductCha
 import { formatSumm } from '../../utils/formatSumm';
 import PopupProductPhoto from '../PopupProductPhoto/PopupProductPhoto';
 import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
+import { useCartContext } from '../../context';
 import { useFavouritesContext } from '../../context/FavouritesContext';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -18,8 +20,10 @@ const ProductPage = () => {
   const [isActive, setIsActive] = useState(true);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isPopupFullPhotoOpen, setIsPopupFullPhotoOpen] = useState(false);
-  const [count, setCount] = useState(0);
-  const [isQuantityBtn, setIsQuantityBtn] = useState(false);
+
+  const { addProductToCart, cartItems, increaseCartQuantity, decreaseCartQuantity } = useCartContext();
+  // const [count, setCount] = useState(0);
+  // const [isQuantityBtn, setIsQuantityBtn] = useState(false);
   const { productFull } = useFavouritesContext();
 
   const images = productFull.images.map(item => item.imageLink);
@@ -51,28 +55,20 @@ const ProductPage = () => {
     setTimeOutInfoPopup();
   };
 
-  const increaseQuantity = (): void => {
-    setCount((count) => {
-      return count + 1;
-    });
-  };
-
-  const decreaseQuantity = (): void => {
-    setCount((count) => {
-      return count - 1;
-    });
-  };
-
   const handleAddToCart = (): void => {
-    increaseQuantity();
-    count === 0 && openInfoPopup();
-    count === 0 && setIsQuantityBtn(true);
+    if (cartItems.findIndex((productInCart) => productInCart.id === productFull.id) === -1) {
+      openInfoPopup();
+      addProductToCart(productFull.id);
+    } else {
+      increaseCartQuantity(productFull.id);
+    }
   };
 
   const handleDeleteFromCart = (): void => {
-    decreaseQuantity();
-    count === 1 && setIsQuantityBtn(false);
+    decreaseCartQuantity(productFull.id);
   };
+
+  const count = cartItems?.find((productInCart) => productInCart.id === productFull.id)?.count ?? 0;
 
   const currentPriceClassname = cn(
     'product-page__current-price',
@@ -140,7 +136,7 @@ const ProductPage = () => {
             </div>
             <div className='product-page__buttons'>
               <div>
-                {!isQuantityBtn
+                {count === 0
                   ? <button
                       onClick={handleAddToCart}
                       className='product-page__button-basket'
