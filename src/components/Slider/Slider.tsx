@@ -84,16 +84,12 @@ const Slider: React.FC<SliderProps> = ({
         modules={[Navigation, Autoplay]}
         autoplay={{ delay: 6000 }}
         slidesPerView={1}
-        slidesPerGroup={1}
+        // slidesPerGroup={1}
         className='swiper-container'
         allowTouchMove={false}
         onSlideChange={handleSlideChange}
         loop={true}
-        loopedSlides={bannerImage.length}
         centeredSlides={true}
-        // loop={true}
-        // loopedSlides={5}
-        // centeredSlides={true}
       >
         {bannerImage.map((banner, index) => (
           <SwiperSlide key={banner.id}>
