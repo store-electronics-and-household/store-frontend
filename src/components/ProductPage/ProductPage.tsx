@@ -56,17 +56,19 @@ const ProductPage = () => {
   };
 
   const handleAddToCart = (): void => {
-    if (cartItems.findIndex((productInCart) => productInCart.id === product.id) === -1) {
+    if (cartItems.findIndex((productInCart) => productInCart.id === productFull.id) === -1) {
       openInfoPopup();
-      addProductToCart(product.id);
+      addProductToCart(productFull.id);
     } else {
-      increaseCartQuantity(product.id);
+      increaseCartQuantity(productFull.id);
     }
   };
 
   const handleDeleteFromCart = (): void => {
-    decreaseCartQuantity(product.id);
+    decreaseCartQuantity(productFull.id);
   };
+
+  const count = cartItems?.find((productInCart) => productInCart.id === productFull.id)?.count ?? 0;
 
   const currentPriceClassname = cn(
     'product-page__current-price',
@@ -86,8 +88,6 @@ const ProductPage = () => {
     'product-page__description-btn',
     { 'product-page__description-btn_active': !isActive }
   );
-
-  const count = cartItems?.find((productInCart) => productInCart.id === product.id)?.count ?? 0;
 
   return (
     <>
