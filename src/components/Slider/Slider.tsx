@@ -27,9 +27,7 @@ const Slider: React.FC<SliderProps> = ({
   const navigate = useNavigate();
 
   const handleSlideChange = (swiper: any): void => {
-    // const activeSlideIndex = swiper.activeIndex;
     const activeSlideIndex = swiper.realIndex;
-    console.log(activeSlideIndex);
     const isLightForCurrentSlide = isLighChangetForSlide(activeSlideIndex);
     setLight(isLightForCurrentSlide);
   };
