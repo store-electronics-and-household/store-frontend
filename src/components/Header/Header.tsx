@@ -73,7 +73,9 @@ const Header: React.FC<HeaderProps> = ({
     if (isLoggedIn) {
       navigate(path);
     }
-    toggleWarningPopup();
+    !isLoggedIn && (
+      toggleWarningPopup()
+    );
   };
 
   const handleOpenAuth = (): void => {
