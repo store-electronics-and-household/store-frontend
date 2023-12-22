@@ -1,26 +1,30 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './WarningPopup.css';
+import { useWarningPopupContext } from '../../context/WarningPopupContext';
+import { useClickOutside } from '../../utils/useClickOutside';
 
 interface WarningPopupProps {
-  isOpen: boolean;
   onOpenAuth: () => void;
-  onOpenWarningPopup: () => void;
 }
 
 const WarningPopup: React.FC<WarningPopupProps> = ({
-  isOpen,
   onOpenAuth,
-  onOpenWarningPopup,
 }) => {
+  const { handleCloseWarningPopup, isWarningPopupOpen, warningPopupText } = useWarningPopupContext();
+  const warningPopupRef = useRef(null);
+  useClickOutside(warningPopupRef, () => {
+    handleCloseWarningPopup();
+  });
+
   const handleOpenAuth = (): void => {
     onOpenAuth();
-    onOpenWarningPopup();
+    handleCloseWarningPopup();
   };
   return (
-    <div className={`warningPopup ${isOpen ? '' : 'warningPopup_none'}`}>
+    <div ref={warningPopupRef} className={`warningPopup ${isWarningPopupOpen ? '' : 'warningPopup_none'}`}>
       <div className='warning-popup__container'>
         <p className='warning-popup__text'>
-          Для добавления товара в корзину необходимо авторизоваться
+          {warningPopupText}
         </p>
         <button className='warning-popup__cls-btn' onClick={handleOpenAuth}>
           Войти

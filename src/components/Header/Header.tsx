@@ -25,9 +25,9 @@ import { useCartContext } from '../../context';
 import Layout from '../Layout/Layout';
 import { UserContext } from '../../context/UserContext';
 import { type MediumCardProps } from '../../utils/types';
+import { useWarningPopupContext } from '../../context/WarningPopupContext';
 
 interface HeaderProps {
-  toggleWarningPopup: () => void;
   onOpenAuth: () => void;
   handleSearch: (request: string) => void;
   passSearchResults: (array: MediumCardProps[]) => void;
@@ -35,11 +35,11 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({
   passSearchResults,
-  toggleWarningPopup,
   onOpenAuth,
   handleSearch,
 }) => {
   const { isLoggedIn } = useContext(UserContext);
+  const { handleOpenWarningPopup } = useWarningPopupContext();
   const [isVisible, setIsVisible] = useState<null | boolean>(null);
   const context = useSlideContext();
   const { totalCount } = useCartContext();
@@ -69,12 +69,21 @@ const Header: React.FC<HeaderProps> = ({
     };
   });
 
-  const handleNavLinkClick = (path: string): void => {
+  const handleNavLinkClickCart = (path: string): void => {
     if (isLoggedIn) {
       navigate(path);
     }
     !isLoggedIn && (
-      toggleWarningPopup()
+      handleOpenWarningPopup('Для добавления товара в корзину необходимо авторизоваться')
+    );
+  };
+
+  const handleNavLinkClickFavourite = (path: string): void => {
+    if (isLoggedIn) {
+      navigate(path);
+    }
+    !isLoggedIn && (
+      handleOpenWarningPopup('Для добавления товара в избранные необходимо авторизоваться')
     );
   };
 
@@ -158,7 +167,13 @@ const Header: React.FC<HeaderProps> = ({
               />
             </NavLink>
 
-            <NavLink className='header__navbar-link' to='/favourites'>
+            <NavLink
+              className='header__navbar-link'
+              onClick={() => {
+                handleNavLinkClickFavourite('/cart');
+              }}
+              to='/favourites'
+            >
               <img
                 className='header__navbar-icon'
                 src={favouriteSrc}
@@ -169,7 +184,7 @@ const Header: React.FC<HeaderProps> = ({
             <div
               className='header__navbar-link'
               onClick={() => {
-                handleNavLinkClick('/cart');
+                handleNavLinkClickCart('/cart');
               }}
             >
               <img
