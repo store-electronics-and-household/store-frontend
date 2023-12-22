@@ -84,6 +84,7 @@ const Slider: React.FC<SliderProps> = ({
         modules={[Navigation, Autoplay]}
         autoplay={{ delay: 6000 }}
         slidesPerView={1}
+        slidesPerGroup={1}
         className='swiper-container'
         allowTouchMove={false}
         onSlideChange={handleSlideChange}

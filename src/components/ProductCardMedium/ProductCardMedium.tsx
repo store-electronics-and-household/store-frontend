@@ -108,6 +108,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
             </a>
           </div>
         </div>
+
       </li>
       <PopupAddToCart
         isOpen={isPopupOpen}
@@ -115,6 +116,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
         // photoUrl={product.modelsImages &&  product.modelsImages[0].imageLink}
         photoUrl={product.images?.[0]?.imageLink}
       />
+
     </>
   );
 };
