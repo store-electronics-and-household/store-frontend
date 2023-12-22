@@ -177,7 +177,9 @@ const Header: React.FC<HeaderProps> = ({
                 src={busketSrc}
                 alt="Перейти в раздел 'Корзина'"
               />
+            {isLoggedIn && (
               <div className='header__navbar-icon-count'>{totalCount}</div>
+            )}
             </div>
 
             {isLoggedIn && (
