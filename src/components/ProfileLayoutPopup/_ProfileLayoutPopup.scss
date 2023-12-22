@@ -1,0 +1,64 @@
+.profile-popup {
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: #8f8f8f, $alpha: .3);
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-popup__window {
+  box-sizing: border-box;
+  max-width: 428px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+  padding: 52px;
+  position: relative;
+  border-radius: 25px;
+}
+
+.profile-popup__title {
+  font-size: $fontSH3;
+  font-weight: $fontWH3;
+  line-height: 125%;
+  margin: 0;
+  text-align: center;
+}
+
+.profile-popup__close {
+  width: 24px;
+  height: 24px;
+  background: url('#{$imagesDir}icons/popup__button-close.svg') center center/auto no-repeat;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.profile-popup__submit {
+  box-sizing: border-box;
+  border: none;
+  width: 100%;
+  padding: 16px 40px;
+  font-size: $fontSButton;
+  font-weight: $fontWButton;
+  line-height: 112.5%;
+  cursor: pointer;
+  color: white;
+  border-radius: 40px;
+}
+
+.profile-popup__submit_delete {
+  background-color: #C72643;
+}
+
+.profile-popup__submit_exit {
+  background-color: #272A31;
+}
