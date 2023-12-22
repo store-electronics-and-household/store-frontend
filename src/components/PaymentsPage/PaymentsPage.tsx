@@ -9,20 +9,20 @@ import { Link } from 'react-router-dom';
 import PhoneForm from './PaymentsPageInput';
 import PaymentsPageCourier from './PaymentsPageCourier';
 import PopupChoosePickUpPoint from './PopupChoosePickUpPoint';
+import PaymentsPageResPopup from './PaymentsPageResPopup';
 import { getPickUpDate, adrressToString, priceToNumber, getDeliveryDate } from './DataFormatters';
+import { productsForPay } from '../../utils/constants';
 // import { productsForPay } from '../../utils/constants';
 
 interface PaymentsPageProps {
-  GoodsList: MediumCardProps[];
+  oldGoodsList: MediumCardProps[];
 }
 
-const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
-  // interface ClientDataProps {
-  //   name: string;
-  //   phone: string;
-  //   address: string;
-  // }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const PaymentsPage: React.FC<PaymentsPageProps> = ({ oldGoodsList }) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [GoodsList, setGoodsList] = React.useState<MediumCardProps[]>(productsForPay);
+
   const [clientData, setClientData] = React.useState({
     phone: '',
     address: '',
@@ -38,11 +38,10 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
     }
   );
 
-  // console.log(clientData);
-
   const [isPhoneValid, setIsPhoneValid] = useState<boolean>(false);
   const [isCourierDataValid, setIsCourierDataValid] = useState<boolean>(false);
   const [isPopupOpened, setIsPopupOpened] = useState<boolean>(false);
+  const [isResPopupOpened, setIsResPopupOpened] = useState<boolean>(true);
   const [deliveryType, setDeliveryType] = useState<string>('Самовывоз');
   const [isPhoneValidated, setIsPhoneValidated] = useState<boolean>(false);
   const [isCourierDataValidated, setCourierDataValidated] = useState<boolean>(false);
@@ -77,10 +76,6 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
       console.log(priceToApi);
     }
   }, [clientData, isReadeyToSend]);
-
-  // useEffect(() => {
-  //   setDeliveryPrice(8500);
-  // }, []);
 
   const fullQuantity: number = GoodsList.reduce(function (acc, item) {
     return acc + item.quantity;
@@ -154,11 +149,6 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
 
   const choosePickUpPoint = (): void => {
     setIsPopupOpened(true);
-    // setIsPhoneValidated(true);
-    // console.log(isPhoneValid);
-    // if (isPhoneValid && isValidForm1) {
-    //   setIsPopupOpened(true);
-    // };
   };
 
   const handlePayout = (): void => {
@@ -213,6 +203,10 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
     setIsPopupOpened(false);
   };
 
+  const handleCloseResPopup = (): void => {
+    setIsResPopupOpened(false);
+  };
+
   const courierDataHandler = (clientAddress?: string, clientDate?: string, clientPhone?: string, clientComment?: string): void => {
     if (!isPhoneValidated) {
       setIsPhoneValidated(true);
@@ -224,51 +218,16 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
     if (clientAddress !== undefined && clientDate !== undefined && clientPhone !== undefined && clientComment !== undefined) {
       setClientData({ ...clientData, address: clientAddress, date: clientDate, comment: clientComment });
     }
-    // console.log(isCourierDataValid);
-    // console.log(isPhoneValid);
     if (isCourierDataValid && isPhoneValid && isValidForm1) {
       setIsReadeyToSend(true);
-      // const form1Values = getValuesForm1();
-      // console.log(deliveryType);
-      // console.log(`имя: ${form1Values.name}`);
-      // console.log(`телефон: ${clientPhone}`);
-      // // console.log(clientData.date);
-      // const dateToApiPrev = clientData.date.toString();
-      // const dateToApi = getDeliveryDate(dateToApiPrev);
-      // console.log(dateToApi);
-      // const { phone, date, ...newObject } = clientData;
-      // console.log(newObject);
-      // // const addressToApi = adrressToString(newObject);
-      // // console.log(addressToApi);
-      // console.log(300);
-      // const priceToApi = priceToNumber(finalPrice);
-      // console.log(priceToApi);
     }
   };
-
-  // {
-  //   "deliveryType": "string", ОК
-  //   "name": "string", ОК
-  //   "phone": "string", ОК
-  //   "deliveryAddress": "string",
-  //   "deliveryDate": "2023-12-21", OK
-  //   "deliveryPrice": 0, OK
-  //   "finalPrice": 0
-  // }
 
   const handleChoosenPoint = (point: MeTypePickUpPoint): void => {
     setIsFirstPage(false);
     setIsSecondPage(true);
     setDeliveryPoint(point);
   };
-
-  // console.log(deliveryPoint);
-
-  // const validPhoneHandler = (isPhoneValid: boolean): void => {
-  //   if (isPhoneValid !== undefined) {
-  //     setIsPhoneValid(isPhoneValid);
-  //   }
-  // };
 
   return (
     <>
@@ -466,102 +425,26 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ GoodsList }) => {
         onClose={handleClosePopup}
         onChoosenPoint={handleChoosenPoint}
       />
+      <PaymentsPageResPopup
+        isOpen={isResPopupOpened}
+        orderNum={'100500'}
+        GoodsList={GoodsList}
+        fullQuantity={fullQuantity}
+        fullPrice={fullPrice}
+        summaryDiscount={summaryDiscount}
+        // formatedDeliveryPrice={formatedDeliveryPrice}
+        formatedDeliveryPrice={'133 р'} // ПОПРАВИТЬ ОБРАТНО
+        finalPrice={finalPrice}
+        deliveryDate={(clientData.date.toString())}
+        // deliveryPrice={deliveryPrice}
+        deliveryType={deliveryType}
+        // deliveryType={'Доставка'}
+        onClose={handleCloseResPopup}
+        // pickUpDate={getPickUpDate()}
+      />
+
     </>
   );
 };
 
 export default PaymentsPage;
-
-/*
-<form
-              id='clientAddressForm'
-              name='clientAddressForm'
-              action=''
-              className='payments-page__client-address'
-            >
-              {/* <div className='payments-page__address-container'>
-                <div className='payments-page__address-input-container'>
-                  <label className='payments-page__input-label payments-page__input-label_type_address'>
-                    <p className='payments-page__input-title'>
-                      Город, улица и дом <sup className=''>*</sup>
-                    </p>
-                    <input
-                      {...registerForm2('address', {
-                        required: {
-                          value: true,
-                          message: 'Поле адрес обязательно к заполнению',
-                        },
-                      })}
-                      type='text'
-                      placeholder='Пушкина, 33, Москва'
-                      className='payments-page__client-data-input'
-                      name='address'
-                      required
-                    />
-                    {errorsForm2.address != null &&
-                      typeof errorsForm2.address === 'object' &&
-                      'message' in errorsForm2.address && (
-                        <span className='payments-page__input-error'>
-                          {(errorsForm2.address as { message: string }).message}
-                        </span>
-                      )}
-                  </label>
-
-                  <div className='payments-page__address-box'>
-                    <label className='payments-page__input-label payments-page__input-label_type_address'>
-                      <p className='payments-page__input-title'>Квартира</p>
-                      <input
-                        {...registerForm2('appartment')}
-                        type='text'
-                        placeholder='12'
-                        className='payments-page__client-data-input'
-                        name='appartment'
-                      />
-                    </label>
-                    <label className='payments-page__input-label payments-page__input-label_type_address'>
-                      <p className='payments-page__input-title'>Подъезд</p>
-                      <input
-                        {...registerForm2('gate')}
-                        type='text'
-                        placeholder='1'
-                        className='payments-page__client-data-input'
-                        name='gate'
-                      />
-                    </label>
-                    <label className='payments-page__input-label payments-page__input-label_type_address'>
-                      <p className='payments-page__input-title'>Этаж</p>
-                      <input
-                        {...registerForm2('floor')}
-                        type='text'
-                        placeholder='3'
-                        className='payments-page__client-data-input'
-                        name='floor'
-                      />
-                    </label>
-                    <label className='payments-page__input-label payments-page__input-label_type_address'>
-                      <p className='payments-page__input-title'>Этаж</p>
-                      <input
-                        {...registerForm2('ring')}
-                        type='text'
-                        placeholder='12'
-                        className='payments-page__client-data-input'
-                        name='ring'
-                      />
-                    </label>
-                  </div>
-                </div>
-              </div>
-              </form>
-*/
-
-/*
-            <button
-                  onClick={handleDeliveryTypeClick}
-                  className='payments-page__delivery-type'
-                >
-                  Курьер
-                </button>
-                <button className='payments-page__delivery-type'>
-                  Самовывоз
-                </button>
-*/

@@ -245,7 +245,7 @@ const App: React.FC = () => {
                     element={
                       <>
                         <Breadcrumbs crumbs={crumbs} />
-                        <PaymentsPage GoodsList={goodsList ?? []} />
+                        <PaymentsPage oldGoodsList={goodsList ?? []} />
                       </>
                     }
                   />
