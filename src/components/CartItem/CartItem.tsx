@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import React from 'react';
 import type { FC } from 'react';
 
@@ -5,7 +6,7 @@ import crossIcon from '../../image/icons/cart_cross_icon.svg';
 import minusIconDefault from '../../image/icons/cart_minus_icon_default.svg';
 import plusIconActive from '../../image/icons/cart_plus_icon_active.svg';
 import minusIconActive from '../../image/icons/cart_minus_icon_active.svg';
-import imgUrl from '../../image/item.jpg';
+// import imgUrl from '../../image/item.jpg';
 import type { ProductInfo } from '../../utils/types';
 
 import { formatCurrency } from '../../utils/formatCurrency';
@@ -16,17 +17,17 @@ interface Props {
 }
 
 const CartItem: FC<Props> = ({ data }) => {
-  const { id, name, description, article, quantity, originPrice, salesPrice } =
+  const { id, name, description, count, article, oldPrice, price, modelSetId, images } =
     data;
 
-  const { increaseCartQuantity, decreaseCartQuantity, removeFromCart } =
+  const { increaseCartQuantity, decreaseCartQuantity, deleteProductFromCart } =
     useCartContext();
 
   return (
     <div className='cart__item' key={id}>
       <div className='cart__item-info'>
         <div className='cart__item-image-wrapper'>
-          <img src={imgUrl} alt='Фото товара' />
+          <img src={images[1]} alt='Фото товара' />
         </div>
         <div className='cart__item-textdata'>
           <h3 className='cart__item-name'>{name}</h3>
@@ -44,7 +45,7 @@ const CartItem: FC<Props> = ({ data }) => {
                 decreaseCartQuantity(id);
               }}
             >
-              {quantity > 1
+              {count > 1
                 ? (
                 <img src={minusIconActive} alt='Уменьшить количество' />
                   )
@@ -53,7 +54,7 @@ const CartItem: FC<Props> = ({ data }) => {
                   )}
             </button>
 
-            <p className='cart__item-quantity-button-number'>{quantity}</p>
+            <p className='cart__item-quantity-button-number'>{count}</p>
 
             <button
               className='cart__item-quantity-button-symbol'
@@ -64,12 +65,12 @@ const CartItem: FC<Props> = ({ data }) => {
               <img src={plusIconActive} alt='Увеличить количество' />
             </button>
           </div>
-          {quantity > 1
+          {count > 1
             ? (
             <div className='cart__item-onceprice-container'>
               <div className='cart__item-onceprice-wrapper'>
                 <span className='cart__item-onceprice'>
-                  {formatCurrency(salesPrice)}/шт.
+                  {formatCurrency(price)}/шт.
                 </span>
               </div>
             </div>
@@ -82,20 +83,27 @@ const CartItem: FC<Props> = ({ data }) => {
         <div className='cart__item-price-container'>
           <div className='cart__item-price'>
             <span className='cart__item-salesprice'>
-              {formatCurrency(salesPrice)}
+              {formatCurrency(price)}
             </span>
           </div>
-          <div className='cart__item-price'>
+          { oldPrice === 0
+            ? (
+                ''
+              )
+            : (
+            <div className='cart__item-price'>
             <span className='cart__item-originprice'>
-              {formatCurrency(originPrice)}
+              {formatCurrency(oldPrice)}
             </span>
           </div>
+              )}
+
         </div>
         <div className='cart__cross-button-wrapper'>
           <button
             className='cart__cross-button'
             onClick={() => {
-              removeFromCart(id);
+              deleteProductFromCart(modelSetId);
             }}
           >
             <img

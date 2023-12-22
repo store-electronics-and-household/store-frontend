@@ -25,6 +25,23 @@ export const request = async (
   return await fetch(url, options).then(checkResponse);
 };
 
+export const requestWithToken = async (
+  endpoint: string,
+  options: RequestInit
+): Promise<any> => {
+  const url = `${API_URL}${endpoint}`;
+
+  const token = localStorage.getItem('token');
+
+  return await fetch(url, {
+    ...options,
+    headers: {
+      ...!!token && { Authorization: `Bearer ${token}` },
+      ...options.headers
+    }
+  }).then(checkResponse);
+};
+
 export const register = async (
   email: string,
   password: string
