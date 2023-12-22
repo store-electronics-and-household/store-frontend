@@ -714,3 +714,21 @@ export const productsForPay = [
 ];
 
 export const mapUrl = 'https://yandex.ru/map-widget/v1/?scroll=false&um=constructor%3A4d7dc517a7705d82f9f3997088086ea9ac858b0a0b26eb729b89805f01497a84&amp;source=constructor "width="552" height="700" frameborder="0"';
+
+export const defSlides = [
+  {
+    id: 11,
+    name: 'Наушники Sony',
+    imageLink: 'https://cyberplace.online/images/banners/sony-banner.jpg',
+  },
+  {
+    id: 21,
+    name: 'Macbook Air 15',
+    imageLink: 'https://cyberplace.online/images/banners/mac-banner.jpg',
+  },
+  {
+    id: 31,
+    name: 'Apple HomePod',
+    imageLink: 'https://cyberplace.online/images/banners/homepod-banner.jpg',
+  },
+];

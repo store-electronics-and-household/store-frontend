@@ -26,12 +26,6 @@ const Slider: React.FC<SliderProps> = ({
   const { isLight, setLight } = slideContext;
   const navigate = useNavigate();
 
-  const handleSlideChange = (swiper: any): void => {
-    const activeSlideIndex = swiper.realIndex;
-    const isLightForCurrentSlide = isLighChangetForSlide(activeSlideIndex);
-    setLight(isLightForCurrentSlide);
-  };
-
   const handleOnClick = (id: number, name: string): void => {
     getPromoResults(id)
       .then((res) => {
@@ -69,6 +63,12 @@ const Slider: React.FC<SliderProps> = ({
     }
   };
 
+  const handleSlideChange = (swiper: any): void => {
+    const activeSlideIndex = swiper.realIndex;
+    const isLightForCurrentSlide = isLighChangetForSlide(activeSlideIndex);
+    setLight(isLightForCurrentSlide);
+  };
+
   React.useEffect(() => {
     handleSlideChange({ activeIndex: 0 });
   }, []);
@@ -84,10 +84,12 @@ const Slider: React.FC<SliderProps> = ({
         modules={[Navigation, Autoplay]}
         autoplay={{ delay: 6000 }}
         slidesPerView={1}
+        // slidesPerGroup={1}
         className='swiper-container'
         allowTouchMove={false}
         onSlideChange={handleSlideChange}
         loop={true}
+        centeredSlides={true}
       >
         {bannerImage.map((banner, index) => (
           <SwiperSlide key={banner.id}>

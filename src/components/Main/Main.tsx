@@ -4,6 +4,7 @@ import Discount from '../Discount/Discount';
 import CategoriesMain from '../CategoriesMain/CategoriesMain';
 import { getBanners } from '../../utils/api/user-api';
 import type { MyTypeBanners, MediumCardProps } from '../../utils/types';
+import { defSlides } from '../../utils/constants';
 
 interface MainProps {
   passSearchResults: (array: MediumCardProps[]) => void;
@@ -11,9 +12,7 @@ interface MainProps {
 }
 
 const Main: React.FC<MainProps> = ({ passSearchResults, handleSearch }) => {
-  const [mainPageBanners, setMainPageBanners] = React.useState<MyTypeBanners[]>(
-    []
-  );
+  const [mainPageBanners, setMainPageBanners] = React.useState<MyTypeBanners[]>(defSlides);
   const [mainPageDicountBanners, setMainPageDicountBanners] = React.useState<
   MyTypeBanners[]
   >([]);
@@ -21,6 +20,7 @@ const Main: React.FC<MainProps> = ({ passSearchResults, handleSearch }) => {
     getBanners()
       .then((res) => {
         const sliderBanners = res.slice(0, 5);
+        console.log(sliderBanners);
         const otherBanners = res.slice(5, 9);
         setMainPageBanners(sliderBanners);
         setMainPageDicountBanners(otherBanners);
