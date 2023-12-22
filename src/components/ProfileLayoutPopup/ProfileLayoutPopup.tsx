@@ -23,6 +23,7 @@ const ProfileLayoutPopup = ({
     localStorage.clear();
     options.setContextFunction({
       isLoggedIn: false,
+      userId: null,
       userLastName: '',
       userName: '',
       userPhone: '',
