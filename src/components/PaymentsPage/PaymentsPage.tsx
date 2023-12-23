@@ -244,7 +244,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
                       !isValidForm1 &&
                       errorsForm1?.name !== null && (
                         <span className='payments-page__input-error'>
-                          Поле имя обязательно к заполнению?
+                          Поле имя обязательно к заполнению
                         </span>
                     )
                     : errorsForm1.name != null &&

@@ -195,8 +195,10 @@ const PaymentsPageCourier: React.FC<PaymentsPageCourierProps> = ({
               <label className='payments-page__input-label payments-page__input-label_type_address'>
                 <p className='payments-page__input-title'>Подъезд</p>
                 <input
-                  {...registerForm2('gate')}
-                  type='text'
+                  {...registerForm2('gate', {
+                    pattern: /^[0-9]*$/,
+                  })}
+                  type='number'
                   className='payments-page__client-data-input'
                   name='gate'
                 />
@@ -204,8 +206,11 @@ const PaymentsPageCourier: React.FC<PaymentsPageCourierProps> = ({
               <label className='payments-page__input-label payments-page__input-label_type_address'>
                 <p className='payments-page__input-title'>Этаж</p>
                 <input
-                  {...registerForm2('floor')}
-                  type='text'
+                    {...registerForm2('floor', {
+                      pattern: /^[0-9]*$/,
+                    })}
+                  type='number'
+                  // inputMode='numeric'
                   className='payments-page__client-data-input'
                   name='floor'
                 />
@@ -213,8 +218,10 @@ const PaymentsPageCourier: React.FC<PaymentsPageCourierProps> = ({
               <label className='payments-page__input-label payments-page__input-label_type_address'>
                 <p className='payments-page__input-title'>Квартира</p>
                 <input
-                  {...registerForm2('appartment')}
-                  type='text'
+                  {...registerForm2('appartment', {
+                    pattern: /^[0-9]*$/,
+                  })}
+                  type='number'
                   className='payments-page__client-data-input'
                   name='appartment'
                 />
@@ -223,7 +230,7 @@ const PaymentsPageCourier: React.FC<PaymentsPageCourierProps> = ({
                 <p className='payments-page__input-title'>Домофон</p>
                 <input
                   {...registerForm2('ring')}
-                  type='text'
+                  type='number'
                   className='payments-page__client-data-input'
                   name='ring'
                 />
