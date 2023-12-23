@@ -11,7 +11,7 @@ import PaymentsPageCourier from './PaymentsPageCourier';
 import PopupChoosePickUpPoint from './PopupChoosePickUpPoint';
 import PaymentsPageResPopup from './PaymentsPageResPopup';
 import { getPickUpDate, adrressToString, priceToNumber, getDeliveryDate } from './DataFormatters';
-import { productsForPay } from '../../utils/constants';
+import { useCartContext } from '../../context';
 // import { productsForPay } from '../../utils/constants';
 
 interface PaymentsPageProps {
@@ -19,10 +19,7 @@ interface PaymentsPageProps {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const PaymentsPage: React.FC<PaymentsPageProps> = ({ oldGoodsList }) => {
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [GoodsList, setGoodsList] = React.useState<MediumCardProps[]>(productsForPay);
-
+const PaymentsPage: React.FC<PaymentsPageProps> = () => {
   const [clientData, setClientData] = React.useState({
     phone: '',
     address: '',
@@ -49,6 +46,8 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ oldGoodsList }) => {
   const [isSecondPage, setIsSecondPage] = React.useState<boolean>(false);
   const [isСourierPage, setIsСourierPage] = React.useState<boolean>(false);
   const [isReadeyToSend, setIsReadeyToSend] = React.useState<boolean>(false);
+
+  const { cartItems, totalSumValue: fullPrice, totalCount: fullQuantity, totalDiscount } = useCartContext();
 
   // const [isDeliveryPage, setIsDeliveryPage] = React.useState<boolean>(true);
   // const [isFinalPage, setIsFinalPage] = React.useState<boolean>(true);
@@ -77,35 +76,15 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ oldGoodsList }) => {
     }
   }, [clientData, isReadeyToSend]);
 
-  const fullQuantity: number = GoodsList.reduce(function (acc, item) {
-    return acc + item.quantity;
-  }, 0);
-
   const formatedDeliveryPrice: string =
     deliveryPrice != null ? formatSumm(deliveryPrice) : '';
 
-  const fullPrice: string = formatSumm(
-    GoodsList.reduce(function (acc, item) {
-      return acc + item.quantity * item.oldPrice;
-    }, 0)
-  );
-
-  const summaryDiscount: string = formatSumm(
-    GoodsList.reduce(function (acc, item) {
-      // return acc + item.quantity * (item.percent ? item.percent : 1);
-      return (
-        acc +
-        item.quantity * (typeof item.percent === 'number' ? item.oldPrice * (item.percent / 100) : 0)
-      );
-    }, 0)
-  );
-
   const finalPrice: string = formatSumm(
-    GoodsList.reduce(function (acc, item) {
+    cartItems.reduce(function (acc, item) {
       // return acc + item.quantity * (item.percent ? item.price - item.percent : 1);
       return (
         acc +
-        item.quantity *
+        item.count *
           (typeof item.percent === 'number'
             ? item.oldPrice * (100 - item.percent) / 100
             : item.oldPrice)
@@ -383,10 +362,10 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ oldGoodsList }) => {
               </p>
               <div className='payments-page__line'></div>
               <div className='payments-page__cart-container'>
-                {GoodsList.map((item) => (
+                {cartItems.map((item) => (
                   <PaymentsPageItem
                     key={item.id}
-                    quantity={item.quantity}
+                    quantity={item.count}
                     // imgUrl={item.imgUrl}
                     imgUrl={item.images?.[0]?.imageLink}
                   />
@@ -402,7 +381,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ oldGoodsList }) => {
               <div className='payments-page__summary-data'>
                 <p className='payments-page__summary-row'>Скидка</p>
                 <p className='payments-page__summary-row payments-page__summary-row_discount'>
-                  {summaryDiscount}
+                  {totalDiscount}
                 </p>
               </div>
               <div className='payments-page__summary-data'>
@@ -428,10 +407,10 @@ const PaymentsPage: React.FC<PaymentsPageProps> = ({ oldGoodsList }) => {
       <PaymentsPageResPopup
         isOpen={isResPopupOpened}
         orderNum={'100500'}
-        GoodsList={GoodsList}
+        GoodsList={cartItems}
         fullQuantity={fullQuantity}
         fullPrice={fullPrice}
-        summaryDiscount={summaryDiscount}
+        summaryDiscount={totalDiscount}
         // formatedDeliveryPrice={formatedDeliveryPrice}
         formatedDeliveryPrice={'133 р'} // ПОПРАВИТЬ ОБРАТНО
         finalPrice={finalPrice}

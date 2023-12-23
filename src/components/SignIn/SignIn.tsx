@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import React, { memo, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -9,6 +10,7 @@ import CLOSEDEYE from '../../image/icons/eye-closed.svg';
 import { authorize } from '../../utils/api/user-api';
 import { type IContext, UserContext } from '../../context/UserContext';
 import { useFavouritesContext } from '../../context/FavouritesContext';
+import { useCartContext } from '../../context';
 
 interface SignInProps {
   onOpenSignIn: () => void;
@@ -30,6 +32,8 @@ const SignIn: React.FC<SignInProps> = ({
   const context = useContext(UserContext);
   const navigate = useNavigate();
   const { getFavouriteList } = useFavouritesContext();
+  const { getProductList } = useCartContext();
+
   const formik = useFormik({
     initialValues: {
       enableReinitialize: true,
@@ -65,6 +69,7 @@ const SignIn: React.FC<SignInProps> = ({
         handleCloseSignInPopup();
         navigate('/', { replace: true });
         getFavouriteList();
+        getProductList();
       })
       .catch((error) => {
         formik.resetForm();

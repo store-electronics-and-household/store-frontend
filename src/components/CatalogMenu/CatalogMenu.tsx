@@ -1,11 +1,27 @@
-import React, { type RefObject } from 'react';
+import React, { useState, type RefObject } from 'react';
+import { type CatalogMenuCategory } from '../../utils/types';
+import { getMainCategories as getCatalogCategories } from '../../utils/api/catalog+categories.api';
+import { Link } from 'react-router-dom';
 
 interface Props {
   catalogRef: RefObject<HTMLDivElement>;
   visible: boolean | null;
+  onCategoryClick: () => void;
 }
 
-const CatalogMenu: React.FC<Props> = ({ visible, catalogRef }) => {
+const CatalogMenu: React.FC<Props> = ({ visible, catalogRef, onCategoryClick }) => {
+  const [categories, setCategories] = useState<CatalogMenuCategory[]>([]);
+
+  React.useEffect(() => {
+    getCatalogCategories()
+      .then((res) => {
+        setCategories(res as CatalogMenuCategory[]);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, []);
+
   let animationClass = '';
   let overlayClass = '';
 
@@ -27,125 +43,25 @@ const CatalogMenu: React.FC<Props> = ({ visible, catalogRef }) => {
       <div
         className={`catalog-menu__overlay ${overlayClass}`}
         ref={catalogRef}
-      ></div>
+      />
       <section className={`catalog-menu ${animationClass}`} ref={catalogRef}>
         <h2 className='catalog-menu__title'>Каталог</h2>
 
         <div className='catalog-menu__grid-wrapper'>
-          <div className='catalog-menu__category'>
-            <a className='catalog-menu__category-link' href='/'>
-              <div className='catalog-menu__category-wrapper'>
-                <div className='catalog-menu__category-img'></div>
-                <span className='catalog-menu__category-name'>
-                  Игровые приставки
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <div className='catalog-menu__category'>
-            <a className='catalog-menu__category-link' href='/'>
-              <div className='catalog-menu__category-wrapper'>
-                <div className='catalog-menu__category-img'></div>
-                <span className='catalog-menu__category-name'>Ноутбуки</span>
-              </div>
-            </a>
-          </div>
-
-          <div className='catalog-menu__category'>
-            <a className='catalog-menu__category-link' href='/'>
-              <div className='catalog-menu__category-wrapper'>
-                <div className='catalog-menu__category-img'></div>
-                <span className='catalog-menu__category-name'>Аксессуары</span>
-              </div>
-            </a>
-          </div>
-
-          <div className='catalog-menu__category'>
-            <a className='catalog-menu__category-link' href='/'>
-              <div className='catalog-menu__category-wrapper'>
-                <div className='catalog-menu__category-img'></div>
-                <span className='catalog-menu__category-name'>
-                  Портативная акустика
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <div className='catalog-menu__category'>
-            <a className='catalog-menu__category-link' href='/'>
-              <div className='catalog-menu__category-wrapper'>
-                <div className='catalog-menu__category-img'></div>
-                <span className='catalog-menu__category-name'>
-                  Умные часы и браслеты
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <div className='catalog-menu__category'>
-            <a className='catalog-menu__category-link' href='/'>
-              <div className='catalog-menu__category-wrapper'>
-                <div className='catalog-menu__category-img'></div>
-                <span className='catalog-menu__category-name'>
-                  Наушники и гарнитуры
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <div className='catalog-menu__category'>
-            <a className='catalog-menu__category-link' href='/'>
-              <div className='catalog-menu__category-wrapper'>
-                <div className='catalog-menu__category-img'></div>
-                <span className='catalog-menu__category-name'>
-                  Квадрокоптеры
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <div className='catalog-menu__category'>
-            <a className='catalog-menu__category-link' href='/'>
-              <div className='catalog-menu__category-wrapper'>
-                <div className='catalog-menu__category-img'></div>
-                <span className='catalog-menu__category-name'>
-                  Компьютеры и комплектующие{' '}
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <div className='catalog-menu__category'>
-            <a className='catalog-menu__category-link' href='/'>
-              <div className='catalog-menu__category-wrapper'>
-                <div className='catalog-menu__category-img'></div>
-                <span className='catalog-menu__category-name'>
-                  Техника для дома
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <div className='catalog-menu__category'>
-            <a className='catalog-menu__category-link' href='/'>
-              <div className='catalog-menu__category-wrapper'>
-                <div className='catalog-menu__category-img'></div>
-                <span className='catalog-menu__category-name'>Гаджеты</span>
-              </div>
-            </a>
-          </div>
-
-          <div className='catalog-menu__category'>
-            <a className='catalog-menu__category-link' href='/'>
-              <div className='catalog-menu__category-wrapper'>
-                <div className='catalog-menu__category-img'></div>
-                <span className='catalog-menu__category-name'>
-                  Квадрокоптеры
-                </span>
-              </div>
-            </a>
-          </div>
+          {categories.map(({ id, name, imageLink }) => (
+            <div className='catalog-menu__category' key={id}>
+              <Link to={`/categories/${id}`} className='catalog-menu__category-link' onClick={onCategoryClick}>
+                <div className='catalog-menu__category-wrapper'>
+                  <div className='catalog-menu__category-img'>
+                    <img src={imageLink} alt={name} />
+                  </div>
+                  <span className='catalog-menu__category-name'>
+                    {name}
+                  </span>
+                </div>
+                </Link>
+            </div>
+          ))}
         </div>
       </section>
     </>

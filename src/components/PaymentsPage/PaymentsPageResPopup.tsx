@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import { type MediumCardProps } from '../../utils/types';
+import { type ProductInfo } from '../../utils/types';
 import PaymentsPageItem from './PaymentsPageItem';
 import PaymentsPageButton from './PaymentsPageButton';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -8,11 +8,11 @@ import { getTomorrowDate, getDeliveryDate } from './DataFormatters';
 
 interface PaymentsPageResPopupProps {
   isOpen: boolean;
-  GoodsList: MediumCardProps[];
+  GoodsList: ProductInfo[];
   orderNum: string;
   fullQuantity: number;
-  fullPrice: string;
-  summaryDiscount: string;
+  fullPrice: number;
+  summaryDiscount: number;
   formatedDeliveryPrice: string;
   finalPrice: string;
   deliveryDate: string;
@@ -83,7 +83,7 @@ const PaymentsPageResPopup: React.FC<PaymentsPageResPopupProps> = ({
             {GoodsList.map((item) => (
               <PaymentsPageItem
                 key={item.id}
-                quantity={item.quantity}
+                quantity={item.count}
                 // imgUrl={item.imgUrl}
                 imgUrl={item.images?.[0]?.imageLink}
               />
