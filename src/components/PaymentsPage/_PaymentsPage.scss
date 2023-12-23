@@ -341,12 +341,13 @@
   display: flex;
   gap: 24px;
   // overflow: hidden;
-  // height: 68px;
-  height: 83px;
+  // height: 83px; // ВЕРНУТЬ
+  height: 90px;
   // overflow-x: scroll;
   // overflow-x: clip;
   overflow-x: auto;
   white-space: nowrap;
+  overflow-y: hidden;
 }
 
 .payments-page__date-label {
