@@ -3,7 +3,7 @@ import React, { type ChangeEvent, useState, useEffect } from 'react';
 import cn from 'classnames';
 import PaymentsPageButton from './PaymentsPageButton';
 import searchIcon from '../../image/icons/search_icon.svg';
-import { pickUpPoints } from '../../utils/constants';
+import { pickUpPoints, mapUrl } from '../../utils/constants';
 // import closeIcon from '../../image/icons/btn-close-popup-pick-up.svg';
 
 interface MeTypePickUpPoint {
@@ -58,10 +58,18 @@ const PopupChoosePickUpPoint: React.FC<PopupChoosePickUpPointProps> = ({
   tomorrow.setDate(today.getDate() + 1);
 
   const months = [
-    'января', 'февраля', 'марта',
-    'апреля', 'мая', 'июня',
-    'июля', 'августа', 'сентября',
-    'октября', 'ноября', 'декабря'
+    'января',
+    'февраля',
+    'марта',
+    'апреля',
+    'мая',
+    'июня',
+    'июля',
+    'августа',
+    'сентября',
+    'октября',
+    'ноября',
+    'декабря'
   ];
 
   const formattedDate = `${tomorrow.getDate()} ${months[tomorrow.getMonth()]}`;
@@ -104,6 +112,8 @@ const PopupChoosePickUpPoint: React.FC<PopupChoosePickUpPointProps> = ({
   const handleSearchPickUpPoint = (): void => {
     setSearchPointValue(input);
   };
+
+ // const controlFocus = useRef(null);
 
   return (
     <section className={PopupChoosePickUpPointClass}>
@@ -149,11 +159,21 @@ const PopupChoosePickUpPoint: React.FC<PopupChoosePickUpPointProps> = ({
                 className={`payments-page__pickuppoint ${choosedPointIndex === index ? 'payments-page__pickuppoint_choosed' : ''} `}
               >
                 <div className='payments-page__pickuppoint-box'>
-                  <h3 className='payments-page__pickuppoint-title'>CyberPlace</h3>
-                  <p className='payments-page__pickuppoint-paragraph'>{item.address}</p>
-                  <p className='payments-page__pickuppoint-paragraph'>{item.metro}</p>
-                  <p className='payments-page__pickuppoint-paragraph'>стоимость - {item.deliverypice}</p>
-                  <p className='payments-page__pickuppoint-paragraph'>дата доставки - завтра, {formattedDate}</p>
+                  <h3 className='payments-page__pickuppoint-title'>
+                    CyberPlace
+                  </h3>
+                  <p className='payments-page__pickuppoint-paragraph'>
+                    {item.address}
+                  </p>
+                  <p className='payments-page__pickuppoint-paragraph'>
+                    {item.metro}
+                  </p>
+                  <p className='payments-page__pickuppoint-paragraph'>
+                    стоимость - {item.deliverypice}
+                  </p>
+                  <p className='payments-page__pickuppoint-paragraph'>
+                    дата доставки - завтра, {formattedDate}
+                  </p>
                 </div>
 
               </div>
@@ -178,6 +198,13 @@ const PopupChoosePickUpPoint: React.FC<PopupChoosePickUpPointProps> = ({
             className='payments-page__close-button'
             onClick={handleClose}
           ></button>
+  <div className='payments-page__map-container'>
+          <iframe
+            className='payments-page__map'
+            src={mapUrl}
+            title='2'
+          ></iframe>
+        </div>
       </div>
 
     </section>
