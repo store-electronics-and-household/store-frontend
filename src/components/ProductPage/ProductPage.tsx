@@ -22,10 +22,7 @@ const ProductPage = () => {
   const [isPopupFullPhotoOpen, setIsPopupFullPhotoOpen] = useState(false);
 
   const { addProductToCart, cartItems, increaseCartQuantity, decreaseCartQuantity } = useCartContext();
-  // const [count, setCount] = useState(0);
-  // const [isQuantityBtn, setIsQuantityBtn] = useState(false);
   const { productFull } = useFavouritesContext();
-
   const images = productFull.images.map(item => item.imageLink);
 
   const handleOnAllcharacteristics = (): void => {
@@ -173,7 +170,7 @@ const ProductPage = () => {
                     </div>
                 }
               </div>
-              <CardLikeBtn product={productFull}/>
+              <CardLikeBtn productId={productFull.id}/>
             </div>
             <ul className='product-page__benefits-list'>
               <li className='product-page__benefit'>

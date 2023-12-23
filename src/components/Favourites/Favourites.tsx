@@ -6,7 +6,7 @@ import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import { useFavouritesContext } from '../../context/FavouritesContext';
 
 const Favourites: FC = () => {
-  const { getFavouriteList, favouritesList } = useFavouritesContext();
+  const { getFavouriteList, favouritesProductsList } = useFavouritesContext();
 
   useEffect(() => {
     getFavouriteList();
@@ -18,7 +18,7 @@ const Favourites: FC = () => {
         <div className='favourites__container'>
           <h2 className='favourites__header'>Избранное</h2>
           <div className='favourites__content'>
-            {favouritesList.map(
+            {favouritesProductsList.map(
               // ({ name, originPrice, salesPrice, discount, imgUrl, isLiked, quantityInCart }) => {
               (product) => {
                 return (
