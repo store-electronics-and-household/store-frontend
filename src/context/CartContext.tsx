@@ -7,7 +7,7 @@ import * as cartApi from '../utils/api/cart-api';
 const getMappedProductList = (productList: any[]): ProductInfo[] => {
   return productList?.map((product) => {
     const { modelShortDto: data, count, id: modelSetId } = product;
-    const { id, name, description, price, images, oldPrice } = data;
+    const { id, name, description, price, images, oldPrice, percent } = data;
 
     return {
       id,
@@ -19,8 +19,9 @@ const getMappedProductList = (productList: any[]): ProductInfo[] => {
       count,
       oldPrice: oldPrice ?? 0,
       modelSetId,
+      percent,
     };
-  }) ?? [];
+  }).sort((a, b) => a.name.localeCompare(b.name)) ?? [];
 };
 
 interface CartProviderProps {
@@ -67,14 +68,16 @@ const getTotalCartItemQuantities = (cartItems: ProductInfo[]): number =>
   cartItems.reduce((acc, currentValue) => acc + currentValue.count, 0);
 
 const getTotalDiscountItem = (cartItems: ProductInfo[]): number =>
-
   cartItems.reduce(
-    (acc, currentValue) =>
-      acc +
-      (currentValue.oldPrice - currentValue.price) *
-        currentValue.count,
+    (acc, currentValue) => (
+      (
+        acc +
+        currentValue.count * (typeof currentValue.percent === 'number' ? currentValue.oldPrice * (currentValue.percent / 100) : 0)
+      )
+    ),
     0,
   );
+
 const getSumValue = (cartItems: ProductInfo[]): number =>
   cartItems.reduce(
     (acc, currentValue) =>

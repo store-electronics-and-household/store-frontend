@@ -30,11 +30,14 @@ export interface ProductInfo {
   name: string;
   description: string;
   price: number;
-  images: string[];
+  images: Array<{
+    imageLink: string;
+  }>;
   article?: number;
   count: number;
   oldPrice: number;
   modelSetId: number;
+  percent: number | null;
 }
 
 export interface MyTypeBanners {
@@ -47,6 +50,7 @@ export interface CategoriesTileProps {
   id: number;
   name: string;
   imageLink: string;
+  leaf?: boolean;
 }
 
 interface MeyTypeCardImage {
@@ -98,3 +102,10 @@ export interface MeTypePickUpPoint {
   deliverypice?: string;
   comment?: string;
 };
+
+export interface CatalogMenuCategory {
+  id: number;
+  name: string;
+  leaf: boolean;
+  imageLink: string;
+}

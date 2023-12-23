@@ -12,6 +12,7 @@ export const mockedCartProducts: ProductInfo[] = [
     images: [],
     // imgUrl: '../../image/item.jpg',
     modelSetId: 3,
+    percent: null,
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ export const mockedCartProducts: ProductInfo[] = [
     images: [],
     // imgUrl: '../../image/item.jpg',
     modelSetId: 2,
+    percent: null,
   },
   {
     id: 3,
@@ -36,5 +38,6 @@ export const mockedCartProducts: ProductInfo[] = [
     images: [],
     // imgUrl: '../../image/item.jpg',
     modelSetId: 1,
+    percent: null,
   },
 ];

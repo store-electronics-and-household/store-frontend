@@ -148,7 +148,7 @@ const SignUp: FC<SignUpProps> = ({
                   <span className='signup__error-text'>
                   {formik.errors.loginReg}
                 </span>
-                )}
+              )}
               <div className='signup__input-wrapper'>
                 <label className='signup__label'>Пароль</label>
                 <input
@@ -189,7 +189,7 @@ const SignUp: FC<SignUpProps> = ({
                   <span className='signup__error-text'>
                   {formik.errors.passwordReg}
                 </span>
-                )}
+              )}
               <div className='signup__input-wrapper'>
                 <label className='signup__label'>Повторите пароль</label>
                 <input
@@ -230,7 +230,7 @@ const SignUp: FC<SignUpProps> = ({
                   <span className='signup__error-text'>
                   {formik.errors.ConfirmPass}
                 </span>
-                )}
+              )}
             </div>
             {isAuthError && (
               <span className='signup__error-text'>

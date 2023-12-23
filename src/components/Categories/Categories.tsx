@@ -4,15 +4,19 @@ import CategoriesTile from '../CategoriesTile/CategoriesTile';
 import { popularCardsToShow, products } from '../../utils/constants';
 import CatalogItem from '../Catalog/CatalogItem';
 import {
+  getBrandsForCategory,
   getCategoryName,
   getSubcategories,
   type IgetSubcategories,
 } from '../../utils/api/catalog+categories.api';
-import { Outlet, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import Catalog from '../Catalog/Catalog';
 
 const Categories: React.FC = (): React.ReactElement => {
   const [subCategories, setSubCategories] = useState<IgetSubcategories[]>();
   const [subCategoryName, setSubCategoryName] = useState<string | number>();
+  const [brandNames, setBrandNames] = useState<string[]>([]);
+  const [chosenBrand, setChosenBrand] = useState<string>('');
   const { subcategory: subcategoryId = '', model: modelId } = useParams();
   const currentCategory = modelId ?? subcategoryId;
 
@@ -35,6 +39,22 @@ const Categories: React.FC = (): React.ReactElement => {
       });
   }, [currentCategory]);
 
+  useEffect(() => {
+    getBrandsForCategory(+currentCategory, 'Бренд')
+      .then((res) => {
+        setBrandNames(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [currentCategory]);
+
+  const handleResetBrands = (): void => {
+    setChosenBrand('');
+  };
+
+  const isCatalog = subCategories?.length === 0;
+
   return (
     <>
       <section className='catalog'>
@@ -44,19 +64,28 @@ const Categories: React.FC = (): React.ReactElement => {
             <nav>
               <ul className='catalog__collection'>
                 <li className='catalog__models'>
-                  <div className='catalog__model-link'>{subCategoryName}</div>
-                  {subCategories?.map((item) => (
-                    <CatalogItem key={item.id} name={item.name} id={item.id} />
+                  {!isCatalog && <div className='catalog__model-link'>{subCategoryName}</div>}
+                  {!isCatalog && subCategories?.map((item) => (
+                    <CatalogItem key={item.id} name={item.name} id={item.id}/>
                   ))}
+                  {isCatalog &&
+                    <>
+                      <span className="catalog__brand-search" onClick={handleResetBrands}>Все бренды</span>
+                      {brandNames?.map((item, index) => (
+                        <CatalogItem key={index} name={item} isCatalog={isCatalog} setChosenBrand={setChosenBrand}/>
+                      ))}
+                    </>
+                  }
                 </li>
               </ul>
             </nav>
             <ul className='catalog__rendered-categories'>
               <div className='catalog__render-cat'>
-                {subCategories?.map((tile) => (
-                  <CategoriesTile key={tile.id} name={tile.name} id={tile.id} />
+                {!isCatalog && subCategories?.map((tile) => (
+                  <CategoriesTile key={tile.id} name={tile.name} id={tile.id}/>
                 ))}
-                <Outlet />
+                {isCatalog &&
+                  <Catalog chosenBrand={chosenBrand}/>}
               </div>
               <h2 className='catalog__popular'>Популярные товары</h2>
               <div className='catalog__render-popular'>
