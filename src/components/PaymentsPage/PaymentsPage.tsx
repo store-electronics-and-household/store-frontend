@@ -393,7 +393,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
               <div className='payments-page__line'></div>
               <div className='payments-page__summary-data'>
                 <p className='payments-page__summary-final'>Итого</p>
-                <p className='payments-page__summary-final'>{finalPrice}</p>
+                <p className='payments-page__summary-final'>{fullPrice}</p>
               </div>
             </div>
           </div>
