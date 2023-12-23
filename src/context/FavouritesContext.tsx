@@ -19,24 +19,24 @@ interface FavouritesProviderProps {
 
 interface FavouritesContextType {
   getFavouriteList: () => void;
-  updateFavouritesList: () => void;
-  handleAddProductToFavourites: (product: MediumCardProps | ProductFullDataType) => void;
-  handleDeleteProductFromFavourites: (product: MediumCardProps | ProductFullDataType) => void;
-  updateProductLikeStatus: (product: MediumCardProps | ProductFullDataType) => void;
+  handleAddProductToFavourites: (productId: number) => void;
+  handleDeleteProductFromFavourites: (productId: number) => void;
+  updateProductLikeStatus: (productId: number) => void;
   isCardLiked: (id: number) => boolean;
-  favouritesList: Array<MediumCardProps | ProductFullDataType>;
+  favouritesIdList: number[];
+  favouritesProductsList: MediumCardProps[];
   getProductById: (productId: number) => void; // получение полной карточки
   productFull: ProductFullDataType; // полная картока передается для заполнения страницы товара
 }
 
 const FavoritesContext = createContext<FavouritesContextType>({
   getFavouriteList: () => null,
-  updateFavouritesList: () => null,
-  handleAddProductToFavourites: (product: MediumCardProps | ProductFullDataType) => null,
-  handleDeleteProductFromFavourites: (product: MediumCardProps | ProductFullDataType) => null,
-  updateProductLikeStatus: (product: MediumCardProps | ProductFullDataType) => null,
+  handleAddProductToFavourites: (productId: number) => null,
+  handleDeleteProductFromFavourites: (productId: number) => null,
+  updateProductLikeStatus: (productId: number) => null,
   isCardLiked: (id: number) => false,
-  favouritesList: [],
+  favouritesIdList: [],
+  favouritesProductsList: [],
   getProductById: (productId: number) => null,
   productFull: {
     id: 0,
@@ -60,7 +60,8 @@ export function useFavouritesContext (): FavouritesContextType {
 }
 
 export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.Element {
-  const [favouritesList, setFavouritesList] = useState<Array<MediumCardProps | ProductFullDataType>>([]);
+  const [favouritesIdList, setFavouritesIdList] = useState<number[]>([]);
+  const [favouritesProductsList, setFavouritesProductsList] = useState<MediumCardProps[]>([]);
   const [productById, setProductById] = useState<ProductFullDataType>({
     id: 0,
     name: '',
@@ -127,71 +128,51 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
   // ...для очистки стейта после ухода со страницы товара
 
   // favourites: получение, добавление, удаление.
-  useEffect(() => { // обновление массива избранных в локалСторадж при лайке/дизлайке
-    updateFavouritesList();
-  }, [favouritesList]);
-
   const getFavouriteList = (): void => {
     getFavouritesList()
       .then((res) => {
-        setFavouritesList(res.modelShortDtos);
-        localStorage.setItem('likedProducts', JSON.stringify(res.modelShortDtos));
+        setFavouritesProductsList(res.modelShortDtos);
+        setFavouritesIdList(res.modelShortDtos.map((modelShortDto: { id: number }) => modelShortDto.id));
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const updateFavouritesList = (): void => {
-    localStorage.setItem('likedProducts', JSON.stringify(favouritesList));
-  };
-
-  const handleAddProductToFavourites = (product: MediumCardProps | ProductFullDataType): void => {
-    addCardToFavoritesList(product.id)
-      .then()
+  const handleAddProductToFavourites = (productId: number): void => {
+    addCardToFavoritesList(productId)
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
-        setFavouritesList([...favouritesList, product]);
+        setFavouritesIdList([...favouritesIdList, productId]);
       });
   };
 
-  const handleDeleteProductFromFavourites = (product: MediumCardProps | ProductFullDataType): void => {
-    removeCardFromFavoritesList(product.id)
-      .then()
+  const handleDeleteProductFromFavourites = (productId: number): void => {
+    removeCardFromFavoritesList(productId)
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
-        setFavouritesList((state) =>
-          state.filter((favoutiteProduct) => favoutiteProduct.id !== product.id)
+        setFavouritesIdList((state) =>
+          state.filter((favoutiteProductId) => favoutiteProductId !== productId)
         );
+        getFavouriteList();
       });
   };
 
-  const isCardLiked = (modelId: number): boolean => {
-    return favouritesList.some(
-      (favoriteProduct) => favoriteProduct.id === modelId
+  const isCardLiked = (modelId: number): boolean => { // проверка есть ли id в массиве избранных
+    return favouritesIdList.some(
+      (favoriteProductId) => favoriteProductId === modelId
     );
   };
 
-  // const getProductToDeleteId = (modelId: number): number => {
-  //   const localLikedProducts: ProductDataType[] | undefined = JSON.parse(localStorage.getItem('favouritesList'));
-  //   if (localLikedProducts !== null && localLikedProducts !== undefined) {
-  //     const unLikedProduct = localLikedProducts.find(
-  //       (productItem: ProductDataType) => productItem.id === modelId);
-  //     return unLikedProduct.id;
-  //   };
-  //   return unLikedProduct.id;
-  // };
-
-  const updateProductLikeStatus = (product: MediumCardProps | ProductFullDataType): void => {
-    if (!isCardLiked(product.id)) {
-      handleAddProductToFavourites(product);
+  const updateProductLikeStatus = (productId: number): void => {
+    if (!isCardLiked(productId)) {
+      handleAddProductToFavourites(productId);
     } else {
-      // handleDeleteProductFromFavourites(getProductToDeleteId(productId));
-      handleDeleteProductFromFavourites(product);
+      handleDeleteProductFromFavourites(productId);
     };
   };
 
@@ -199,13 +180,13 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
     <FavoritesContext.Provider
       value={{
         getFavouriteList,
-        updateFavouritesList,
         handleAddProductToFavourites,
         handleDeleteProductFromFavourites,
         updateProductLikeStatus,
         isCardLiked,
         getProductById,
-        favouritesList,
+        favouritesIdList,
+        favouritesProductsList,
         productFull,
       }}
     >

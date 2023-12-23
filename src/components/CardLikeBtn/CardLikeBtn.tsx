@@ -1,29 +1,26 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import cn from 'classnames';
 import { useFavouritesContext } from '../../context/FavouritesContext';
 import { UserContext } from '../../context/UserContext';
-import type { MediumCardProps, ProductFullDataType } from '../../utils/types';
 import { useWarningPopupContext } from '../../context/WarningPopupContext';
 
 interface ICardLikeBtn {
-  product: MediumCardProps | ProductFullDataType;
+  productId: number;
 }
 
-const CardLikeBtn: React.FC<ICardLikeBtn> = ({ product }) => {
+const CardLikeBtn: React.FC<ICardLikeBtn> = ({ productId }) => {
   const { updateProductLikeStatus, isCardLiked } = useFavouritesContext();
   const { isLoggedIn } = useContext(UserContext);
   const { handleOpenWarningPopup } = useWarningPopupContext();
-  const [isLiked, setIsLiked] = useState<boolean>(false);
-  const productId: number = product.id;
+  const [isLiked, setIsLiked] = useState<boolean>(isCardLiked(productId));
 
   useEffect(() => {
     setIsLiked(isCardLiked(productId));
-  }, []);
+  }, [productId]);
 
   const handleLike = (): void => {
-    console.log(isLoggedIn);
     if (isLoggedIn) {
-      updateProductLikeStatus(product);
+      updateProductLikeStatus(productId);
       setIsLiked(!isLiked);
     } else {
       handleOpenWarningPopup('Для добавления товара в избранные необходимо авторизоваться');

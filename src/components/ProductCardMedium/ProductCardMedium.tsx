@@ -5,12 +5,12 @@ import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
 import cn from 'classnames';
 import { useCartContext } from '../../context';
-import type { ProductFullDataType, MediumCardProps } from '../../utils/types';
+import type { MediumCardProps } from '../../utils/types';
 import { useFavouritesContext } from '../../context/FavouritesContext';
 import { Link } from 'react-router-dom';
 
 interface ProductCardMediumProps {
-  product: MediumCardProps | ProductFullDataType;
+  product: MediumCardProps;
 }
 
 const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
@@ -91,7 +91,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
               )}
             </Link>
             <div className='card-medium__like'>
-              <CardLikeBtn product={product}/>
+              <CardLikeBtn productId={product.id}/>
             </div>
 
              <div className='card-medium__button'>
