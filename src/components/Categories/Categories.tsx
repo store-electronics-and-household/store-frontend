@@ -9,17 +9,18 @@ import {
   getSubcategories,
   type IgetSubcategories,
 } from '../../utils/api/catalog+categories.api';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import Catalog from '../Catalog/Catalog';
+import { type IBreadcrumbsProps } from '../Breadcrumbs/Breadcrumbs';
 
-const Categories: React.FC = (): React.ReactElement => {
+const Categories: React.FC<IBreadcrumbsProps> = ({ crumbs }): React.ReactElement => {
   const [subCategories, setSubCategories] = useState<IgetSubcategories[]>();
   const [subCategoryName, setSubCategoryName] = useState<string | number>();
   const [brandNames, setBrandNames] = useState<string[]>([]);
   const [chosenBrand, setChosenBrand] = useState<string>('');
+  const currentPath = useLocation().pathname;
   const { subcategory: subcategoryId = '', model: modelId } = useParams();
   const currentCategory = modelId ?? subcategoryId;
-
   useEffect(() => {
     getCategoryName(currentCategory)
       .then((res) => {
@@ -27,6 +28,16 @@ const Categories: React.FC = (): React.ReactElement => {
         getSubcategories(currentCategory)
           .then((res) => {
             setSubCategories(res);
+            for (const item of res) {
+              const newCrumb = {
+                path: `${currentPath}/${item.id}`,
+                breadcrumb: item.name,
+              };
+              const isAdd = crumbs.filter((item) => {
+                return item.path === newCrumb.path;
+              }).length === 0;
+              if (isAdd) crumbs.push(newCrumb);
+            }
           })
           .catch((err) => {
             console.error(

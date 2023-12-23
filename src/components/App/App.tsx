@@ -21,7 +21,6 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import SearchResults from '../SearchResults/SearchResults';
 import type { MediumCardProps } from '../../utils/types';
 import { CartProvider } from '../../context/CartContext';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import { FavoritesProvider } from '../../context/FavouritesContext';
 import { type IContext, initialUserContext, UserContext } from '../../context/UserContext';
@@ -34,18 +33,12 @@ import { WarningPopupProvider } from '../../context/WarningPopupContext';
 const App: React.FC = () => {
   const [isSignInPopupOpen, setSignInPopupOpen] = useState<boolean>(false);
   const [isSignUpPopupOpen, setSignUpPopupOpen] = useState<boolean>(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchRequest, setSearchRequest] = useState<string>('');
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchResults, setSearchResults] = useState<MediumCardProps[]>([]);
-
-  // Context provider
   const [generalContext, setGeneralContext] = useState<IContext>(initialUserContext);
-  // Context provider end
 
   const [isPasswordRecoveryPopupOpen, setPasswordRecoveryPopupOpen] =
     useState<boolean>(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [goodsList, setGoodsList] = React.useState<MediumCardProps[]>();
 
   useEffect(() => {
@@ -69,7 +62,6 @@ const App: React.FC = () => {
     }
   }, []);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSearchCards = (array: MediumCardProps[]): void => {
     setSearchResults(array);
   };
@@ -94,11 +86,6 @@ const App: React.FC = () => {
     setGoodsList(data);
   };
 
-  // const CustomPropsBreadcrumb = ({ someProp }: { someProp: string }): JSX.Element => <span>{someProp}</span>;
-  // const DynamicUserBreadcrumb = ({ match }) => (
-  //   <span>{userNamesById[match.params.userId]}</span>
-  // );
-
   const crumbs = [
     { path: '/about-company', breadcrumb: 'О нас' },
     { path: '/faq', breadcrumb: 'Часто задаваемые вопросы' },
@@ -109,7 +96,6 @@ const App: React.FC = () => {
     // { path: 'categories/catalog/product', breadcrumb: productData.name },
     { path: '/payment', breadcrumb: 'Корзина' },
     // { path: '/favourites', breadcrumb: CustomPropsBreadcrumb, props: { someProp: 'Избранное' } },
-    // { path: '/categories/:id', breadcrumb: DynamicUserBreadcrumb },
   ];
 
   return (
@@ -158,6 +144,7 @@ const App: React.FC = () => {
                         <Main
                           passSearchResults={handleSearchCards}
                           handleSearch={handleSearch}
+                          crumbs={crumbs}
                         />
                       }
                     />
@@ -202,23 +189,12 @@ const App: React.FC = () => {
                       element={
                         <>
                           <Breadcrumbs crumbs={crumbs}/>
-                          <Categories/>
+                          <Categories crumbs={crumbs}/>
                         </>
                       }
                     >
                       <Route path=":model" element={<Catalog/>}/>
                     </Route>
-{/*                    <Route
-                      path="/catalog"
-                      element={
-                        <>
-                          <Breadcrumbs crumbs={crumbs}/>
-                          <Categories/>
-                        </>
-                      }
-                    >
-                      <Route path=":model" element={<Catalog/>}/>
-                    </Route> */}
                     <Route
                       path='/product'
                       element={
