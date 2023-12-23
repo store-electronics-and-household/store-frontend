@@ -117,7 +117,7 @@ const PaymentsPageResPopup: React.FC<PaymentsPageResPopupProps> = ({
           <div className='payments-page__line'></div>
           <div className='payments-page__summary-data payments-page__summary-data_final'>
             <p className='payments-page__summary-final payments-page__summary-final_popup'>Сумма заказа</p>
-            <p className='payments-page__summary-final payments-page__summary-final_popup'>{finalPrice}</p>
+            <p className='payments-page__summary-final payments-page__summary-final_popup'>{fullPrice}</p>
           </div>
           <div className='payments-page__line'></div>
           <div className='payments-page__btn-ctn'>
