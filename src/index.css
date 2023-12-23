@@ -2208,6 +2208,16 @@ body {
   color: var(--Black, #222);
 }
 
+.catalog__brand-search {
+  color: var(--Black, #222);
+  transition: 0.2s ease-in-out;
+}
+
+.catalog__brand-search:hover {
+  cursor: pointer;
+  transform: scale(103%);
+}
+
 .catalog__container-big {
   display: flex;
   flex-direction: column;

@@ -5,6 +5,7 @@ import { API_CAT_IMG } from '../../utils/constants';
 interface CategoriesTileProps {
   id: number;
   name: string;
+  isNotHaveChilds?: boolean;
   imageLink?: string;
   categoryAttributes?: {
     id: number;
@@ -23,7 +24,6 @@ const CategoriesTile: React.FC<CategoriesTileProps> = ({
   const nextPath = location === '/main' ? `/categories/${id}` : `${id}`;
   const CategoryTumbNail =
     location === '/main' ? imageLink : `${API_CAT_IMG}/${id}.png`;
-
   return (
     <li
       className={
