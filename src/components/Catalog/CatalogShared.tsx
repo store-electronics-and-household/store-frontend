@@ -1,8 +1,11 @@
 import React from 'react';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import { type MediumCardProps } from '../../utils/types';
+
+// TODO: delete if it's needless
 // import { product } from '../../utils/constants';
 
+// TODO: delete if it's needless
 // interface MyTypeCatalogItem {
 //   id: number;
 //   name: string;
@@ -25,6 +28,7 @@ const CatalogShared: React.FC<CatalogSharedProps> = ({
   itemsToShow,
   is4Items,
 }) => {
+  // TODO: delete if it's needless
   // const [currentItemsArray, setcurrentItemsArray] = React.useState<
   // MyTypeCatalogItem[]
   // >([]);
@@ -45,6 +49,7 @@ const CatalogShared: React.FC<CatalogSharedProps> = ({
             <ProductCardMedium
               key={product.id}
               product={product}
+              // TODO: delete if it's needless
               // name={product.name}
               // originPrice={product.price}
               // salesPrice={product.price}

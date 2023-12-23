@@ -1,13 +1,15 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import React, { memo, useState } from 'react';
+import React, { memo, useContext, useState } from 'react';
+import cn from 'classnames';
+import { Link } from 'react-router-dom';
 import { formatSumm } from '../../utils/formatSumm';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
-import cn from 'classnames';
 import { useCartContext } from '../../context';
 import type { ProductFullDataType, MediumCardProps } from '../../utils/types';
 import { useFavouritesContext } from '../../context/FavouritesContext';
-import { Link } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
+import { useWarningPopupContext } from '../../context/WarningPopupContext';
 
 interface ProductCardMediumProps {
   product: MediumCardProps | ProductFullDataType;
@@ -18,44 +20,48 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
   const [isMainImage, setIsMainImage] = React.useState(true);
 
   const { addProductToCart, cartItems, increaseCartQuantity } = useCartContext();
-
-  // const [isCounter, setIsCounter] = React.useState(0);
   const { getProductById } = useFavouritesContext();
-  const handleMouseOver = (): void => {
-    setIsMainImage(false);
-  };
-  const handleMouseOut = (): void => {
-    setIsMainImage(true);
-  };
-
-  const handleAddToCart = (): void => {
-    if (cartItems.findIndex((productInCart) => productInCart.id === product.id) === -1) {
-      setIsPopupOpen(true);
-      setTimeout(() => {
-        setIsPopupOpen(false);
-      }, 5000);
-      addProductToCart(product.id);
-    } else {
-      increaseCartQuantity(product.id);
-    }
-    // setIsCounter((prev) => {
-    //   return prev + 1;
-    // });
-    // setIsPopupOpen(true);
-    // setTimeout(() => {
-    //   setIsPopupOpen(false);
-    // }, 5000);
-  };
-
-  const handleGetFullProduct = (): void => {
-    getProductById(product.id);
-  };
+  const { isLoggedIn } = useContext(UserContext);
+  const { handleOpenWarningPopup } = useWarningPopupContext();
 
   const cardPriceClassname = cn('card-medium__price', {
     'card-medium__price_sale': product.oldPrice !== null,
   });
 
   const count = cartItems?.find((productInCart) => productInCart.id === product.id)?.count ?? 0;
+
+  const isCartButtonWithValue = count > 0 && isLoggedIn;
+  const cartButtonClassName = isCartButtonWithValue ? 'card-medium__buy_big' : 'card-medium__buy';
+  const cartButtonCount = isCartButtonWithValue ? count : '';
+
+  const handleMouseOver = (): void => {
+    setIsMainImage(false);
+  };
+
+  const handleMouseOut = (): void => {
+    setIsMainImage(true);
+  };
+
+  const handleAddToCart = (): void => {
+    if (isLoggedIn) {
+      if (cartItems.findIndex((productInCart) => productInCart.id === product.id) === -1) {
+        setIsPopupOpen(true);
+        setTimeout(() => {
+          setIsPopupOpen(false);
+        }, 5000);
+
+        addProductToCart(product.id);
+      } else {
+        increaseCartQuantity(product.id);
+      }
+    } else {
+      handleOpenWarningPopup('Для добавления товара в корзину необходимо авторизоваться');
+    }
+  };
+
+  const handleGetFullProduct = (): void => {
+    getProductById(product.id);
+  };
 
   return (
     <>
@@ -78,8 +84,9 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
                 onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseOut}
               />
+
               {product.percent != null && (
-                <p
+                <span
                   className={
                     product.percent > 20
                       ? 'card-medium__sticker'
@@ -87,58 +94,60 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
                   }
                 >
                   -{product.percent}%
-                </p>
+                </span>
               )}
             </Link>
+
             <div className='card-medium__like'>
               <CardLikeBtn product={product}/>
             </div>
 
-             <div className='card-medium__button'>
-
+            <div className='card-medium__button'>
               <button
                 type='button'
                 aria-label='Добавить в корзину'
-                className={
-                  count > 0 ? 'card-medium__buy_big' : 'card-medium__buy'
-                }
+                className={cartButtonClassName}
                 onClick={handleAddToCart}
               />
-            <span className='card-medium__counter'>
-                {count > 0 ? count : ''}
+
+              <span className='card-medium__counter'>
+                {cartButtonCount}
               </span>
             </div>
-
           </div>
+
           <div className='card-medium__footer'>
             <Link
               className='card-medium__link'
-              to={'/product'}
+              to='/product'
               onClick={handleGetFullProduct}
             >
               <div className='card-medium__container-footer'>
                 <h3 className='card-medium__title'>{product.name}</h3>
                 <div className='card-medium__container-price'>
-                  <p className={cardPriceClassname}>
+                  <span className={cardPriceClassname}>
                     {product.price !== 0 && typeof product.price === 'number'
                       ? formatSumm(product.price)
                       : ''}
-                  </p>
-                  <p className='card-medium__oldprice'>
+                  </span>
+
+                  <span className='card-medium__oldprice'>
                     {product.oldPrice !== 0 &&
                     typeof product.oldPrice === 'number'
                       ? formatSumm(product.oldPrice)
                       : ''}
-                  </p>
+                  </span>
                 </div>
               </div>
             </Link>
           </div>
         </div>
       </li>
+
       <PopupAddToCart
         isOpen={isPopupOpen}
         productName={product.name}
+        // TODO: delete if it's needless
         // photoUrl={product.modelsImages &&  product.modelsImages[0].imageLink}
         photoUrl={product.images?.[0]?.imageLink}
       />
@@ -148,8 +157,8 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
 
 export default memo(ProductCardMedium);
 
+// TODO: delete if it's needless
 /*
-
 const ProductCardMedium: React.FC<{
   originPrice: number;
   salesPrice?: number;

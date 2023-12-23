@@ -136,7 +136,7 @@ const Header: React.FC<HeaderProps> = ({
             />
           </Link>
 
-          <CatalogMenu visible={isVisible} catalogRef={catalogRef} />
+          <CatalogMenu visible={isVisible} catalogRef={catalogRef} onCategoryClick={() => { setIsVisible(false); }} />
 
           <SearchBar
             handleSearch={handleSearch}

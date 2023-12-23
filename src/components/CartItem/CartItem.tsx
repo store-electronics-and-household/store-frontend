@@ -17,18 +17,17 @@ interface Props {
 }
 
 const CartItem: FC<Props> = ({ data }) => {
-  const { id, name, description, count, article, oldPrice, price, modelSetId, images } =
-    data;
+  const { id, name, description, count, article, oldPrice, price, modelSetId, images } = data;
 
-  const { increaseCartQuantity, decreaseCartQuantity, deleteProductFromCart } =
-    useCartContext();
+  const { increaseCartQuantity, decreaseCartQuantity, deleteProductFromCart } = useCartContext();
 
   return (
     <div className='cart__item' key={id}>
       <div className='cart__item-info'>
         <div className='cart__item-image-wrapper'>
-          <img src={images[1]} alt='Фото товара' />
+          <img src={images[1]?.imageLink ?? ''} alt='Фото товара' />
         </div>
+
         <div className='cart__item-textdata'>
           <h3 className='cart__item-name'>{name}</h3>
           <p className='cart__item-description'>{description}</p>
