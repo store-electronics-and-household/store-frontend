@@ -58,3 +58,9 @@ export const getCategoryName = async (
 
 export const getModelsList = async (modelsId: string): Promise<any> =>
   await request(`/category/${modelsId}/model?from=0&size=100&sort=NAME`, 'GET');
+
+export const getBrandsForCategory = async (
+  id: number,
+  attributeName: string
+): Promise<string[]> =>
+  await request(`/categories/${id}/attribute-values?attributeName=${attributeName}`, 'GET');

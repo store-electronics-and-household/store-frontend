@@ -20,7 +20,6 @@ const Main: React.FC<MainProps> = ({ passSearchResults, handleSearch }) => {
     getBanners()
       .then((res) => {
         const sliderBanners = res.slice(0, 5);
-        console.log(sliderBanners);
         const otherBanners = res.slice(5, 9);
         setMainPageBanners(sliderBanners);
         setMainPageDicountBanners(otherBanners);
@@ -30,10 +29,6 @@ const Main: React.FC<MainProps> = ({ passSearchResults, handleSearch }) => {
       });
   }, []);
 
-  // React.useEffect(() => {
-  //   console.log(mainPageBanners, categoriesMain);
-  //   console.log(mainPageDicountBanners);
-  // }, [mainPageBanners]);
   return (
     <>
       <section className='main'>

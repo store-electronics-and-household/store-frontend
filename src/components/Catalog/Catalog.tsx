@@ -2,14 +2,16 @@ import React, { memo, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getModelsList } from '../../utils/api/catalog+categories.api';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
-// import { useLocation } from 'react-router-dom';
 
-const Catalog: React.FC = (): React.ReactElement => {
-  // const location = useLocation().pathname;
-  const [modelsList, setModelsList] = useState([]);
-  const { model: modelId = '' } = useParams();
+interface ICatalog {
+  chosenBrand?: string;
+}
+const Catalog: React.FC<ICatalog> = ({ chosenBrand }): React.ReactElement => {
+  const [modelsList, setModelsList] = useState<any[]>([]);
+  const { subcategory: subcategoryId = '', model: modelId } = useParams();
+  const currentCategory = modelId ?? subcategoryId;
   useEffect(() => {
-    getModelsList(modelId)
+    getModelsList(currentCategory)
       .then((res) => {
         setModelsList(res.content);
       })
@@ -17,9 +19,11 @@ const Catalog: React.FC = (): React.ReactElement => {
         console.error(err);
       });
   }, []);
+
+  const modelsToShow = (chosenBrand !== '') ? modelsList.filter((item) => item.brand === chosenBrand) : modelsList;
   return (
     <>
-      {modelsList.map((item) => {
+      {modelsToShow.map((item) => {
         return <ProductCardMedium key={Math.random()} product={item} />;
       })}
     </>
