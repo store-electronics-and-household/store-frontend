@@ -2,8 +2,9 @@ import React, { memo } from 'react';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
 import { getMainCategories } from '../../utils/api/catalog+categories.api';
 import { type CategoriesTileProps } from '../../utils/types';
+import { type IBreadcrumbsProps } from '../Breadcrumbs/Breadcrumbs';
 
-const CategoriesMain: React.FC = (): React.ReactElement => {
+const CategoriesMain: React.FC<IBreadcrumbsProps> = ({ crumbs }): React.ReactElement => {
   const [categoriesMain, setCategoriesMain] = React.useState<
   CategoriesTileProps[]
   >([]);
@@ -11,6 +12,16 @@ const CategoriesMain: React.FC = (): React.ReactElement => {
     getMainCategories()
       .then((res) => {
         setCategoriesMain(res);
+        for (const item of res) {
+          const newCrumb = {
+            path: `categories/${item.id}`,
+            breadcrumb: item.name,
+          };
+          const isAdd = crumbs.filter((item) => {
+            return item.path === newCrumb.path;
+          }).length === 0;
+          if (isAdd) crumbs.push(newCrumb);
+        }
       })
       .catch((error) => {
         console.log(error.message);

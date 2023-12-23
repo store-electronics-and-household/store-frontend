@@ -9,9 +9,13 @@ import { defSlides } from '../../utils/constants';
 interface MainProps {
   passSearchResults: (array: MediumCardProps[]) => void;
   handleSearch: (request: string) => void;
+  crumbs: Array<{
+    path: string;
+    breadcrumb: string;
+  }>;
 }
 
-const Main: React.FC<MainProps> = ({ passSearchResults, handleSearch }) => {
+const Main: React.FC<MainProps> = ({ passSearchResults, handleSearch, crumbs }) => {
   const [mainPageBanners, setMainPageBanners] = React.useState<MyTypeBanners[]>(defSlides);
   const [mainPageDicountBanners, setMainPageDicountBanners] = React.useState<
   MyTypeBanners[]
@@ -42,7 +46,7 @@ const Main: React.FC<MainProps> = ({ passSearchResults, handleSearch }) => {
           passSearchResults={passSearchResults}
           handleSearch={handleSearch}
         />
-        <CategoriesMain />
+        <CategoriesMain crumbs={crumbs}/>
       </section>
     </>
   );
