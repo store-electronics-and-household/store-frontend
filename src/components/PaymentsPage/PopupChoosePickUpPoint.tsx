@@ -113,7 +113,7 @@ const PopupChoosePickUpPoint: React.FC<PopupChoosePickUpPointProps> = ({
     setSearchPointValue(input);
   };
 
- // const controlFocus = useRef(null);
+  // const controlFocus = useRef(null);
 
   return (
     <section className={PopupChoosePickUpPointClass}>

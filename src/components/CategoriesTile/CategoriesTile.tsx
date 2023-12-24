@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { API_CAT_IMG } from '../../utils/constants';
 
 interface CategoriesTileProps {
   id: number;
@@ -22,8 +21,6 @@ const CategoriesTile: React.FC<CategoriesTileProps> = ({
 }): React.ReactElement => {
   const location = useLocation().pathname;
   const nextPath = location === '/main' ? `/categories/${id}` : `${id}`;
-  const CategoryTumbNail =
-    location === '/main' ? imageLink : `${API_CAT_IMG}/${id}.png`;
   return (
     <li
       className={
@@ -39,7 +36,7 @@ const CategoriesTile: React.FC<CategoriesTileProps> = ({
               : 'tile__image tile__image_small'
           }
           alt={`фото категории ${name}`}
-          src={CategoryTumbNail}
+          src={imageLink}
         />
       </Link>
     </li>

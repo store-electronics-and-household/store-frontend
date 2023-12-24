@@ -65,7 +65,6 @@ const Categories: React.FC<IBreadcrumbsProps> = ({ crumbs }): React.ReactElement
   };
 
   const isCatalog = subCategories?.length === 0;
-
   return (
     <>
       <section className='catalog'>
@@ -92,9 +91,10 @@ const Categories: React.FC<IBreadcrumbsProps> = ({ crumbs }): React.ReactElement
             </nav>
             <ul className='catalog__rendered-categories'>
               <div className='catalog__render-cat'>
-                {!isCatalog && subCategories?.map((tile) => (
-                  <CategoriesTile key={tile.id} name={tile.name} id={tile.id}/>
-                ))}
+                {!isCatalog && subCategories?.map((tile) => {
+                  const imageLink = tile.imageLink ?? '';
+                  return <CategoriesTile key={tile.id} name={tile.name} id={tile.id} imageLink={imageLink}/>;
+                })}
                 {isCatalog &&
                   <Catalog chosenBrand={chosenBrand}/>}
               </div>

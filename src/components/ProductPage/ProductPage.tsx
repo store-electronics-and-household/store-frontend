@@ -145,18 +145,21 @@ const ProductPage = () => {
               <span className={currentPriceClassname}>
                 {formatSumm(productFull.price)}
               </span>
-              {productFull.oldPrice !== null ? (
+              {productFull.oldPrice !== null
+                ? (
                 <span className='product-page__old-price'>
                   {productFull.oldPrice !== null &&
                   typeof productFull.oldPrice === 'number'
                     ? formatSumm(productFull.oldPrice)
                     : ''}
                 </span>
-              ) : null}
+                  )
+                : null}
             </div>
             <div className='product-page__buttons'>
               <div>
-                {count === 0 ? (
+                {count === 0
+                  ? (
                   <button
                     onClick={handleAddToCart}
                     className='product-page__button-basket'
@@ -168,7 +171,8 @@ const ProductPage = () => {
                       alt='корзина покупок, магазин'
                     />
                   </button>
-                ) : (
+                    )
+                  : (
                   <div className='product__quantity-button'>
                     <button
                       className={quantityBtnSymbolClassname}
@@ -192,7 +196,7 @@ const ProductPage = () => {
                       />
                     </button>
                   </div>
-                )}
+                    )}
               </div>
               <CardLikeBtn productId={productFull.id} />
             </div>
@@ -228,19 +232,21 @@ const ProductPage = () => {
               Характеристики
             </button>
           </div>
-          {isActive ? (
+          {isActive
+            ? (
             <div className='product-page__about'>
               <p className='product-page__about-description'>
                 {productFull.description}
               </p>
             </div>
-          ) : (
+              )
+            : (
             <ProductCharacteristicsList
               attributes={productFull.attributes}
               modifyListClass={'characteristics-list_full'}
               modifyItemClass={'characteristics-list__item_full'}
             />
-          )}
+              )}
         </div>
         <PopupProductPhoto
           images={images}

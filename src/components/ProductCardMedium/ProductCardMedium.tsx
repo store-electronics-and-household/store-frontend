@@ -75,7 +75,6 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
   };
 
   const nextPath = `/${product.id}`;
-
   return (
     <>
       <li className='card-medium' key={product.id}>
