@@ -19,7 +19,8 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isMainImage, setIsMainImage] = React.useState(true);
 
-  const { addProductToCart, cartItems, increaseCartQuantity } = useCartContext();
+  const { addProductToCart, cartItems, increaseCartQuantity } =
+    useCartContext();
   const { getProductById } = useFavouritesContext();
   const { isLoggedIn } = useContext(UserContext);
   const { handleOpenWarningPopup } = useWarningPopupContext();
@@ -28,10 +29,14 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
     'card-medium__price_sale': product.oldPrice !== null,
   });
 
-  const count = cartItems?.find((productInCart) => productInCart.id === product.id)?.count ?? 0;
+  const count =
+    cartItems?.find((productInCart) => productInCart.id === product.id)
+      ?.count ?? 0;
 
   const isCartButtonWithValue = count > 0 && isLoggedIn;
-  const cartButtonClassName = isCartButtonWithValue ? 'card-medium__buy_big' : 'card-medium__buy';
+  const cartButtonClassName = isCartButtonWithValue
+    ? 'card-medium__buy_big'
+    : 'card-medium__buy';
   const cartButtonCount = isCartButtonWithValue ? count : '';
 
   const handleMouseOver = (): void => {
@@ -44,7 +49,11 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
 
   const handleAddToCart = (): void => {
     if (isLoggedIn) {
-      if (cartItems.findIndex((productInCart) => productInCart.id === product.id) === -1) {
+      if (
+        cartItems.findIndex(
+          (productInCart) => productInCart.id === product.id
+        ) === -1
+      ) {
         setIsPopupOpen(true);
         setTimeout(() => {
           setIsPopupOpen(false);
@@ -55,13 +64,17 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
         increaseCartQuantity(product.id);
       }
     } else {
-      handleOpenWarningPopup('Для добавления товара в корзину необходимо авторизоваться');
+      handleOpenWarningPopup(
+        'Для добавления товара в корзину необходимо авторизоваться'
+      );
     }
   };
 
   const handleGetFullProduct = (): void => {
     getProductById(product.id);
   };
+
+  const nextPath = `/${product.id}`;
 
   return (
     <>
@@ -70,7 +83,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
           <div className='card-medium__container-image'>
             <Link
               className='card-medium__link'
-              to={'/product'}
+              to={nextPath}
               onClick={handleGetFullProduct}
             >
               <img
@@ -99,7 +112,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
             </Link>
 
             <div className='card-medium__like'>
-              <CardLikeBtn productId={product.id}/>
+              <CardLikeBtn productId={product.id} />
             </div>
 
             <div className='card-medium__button'>
@@ -110,16 +123,14 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
                 onClick={handleAddToCart}
               />
 
-              <span className='card-medium__counter'>
-                {cartButtonCount}
-              </span>
+              <span className='card-medium__counter'>{cartButtonCount}</span>
             </div>
           </div>
 
           <div className='card-medium__footer'>
             <Link
               className='card-medium__link'
-              to='/product'
+              to={nextPath}
               onClick={handleGetFullProduct}
             >
               <div className='card-medium__container-footer'>

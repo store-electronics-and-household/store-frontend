@@ -3,14 +3,14 @@ import React, {
   type ReactNode,
   useContext,
   useState,
-  useEffect
+  useEffect,
 } from 'react';
 import type { ProductFullDataType, MediumCardProps } from '../utils/types';
 import {
   addCardToFavoritesList,
   getFavouritesList,
   getProductDataById,
-  removeCardFromFavoritesList
+  removeCardFromFavoritesList,
 } from '../utils/api/product-api';
 
 interface FavouritesProviderProps {
@@ -47,21 +47,25 @@ const FavoritesContext = createContext<FavouritesContextType>({
     category: {
       id: 0,
       name: '',
-      imageLink: ''
+      imageLink: '',
     },
     images: [],
-    attributes: []
+    attributes: [],
   },
 });
 
-export function useFavouritesContext (): FavouritesContextType {
+export function useFavouritesContext(): FavouritesContextType {
   const context = useContext(FavoritesContext);
   return context;
 }
 
-export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.Element {
+export function FavoritesProvider({
+  children,
+}: FavouritesProviderProps): JSX.Element {
   const [favouritesIdList, setFavouritesIdList] = useState<number[]>([]);
-  const [favouritesProductsList, setFavouritesProductsList] = useState<MediumCardProps[]>([]);
+  const [favouritesProductsList, setFavouritesProductsList] = useState<
+    MediumCardProps[]
+  >([]);
   const [productById, setProductById] = useState<ProductFullDataType>({
     id: 0,
     name: '',
@@ -71,10 +75,10 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
     category: {
       id: 0,
       name: '',
-      imageLink: ''
+      imageLink: '',
     },
     images: [],
-    attributes: []
+    attributes: [],
   });
   const [productFull, setProductFull] = useState<ProductFullDataType>({
     id: 0,
@@ -85,10 +89,10 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
     category: {
       id: 0,
       name: '',
-      imageLink: ''
+      imageLink: '',
     },
     images: [],
-    attributes: []
+    attributes: [],
   });
 
   // получение modelId из productCardMedium и запрос на сервер fullProductDto
@@ -102,37 +106,20 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
       });
   };
 
-  // для очистки стейта после ухода со страницы товара...
-  const setFullProductState = (): void => {
-    location.pathname === '/product'
-      ? setProductFull(productById)
-      : setProductFull({
-        id: 0,
-        name: '',
-        description: '',
-        price: 0,
-        oldPrice: null,
-        category: {
-          id: 0,
-          name: '',
-          imageLink: ''
-        },
-        images: [],
-        attributes: []
-      });
-  };
-
   useEffect(() => {
-    setFullProductState();
-  }, [location.pathname]);
-  // ...для очистки стейта после ухода со страницы товара
+    setProductFull(productById);
+  }, [productById]);
 
   // favourites: получение, добавление, удаление.
   const getFavouriteList = (): void => {
     getFavouritesList()
       .then((res) => {
         setFavouritesProductsList(res.modelShortDtos);
-        setFavouritesIdList(res.modelShortDtos.map((modelShortDto: { id: number }) => modelShortDto.id));
+        setFavouritesIdList(
+          res.modelShortDtos.map(
+            (modelShortDto: { id: number }) => modelShortDto.id
+          )
+        );
       })
       .catch((err) => {
         console.log(err);
@@ -162,7 +149,8 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
       });
   };
 
-  const isCardLiked = (modelId: number): boolean => { // проверка есть ли id в массиве избранных
+  const isCardLiked = (modelId: number): boolean => {
+    // проверка есть ли id в массиве избранных
     return favouritesIdList.some(
       (favoriteProductId) => favoriteProductId === modelId
     );
@@ -173,7 +161,7 @@ export function FavoritesProvider ({ children }: FavouritesProviderProps): JSX.E
       handleAddProductToFavourites(productId);
     } else {
       handleDeleteProductFromFavourites(productId);
-    };
+    }
   };
 
   return (
