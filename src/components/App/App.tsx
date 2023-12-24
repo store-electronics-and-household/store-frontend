@@ -23,7 +23,11 @@ import type { MediumCardProps } from '../../utils/types';
 import { CartProvider } from '../../context/CartContext';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import { FavoritesProvider } from '../../context/FavouritesContext';
-import { type IContext, initialUserContext, UserContext } from '../../context/UserContext';
+import {
+  type IContext,
+  initialUserContext,
+  UserContext,
+} from '../../context/UserContext';
 import ChangePassword from '../ChangePassword/ChangePassword';
 import Profile from '../Profile/Profile';
 import Orders from '../Orders/Orders';
@@ -35,7 +39,8 @@ const App: React.FC = () => {
   const [isSignUpPopupOpen, setSignUpPopupOpen] = useState<boolean>(false);
   const [searchRequest, setSearchRequest] = useState<string>('');
   const [searchResults, setSearchResults] = useState<MediumCardProps[]>([]);
-  const [generalContext, setGeneralContext] = useState<IContext>(initialUserContext);
+  const [generalContext, setGeneralContext] =
+    useState<IContext>(initialUserContext);
 
   const [isPasswordRecoveryPopupOpen, setPasswordRecoveryPopupOpen] =
     useState<boolean>(false);
@@ -99,7 +104,7 @@ const App: React.FC = () => {
   ];
 
   return (
-    <div className="App">
+    <div className='App'>
       <CartProvider>
         <FavoritesProvider>
           <WarningPopupProvider>
@@ -107,7 +112,7 @@ const App: React.FC = () => {
               <UserContext.Provider value={generalContext}>
                 <Routes>
                   <Route
-                    path="/"
+                    path='/'
                     element={
                       <>
                         <Header
@@ -115,9 +120,7 @@ const App: React.FC = () => {
                           handleSearch={handleSearch}
                           passSearchResults={handleSearchCards}
                         />
-                        <WarningPopup
-                          onOpenAuth={toggleSignInPopup}
-                        />
+                        <WarningPopup onOpenAuth={toggleSignInPopup} />
                         <SignIn
                           onOpenSignIn={toggleSignInPopup}
                           isOpenSignIn={isSignInPopupOpen}
@@ -134,12 +137,12 @@ const App: React.FC = () => {
                           isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
                           onOpenRecoveryPopup={PasswordRecoveryPopup}
                         />
-                        <Footer/>
+                        <Footer />
                       </>
                     }
                   >
                     <Route
-                      path="/main"
+                      path='/main'
                       element={
                         <Main
                           passSearchResults={handleSearchCards}
@@ -149,20 +152,20 @@ const App: React.FC = () => {
                       }
                     />
                     <Route
-                      path="/about-company"
+                      path='/about-company'
                       element={
                         <>
-                          <Breadcrumbs crumbs={crumbs}/>
-                          <AboutCompany/>
+                          <Breadcrumbs crumbs={crumbs} />
+                          <AboutCompany />
                         </>
                       }
                     />
                     <Route
-                      path="/faq"
+                      path='/faq'
                       element={
                         <>
-                          <Breadcrumbs crumbs={crumbs}/>
-                          <Faq/>
+                          <Breadcrumbs crumbs={crumbs} />
+                          <Faq />
                         </>
                       }
                     />
@@ -170,8 +173,8 @@ const App: React.FC = () => {
                       path='/cart'
                       element={
                         <>
-                          <Breadcrumbs crumbs={crumbs}/>
-                          <Cart onCheckoutClick={setGoodsForPayment}/>
+                          <Breadcrumbs crumbs={crumbs} />
+                          <Cart onCheckoutClick={setGoodsForPayment} />
                         </>
                       }
                     />
@@ -179,28 +182,27 @@ const App: React.FC = () => {
                       path='/payment'
                       element={
                         <>
-                          <Breadcrumbs crumbs={crumbs}/>
-                          <PaymentsPage oldGoodsList={goodsList ?? []}/>
+                          <Breadcrumbs crumbs={crumbs} />
+                          <PaymentsPage oldGoodsList={goodsList ?? []} />
                         </>
                       }
                     />
                     <Route
-                      path="/categories/:subcategory"
+                      path='/categories/:subcategory'
                       element={
                         <>
-                          <Breadcrumbs crumbs={crumbs}/>
-                          <Categories crumbs={crumbs}/>
+                          <Breadcrumbs crumbs={crumbs} />
+                          <Categories crumbs={crumbs} />
                         </>
                       }
                     >
-                      <Route path=":model" element={<Catalog/>}/>
+                      <Route path=':model' element={<Catalog />} />
                     </Route>
                     <Route
-                      path='/product'
+                      path='/:productId'
                       element={
                         <>
-                          <Breadcrumbs crumbs={crumbs}/>
-                          <ProductPage/>
+                          <ProductPage />
                         </>
                       }
                     />
@@ -208,8 +210,8 @@ const App: React.FC = () => {
                       path='/delivery'
                       element={
                         <>
-                          <Breadcrumbs crumbs={crumbs}/>
-                          <Delivery/>
+                          <Breadcrumbs crumbs={crumbs} />
+                          <Delivery />
                         </>
                       }
                     />
@@ -217,8 +219,8 @@ const App: React.FC = () => {
                       path='/favourites'
                       element={
                         <>
-                          <Breadcrumbs crumbs={crumbs}/>
-                          <Favourites/>
+                          <Breadcrumbs crumbs={crumbs} />
+                          <Favourites />
                         </>
                       }
                     />
@@ -226,8 +228,8 @@ const App: React.FC = () => {
                       path='/cart'
                       element={
                         <>
-                          <Breadcrumbs crumbs={crumbs}/>
-                          <Cart onCheckoutClick={setGoodsForPayment}/>
+                          <Breadcrumbs crumbs={crumbs} />
+                          <Cart onCheckoutClick={setGoodsForPayment} />
                         </>
                       }
                     />
@@ -235,8 +237,8 @@ const App: React.FC = () => {
                       path='/payment'
                       element={
                         <>
-                          <Breadcrumbs crumbs={crumbs}/>
-                          <PaymentsPage oldGoodsList={goodsList ?? []}/>
+                          <Breadcrumbs crumbs={crumbs} />
+                          <PaymentsPage oldGoodsList={goodsList ?? []} />
                         </>
                       }
                     />
@@ -244,7 +246,7 @@ const App: React.FC = () => {
                       path='/search-results'
                       element={
                         <>
-                          <Breadcrumbs crumbs={crumbs}/>
+                          <Breadcrumbs crumbs={crumbs} />
                           <SearchResults
                             searchRequest={searchRequest}
                             searchResults={searchResults}
@@ -254,20 +256,22 @@ const App: React.FC = () => {
                     />
                     <Route
                       path='/profile'
-                      element={<Profile setGeneralContext={setGeneralContext}/>}
+                      element={
+                        <Profile setGeneralContext={setGeneralContext} />
+                      }
                     />
                     <Route
                       path='/profile/changepass'
                       element={
-                        <ChangePassword setGeneralContext={setGeneralContext}/>
+                        <ChangePassword setGeneralContext={setGeneralContext} />
                       }
                     />
                     <Route
                       path='/profile/orders'
-                      element={<Orders setGeneralContext={setGeneralContext}/>}
+                      element={<Orders setGeneralContext={setGeneralContext} />}
                     />
-                    <Route path='/' element={<Navigate to='/main' replace/>}/>
-                    <Route path='*' element={<NotFound/>}/>
+                    <Route path='/' element={<Navigate to='/main' replace />} />
+                    <Route path='*' element={<NotFound />} />
                   </Route>
                 </Routes>
               </UserContext.Provider>
