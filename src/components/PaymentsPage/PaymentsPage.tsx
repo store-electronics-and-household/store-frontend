@@ -136,6 +136,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
   };
 
   const handlePayout = (): void => {
+    console.log('debug');
     if (!isPhoneValidated) {
       setIsPhoneValidated(true);
     }
@@ -222,6 +223,12 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
     setDeliveryPoint(point);
   };
 
+  const disableSubmit = (
+    e: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>
+  ): void => {
+    e.preventDefault();
+  };
+
   // const fullPrice = totalSumValue - totalDiscount - (deliveryPrice ?? 0);
 
   return (
@@ -235,6 +242,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
               name='clientDataForm'
               className='payments-page__client-name'
               action=''
+              onSubmit={disableSubmit}
             >
               <p className='payments-page__form-title'>Получатель</p>
               <div className='payments-page__input-container'>
@@ -247,6 +255,10 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
                       required: {
                         value: true,
                         message: 'Поле имя обязательно к заполнению',
+                      },
+                      pattern: {
+                        value: /^[а-яА-Яa-zA-Z\s]+$/,
+                        message: 'Пожалуйста, введите только русские или английские буквы и пробелы.',
                       },
                     })}
                     type='text'
