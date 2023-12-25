@@ -99,7 +99,7 @@ const App: React.FC = () => {
     { path: '/cart', breadcrumb: 'Корзина' },
     { path: '/search-results', breadcrumb: 'Результаты поиска' },
     // { path: 'categories/catalog/product', breadcrumb: productData.name },
-    { path: '/payment', breadcrumb: 'Корзина' },
+    { path: '/payment', breadcrumb: 'Оформление заказа' },
     // { path: '/favourites', breadcrumb: CustomPropsBreadcrumb, props: { someProp: 'Избранное' } },
   ];
 

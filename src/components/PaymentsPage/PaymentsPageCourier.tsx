@@ -102,7 +102,7 @@ const PaymentsPageCourier: React.FC<PaymentsPageCourierProps> = ({
     'Суббота',
   ];
 
-  for (let i = 0; i < 7; i++) {
+  for (let i = 1; i < 8; i++) {
     const nextDate = new Date(today);
     nextDate.setDate(today.getDate() + i);
     const dayOfWeek = weekdaysRussian[nextDate.getDay()];

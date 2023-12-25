@@ -2,8 +2,8 @@ import iconSmile from '../image/icons/smile_icon.svg';
 import iconDelivery from '../image/icons/delivery_icon.svg';
 import iconMedal from '../image/icons/medal-original_icon.svg';
 
-// export const API_URL: string = 'http://45.12.236.120:8080/api/v1';
-export const API_URL: string = 'https://cyberplace.online/api/v1';
+export const API_URL: string = 'http://45.12.236.120:8080/api/v1';
+// export const API_URL: string = 'https://cyberplace.online/api/v1';
 
 export const API_CAT_IMG: string = 'http://45.12.236.120/images/categories';
 export const popularCardsToShow = 6;
