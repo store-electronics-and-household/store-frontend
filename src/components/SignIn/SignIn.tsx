@@ -54,7 +54,6 @@ const SignIn: React.FC<SignInProps> = ({
         .required('Введите Ваш пароль'),
     }),
     onSubmit: ({ loginAuth, passwordAuth }) => {
-      console.log(formik.isValid);
       if (formik.isValid) {
         handleLogin(loginAuth, passwordAuth);
       }
