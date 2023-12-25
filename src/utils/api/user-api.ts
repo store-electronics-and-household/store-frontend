@@ -97,8 +97,8 @@ export const checkUserEmail = async (email: string): Promise<any> => {
       Accept: 'application/json',
     },
     body: JSON.stringify({
-      name: email
-    })
+      name: email,
+    }),
   });
 };
 
@@ -118,7 +118,7 @@ export const patchUser = async (
 };
 
 export const deleteUser = async (token: string): Promise<any> => {
-  return await request('/user', {
+  return await request('/auth/delete', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
