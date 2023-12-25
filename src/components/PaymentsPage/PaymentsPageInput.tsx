@@ -54,9 +54,14 @@ const PhoneForm: React.FC<PhoneFormProps> = ({
   };
 
   // console.log(isPhoneValidated);
+  const disableSubmit = (
+    e: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>
+  ): void => {
+    e.preventDefault();
+  };
 
   return (
-    <form>
+    <form onSubmit={disableSubmit}>
       <input
         {...registerWithMask('phone', '+7 (999) 999-99-99', {
           required: {
