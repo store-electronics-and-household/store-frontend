@@ -89,7 +89,7 @@ const Cart: FC<CartProps> = ({ onCheckoutClick }) => {
                 </div>
 
                 <div className='cart__order-button-wrapper'>
-                  <Link to='/payment' className='card__order-button-link'>
+                  <Link to='/cart/payment' className='card__order-button-link'>
                     <button
                       className='cart__order-button'
                       onClick={handleCheckout}

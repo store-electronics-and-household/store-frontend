@@ -1,19 +1,22 @@
 import React, { memo } from 'react';
-import { Link } from 'react-router-dom';
 import cn from 'classnames';
+import { Link } from 'react-router-dom';
 
 interface PopupAddToCartProps {
   isOpen: boolean;
   photoUrl?: string;
   productName: string;
+  location?: string;
 }
 
 const PopupAddToCart: React.FC<PopupAddToCartProps> = ({
   isOpen,
+  location,
   productName,
   photoUrl,
 }: PopupAddToCartProps) => {
   const popupAddToCartClass = cn('popup-add-to-cart', {
+    'popup-add-to-cart_product-page': location === 'productPage' || 'catalog',
     'popup-add-to-cart_opened': isOpen,
   });
 
