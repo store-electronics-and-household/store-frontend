@@ -83,7 +83,7 @@ const Cart: FC<CartProps> = ({ onCheckoutClick }) => {
                   <div className='cart__order-total-wrapper'>
                     <h2 className='cart__order-total'>Итого</h2>
                     <h2 className='cart__order-total-sum'>
-                      {formatCurrency(totalSumValue)}
+                      {formatCurrency(totalSumValue - totalDiscount)}
                     </h2>
                   </div>
                 </div>
