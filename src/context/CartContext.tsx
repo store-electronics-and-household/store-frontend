@@ -119,6 +119,7 @@ export function CartProvider ({ children }: CartProviderProps): JSX.Element {
         return res;
       })
       .catch((err) => {
+        setCartItems([]);
         console.log(err);
       });
   };
