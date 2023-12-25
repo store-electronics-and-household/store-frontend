@@ -50,8 +50,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
   const [isReadeyToSend, setIsReadeyToSend] = React.useState<boolean>(false);
   const [numberOfOrder, setNumberOfOrder] = React.useState('');
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { sumValue, cartItems, totalSumValue: fullPrice, totalCount: fullQuantity, totalDiscount } = useCartContext();
+  const { cartItems, totalSumValue, totalCount: fullQuantity, totalDiscount } = useCartContext();
 
   // const [isDeliveryPage, setIsDeliveryPage] = React.useState<boolean>(true);
   // const [isFinalPage, setIsFinalPage] = React.useState<boolean>(true);
@@ -91,12 +90,12 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
     deliveryPrice != null ? formatSumm(deliveryPrice) : '';
 
   const formatedFullPrice: string =
-    fullPrice != null ? formatSumm(fullPrice) : '';
+  totalSumValue != null ? formatSumm(totalSumValue) : '';
 
   const formatedDiscount: string =
   totalDiscount != null ? formatSumm(totalDiscount) : '';
 
-  const finalPrice = (fullPrice - totalDiscount + (deliveryPrice ?? 0));
+  const finalPrice = (totalSumValue - totalDiscount + (deliveryPrice ?? 0));
 
   const formatedFinalPrice: string =
   finalPrice != null ? formatSumm(finalPrice) : '';
@@ -222,6 +221,8 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
     setIsSecondPage(true);
     setDeliveryPoint(point);
   };
+
+  // const fullPrice = totalSumValue - totalDiscount - (deliveryPrice ?? 0);
 
   return (
     <>
