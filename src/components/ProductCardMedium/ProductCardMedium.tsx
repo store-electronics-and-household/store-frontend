@@ -21,7 +21,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
 
   const { addProductToCart, cartItems, increaseCartQuantity } =
     useCartContext();
-  const { getProductById } = useFavouritesContext();
+  const { getProductById, productFull } = useFavouritesContext();
   const { isLoggedIn } = useContext(UserContext);
   const { handleOpenWarningPopup } = useWarningPopupContext();
 
@@ -74,7 +74,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
     getProductById(product.id);
   };
 
-  const nextPath = `/${product.id}`;
+  const nextPath = `/categories/${productFull.category.id}/product/${product.id}`;
   return (
     <>
       <li className='card-medium' key={product.id}>
@@ -157,6 +157,7 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
       <PopupAddToCart
         isOpen={isPopupOpen}
         productName={product.name}
+        location='catalog'
         // TODO: delete if it's needless
         // photoUrl={product.modelsImages &&  product.modelsImages[0].imageLink}
         photoUrl={product.images?.[0]?.imageLink}
