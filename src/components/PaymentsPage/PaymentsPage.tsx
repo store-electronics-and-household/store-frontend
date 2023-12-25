@@ -50,7 +50,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
   const [isReadeyToSend, setIsReadeyToSend] = React.useState<boolean>(false);
   const [numberOfOrder, setNumberOfOrder] = React.useState('');
 
-  const { cartItems, totalSumValue, totalCount: fullQuantity, totalDiscount } = useCartContext();
+  const { cartItems, totalSumValue, totalCount: fullQuantity, totalDiscount, getProductList } = useCartContext();
 
   // const [isDeliveryPage, setIsDeliveryPage] = React.useState<boolean>(true);
   // const [isFinalPage, setIsFinalPage] = React.useState<boolean>(true);
@@ -82,8 +82,8 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
           .catch(err => {
             console.log(err);
           });
-        }
       }
+    }
   }, [clientData, isReadeyToSend]);
 
   const formatedDeliveryPrice: string =
@@ -160,7 +160,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
           .catch(err => {
             console.log(err);
           });
-        }
+      }
     }
   };
 
@@ -198,6 +198,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
   const handleCloseResPopup = (): void => {
     setIsResPopupOpened(false);
     navigate('/');
+    getProductList(); // eslint-disable-line @typescript-eslint/no-floating-promises
   };
 
   const courierDataHandler = (clientAddress?: string, clientDate?: string, clientPhone?: string, clientComment?: string): void => {
