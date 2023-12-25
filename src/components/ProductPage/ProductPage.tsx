@@ -17,6 +17,7 @@ import { useParams } from 'react-router';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import { UserContext } from '../../context/UserContext';
 import { useWarningPopupContext } from '../../context/WarningPopupContext';
+// import { getFavouritesList } from '../../utils/api/product-api';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const ProductPage = () => {
@@ -30,7 +31,7 @@ const ProductPage = () => {
     increaseCartQuantity,
     decreaseCartQuantity,
   } = useCartContext();
-  const { productFull, getProductById } = useFavouritesContext();
+  const { productFull, getProductById, isCardLiked } = useFavouritesContext();
   const { isLoggedIn } = useContext(UserContext);
   const { handleOpenWarningPopup } = useWarningPopupContext();
   const images = productFull.images.map((item) => item.imageLink);
@@ -38,6 +39,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     getProductById(Number(productId));
+    isCardLiked(Number(productId));
   }, []);
 
   const productCrumbs = [

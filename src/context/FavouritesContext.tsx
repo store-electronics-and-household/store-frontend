@@ -108,6 +108,8 @@ export function FavoritesProvider ({
 
   useEffect(() => {
     setProductFull(productById);
+    getFavouriteList();
+    isCardLiked(productById.id);
   }, [productById]);
 
   // favourites: получение, добавление, удаление.
