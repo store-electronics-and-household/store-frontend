@@ -11,6 +11,7 @@ interface PaymentsPageResPopupProps {
   GoodsList: ProductInfo[];
   orderNum: string;
   fullQuantity: number;
+  totalSumValue: number;
   fullPrice: number;
   summaryDiscount: number;
   formatedDeliveryPrice: string;
@@ -26,6 +27,7 @@ const PaymentsPageResPopup: React.FC<PaymentsPageResPopupProps> = ({
   GoodsList,
   orderNum,
   fullQuantity,
+  totalSumValue,
   fullPrice,
   summaryDiscount,
   formatedDeliveryPrice,
@@ -94,7 +96,7 @@ const PaymentsPageResPopup: React.FC<PaymentsPageResPopupProps> = ({
               {fullQuantity} {fullQuantity % 2 === 0 ? 'товара' : 'товаров'} на
               сумму
             </p>
-            <p className='payments-page__summary-row'>{fullPrice}</p>
+            <p className='payments-page__summary-row'>{totalSumValue}</p>
           </div>
           <div className='payments-page__summary-data payments-page__summary-data_popup'>
             <p className='payments-page__summary-row'>Скидка</p>
