@@ -167,19 +167,19 @@ const Header: React.FC<HeaderProps> = ({
               />
             </NavLink>
 
-            <NavLink
+            <div
               className='header__navbar-link'
               onClick={() => {
-                handleNavLinkClickFavourite('/cart');
+                handleNavLinkClickFavourite('/favourites');
               }}
-              to='/favourites'
+              // to='/favourites'
             >
               <img
                 className='header__navbar-icon'
                 src={favouriteSrc}
                 alt="Перейти в раздел 'Избранное'"
               />
-            </NavLink>
+            </div>
 
             <div
               className='header__navbar-link'
