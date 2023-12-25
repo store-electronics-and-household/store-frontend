@@ -47,7 +47,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
   const [isСourierPage, setIsСourierPage] = React.useState<boolean>(false);
   const [isReadeyToSend, setIsReadeyToSend] = React.useState<boolean>(false);
 
-  const { cartItems, totalSumValue: fullPrice, totalCount: fullQuantity, totalDiscount } = useCartContext();
+  const { cartItems, totalSumValue, totalCount: fullQuantity, totalDiscount } = useCartContext();
 
   // const [isDeliveryPage, setIsDeliveryPage] = React.useState<boolean>(true);
   // const [isFinalPage, setIsFinalPage] = React.useState<boolean>(true);
@@ -207,6 +207,8 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
     setIsSecondPage(true);
     setDeliveryPoint(point);
   };
+
+  const fullPrice = totalSumValue - totalDiscount - (deliveryPrice ?? 0);
 
   return (
     <>
@@ -376,7 +378,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
                   {fullQuantity} {fullQuantity % 2 === 0 ? 'товара' : 'товаров'}{' '}
                   на сумму
                 </p>
-                <p className='payments-page__summary-row'>{fullPrice}</p>
+                <p className='payments-page__summary-row'>{totalSumValue}</p>
               </div>
               <div className='payments-page__summary-data'>
                 <p className='payments-page__summary-row'>Скидка</p>
@@ -409,6 +411,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
         orderNum={'100500'}
         GoodsList={cartItems}
         fullQuantity={fullQuantity}
+        totalSumValue={totalSumValue}
         fullPrice={fullPrice}
         summaryDiscount={totalDiscount}
         // formatedDeliveryPrice={formatedDeliveryPrice}
