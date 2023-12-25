@@ -5,20 +5,21 @@ import { type MediumCardProps, type MeTypePickUpPoint } from '../../utils/types'
 import { formatSumm } from '../../utils/formatSumm';
 import { useForm } from 'react-hook-form';
 import 'react-phone-number-input/style.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import PhoneForm from './PaymentsPageInput';
 import PaymentsPageCourier from './PaymentsPageCourier';
 import PopupChoosePickUpPoint from './PopupChoosePickUpPoint';
 import PaymentsPageResPopup from './PaymentsPageResPopup';
-import { getPickUpDate, adrressToString, priceToNumber, getDeliveryDate } from './DataFormatters';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { getPickUpDate, adrressToString, priceToNumber, getDeliveryDate, convertDateToISO } from './DataFormatters';
 import { useCartContext } from '../../context';
-// import { productsForPay } from '../../utils/constants';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { postPayment } from '../../utils/api/cart-pay-like-api';
 
 interface PaymentsPageProps {
   oldGoodsList: MediumCardProps[];
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const PaymentsPage: React.FC<PaymentsPageProps> = () => {
   const [clientData, setClientData] = React.useState({
     phone: '',
@@ -34,11 +35,12 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
       deliverypice: ''
     }
   );
+  const navigate = useNavigate();
 
   const [isPhoneValid, setIsPhoneValid] = useState<boolean>(false);
   const [isCourierDataValid, setIsCourierDataValid] = useState<boolean>(false);
   const [isPopupOpened, setIsPopupOpened] = useState<boolean>(false);
-  const [isResPopupOpened, setIsResPopupOpened] = useState<boolean>(true);
+  const [isResPopupOpened, setIsResPopupOpened] = useState<boolean>(false);
   const [deliveryType, setDeliveryType] = useState<string>('Самовывоз');
   const [isPhoneValidated, setIsPhoneValidated] = useState<boolean>(false);
   const [isCourierDataValidated, setCourierDataValidated] = useState<boolean>(false);
@@ -46,6 +48,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
   const [isSecondPage, setIsSecondPage] = React.useState<boolean>(false);
   const [isСourierPage, setIsСourierPage] = React.useState<boolean>(false);
   const [isReadeyToSend, setIsReadeyToSend] = React.useState<boolean>(false);
+  const [numberOfOrder, setNumberOfOrder] = React.useState('');
 
   const { cartItems, totalSumValue, totalCount: fullQuantity, totalDiscount } = useCartContext();
 
@@ -57,53 +60,55 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
 
   useEffect(() => {
     if (clientData.address !== '' && isReadeyToSend) {
-      console.log('ЭТО УСПЕХ! СЕЙЧЧАС МЫ ОТПРАВИМ НА СЕРВЕР ДАННЫЕ');
       const form1Values = getValuesForm1();
-      console.log(deliveryType);
-      console.log(`имя: ${form1Values.name}`);
-      console.log(`телефон: ${clientData.phone}`);
-      // console.log(clientData.date);
       const dateToApiPrev = clientData.date.toString();
-      const dateToApi = getDeliveryDate(dateToApiPrev);
-      console.log(dateToApi);
+      const dateToApi = convertDateToISO(dateToApiPrev);
       const { phone, date, ...newObject } = clientData;
-      // console.log(newObject);
       const addressToApi = adrressToString(newObject);
-      console.log(addressToApi);
-      console.log(deliveryPrice);
-      const priceToApi = priceToNumber(finalPrice);
-      console.log(priceToApi);
-    }
+      const priceToApi = priceToNumber(formatedFinalPrice);
+      let DeliveryTypeToApi = '';
+      if (deliveryType === 'Доставка') {
+        DeliveryTypeToApi = 'type1';
+      } else {
+        DeliveryTypeToApi = 'type2';
+      };
+      if (deliveryPrice !== null) {
+        const nonNullableDeliveryPrice = deliveryPrice ?? 0; // Используйте значение по умолчанию, если deliveryPrice равен null
+        postPayment(DeliveryTypeToApi, form1Values.name, clientData.phone, addressToApi, dateToApi, nonNullableDeliveryPrice, priceToApi)
+          .then((res) => {
+            setIsResPopupOpened(true);
+            setNumberOfOrder(res.id);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        }
+      }
   }, [clientData, isReadeyToSend]);
 
   const formatedDeliveryPrice: string =
     deliveryPrice != null ? formatSumm(deliveryPrice) : '';
 
-  const finalPrice: string = formatSumm(
-    cartItems.reduce(function (acc, item) {
-      // return acc + item.quantity * (item.percent ? item.price - item.percent : 1);
-      return (
-        acc +
-        item.count *
-          (typeof item.percent === 'number'
-            ? item.oldPrice * (100 - item.percent) / 100
-            : item.oldPrice)
-      );
-    }, 0) + (deliveryPrice ?? 0)
-  );
+  const formatedFullPrice: string =
+  totalSumValue != null ? formatSumm(totalSumValue) : '';
+
+  const formatedDiscount: string =
+  totalDiscount != null ? formatSumm(totalDiscount) : '';
+
+  const finalPrice = (totalSumValue - totalDiscount + (deliveryPrice ?? 0));
+
+  const formatedFinalPrice: string =
+  finalPrice != null ? formatSumm(finalPrice) : '';
 
   const {
     register: registerForm1,
     getValues: getValuesForm1,
     formState: { errors: errorsForm1, isValid: isValidForm1 },
   } = useForm({
-    // mode: 'all', // "onChange"
     mode: 'onChange',
   });
 
   const handleDeliveryType = (input: any): void => {
-    // const form1Values = getValuesForm1();
-    // console.log(form1Values);
     if (input.id === '1') {
       setIsFirstPage(true);
       setIsСourierPage(false);
@@ -135,19 +140,27 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
       setIsPhoneValidated(true);
     }
     if (isPhoneValid && isValidForm1) {
-      const currentClientName = getValuesForm1();
-      // setClientName(currentClientName.name);
-      console.log('ЭТО УСПЕХ! СЕЙЧЧАС МЫ ОТПРАВИМ НА СЕРВЕР ДАННЫЕ');
-      console.log(deliveryType);
-      console.log(currentClientName.name);
-      console.log(clientData.phone);
+      const currentClientName = getValuesForm1().name;
       const dateToApi = getPickUpDate();
-      console.log(dateToApi);
       const addressToApi = adrressToString(deliveryPoint);
-      console.log(addressToApi);
-      console.log(deliveryPrice);
-      const priceToApi = priceToNumber(finalPrice);
-      console.log(priceToApi);
+      const priceToApi = priceToNumber(formatedFinalPrice);
+      let DeliveryTypeToApi = '';
+      if (deliveryType === 'Доставка') {
+        DeliveryTypeToApi = 'type1';
+      } else {
+        DeliveryTypeToApi = 'type2';
+      };
+      if (deliveryPrice !== null) {
+        const nonNullableDeliveryPrice = deliveryPrice ?? 0; // Используйте значение по умолчанию, если deliveryPrice равен null
+        postPayment(DeliveryTypeToApi, currentClientName, clientData.phone, addressToApi, dateToApi, nonNullableDeliveryPrice, priceToApi)
+          .then((res) => {
+            setIsResPopupOpened(true);
+            setNumberOfOrder(res.id);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        }
     }
   };
 
@@ -184,6 +197,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
 
   const handleCloseResPopup = (): void => {
     setIsResPopupOpened(false);
+    navigate('/');
   };
 
   const courierDataHandler = (clientAddress?: string, clientDate?: string, clientPhone?: string, clientComment?: string): void => {
@@ -208,7 +222,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
     setDeliveryPoint(point);
   };
 
-  const fullPrice = totalSumValue - totalDiscount - (deliveryPrice ?? 0);
+  // const fullPrice = totalSumValue - totalDiscount - (deliveryPrice ?? 0);
 
   return (
     <>
@@ -378,12 +392,12 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
                   {fullQuantity} {fullQuantity % 2 === 0 ? 'товара' : 'товаров'}{' '}
                   на сумму
                 </p>
-                <p className='payments-page__summary-row'>{totalSumValue}</p>
+                <p className='payments-page__summary-row'>{formatedFullPrice}</p>
               </div>
               <div className='payments-page__summary-data'>
                 <p className='payments-page__summary-row'>Скидка</p>
                 <p className='payments-page__summary-row payments-page__summary-row_discount'>
-                  {totalDiscount}
+                  {formatedDiscount}
                 </p>
               </div>
               <div className='payments-page__summary-data'>
@@ -395,7 +409,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
               <div className='payments-page__line'></div>
               <div className='payments-page__summary-data'>
                 <p className='payments-page__summary-final'>Итого</p>
-                <p className='payments-page__summary-final'>{fullPrice}</p>
+                <p className='payments-page__summary-final'>{formatedFinalPrice}</p>
               </div>
             </div>
           </div>
@@ -408,21 +422,16 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
       />
       <PaymentsPageResPopup
         isOpen={isResPopupOpened}
-        orderNum={'100500'}
+        orderNum={numberOfOrder}
         GoodsList={cartItems}
         fullQuantity={fullQuantity}
-        totalSumValue={totalSumValue}
-        fullPrice={fullPrice}
-        summaryDiscount={totalDiscount}
-        // formatedDeliveryPrice={formatedDeliveryPrice}
-        formatedDeliveryPrice={'133 р'} // ПОПРАВИТЬ ОБРАТНО
-        finalPrice={finalPrice}
+        fullPrice={formatedFullPrice}
+        summaryDiscount={formatedDiscount}
+        formatedDeliveryPrice={formatedDeliveryPrice}
+        finalPrice={formatedFinalPrice}
         deliveryDate={(clientData.date.toString())}
-        // deliveryPrice={deliveryPrice}
         deliveryType={deliveryType}
-        // deliveryType={'Доставка'}
         onClose={handleCloseResPopup}
-        // pickUpDate={getPickUpDate()}
       />
 
     </>

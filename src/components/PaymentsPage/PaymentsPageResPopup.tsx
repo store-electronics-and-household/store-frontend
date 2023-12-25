@@ -11,13 +11,11 @@ interface PaymentsPageResPopupProps {
   GoodsList: ProductInfo[];
   orderNum: string;
   fullQuantity: number;
-  totalSumValue: number;
-  fullPrice: number;
-  summaryDiscount: number;
+  fullPrice: string;
+  summaryDiscount: string;
   formatedDeliveryPrice: string;
   finalPrice: string;
   deliveryDate: string;
-  // deliveryPrice?: number;
   deliveryType: string;
   onClose: () => void;
 }
@@ -27,34 +25,24 @@ const PaymentsPageResPopup: React.FC<PaymentsPageResPopupProps> = ({
   GoodsList,
   orderNum,
   fullQuantity,
-  totalSumValue,
   fullPrice,
   summaryDiscount,
   formatedDeliveryPrice,
   finalPrice,
   deliveryDate,
-  // deliveryPrice,
   deliveryType,
   onClose,
-  // quantity,
-  // imgUrl,
 }) => {
   const PopupClass = cn('payments-page__popup', {
     'payments-page__popup_opened': isOpen,
   });
 
-  console.log(formatedDeliveryPrice);
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleClose = (): void => {
-    console.log('закрываем попап');
     onClose();
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const pickUpDate = getTomorrowDate();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // const deliveryDateNew = getDeliveryDate(deliveryDate);
+  const deliveryDateNew = getDeliveryDate(deliveryDate);
 
   return (
     <section className={PopupClass}>
@@ -96,7 +84,7 @@ const PaymentsPageResPopup: React.FC<PaymentsPageResPopupProps> = ({
               {fullQuantity} {fullQuantity % 2 === 0 ? 'товара' : 'товаров'} на
               сумму
             </p>
-            <p className='payments-page__summary-row'>{totalSumValue}</p>
+            <p className='payments-page__summary-row'>{fullPrice}</p>
           </div>
           <div className='payments-page__summary-data payments-page__summary-data_popup'>
             <p className='payments-page__summary-row'>Скидка</p>
@@ -113,13 +101,13 @@ const PaymentsPageResPopup: React.FC<PaymentsPageResPopupProps> = ({
           <div className='payments-page__summary-data'>
             <p className='payments-page__summary-row'>Заказ приедет</p>
             <p className='payments-page__summary-row'>
-              {deliveryType === 'Доставка' ? deliveryDate : pickUpDate}
+              {deliveryType === 'Доставка' ? deliveryDateNew : pickUpDate}
             </p>
           </div>
           <div className='payments-page__line'></div>
           <div className='payments-page__summary-data payments-page__summary-data_final'>
             <p className='payments-page__summary-final payments-page__summary-final_popup'>Сумма заказа</p>
-            <p className='payments-page__summary-final payments-page__summary-final_popup'>{fullPrice}</p>
+            <p className='payments-page__summary-final payments-page__summary-final_popup'>{finalPrice}</p>
           </div>
           <div className='payments-page__line'></div>
           <div className='payments-page__btn-ctn'>
