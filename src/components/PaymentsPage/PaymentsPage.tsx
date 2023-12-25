@@ -152,7 +152,7 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
         DeliveryTypeToApi = 'type2';
       };
       if (deliveryPrice !== null) {
-        const nonNullableDeliveryPrice = deliveryPrice ?? 0; // Используйте значение по умолчанию, если deliveryPrice равен null
+        const nonNullableDeliveryPrice = deliveryPrice ?? 0;
         postPayment(DeliveryTypeToApi, currentClientName, clientData.phone, addressToApi, dateToApi, nonNullableDeliveryPrice, priceToApi)
           .then((res) => {
             setIsResPopupOpened(true);
@@ -205,7 +205,6 @@ const PaymentsPage: React.FC<PaymentsPageProps> = () => {
   const courierDataHandler = (clientAddress?: string, clientDate?: string, clientPhone?: string, clientComment?: string): void => {
     if (!isPhoneValidated) {
       setIsPhoneValidated(true);
-      // console.log('debug');
     }
     if (!isCourierDataValidated) {
       setCourierDataValidated(true);
