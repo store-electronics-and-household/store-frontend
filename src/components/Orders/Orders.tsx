@@ -1,37 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProfileLayout from '../ProfileLayout/ProfileLayout';
-import orderItem from '../../image/order-item.png';
 import type { IContext } from '../../context/UserContext';
+import { getOrders } from '../../utils/api/user-api';
+import Order from '../Order/Order';
 
 const Orders = ({
   setGeneralContext,
 }: {
   setGeneralContext: (args: IContext) => void;
 }): JSX.Element => {
+  const token = localStorage.getItem('token') ?? '';
+  const [maxRender, setMaxRender] = useState<number>(3);
+  const [orders, setOrders] = useState<any[]>([]);
+  useEffect(() => {
+    getOrders(token)
+      .then((res) => {
+        setOrders(res.reverse());
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
+  const renderMore = (): void => {
+    setMaxRender((value) => value + 3);
+  };
+
   return (
     <ProfileLayout setGeneralContext={setGeneralContext}>
       <div className='profile__orders'>
-        <div className='profile__order'>
-          <div className='profile__order-info'>
-            <h3 className='profile__order-date'>Заказ от 14 ноября</h3>
-            <h4 className='profile__order-number'>№ 345642</h4>
-            <div className='profile__order-status'>В процессе</div>
-          </div>
-          <div className='profile__order-summary'>
-            <div className='profile__order-images'>
-              <img
-                className='profile__order-image'
-                src={orderItem}
-                alt='Предмет заказа'
-              />
-            </div>
-            <div className='profile__order-summary-info'>
-              <span className='profile__order-sum'>Сумма заказа</span>
-              <span className='profile__order-price'>2 990 ₽</span>
-            </div>
-          </div>
-        </div>
+        {orders?.map((order, i) => {
+          if (i >= maxRender) {
+            // eslint-disable-next-line array-callback-return
+            return;
+          }
+          return <Order key={order.id} data={order} />;
+        })}
       </div>
+      {orders?.length > 3 && orders.length > maxRender && (
+        <button className='profile__button' onClick={renderMore}>
+          показать ещё
+        </button>
+      )}
     </ProfileLayout>
   );
 };

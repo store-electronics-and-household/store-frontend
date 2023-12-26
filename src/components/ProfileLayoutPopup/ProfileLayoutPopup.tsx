@@ -9,7 +9,7 @@ export interface IPopupOptions {
   buttonText: string;
   action: 'exit' | 'delete';
   closeFunction: () => void;
-  setContextFunction: (args: IContext) => void;
+  setContextFunction?: (args: IContext) => void;
 }
 
 const ProfileLayoutPopup = ({
@@ -21,14 +21,16 @@ const ProfileLayoutPopup = ({
   const navigate = useNavigate();
   const clearUser = (): void => {
     localStorage.clear();
-    options.setContextFunction({
-      isLoggedIn: false,
-      userId: null,
-      userLastName: '',
-      userName: '',
-      userPhone: '',
-      email: '',
-    });
+    if (options.setContextFunction !== undefined) {
+      options.setContextFunction({
+        isLoggedIn: false,
+        userId: null,
+        userLastName: '',
+        userName: '',
+        userPhone: '',
+        email: '',
+      });
+    }
   };
 
   const handleSubmit = (): void => {

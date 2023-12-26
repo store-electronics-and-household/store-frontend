@@ -33,6 +33,8 @@ import Profile from '../Profile/Profile';
 import Orders from '../Orders/Orders';
 import { authUserByToken } from '../../utils/api/user-api';
 import { WarningPopupProvider } from '../../context/WarningPopupContext';
+import OrderFull from '../OrderFull/OrderFull';
+import { FullOrderContextProvider } from '../../context/FullOrderContext';
 
 const App: React.FC = () => {
   const [isSignInPopupOpen, setSignInPopupOpen] = useState<boolean>(false);
@@ -110,170 +112,183 @@ const App: React.FC = () => {
           <WarningPopupProvider>
             <ScrollToTop>
               <UserContext.Provider value={generalContext}>
-                <Routes>
-                  <Route
-                    path='/'
-                    element={
-                      <>
-                        <Header
-                          onOpenAuth={toggleSignInPopup}
-                          handleSearch={handleSearch}
-                          passSearchResults={handleSearchCards}
-                        />
-                        <WarningPopup onOpenAuth={toggleSignInPopup} />
-                        <SignIn
-                          onOpenSignIn={toggleSignInPopup}
-                          isOpenSignIn={isSignInPopupOpen}
-                          onOpenReg={toggleSignUpPopup}
-                          onOpenRecovery={PasswordRecoveryPopup}
-                          setGeneralContext={setGeneralContext}
-                        />
-                        <SignUp
-                          onOpenSignUp={toggleSignUpPopup}
-                          isOpenSignUp={isSignUpPopupOpen}
-                          setGeneralContext={setGeneralContext}
-                        />
-                        <PasswordRecovery
-                          isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
-                          onOpenRecoveryPopup={PasswordRecoveryPopup}
-                        />
-                        <Footer />
-                      </>
-                    }
-                  >
+                <FullOrderContextProvider>
+                  <Routes>
                     <Route
-                      path='/main'
-                      element={
-                        <Main
-                          passSearchResults={handleSearchCards}
-                          handleSearch={handleSearch}
-                          crumbs={crumbs}
-                        />
-                      }
-                    />
-                    <Route
-                      path='/about-company'
+                      path='/'
                       element={
                         <>
-                          <Breadcrumbs crumbs={crumbs} />
-                          <AboutCompany />
-                        </>
-                      }
-                    />
-                    <Route
-                      path='/faq'
-                      element={
-                        <>
-                          <Breadcrumbs crumbs={crumbs} />
-                          <Faq />
-                        </>
-                      }
-                    />
-                    <Route
-                      path='/cart'
-                      element={
-                        <>
-                          <Breadcrumbs crumbs={crumbs} />
-                          <Cart onCheckoutClick={setGoodsForPayment} />
-                        </>
-                      }
-                    />
-                    <Route
-                      path='/payment'
-                      element={
-                        <>
-                          <Breadcrumbs crumbs={crumbs} />
-                          <PaymentsPage oldGoodsList={goodsList ?? []} />
-                        </>
-                      }
-                    />
-                    <Route
-                      path='/categories/:subcategory'
-                      element={
-                        <>
-                          <Breadcrumbs crumbs={crumbs} />
-                          <Categories crumbs={crumbs} />
+                          <Header
+                            onOpenAuth={toggleSignInPopup}
+                            handleSearch={handleSearch}
+                            passSearchResults={handleSearchCards}
+                          />
+                          <WarningPopup onOpenAuth={toggleSignInPopup} />
+                          <SignIn
+                            onOpenSignIn={toggleSignInPopup}
+                            isOpenSignIn={isSignInPopupOpen}
+                            onOpenReg={toggleSignUpPopup}
+                            onOpenRecovery={PasswordRecoveryPopup}
+                            setGeneralContext={setGeneralContext}
+                          />
+                          <SignUp
+                            onOpenSignUp={toggleSignUpPopup}
+                            isOpenSignUp={isSignUpPopupOpen}
+                            setGeneralContext={setGeneralContext}
+                          />
+                          <PasswordRecovery
+                            isOpenPasswordRecovery={isPasswordRecoveryPopupOpen}
+                            onOpenRecoveryPopup={PasswordRecoveryPopup}
+                          />
+                          <Footer />
                         </>
                       }
                     >
-                      <Route path=':model' element={<Catalog />} />
-                    </Route>
-                    <Route
-                      path='/:productId'
-                      element={
-                        <>
-                          <ProductPage />
-                        </>
-                      }
-                    />
-                    <Route
-                      path='/delivery'
-                      element={
-                        <>
-                          <Breadcrumbs crumbs={crumbs} />
-                          <Delivery />
-                        </>
-                      }
-                    />
-                    <Route
-                      path='/favourites'
-                      element={
-                        <>
-                          <Breadcrumbs crumbs={crumbs} />
-                          <Favourites />
-                        </>
-                      }
-                    />
-                    <Route
-                      path='/cart'
-                      element={
-                        <>
-                          <Breadcrumbs crumbs={crumbs} />
-                          <Cart onCheckoutClick={setGoodsForPayment} />
-                        </>
-                      }
-                    />
-                    <Route
-                      path='/payment'
-                      element={
-                        <>
-                          <Breadcrumbs crumbs={crumbs} />
-                          <PaymentsPage oldGoodsList={goodsList ?? []} />
-                        </>
-                      }
-                    />
-                    <Route
-                      path='/search-results'
-                      element={
-                        <>
-                          <Breadcrumbs crumbs={crumbs} />
-                          <SearchResults
-                            searchRequest={searchRequest}
-                            searchResults={searchResults}
+                      <Route
+                        path='/main'
+                        element={
+                          <Main
+                            passSearchResults={handleSearchCards}
+                            handleSearch={handleSearch}
+                            crumbs={crumbs}
                           />
-                        </>
-                      }
-                    />
-                    <Route
-                      path='/profile'
-                      element={
-                        <Profile setGeneralContext={setGeneralContext} />
-                      }
-                    />
-                    <Route
-                      path='/profile/changepass'
-                      element={
-                        <ChangePassword setGeneralContext={setGeneralContext} />
-                      }
-                    />
-                    <Route
-                      path='/profile/orders'
-                      element={<Orders setGeneralContext={setGeneralContext} />}
-                    />
-                    <Route path='/' element={<Navigate to='/main' replace />} />
-                    <Route path='*' element={<NotFound />} />
-                  </Route>
-                </Routes>
+                        }
+                      />
+                      <Route
+                        path='/about-company'
+                        element={
+                          <>
+                            <Breadcrumbs crumbs={crumbs} />
+                            <AboutCompany />
+                          </>
+                        }
+                      />
+                      <Route
+                        path='/faq'
+                        element={
+                          <>
+                            <Breadcrumbs crumbs={crumbs} />
+                            <Faq />
+                          </>
+                        }
+                      />
+                      <Route
+                        path='/cart'
+                        element={
+                          <>
+                            <Breadcrumbs crumbs={crumbs} />
+                            <Cart onCheckoutClick={setGoodsForPayment} />
+                          </>
+                        }
+                      />
+                      <Route
+                        path='/payment'
+                        element={
+                          <>
+                            <Breadcrumbs crumbs={crumbs} />
+                            <PaymentsPage oldGoodsList={goodsList ?? []} />
+                          </>
+                        }
+                      />
+                      <Route
+                        path='/categories/:subcategory'
+                        element={
+                          <>
+                            <Breadcrumbs crumbs={crumbs} />
+                            <Categories crumbs={crumbs} />
+                          </>
+                        }
+                      >
+                        <Route path=':model' element={<Catalog />} />
+                      </Route>
+                      <Route
+                        path='/:productId'
+                        element={
+                          <>
+                            <ProductPage />
+                          </>
+                        }
+                      />
+                      <Route
+                        path='/delivery'
+                        element={
+                          <>
+                            <Breadcrumbs crumbs={crumbs} />
+                            <Delivery />
+                          </>
+                        }
+                      />
+                      <Route
+                        path='/favourites'
+                        element={
+                          <>
+                            <Breadcrumbs crumbs={crumbs} />
+                            <Favourites />
+                          </>
+                        }
+                      />
+                      <Route
+                        path='/cart'
+                        element={
+                          <>
+                            <Breadcrumbs crumbs={crumbs} />
+                            <Cart onCheckoutClick={setGoodsForPayment} />
+                          </>
+                        }
+                      />
+                      <Route
+                        path='/payment'
+                        element={
+                          <>
+                            <Breadcrumbs crumbs={crumbs} />
+                            <PaymentsPage oldGoodsList={goodsList ?? []} />
+                          </>
+                        }
+                      />
+                      <Route
+                        path='/search-results'
+                        element={
+                          <>
+                            <Breadcrumbs crumbs={crumbs} />
+                            <SearchResults
+                              searchRequest={searchRequest}
+                              searchResults={searchResults}
+                            />
+                          </>
+                        }
+                      />
+                      <Route
+                        path='/profile'
+                        element={
+                          <Profile setGeneralContext={setGeneralContext} />
+                        }
+                      />
+                      <Route
+                        path='/profile/changepass'
+                        element={
+                          <ChangePassword
+                            setGeneralContext={setGeneralContext}
+                          />
+                        }
+                      />
+                      <Route
+                        path='/profile/orders'
+                        element={
+                          <Orders setGeneralContext={setGeneralContext} />
+                        }
+                      />
+                      <Route
+                        path='/profile/orders/:orderId'
+                        element={<OrderFull />}
+                      />
+                      <Route
+                        path='/'
+                        element={<Navigate to='/main' replace />}
+                      />
+                      <Route path='*' element={<NotFound />} />
+                    </Route>
+                  </Routes>
+                </FullOrderContextProvider>
               </UserContext.Provider>
             </ScrollToTop>
           </WarningPopupProvider>
