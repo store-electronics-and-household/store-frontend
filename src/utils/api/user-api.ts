@@ -106,16 +106,13 @@ export const authUserByToken = async (token: string): Promise<any> => {
   });
 };
 
-export const checkUserEmail = async (email: string): Promise<any> => {
-  return await request('/auth/check', {
+export const checkUserEmail = async (email: string): Promise<boolean> => {
+  return await request(`/auth/check?email=${email}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     },
-    body: JSON.stringify({
-      name: email,
-    }),
   });
 };
 

@@ -64,7 +64,7 @@ const App: React.FC = () => {
         .catch((err) => {
           setGeneralContext(initialUserContext);
           localStorage.removeItem('token');
-          console.error(`Токен просрочен или не найден - ${err}`);
+          console.log(`Токен просрочен или не найден - ${err}`);
         });
     }
   }, []);
@@ -101,8 +101,7 @@ const App: React.FC = () => {
     { path: '/cart', breadcrumb: 'Корзина' },
     { path: '/search-results', breadcrumb: 'Результаты поиска' },
     // { path: 'categories/catalog/product', breadcrumb: productData.name },
-    { path: '/payment', breadcrumb: 'Оформление заказа' },
-    // { path: '/favourites', breadcrumb: CustomPropsBreadcrumb, props: { someProp: 'Избранное' } },
+    { path: '/cart/payment', breadcrumb: 'Оформление заказа' },
   ];
 
   return (
@@ -182,7 +181,7 @@ const App: React.FC = () => {
                         }
                       />
                       <Route
-                        path='/payment'
+                        path='/cart/payment'
                         element={
                           <>
                             <Breadcrumbs crumbs={crumbs} />

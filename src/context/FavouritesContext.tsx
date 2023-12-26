@@ -12,6 +12,7 @@ import {
   getProductDataById,
   removeCardFromFavoritesList,
 } from '../utils/api/product-api';
+import { useNavigate } from 'react-router-dom';
 
 interface FavouritesProviderProps {
   children: ReactNode;
@@ -54,17 +55,17 @@ const FavoritesContext = createContext<FavouritesContextType>({
   },
 });
 
-export function useFavouritesContext (): FavouritesContextType {
+export function useFavouritesContext(): FavouritesContextType {
   const context = useContext(FavoritesContext);
   return context;
 }
 
-export function FavoritesProvider ({
+export function FavoritesProvider({
   children,
 }: FavouritesProviderProps): JSX.Element {
   const [favouritesIdList, setFavouritesIdList] = useState<number[]>([]);
   const [favouritesProductsList, setFavouritesProductsList] = useState<
-  MediumCardProps[]
+    MediumCardProps[]
   >([]);
   const [productById, setProductById] = useState<ProductFullDataType>({
     id: 0,
@@ -94,12 +95,14 @@ export function FavoritesProvider ({
     images: [],
     attributes: [],
   });
+  const navigate = useNavigate();
 
   // получение modelId из productCardMedium и запрос на сервер fullProductDto
   const getProductById = (productId: number): void => {
     getProductDataById(productId)
       .then((data) => {
         setProductById(data);
+        navigate(`/categories/${data.category.id}/product/${data.id}`);
       })
       .catch((error) => {
         console.log(error);
@@ -108,6 +111,11 @@ export function FavoritesProvider ({
 
   useEffect(() => {
     setProductFull(productById);
+    isCardLiked(productById.id);
+    const token = localStorage.getItem('token') ?? null;
+    if (token !== null) {
+      getFavouriteList();
+    }
   }, [productById]);
 
   // favourites: получение, добавление, удаление.

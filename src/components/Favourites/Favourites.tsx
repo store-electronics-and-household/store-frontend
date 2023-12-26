@@ -22,18 +22,17 @@ const Favourites: FC = () => {
               // ({ name, originPrice, salesPrice, discount, imgUrl, isLiked, quantityInCart }) => {
               (product) => {
                 return (
-                  <>
-                    <ProductCardMedium
-                      // name={name}
-                      product={product}
-                      // originPrice={originPrice}
-                      // salesPrice={salesPrice}
-                      // discount={discount}
-                      // isLiked={isLiked}
-                      // imgUrl={imgUrl}
-                      // quantityInCart={quantityInCart}
-                    />
-                  </>
+                  <ProductCardMedium
+                    key={product.id}
+                    // name={name}
+                    product={product}
+                    // originPrice={originPrice}
+                    // salesPrice={salesPrice}
+                    // discount={discount}
+                    // isLiked={isLiked}
+                    // imgUrl={imgUrl}
+                    // quantityInCart={quantityInCart}
+                  />
                 );
               }
             )}

@@ -174,7 +174,10 @@ export function CartProvider ({ children }: CartProviderProps): JSX.Element {
   }
 
   useEffect(() => {
-    getProductList();
+    const token = localStorage.getItem('token') ?? null;
+    if (token !== null) {
+      getProductList();
+    }
   }, []);
 
   useEffect(() => {

@@ -5,7 +5,7 @@ import BreadcrumbsItem from './BreadcrumbsItem';
 export interface IBreadcrumbsProps {
   crumbs: Array<{
     path: string;
-    breadcrumb: string;
+    breadcrumb: string | null;
   }>;
 }
 

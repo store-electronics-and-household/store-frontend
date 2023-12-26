@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import cn from 'classnames';
 import cart from '../../image/icons/busket_icon-white.svg';
 import ThumbsSlider from '../ThumbsSlider/ThumbsSlider';
@@ -8,7 +8,6 @@ import minusIconActive from '../../image/icons/cart_minus_icon_active.svg';
 import { productCharacteristicsShortListLength } from '../../utils/constants';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import ProductCharacteristicsList from '../ProductCharacteristicsList/ProductCharacteristicsList';
-// import { type ProductFullDataType } from '../../utils/types';
 import { formatSumm } from '../../utils/formatSumm';
 import PopupProductPhoto from '../PopupProductPhoto/PopupProductPhoto';
 import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
@@ -16,6 +15,9 @@ import { useCartContext } from '../../context';
 import { useFavouritesContext } from '../../context/FavouritesContext';
 import { useParams } from 'react-router';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
+import { UserContext } from '../../context/UserContext';
+import { useWarningPopupContext } from '../../context/WarningPopupContext';
+// import { getFavouritesList } from '../../utils/api/product-api';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const ProductPage = () => {
@@ -29,16 +31,23 @@ const ProductPage = () => {
     increaseCartQuantity,
     decreaseCartQuantity,
   } = useCartContext();
-  const { productFull, getProductById } = useFavouritesContext();
+  const { productFull, getProductById, isCardLiked } = useFavouritesContext();
+  const { isLoggedIn } = useContext(UserContext);
+  const { handleOpenWarningPopup } = useWarningPopupContext();
   const images = productFull.images.map((item) => item.imageLink);
   const { productId } = useParams();
 
   useEffect(() => {
-    console.log(productId);
     getProductById(Number(productId));
+    isCardLiked(Number(productId));
   }, []);
 
-  const productCrumbs = [{ path: ':productId', breadcrumb: productFull.name }];
+  const productCrumbs = [
+    { path: '/categories', breadcrumb: null },
+    { path: '/categories/:subcategory', breadcrumb: productFull.category.name },
+    { path: '/categories/:subcategory/product', breadcrumb: null },
+    { path: '/categories/:subcategory/product/:productId', breadcrumb: productFull.name },
+  ];
 
   const handleOnAllcharacteristics = (): void => {
     setIsActive(false);
@@ -68,15 +77,19 @@ const ProductPage = () => {
   };
 
   const handleAddToCart = (): void => {
-    if (
-      cartItems.findIndex(
-        (productInCart) => productInCart.id === productFull.id
-      ) === -1
-    ) {
-      openInfoPopup();
-      addProductToCart(productFull.id);
+    if (isLoggedIn) {
+      if (
+        cartItems.findIndex(
+          (productInCart) => productInCart.id === productFull.id
+        ) === -1
+      ) {
+        openInfoPopup();
+        addProductToCart(productFull.id);
+      } else {
+        increaseCartQuantity(productFull.id);
+      }
     } else {
-      increaseCartQuantity(productFull.id);
+      handleOpenWarningPopup('Для добавления товара в корзину необходимо авторизоваться');
     }
   };
 
@@ -257,6 +270,7 @@ const ProductPage = () => {
           isOpen={isPopupOpen}
           productName={productFull.name}
           photoUrl={images[0]}
+          location='productPage'
         />
       </section>
     </>

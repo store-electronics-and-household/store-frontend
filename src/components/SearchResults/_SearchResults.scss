@@ -5,12 +5,14 @@
   // justify-content: center;
   // align-items: center;
   // min-height: 100vh;
-  margin: 48px auto auto;
+  margin: 0 auto auto;
+  position: relative;
 }
 
 .results__container {
-  position: relative;
+  // position: relative;
   display: flex;
+  margin-top: 48px;
   flex-direction: column;
   // margin-top: 64px;
   padding-right: 40px;
