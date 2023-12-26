@@ -1,23 +1,24 @@
 import React, { memo, useEffect, useState } from 'react';
 import ProductCardMedium from '../ProductCardMedium/ProductCardMedium';
 import CategoriesTile from '../CategoriesTile/CategoriesTile';
-import { popularCardsToShow, products } from '../../utils/constants';
 import CatalogItem from '../Catalog/CatalogItem';
 import {
   getBrandsForCategory,
-  getCategoryName,
+  getCategoryName, getModelsList,
   getSubcategories,
   type IgetSubcategories,
 } from '../../utils/api/catalog+categories.api';
 import { useLocation, useParams } from 'react-router-dom';
 import Catalog from '../Catalog/Catalog';
 import { type IBreadcrumbsProps } from '../Breadcrumbs/Breadcrumbs';
+import { type MediumCardProps } from '../../utils/types';
 
 const Categories: React.FC<IBreadcrumbsProps> = ({ crumbs }): React.ReactElement => {
   const [subCategories, setSubCategories] = useState<IgetSubcategories[]>();
   const [subCategoryName, setSubCategoryName] = useState<string | number>();
   const [brandNames, setBrandNames] = useState<string[]>([]);
   const [chosenBrand, setChosenBrand] = useState<string>('');
+  const [popularGoods, setPopularGoods] = useState<MediumCardProps[]>();
   const currentPath = useLocation().pathname;
   const { subcategory: subcategoryId = '', model: modelId } = useParams();
   const currentCategory = modelId ?? subcategoryId;
@@ -60,11 +61,33 @@ const Categories: React.FC<IBreadcrumbsProps> = ({ crumbs }): React.ReactElement
       });
   }, [currentCategory]);
 
+  useEffect(() => {
+    Promise.all([
+      getModelsList(1),
+      getModelsList(2),
+      getModelsList(3),
+      getModelsList(4),
+      getModelsList(14),
+      getModelsList(31)
+    ])
+      .then((res) => {
+        let finalScope: MediumCardProps[] = [];
+        for (const item of res) {
+          finalScope = [...finalScope, item.content[0], item.content[1]];
+        }
+        setPopularGoods(finalScope);
+      })
+      .catch((err) => {
+        console.log(`При загрузке популярных товаров произошла ошибка - ${err}`);
+      });
+  }, []);
+
   const handleResetBrands = (): void => {
     setChosenBrand('');
   };
 
   const isCatalog = subCategories?.length === 0;
+
   return (
     <>
       <section className='catalog'>
@@ -100,17 +123,10 @@ const Categories: React.FC<IBreadcrumbsProps> = ({ crumbs }): React.ReactElement
               </div>
               <h2 className='catalog__popular'>Популярные товары</h2>
               <div className='catalog__render-popular'>
-                {products.slice(0, popularCardsToShow).map((product) => (
+                {popularGoods?.map((product) => (
                   <ProductCardMedium
-                    key={product.id}
+                    key={Math.random()}
                     product={product}
-                    // name={product.name}
-                    // originPrice={product.originPrice}
-                    // salesPrice={product.salesPrice}
-                    // discount={product.discount}
-                    // imgUrl={product.imgUrl}
-                    // isLiked={product.isLiked}
-                    // quantityInCart={product.quantityInCart}
                   />
                 ))}
               </div>

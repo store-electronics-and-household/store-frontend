@@ -56,7 +56,7 @@ export const getCategoryName = async (
 ): Promise<IgetSubcategories> =>
   await request(`/categories/${subcategoryId}`, 'GET');
 
-export const getModelsList = async (modelsId: string): Promise<any> =>
+export const getModelsList = async (modelsId: string | number): Promise<any> =>
   await request(`/category/${modelsId}/model?from=0&size=100&sort=NAME`, 'GET');
 
 export const getBrandsForCategory = async (

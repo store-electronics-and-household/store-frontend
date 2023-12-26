@@ -6,12 +6,12 @@ import { formatSumm } from '../../utils/formatSumm';
 import PopupAddToCart from '../PopupAddToCart/PopupAddToCart';
 import CardLikeBtn from '../CardLikeBtn/CardLikeBtn';
 import { useCartContext } from '../../context';
-import type { MediumCardProps } from '../../utils/types';
 import { useFavouritesContext } from '../../context/FavouritesContext';
 import { UserContext } from '../../context/UserContext';
 import { useWarningPopupContext } from '../../context/WarningPopupContext';
+import { type MediumCardProps } from '../../utils/types';
 
-interface ProductCardMediumProps {
+export interface ProductCardMediumProps {
   product: MediumCardProps;
 }
 
@@ -136,14 +136,13 @@ const ProductCardMedium: React.FC<ProductCardMediumProps> = ({ product }) => {
                 <h3 className='card-medium__title'>{product.name}</h3>
                 <div className='card-medium__container-price'>
                   <span className={cardPriceClassname}>
-                    {product.price !== 0 && typeof product.price === 'number'
+                    {product.price !== 0
                       ? formatSumm(product.price)
                       : ''}
                   </span>
 
                   <span className='card-medium__oldprice'>
-                    {product.oldPrice !== 0 &&
-                    typeof product.oldPrice === 'number'
+                    {product.oldPrice !== 0 && product.oldPrice !== null
                       ? formatSumm(product.oldPrice)
                       : ''}
                   </span>
