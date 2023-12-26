@@ -16,7 +16,7 @@ const PopupAddToCart: React.FC<PopupAddToCartProps> = ({
   photoUrl,
 }: PopupAddToCartProps) => {
   const popupAddToCartClass = cn('popup-add-to-cart', {
-    'popup-add-to-cart_product-page': location === 'productPage' || 'catalog',
+    'popup-add-to-cart_product-page': location === 'productPage',
     'popup-add-to-cart_opened': isOpen,
   });
 
