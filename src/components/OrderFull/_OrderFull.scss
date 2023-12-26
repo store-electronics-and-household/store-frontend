@@ -1,0 +1,157 @@
+.order {
+  background-color: white;
+  padding: 40px 58px;
+  border-radius: 24px;
+  grid-column: 2 / -1;
+  &__title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%;
+    margin: 0;
+  }
+  &__info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    row-gap: 8px;
+    grid-template-areas:
+    "date status"
+    "number .";
+    padding-bottom: 33px;
+    border-bottom: 1px solid #AFB4C0;
+  }
+  &__date {
+    grid-area: date;
+    margin: 0;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 125%;
+  }
+  &__number {
+    grid-area: number;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    margin: 0;
+  }
+  &__status {
+    box-sizing: border-box;
+    grid-area: status;
+    justify-self: end;
+    background-color: rgba(67, 80, 214, 0.30);
+    color: #4350D6;
+    font-size: $fontSBodyBold;
+    font-weight: $fontWBodyBold;
+    line-height: normal;
+    padding: 4px 8px;
+    border-radius: 4px;
+    width: 97px;
+    height: 26px;
+  }
+  &__payment {
+    padding-top: 33px;
+    padding-bottom: 33px;
+    border-bottom: 1px solid #AFB4C0;
+    &-info {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(2, 180px);
+      row-gap: 16px;
+      justify-content: space-between;
+      max-width: 400px;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 120%;
+    }
+    &-summary {
+      font-weight: 600;
+    }
+    &-justify {
+      justify-self: end;
+    }
+  }
+  &__delivery {
+    padding-top: 33px;
+    padding-bottom: 33px;
+    border-bottom: 1px solid #AFB4C0;
+    &-info {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 16px;
+    }
+    &-details {
+      display: flex;
+      flex-direction: column;
+      row-gap: 4px;
+    }
+    &-bold {
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 120%;
+    }
+    &-title {
+      margin: 0;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 120%
+    }
+  }
+  &__goods {
+    padding-top: 33px;
+    &-list {
+      display: flex;
+      flex-direction: column;
+      row-gap: 24px;
+    }
+    &-info {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: 100px 272px auto;
+    }
+    &-details {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+      margin-left: 24px;
+    }
+    &-image {
+      max-width: 100px;
+      max-height: 100px;
+    }
+    &-summaryprice {
+      margin-left: auto;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 120%;
+      color: #4350D6;
+    }
+    &-title {
+      margin: 0;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 112.5%;
+    }
+    &-brand {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 112.5%;
+    }
+    &-vendorcode {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 112.5%;
+      color: #AFB4C0;
+    }
+  }
+}

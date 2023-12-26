@@ -36,9 +36,9 @@ export const requestWithToken = async (
   return await fetch(url, {
     ...options,
     headers: {
-      ...!!token && { Authorization: `Bearer ${token}` },
-      ...options.headers
-    }
+      ...(!!token && { Authorization: `Bearer ${token}` }),
+      ...options.headers,
+    },
   }).then(checkResponse);
 };
 
@@ -134,6 +134,17 @@ export const patchUser = async (
 export const deleteUser = async (token: string): Promise<any> => {
   return await request('/auth/delete', {
     method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const getOrders = async (token: string): Promise<any> => {
+  return await request('/orders/user', {
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',

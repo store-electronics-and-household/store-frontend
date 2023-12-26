@@ -14,7 +14,7 @@ const ProfileLayout = ({
   setGeneralContext,
 }: {
   children: ReactNode;
-  setGeneralContext: (args: IContext) => void;
+  setGeneralContext?: (args: IContext) => void;
 }): JSX.Element => {
   const location = useLocation();
   const path = location.pathname;
