@@ -62,7 +62,7 @@ const App: React.FC = () => {
         .catch((err) => {
           setGeneralContext(initialUserContext);
           localStorage.removeItem('token');
-          console.error(`Токен просрочен или не найден - ${err}`);
+          console.log(`Токен просрочен или не найден - ${err}`);
         });
     }
   }, []);
