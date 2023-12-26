@@ -55,12 +55,12 @@ const FavoritesContext = createContext<FavouritesContextType>({
   },
 });
 
-export function useFavouritesContext(): FavouritesContextType {
+export function useFavouritesContext (): FavouritesContextType {
   const context = useContext(FavoritesContext);
   return context;
 }
 
-export function FavoritesProvider({
+export function FavoritesProvider ({
   children,
 }: FavouritesProviderProps): JSX.Element {
   const [favouritesIdList, setFavouritesIdList] = useState<number[]>([]);
