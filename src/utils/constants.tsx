@@ -678,6 +678,7 @@ export const productsForPay = [
     id: 2,
     name: 'Смартфон Apple iPhone 15 Pro 128GB (Black Titanium)',
     oldPrice: 300,
+    price: 180,
     modelsImages: [
       {
         id: 1,
