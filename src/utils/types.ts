@@ -63,7 +63,7 @@ export interface MediumCardProps {
   name: string;
   description?: string;
   quantity: number; // ПОМЕНЯТЬ
-  price?: number;
+  price: number;
   // imgUrl: string;
   discount?: number; // ПОМЕНЯТЬ
   images?: MeyTypeCardImage[];
@@ -101,7 +101,7 @@ export interface MeTypePickUpPoint {
   metro?: string;
   deliverypice?: string;
   comment?: string;
-};
+}
 
 export interface CatalogMenuCategory {
   id: number;

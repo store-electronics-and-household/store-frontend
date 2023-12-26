@@ -1,6 +1,5 @@
 /* eslint-disable no-lone-blocks */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { number } from 'prop-types';
 import { request } from './user-api';
 
 export const getBusket = async (token: string): Promise<any> => {
@@ -39,7 +38,7 @@ export const postPayment = async (
   deliveryDate: string,
   deliveryPrice: number,
   finalPrice: number
-  ): Promise<any> => {
+): Promise<any> => {
   return await request('/orders/order/user', {
     method: 'POST',
     headers: {

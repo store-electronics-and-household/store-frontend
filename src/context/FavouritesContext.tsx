@@ -1,11 +1,5 @@
-import React, {
-  createContext,
-  type ReactNode,
-  useContext,
-  useState,
-  useEffect,
-} from 'react';
-import type { ProductFullDataType, MediumCardProps } from '../utils/types';
+import React, { createContext, type ReactNode, useContext, useEffect, useState } from 'react';
+import type { MediumCardProps, ProductFullDataType } from '../utils/types';
 import {
   addCardToFavoritesList,
   getFavouritesList,
@@ -56,8 +50,7 @@ const FavoritesContext = createContext<FavouritesContextType>({
 });
 
 export function useFavouritesContext (): FavouritesContextType {
-  const context = useContext(FavoritesContext);
-  return context;
+  return useContext(FavoritesContext);
 }
 
 export function FavoritesProvider ({
@@ -65,7 +58,7 @@ export function FavoritesProvider ({
 }: FavouritesProviderProps): JSX.Element {
   const [favouritesIdList, setFavouritesIdList] = useState<number[]>([]);
   const [favouritesProductsList, setFavouritesProductsList] = useState<
-    MediumCardProps[]
+  MediumCardProps[]
   >([]);
   const [productById, setProductById] = useState<ProductFullDataType>({
     id: 0,
