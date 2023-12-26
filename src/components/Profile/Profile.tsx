@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ProfileLayout from '../ProfileLayout/ProfileLayout';
 import InputMask from 'react-input-mask';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { patchUser } from '../../utils/api/user-api';
+import { getUserInfo, patchUser } from '../../utils/api/user-api';
 import { UserContext } from '../../context/UserContext';
 import type { IContext } from '../../context/UserContext';
 import type { FormProps } from '../../utils/types';
@@ -14,15 +14,31 @@ const Profile = ({
   setGeneralContext: (args: IContext) => void;
 }): JSX.Element => {
   const context = useContext(UserContext);
-  const { email, userName, userPhone, userLastName }: IContext = context;
+  const { email, userName, userPhone, userLastName } = context;
   const token = localStorage.getItem('token') ?? '';
+  useEffect(() => {
+    getUserInfo(token)
+      .then((res) => {
+        setGeneralContext({
+          ...context,
+          userName: res.firstName,
+          userPhone: res.phone,
+          userLastName: res.lastName,
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
+  console.log(context);
 
   const formik = useFormik({
     initialValues: {
       email,
-      phone: userPhone,
-      firstName: userName,
-      lastName: userLastName,
+      phone: userPhone ?? '',
+      firstName: userName ?? '',
+      lastName: userLastName ?? '',
     },
     validationSchema: Yup.object({
       phone: Yup.string()
@@ -87,6 +103,7 @@ const Profile = ({
               name='phone'
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
+              value={formik.values.phone}
               className='profile__account-input'
               mask={'+7(999)999-99-99'}
               placeholder='+7(___)___-__-__'
@@ -102,6 +119,7 @@ const Profile = ({
             <input
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
+              value={formik.values.firstName}
               name='firstName'
               minLength={2}
               maxLength={30}
@@ -113,13 +131,14 @@ const Profile = ({
                 <span className='profile__account-error'>
                   {formik.errors.firstName}
                 </span>
-            )}
+              )}
           </fieldset>
           <fieldset className='profile__account-fieldset'>
             <label className='profile__account-label'>Фамилия</label>
             <input
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
+              value={formik.values.lastName}
               name='lastName'
               minLength={2}
               maxLength={30}
@@ -131,7 +150,7 @@ const Profile = ({
                 <span className='profile__account-error'>
                   {formik.errors.lastName}
                 </span>
-            )}
+              )}
           </fieldset>
           <button type='submit' className='profile__account-button'>
             Сохранить

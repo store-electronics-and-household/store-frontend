@@ -152,3 +152,14 @@ export const getOrders = async (token: string): Promise<any> => {
     },
   });
 };
+
+export const getUserInfo = async (token: string): Promise<any> => {
+  return await request('/user', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
