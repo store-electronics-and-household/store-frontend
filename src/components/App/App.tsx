@@ -169,24 +169,6 @@ const App: React.FC = () => {
                       }
                     />
                     <Route
-                      path='/cart'
-                      element={
-                        <>
-                          <Breadcrumbs crumbs={crumbs} />
-                          <Cart onCheckoutClick={setGoodsForPayment} />
-                        </>
-                      }
-                    />
-                    <Route
-                      path='/cart/payment'
-                      element={
-                        <>
-                          <Breadcrumbs crumbs={crumbs} />
-                          <PaymentsPage oldGoodsList={goodsList ?? []} />
-                        </>
-                      }
-                    />
-                    <Route
                       path='/categories/:subcategory'
                       element={
                         <>
