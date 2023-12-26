@@ -201,6 +201,14 @@ const App: React.FC = () => {
                         <Route path=':model' element={<Catalog />} />
                       </Route>
                       <Route
+                        path='/categories/:subcategory/product/:productId'
+                        element={
+                          <>
+                            <ProductPage />
+                          </>
+                        }
+                      />
+                      <Route
                         path='/:productId'
                         element={
                           <>
