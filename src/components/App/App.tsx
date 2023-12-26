@@ -105,10 +105,10 @@ const App: React.FC = () => {
   return (
     <div className='App'>
       <CartProvider>
-        <FavoritesProvider>
-          <WarningPopupProvider>
-            <ScrollToTop>
-              <UserContext.Provider value={generalContext}>
+        <WarningPopupProvider>
+          <ScrollToTop>
+            <UserContext.Provider value={generalContext}>
+              <FavoritesProvider>
                 <Routes>
                   <Route
                     path='/'
@@ -273,10 +273,10 @@ const App: React.FC = () => {
                     <Route path='*' element={<NotFound />} />
                   </Route>
                 </Routes>
-              </UserContext.Provider>
-            </ScrollToTop>
-          </WarningPopupProvider>
-        </FavoritesProvider>
+              </FavoritesProvider>
+            </UserContext.Provider>
+          </ScrollToTop>
+        </WarningPopupProvider>
       </CartProvider>
     </div>
   );
